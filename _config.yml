@@ -43,11 +43,11 @@ footer_links:
     icon: fa fa-rss-square
 
   - title: Twitter
-    url: https://twitter.com/jekyllrb
+    url: https://twitter.com/KubeDaily
     icon: fa fa-twitter-square
 
   - title: GitHub
-    url: https://github.com/forever-jekyll
+    url: https://github.com/sangam14
     icon: fa fa-github-square
 
 # Enter your copyright text if you wish to override the default one.
