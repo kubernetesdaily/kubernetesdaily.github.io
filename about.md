@@ -5,6 +5,9 @@ permalink: /about
 ---
 
 
+<div id="my-table">
+
+
 
 | Food    | Description                           | Category | Sample type |
 | ------- | ------------------------------------- | -------- | ----------- |
