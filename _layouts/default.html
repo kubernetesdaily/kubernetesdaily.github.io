@@ -32,25 +32,23 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" media="print" onload="this.media='all'"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print" onload="this.media='all'"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous" media="print" onload="this.media='all'"/>
-   
-  {% if page.datatable == true %}
+  
+    {%- if page.datatable == true %}
     <!-- Include the standard DataTables bits -->
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
-    <!-- First, this walks through the tables that occur between ...-begin
-         and ...-end and add the "datatable" class to them.
-         Then it invokes DataTable's standard initializer
-         Credit here: http://www.beardedhacker.com/blog/2015/08/28/add-class-attribute-to-markdown-table/
-      -->
+    <link rel="stylesheet" type="text/css" href="{{ 'assets/css/dataTables.bootstrap5.min.css' | relative_url }}">
+    <script type="text/javascript" charset="utf8" src="{{ 'assets/js/jquery.dataTables.min.js' | relative_url }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ 'assets/js/dataTables.bootstrap5.min.js' | relative_url }}"></script>
     <script>
-      $(document).ready(function(){
-          $('div.datatable-begin').nextUntil('div.datatable-end', 'table').addClass('display');
-          $('table.display').DataTable( {
-              paging: true,
-              stateSave: true,
-              searching: true
-          });
-       });
+        $.fn.DataTable.ext.pager.numbers_length = 5;
+        $(document).ready(function () {
+            $('div.datatable-begin').nextUntil('div.datatable-end', 'table').addClass('display');
+            $('table.display').DataTable({
+                lengthMenu: [ [25, 50, 100, -1], [25, 50, 100, "All"] ],
+                ordering:false,
+                stateSave: true,
+                searching: true
+            });
+        });
     </script>
     {% endif %}
 
