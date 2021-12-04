@@ -30,11 +30,13 @@ navigation_links:
   - title: Blog
     url: /
 
-  - title: About
+  - title: Github 360 
     url: /about
 
   - title: Search
     url: /search
+    
+    
 
 # Footer icons
 footer_links:
