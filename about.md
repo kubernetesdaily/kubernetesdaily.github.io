@@ -5,10 +5,10 @@ permalink: /about
 dataTable: true
 ---
 
+<h1> Awsome Github </h1>
+
 
 <div id="my-table">
-
-
 
 | Food    | Description                           | Category | Sample type |
 | ------- | ------------------------------------- | -------- | ----------- |
