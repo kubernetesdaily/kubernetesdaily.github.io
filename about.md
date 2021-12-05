@@ -9,9 +9,9 @@ datatable: true
 {% include toollist.html %}
 
 
+
 <div id="my-table">
 
-<!-- The pre-processor for this pen is set to Markdown   -->
 
 | Food    | Description                           | Category | Sample type |
 | ------- | ------------------------------------- | -------- | ----------- |
