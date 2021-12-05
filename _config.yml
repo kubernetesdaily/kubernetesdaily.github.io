@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: Kubedaily 
+name: KubeDaily
 
 # Short bio or description (displayed in the header)
-description: Stay Update with Cloud Native Technologies 
+description: Kubernetes & CloudNative 
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: /assets/image/KubeDaily-logo.jpg
