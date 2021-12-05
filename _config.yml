@@ -51,6 +51,10 @@ footer_links:
   - title: GitHub
     url: https://github.com/sangam14
     icon: fa fa-github-square
+    
+  - title: Discord
+    url: http://discord.kubedaily.live/
+    icon: fa fa-discord
 
 # Enter your copyright text if you wish to override the default one.
 #copyright: "This site is made with <3 by *me, myself, and I*."
