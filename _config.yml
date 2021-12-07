@@ -39,9 +39,11 @@ navigation_links:
 # authors 
 
 # Author details.
-sangambirdar:
-    name: Sangam Biradar
-    web: http://twitter.com/BiradarSangam
+
+authors:
+    sangambirdar:
+       name: Sangam Biradar
+       web: http://twitter.com/BiradarSangam
     
 
 # Footer icons
