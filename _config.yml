@@ -35,7 +35,13 @@ navigation_links:
 
   - title: Search
     url: /search
-    
+
+# authors 
+
+# Author details.
+sangambirdar:
+    name: Sangam Biradar
+    web: http://twitter.com/BiradarSangam
     
 
 # Footer icons
