@@ -2,6 +2,7 @@
 layout: post
 title: Hello World
 categories: [content, demo]
+author: sangambiradar
 ---
 
 Hello and welcome. The only purpose of this post is to greet you when your site comes alive for the first time.  
