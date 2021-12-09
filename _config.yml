@@ -33,6 +33,12 @@ navigation_links:
   - title: tooling 
     url: /tooling
 
+  - title: events
+    url: /events
+
+  - title: about
+    url: /about
+
   - title: Search
     url: /search
 
