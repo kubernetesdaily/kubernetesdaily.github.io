@@ -1,0 +1,59 @@
+<div class="popup-only-box popup-box-on" id="popup-before-pop">
+  <div class="popup-only-head">
+
+    <a class="btn btn-info btn-block btn-social btn-twitter" id="addClass" onClick="popup(this.id)">
+             Popup Tweets
+    </a>
+    
+  </div>
+</div>
+
+<div class="popup-box" id="popup-after-pop">
+  <div class="popup-head">
+
+ 
+
+  <a class="btn btn-info btn-block btn-social btn-twitter" id="removeClass" onClick="popdown(this.id)">
+      Popdown Tweets
+  </a>
+  
+
+  </div>
+
+  <div class="popup-messages">
+  
+  <!-- get your own twitter publish code at https://publish.twitter.com/ -->
+  <a class="twitter-timeline" href="https://twitter.com/junlulocky">Tweets by junlulocky</a> 
+  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    
+  </div>
+
+
+</div>
+
+
+
+
+<script type="text/javascript">
+function popdown(clicked_id)
+{
+    $afterpop = $('#popup-after-pop');
+    $beforepop = $('#popup-before-pop');
+
+    $afterpop.removeClass('popup-box-on');
+    $beforepop.addClass('popup-box-on');
+
+}
+</script>
+
+<script type="text/javascript">
+function popup(clicked_id)
+{
+    $afterpop = $('#popup-after-pop');
+    $beforepop = $('#popup-before-pop');
+
+    $afterpop.addClass('popup-box-on');
+    $beforepop.removeClass('popup-box-on');
+
+}
+</script>
