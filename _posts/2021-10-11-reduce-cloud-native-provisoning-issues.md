@@ -5,9 +5,8 @@ categories: [terrascan,Terraform , misconfiguration , security , kubernetes ]
 ---
 
 <div>
-<iframe src="https://slides.com/sangambiradar/addo-sangambiradar/embed" width="700" height="420" title="less risky business way to reduce cloud native provisioning issues" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://slides.com/sangambiradar/addo-sangambiradar/embed?style=light" width="700" height="420" title="less risky business way to reduce cloud native provisioning issues" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
-
 
 misconfiguration is still big issue in cloud native world. and we can detect it before provisioning. one of interesting thing now we have tool like OPA (Open Policy Agent) which help us to write policies every easy way. not only that there is open source tool terrracan 
 which give more then 500+ pre-defined policies with CIS benchmark and best practices also give us to write policies customly . 
