@@ -27,7 +27,7 @@ baseurl: ""
 
 # Navigation menu
 navigation_links:
-  - title: Blog
+  - title: blog
     url: /
 
   - title: tooling 
@@ -39,9 +39,9 @@ navigation_links:
   - title: about
     url: /about
 
-  - title: Search
+  - title: search
     url: /search
-
+    
 
 
 # Footer icons
