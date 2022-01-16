@@ -193,7 +193,7 @@ Handling connection for 8080
 Handling connection for 8080
 ```
 
-# cheers you have dasboard in browser
+#  you have dasboard in browser
 ```
 username = admin 
 ```
@@ -243,4 +243,33 @@ spec:
 above manifest use argocd presync hool poll the terrascan docker image and in argument you can add whatever public github repo you want to scan and then define the 
 what Iac type you want to scan and it will give violation report right in argocd dashboard . here we already setup argocd now we will see how dasboard and violation report look like ! 
 
+
+# open argocd dashboard in browser 
+
+using `kubectl port-forward svc/argocd-server -n argocd 8080:443`
+get your password using `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+` and default use default username admin i will be using minikube but you can setup other authentication as well !  
+
+
+![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-0.png)
+
+# create new app 
+
+![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-1.png)
+
+![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-2.png)
+
+# add git repo where your argocd presyc hook present 
+
+![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-3.png)
+
+# now snyc your git repo 
+
+![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-4.png)
+![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-5.png)
+
+after synchronous the argocd will run the job and pull terrascan docker image and run as server depends on which Iac you have provided it will scan those misconfiguration and give violation report in logs 
+![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-6.png)
+
+also you can setup notification to your slack or any other services you want ! 
 
