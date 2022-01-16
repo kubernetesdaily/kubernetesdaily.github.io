@@ -5,7 +5,7 @@ categories: [terrascan,gitops,security,kubernetes]
 ---
 
 
-github is became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak you data or your use data secret can be exposed can effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines. 
+github became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak you data or your use data secret can be exposed can effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines. 
 
 <div>
 <iframe src="https://slides.com/sangambiradar/extend-gitops-security-with-terrascan/embed?style=light" width="576" height="420" title="Extend GitOps Security With TerraScan" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
