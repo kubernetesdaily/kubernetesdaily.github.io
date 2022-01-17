@@ -5,7 +5,7 @@ categories: [terrascan,gitops,security,kubernetes]
 ---
 
 
-github became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak you data or your use data secret can be exposed can effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines. 
+github became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak your data or secret can be exposed & effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines. 
 
 <div>
 <iframe src="https://slides.com/sangambiradar/extend-gitops-security-with-terrascan/embed?style=light" width="576" height="420" title="Extend GitOps Security With TerraScan" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -14,7 +14,7 @@ github became single truth for developer to manage develope and deploy without t
 
 
 
-# Install argocd via brew on OSX
+## Install argocd via brew on OSX
 
 ```
 brew tap argoproj/tap
@@ -23,13 +23,13 @@ brew install argoproj/tap/argocd
 
 
 
-# Install Minikube On Macos 
+## Install Minikube On Macos 
 
 ```
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
 sudo install minikube-darwin-amd64 /usr/local/bin/minikube
 ```
-# Start Minikube
+## Start Minikube
 
 ```
 minikube start
@@ -67,7 +67,7 @@ output
 
 ```
 
-# verify minikube is running
+## verify minikube is running
 
 ```
 
@@ -85,7 +85,7 @@ kube-system   storage-provisioner                1/1     Running   1          3m
 
 
 
-# Minikube tunnel running in another terminal
+## Minikube tunnel running in another terminal
 
 ```
 ~ kubectl create namespace argocd
@@ -100,7 +100,7 @@ kube-system       Active   18m
 
 ```
 
-# Apply Argocd Manifest
+## Apply Argocd Manifest
 
 
 ```
@@ -149,7 +149,7 @@ networkpolicy.networking.k8s.io/argocd-server-network-policy created
 ➜  ~ 
 ```
 
-# check all pod are running under argocd namespace
+## check all pod are running under argocd namespace
 
 ```
 ➜  ~ kubectl -n argocd get pods -w
@@ -160,13 +160,13 @@ argocd-redis-747b678f89-nmtjn         1/1     Running   0          90s
 argocd-repo-server-6fc4456c89-4qtzc   1/1     Running   0          90s
 argocd-server-7d57bc994b-2pwb2        1/1     Running   0          89s
 ```
-# copy password   
+## copy password   
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 CpLZekcmcDqMbmBr
 
-# open localhost 8080
+## open localhost 8080
 ```
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 Forwarding from 127.0.0.1:8080 -> 8080
@@ -193,12 +193,12 @@ Handling connection for 8080
 Handling connection for 8080
 ```
 
-#  you have dasboard in browser
+##  you have dasboard in browser
 ```
 username = admin 
 ```
 
-# change argo password 
+## change argo password 
 ```
 argocd account update-password
 *** Enter current password: 
@@ -213,7 +213,7 @@ now we will add presyc hook to scan kubernetes misconfiguration using terrascan
 demo:- https://github.com/sangam14/terrascan-argocd
 
 
-# create presyc hook 
+## create presyc hook 
 
 ```
 apiVersion: batch/v1
@@ -244,7 +244,7 @@ above manifest use argocd presync hool poll the terrascan docker image and in ar
 what Iac type you want to scan and it will give violation report right in argocd dashboard . here we already setup argocd now we will see how dasboard and violation report look like ! 
 
 
-# open argocd dashboard in browser 
+## open argocd dashboard in browser 
 
 using `kubectl port-forward svc/argocd-server -n argocd 8080:443`
 get your password using `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
@@ -253,17 +253,17 @@ get your password using `kubectl -n argocd get secret argocd-initial-admin-secre
 
 ![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-0.png)
 
-# create new app 
+## create new app 
 
 ![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-1.png)
 
 ![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-2.png)
 
-# add git repo where your argocd presyc hook present 
+## add git repo where your argocd presyc hook present 
 
 ![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-3.png)
 
-# now snyc your git repo 
+## now snyc your git repo 
 
 ![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-4.png)
 ![](https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-5.png)
