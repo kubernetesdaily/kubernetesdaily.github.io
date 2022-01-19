@@ -1,41 +1,18 @@
-name: gh-pages
+name: Jekyll site CI
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
 jobs:
-
   build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    
-    - name: Checkout submodules
-      uses: textbook/git-checkout-submodule-action@master
-    
-    - name: install pandoc
-      run: |
-           wget https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb
-           sudo dpkg -i pandoc-2.11.4-1-amd64.deb
- 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: '0.71.1'
-        extended: true
-          
-    - name: Build
-      run: |
-       npm install -D --save autoprefixer
-       npm install -D --save postcss-cli
-       hugo
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        publish_dir: ./public
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod a+w /srv/jekyll/Gemfile.lock && chmod 777 /srv/jekyll && jekyll build --future"
