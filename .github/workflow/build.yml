@@ -5,7 +5,6 @@ on:
     branches:
       - master
       - exampleSite
-  
   workflow_dispatch:
     # manual run
 
