@@ -1,4 +1,4 @@
-baseURL: "sangam.github.io"
+baseURL: "https://kubedaily.com"
 title: KubeDaily
 paginate: 5
 theme: github.com/adityatelange/hugo-PaperMod
