@@ -1,41 +1,42 @@
-name: Build GH-Pages
+name: Hugo
 
 on:
   push:
-    paths-ignore:
-      - 'images/**'
-      - 'LICENSE'
-      - 'README.md'
-    branches:
-      - website
-  workflow_dispatch:
-    # manual run
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  deploy:
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Git checkout
-        uses: actions/checkout@v2
-        with:
-          ref: website
+    - uses: actions/checkout@master
+    
+    - name: Checkout submodules
+      uses: textbook/git-checkout-submodule-action@master
+    
+    - name: install pandoc
+      run: |
+           wget https://github.com/jgm/pandoc/releases/download/2.11.4/pandoc-2.11.4-1-amd64.deb
+           sudo dpkg -i pandoc-2.11.4-1-amd64.deb
+ 
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.71.1'
+        extended: true
+          
+    - name: Build
+      run: |
+       npm install -D --save autoprefixer
+       npm install -D --save postcss-cli
+       hugo
 
-      - name: Get Theme
-        run: git submodule update --init --recursive
-
-      - name: Update theme to Latest commit
-        run: git submodule update --remote --merge
-
-      - name: Setup hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-
-      - name: Build
-        run: hugo --buildDrafts --gc --verbose --minify
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          publish_dir: ./public
+    - name: Deploy to GitHub Pages
+      if: success() && github.event_name != 'pull_request'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
