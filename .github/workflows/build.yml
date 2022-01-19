@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - master
-     
+      - website
   workflow_dispatch:
     # manual run
 
@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
+        with:
+          ref: exampleSite
 
       - name: Get Theme
         run: git submodule update --init --recursive
