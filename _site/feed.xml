@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-30T01:45:02+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">KubeDaily</title><author><name>Sangam Biradar</name><email>kubedaily@gmail.com</email></author><entry><title type="html">Extend GitOps Security with Terrascan</title><link href="http://localhost:4000/extend-gitops-security-with-terrascan" rel="alternate" type="text/html" title="Extend GitOps Security with Terrascan" /><published>2022-02-04T00:00:00+05:30</published><updated>2022-02-04T00:00:00+05:30</updated><id>http://localhost:4000/extend-gitops-security-with-terrascan</id><content type="html" xml:base="http://localhost:4000/extend-gitops-security-with-terrascan"><![CDATA[<p>github became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak your data or secret can be exposed &amp; effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines.</p>
+
+<div>
+<iframe src="https://slides.com/sangambiradar/extend-gitops-security-with-terrascan/embed?style=light" width="576" height="420" title="Extend GitOps Security With TerraScan" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+</div>
+
+<h2 id="install-argocd-via-brew-on-osx">Install argocd via brew on OSX</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap argoproj/tap
+brew install argoproj/tap/argocd
+</code></pre></div></div>
+
+<h2 id="install-minikube-on-macos">Install Minikube On Macos</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+</code></pre></div></div>
+<h2 id="start-minikube">Start Minikube</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>minikube start
+</code></pre></div></div>
+<p>output</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ~ minikube start
+😄  minikube v1.21.0 on Darwin 11.4
+✨  Automatically selected the hyperkit driver
+💾  Downloading driver docker-machine-driver-hyperkit:
+    &gt; docker-machine-driver-hyper...: 65 B / 65 B [----------] 100.00% ? p/s 0s
+    &gt; docker-machine-driver-hyper...: 10.52 MiB / 10.52 MiB  100.00% 6.86 MiB p
+🔑  The 'hyperkit' driver requires elevated permissions. The following commands will be executed:
+
+    $ sudo chown root:wheel /Users/sangam/.minikube/bin/docker-machine-driver-hyperkit 
+    $ sudo chmod u+s /Users/sangam/.minikube/bin/docker-machine-driver-hyperkit 
+
+
+💿  Downloading VM boot image ...
+    &gt; minikube-v1.21.0.iso.sha256: 65 B / 65 B [-------------] 100.00% ? p/s 0s
+    &gt; minikube-v1.21.0.iso: 243.03 MiB / 243.03 MiB [ 100.00% 21.68 MiB p/s 11s
+👍  Starting control plane node minikube in cluster minikube
+💾  Downloading Kubernetes v1.20.7 preload ...
+    &gt; preloaded-images-k8s-v11-v1...: 492.20 MiB / 492.20 MiB  100.00% 17.23 Mi
+🔥  Creating hyperkit VM (CPUs=2, Memory=4000MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.20.7 on Docker 20.10.6 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+</code></pre></div></div>
+
+<h2 id="verify-minikube-is-running">verify minikube is running</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+➜  ~ kubectl get po -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS   AGE
+kube-system   coredns-74ff55c5b-pv5nl            1/1     Running   0          2m48s
+kube-system   etcd-minikube                      1/1     Running   0          3m2s
+kube-system   kube-apiserver-minikube            1/1     Running   0          3m2s
+kube-system   kube-controller-manager-minikube   1/1     Running   0          3m2s
+kube-system   kube-proxy-7vrs7                   1/1     Running   0          2m48s
+kube-system   kube-scheduler-minikube            1/1     Running   0          3m2s
+kube-system   storage-provisioner                1/1     Running   1          3m2s
+</code></pre></div></div>
+
+<h2 id="minikube-tunnel-running-in-another-terminal">Minikube tunnel running in another terminal</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~ kubectl create namespace argocd
+namespace/argocd created
+~ kubectl get ns 
+NAME              STATUS   AGE
+argocd            Active   101s
+default           Active   18m
+kube-node-lease   Active   18m
+kube-public       Active   18m
+kube-system       Active   18m
+
+</code></pre></div></div>
+
+<h2 id="apply-argocd-manifest">Apply Argocd Manifest</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/appprojects.argoproj.io created
+serviceaccount/argocd-application-controller created
+serviceaccount/argocd-dex-server created
+serviceaccount/argocd-redis created
+serviceaccount/argocd-server created
+role.rbac.authorization.k8s.io/argocd-application-controller created
+role.rbac.authorization.k8s.io/argocd-dex-server created
+role.rbac.authorization.k8s.io/argocd-redis created
+role.rbac.authorization.k8s.io/argocd-server created
+clusterrole.rbac.authorization.k8s.io/argocd-application-controller created
+clusterrole.rbac.authorization.k8s.io/argocd-server created
+rolebinding.rbac.authorization.k8s.io/argocd-application-controller created
+rolebinding.rbac.authorization.k8s.io/argocd-dex-server created
+rolebinding.rbac.authorization.k8s.io/argocd-redis created
+rolebinding.rbac.authorization.k8s.io/argocd-server created
+clusterrolebinding.rbac.authorization.k8s.io/argocd-application-controller created
+clusterrolebinding.rbac.authorization.k8s.io/argocd-server created
+configmap/argocd-cm created
+configmap/argocd-gpg-keys-cm created
+configmap/argocd-rbac-cm created
+configmap/argocd-ssh-known-hosts-cm created
+configmap/argocd-tls-certs-cm created
+secret/argocd-secret created
+service/argocd-dex-server created
+service/argocd-metrics created
+service/argocd-redis created
+service/argocd-repo-server created
+service/argocd-server created
+service/argocd-server-metrics created
+deployment.apps/argocd-dex-server created
+deployment.apps/argocd-redis created
+deployment.apps/argocd-repo-server created
+deployment.apps/argocd-server created
+statefulset.apps/argocd-application-controller created
+networkpolicy.networking.k8s.io/argocd-application-controller-network-policy created
+networkpolicy.networking.k8s.io/argocd-dex-server-network-policy created
+networkpolicy.networking.k8s.io/argocd-redis-network-policy created
+networkpolicy.networking.k8s.io/argocd-repo-server-network-policy created
+networkpolicy.networking.k8s.io/argocd-server-network-policy created
+➜  ~ 
+</code></pre></div></div>
+
+<h2 id="check-all-pod-are-running-under-argocd-namespace">check all pod are running under argocd namespace</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  ~ kubectl -n argocd get pods -w
+NAME                                  READY   STATUS    RESTARTS   AGE
+argocd-application-controller-0       1/1     Running   0          89s
+argocd-dex-server-76ff776f97-s8jj2    1/1     Running   0          90s
+argocd-redis-747b678f89-nmtjn         1/1     Running   0          90s
+argocd-repo-server-6fc4456c89-4qtzc   1/1     Running   0          90s
+argocd-server-7d57bc994b-2pwb2        1/1     Running   0          89s
+</code></pre></div></div>
+<h2 id="copy-password">copy password</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+</code></pre></div></div>
+<p>CpLZekcmcDqMbmBr</p>
+
+<h2 id="open-localhost-8080">open localhost 8080</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl port-forward svc/argocd-server -n argocd 8080:443
+Forwarding from 127.0.0.1:8080 -&gt; 8080
+Forwarding from [::1]:8080 -&gt; 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+</code></pre></div></div>
+
+<h2 id="you-have-dasboard-in-browser">you have dasboard in browser</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>username = admin 
+</code></pre></div></div>
+
+<h2 id="change-argo-password">change argo password</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argocd account update-password
+*** Enter current password: 
+*** Enter new password: 
+*** Confirm new password: 
+Password updated
+Context 'localhost:8080' updated
+</code></pre></div></div>
+
+<p>now we will add presyc hook to scan kubernetes misconfiguration using terrascan</p>
+
+<p>demo:- https://github.com/sangam14/terrascan-argocd</p>
+
+<h2 id="create-presyc-hook">create presyc hook</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: terrascan-hook-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      containers:
+      - name: terrascan-argocd-1
+        image: accurics/terrascan:latest
+        command: ["/bin/sh", "-c"]
+        args:
+        - &gt; 
+           /go/bin/terrascan scan -r git -u https://github.com/sangam14/terrascan-argocd.git -i k8s -t k8s
+          
+      restartPolicy: Never
+  backoffLimit: 1
+
+
+</code></pre></div></div>
+
+<p>above manifest use argocd presync hool poll the terrascan docker image and in argument you can add whatever public github repo you want to scan and then define the 
+what Iac type you want to scan and it will give violation report right in argocd dashboard . here we already setup argocd now we will see how dasboard and violation report look like !</p>
+
+<h2 id="open-argocd-dashboard-in-browser">open argocd dashboard in browser</h2>
+
+<p>using <code class="language-plaintext highlighter-rouge">kubectl port-forward svc/argocd-server -n argocd 8080:443</code>
+get your password using <code class="language-plaintext highlighter-rouge">kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+</code> and default use default username admin i will be using minikube but you can setup other authentication as well !</p>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-0.png" alt="" /></p>
+
+<h2 id="create-new-app">create new app</h2>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-1.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-2.png" alt="" /></p>
+
+<h2 id="add-git-repo-where-your-argocd-presyc-hook-present">add git repo where your argocd presyc hook present</h2>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-3.png" alt="" /></p>
+
+<h2 id="now-snyc-your-git-repo">now snyc your git repo</h2>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-4.png" alt="" />
+<img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-5.png" alt="" /></p>
+
+<p>after synchronous the argocd will run the job and pull terrascan docker image and run as server depends on which Iac you have provided it will scan those misconfiguration and give violation report in logs 
+<img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-6.png" alt="" /></p>
+
+<p>also you can setup notification to your slack or any other services you want !</p>]]></content><author><name>Sangam Biradar</name><email>kubedaily@gmail.com</email></author><category term="terrascan" /><category term="gitops" /><category term="security" /><category term="kubernetes" /><summary type="html"><![CDATA[github became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak your data or secret can be exposed &amp; effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines.]]></summary></entry><entry><title type="html">less risky business way to reduce cloud-native provisioning issues</title><link href="http://localhost:4000/reduce-cloud-native-provisoning-issues.md" rel="alternate" type="text/html" title="less risky business way to reduce cloud-native provisioning issues" /><published>2021-01-12T15:48:00+05:30</published><updated>2021-01-12T15:48:00+05:30</updated><id>http://localhost:4000/reduce-cloud-native-provisoning-issues.md</id><content type="html" xml:base="http://localhost:4000/reduce-cloud-native-provisoning-issues.md"><![CDATA[<p>Misconfiguration is still big issue in cloud native world. and we can detect it before provisioning. one of interesting thing now we have tool like OPA (Open Policy Agent) which help us to write policies easy way. we will check <a href="https://github.com/accurics/terrascan">terrascan</a> open source cloud security tool !</p>
+
+<div>
+<iframe src="https://slides.com/sangambiradar/addo-sangambiradar/embed?style=light" width="576" height="420" title="less risky business way to reduce cloud native provisioning issues" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+</div>
+
+<h2 id="demo--1">Demo -1</h2>
+<p><img src="https://raw.githubusercontent.com/sangam14/alldaydevops2021/main/kops-terraform-terrascan.drawio.svg" alt="" /></p>
+
+<h2 id="requirements">Requirements</h2>
+<ul>
+  <li><a href="https://www.terraform.io/downloads.html">Terraform</a></li>
+  <li><a href="https://github.com/kubernetes/kops#installing">Kops</a></li>
+  <li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a></li>
+  <li><a href="https://github.com/accurics/terrascan">Terrascan</a></li>
+</ul>
+
+<h2 id="install-terrascan">Install Terrascan</h2>
+
+<p>Native Way</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -L "$(curl -s https://api.github.com/repos/accurics/terrascan/releases/latest | grep -o -E "https://.+?_Darwin_x86_64.tar.gz")" &gt; terrascan.tar.gz
+$ tar -xf terrascan.tar.gz terrascan &amp;&amp; rm terrascan.tar.gz
+$ install terrascan /usr/local/bin &amp;&amp; rm terrascan
+$ terrascan
+</code></pre></div></div>
+
+<p>via brew</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew install terrascan
+
+</code></pre></div></div>
+<h2 id="clone-this-repo">Clone This Repo</h2>
+
+<p>step 1: clone</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/sangam14/alldaydevops2021
+</code></pre></div></div>
+<p>step 2: change dir</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd kops-terraform-terrascan
+</code></pre></div></div>
+<p>step 3 : scan terraform</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrascan scan -t aws -i terraform
+</code></pre></div></div>
+<p>Violation Details -</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    
+        Description    :        Ensure VPC flow logging is enabled in all VPCs
+        File           :        kops-terraform-terrascan/modules/vpc/main.tf
+        Module Name    :        network
+        Plan Root      :        kops-terraform-terrascan
+        Line           :        5
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        Ensure VPC flow logging is enabled in all VPCs
+        File           :        kops-terraform-terrascan/modules/vpc/main.tf
+        Module Name    :        root
+        Plan Root      :        kops-terraform-terrascan/modules/vpc
+        Line           :        5
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+
+Scan Summary -
+
+        File/Folder         :   /Users/sangam/Documents/GitHub/alldaydevops2021
+        IaC Type            :   terraform
+        Scanned At          :   2021-10-16 23:39:12.157608 +0000 UTC
+        Policies Validated  :   2
+        Violated Policies   :   2
+        Low                 :   2
+        Medium              :   0
+        High                :   0
+
+
+</code></pre></div></div>
+
+<h2 id="apply-remediation-for-above-violation-details">apply remediation for above violation details</h2>
+
+<p>enable VPC flow logging : flow log records that capture specific traffic flows.</p>
+
+<p>add resource under VPC module</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ resource "aws_flow_log" "vpc" {
+ iam_role_arn    = "arn"
+  log_destination = "log"
+ traffic_type    = "ALL"
+   vpc_id          = "${aws_vpc.vpc.id}"
+}
+
+</code></pre></div></div>
+
+<p>Scan again</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+terrascan scan -t aws -i terraform
+
+Scan Summary -
+
+        File/Folder         :   /Users/sangam/Documents/GitHub/alldaydevops2021
+        IaC Type            :   terraform
+        Scanned At          :   2021-10-16 23:44:55.626183 +0000 UTC
+        Policies Validated  :   2
+        Violated Policies   :   0
+        Low                 :   0
+        Medium              :   0
+        High                :   0
+
+
+</code></pre></div></div>
+
+<h2 id="ready-to-deploy-the-environment-">Ready to Deploy the environment !</h2>
+
+<ol>
+  <li>Create a <code class="language-plaintext highlighter-rouge">backend.tf</code> file from <code class="language-plaintext highlighter-rouge">backend.tf.example</code> and fill the missing values.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp backend.tf.example backend.tf
+</code></pre></div>    </div>
+  </li>
+  <li>Create a config file for your environment by copying <code class="language-plaintext highlighter-rouge">config/env.tfvars.example</code> and fill the missing values
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp config/env.tfvars.example &lt;env_name&gt;.tfvars
+</code></pre></div>    </div>
+  </li>
+  <li>Execute <code class="language-plaintext highlighter-rouge">terraform init</code>, if successful your output should look like this</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+</code></pre></div></div>
+<ol>
+  <li>Execute <code class="language-plaintext highlighter-rouge">terraform plan -var-file=config/env.tfvars</code></li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plan: 27 to add, 1 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+
+Releasing state lock. This may take a few moments...
+</code></pre></div></div>
+<ol>
+  <li>Execute <code class="language-plaintext highlighter-rouge">terraform apply -var-file=config/env.tfvars</code> and answer <code class="language-plaintext highlighter-rouge">yes</code> when prompted.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Apply complete! Resources: 27 added, 0 changed, 0 destroyed.
+Releasing state lock. This may take a few moments...
+</code></pre></div>    </div>
+  </li>
+  <li>Once terraform is done you can check the state of the cluster with:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export KOPS_STATE_STORE=s3://&lt;kops_state_bucket&gt; # Get this values from config/&lt;env_name&gt;.tfvars
+kops export kubecfg --admin --name &lt;name&gt;.&lt;hosted_zone&gt;
+kops validate cluster
+</code></pre></div>    </div>
+  </li>
+  <li>After kops reports your cluster as valid you can start running kubectl commands:</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using cluster from kubectl context: &lt;name&gt;.&lt;hosted_zone&gt;
+
+Validating cluster &lt;name&gt;.&lt;hosted_zone&gt;
+
+INSTANCE GROUPS
+NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS
+agent			Node	t3.medium	1	2	PrivateSubnet-0,PrivateSubnet-1,PrivateSubnet-2
+master-us-west-2a	Master	t3.medium	1	1	PrivateSubnet-0
+master-us-west-2b	Master	t3.medium	1	1	PrivateSubnet-1
+master-us-west-2c	Master	t3.medium	1	1	PrivateSubnet-2
+
+NODE STATUS
+NAME						ROLE	READY
+ip-10-2-2-68.us-west-2.compute.internal		master	True
+ip-10-2-3-217.us-west-2.compute.internal	master	True
+ip-10-2-3-218.us-west-2.compute.internal	node	True
+ip-10-2-4-251.us-west-2.compute.internal	master	True
+
+Your cluster &lt;name&gt;.&lt;hosted_zone&gt; is ready
+</code></pre></div></div>
+<ol>
+  <li>For example <code class="language-plaintext highlighter-rouge">kubectl get nodes</code> should output something like this:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NAME                                       STATUS   ROLES    AGE   VERSION
+ip-10-2-2-68.us-west-2.compute.internal    Ready    master   5m    v1.11.9
+ip-10-2-3-217.us-west-2.compute.internal   Ready    master   5m    v1.11.9
+ip-10-2-3-218.us-west-2.compute.internal   Ready    node     4m    v1.11.9
+ip-10-2-4-251.us-west-2.compute.internal   Ready    master   5m    v1.11.9
+</code></pre></div>    </div>
+  </li>
+  <li>To destroy the environment simply run <code class="language-plaintext highlighter-rouge">terraform destroy -var-file=config/env.tfvars</code> and answer <code class="language-plaintext highlighter-rouge">yes</code> when prompted.</li>
+  <li>To manually destroy the cluster run <code class="language-plaintext highlighter-rouge">kops delete cluster &lt;name&gt;.&lt;hosted_zone&gt; --yes</code></li>
+</ol>
+
+<h2 id="demo--2">Demo -2</h2>
+
+<h2 id="secure-your-web-app-before-deploy-using-dockerkuberneteshelm-application---think-about-security-">Secure your Web App before deploy using Docker/kubernetes/Helm application - think about security !</h2>
+
+<p>Simple Hello World App Written in GoLang.  Including Kubernetes deployment YAML file and Helm Chart.</p>
+
+<p>step 1:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cd vul-k0s-helm-docker/kubeyaml/
+
+</code></pre></div></div>
+<p>Step 2 :
+Scan your K8s app</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>terrascan scan -i k8s             
+
+
+Violation Details -
+    
+        Description    :        Apply Security Context to Your Pods and Containers
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Apply Security Context to Your Pods and Containers
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Containers Should Not Run with AllowPrivilegeEscalation
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        HIGH
+        -----------------------------------------------------------------------
+
+        Description    :        Containers Should Not Run with AllowPrivilegeEscalation
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        HIGH
+        -----------------------------------------------------------------------
+
+        Description    :        Minimize Admission of Root Containers
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        HIGH
+        -----------------------------------------------------------------------
+
+        Description    :        Minimize Admission of Root Containers
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        HIGH
+        -----------------------------------------------------------------------
+
+        Description    :        Container images with readOnlyRootFileSystem set as false mounts the container root file system with write permissions
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Container images with readOnlyRootFileSystem set as false mounts the container root file system with write permissions
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        No readiness probe will affect automatic recovery in case of unexpected errors
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        No readiness probe will affect automatic recovery in case of unexpected errors
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        No liveness probe will ensure there is no recovery in case of unexpected errors
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        No liveness probe will ensure there is no recovery in case of unexpected errors
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        AppArmor profile not set to default or custom profile will make the container vulnerable to kernel level threats
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        AppArmor profile not set to default or custom profile will make the container vulnerable to kernel level threats
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Default seccomp profile not enabled will make the container to make non-essential system calls
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Default seccomp profile not enabled will make the container to make non-essential system calls
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Nodeport service can expose the worker nodes as they have public interface
+        File           :        frontend.yaml
+        Line           :        28
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        CPU Request Not Set in config file.
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        Medium
+        -----------------------------------------------------------------------
+
+        Description    :        CPU Request Not Set in config file.
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        Medium
+        -----------------------------------------------------------------------
+
+        Description    :        Image without digest affects the integrity principle of image security
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Image without digest affects the integrity principle of image security
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        No owner for namespace affects the operations
+        File           :        namespaces.yaml
+        Line           :        1
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        No owner for namespace affects the operations
+        File           :        namespaces.yaml
+        Line           :        9
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        Memory Request Not Set in config file.
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        Medium
+        -----------------------------------------------------------------------
+
+        Description    :        Memory Request Not Set in config file.
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        Medium
+        -----------------------------------------------------------------------
+
+        Description    :        No tag or container image with :Latest tag makes difficult to rollback and track
+        File           :        backend.yaml
+        Line           :        1
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        No tag or container image with :Latest tag makes difficult to rollback and track
+        File           :        frontend.yaml
+        Line           :        1
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+
+Scan Summary -
+
+        File/Folder         :   /Users/sangam/Documents/GitHub/alldaydevops2021/vul-k0s-helm-docker/kubeyaml
+        IaC Type            :   k8s
+        Scanned At          :   2021-10-18 08:08:30.920245 +0000 UTC
+        Policies Validated  :   41
+        Violated Policies   :   27
+        Low                 :   9
+        Medium              :   14
+        High                :   4
+➜  kubeyaml git:(main) 
+
+</code></pre></div></div>
+<h2 id="apply-remediation-for-your-k8s-app">apply remediation for your k8s app</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd remediation-kubernetes-helm-docker
+ remediation-kubernetes-helm-docker git:(main) terrascan scan -i k8s   
+ 
+ Violation Details -
+    
+        Description    :        Nodeport service can expose the worker nodes as they have public interface
+        File           :        kubeyaml/frontend.yaml
+        Line           :        54
+        Severity       :        LOW
+        -----------------------------------------------------------------------
+
+        Description    :        Apply Security Context to Your Pods and Containers
+        File           :        kubeyaml/backend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+        Description    :        Apply Security Context to Your Pods and Containers
+        File           :        kubeyaml/frontend.yaml
+        Line           :        1
+        Severity       :        MEDIUM
+        -----------------------------------------------------------------------
+
+
+Scan Summary -
+
+        File/Folder         :   /Users/sangam/Documents/GitHub/alldaydevops2021/remediation-kubernetes-helm-docker
+        IaC Type            :   k8s
+        Scanned At          :   2021-10-22 09:13:10.246372 +0000 UTC
+        Policies Validated  :   41
+        Violated Policies   :   3
+        Low                 :   1
+        Medium              :   2
+        High                :   0
+ 
+</code></pre></div></div>
+
+<p>Now look better and secure !</p>
+
+<h2 id="also-you-can-scan-your-dockerfile">Also You can scan your dockerfile</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>simpleapp git:(main) terrascan scan -i docker -d backend 
+
+
+Scan Summary -
+
+        File/Folder         :   /Users/sangam/Documents/GitHub/alldaydevops2021/remediation-kubernetes-helm-docker/simpleapp/backend
+        IaC Type            :   docker
+        Scanned At          :   2021-10-22 09:17:09.859337 +0000 UTC
+        Policies Validated  :   23
+        Violated Policies   :   0
+        Low                 :   0
+        Medium              :   0
+        High                :   0
+➜  simpleapp git:(main) terrascan scan -i docker -d frontend 
+
+
+Scan Summary -
+
+        File/Folder         :   /Users/sangam/Documents/GitHub/alldaydevops2021/remediation-kubernetes-helm-docker/simpleapp/frontend
+        IaC Type            :   docker
+        Scanned At          :   2021-10-22 09:17:20.832959 +0000 UTC
+        Policies Validated  :   23
+        Violated Policies   :   0
+        Low                 :   0
+        Medium              :   0
+        High                :   0
+➜  simpleapp git:(main)
+
+
+</code></pre></div></div>
+
+<h2 id="demo-3---level-up-your-policy-as-code-skills-with-terrascan-rego-editor">Demo 3 - Level Up Your Policy as Code Skills with Terrascan Rego Editor</h2>
+<p><img src="https://raw.githubusercontent.com/sangam14/alldaydevops2021/main/Terrascan_RE_Logo_38B34A-333F48.png" alt="" /></p>
+<ul>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=accuricsinc.terrascan-rego-editor">Download Terrascan Rego Editor VScode extension from marketplace</a></li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd terraform-rego/
+</code></pre></div></div>
+
+<p>Step:</p>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/alldaydevops2021/main/terrascan-rego-editor-demo.gif" alt="Terrascan Rego Editor demo" /></p>]]></content><author><name>Sangam Biradar</name><email>kubedaily@gmail.com</email></author><category term="terrascan" /><category term="Terraform" /><category term="misconfiguration" /><category term="security" /><category term="kubernetes" /><summary type="html"><![CDATA[Misconfiguration is still big issue in cloud native world. and we can detect it before provisioning. one of interesting thing now we have tool like OPA (Open Policy Agent) which help us to write policies easy way. we will check terrascan open source cloud security tool !]]></summary></entry></feed>

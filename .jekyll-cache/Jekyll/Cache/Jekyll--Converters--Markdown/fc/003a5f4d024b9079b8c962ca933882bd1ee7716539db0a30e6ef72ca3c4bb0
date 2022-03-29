@@ -1,0 +1,2 @@
+I"K<p>Misconfiguration is still big issue in cloud native world. and we can detect it before provisioning. one of interesting thing now we have tool like OPA (Open Policy Agent) which help us to write policies easy way. we will check <a href="https://github.com/accurics/terrascan">terrascan</a> open source cloud security tool !</p>
+:ET

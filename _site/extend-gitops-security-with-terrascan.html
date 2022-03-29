@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KubeDaily | Extend GitOps Security with Terrascan</title>
+  
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+  <body>
+    <main>
+      <header>
+  <a class="site-title" href="/">KubeDaily</a>
+</header>
+
+      <section class="article">
+        <div class="article-header">
+          <h2 class="article-title">Extend GitOps Security with Terrascan</h2>
+          <small class="date">04 Feb 2022</small>
+          <div class="categories">
+            
+            <a href="#!" class="category">terrascan</a>
+            
+            <a href="#!" class="category">gitops</a>
+            
+            <a href="#!" class="category">security</a>
+            
+            <a href="#!" class="category">kubernetes</a>
+            
+          </div>
+        </div>
+        <div class="content"><p>github became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak your data or secret can be exposed &amp; effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines.</p>
+
+<div>
+<iframe src="https://slides.com/sangambiradar/extend-gitops-security-with-terrascan/embed?style=light" width="576" height="420" title="Extend GitOps Security With TerraScan" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+</div>
+
+<h2 id="install-argocd-via-brew-on-osx">Install argocd via brew on OSX</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap argoproj/tap
+brew install argoproj/tap/argocd
+</code></pre></div></div>
+
+<h2 id="install-minikube-on-macos">Install Minikube On Macos</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+</code></pre></div></div>
+<h2 id="start-minikube">Start Minikube</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>minikube start
+</code></pre></div></div>
+<p>output</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ~ minikube start
+😄  minikube v1.21.0 on Darwin 11.4
+✨  Automatically selected the hyperkit driver
+💾  Downloading driver docker-machine-driver-hyperkit:
+    &gt; docker-machine-driver-hyper...: 65 B / 65 B [----------] 100.00% ? p/s 0s
+    &gt; docker-machine-driver-hyper...: 10.52 MiB / 10.52 MiB  100.00% 6.86 MiB p
+🔑  The 'hyperkit' driver requires elevated permissions. The following commands will be executed:
+
+    $ sudo chown root:wheel /Users/sangam/.minikube/bin/docker-machine-driver-hyperkit 
+    $ sudo chmod u+s /Users/sangam/.minikube/bin/docker-machine-driver-hyperkit 
+
+
+💿  Downloading VM boot image ...
+    &gt; minikube-v1.21.0.iso.sha256: 65 B / 65 B [-------------] 100.00% ? p/s 0s
+    &gt; minikube-v1.21.0.iso: 243.03 MiB / 243.03 MiB [ 100.00% 21.68 MiB p/s 11s
+👍  Starting control plane node minikube in cluster minikube
+💾  Downloading Kubernetes v1.20.7 preload ...
+    &gt; preloaded-images-k8s-v11-v1...: 492.20 MiB / 492.20 MiB  100.00% 17.23 Mi
+🔥  Creating hyperkit VM (CPUs=2, Memory=4000MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.20.7 on Docker 20.10.6 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+</code></pre></div></div>
+
+<h2 id="verify-minikube-is-running">verify minikube is running</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+➜  ~ kubectl get po -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS   AGE
+kube-system   coredns-74ff55c5b-pv5nl            1/1     Running   0          2m48s
+kube-system   etcd-minikube                      1/1     Running   0          3m2s
+kube-system   kube-apiserver-minikube            1/1     Running   0          3m2s
+kube-system   kube-controller-manager-minikube   1/1     Running   0          3m2s
+kube-system   kube-proxy-7vrs7                   1/1     Running   0          2m48s
+kube-system   kube-scheduler-minikube            1/1     Running   0          3m2s
+kube-system   storage-provisioner                1/1     Running   1          3m2s
+</code></pre></div></div>
+
+<h2 id="minikube-tunnel-running-in-another-terminal">Minikube tunnel running in another terminal</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~ kubectl create namespace argocd
+namespace/argocd created
+~ kubectl get ns 
+NAME              STATUS   AGE
+argocd            Active   101s
+default           Active   18m
+kube-node-lease   Active   18m
+kube-public       Active   18m
+kube-system       Active   18m
+
+</code></pre></div></div>
+
+<h2 id="apply-argocd-manifest">Apply Argocd Manifest</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+customresourcedefinition.apiextensions.k8s.io/applications.argoproj.io created
+customresourcedefinition.apiextensions.k8s.io/appprojects.argoproj.io created
+serviceaccount/argocd-application-controller created
+serviceaccount/argocd-dex-server created
+serviceaccount/argocd-redis created
+serviceaccount/argocd-server created
+role.rbac.authorization.k8s.io/argocd-application-controller created
+role.rbac.authorization.k8s.io/argocd-dex-server created
+role.rbac.authorization.k8s.io/argocd-redis created
+role.rbac.authorization.k8s.io/argocd-server created
+clusterrole.rbac.authorization.k8s.io/argocd-application-controller created
+clusterrole.rbac.authorization.k8s.io/argocd-server created
+rolebinding.rbac.authorization.k8s.io/argocd-application-controller created
+rolebinding.rbac.authorization.k8s.io/argocd-dex-server created
+rolebinding.rbac.authorization.k8s.io/argocd-redis created
+rolebinding.rbac.authorization.k8s.io/argocd-server created
+clusterrolebinding.rbac.authorization.k8s.io/argocd-application-controller created
+clusterrolebinding.rbac.authorization.k8s.io/argocd-server created
+configmap/argocd-cm created
+configmap/argocd-gpg-keys-cm created
+configmap/argocd-rbac-cm created
+configmap/argocd-ssh-known-hosts-cm created
+configmap/argocd-tls-certs-cm created
+secret/argocd-secret created
+service/argocd-dex-server created
+service/argocd-metrics created
+service/argocd-redis created
+service/argocd-repo-server created
+service/argocd-server created
+service/argocd-server-metrics created
+deployment.apps/argocd-dex-server created
+deployment.apps/argocd-redis created
+deployment.apps/argocd-repo-server created
+deployment.apps/argocd-server created
+statefulset.apps/argocd-application-controller created
+networkpolicy.networking.k8s.io/argocd-application-controller-network-policy created
+networkpolicy.networking.k8s.io/argocd-dex-server-network-policy created
+networkpolicy.networking.k8s.io/argocd-redis-network-policy created
+networkpolicy.networking.k8s.io/argocd-repo-server-network-policy created
+networkpolicy.networking.k8s.io/argocd-server-network-policy created
+➜  ~ 
+</code></pre></div></div>
+
+<h2 id="check-all-pod-are-running-under-argocd-namespace">check all pod are running under argocd namespace</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  ~ kubectl -n argocd get pods -w
+NAME                                  READY   STATUS    RESTARTS   AGE
+argocd-application-controller-0       1/1     Running   0          89s
+argocd-dex-server-76ff776f97-s8jj2    1/1     Running   0          90s
+argocd-redis-747b678f89-nmtjn         1/1     Running   0          90s
+argocd-repo-server-6fc4456c89-4qtzc   1/1     Running   0          90s
+argocd-server-7d57bc994b-2pwb2        1/1     Running   0          89s
+</code></pre></div></div>
+<h2 id="copy-password">copy password</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+</code></pre></div></div>
+<p>CpLZekcmcDqMbmBr</p>
+
+<h2 id="open-localhost-8080">open localhost 8080</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl port-forward svc/argocd-server -n argocd 8080:443
+Forwarding from 127.0.0.1:8080 -&gt; 8080
+Forwarding from [::1]:8080 -&gt; 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+</code></pre></div></div>
+
+<h2 id="you-have-dasboard-in-browser">you have dasboard in browser</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>username = admin 
+</code></pre></div></div>
+
+<h2 id="change-argo-password">change argo password</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>argocd account update-password
+*** Enter current password: 
+*** Enter new password: 
+*** Confirm new password: 
+Password updated
+Context 'localhost:8080' updated
+</code></pre></div></div>
+
+<p>now we will add presyc hook to scan kubernetes misconfiguration using terrascan</p>
+
+<p>demo:- https://github.com/sangam14/terrascan-argocd</p>
+
+<h2 id="create-presyc-hook">create presyc hook</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: terrascan-hook-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      containers:
+      - name: terrascan-argocd-1
+        image: accurics/terrascan:latest
+        command: ["/bin/sh", "-c"]
+        args:
+        - &gt; 
+           /go/bin/terrascan scan -r git -u https://github.com/sangam14/terrascan-argocd.git -i k8s -t k8s
+          
+      restartPolicy: Never
+  backoffLimit: 1
+
+
+</code></pre></div></div>
+
+<p>above manifest use argocd presync hool poll the terrascan docker image and in argument you can add whatever public github repo you want to scan and then define the 
+what Iac type you want to scan and it will give violation report right in argocd dashboard . here we already setup argocd now we will see how dasboard and violation report look like !</p>
+
+<h2 id="open-argocd-dashboard-in-browser">open argocd dashboard in browser</h2>
+
+<p>using <code class="language-plaintext highlighter-rouge">kubectl port-forward svc/argocd-server -n argocd 8080:443</code>
+get your password using <code class="language-plaintext highlighter-rouge">kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+</code> and default use default username admin i will be using minikube but you can setup other authentication as well !</p>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-0.png" alt="" /></p>
+
+<h2 id="create-new-app">create new app</h2>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-1.png" alt="" /></p>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-2.png" alt="" /></p>
+
+<h2 id="add-git-repo-where-your-argocd-presyc-hook-present">add git repo where your argocd presyc hook present</h2>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-3.png" alt="" /></p>
+
+<h2 id="now-snyc-your-git-repo">now snyc your git repo</h2>
+
+<p><img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-4.png" alt="" />
+<img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-5.png" alt="" /></p>
+
+<p>after synchronous the argocd will run the job and pull terrascan docker image and run as server depends on which Iac you have provided it will scan those misconfiguration and give violation report in logs 
+<img src="https://raw.githubusercontent.com/sangam14/terrascan-argocd/main/img/argo-terrascan-6.png" alt="" /></p>
+
+<p>also you can setup notification to your slack or any other services you want !</p>
+
+</div>
+      </section>
+      <footer>
+  <p>&copy; 1947 - 2022 | KubeDaily</p>
+</footer>
+
+    </main>
+    <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  </body>
+</html>

@@ -1,113 +1,28 @@
-#
-# This file contains configuration flags to customize your site
-#
-
-# Name of your site (displayed in the header)
-name: KubeDaily
-
-# Short bio or description (displayed in the header)
-description: Kubernetes & CloudNative 
-
-# URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /assets/image/KubeDaily-logo.jpg
-
-#
-# Flags below are optional
-#
-
-# Your website URL (e.g. https://forever-jekyll.github.io or https://forever-jekyll.com)
-# Used for Sitemap.xml and your RSS feed
-url: https://kubedaily.com
-
-# If you're hosting your site at a Project repository on GitHub pages
-# (http://yourusername.github.io/repository-name)
-# and NOT your User repository (http://yourusername.github.io)
-# then add in the baseurl here, like this: "/repository-name"
+title: KubeDaily
+markdown: kramdown
+url: ""
 baseurl: ""
 
-# Navigation menu
-navigation_links:
-  - title: blog
-    url: /
+# for atom feed
+author:
+  name: Sangam Biradar
+  email: kubedaily@gmail.com
 
-  - title: tooling 
-    url: /tooling
-
-  - title: events
-    url: /events
-
-  - title: about
-    url: /about
-
-  - title: search
-    url: /search
-    
-
-
-# Footer icons
-footer_links:
-  - title: Feed
-    url: feed.xml
-    icon: fa fa-rss-square
-
-  - title: Twitter
-    url: https://twitter.com/KubeDaily
-    icon: fa fa-twitter-square
-
-  - title: GitHub
-    url: https://github.com/sangam14
-    icon: fa fa-github-square
-    
-  - title: Discord
-    url: http://discord.kubedaily.live/
-    icon: fa fa-discord
-     
-  - title: Discord
-    url: http://discord.kubedaily.live/
-    icon: fa fa-youtube-play 
-  
-
-# Enter your copyright text if you wish to override the default one.
-#copyright: "This site is made with <3 by *me, myself, and I*."
-
-#
-# !! You don't need to change any of the configuration flags below !!
-#
-
-permalink: pretty
-
-# Jekyll 3 now only supports Kramdown for Markdown
-kramdown:
-  # Use GitHub flavored markdown, including triple backtick fenced code blocks
-  input: GFM
-  # Jekyll 3 and GitHub Pages now support rouge for syntax highlighting
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    # Use existing pygments syntax highlighting css
-    css_class: 'highlight'
-
-# Pagination
-paginate: 5
-paginate_path: "/page/:num/"
-
-# Set the Sass partials directory, as we're using @imports
-sass:
-  sass_dir: _sass
-  style: :expanded # You might prefer to minify using :compressed
-
-# Use the following plug-ins
-gems:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
-  - jekyll-gist
-  - jekyll-paginate
-  - jekyll-seo-tag
+plugins:
   - jemoji
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
 
-# Exclude these files from your production _site
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - CNAME
+collections_dir: all_collections
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"
+      permalink: /:title
+exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]
