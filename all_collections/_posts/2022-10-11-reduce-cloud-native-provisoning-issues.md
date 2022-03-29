@@ -1,7 +1,7 @@
 ---
 layout: post
 title: less risky business way to reduce cloud-native provisioning issues
-date: 2021-01-12 10:18:00
+date: 2022-01-12 10:18:00
 categories: [terrascan,Terraform , misconfiguration , security , kubernetes]
 ---
 
