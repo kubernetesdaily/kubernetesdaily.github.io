@@ -1,53 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KubeDaily | less risky business way to reduce cloud-native provisioning issues</title>
-  
-  <link rel="stylesheet" href="/assets/css/post.css" />
-  <link rel="stylesheet" href="/assets/css/syntax.css" />
-  
-  <link rel="stylesheet" href="/assets/css/common.css" />
-  <script src="/assets/js/categories.js"></script>
-  
-  <script defer src="/assets/js/lbox.js"></script>
-  
-</head>
-
-  <body>
-    <main>
-      <header>
-  <a class="site-title" href="/">KubeDaily</a>
-</header>
-
-      <section class="article">
-        <div class="article-header">
-          <h2 class="article-title">less risky business way to reduce cloud-native provisioning issues</h2>
-          <small class="date">12 Jan 2021</small>
-          <div class="categories">
-            
-            <a href="#!" class="category">terrascan</a>
-            
-            <a href="#!" class="category">Terraform</a>
-            
-            <a href="#!" class="category">misconfiguration</a>
-            
-            <a href="#!" class="category">security</a>
-            
-            <a href="#!" class="category">kubernetes</a>
-            
-          </div>
-        </div>
-        <div class="content"><p>Misconfiguration is still big issue in cloud native world. and we can detect it before provisioning. one of interesting thing now we have tool like OPA (Open Policy Agent) which help us to write policies easy way. we will check <a href="https://github.com/accurics/terrascan">terrascan</a> open source cloud security tool !</p>
+I"«Y<p>Misconfiguration is still big issue in cloud native world. and we can detect it before provisioning. one of interesting thing now we have tool like OPA (Open Policy Agent) which help us to write policies easy way. we will check <a href="https://github.com/accurics/terrascan">terrascan</a> open source cloud security tool !</p>
 
 <div>
 <iframe src="https://slides.com/sangambiradar/addo-sangambiradar/embed?style=light" width="576" height="420" title="less risky business way to reduce cloud native provisioning issues" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
 </div>
 
 <h2 id="demo--1">Demo -1</h2>
-<p><img src="https://raw.githubusercontent.com/sangam14/alldaydevops2021/main/kops-terraform-terrascan.drawio.svg" alt="" /></p>
+<p><img src="https://raw.githubusercontent.com/sangam14/sangam14.github.io/main/assets/img/kops-terraform-terrascan.drawio.png" alt="" /></p>
 
 <h2 id="requirements">Requirements</h2>
 <ul>
@@ -517,18 +475,4 @@ Scan Summary -
 
 <p><img src="https://raw.githubusercontent.com/sangam14/alldaydevops2021/main/terrascan-rego-editor-demo.gif" alt="Terrascan Rego Editor demo" /></p>
 
-</div>
-      </section>
-      <footer>
-  <p>&copy; 2021 - 2022 | KubeDaily</p>
-</footer>
-
-    </main>
-    <section id="category-modal-bg"></section>
-<section id="category-modal">
-  <h1 id="category-modal-title"></h1>
-  <section id="category-modal-content"></section>
-</section>
-
-  </body>
-</html>
+:ET
