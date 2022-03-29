@@ -14,7 +14,7 @@ Misconfiguration is still big issue in cloud native world. and we can detect it 
 
 
 ## Demo -1 
-![](https://raw.githubusercontent.com/sangam14/alldaydevops2021/main/kops-terraform-terrascan.drawio.svg)
+![](https://raw.githubusercontent.com/sangam14/sangam14.github.io/main/assets/img/kops-terraform-terrascan.drawio.png)
 
 
 ## Requirements
