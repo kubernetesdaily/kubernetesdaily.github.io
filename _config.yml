@@ -13,6 +13,12 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-redirect-from
+theme: jekyll-theme-minimal
+gems:
+  - jekyll-redirect-from
+whitelist:
+  - jekyll-redirect-from
 
 collections_dir: all_collections
 collections:
@@ -24,5 +30,5 @@ defaults:
       path: "_posts"
     values:
       layout: "post"
-      permalink: /:categories/:year/:month/:day/:title.html
+    permalink: /:title/
 exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]
