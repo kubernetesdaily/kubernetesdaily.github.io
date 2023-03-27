@@ -1,2 +1,0 @@
-I"<p>github became single truth for developer to manage develope and deploy without thinking much about infrastructure . also its reduce some of inner loop of devops pipleine . also we deploy application so easily but there will be some kind of misconfiguration that can leak your data or secret can be exposed &amp; effect on your business value ! its good to have different stages or branches such as Dev, test, Production of your application and terrascan presync hook can give you capablilities to scan your gitops piplines.</p>
-:ET
