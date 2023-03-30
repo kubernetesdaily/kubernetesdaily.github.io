@@ -92,7 +92,7 @@ params:
       url: tags
 
   homeInfoParams:
-    Title: "KubeDaily"
+    Title: "KubeDaily By CloudNativeFolks Community"
     Content: "Sangam Biradar | CloudNativeFolks | Docker Community Leader | Principal Security Advocate at [Deepfence](deepfence.io) "
   socialIcons:
   - name: github
