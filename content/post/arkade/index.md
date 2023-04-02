@@ -449,7 +449,7 @@ Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
 
 ```
 
-#### lets create ngnix deployement and validate kubernetes manifest 
+### lets create ngnix deployement and validate kubernetes manifest 
 
 ```yaml
 apiVersion: v1
@@ -473,7 +473,7 @@ spec:
         - containerPort: 80
 ```
 
-#### check it out if above kubenetes menifest Valid or not with Summary in Json format 
+### check it out if above kubenetes menifest Valid or not with Summary in Json format 
 
 ```bash 
 kubeconform -summary -output json ngnix.yaml
@@ -535,7 +535,7 @@ return tools }
 
 ```
 
-#### write test cases for above tool 
+### write test cases for above tool 
 
 ```bash
 func Test_DownloadTerrascan(t *testing.T) { tools := MakeTools()
