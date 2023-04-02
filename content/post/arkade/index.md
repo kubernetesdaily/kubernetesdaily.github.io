@@ -502,7 +502,7 @@ kubeconform -summary -output json ngnix.yaml
   }
 }
 ```
-### Learn Quickly and Contribute Your Favourite CloudNative Tool To arkade
+### add and contribute your favourite cloudNative Tool To arkade 
 
 here is example one of tool - https://github.com/tenable/terrascan
 
