@@ -2,7 +2,7 @@
 author = "Sangam Biradar"
 categories = ["Kubernetes", "2023"]
 weight = 10
-description = " Kubernetes "
+description = "add magic to your CLI with Arkade and Increase Productivity  "
 draft = false
 slug = "add magic to your CLI with Arkade Installer "
 tags = ["DevOps", "kubernetes", "DevTool", "CLI"]
