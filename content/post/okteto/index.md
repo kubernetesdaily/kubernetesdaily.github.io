@@ -1,6 +1,6 @@
 +++
 author = "Sangam Biradar"
-categories = ["Kubernetes", "2017"]
+categories = ["Kubernetes", "2023"]
 weight = 10
 description = " Reduce Inner Loop focus on Developing Application "
 draft = false
