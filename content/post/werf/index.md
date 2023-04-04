@@ -6,7 +6,7 @@ description = " werf is a CNCF Sandbox CLI tool to implement full-cycle CI/CD to
 draft = false
 slug = "Missing part of your CI/CD system Build Test Deploy Distribute Cleanup"
 tags = ["DevOps", "kubernetes", "CI/CD", "cloud native"]
-title = " Werf : A solution for implementing efficient and consistent software delivery to Kubernetes facilitating best practices."
+title = " Werf : A solution for implementing efficient and consistent software delivery to Kubernetes facilitating best practices"
 [cover]
 image = "werf.png"
 
