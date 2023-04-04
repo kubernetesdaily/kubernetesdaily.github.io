@@ -12,12 +12,11 @@ image = "werf.png"
 
 +++
 
-
-<center> <a href="https://github.com/werf/werf"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/werf/werf.png" width="460px"></a> <center>
+<center> <a href="https://github.com/werf/werf"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/werf/werf.png" width="460px"></a> </center>
 
 #### Install Werf 
 
-```
+```bash
 ➜  ~  curl -sSLO https://werf.io/install.sh && chmod +x install.sh
 ➜  ~ ./install.sh --version 1.2 --channel stable
 [INPUT REQUIRED] Current login shell is "zsh". Press ENTER to setup werf for this shell or choose another one.
@@ -333,11 +332,9 @@ Release "quickstart-application" does not exist. Installing it now.
   
 ```
 
-
-Go to the following URL to vote: vote.quickstart-application.example.com
-Go to the following URL to check the result of voting: result.quickstart-application.example.com
-
 you will see results 
+- Go to the following URL to vote: vote.quickstart-application.example.com
+- Go to the following URL to check the result of voting: result.quickstart-application.example.com
 
 
 for more example check it out : https://werf.io/documentation/v1.2/usage/deploy/overview.html 
