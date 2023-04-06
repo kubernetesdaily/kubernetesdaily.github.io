@@ -34,7 +34,7 @@ languages:
         url: about
         weight: 5
       - name: Tools
-        url: https://kubedaily.com/Kubernetes-CloudNative-Toolkits/
+        url: https://kubedaily.com/tools/
         weight: 10
       - name: Search
         url: search/
