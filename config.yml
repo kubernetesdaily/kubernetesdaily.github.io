@@ -98,7 +98,7 @@ params:
   - name: github
     url: https://github.com/sangam14
   - name: linkedin
-    url: https://www.linkedin.com/in/thechrisshort
+    url: https://www.linkedin.com/in/sangambiradar/
   - name: youtube
     url: https://www.youtube.com/c/CloudNativeFolks
   - name: twitter
