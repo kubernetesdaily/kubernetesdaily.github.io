@@ -14,7 +14,7 @@ buildExpired: false
 enableEmoji: true
 permalinks:
   post: ":title/"
-# googleAnalytics: UA-123-45
+  googleAnalytics: G-08R32BP506
 
 minify:
   disableXML: true
