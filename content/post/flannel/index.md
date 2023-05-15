@@ -1,12 +1,12 @@
 +++
 author = "Sangam Biradar"
 categories = ["Kubernetes", "2023"]
-weight = 15
+weight = 10
 description = " Flannel is a simple and easy way to configure a layer 3 network fabric designed for Kubernetes."
 draft = false
 slug = " K8sGPT gives Kubernetes Superpowers to everyone "
 tags = ["DevOps", "kubernetes", "Networking"]
-title = " flannel is a network fabric for containers, designed for Kubernetes "
+title = "Flannel is a network fabric for containers, designed for Kubernetes "
 [cover]
 image = "flannel.png"
 
