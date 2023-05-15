@@ -63,7 +63,7 @@ imaging:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   # author: ["Me", "You"] # multiple authors
-
+  buildDrafts: false
   defaultTheme: auto
   # disableThemeToggle: true
   ShowShareButtons: true
