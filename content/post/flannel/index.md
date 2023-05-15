@@ -18,7 +18,7 @@ image = "flannel.png"
 
 ### kubenetes networking 
 
-![](./k8s-CNI-1.png/)
+![](./k8s-CNI-1.png)
 
 
 ### Networking details
