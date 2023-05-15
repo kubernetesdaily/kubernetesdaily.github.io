@@ -52,7 +52,7 @@ image = "flannel.png"
 
 To achieve kubernetes' network requirements, flannel’s idea is simple: create another flat network which runs above the host network, this is the so-called overlay network. All containers(Pod) will be assigned one ip address in this overlay network, they communicate with each other by calling each other’s ip address directly.
 
-![](./k8s-CNI-2.png/)
+![](./k8s-CNI-2.png)
 
 
 ### minikube start 
@@ -257,7 +257,7 @@ When a VxLAN packet arrives at a VTEP, the VTEP decapsulates the packet and forw
 
 VxLAN is a popular network virtualization technology that is used to create overlay networks over L3 routed infrastructures. VxLAN is a good choice for network virtualization because it is scalable, efficient, and easy to manage.
 
-![](./VXLAN_Packet.png/)
+![](./VXLAN_Packet.png)
 
 
 Join [CloudNativeFolks Community](https://discord.gg/rEvr7vq) or Reach out to me on twitter [@sangamtwts](https://twitter.com/sangamtwts)
