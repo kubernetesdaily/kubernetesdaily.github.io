@@ -213,4 +213,3 @@ Reduced costs: K8sGPT can help you to reduce the cost of operating your Kubernet
 
 
 
-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
