@@ -1,0 +1,94 @@
+baseURL = "kubedaily.com"
+languageCode = "en-us"
+title = "KubeDaily"
+pluralizeListTitles = false
+enableRobotsTXT = true
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+enableGitInfo = true
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[markup.highlight]
+style = "paraiso-dark"
+
+[params]
+description = "Demestifying Container and Orchestration Ecosystem"
+tagline = "100% open source & Hands On Labs "
+versions = ["0.0.1"]
+alpine_js_version = "2.2.5"
+locale = "en_US"
+
+[[params.why]]
+text = "Demestifying Container and Orchestration Ecosystem"
+src = "/img/logos/kubernetes-icon-color.svg"
+
+
+[[params.features]]
+title = "Docker"
+text = """
+ Containers are lightweight, isolated environments that package applications and their dependencies, allowing them to run consistently across different computing environments. They provide a consistent runtime environment, making it easier to deploy and manage applications. Docker is a popular open-source containerization platform that enables you to build, package, and distribute containers..
+"""
+
+[[params.features]]
+title = "Container Security "
+text = """
+Container security focuses on protecting containerized applications and the underlying infrastructure from potential vulnerabilities, threats, and attacks. It involves implementing security measures throughout the container lifecycle, from image creation and deployment to runtime monitoring and management. Key aspects of container security include using trusted base images, regularly updating containers with security patches, configuring containers with the principle of least privilege, isolating containers from the host and each other, monitoring runtime behavior, scanning container images for vulnerabilities, securing container orchestration platforms, implementing network security measures, and following proper container lifecycle management practices. Container security is an ongoing process that requires proactive measures and staying up to date with the latest security practices and vulnerabilities to ensure the integrity and safety of containerized applications.
+"""
+
+[[params.features]]
+title = "Container orchestration"
+text = """
+Container orchestration refers to the management and coordination of containerized applications across a cluster of machines. It automates tasks such as deployment, scaling, and monitoring of containers. Orchestration platforms ensure high availability, fault tolerance, and efficient resource utilization. Kubernetes is the de facto standard open-source container orchestration platform widely adopted in the industry.
+"""
+
+[[params.promo_features]]
+title = "Native virtual workload storage backend"
+text = """
+Longhorn provides built-in virtual disk image management and volume live-migration to support the integration with virtual workload orchestration solutions like Harvester and KubeVirt.
+"""
+
+
+[params.social]
+github = "https://github.com/sangam14/"
+discord = "https://discord.gg/rEvr7vq"
+#twitter = "CNCFolks"
+
+[params.logos]
+navbar = "KubeDaily-4.png"
+hero = "KubeDaily-1.png"
+
+
+[outputs]
+home = ["HTML", "REDIRECTS", "RSS"]
+
+[privacy.twitter]
+disable = false
+enableDNT = false
+simple = true
+
+[[params.fonts]]
+name = "Poppins"
+sizes = [300, 400, 500, 700]
+type = "sans_serif"
+
+[[params.fonts]]
+name = "Roboto Mono"
+sizes = [300, 400, 600, 700]
+type = "monospace"
+
+[[menu.main]]
+name = "Blog"
+url = "/blog"
+weight = 1
+
+[[menu.main]]
+name = "Knowledge Base"
+url = "/kb"
+weight = 1
+
+[mediaTypes."text/netlify"]
+delimiter = ""
+
+[outputFormats.REDIRECTS]
+mediaType = "text/netlify"
+baseName = "_redirects"

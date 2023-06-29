@@ -1,23 +1,24 @@
+{{ $lang    := site.LanguageCode | default "en-us" }}
+{{ $isDoc   := eq .Section "docs" }}
+{{ $isPromo := in .Title "promo" }}
+
 <!DOCTYPE html>
-<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
+<html lang="{{ $lang }}">
+  <head>
+    {{ partial "meta.html" . }}
 
-<head>
-    {{- partial "head.html" . }}
-</head>
+    <title>
+      {{ block "title" . }}
+      {{ site.Title }}
+      {{ end }}
+    </title>
 
-<body class="
-{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
-{{- print "list" -}}
-{{- end -}}
-{{- if eq site.Params.defaultTheme `dark` -}}
-{{- print " dark" }}
-{{- end -}}
-" id="top">
-    {{- partialCached "header.html" . .Page -}}
-    <main class="main">
-        {{- block "main" . }}{{ end }}
-    </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
-</body>
+    {{ partial "css.html" . }}
+    {{ partial "favicon.html" . }}
+  </head>
+  <body{{ if and (not $isDoc) (not $isPromo) }} class="has-navbar-fixed-top"{{ end }}>
+    {{ block "main" . }}{{ end }}
 
+    {{ partial "javascript.html" . }}
+  </body>
 </html>
