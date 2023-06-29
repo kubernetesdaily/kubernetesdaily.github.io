@@ -1,4 +1,4 @@
-baseURL = "kubedaily.com"
+baseURL = "https;//kubedaily.com"
 languageCode = "en-us"
 title = "KubeDaily"
 pluralizeListTitles = false
