@@ -38,7 +38,7 @@ To sign off when creating a commit, run:
 
 To sign off when editing the docs with the GitHub UI, enter a name for your commit, then in the large field below the commit message, enter the signoff text with your own name and email, e.g.:
 
-    Signed-off-by: Catherine Luse <catherine.luse@rancher.com>
+    Signed-off-by: name  <email>
 
 To sign off on a commit that is already in a pull request, 
 
