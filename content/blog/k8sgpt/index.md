@@ -1,16 +1,15 @@
-+++
-author = "Sangam Biradar"
-categories = ["Kubernetes", "2023"]
-weight = 15
-description = " Kubernetes + OpenAI = k8sgpt "
-draft = true
-slug = " K8sGPT gives Kubernetes Superpowers to everyone "
-tags = ["DevOps", "kubernetes", "Networking"]
-title = " K8sGPT : K8s Superpower to everyone "
-[cover]
-image = "k8sgpt.png"
+---
+title : K8sgpt - Chatgpt base SRE 
+author : Sangam Biradar
+categories : 
+  - Kubernetes
+weight : 30
+description : k8sgpt chat gpt for trubleshooting 
+draft : true
+Date : 2023-02-15
+author : Sangam Biradar
+---
 
-+++
 
 ### Install k8sgpt ai 
 

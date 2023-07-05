@@ -6,9 +6,8 @@ categories :
 weight : 10
 description : add magic to your CLI with Arkade and Increase Productivity 
 draft : false
-
-image : "arkade.png"
-
+Date : 2023-02-13
+author : Sangam Biradar
 ---
 
 {{< rawhtml >}}

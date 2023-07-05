@@ -1,15 +1,19 @@
-+++
-title = "Werf A solution for implementing efficient and consistent software delivery to Kubernetes facilitating best practices "
-author = "Sangam Biradar"
-draft = false
-categories = ["Kubernetes"]
-tags = ["DevOps" ,"Kubernetes","CI/CD" ,"Cloud Native"]
-+++
+---
+title : Werf A solution for implementing efficient and consistent software
+author : Sangam Biradar
+categories : 
+  - Kubernetes
+weight : 60
+description :  Reduce Inner Loop focus on Developing Application 
+draft : false
+Date : 2023-02-19
+author : Sangam Biradar
+---
 
-
-
- <a href="https://github.com/werf/werf"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/werf/werf.png" width="460px"></a> 
-
+{{< rawhtml >}}
+<center>
+ <a href="https://github.com/werf/werf"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/werf/werf.png" width="460px"></a> </center>
+{{< /rawhtml >}}
 #### Install Werf 
 
 

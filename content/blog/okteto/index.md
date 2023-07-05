@@ -1,19 +1,19 @@
-+++
-author = "Sangam Biradar"
-categories = ["Kubernetes", "2023"]
-weight = 10
-description = " Reduce Inner Loop focus on Developing Application "
-draft = false
-slug = "Develop your applications directly in your Kubernetes Cluster"
-tags = ["DevOps", "kubernetes", "DevTool", "cloud native"]
-title = "Okteto : Develop your applications directly in your Kubernetes Cluster"
-[cover]
-image = "okteto.png"
+---
+title : Okteto Develop your applications directly in your Kubernetes Cluster
+author : Sangam Biradar
+categories : 
+  - Kubernetes
+weight : 50
+description :  Reduce Inner Loop focus on Developing Application 
+draft : false
+Date : 2023-02-18
+author : Sangam Biradar
+---
 
-+++
 
+{{< rawhtml >}}
 <center> <a href="https://github.com/okteto/okteto"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/okteto/okteto.png" width="460px"> </a> </center>
-
+{{< /rawhtml >}}
 
 ### Getting started with Oketo CLI  
 
@@ -417,8 +417,9 @@ https://nginx-service-sangam14.cloud.okteto.net/index1.html
 ![](./index1.png)
 
 Github Source code for above demo :
-
+{{< rawhtml >}}
 <center> <a href="https://github.com/sangam14/Getting-Started-with-Okteto"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/sangam14/Getting-Started-with-Okteto.png" width="460px"></a> </center>
+{{< /rawhtml >}}
 
 Join [CloudNativeFolks Community](https://discord.gg/rEvr7vq) or Reach out to me on twitter [@sangamtwts](https://twitter.com/sangamtwts)
 

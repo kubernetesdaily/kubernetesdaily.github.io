@@ -1,18 +1,23 @@
-+++
-author = "Sangam Biradar"
-categories = ["Kubernetes", "2023"]
-weight = 10
-description = "cert-manager adds certificates and certificate issuers as resource types in Kubernetes clusters, and simplifies the process of obtaining, renewing and using those certificates. "
-draft = false
-slug = "Cloud native certificate management X.509 certificate management for Kubernetes "
-tags = ["DevOps", "kubernetes", "Networking"]
-title = "CertManager : Automatically provision and manage TLS certificates in Kubernetes "
-[cover]
-image = "certmanager.png"
+---
+title : CertManager - Automatically provision and manage TLS certificates in Kubernetes
+author : Sangam Biradar
+categories : 
+  - Kubernetes
+weight : 20
+description : cert-manager adds certificates and certificate issuers as resource types in Kubernetes clusters, and simplifies the process of obtaining, renewing and using those certificates.
+draft : false
+Date : 2023-02-14
+author : Sangam Biradar
+---
 
-+++
+
+
+
+
+{{< rawhtml >}}
 
 <center> <a href="https://github.com/cert-manager/cert-manager"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/cert-manager/cert-manager.png" width="460px"></a> </center>
+{{< /rawhtml >}}
 
 ### Start Minikube
 ```
@@ -371,7 +376,10 @@ service/echo-service created
 ```
 
 ## source code 
+
+{{< rawhtml >}}
 <center>
 <a href="https://github.com/sangam14/minikube-certmanager"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/sangam14/minikube-certmanager.png" width="460px"></a> </center>
+{{< /rawhtml >}}
 
 Join [CloudNativeFolks Community](https://discord.gg/rEvr7vq) or Reach out to me on twitter [@sangamtwts](https://twitter.com/sangamtwts)
