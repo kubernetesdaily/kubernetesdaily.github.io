@@ -86,6 +86,11 @@ name = "Knowledge Base"
 url = "/kb"
 weight = 1
 
+[[menu.main]]
+name = "Tools"
+url = "https://kubedaily.com/cloudnativetools/"
+weight = 2
+
 [mediaTypes."text/netlify"]
 delimiter = ""
 
