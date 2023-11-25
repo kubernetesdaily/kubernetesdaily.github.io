@@ -1,6 +1,6 @@
 /*!
  * Docura (https://docura.github.io/)
- * Copyright 2022 Dumindu Madunuwan
+ * Copyright 2022-2023 Dumindu Madunuwan
  * Licensed under the MIT License.
  */
 
@@ -18,8 +18,10 @@
 @import "component/dropdown";
 @import "component/chroma";
 
-body{
+html {
   font-family: var(--font-family);
   background: var(--background);
   color: var(--color);
+  scroll-behavior: smooth;
+  scroll-padding: 2em;
 }

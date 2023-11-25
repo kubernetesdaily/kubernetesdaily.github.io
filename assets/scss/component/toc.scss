@@ -1,5 +1,10 @@
 #toc {
   padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#toc .sticky{
+  overflow: auto;
 }
 
 #toc strong {
@@ -29,8 +34,6 @@
 
 #toc ul a.active, #toc ul a:hover {
   color: var(--color-hover);
-  font-weight: 600;
-  font-size: 98%;
 }
 
 #toc ul a::before {
@@ -38,7 +41,8 @@
   display: inline-block;
   width: 6px;
   height: 6px;
-  background: var(--border-color);
+  background: var(--background);
+  box-shadow: var(--box-shadow);
   position: relative;
   left: -10.5px;
   top: -3px;
