@@ -1,0 +1,21 @@
+{{ $options := (dict "outputStyle" "compressed" "enableSourceMap" true) }}
+
+{{ $homeStyle := resources.Get "scss/home.scss" | resources.ToCSS $options }}
+{{ $baseStyle := resources.Get "scss/base.scss" | resources.ToCSS $options }}
+
+{{ if .IsHome }}
+<link rel="stylesheet" href="{{ $homeStyle.RelPermalink }}" integrity="{{ $homeStyle.Data.integrity }}">
+<link rel="preload" href="{{ $baseStyle.RelPermalink }}" as="style" onload="this.rel='stylesheet'" integrity="{{ $baseStyle.Data.integrity }}">
+{{ else }}
+<link rel="stylesheet" href="{{ $baseStyle.RelPermalink }}" integrity="{{ $baseStyle.Data.integrity }}">
+{{ end }}
+
+{{ $themeStyle := resources.Get "scss/theme/default.scss" | resources.ToCSS $options }}
+<link rel="stylesheet" href="{{ $themeStyle.RelPermalink }}" integrity="{{ $themeStyle.Data.integrity }}">
+
+{{ $algolia := index .Site.Params.algolia .Site.Language.Lang }}
+{{ if $algolia }}
+  <link rel="preconnect" href="https://{{ $algolia.appId }}-dsn.algolia.net" crossorigin />
+  {{ $docsearchStyle := resources.Get "scss/component/docsearch.scss" | resources.ToCSS $options }}
+  <link rel="stylesheet" href="{{ $docsearchStyle.RelPermalink }}" integrity="{{ $docsearchStyle.Data.integrity }}"/>
+{{ end }}

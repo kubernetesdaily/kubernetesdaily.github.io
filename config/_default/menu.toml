@@ -1,0 +1,34 @@
+[[main]]
+identifier = 'home'
+name = 'Home'
+pre = "<i class='icon icon-home'></i>"
+url = '/'
+weight = 1
+
+[[main]]
+identifier = 'docs'
+name = 'Docker'
+pre = "<i class='icon icon-book'></i>"
+url = '/docker/'
+weight = 2
+
+[[main]]
+identifier = 'containersecurity'
+name = 'ContainerSecurity'
+pre = "<i class='icon icon-book'></i>"
+url = '/containersecurity/'
+weight = 3
+
+[[main]]
+identifier = 'k8s'
+name = 'Kubernetes'
+pre = "<i class='icon icon-book'></i>"
+url = '/k8s/'
+weight = 3
+
+[[main]]
+identifier = 'blog'
+name = 'blog'
+pre = "<i class='icon icon-book'></i>"
+url = '/blog/'
+weight = 4

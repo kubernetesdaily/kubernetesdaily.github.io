@@ -1,0 +1,65 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown-btn .icon-select {
+  opacity: .4;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 100px;
+  max-height: 240px;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  background: white;
+  z-index: 1;
+  border-radius: 6px;
+  padding: 3px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu button, .dropdown-menu a {
+  width: 100%;
+  display: flex;
+  gap: 2px;
+  padding: 6px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover, .dropdown-menu a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+:root[data-color="dark"] .dropdown-menu button:hover, .dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-color="night"] .dropdown-menu button:hover, .dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-color="dark"] .dropdown-menu{
+  background: #121212;
+}
+
+:root[data-color="night"] .dropdown-menu {
+  background: #333333;
+}

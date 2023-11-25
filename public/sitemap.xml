@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://linuxcollective.github.io/categories/</loc>
+  </url><url>
+    <loc>https://linuxcollective.github.io/docs/</loc>
+    <lastmod>2023-11-08T16:33:59+05:30</lastmod>
+  </url><url>
+    <loc>https://linuxcollective.github.io/docs/level-layer-abstraction/</loc>
+    <lastmod>2023-11-08T16:33:59+05:30</lastmod>
+  </url><url>
+    <loc>https://linuxcollective.github.io/</loc>
+    <lastmod>2023-11-08T16:33:59+05:30</lastmod>
+  </url><url>
+    <loc>https://linuxcollective.github.io/docs/linux-distros/</loc>
+    <lastmod>2023-09-16T11:15:21+05:30</lastmod>
+  </url><url>
+    <loc>https://linuxcollective.github.io/docs/linux-history/</loc>
+    <lastmod>2023-11-08T16:11:17+05:30</lastmod>
+  </url><url>
+    <loc>https://linuxcollective.github.io/docs/overview/</loc>
+    <lastmod>2023-08-26T19:04:18+05:30</lastmod>
+  </url><url>
+    <loc>https://linuxcollective.github.io/tags/</loc>
+  </url>
+</urlset>

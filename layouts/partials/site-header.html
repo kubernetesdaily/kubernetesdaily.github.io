@@ -1,0 +1,56 @@
+<header id="site-header">
+  <!-- brand -->
+  <div id="site-header-brand">
+    <a href="/">{{ .Site.Title }}</a>
+  </div>
+
+  <!-- controls -->
+  <div id="site-header-controls">
+    <!-- theme selector -->
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    <!-- language selector -->
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        {{ if .IsTranslated }}
+          {{ range .AllTranslations }}
+          <li role="menuitem"><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+          {{ end }}
+        {{ else }}
+          <li role="menuitem"><a href="#">{{ .Language.LanguageName }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+
+  <!-- main menu -->
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        {{ $currentPageURL := .Permalink }}
+        {{ $isHomePage := eq $currentPageURL ($.Site.BaseURL | absLangURL) }}
+        {{ range .Site.Menus.main }}
+          {{ $isActive := or (and (eq .URL "/") $isHomePage) (and (ne .URL "/") (in $currentPageURL .URL)) }}
+          <li><a href="{{ .URL }}" {{ if $isActive }} class="active"{{ end }}>{{ .Pre }}{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+
+  <!-- search -->
+  <div id="site-header-search"></div>
+</header>

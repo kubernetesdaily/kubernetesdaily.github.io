@@ -1,10 +1,10 @@
 {{ define "title" }}
-{{ .Title }} | The Longhorn Blog
+{{ .Title }} | Blog | {{ .Site.Title }}
 {{ end }}
 
 {{ define "main" }}
-{{ partial "navbar.html" . }}
+{{ partial "article-nav.html" . }}
 {{ partial "blog/hero.html" . }}
 {{ partial "blog/content.html" . }}
-{{ partial "footer.html" . }}
+{{ partial "site-footer.html" . }}
 {{ end }}

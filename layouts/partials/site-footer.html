@@ -1,0 +1,45 @@
+<footer id="site-footer">
+  <!-- copyright -->
+  <div id="site-footer-copyright">
+    <a href="{{ .Site.Params.authorURL }}" target="_blank">
+      <i class="icon icon-copyright"></i> {{ if .Site.Params.projectStartYear }}{{ .Site.Params.projectStartYear }}-{{ end }}{{ .Site.Params.currentYear }} {{ .Site.Params.author }}
+    </a>
+  </div>
+
+  <!-- social -->
+  <div id="site-footer-social">
+
+    {{with .Site.Params.facebookURL}}
+    <a href="{{.}}" target="_blank" aria-label="facebook url">
+      <i class="icon icon-facebook icon-colored"></i>
+    </a>
+    {{end}}
+
+    {{with .Site.Params.twitterURL}}
+    <a href="{{.}}" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    {{end}}
+
+    {{with .Site.Params.githubURL}}
+    <a href="{{.}}" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    {{end}}
+
+    {{with .Site.Params.youtubeURL}}
+    <a href="{{.}}" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    {{end}}
+
+  </div>
+
+  <!-- fund -->
+  <a href="https://visitorbadge.io/status?path=https%3A%2F%2Flinuxcollective.github.io"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Flinuxcollective.github.io&label=VISITORS&countColor=%23263759&style=plastic" /></a>
+
+  <!-- love -->
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>

@@ -1,0 +1,21 @@
+{{ $dropdown := resources.Get "js/component/dropdown.js" }}
+{{ $colorPreference := resources.Get "js/component/color-preference.js" }}
+{{ $articleNav := resources.Get "js/component/article-nav.js" }}
+{{ $toc := resources.Get "js/component/toc.js" }}
+{{ $baseJs := slice $dropdown $colorPreference $articleNav $toc | resources.Concat "js/base.js" | minify }}
+
+<script type="text/javascript" src="{{ $baseJs.RelPermalink }}"></script>
+
+{{ $algolia := index .Site.Params.algolia .Site.Language.Lang }}
+{{ if $algolia }}
+  {{ $docsearch := resources.Get "js/component/docsearch.min.js" }}
+  <script src="{{ $docsearch.RelPermalink }}"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '{{ $algolia.container }}',
+          appId: '{{ $algolia.appId }}',
+          indexName: '{{ $algolia.indexName }}',
+          apiKey: '{{ $algolia.apiKey }}',
+      });
+  </script>
+{{ end }}
