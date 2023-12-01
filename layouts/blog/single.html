@@ -3,8 +3,13 @@
 {{ end }}
 
 {{ define "main" }}
-{{ partial "article-nav.html" . }}
+{{ partial "article-nav" . }}
+{{ partial "article-header" . }}
 {{ partial "blog/hero.html" . }}
-{{ partial "blog/content.html" . }}
-{{ partial "site-footer.html" . }}
+<div id="article-content">
+    {{ $content := .Content }}
+    {{ $content = replaceRE `<a href="(https?://.+)">` `<a href="$1" target="_blank">` $content | safeHTML }}
+    {{ $content | safeHTML }}
+  </div>
+{{ partial "toc" . }}
 {{ end }}
