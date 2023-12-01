@@ -9,13 +9,13 @@ aliases:
 ### Table of Content 
 | Title   | Link |
 | --------- | ------- |
-|1.Pre-requisit for this lab | [Lab](https://kubedaily.com/docs/pre-requist/)         |
-|2.Docker Hello World Example | [Lab](https://kubedaily.com/docs/hello-world/)       |
-|3.Docker Image Filtering |  | [Lab](https://kubedaily.com/docs/docker-images-filter/)         |
-|4.Images and Container As Tar file |    [Lab](https://kubedaily.com/docs/tarfile/)      |
-|5.Push first Nginx Web app To DockerHub           |  [Lab](https://kubedaily.com/docs/push-dockerhub-webapp/)        |
-|6.Build a Base Image from Scratch           |     [Lab](https://kubedaily.com/docs/scratch-image/)     |
-|7.Dockerfile Lab - ADD instruction           |   [Lab](https://kubedaily.com/docs/add-instruction/)       |
+|1.Pre-requisit for this lab | [Lab](https://kubedaily.com/docker/pre-requisit-for-this-lab/)         |
+|2.Docker Hello World Example | [Lab](https://kubedaily.com/docker/docker-hello-world-example/)       |
+|3.Docker Image Filtering |  | [Lab](https://kubedaily.com/docker/docker-image-filtering/)         |
+|4.Images and Container As Tar file |    [Lab](https://kubedaily.com/docker/images-and-container-as-tar-file/)      |
+|5.Push first Nginx Web app To DockerHub           |  [Lab](https://kubedaily.com/docker/push-first-nginx-web-app-to-dockerhub/)        |
+|6.Build a Base Image from Scratch           |     [Lab](https://kubedaily.com/docker/build-a-base-image-from-scratch/)     |
+|7.Dockerfile Lab - ADD instruction           |   [Lab](https://kubedaily.com/docker/dockerfile-lab-add-instruction/)       |
 |8.Dockerfile Lab - COPY instruction        |   [Lab](https://kubedaily.com/docs/copy-instruction/)       |
 |9.Dockerfile Lab - CMD instruction         |    [Lab](https://kubedaily.com/docs/cmd-instruction/)      |
 |10.Dockerfile Lab - Entrypoint instruction         |    [Lab](https://kubedaily.com/docs/entrypoint-instruction/)      |
