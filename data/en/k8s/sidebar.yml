@@ -2,7 +2,7 @@
   pages:
   - title: Overview
 
-- title: kubernetes
+- title: ⎈ kubernetes
   pages:
   - title: Pre-requisit for this lab
   - title: Basics of Pod
