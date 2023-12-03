@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The introduction to this course.">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Container vs Virtualization · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/containersecurity/container-vs-virtualization/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/"  class="active"><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">Container Security</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">🔒ContainerSecurity</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/what-is-container/">
+            
+              What is container?
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/containersecurity/container-vs-virtualization/">
+            
+              Container vs Virtualization
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/namespaces/">
+            
+              Namespaces
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/cgroups/">
+            
+              Cgroups
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/capabilities/">
+            
+              Capabilities
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-architecture-and-its-components/">
+            
+              Docker architecture and its components
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/interacting-with-container-ecosystem/">
+            
+              Interacting with container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/attack-surface-of-the-container-ecosystem/">
+            
+              Attack surface of the container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-volumes/">
+            
+              Docker volumes
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-networking/">
+            
+              Docker Networking
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/auditing-docker-security/">
+            
+              Auditing Docker Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-image-security/">
+            
+              Container Image Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerfile-security-best-practices/">
+            
+              DockerFile Security Best Practices
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/">
+            
+              SecretScanner - Finding secrets and passwords in container images and file systems
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/yarahunter-malware-scanner-for-container-images/">
+            
+              YaraHunter - Malware Scanner for Container Images
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/security-linting-of-dockerfiles/">
+            
+              Security Linting of Dockerfiles
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/static-analysis-of-container-images-library-for-container/">
+            
+              Static Analysis of container images library for container
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-host-security-configurations/">
+            
+              Docker host security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-daemon-security-configurations/">
+            
+              Docker Daemon security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/content-trust-and-integrity-checks/">
+            
+              Content Trust and Integrity checks
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-registry-security-configurations/">
+            
+              Docker Registry security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerscan/">
+            
+              DockerScan
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dive/">
+            
+              Dive
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-events/">
+            
+              Docker events
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Container vs Virtualization</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <h3 id="a-shift-from-monolithic-to-microservice-architecture">A Shift from Monolithic to Microservice Architecture</h3>
+<h2 id="monolithic">Monolithic</h2>
+<p>Application have changed dramarically</p>
+<ul>
+<li>A Decade Ago ( and still valid )
+<ul>
+<li>Apps were monolithic</li>
+<li>Built on single stack such as .NET or Java</li>
+<li>Long Lived</li>
+<li>Deployed to a single server</li>
+</ul>
+</li>
+</ul>
+<p>Benefits of monolith - Simple to Develop , Test , Deplot &amp; Scale</p>
+<ul>
+<li>simple to develope because of all the tools and IDEs aupport to that kind of application by default</li>
+<li>easy to deploy because all coponets are packed into one bundle</li>
+<li>Easy to scale the whole application</li>
+</ul>
+<p>Disadvantages of monolith</p>
+<ul>
+<li>Very difficult to maintain</li>
+<li>One Component failure will cause the whole system to fail</li>
+<li>Very difficult to understand and create the patches for   monolithic applications</li>
+<li>Take a long time to startup because all the components need to get started</li>
+</ul>
+<h2 id="microservice">Microservice</h2>
+<p>Today</p>
+<ul>
+<li>Apps are constantly developed</li>
+<li>Build from losely coupled components</li>
+<li>New version are deployed often</li>
+<li>Deployed to a multitude of server</li>
+</ul>
+<h2 id="shipping-code-is-damm-too-hard">shipping code is damm too hard</h2>
+<p>an efforts to solve complet problem</p>
+<p><img src="./images/solve-problem.png" alt=""></p>
+<h2 id="every-possible-good-to-ship-x-every-possible-way-to-ship">every possible good to ship X every possible way to ship</h2>
+<p><img src="./images/pssiblewaytoship.png" alt=""></p>
+<h2 id="enter---internodal-container">Enter &hellip;  Internodal container</h2>
+<p><img src="./images/intermodl-container.png" alt=""></p>
+<h2 id="thats-what-docker-all-about">Thats what Docker all about</h2>
+<p><img src="./images/whatdocker.png" alt=""></p>
+<h2 id="comparing-docker-vs-vm">Comparing Docker vs VM</h2>
+<table>
+<thead>
+<tr>
+<th>Virtual Machine</th>
+<th>Docker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>each VM runs its own os</td>
+<td>Container is just a user space of OS</td>
+</tr>
+<tr>
+<td>Boot up time os in minutes</td>
+<td>Containers instantiate in seconds</td>
+</tr>
+<tr>
+<td>VMs snapshots are used sparingly</td>
+<td>Images are built incrementaly on top of another layers . lot of images /snapshots</td>
+</tr>
+<tr>
+<td>Not effective diffs . No versiob controlled</td>
+<td>Images can be version controlled docker hub is like GITHUB</td>
+</tr>
+<tr>
+<td>Cannot run more than couple of VMs on an aveage laptop</td>
+<td>Can run many docker containers in a laptop</td>
+</tr>
+<tr>
+<td>Only one VM can be stated from one set of VMX and VMDK file</td>
+<td>Multiple Docker Containers can be started from one Docker images</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/containersecurity/what-is-container/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/containersecurity/namespaces/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#a-shift-from-monolithic-to-microservice-architecture">A Shift from Monolithic to Microservice Architecture</a></li>
+      </ul>
+    </li>
+    <li><a href="#monolithic">Monolithic</a></li>
+    <li><a href="#microservice">Microservice</a></li>
+    <li><a href="#shipping-code-is-damm-too-hard">shipping code is damm too hard</a></li>
+    <li><a href="#every-possible-good-to-ship-x-every-possible-way-to-ship">every possible good to ship X every possible way to ship</a></li>
+    <li><a href="#enter---internodal-container">Enter &hellip;  Internodal container</a></li>
+    <li><a href="#thats-what-docker-all-about">Thats what Docker all about</a></li>
+    <li><a href="#comparing-docker-vs-vm">Comparing Docker vs VM</a></li>
+  </ul>
+</nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

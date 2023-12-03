@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox1
+  labels:
+    tier: linux
+spec:
+  containers:
+  - name: busybox1
+    image: busybox
+    command: ['sh', '-c', ' sleep 3600']

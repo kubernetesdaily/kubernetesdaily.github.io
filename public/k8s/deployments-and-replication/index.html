@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Use Cases for Multi-Container Pods">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Deployments and replication · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/k8s/deployments-and-replication/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/" ><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/"  class="active"><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">k8s</strong>
+          
+          <a class="sidebar-link " href="/k8s/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">⎈ kubernetes</strong>
+          
+          <a class="sidebar-link " href="/k8s/pre-requisit-for-this-lab/">
+            
+              Pre-requisit for this lab
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/basics-of-pod/">
+            
+              Basics of Pod
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/create-pod-with-command-and-arguments/">
+            
+              Create POD with Command and Arguments
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/multi-container-pods/">
+            
+              Multi-Container Pods
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/k8s/deployments-and-replication/">
+            
+              Deployments and replication
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/labels-and-selectors/">
+            
+              Labels and Selectors
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/kubernetes-service/">
+            
+              Kubernetes Service
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/service-type-nodeportclusteriploadbalancer/">
+            
+              Service Type - NodePort,ClusterIP,LoadBalancer
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/ingress-controller/">
+            
+              Ingress Controller
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/configmap/">
+            
+              ConfigMap
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Deployments and replication</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <h4 id="kubectl-explain-deployment">Kubectl explain Deployment</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl explain deployments
+</span></span><span class="line"><span class="cl">KIND:     Deployment
+</span></span><span class="line"><span class="cl">VERSION:  apps/v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DESCRIPTION:
+</span></span><span class="line"><span class="cl">     Deployment enables declarative updates <span class="k">for</span> Pods and ReplicaSets.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FIELDS:
+</span></span><span class="line"><span class="cl">   apiVersion   &lt;string&gt;
+</span></span><span class="line"><span class="cl">     APIVersion defines the versioned schema of this representation of an
+</span></span><span class="line"><span class="cl">     object. Servers should convert recognized schemas to the latest internal
+</span></span><span class="line"><span class="cl">     value, and may reject unrecognized values. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   kind &lt;string&gt;
+</span></span><span class="line"><span class="cl">     Kind is a string value representing the REST resource this object
+</span></span><span class="line"><span class="cl">     represents. Servers may infer this from the endpoint the client submits
+</span></span><span class="line"><span class="cl">     requests to. Cannot be updated. In CamelCase. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   metadata     &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Standard object<span class="err">&#39;</span>s metadata. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   spec &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Specification of the desired behavior of the Deployment.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   status       &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Most recently observed status of the Deployment.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ 
+</span></span></code></pre></div><h4 id="kubectl-explain-replicaset">Kubectl explain Replicaset</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl explain rs
+</span></span><span class="line"><span class="cl">KIND:     ReplicaSet
+</span></span><span class="line"><span class="cl">VERSION:  apps/v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DESCRIPTION:
+</span></span><span class="line"><span class="cl">     ReplicaSet ensures that a specified number of pod replicas are running at
+</span></span><span class="line"><span class="cl">     any given time.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FIELDS:
+</span></span><span class="line"><span class="cl">   apiVersion   &lt;string&gt;
+</span></span><span class="line"><span class="cl">     APIVersion defines the versioned schema of this representation of an
+</span></span><span class="line"><span class="cl">     object. Servers should convert recognized schemas to the latest internal
+</span></span><span class="line"><span class="cl">     value, and may reject unrecognized values. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   kind &lt;string&gt;
+</span></span><span class="line"><span class="cl">     Kind is a string value representing the REST resource this object
+</span></span><span class="line"><span class="cl">     represents. Servers may infer this from the endpoint the client submits
+</span></span><span class="line"><span class="cl">     requests to. Cannot be updated. In CamelCase. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   metadata     &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     If the Labels of a ReplicaSet are empty, they are defaulted to be the same
+</span></span><span class="line"><span class="cl">     as the Pod<span class="o">(</span>s<span class="o">)</span> that the ReplicaSet manages. Standard object<span class="err">&#39;</span>s metadata. More
+</span></span><span class="line"><span class="cl">     info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   spec &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Spec defines the specification of the desired behavior of the ReplicaSet.
+</span></span><span class="line"><span class="cl">     More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   status       &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Status is the most recently observed status of the ReplicaSet. This data
+</span></span><span class="line"><span class="cl">     may be out of date by some window of time. Populated by the system.
+</span></span><span class="line"><span class="cl">     Read-only. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ 
+</span></span></code></pre></div><h4 id="overview-on-kubernetes-deployment">Overview on Kubernetes Deployment</h4>
+<p>Kubernetes also provides Deployment resource that sits on top of ReplicaSets and enables declarative application updates.</p>
+<ul>
+<li>
+<p>When running Pods in datacenter, additional features may be needed such as scalability, updates and rollback etc which are offered by Deployments  <!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>A Deployment is a higher-level resource meant for deploying applications and updating them declaratively, instead of doing it through a
+ReplicationController or a ReplicaSet, which are both considered lower-level concepts.
+<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>When you create a Deployment, a ReplicaSet resource is created underneath. Replica-Sets replicate and manage pods, as well. <!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>When using a Deployment, the actual pods are created and managed by the Deployment’s ReplicaSets, not by the Deployment directly  <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<h5 id="create-kubernetes-deployment-resource">Create Kubernetes Deployment resource</h5>
+<p>In the deployment spec, following properties are managed:</p>
+<ul>
+<li><code>replicas</code>: explains how many copies of each Pod should be running  <!-- raw HTML omitted --></li>
+<li><code>strategy</code>: explains how Pods should be updated  <!-- raw HTML omitted --></li>
+<li><code>selector</code>: uses matchLabels to identify how labels are matched against the Pod <!-- raw HTML omitted --></li>
+<li><code>template</code>: contains the pod specification and is used in a deployment to create Pods <!-- raw HTML omitted --></li>
+<li><code>scale</code> deployment: <code>kubectl scale deployment nginx-deployment --replicas 10</code>  <!-- raw HTML omitted --></li>
+<li><code>set image</code> : <code>kubectl set image deployment nginx-deployment nginx=nginx:1.91 --record</code>  <!-- raw HTML omitted --></li>
+<li><code>rollout undo</code>:<code> kubectl rollout undo deployment nginx-deployment</code>  <!-- raw HTML omitted --></li>
+</ul>
+<p>we will create a new deployment using kubectl using &ndash;dry-run so that actually a deployment is not created but just verified</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜ k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl create deployment nginx-deploy --image<span class="o">=</span>nginx --dry-run<span class="o">=</span>client -o yaml &gt; nginx-deploy.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-- Basic Template to cleanup
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@controller ~<span class="o">]</span><span class="c1"># cat nginx-deploy.yml</span>
+</span></span><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  creationTimestamp: null
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    app: nginx-deploy
+</span></span><span class="line"><span class="cl">  name: nginx-deploy
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  replicas: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    matchLabels:
+</span></span><span class="line"><span class="cl">      app: nginx-deploy
+</span></span><span class="line"><span class="cl">  strategy: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">  template:
+</span></span><span class="line"><span class="cl">    metadata:
+</span></span><span class="line"><span class="cl">      creationTimestamp: null
+</span></span><span class="line"><span class="cl">      labels:
+</span></span><span class="line"><span class="cl">        app: nginx-deploy
+</span></span><span class="line"><span class="cl">    spec:
+</span></span><span class="line"><span class="cl">      containers:
+</span></span><span class="line"><span class="cl">      - image: nginx
+</span></span><span class="line"><span class="cl">        name: nginx
+</span></span><span class="line"><span class="cl">        resources: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--- <span class="c1">#Modify the contents of the deployment template</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># cat nginx-deploy.yml</span>
+</span></span><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    type: dev
+</span></span><span class="line"><span class="cl">  name: nginx-deploy
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  replicas: <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    matchLabels:
+</span></span><span class="line"><span class="cl">      type: dev
+</span></span><span class="line"><span class="cl">  template:
+</span></span><span class="line"><span class="cl">    metadata:
+</span></span><span class="line"><span class="cl">      labels:
+</span></span><span class="line"><span class="cl">        type: dev
+</span></span><span class="line"><span class="cl">    spec:
+</span></span><span class="line"><span class="cl">      containers:
+</span></span><span class="line"><span class="cl">      - image: nginx
+</span></span><span class="line"><span class="cl">        name: nginx
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl create -f nginx-deploy.yml
+</span></span><span class="line"><span class="cl">deployment.apps/nginx-deploy created
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout status deployment nginx-deploy
+</span></span><span class="line"><span class="cl">deployment <span class="s2">&#34;nginx-deploy&#34;</span> successfully rolled out
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get pods
+</span></span><span class="line"><span class="cl">NAME                            READY   STATUS    RESTARTS   AGE
+</span></span><span class="line"><span class="cl">nginx-deploy-66dc98fc6f-6ws8k   1/1     Running   <span class="m">0</span>          37s
+</span></span><span class="line"><span class="cl">nginx-deploy-66dc98fc6f-btk6j   1/1     Running   <span class="m">0</span>          37s
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl describe Pod &lt;NAME&gt;
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl describe Pod nginx-deploy-66dc98fc6f-6ws8k 
+</span></span><span class="line"><span class="cl">Name:             nginx-deploy-66dc98fc6f-6ws8k
+</span></span><span class="line"><span class="cl">Namespace:        default
+</span></span><span class="line"><span class="cl">Priority:         <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Service Account:  default
+</span></span><span class="line"><span class="cl">Node:             minikube/192.168.49.2
+</span></span><span class="line"><span class="cl">Start Time:       Tue, <span class="m">07</span> Mar <span class="m">2023</span> 02:12:20 +0530
+</span></span><span class="line"><span class="cl">Labels:           pod-template-hash<span class="o">=</span>66dc98fc6f
+</span></span><span class="line"><span class="cl">                  <span class="nv">type</span><span class="o">=</span>dev
+</span></span><span class="line"><span class="cl">Annotations:      &lt;none&gt;
+</span></span><span class="line"><span class="cl">Status:           Running
+</span></span><span class="line"><span class="cl">IP:               172.17.0.4
+</span></span><span class="line"><span class="cl">IPs:
+</span></span><span class="line"><span class="cl">  IP:           172.17.0.4
+</span></span><span class="line"><span class="cl">Controlled By:  ReplicaSet/nginx-deploy-66dc98fc6f
+</span></span><span class="line"><span class="cl">Containers:
+</span></span><span class="line"><span class="cl">  nginx:
+</span></span><span class="line"><span class="cl">    Container ID:   docker://79a285bd1e02d96c1880958d20aa4cf64060c630ecb03dac37665994a8b4574a
+</span></span><span class="line"><span class="cl">    Image:          nginx
+</span></span><span class="line"><span class="cl">    Image ID:       docker-pullable://nginx@sha256:aa0afebbb3cfa473099a62c4b32e9b3fb73ed23f2a75a65ce1d4b4f55a5c2ef2
+</span></span><span class="line"><span class="cl">    Port:           &lt;none&gt;
+</span></span><span class="line"><span class="cl">    Host Port:      &lt;none&gt;
+</span></span><span class="line"><span class="cl">    State:          Running
+</span></span><span class="line"><span class="cl">      Started:      Tue, <span class="m">07</span> Mar <span class="m">2023</span> 02:12:25 +0530
+</span></span><span class="line"><span class="cl">    Ready:          True
+</span></span><span class="line"><span class="cl">    Restart Count:  <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    Environment:    &lt;none&gt;
+</span></span><span class="line"><span class="cl">    Mounts:
+</span></span><span class="line"><span class="cl">      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-7wpgb <span class="o">(</span>ro<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Conditions:
+</span></span><span class="line"><span class="cl">  Type              Status
+</span></span><span class="line"><span class="cl">  Initialized       True 
+</span></span><span class="line"><span class="cl">  Ready             True 
+</span></span><span class="line"><span class="cl">  ContainersReady   True 
+</span></span><span class="line"><span class="cl">  PodScheduled      True 
+</span></span><span class="line"><span class="cl">Volumes:
+</span></span><span class="line"><span class="cl">  kube-api-access-7wpgb:
+</span></span><span class="line"><span class="cl">    Type:                    Projected <span class="o">(</span>a volume that contains injected data from multiple sources<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    TokenExpirationSeconds:  <span class="m">3607</span>
+</span></span><span class="line"><span class="cl">    ConfigMapName:           kube-root-ca.crt
+</span></span><span class="line"><span class="cl">    ConfigMapOptional:       &lt;nil&gt;
+</span></span><span class="line"><span class="cl">    DownwardAPI:             <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">QoS Class:                   BestEffort
+</span></span><span class="line"><span class="cl">Node-Selectors:              &lt;none&gt;
+</span></span><span class="line"><span class="cl">Tolerations:                 node.kubernetes.io/not-ready:NoExecute <span class="nv">op</span><span class="o">=</span>Exists <span class="k">for</span> 300s
+</span></span><span class="line"><span class="cl">                             node.kubernetes.io/unreachable:NoExecute <span class="nv">op</span><span class="o">=</span>Exists <span class="k">for</span> 300s
+</span></span><span class="line"><span class="cl">Events:
+</span></span><span class="line"><span class="cl">  Type    Reason     Age   From               Message
+</span></span><span class="line"><span class="cl">  ----    ------     ----  ----               -------
+</span></span><span class="line"><span class="cl">  Normal  Scheduled  93s   default-scheduler  Successfully assigned default/nginx-deploy-66dc98fc6f-6ws8k to minikube
+</span></span><span class="line"><span class="cl">  Normal  Pulling    92s   kubelet            Pulling image <span class="s2">&#34;nginx&#34;</span>
+</span></span><span class="line"><span class="cl">  Normal  Pulled     88s   kubelet            Successfully pulled image <span class="s2">&#34;nginx&#34;</span> in 4.282948252s
+</span></span><span class="line"><span class="cl">  Normal  Created    88s   kubelet            Created container nginx
+</span></span><span class="line"><span class="cl">  Normal  Started    88s   kubelet            Started container nginx
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get rs
+</span></span><span class="line"><span class="cl">NAME                      DESIRED   CURRENT   READY   AGE
+</span></span><span class="line"><span class="cl">nginx-deploy-66dc98fc6f   <span class="m">2</span>         <span class="m">2</span>         <span class="m">2</span>       3m30s
+</span></span></code></pre></div><h5 id="using-kubernetes-rollingupdate">Using Kubernetes RollingUpdate</h5>
+<p>You have two ways of updating all those pods. You can do one of the following:</p>
+<ul>
+<li>Recreate: Delete all existing pods first and then start the new ones. This will lead to a temporary unavailability. <!-- raw HTML omitted --></li>
+<li>RollingUpdate: Updates Pod one at a time to guarantee availability of the application. This is the preferred approach and you can further tune its behaviour.</li>
+</ul>
+<p>The RollingUpdate strategy options are used to guarantee a certain minimal and maximal amount of Pods to be always available:</p>
+<ul>
+<li>maxUnavailable: The maximum number of Pods that can be unavailable during updating. The value could be a percentage (the default is 25%).</li>
+<li>maxSurge: The maximum number of Pods that can be created over the desired number of ReplicaSet during updating.  the value of maxSurge cannot be 0</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">vim rolling-nginx.yml
+</span></span><span class="line"><span class="cl">----
+</span></span><span class="line"><span class="cl"><span class="c1"># cat rolling-nginx.yml</span>
+</span></span><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: rolling-nginx
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  replicas: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">  strategy:
+</span></span><span class="line"><span class="cl">    type: RollingUpdate
+</span></span><span class="line"><span class="cl">    rollingUpdate:
+</span></span><span class="line"><span class="cl">      maxSurge: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">      maxUnavailable: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    matchLabels:
+</span></span><span class="line"><span class="cl">      app: rolling-nginx
+</span></span><span class="line"><span class="cl">  template:
+</span></span><span class="line"><span class="cl">    metadata:
+</span></span><span class="line"><span class="cl">      labels:
+</span></span><span class="line"><span class="cl">        app: rolling-nginx
+</span></span><span class="line"><span class="cl">    spec:
+</span></span><span class="line"><span class="cl">      containers:
+</span></span><span class="line"><span class="cl">      - name: nginx
+</span></span><span class="line"><span class="cl">        image: nginx:1.9
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl create -f rolling-nginx.yml
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx created
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get pods
+</span></span><span class="line"><span class="cl">NAME                             READY   STATUS              RESTARTS   AGE
+</span></span><span class="line"><span class="cl">nginx-deploy-66dc98fc6f-6ws8k    1/1     Running             <span class="m">0</span>          15m
+</span></span><span class="line"><span class="cl">nginx-deploy-66dc98fc6f-btk6j    1/1     Running             <span class="m">0</span>          15m
+</span></span><span class="line"><span class="cl">rolling-nginx-77f89bcf9c-2cgps   0/1     ContainerCreating   <span class="m">0</span>          13s
+</span></span><span class="line"><span class="cl">rolling-nginx-77f89bcf9c-l7cvh   0/1     ContainerCreating   <span class="m">0</span>          13s
+</span></span><span class="line"><span class="cl">rolling-nginx-77f89bcf9c-nx888   0/1     ContainerCreating   <span class="m">0</span>          13s
+</span></span><span class="line"><span class="cl">rolling-nginx-77f89bcf9c-xn2z5   0/1     ContainerCreating   <span class="m">0</span>          13s
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get deployments
+</span></span><span class="line"><span class="cl">NAME            READY   UP-TO-DATE   AVAILABLE   AGE
+</span></span><span class="line"><span class="cl">nginx-deploy    2/2     <span class="m">2</span>            <span class="m">2</span>           15m
+</span></span><span class="line"><span class="cl">rolling-nginx   1/4     <span class="m">4</span>            <span class="m">1</span>           50s
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get event --field-selector involvedObject.name<span class="o">=</span>rolling-nginx-77f89bcf9c-xn2z5 
+</span></span><span class="line"><span class="cl">LAST SEEN   TYPE     REASON      OBJECT                               MESSAGE
+</span></span><span class="line"><span class="cl">99s         Normal   Scheduled   pod/rolling-nginx-77f89bcf9c-xn2z5   Successfully assigned default/rolling-nginx-77f89bcf9c-xn2z5 to minikube
+</span></span><span class="line"><span class="cl">99s         Normal   Pulling     pod/rolling-nginx-77f89bcf9c-xn2z5   Pulling image <span class="s2">&#34;nginx:1.9&#34;</span>
+</span></span><span class="line"><span class="cl">43s         Normal   Pulled      pod/rolling-nginx-77f89bcf9c-xn2z5   Successfully pulled image <span class="s2">&#34;nginx:1.9&#34;</span> in 56.078369942s
+</span></span><span class="line"><span class="cl">43s         Normal   Created     pod/rolling-nginx-77f89bcf9c-xn2z5   Created container nginx
+</span></span><span class="line"><span class="cl">43s         Normal   Started     pod/rolling-nginx-77f89bcf9c-xn2z5   Started container nginx
+</span></span></code></pre></div><h4 id="check-rollout-history">Check rollout history</h4>
+<p>But why CHANGE-CAUSE is showing NONE? It is because we have not used &ndash;record while creating our deployment.
+The &ndash;record argument will add the command under CHANGE-CAUSE for each revision history</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"> k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout <span class="nb">history</span> deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx 
+</span></span><span class="line"><span class="cl">REVISION  CHANGE-CAUSE
+</span></span><span class="line"><span class="cl"><span class="m">1</span>         &lt;none&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl delete deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment.apps <span class="s2">&#34;rolling-nginx&#34;</span> deleted
+</span></span></code></pre></div><h4 id="this-time-i-will-use---record-along-with-kubectl-create">this time I will use &ndash;record along with kubectl create:</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl create -f rolling-nginx.yml --record
+</span></span><span class="line"><span class="cl">Flag --record has been deprecated, --record will be removed in the future
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx created
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout <span class="nb">history</span> deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx 
+</span></span><span class="line"><span class="cl">REVISION  CHANGE-CAUSE
+</span></span><span class="line"><span class="cl"><span class="m">1</span>         kubectl create --filename<span class="o">=</span>rolling-nginx.yml --record<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl <span class="nb">set</span> image deployment rolling-nginx <span class="nv">nginx</span><span class="o">=</span>nginx:1.15 --record
+</span></span><span class="line"><span class="cl">Flag --record has been deprecated, --record will be removed in the future
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx image updated
+</span></span></code></pre></div><h4 id="monitor-the-rolling-update-status">Monitor the rolling update status</h4>
+<p>To monitor the rollout status you can use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl <span class="nb">set</span> image deployment rolling-nginx <span class="nv">nginx</span><span class="o">=</span>nginx:1.16 --record
+</span></span><span class="line"><span class="cl">Flag --record has been deprecated, --record will be removed in the future
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx image updated
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout pause deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx paused
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout status deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment <span class="s2">&#34;rolling-nginx&#34;</span> successfully rolled out
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get pods -l <span class="nv">app</span><span class="o">=</span>rolling-nginx
+</span></span><span class="line"><span class="cl">NAME                             READY   STATUS    RESTARTS   AGE
+</span></span><span class="line"><span class="cl">rolling-nginx-55fc56899f-8hlm4   1/1     Running   <span class="m">0</span>          2m30s
+</span></span><span class="line"><span class="cl">rolling-nginx-55fc56899f-g4b6p   1/1     Running   <span class="m">0</span>          2m30s
+</span></span><span class="line"><span class="cl">rolling-nginx-55fc56899f-hnbs8   1/1     Running   <span class="m">0</span>          2m22s
+</span></span><span class="line"><span class="cl">rolling-nginx-55fc56899f-jngcd   1/1     Running   <span class="m">0</span>          2m21s
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout resume deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx resumed
+</span></span></code></pre></div><h4 id="rolling-back-undo-an-update">Rolling back (undo) an update</h4>
+<p>To monitor the rollout status you can use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout <span class="nb">history</span> deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx 
+</span></span><span class="line"><span class="cl">REVISION  CHANGE-CAUSE
+</span></span><span class="line"><span class="cl"><span class="m">1</span>         kubectl create --filename<span class="o">=</span>rolling-nginx.yml --record<span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>         kubectl <span class="nb">set</span> image deployment rolling-nginx <span class="nv">nginx</span><span class="o">=</span>nginx:1.15 --record<span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="m">3</span>         kubectl <span class="nb">set</span> image deployment rolling-nginx <span class="nv">nginx</span><span class="o">=</span>nginx:1.16 --record<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout undo deployment rolling-nginx --to-revision<span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl">deployment.apps/rolling-nginx rolled back
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl rollout status deployment rolling-nginx
+</span></span><span class="line"><span class="cl">deployment <span class="s2">&#34;rolling-nginx&#34;</span> successfully rolled out
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl delete pod --all 
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;nginx-deploy-66dc98fc6f-6ws8k&#34;</span> deleted
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;nginx-deploy-66dc98fc6f-btk6j&#34;</span> deleted
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;rolling-nginx-b746d459b-874mv&#34;</span> deleted
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;rolling-nginx-b746d459b-gtgpk&#34;</span> deleted
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;rolling-nginx-b746d459b-txc5j&#34;</span> deleted
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;rolling-nginx-b746d459b-vw4rf&#34;</span> deleted
+</span></span><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl delete deployment --all 
+</span></span><span class="line"><span class="cl">deployment.apps <span class="s2">&#34;nginx-deploy&#34;</span> deleted
+</span></span><span class="line"><span class="cl">deployment.apps <span class="s2">&#34;rolling-nginx&#34;</span> deleted
+</span></span></code></pre></div>
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/k8s/multi-container-pods/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/k8s/labels-and-selectors/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

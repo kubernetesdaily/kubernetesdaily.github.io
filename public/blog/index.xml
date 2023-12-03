@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on kubedaily</title>
+    <link>https://kubedaily.com/blog/</link>
+    <description>Recent content in blog on kubedaily</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://kubedaily.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flannel is a network fabric for containers, designed for Kubernetes.</title>
+      <link>https://kubedaily.com/blog/flannel/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/flannel/</guid>
+      <description>kubenetes networking Networking details Platforms like Kubernetes assume that each container (pod) has a unique, routable IP inside the cluster. The advantage of this model is that it removes the port mapping complexities that come from sharing a single host IP.
+Flannel is responsible for providing a layer 3 IPv4 network between multiple nodes in a cluster. Flannel does not control how containers are networked to the host, only how the traffic is transported between hosts.</description>
+    </item>
+    <item>
+      <title>Arkade Open Source Marketplace for Kubernetes</title>
+      <link>https://kubedaily.com/blog/arkade-open-source-marketplace-for-kubernetes/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/arkade-open-source-marketplace-for-kubernetes/</guid>
+      <description>Getting started with Arkade CLI Macos/Linux ~ curl -sLS https://get.arkade.dev | sudo sh Password: Downloading package https://github.com/alexellis/arkade/releases/download/0.9.7/arkade-darwin-arm64 as /tmp/arkade-darwin-arm64 Download complete. Running with sufficient permissions to attempt to move arkade to /usr/local/bin New version of arkade installed to /usr/local/bin Creating alias &amp;#39;ark&amp;#39; for &amp;#39;arkade&amp;#39;. _ _ __ _ _ __| | ____ _ __| | ___ / _` | &amp;#39;__| |/ / _` |/ _` |/ _ \ | (_| | | | &amp;lt; (_| | (_| | __/ \__,_|_| |_|\_\__,_|\__,_|\___| Open Source Marketplace For Developer Tools Version: 0.</description>
+    </item>
+    <item>
+      <title>CertManager - Automatically provision and manage TLS certificates in Kubernetes</title>
+      <link>https://kubedaily.com/blog/certmanager/</link>
+      <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/certmanager/</guid>
+      <description>Start Minikube minikube-certmanager git:(main) minikube start 😄 minikube v1.30.0 on Darwin 13.3.1 (arm64) ✨ Using the docker driver based on existing profile 👍 Starting control plane node minikube in cluster minikube 🚜 Pulling base image ... 🏃 Updating the running docker &amp;#34;minikube&amp;#34; container ... ❗ Image was not built for the current minikube version. To resolve this you can delete and recreate your minikube cluster using the latest images. Expected minikube version: v1.</description>
+    </item>
+    <item>
+      <title>Okteto Develop your applications directly in your Kubernetes Cluster</title>
+      <link>https://kubedaily.com/blog/okteto/</link>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/okteto/</guid>
+      <description>Getting started with Oketo CLI Macos/Linux ➜ curl https://get.okteto.com -sSfL | sh &amp;gt; Using Release Channel: stable &amp;gt; Using Version: 2.14.0 &amp;gt; Downloading https://downloads.okteto.com/cli/stable/2.14.0/okteto-Darwin-arm64 % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 100 74.8M 100 74.8M 0 0 20.0M 0 0:00:03 0:00:03 --:--:-- 20.0M Login into Okteto Cloud via Github Account Configuring Okteto CLI with Okteto Cloud ➜ okteto context A context defines the default cluster/namespace for any Okteto CLI command.</description>
+    </item>
+    <item>
+      <title>Werf A solution for implementing efficient and consistent software</title>
+      <link>https://kubedaily.com/blog/werf/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/werf/</guid>
+      <description>Install Werf ➜ ~ curl -sSLO https://werf.io/install.sh &amp;amp;&amp;amp; chmod +x install.sh ➜ ~ ./install.sh --version 1.2 --channel stable [INPUT REQUIRED] Current login shell is &amp;#34;zsh&amp;#34;. Press ENTER to setup werf for this shell or choose another one. [b]ash/[z]sh/[a]bort? Default: zsh. z [INPUT REQUIRED] trdl is going to be installed in &amp;#34;/Users/sangambiradar/bin/&amp;#34;. Add this directory to your $PATH in &amp;#34;/Users/sangambiradar/.zshrc&amp;#34; and &amp;#34;/Users/sangambiradar/.zprofile&amp;#34;? (strongly recommended) [y]es/[a]bort/[s]kip? Default: yes. yes [INFO] Installing trdl to &amp;#34;/Users/sangambiradar/bin/&amp;#34;.</description>
+    </item>
+  </channel>
+</rss>

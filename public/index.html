@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.114.0">
+	<meta name="generator" content="Hugo 0.120.4">
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="All About Linux">
+<meta name="description" content="Demestifying Container and Orchestration Ecosystem">
 <meta name="author" content="CloudNativeFolks">
 
-<title>Linux Collective · All About Linux</title>
+<title>kubedaily · Demestifying Container and Orchestration Ecosystem</title>
 
-<link rel="canonical" href="https://linuxcollective.github.io/">
+<link rel="canonical" href="https://kubedaily.com/">
 
 
 
@@ -45,12 +45,22 @@
 
     gtag('config', '');
 </script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
   </head>
   <body>
     <header id="site-header">
   
   <div id="site-header-brand">
-    <a href="/">Linux Collective</a>
+    <a href="/">kubedaily</a>
   </div>
 
   
@@ -93,29 +103,41 @@
           <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
         
           
-          <li><a href="/docs/" ><i class='icon icon-book'></i>Documentation</a></li>
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/" ><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
         
       </ul>
     </nav>
   </div>
 
   
-  <div id="site-header-search"></div>
+
 </header>
     
 <div id="site-main-content-wrapper">
   <main>
     <section class="cover">
-      <h1>Linux Collective</h1>
-      <h2>All About Linux</h2>
-      <img src="/img/icon/Linux Collective-2.png"  width="300" height="300"> 
+  
+      <img src="/img/logos/KubeDaily-1.png"  width="300" height="300"> 
+      <h2>Demestifying Container and Orchestration Ecosystem</h2>
       <a class="button" href="https://discord.gg/rEvr7vq">Join CloudNativeFolks Community </a>
 
       
         
           <div class="github-buttons">
-  <a href="https://github.com/linuxcollective/linuxcollective.github.io" class="github-button"  data-icon="octicon-star" data-show-count="true" aria-label="Star linuxcollective/linuxcollective.github.io on GitHub">Star</a>
-  <a href="https://github.com/linuxcollective/linuxcollective.github.io/fork" class="github-button"  data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork linuxcollective/linuxcollective.github.io on GitHub">Fork</a>
+  <a href="https://github.com/Kubernetesdaily/kubernetesdaily.github.io" class="github-button"  data-icon="octicon-star" data-show-count="true" aria-label="Star Kubernetesdaily/kubernetesdaily.github.io on GitHub">Star</a>
+  <a href="https://github.com/Kubernetesdaily/kubernetesdaily.github.io/fork" class="github-button"  data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork Kubernetesdaily/kubernetesdaily.github.io on GitHub">Fork</a>
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </div>
@@ -124,15 +146,20 @@
       
       <h3> Thanks to all our contributors!</h3>
 
-      <a href="https://github.com/linuxcollective/linuxcollective.github.io/graphs/contributors">
-        <img src="https://contrib.rocks/image?repo=linuxcollective/linuxcollective.github.io" />
+      <a href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/graphs/contributors">
+        <img src="https://contrib.rocks/image?repo=https://github.com/kubernetesdaily/kubernetesdaily.github.io" />
       </a>
       
     </section>
   
 
-
+   
   </main>
+
+
+
+
+  
 </div>
 
     <footer id="site-footer">
@@ -169,7 +196,7 @@
   </div>
 
   
-  <a href="https://visitorbadge.io/status?path=https%3A%2F%2Flinuxcollective.github.io"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Flinuxcollective.github.io&label=VISITORS&countColor=%23263759&style=plastic" /></a>
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
 
   
   <div id="site-footer-love">
@@ -177,6 +204,7 @@
   </div>
 </footer>
     
+
 
 
 
@@ -197,5 +225,12 @@
       });
   </script>
 
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
   </body>
 </html>

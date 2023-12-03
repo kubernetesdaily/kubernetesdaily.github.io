@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Receive real time events from containers.">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Docker Compose CLI - Events Command · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/docker/docker-compose-cli-events-command/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/"  class="active"><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/" ><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">Docker</strong>
+          
+          <a class="sidebar-link " href="/docker/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">🐳 Learn Docker</strong>
+          
+          <a class="sidebar-link " href="/docker/pre-requisit-for-this-lab/">
+            
+              Pre-requisit for this lab
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-hello-world-example/">
+            
+              Docker Hello World Example
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-image-filtering/">
+            
+              Docker Image Filtering
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/images-and-container-as-tar-file/">
+            
+              Images and Container As Tar file
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/push-first-nginx-web-app-to-dockerhub/">
+            
+              Push first Nginx Web app To DockerHub
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/build-a-base-image-from-scratch/">
+            
+              Build a Base Image from Scratch
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-add-instruction/">
+            
+              Dockerfile Lab - ADD instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-copy-instruction/">
+            
+              Dockerfile Lab - COPY instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-cmd-instruction/">
+            
+              Dockerfile Lab - CMD instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-entrypoint-instruction/">
+            
+              Dockerfile Lab - Entrypoint instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-workdir-instruction/">
+            
+              Dockerfile Lab - WORKDIR instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-run-instruction/">
+            
+              Dockerfile Lab - RUN instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-arg-instruction/">
+            
+              Dockerfile Lab - ARG instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-volume-instruction/">
+            
+              Dockerfile Lab - Volume instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-user-instruction/">
+            
+              Dockerfile Lab - USER instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-healthcheck-instruction/">
+            
+              Dockerfile Lab - HEALTHCHECK instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-env-instruction/">
+            
+              Dockerfile Lab - ENV instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/dockerfile-lab-onbuild-instruction/">
+            
+              Dockerfile Lab - ONBUILD instruction
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/running-multiple-docker-containers-from-cli/">
+            
+              Running multiple docker containers from CLI
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/write-first-docker-compose-file/">
+            
+              Write First Docker Compose file
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-with-volume-mount/">
+            
+              Docker Compose with Volume Mount
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/build-own-dockerfile-and-docker-compose-with-custom-configuration/">
+            
+              Build Own Dockerfile and Docker Compose with Custom configuration
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/simple-php-apache-and-database-using-docker-compose/">
+            
+              Simple php apache and database using docker compose
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/host-volume-mount-data-persistentence/">
+            
+              Host Volume Mount - Data persistentence
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/named-volume-mount-data-persistentence/">
+            
+              Named Volume Mount - Data persistentence
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-build-command/">
+            
+              Docker Compose CLI - Build Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-config-command/">
+            
+              Docker Compose CLI - Config Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-cp-command/">
+            
+              Docker Compose CLI - CP Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-create-command/">
+            
+              Docker Compose CLI - Create Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-down-command/">
+            
+              Docker Compose CLI - Down Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/docker/docker-compose-cli-events-command/">
+            
+              Docker Compose CLI - Events Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-exec-command/">
+            
+              Docker Compose CLI - Exec Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-images-command/">
+            
+              Docker Compose CLI - Images Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-kill-command/">
+            
+              Docker Compose CLI - Kill Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-logs-command/">
+            
+              Docker Compose CLI - logs Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-ls-command/">
+            
+              Docker Compose CLI - ls Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-pause-unpause-command/">
+            
+              Docker Compose CLI - Pause unpause Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-port-command/">
+            
+              Docker Compose CLI - Port Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-ps-command/">
+            
+              Docker Compose CLI - ps Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-pull-command/">
+            
+              Docker Compose CLI - pull Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-push-command/">
+            
+              Docker Compose CLI - push Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-rm-command/">
+            
+              Docker Compose CLI - rm Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-compose-cli-run-command/">
+            
+              Docker Compose CLI - run Command
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/setup-local-network/">
+            
+              Setup local network
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/setup-remote-network/">
+            
+              Setup Remote network
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/newtorking-in-docker-compose/">
+            
+              Newtorking in Docker Compose
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/newtorking-in-docker-compose-with-ngnix/">
+            
+              Newtorking in Docker Compose with ngnix
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker/docker-wordpress-example/">
+            
+              Docker Wordpress Example
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/docker//">
+            
+              
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Docker Compose CLI - Events Command</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <h4 id="here-is-sample-voting-app">here is sample voting app</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">cat docker-compose.yml 
+</span></span><span class="line"><span class="cl"><span class="c1"># version is now using &#34;compose spec&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># v2 and v3 are now combined!</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># docker-compose v1.27+ required</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">services:
+</span></span><span class="line"><span class="cl">  vote:
+</span></span><span class="line"><span class="cl">    build: ./vote
+</span></span><span class="line"><span class="cl">    <span class="c1"># use python rather than gunicorn for local dev</span>
+</span></span><span class="line"><span class="cl">    command: python app.py
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      redis:
+</span></span><span class="line"><span class="cl">        condition: service_healthy
+</span></span><span class="line"><span class="cl">    healthcheck: 
+</span></span><span class="line"><span class="cl">      test: <span class="o">[</span><span class="s2">&#34;CMD&#34;</span>, <span class="s2">&#34;curl&#34;</span>, <span class="s2">&#34;-f&#34;</span>, <span class="s2">&#34;http://localhost&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">      interval: 15s
+</span></span><span class="line"><span class="cl">      timeout: 5s
+</span></span><span class="line"><span class="cl">      retries: <span class="m">3</span>
+</span></span><span class="line"><span class="cl">      start_period: 10s
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">     - ./vote:/app
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;5000:80&#34;</span>
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">      - front-tier
+</span></span><span class="line"><span class="cl">      - back-tier
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  result:
+</span></span><span class="line"><span class="cl">    build: ./result
+</span></span><span class="line"><span class="cl">    <span class="c1"># use nodemon rather than node for local dev</span>
+</span></span><span class="line"><span class="cl">    entrypoint: nodemon server.js
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      db:
+</span></span><span class="line"><span class="cl">        condition: service_healthy 
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - ./result:/app
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;5001:80&#34;</span>
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;5858:5858&#34;</span>
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">      - front-tier
+</span></span><span class="line"><span class="cl">      - back-tier
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  worker:
+</span></span><span class="line"><span class="cl">    build:
+</span></span><span class="line"><span class="cl">      context: ./worker
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      redis:
+</span></span><span class="line"><span class="cl">        condition: service_healthy 
+</span></span><span class="line"><span class="cl">      db:
+</span></span><span class="line"><span class="cl">        condition: service_healthy 
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">      - back-tier
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  redis:
+</span></span><span class="line"><span class="cl">    image: redis:alpine
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;./healthchecks:/healthchecks&#34;</span>
+</span></span><span class="line"><span class="cl">    healthcheck:
+</span></span><span class="line"><span class="cl">      test: /healthchecks/redis.sh
+</span></span><span class="line"><span class="cl">      interval: <span class="s2">&#34;5s&#34;</span>
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">      - back-tier
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  db:
+</span></span><span class="line"><span class="cl">    image: postgres:15-alpine
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl">      POSTGRES_USER: <span class="s2">&#34;postgres&#34;</span>
+</span></span><span class="line"><span class="cl">      POSTGRES_PASSWORD: <span class="s2">&#34;postgres&#34;</span>
+</span></span><span class="line"><span class="cl">    volumes:
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;db-data:/var/lib/postgresql/data&#34;</span>
+</span></span><span class="line"><span class="cl">      - <span class="s2">&#34;./healthchecks:/healthchecks&#34;</span>
+</span></span><span class="line"><span class="cl">    healthcheck:
+</span></span><span class="line"><span class="cl">      test: /healthchecks/postgres.sh
+</span></span><span class="line"><span class="cl">      interval: <span class="s2">&#34;5s&#34;</span>
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">      - back-tier
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># this service runs once to seed the database with votes</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># it won&#39;t run unless you specify the &#34;seed&#34; profile</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># docker compose --profile seed up -d</span>
+</span></span><span class="line"><span class="cl">  seed:
+</span></span><span class="line"><span class="cl">    build: ./seed-data
+</span></span><span class="line"><span class="cl">    profiles: <span class="o">[</span><span class="s2">&#34;seed&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">    depends_on:
+</span></span><span class="line"><span class="cl">      vote:
+</span></span><span class="line"><span class="cl">        condition: service_healthy 
+</span></span><span class="line"><span class="cl">    networks:
+</span></span><span class="line"><span class="cl">      - front-tier
+</span></span><span class="line"><span class="cl">    restart: <span class="s2">&#34;no&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">volumes:
+</span></span><span class="line"><span class="cl">  db-data:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">networks:
+</span></span><span class="line"><span class="cl">  front-tier:
+</span></span><span class="line"><span class="cl">  back-tier:
+</span></span></code></pre></div><h4 id="docker-compose-up">Docker Compose up</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">example-voting-app git:<span class="o">(</span>main<span class="o">)</span> docker compose up
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Running 9/9
+</span></span><span class="line"><span class="cl"> ⠿ db Pulled                                                                                                                                                                         9.7s
+</span></span><span class="line"><span class="cl">   ⠿ af6eaf76a39c Already exists                                                                                                                                                     0.0s
+</span></span><span class="line"><span class="cl">   ⠿ 71286d2ce0cc Pull <span class="nb">complete</span>                                                                                                                                                      1.7s
+</span></span><span class="line"><span class="cl">   ⠿ b82afe47906a Pull <span class="nb">complete</span>                                                                                                                                                      1.8s
+</span></span><span class="line"><span class="cl">   ⠿ 75d514bb4aa7 Pull <span class="nb">complete</span>                                                                                                                                                      5.6s
+</span></span><span class="line"><span class="cl">   ⠿ 217da6f41d9e Pull <span class="nb">complete</span>                                                                                                                                                      5.7s
+</span></span><span class="line"><span class="cl">   ⠿ 39a3f4823126 Pull <span class="nb">complete</span>                                                                                                                                                      5.7s
+</span></span><span class="line"><span class="cl">   ⠿ ed6571a6afcc Pull <span class="nb">complete</span>                                                                                                                                                      5.8s
+</span></span><span class="line"><span class="cl">   ⠿ 8ae7d38f54c4 Pull <span class="nb">complete</span>                                                                                                                                                      5.8s
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Building 36.2s <span class="o">(</span>42/42<span class="o">)</span> <span class="nv">FINISHED</span>                                                                                                                                                       
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result internal<span class="o">]</span> load .dockerignore                                                                                                                          0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring context: 54B                                                                                                                                                     0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result internal<span class="o">]</span> load build definition from Dockerfile                                                                                                       0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring dockerfile: 517B                                                                                                                                                 0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result internal<span class="o">]</span> load metadata <span class="k">for</span> docker.io/library/node:18-slim                                                                                            5.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote internal<span class="o">]</span> load .dockerignore                                                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring context: 2B                                                                                                                                                      0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote internal<span class="o">]</span> load build definition from Dockerfile                                                                                                         0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring dockerfile: 740B                                                                                                                                                 0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote internal<span class="o">]</span> load metadata <span class="k">for</span> docker.io/library/python:3.9-slim                                                                                           5.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker internal<span class="o">]</span> load .dockerignore                                                                                                                          0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring context: 2B                                                                                                                                                      0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker internal<span class="o">]</span> load build definition from Dockerfile                                                                                                       0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring dockerfile: 1.45kB                                                                                                                                               0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker internal<span class="o">]</span> load metadata <span class="k">for</span> mcr.microsoft.com/dotnet/runtime:7.0                                                                                      1.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker internal<span class="o">]</span> load metadata <span class="k">for</span> mcr.microsoft.com/dotnet/sdk:7.0                                                                                          1.3s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker build 1/7<span class="o">]</span> FROM mcr.microsoft.com/dotnet/sdk:7.0@sha256:bd1ccc2332fc03c6df1659ed125f67f02666f9f188947a80cec4e7afd3c7f98d                             18.5s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; resolve mcr.microsoft.com/dotnet/sdk:7.0@sha256:bd1ccc2332fc03c6df1659ed125f67f02666f9f188947a80cec4e7afd3c7f98d                                                              0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:8907849f91e57df0899482d802a3fc140b67a6d5febaa503837ed2233d662283 13.55MB / 13.55MB                                                                                     4.5s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:afd8a1df3eb1e6747064359ca9bc37db5330672279e0be935849f256d4b3f0b1 155.94MB / 155.94MB                                                                                  12.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:e4f0af37a4eb47b3e26810a4721ebdf36d9342d580d8c6027bd99a7596acc98c 25.39MB / 25.39MB                                                                                     1.9s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:d1a2ad48fbf7e8af456454a11f1e058cdb9ba171ef35dace5d13b495b053cc84 9.80MB / 9.80MB                                                                                       1.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:d1a2ad48fbf7e8af456454a11f1e058cdb9ba171ef35dace5d13b495b053cc84                                                                                            0.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:e4f0af37a4eb47b3e26810a4721ebdf36d9342d580d8c6027bd99a7596acc98c                                                                                            0.5s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:afd8a1df3eb1e6747064359ca9bc37db5330672279e0be935849f256d4b3f0b1                                                                                            4.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:8907849f91e57df0899482d802a3fc140b67a6d5febaa503837ed2233d662283                                                                                            0.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker internal<span class="o">]</span> load build context                                                                                                                          0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring context: 7.48kB                                                                                                                                                  0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker stage-1 1/3<span class="o">]</span> FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:1ed4d59643e6b8b41b64ffa00b524ebca9de287bd3efa9955f9fa706f1dd0471                        3.6s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; resolve mcr.microsoft.com/dotnet/runtime:7.0@sha256:1ed4d59643e6b8b41b64ffa00b524ebca9de287bd3efa9955f9fa706f1dd0471                                                          0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:a34d8d2343cd4d1705a15b9494ef9b39d01832d43c3a09fe129458c8bfdabeee 155B / 155B                                                                                           0.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:b7dfc290d72d9065e3276dcd05c3323942f8947a71dd5e7b4304f7a68d25c9c9 30.71MB / 30.71MB                                                                                     3.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:235af35749f09d6549b76fb376b3929ec21198feee4e72ffb396514dd11b374e 14.92MB / 14.92MB                                                                                     1.8s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:66dbba0fb1b568cc3ffd53409ba2f9f82995ab7f80e379338f3f36e4dcd223be 30.06MB / 30.06MB                                                                                     2.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:66dbba0fb1b568cc3ffd53409ba2f9f82995ab7f80e379338f3f36e4dcd223be                                                                                            0.6s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:235af35749f09d6549b76fb376b3929ec21198feee4e72ffb396514dd11b374e                                                                                            0.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:b7dfc290d72d9065e3276dcd05c3323942f8947a71dd5e7b4304f7a68d25c9c9                                                                                            0.5s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:a34d8d2343cd4d1705a15b9494ef9b39d01832d43c3a09fe129458c8bfdabeee                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result 1/7<span class="o">]</span> FROM docker.io/library/node:18-slim@sha256:36f3403a001b82d525afd2bdb7fcec0980543277dd86e9657964cce3438ae4b7                                      4.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; resolve docker.io/library/node:18-slim@sha256:36f3403a001b82d525afd2bdb7fcec0980543277dd86e9657964cce3438ae4b7                                                                0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:8e5162ad1efe24f915933435516b8cb1510cc80704bdf87c868e995f4f871cd9 451B / 451B                                                                                           0.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:1ad5fb92392ab64732e756b44967f7ecead775eb06ce3f9cd43d1a22bd9c9458 2.77MB / 2.77MB                                                                                       1.8s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:cc36a0fa43f85245c8d9977661c82a89cfc226fc26e5861670cf62c0933f62c4 46.14MB / 46.14MB                                                                                     2.9s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:d1d4cdb9c955626876afec2a95c6f7487481e067acc0a8be1867f678003266df 4.19kB / 4.19kB                                                                                       0.6s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:d1d4cdb9c955626876afec2a95c6f7487481e067acc0a8be1867f678003266df                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:cc36a0fa43f85245c8d9977661c82a89cfc226fc26e5861670cf62c0933f62c4                                                                                            1.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:1ad5fb92392ab64732e756b44967f7ecead775eb06ce3f9cd43d1a22bd9c9458                                                                                            0.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:8e5162ad1efe24f915933435516b8cb1510cc80704bdf87c868e995f4f871cd9                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result internal<span class="o">]</span> load build context                                                                                                                          0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring context: 302.01kB                                                                                                                                                0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker stage-1 2/3<span class="o">]</span> WORKDIR /app                                                                                                                             0.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote 1/6<span class="o">]</span> FROM docker.io/library/python:3.9-slim@sha256:2ed9cf48cf86eb638a9ceb555737161fbb20fa0474494269150b4d6c2653227b                                     2.7s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; resolve docker.io/library/python:3.9-slim@sha256:2ed9cf48cf86eb638a9ceb555737161fbb20fa0474494269150b4d6c2653227b                                                             0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:98b352a9715d74c4172491762aded5e741a28ce83df0fd99321a1031b1d5b6c8 3.17MB / 3.17MB                                                                                       0.6s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:14b89f7d65aecdc5e63ab5759d5135ec777524bcdbc4adb5200fac65c825655d 233B / 233B                                                                                           0.3s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:ac439b0377b530ec2bd538701b6611c91588fdf491f0566458373c314866cfb8 11.22MB / 11.22MB                                                                                     0.9s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sha256:1f3ba05aa6dc6bcf7f4f57d5eaec80fd3edffbffde2e9727df29d63c978f0b99 1.06MB / 1.06MB                                                                                       1.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:1f3ba05aa6dc6bcf7f4f57d5eaec80fd3edffbffde2e9727df29d63c978f0b99                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:ac439b0377b530ec2bd538701b6611c91588fdf491f0566458373c314866cfb8                                                                                            0.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:14b89f7d65aecdc5e63ab5759d5135ec777524bcdbc4adb5200fac65c825655d                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; extracting sha256:98b352a9715d74c4172491762aded5e741a28ce83df0fd99321a1031b1d5b6c8                                                                                            0.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote internal<span class="o">]</span> load build context                                                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; transferring context: 6.11kB                                                                                                                                                  0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote 2/6<span class="o">]</span> RUN apt-get update     <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends     curl     <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*                                   4.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result 2/7<span class="o">]</span> RUN apt-get update     <span class="o">&amp;&amp;</span> apt-get install -y --no-install-recommends     curl     tini     <span class="o">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*                        3.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote 3/6<span class="o">]</span> WORKDIR /app                                                                                                                                       0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote 4/6<span class="o">]</span> COPY requirements.txt /app/requirements.txt                                                                                                        0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote 5/6<span class="o">]</span> RUN pip install -r requirements.txt                                                                                                                3.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result 3/7<span class="o">]</span> WORKDIR /app                                                                                                                                     0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result 4/7<span class="o">]</span> RUN npm install -g nodemon                                                                                                                       1.9s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result 5/7<span class="o">]</span> COPY package*.json ./                                                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result 6/7<span class="o">]</span> RUN npm ci  <span class="o">&amp;&amp;</span> npm cache clean --force  <span class="o">&amp;&amp;</span> mv /app/node_modules /node_modules                                                                    2.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote 6/6<span class="o">]</span> COPY . .                                                                                                                                           0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-vote<span class="o">]</span> exporting to docker image format                                                                                                                       3.8s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting layers                                                                                                                                                              0.5s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting manifest sha256:8e6e3010a750bd01eebd409fa77a5e98f99f4aecefe6de2b8eb43096e7de9bcb                                                                                    0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting config sha256:5c1cf62b540c59ce0a99930302aae92523c6db3e77d0e8737d4d4260908880ee                                                                                      0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sending tarball                                                                                                                                                               3.2s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; importing to docker                                                                                                                                                              2.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result 7/7<span class="o">]</span> COPY . .                                                                                                                                         0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-result<span class="o">]</span> exporting to docker image format                                                                                                                     3.9s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting layers                                                                                                                                                              0.3s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting manifest sha256:91ac5a4bcc08913d88936fca0f6f36a58a69cb0e2de202691b3fe6c545d21e7c                                                                                    0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting config sha256:223b94fc00aee779a4ee25ce9d1c69cab293aedd539b843faba7c1a47e894b29                                                                                      0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sending tarball                                                                                                                                                               3.6s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; importing to docker                                                                                                                                                              2.4s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker build 2/7<span class="o">]</span> RUN <span class="nb">echo</span> <span class="s2">&#34;I am running on linux/arm64, building for linux/arm64&#34;</span>                                                                           0.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker build 3/7<span class="o">]</span> WORKDIR /source                                                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker build 4/7<span class="o">]</span> COPY *.csproj .                                                                                                                            0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker build 5/7<span class="o">]</span> RUN <span class="k">case</span> linux/arm64 in          <span class="s2">&#34;linux/amd64&#34;</span><span class="o">)</span>  <span class="nv">ARCH</span><span class="o">=</span>x64  <span class="p">;;</span>          <span class="s2">&#34;linux/arm64&#34;</span><span class="o">)</span>  <span class="nv">ARCH</span><span class="o">=</span>arm64  <span class="p">;;</span>          <span class="s2">&#34;linux/arm64/v8&#34;</span><span class="o">)</span>  <span class="nv">ARCH</span><span class="o">=</span>a  12.3s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker build 6/7<span class="o">]</span> COPY . .                                                                                                                                   0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker build 7/7<span class="o">]</span> RUN  <span class="k">case</span> linux/arm64 in          <span class="s2">&#34;linux/amd64&#34;</span><span class="o">)</span>  <span class="nv">ARCH</span><span class="o">=</span>x64  <span class="p">;;</span>          <span class="s2">&#34;linux/arm64&#34;</span><span class="o">)</span>  <span class="nv">ARCH</span><span class="o">=</span>arm64  <span class="p">;;</span>          <span class="s2">&#34;linux/arm64/v8&#34;</span><span class="o">)</span>  <span class="nv">ARCH</span><span class="o">=</span>a  1.7s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker stage-1 3/3<span class="o">]</span> COPY --from<span class="o">=</span>build /app .                                                                                                                 0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">[</span>example-voting-app-worker<span class="o">]</span> exporting to docker image format                                                                                                                     1.8s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting layers                                                                                                                                                              0.1s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting manifest sha256:93ec3cbb0ef4e82b397475cf25ca330aef2b4b2badaa7ad86541b00e48305e63                                                                                    0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; exporting config sha256:8f82fda1dae8bc1c7c040c0c3045239fd48547d34ee3d5d458683cef7b107188                                                                                      0.0s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; <span class="o">=</span>&gt; sending tarball                                                                                                                                                               1.7s
+</span></span><span class="line"><span class="cl"> <span class="o">=</span>&gt; importing to docker                                                                                                                                                              0.7s
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Running 8/5
+</span></span><span class="line"><span class="cl"> ⠿ Network example-voting-app_back-tier   Created                                                                                                                                    0.1s
+</span></span><span class="line"><span class="cl"> ⠿ Network example-voting-app_front-tier  Created                                                                                                                                    0.1s
+</span></span><span class="line"><span class="cl"> ⠿ Volume <span class="s2">&#34;example-voting-app_db-data&#34;</span>    Created                                                                                                                                    0.0s
+</span></span><span class="line"><span class="cl"> ⠿ Container example-voting-app-redis-1   Created                                                                                                                                    0.2s
+</span></span><span class="line"><span class="cl"> ⠿ Container example-voting-app-db-1      Created                                                                                                                                    0.2s
+</span></span><span class="line"><span class="cl"> ⠿ Container example-voting-app-vote-1    Created                                                                                                                                    0.0s
+</span></span><span class="line"><span class="cl"> ⠿ Container example-voting-app-worker-1  Created                                                                                                                                    0.0s
+</span></span><span class="line"><span class="cl"> ⠿ Container example-voting-app-result-1  Created                                                                                                                                    0.0s
+</span></span><span class="line"><span class="cl">Attaching to example-voting-app-db-1, example-voting-app-redis-1, example-voting-app-result-1, example-voting-app-vote-1, example-voting-app-worker-1
+</span></span><span class="line"><span class="cl">example-voting-app-redis-1   <span class="p">|</span> 1:C <span class="m">04</span> Mar <span class="m">2023</span> 14:41:27.311 <span class="c1"># oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo</span>
+</span></span><span class="line"><span class="cl">example-voting-app-redis-1   <span class="p">|</span> 1:C <span class="m">04</span> Mar <span class="m">2023</span> 14:41:27.313 <span class="c1"># Redis version=7.0.9, bits=64, commit=00000000, modified=0, pid=1, just started</span>
+</span></span><span class="line"><span class="cl">example-voting-app-redis-1   <span class="p">|</span> 1:C <span class="m">04</span> Mar <span class="m">2023</span> 14:41:27.313 <span class="c1"># Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf</span>
+</span></span><span class="line"><span class="cl">example-voting-app-redis-1   <span class="p">|</span> 1:M <span class="m">04</span> Mar <span class="m">2023</span> 14:41:27.313 * monotonic clock: POSIX clock_gettime
+</span></span><span class="line"><span class="cl">example-voting-app-redis-1   <span class="p">|</span> 1:M <span class="m">04</span> Mar <span class="m">2023</span> 14:41:27.314 * Running <span class="nv">mode</span><span class="o">=</span>standalone, <span class="nv">port</span><span class="o">=</span>6379.
+</span></span><span class="line"><span class="cl">example-voting-app-redis-1   <span class="p">|</span> 1:M <span class="m">04</span> Mar <span class="m">2023</span> 14:41:27.315 <span class="c1"># Server initialized</span>
+</span></span><span class="line"><span class="cl">example-voting-app-redis-1   <span class="p">|</span> 1:M <span class="m">04</span> Mar <span class="m">2023</span> 14:41:27.318 * Ready to accept connections
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> The files belonging to this database system will be owned by user <span class="s2">&#34;postgres&#34;</span>.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> This user must also own the server process.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> The database cluster will be initialized with locale <span class="s2">&#34;en_US.utf8&#34;</span>.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> The default database encoding has accordingly been <span class="nb">set</span> to <span class="s2">&#34;UTF8&#34;</span>.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> The default text search configuration will be <span class="nb">set</span> to <span class="s2">&#34;english&#34;</span>.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> Data page checksums are disabled.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> fixing permissions on existing directory /var/lib/postgresql/data ... ok
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> creating subdirectories ... ok
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> selecting dynamic shared memory implementation ... posix
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> selecting default max_connections ... <span class="m">100</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> selecting default shared_buffers ... 128MB
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> selecting default <span class="nb">time</span> zone ... UTC
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> creating configuration files ... ok
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> running bootstrap script ... ok
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> sh: locale: not found
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:27.703 UTC <span class="o">[</span>30<span class="o">]</span> WARNING:  no usable system locales were found
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> performing post-bootstrap initialization ... ok
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> initdb: warning: enabling <span class="s2">&#34;trust&#34;</span> authentication <span class="k">for</span> <span class="nb">local</span> connections
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next <span class="nb">time</span> you run initdb.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> syncing data to disk ... ok
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> Success. You can now start the database server using:
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span>     pg_ctl -D /var/lib/postgresql/data -l logfile start
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> waiting <span class="k">for</span> server to start....2023-03-04 14:41:28.118 UTC <span class="o">[</span>36<span class="o">]</span> LOG:  starting PostgreSQL 15.2 on aarch64-unknown-linux-musl, compiled by gcc <span class="o">(</span>Alpine 12.2.1_git20220924-r4<span class="o">)</span> 12.2.1 20220924, 64-bit
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.120 UTC <span class="o">[</span>36<span class="o">]</span> LOG:  listening on Unix socket <span class="s2">&#34;/var/run/postgresql/.s.PGSQL.5432&#34;</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.124 UTC <span class="o">[</span>39<span class="o">]</span> LOG:  database system was shut down at 2023-03-04 14:41:28 UTC
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.127 UTC <span class="o">[</span>36<span class="o">]</span> LOG:  database system is ready to accept connections
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span>  <span class="k">done</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> server started
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> waiting <span class="k">for</span> server to shut down....2023-03-04 14:41:28.218 UTC <span class="o">[</span>36<span class="o">]</span> LOG:  received fast shutdown request
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.220 UTC <span class="o">[</span>36<span class="o">]</span> LOG:  aborting any active transactions
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.222 UTC <span class="o">[</span>36<span class="o">]</span> LOG:  background worker <span class="s2">&#34;logical replication launcher&#34;</span> <span class="o">(</span>PID 42<span class="o">)</span> exited with <span class="nb">exit</span> code <span class="m">1</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.222 UTC <span class="o">[</span>37<span class="o">]</span> LOG:  shutting down
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.222 UTC <span class="o">[</span>37<span class="o">]</span> LOG:  checkpoint starting: shutdown immediate
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.227 UTC <span class="o">[</span>37<span class="o">]</span> LOG:  checkpoint complete: wrote <span class="m">3</span> buffers <span class="o">(</span>0.0%<span class="o">)</span><span class="p">;</span> <span class="m">0</span> WAL file<span class="o">(</span>s<span class="o">)</span> added, <span class="m">0</span> removed, <span class="m">0</span> recycled<span class="p">;</span> <span class="nv">write</span><span class="o">=</span>0.002 s, <span class="nv">sync</span><span class="o">=</span>0.001 s, <span class="nv">total</span><span class="o">=</span>0.005 s<span class="p">;</span> sync <span class="nv">files</span><span class="o">=</span>2, <span class="nv">longest</span><span class="o">=</span>0.001 s, <span class="nv">average</span><span class="o">=</span>0.001 s<span class="p">;</span> <span class="nv">distance</span><span class="o">=</span><span class="m">0</span> kB, <span class="nv">estimate</span><span class="o">=</span><span class="m">0</span> kB
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.233 UTC <span class="o">[</span>36<span class="o">]</span> LOG:  database system is shut down
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span>  <span class="k">done</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> server stopped
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> PostgreSQL init process complete<span class="p">;</span> ready <span class="k">for</span> start up.
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.342 UTC <span class="o">[</span>1<span class="o">]</span> LOG:  starting PostgreSQL 15.2 on aarch64-unknown-linux-musl, compiled by gcc <span class="o">(</span>Alpine 12.2.1_git20220924-r4<span class="o">)</span> 12.2.1 20220924, 64-bit
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.342 UTC <span class="o">[</span>1<span class="o">]</span> LOG:  listening on IPv4 address <span class="s2">&#34;0.0.0.0&#34;</span>, port <span class="m">5432</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.342 UTC <span class="o">[</span>1<span class="o">]</span> LOG:  listening on IPv6 address <span class="s2">&#34;::&#34;</span>, port <span class="m">5432</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.344 UTC <span class="o">[</span>1<span class="o">]</span> LOG:  listening on Unix socket <span class="s2">&#34;/var/run/postgresql/.s.PGSQL.5432&#34;</span>
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.347 UTC <span class="o">[</span>50<span class="o">]</span> LOG:  database system was shut down at 2023-03-04 14:41:28 UTC
+</span></span><span class="line"><span class="cl">example-voting-app-db-1      <span class="p">|</span> 2023-03-04 14:41:28.351 UTC <span class="o">[</span>1<span class="o">]</span> LOG:  database system is ready to accept connections
+</span></span><span class="line"><span class="cl">Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:5000 -&gt; 0.0.0.0:0: listen tcp 0.0.0.0:5000: bind: address already in use
+</span></span><span class="line"><span class="cl">➜  example-voting-app git:<span class="o">(</span>main<span class="o">)</span> 
+</span></span></code></pre></div><h4 id="check-docker-compose-events">check docker compose events</h4>
+<pre tabindex="0"><code>docker compose events 
+2023-03-04 20:12:13.002384 container exec_create: /bin/sh -c /healthchecks/redis.sh c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (name=example-voting-app-redis-1, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, execID=a242ce36c4b7595edfe03a0f3f01d71b201f003ab0e04cf04f26ee17e2d5e668, image=redis:alpine, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks)
+
+2023-03-04 20:12:13.003007 container exec_start: /bin/sh -c /healthchecks/redis.sh c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, desktop.docker.io/binds/0/Target=/healthchecks, desktop.docker.io/binds/0/SourceKind=hostFile, execID=a242ce36c4b7595edfe03a0f3f01d71b201f003ab0e04cf04f26ee17e2d5e668, image=redis:alpine, name=example-voting-app-redis-1)
+
+2023-03-04 20:12:13.022680 container exec_create: /bin/sh -c /healthchecks/postgres.sh 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, desktop.docker.io/binds/0/SourceKind=hostFile, image=postgres:15-alpine, desktop.docker.io/binds/0/Target=/healthchecks, execID=df7c12ef54c8029a23eb9febcb677c8f8c0984cf5c3da7c5634d268b1b3804b3, name=example-voting-app-db-1)
+
+2023-03-04 20:12:13.023200 container exec_start: /bin/sh -c /healthchecks/postgres.sh 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (name=example-voting-app-db-1, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, execID=df7c12ef54c8029a23eb9febcb677c8f8c0984cf5c3da7c5634d268b1b3804b3, image=postgres:15-alpine, desktop.docker.io/binds/0/Target=/healthchecks, desktop.docker.io/binds/0/SourceKind=hostFile)
+
+2023-03-04 20:12:13.078489 container exec_die c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (desktop.docker.io/binds/0/Target=/healthchecks, image=redis:alpine, execID=a242ce36c4b7595edfe03a0f3f01d71b201f003ab0e04cf04f26ee17e2d5e668, exitCode=0, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, name=example-voting-app-redis-1)
+
+2023-03-04 20:12:13.097001 container exec_die 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (image=postgres:15-alpine, desktop.docker.io/binds/0/SourceKind=hostFile, exitCode=0, name=example-voting-app-db-1, desktop.docker.io/binds/0/Target=/healthchecks, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, execID=df7c12ef54c8029a23eb9febcb677c8f8c0984cf5c3da7c5634d268b1b3804b3)
+
+2023-03-04 20:12:18.082975 container exec_create: /bin/sh -c /healthchecks/redis.sh c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (image=redis:alpine, name=example-voting-app-redis-1, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks, execID=4293df2a37da48526e1c21e417c25d34e8947171a66a44bb9741036f09903032)
+
+2023-03-04 20:12:18.083432 container exec_start: /bin/sh -c /healthchecks/redis.sh c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, execID=4293df2a37da48526e1c21e417c25d34e8947171a66a44bb9741036f09903032, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks, image=redis:alpine, name=example-voting-app-redis-1)
+
+2023-03-04 20:12:18.099740 container exec_create: /bin/sh -c /healthchecks/postgres.sh 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (name=example-voting-app-db-1, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, image=postgres:15-alpine, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks, execID=725b7d5bf401d7c3944d8432b78835ebd86742b696ce30f6166da8b8d3802f63)
+
+2023-03-04 20:12:18.100090 container exec_start: /bin/sh -c /healthchecks/postgres.sh 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks, execID=725b7d5bf401d7c3944d8432b78835ebd86742b696ce30f6166da8b8d3802f63, image=postgres:15-alpine, name=example-voting-app-db-1)
+
+2023-03-04 20:12:18.169539 container exec_die c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, image=redis:alpine, name=example-voting-app-redis-1, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks, execID=4293df2a37da48526e1c21e417c25d34e8947171a66a44bb9741036f09903032, exitCode=0)
+
+2023-03-04 20:12:18.185722 container exec_die 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (desktop.docker.io/binds/0/SourceKind=hostFile, image=postgres:15-alpine, desktop.docker.io/binds/0/Target=/healthchecks, exitCode=0, name=example-voting-app-db-1, execID=725b7d5bf401d7c3944d8432b78835ebd86742b696ce30f6166da8b8d3802f63, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks)
+
+2023-03-04 20:12:23.173394 container exec_create: /bin/sh -c /healthchecks/redis.sh c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (desktop.docker.io/binds/0/Target=/healthchecks, image=redis:alpine, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, desktop.docker.io/binds/0/SourceKind=hostFile, execID=7225d11881403d700013274bbcd9ab8c0dcf8e1ec55ecf8eefc63af51cb10ebe, name=example-voting-app-redis-1)
+
+2023-03-04 20:12:23.173847 container exec_start: /bin/sh -c /healthchecks/redis.sh c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, execID=7225d11881403d700013274bbcd9ab8c0dcf8e1ec55ecf8eefc63af51cb10ebe, image=redis:alpine, name=example-voting-app-redis-1)
+
+2023-03-04 20:12:23.188391 container exec_create: /bin/sh -c /healthchecks/postgres.sh 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (desktop.docker.io/binds/0/Target=/healthchecks, name=example-voting-app-db-1, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, execID=8c18f808739a1a14c190db460030da0bb1b4a68a153f202f55a2c840f96bf630, image=postgres:15-alpine)
+
+2023-03-04 20:12:23.188516 container exec_start: /bin/sh -c /healthchecks/postgres.sh 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, execID=8c18f808739a1a14c190db460030da0bb1b4a68a153f202f55a2c840f96bf630, image=postgres:15-alpine, name=example-voting-app-db-1, desktop.docker.io/binds/0/Target=/healthchecks)
+
+2023-03-04 20:12:23.241796 container exec_die c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406 (desktop.docker.io/binds/0/SourceKind=hostFile, execID=7225d11881403d700013274bbcd9ab8c0dcf8e1ec55ecf8eefc63af51cb10ebe, exitCode=0, name=example-voting-app-redis-1, desktop.docker.io/binds/0/Target=/healthchecks, image=redis:alpine, desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks)
+
+2023-03-04 20:12:23.263784 container exec_die 0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6 (desktop.docker.io/binds/0/Source=/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks, desktop.docker.io/binds/0/SourceKind=hostFile, desktop.docker.io/binds/0/Target=/healthchecks, exitCode=0, name=example-voting-app-db-1, execID=8c18f808739a1a14c190db460030da0bb1b4a68a153f202f55a2c840f96bf630, image=postgres:15-alpine)
+</code></pre><h4 id="use---json-flag">use &ndash;json flag</h4>
+<pre tabindex="0"><code>
+docker compose events --json
+{&#34;action&#34;:&#34;exec_create: /bin/sh -c /healthchecks/redis.sh&#34;,&#34;attributes&#34;:{&#34;desktop.docker.io/binds/0/Source&#34;:&#34;/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks&#34;,&#34;desktop.docker.io/binds/0/SourceKind&#34;:&#34;hostFile&#34;,&#34;desktop.docker.io/binds/0/Target&#34;:&#34;/healthchecks&#34;,&#34;execID&#34;:&#34;8f907207527e01ca85a0d73227b35a6da73ed8402de4336e1acb312c46e9473e&#34;,&#34;image&#34;:&#34;redis:alpine&#34;,&#34;name&#34;:&#34;example-voting-app-redis-1&#34;},&#34;id&#34;:&#34;c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406&#34;,&#34;service&#34;:&#34;redis&#34;,&#34;time&#34;:&#34;2023-03-04T20:30:14.926031584+05:30&#34;,&#34;type&#34;:&#34;container&#34;}
+{&#34;action&#34;:&#34;exec_start: /bin/sh -c /healthchecks/redis.sh&#34;,&#34;attributes&#34;:{&#34;desktop.docker.io/binds/0/Source&#34;:&#34;/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks&#34;,&#34;desktop.docker.io/binds/0/SourceKind&#34;:&#34;hostFile&#34;,&#34;desktop.docker.io/binds/0/Target&#34;:&#34;/healthchecks&#34;,&#34;execID&#34;:&#34;8f907207527e01ca85a0d73227b35a6da73ed8402de4336e1acb312c46e9473e&#34;,&#34;image&#34;:&#34;redis:alpine&#34;,&#34;name&#34;:&#34;example-voting-app-redis-1&#34;},&#34;id&#34;:&#34;c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406&#34;,&#34;service&#34;:&#34;redis&#34;,&#34;time&#34;:&#34;2023-03-04T20:30:14.926920001+05:30&#34;,&#34;type&#34;:&#34;container&#34;}
+{&#34;action&#34;:&#34;exec_create: /bin/sh -c /healthchecks/postgres.sh&#34;,&#34;attributes&#34;:{&#34;desktop.docker.io/binds/0/Source&#34;:&#34;/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks&#34;,&#34;desktop.docker.io/binds/0/SourceKind&#34;:&#34;hostFile&#34;,&#34;desktop.docker.io/binds/0/Target&#34;:&#34;/healthchecks&#34;,&#34;execID&#34;:&#34;006d0a097e9819360bf647cc7f2f5c75723588a546b14359267b4b3a0b169310&#34;,&#34;image&#34;:&#34;postgres:15-alpine&#34;,&#34;name&#34;:&#34;example-voting-app-db-1&#34;},&#34;id&#34;:&#34;0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6&#34;,&#34;service&#34;:&#34;db&#34;,&#34;time&#34;:&#34;2023-03-04T20:30:14.940481834+05:30&#34;,&#34;type&#34;:&#34;container&#34;}
+{&#34;action&#34;:&#34;exec_start: /bin/sh -c /healthchecks/postgres.sh&#34;,&#34;attributes&#34;:{&#34;desktop.docker.io/binds/0/Source&#34;:&#34;/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks&#34;,&#34;desktop.docker.io/binds/0/SourceKind&#34;:&#34;hostFile&#34;,&#34;desktop.docker.io/binds/0/Target&#34;:&#34;/healthchecks&#34;,&#34;execID&#34;:&#34;006d0a097e9819360bf647cc7f2f5c75723588a546b14359267b4b3a0b169310&#34;,&#34;image&#34;:&#34;postgres:15-alpine&#34;,&#34;name&#34;:&#34;example-voting-app-db-1&#34;},&#34;id&#34;:&#34;0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6&#34;,&#34;service&#34;:&#34;db&#34;,&#34;time&#34;:&#34;2023-03-04T20:30:14.941143834+05:30&#34;,&#34;type&#34;:&#34;container&#34;}
+{&#34;action&#34;:&#34;exec_die&#34;,&#34;attributes&#34;:{&#34;desktop.docker.io/binds/0/Source&#34;:&#34;/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks&#34;,&#34;desktop.docker.io/binds/0/SourceKind&#34;:&#34;hostFile&#34;,&#34;desktop.docker.io/binds/0/Target&#34;:&#34;/healthchecks&#34;,&#34;execID&#34;:&#34;8f907207527e01ca85a0d73227b35a6da73ed8402de4336e1acb312c46e9473e&#34;,&#34;exitCode&#34;:&#34;0&#34;,&#34;image&#34;:&#34;redis:alpine&#34;,&#34;name&#34;:&#34;example-voting-app-redis-1&#34;},&#34;id&#34;:&#34;c0d6be412752520417ac2b5800fb4501e9c2553f900e078da9fd2a2fde56d406&#34;,&#34;service&#34;:&#34;redis&#34;,&#34;time&#34;:&#34;2023-03-04T20:30:15.009103251+05:30&#34;,&#34;type&#34;:&#34;container&#34;}
+{&#34;action&#34;:&#34;exec_die&#34;,&#34;attributes&#34;:{&#34;desktop.docker.io/binds/0/Source&#34;:&#34;/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/healthchecks&#34;,&#34;desktop.docker.io/binds/0/SourceKind&#34;:&#34;hostFile&#34;,&#34;desktop.docker.io/binds/0/Target&#34;:&#34;/healthchecks&#34;,&#34;execID&#34;:&#34;006d0a097e9819360bf647cc7f2f5c75723588a546b14359267b4b3a0b169310&#34;,&#34;exitCode&#34;:&#34;0&#34;,&#34;image&#34;:&#34;postgres:15-alpine&#34;,&#34;name&#34;:&#34;example-voting-app-db-1&#34;},&#34;id&#34;:&#34;0ea61e77a190102e4facd7759235fd8c92870b1f594eaaf109a7e55888693dc6&#34;,&#34;service&#34;:&#34;db&#34;,&#34;time&#34;:&#34;2023-03-04T20:30:15.026884834+05:30&#34;,&#34;type&#34;:&#34;container&#34;}
+{&#34;action&#34;:&#34;exec_create: /bin/sh -c /healthchecks/redis.sh&#34;,&#34;attributes&#34;:{&#34;desktop.docker.io/binds/0/Source&#34;:&#34;/Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docke
+</code></pre>
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/docker/docker-compose-cli-down-command/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/docker/docker-compose-cli-exec-command/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>
