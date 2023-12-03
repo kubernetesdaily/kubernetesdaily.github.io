@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Dockef Architecture in detail">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Docker architecture and its components · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/containersecurity/docker-architecture-and-its-components/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/"  class="active"><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">Container Security</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">🔒ContainerSecurity</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/what-is-container/">
+            
+              What is container?
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-vs-virtualization/">
+            
+              Container vs Virtualization
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/namespaces/">
+            
+              Namespaces
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/cgroups/">
+            
+              Cgroups
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/capabilities/">
+            
+              Capabilities
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/containersecurity/docker-architecture-and-its-components/">
+            
+              Docker architecture and its components
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/interacting-with-container-ecosystem/">
+            
+              Interacting with container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/attack-surface-of-the-container-ecosystem/">
+            
+              Attack surface of the container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-volumes/">
+            
+              Docker volumes
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-networking/">
+            
+              Docker Networking
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/auditing-docker-security/">
+            
+              Auditing Docker Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-image-security/">
+            
+              Container Image Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerfile-security-best-practices/">
+            
+              DockerFile Security Best Practices
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/">
+            
+              SecretScanner - Finding secrets and passwords in container images and file systems
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/yarahunter-malware-scanner-for-container-images/">
+            
+              YaraHunter - Malware Scanner for Container Images
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/security-linting-of-dockerfiles/">
+            
+              Security Linting of Dockerfiles
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/static-analysis-of-container-images-library-for-container/">
+            
+              Static Analysis of container images library for container
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-host-security-configurations/">
+            
+              Docker host security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-daemon-security-configurations/">
+            
+              Docker Daemon security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/content-trust-and-integrity-checks/">
+            
+              Content Trust and Integrity checks
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-registry-security-configurations/">
+            
+              Docker Registry security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerscan/">
+            
+              DockerScan
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dive/">
+            
+              Dive
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-events/">
+            
+              Docker events
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Docker architecture and its components</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <p>Docker architecture and its components</p>
+<h1 id="docker-architecture">Docker Architecture</h1>
+<p><img src="./images/docker-engine-architecture.svg" alt=""></p>
+<p>Docker architecture consists of three main components:</p>
+<ul>
+<li>Docker Engine: This is the core component of Docker and is responsible for building, running, and distributing Docker containers. It is made up of a daemon, a REST API, and a CLI (command line interface).</li>
+<li>Docker Hub: This is a cloud-based registry service that allows users to share and store Docker images. It acts as a central repository for Docker images and makes it easy for users to find and download images that they need for their projects.</li>
+<li>Docker Client: This is a command-line tool that allows users to interact with the Docker daemon and perform various tasks such as building, running, and distributing Docker containers.</li>
+</ul>
+<p>In addition to these main components, Docker architecture also includes other components such as Docker Compose (a tool for defining and running multi-container Docker applications), Docker Swarm (a tool for orchestrating and managing a cluster of Docker containers), and Docker Machine (a tool for creating and managing Docker hosts on various infrastructure platforms).</p>
+<p><img src="./images/docker-architecture.png" alt=""></p>
+<h1 id="docker-engine">Docker Engine</h1>
+<p>To interact with the Docker Engine using Go, we can use the official Docker API library for Go, which can be found at <a href="https://github.com/docker/docker" target="_blank">https://github.com/docker/docker</a>.</p>
+<p>Here are the steps to interact with the Docker Engine using Go:</p>
+<p>1.Import the necessary libraries:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/docker/docker/api/types&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;github.com/docker/docker/client&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><p>2.Create a new Docker client:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">NewClientWithOpts</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">FromEnv</span><span class="p">,</span> <span class="nx">client</span><span class="p">.</span><span class="nf">WithAPIVersionNegotiation</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>3.Use the client to perform various actions on the Docker Engine, such as pulling an image from a registry:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">reader</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">ImagePull</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="s">&#34;alpine:latest&#34;</span><span class="p">,</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ImagePullOptions</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">reader</span><span class="p">)</span>
+</span></span></code></pre></div><p>Close the client when finished:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">reader</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">ImagePull</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="s">&#34;alpine:latest&#34;</span><span class="p">,</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ImagePullOptions</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">io</span><span class="p">.</span><span class="nf">Copy</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">reader</span><span class="p">)</span>
+</span></span></code></pre></div><p>Using the Docker API library for Go, we can perform various actions on the Docker Engine, such as pulling images, creating and managing containers, and more.</p>
+<h1 id="docker-hub">Docker Hub</h1>
+<!-- raw HTML omitted -->
+<p>Finally, we can iterate through the list of repositories and print out the name and description of each repository.</p>
+<p>Here is the complete Golang program:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;encoding/json&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;net/http&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Make HTTP GET request to Docker Hub API endpoint for retrieving list of repositories
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">NewRequest</span><span class="p">(</span><span class="s">&#34;GET&#34;</span><span class="p">,</span> <span class="s">&#34;https://hub.docker.com/v2/repositories/&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Execute request
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Parse response from Docker Hub
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">data</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">NewDecoder</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">).</span><span class="nf">Decode</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Iterate through list of repositories and print out name and description
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">repo</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">data</span><span class="p">[</span><span class="s">&#34;results&#34;</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">repo</span><span class="p">[</span><span class="s">&#34;name&#34;</span><span class="p">],</span> <span class="nx">repo</span><span class="p">[</span><span class="s">&#34;description&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="docker-client">Docker Client</h1>
+<p>To interact with the Docker client in Go, we will need to import the github.com/docker/docker/client package and create a new Docker client using the NewClient function.</p>
+<p>Here are the steps to follow:</p>
+<ol>
+<li>Install the Docker SDK for Go by running <code>go get github.com/docker/docker/client</code>.</li>
+<li>Import the github.com/docker/docker/client package in your Go code.</li>
+<li>Create a new Docker client using the client.NewClient function. This function takes a string argument that specifies the Docker daemon URL, and returns a client.Client object.</li>
+<li>Use the methods provided by the <code>client.Client</code> object to interact with the Docker daemon. Some examples of common methods include <code>ListContainers</code>, <code>InspectContainer</code>, and <code>CreateContainer</code>.
+For example, to list all running containers on the Docker daemon, you could use the following code:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/docker/docker/client&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Create a new Docker client
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">cli</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">NewClient</span><span class="p">(</span><span class="s">&#34;unix:///var/run/docker.sock&#34;</span><span class="p">,</span> <span class="s">&#34;v1.39&#34;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1">// List all running containers
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">containers</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cli</span><span class="p">.</span><span class="nf">ListContainers</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="nx">types</span><span class="p">.</span><span class="nx">ContainerListOptions</span><span class="p">{</span><span class="nx">All</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1">// Print the names of the containers
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">container</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">containers</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">container</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>This code creates a new Docker client using the Unix socket located at <code>/var/run/docker.sock</code>, and then lists all running containers using the <code>ListContainers</code> method. Finally, it prints the names of the containers to the console.</p>
+<h1 id="docker-runtime">Docker Runtime</h1>
+<ul>
+<li>Containerd</li>
+</ul>
+<p>Containerd is a runtime for managing containers on a system. It is designed to be lightweight and efficient, making it a popular choice for use in container-based environments.
+<!-- raw HTML omitted -->
+Here is an example of using Containerd to run a Docker container:</p>
+<p>1.Install ContainerD on your system:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install containerd
+</span></span></code></pre></div><ol start="2">
+<li>Start the Containerd daemon:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl start containerd
+</span></span></code></pre></div><ol start="3">
+<li>Pull a Docker image from the Docker Hub:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull ubuntu
+</span></span></code></pre></div><p>Run a Docker container using Containerd:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">containerd run --name my-container ubuntu
+</span></span></code></pre></div><p>This will start a new Ubuntu container with the name &ldquo;my-container&rdquo; using ContainerD as the runtime. You can then access the container and run commands inside it just like any other Docker container.</p>
+<h1 id="shim">shim</h1>
+<!-- raw HTML omitted -->
+<p>The Docker runtime also includes a shim, which is a small utility program that acts as an intermediary between the container and the host operating system. The shim is responsible for starting and stopping the container, as well as handling any errors or issues that may occur during execution.</p>
+<p>An example of how the shim works would be as follows:</p>
+<p>1.The user creates a Docker container and specifies the desired runtime environment (e.g. Linux, Windows, etc.)
+2.The container is built and stored in a Docker image, which includes all the necessary files and dependencies for the container to run.
+3.When the user runs the container, the shim is activated and begins executing the container&rsquo;s code.
+4.The shim manages the container&rsquo;s execution, including starting and stopping the container, handling errors, and allocating resources such as memory and CPU.
+5. Once the container finishes executing, the shim shuts it down and releases any resources that were being used.</p>
+<p>The Docker runtime and shim work together to ensure that containers are able to run smoothly and efficiently within the specified environment.</p>
+<h1 id="runc">runc</h1>
+<p>runc is the default runtime for Docker containers. It is a command line tool for running and managing containers according to the Open Container Initiative (OCI) specification.</p>
+<p>Here is an example of using runc to run a Docker container:</p>
+<ol>
+<li>First, pull a Docker image from the registry using the &lsquo;docker pull&rsquo; command:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull alpine
+</span></span></code></pre></div><ol start="2">
+<li>Next, create a configuration file for the container using the &lsquo;runc spec&rsquo; command:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">runc spec
+</span></span></code></pre></div><ol start="3">
+<li>
+<p>The configuration file can then be modified to specify the container&rsquo;s desired settings, such as the root filesystem, network settings, and runtime options.</p>
+</li>
+<li>
+<p>To create and start the container, use the &lsquo;runc run&rsquo; command, followed by the name of the container and the configuration file:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">runc run my-container config.json
+</span></span></code></pre></div><p>This will start the container based on the specified configuration and run the default command specified in the Docker image.</p>
+<p>To stop the container, use the &lsquo;runc kill&rsquo; command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">runc <span class="nb">kill</span> my-container
+</span></span></code></pre></div><p>And to delete the container, use the &lsquo;runc delete&rsquo; command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">runc delete my-container
+</span></span></code></pre></div>
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/containersecurity/capabilities/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/containersecurity/interacting-with-container-ecosystem/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents"></nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

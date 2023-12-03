@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubedaily</title>
+    <link>https://kubedaily.com/</link>
+    <description>Recent content on kubedaily</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://kubedaily.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Ultimate Docker Workshop Tracks</title>
+      <link>https://kubedaily.com/docker/helper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/helper/</guid>
+      <description>Table of Content Title Link 1.Pre-requisit for this lab Lab 2.Docker Hello World Example Lab 3.Docker Image Filtering 4.Images and Container As Tar file Lab 5.Push first Nginx Web app To DockerHub Lab 6.Build a Base Image from Scratch Lab 7.Dockerfile Lab - ADD instruction Lab 8.Dockerfile Lab - COPY instruction Lab 9.Dockerfile Lab - CMD instruction Lab 10.Dockerfile Lab - Entrypoint instruction Lab 11.Dockerfile Lab - WORKDIR instruction Lab 12.</description>
+    </item>
+    <item>
+      <title>Flannel is a network fabric for containers, designed for Kubernetes.</title>
+      <link>https://kubedaily.com/blog/flannel/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/flannel/</guid>
+      <description>kubenetes networking Networking details Platforms like Kubernetes assume that each container (pod) has a unique, routable IP inside the cluster. The advantage of this model is that it removes the port mapping complexities that come from sharing a single host IP.
+Flannel is responsible for providing a layer 3 IPv4 network between multiple nodes in a cluster. Flannel does not control how containers are networked to the host, only how the traffic is transported between hosts.</description>
+    </item>
+    <item>
+      <title>Arkade Open Source Marketplace for Kubernetes</title>
+      <link>https://kubedaily.com/blog/arkade-open-source-marketplace-for-kubernetes/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/arkade-open-source-marketplace-for-kubernetes/</guid>
+      <description>Getting started with Arkade CLI Macos/Linux ~ curl -sLS https://get.arkade.dev | sudo sh Password: Downloading package https://github.com/alexellis/arkade/releases/download/0.9.7/arkade-darwin-arm64 as /tmp/arkade-darwin-arm64 Download complete. Running with sufficient permissions to attempt to move arkade to /usr/local/bin New version of arkade installed to /usr/local/bin Creating alias &amp;#39;ark&amp;#39; for &amp;#39;arkade&amp;#39;. _ _ __ _ _ __| | ____ _ __| | ___ / _` | &amp;#39;__| |/ / _` |/ _` |/ _ \ | (_| | | | &amp;lt; (_| | (_| | __/ \__,_|_| |_|\_\__,_|\__,_|\___| Open Source Marketplace For Developer Tools Version: 0.</description>
+    </item>
+    <item>
+      <title>CertManager - Automatically provision and manage TLS certificates in Kubernetes</title>
+      <link>https://kubedaily.com/blog/certmanager/</link>
+      <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/certmanager/</guid>
+      <description>Start Minikube minikube-certmanager git:(main) minikube start 😄 minikube v1.30.0 on Darwin 13.3.1 (arm64) ✨ Using the docker driver based on existing profile 👍 Starting control plane node minikube in cluster minikube 🚜 Pulling base image ... 🏃 Updating the running docker &amp;#34;minikube&amp;#34; container ... ❗ Image was not built for the current minikube version. To resolve this you can delete and recreate your minikube cluster using the latest images. Expected minikube version: v1.</description>
+    </item>
+    <item>
+      <title>Okteto Develop your applications directly in your Kubernetes Cluster</title>
+      <link>https://kubedaily.com/blog/okteto/</link>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/okteto/</guid>
+      <description>Getting started with Oketo CLI Macos/Linux ➜ curl https://get.okteto.com -sSfL | sh &amp;gt; Using Release Channel: stable &amp;gt; Using Version: 2.14.0 &amp;gt; Downloading https://downloads.okteto.com/cli/stable/2.14.0/okteto-Darwin-arm64 % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 100 74.8M 100 74.8M 0 0 20.0M 0 0:00:03 0:00:03 --:--:-- 20.0M Login into Okteto Cloud via Github Account Configuring Okteto CLI with Okteto Cloud ➜ okteto context A context defines the default cluster/namespace for any Okteto CLI command.</description>
+    </item>
+    <item>
+      <title>Werf A solution for implementing efficient and consistent software</title>
+      <link>https://kubedaily.com/blog/werf/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/werf/</guid>
+      <description>Install Werf ➜ ~ curl -sSLO https://werf.io/install.sh &amp;amp;&amp;amp; chmod +x install.sh ➜ ~ ./install.sh --version 1.2 --channel stable [INPUT REQUIRED] Current login shell is &amp;#34;zsh&amp;#34;. Press ENTER to setup werf for this shell or choose another one. [b]ash/[z]sh/[a]bort? Default: zsh. z [INPUT REQUIRED] trdl is going to be installed in &amp;#34;/Users/sangambiradar/bin/&amp;#34;. Add this directory to your $PATH in &amp;#34;/Users/sangambiradar/.zshrc&amp;#34; and &amp;#34;/Users/sangambiradar/.zprofile&amp;#34;? (strongly recommended) [y]es/[a]bort/[s]kip? Default: yes. yes [INFO] Installing trdl to &amp;#34;/Users/sangambiradar/bin/&amp;#34;.</description>
+    </item>
+    <item>
+      <title> Basics of Pod </title>
+      <link>https://kubedaily.com/k8s/basics-of-pod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/basics-of-pod/</guid>
+      <description>0. What is POD learn via Kubectl Explain kubectl explain pod KIND: Pod VERSION: v1 DESCRIPTION: Pod is a collection of containers that can run on a host. This resource is created by clients and scheduled onto hosts. FIELDS: apiVersion &amp;lt;string&amp;gt; APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources kind &amp;lt;string&amp;gt; Kind is a string value representing the REST resource this object represents.</description>
+    </item>
+    <item>
+      <title> Dive </title>
+      <link>https://kubedaily.com/containersecurity/dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/dive/</guid>
+      <description>Dive Ubuntu /Debian wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb sudo apt install ./dive_0.9.2_linux_amd64.deb RHEL/CemtOS curl -OL https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm rpm -i dive_0.9.2_linux_amd64.rpm Arch Linux ay -S dive Mac OS X
+brew install dive How to use Dive To analyze a Docker image simply run dive with an image tag/id/digest:
+$ dive &amp;lt;your-image-tag&amp;gt; or if you want to build your image then jump straight into analyzing it:
+$ dive build -t &amp;lt;some-tag&amp;gt; example ngnix image
+another tool that make this all more easy</description>
+    </item>
+    <item>
+      <title> Docker architecture and its components </title>
+      <link>https://kubedaily.com/containersecurity/docker-architecture-and-its-components/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/docker-architecture-and-its-components/</guid>
+      <description>Docker architecture and its components
+Docker Architecture Docker architecture consists of three main components:
+Docker Engine: This is the core component of Docker and is responsible for building, running, and distributing Docker containers. It is made up of a daemon, a REST API, and a CLI (command line interface). Docker Hub: This is a cloud-based registry service that allows users to share and store Docker images. It acts as a central repository for Docker images and makes it easy for users to find and download images that they need for their projects.</description>
+    </item>
+    <item>
+      <title> Pre-requisit for this lab </title>
+      <link>https://kubedaily.com/k8s/pre-requisit-for-this-lab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/pre-requisit-for-this-lab/</guid>
+      <description>Install Minikube https://minikube.sigs.k8s.io/docs/start/ // i&amp;#39;m using mac so my installation step will be diffeent from you folks curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64 sudo install minikube-darwin-amd64 /usr/local/bin/minikube ceate cluster using minikube ➜ k8sworkshop git:(main) ✗ minikube start 😄 minikube v1.28.0 on Darwin 13.2.1 (arm64) ✨ Using the docker driver based on existing profile 👍 Starting control plane node minikube in cluster minikube 🚜 Pulling base image ... 🔄 Restarting existing docker container for &amp;#34;minikube&amp;#34; .</description>
+    </item>
+    <item>
+      <title> YaraHunter - Malware Scanner for Container Images </title>
+      <link>https://kubedaily.com/containersecurity/yarahunter-malware-scanner-for-container-images/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/yarahunter-malware-scanner-for-container-images/</guid>
+      <description>What is YARA ? YARA was originally developed by Victor Alvarez of VirusTotal and released on github in 2013 .
+YARA , the &amp;ldquo;Pattern matching Swiss knife for malware researchers available on github
+Install yara on Mac brew install yara Yara is extremely popular within because of different use case : Identify and classify malware
+Find new samples based on family-specific pattern
+Deploy Yara Rules to identify samples and compromised device for incident response</description>
+    </item>
+    <item>
+      <title>Attack surface of the container ecosystem </title>
+      <link>https://kubedaily.com/containersecurity/attack-surface-of-the-container-ecosystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/attack-surface-of-the-container-ecosystem/</guid>
+      <description>Container Technology Archiecture Developer systems (generate images and send them to testing and accreditation) Testing and accreditation systems (validate and verify the contents of images, sign images, and send images to the registry) Registries (store images and distribute images to the orchestrator upon request) Orchestrators (convert images into containers and deploy containers to hosts) Hosts (run and stop containers as directed by the orchestrator) Attack surface of the container ecosystem One way to start thinking about the threat model is to consider the actors involved.</description>
+    </item>
+    <item>
+      <title>Auditing Docker Security </title>
+      <link>https://kubedaily.com/containersecurity/auditing-docker-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/auditing-docker-security/</guid>
+      <description>Auditing Docker Security DOCKER BENCH FOR SECURITY
+Docker Bench for Security is an open source Bash script that checks for various common security best practices of deploying Docker in production environments. The tests are all automated and are based on the CIS Docker Benchmark. More information about Docker Bench for Security can be found on GitHub: https://github.com/docker/docker-bench-security
+auditing docker security with docker bench for security The auditing process can be performed by following the procedures outlined below:</description>
+    </item>
+    <item>
+      <title>Build a Base Image from Scratch</title>
+      <link>https://kubedaily.com/docker/build-a-base-image-from-scratch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/build-a-base-image-from-scratch/</guid>
+      <description>write simple c program #include&amp;lt;stdio.h&amp;gt; int main() { printf(&amp;#34;dockerworkshop&amp;#34;); } Compile C program gcc -o hello hello.c ✗ ./hello dockerworkshop% create dockerfile with following content : FROM scratch ADD hello / CMD [&amp;#34;/hello&amp;#34;] Build Dockerfile without any base image Dockerfile git:(main) ✗ docker build -t sangam14/hello-scratch -f dockerfile.hello . [+] Building 0.1s (5/5) FINISHED =&amp;gt; [internal] load build definition from dockerfile.hello 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 87B 0.0s =&amp;gt; [internal] load .</description>
+    </item>
+    <item>
+      <title>Build Own Dockerfile and Docker Compose with Custom configuration </title>
+      <link>https://kubedaily.com/docker/build-own-dockerfile-and-docker-compose-with-custom-configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/build-own-dockerfile-and-docker-compose-with-custom-configuration/</guid>
+      <description>Build Own Dockerfile and Docker Compose with Custom configuration crate docker compose file with following content
+version: &amp;#39;3&amp;#39; services: phpapp: build: context: ./ dockerfile: Dockerfile image: phpapp:123 ports: - &amp;#34;8080:80&amp;#34; volumes: - &amp;#34;./:/var/www/html&amp;#34; container_name: my-php-app here using dockerfile to generate an image mount folder inside your directory automatically create index.php with following content &amp;lt;?php phpinfo(); build docker compose file 3-DC-Custom git:(main) ✗ docker compose up [+] Running 0/1 ⠿ phpapp Warning 3.</description>
+    </item>
+    <item>
+      <title>Capabilities </title>
+      <link>https://kubedaily.com/containersecurity/capabilities/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/capabilities/</guid>
+      <description>Capabilities 1.Process isolation: This allows the separation of processes between different containers, ensuring that processes running in one container do not have access to resources or processes in another container.
+2.Resource limitation: This allows the allocation of specific resources (such as CPU, memory, and disk space) to each container, ensuring that one container does not consume more resources than it has been allocated.
+3.User namespace: This allows the creation of user accounts within a container that are separate from the host system, ensuring that users within a container do not have access to resources outside of the container.</description>
+    </item>
+    <item>
+      <title>Cgroups</title>
+      <link>https://kubedaily.com/containersecurity/cgroups/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/cgroups/</guid>
+      <description>Cgroups In a container environment, Cgroups are used to ensure that each container has its own set of resources and cannot interfere with other containers or the host system. This helps to isolate the containers from each other and allows them to run in a more predictable and stable manner.
+Cgroups can be used to set limits on the amount of resources a container can use, such as CPU time or memory usage.</description>
+    </item>
+    <item>
+      <title>ConfigMap </title>
+      <link>https://kubedaily.com/k8s/configmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/configmap/</guid>
+      <description>craete index-html-configmap.yaml with following content apiVersion: v1 kind: ConfigMap metadata: name: index-html-configmap namespace: default data: index.html: | &amp;lt;html&amp;gt; &amp;lt;h1&amp;gt;Welcome&amp;lt;/h1&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;h1&amp;gt;Hi! This is a configmap Index file &amp;lt;/h1&amp;gt; &amp;lt;/html&amp;gt; ➜ k8s101 git:(main) ✗ kubectl apply -f index-html-configmap.yaml configmap/index-html-configmap created craete nginx.yaml with following content apiVersion: apps/v1 kind: Deployment metadata: name: nginx-deployment namespace: default spec: selector: matchLabels: app: nginx replicas: 2 template: metadata: labels: app: nginx spec: containers: - name: nginx image: nginx:latest ports: - containerPort: 80 volumeMounts: - name: nginx-index-file mountPath: /usr/share/nginx/html/ volumes: - name: nginx-index-file configMap: name: index-html-configmap ➜ k8s101 git:(main) ✗ kubectl apply -f ngnix.</description>
+    </item>
+    <item>
+      <title>Container Advantage and Disadvantages </title>
+      <link>https://kubedaily.com/containersecurity/container-advantage-and-disadvantages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/container-advantage-and-disadvantages/</guid>
+      <description>Container Advantages Every day, developers find new ways to put containerization to work to solve their challenges. There is no shortage of ways to use containerization, and every application will likely produce unique benefits. Here are some of the most common reasons developers decide to containerize:
+Portability
+No discussion of containerization is complete without at least one mention of the motto, “write once, run anywhere.” Since a container bundles all dependencies, you can take your application just about anywhere without rebuilding it to account for a new environment.</description>
+    </item>
+    <item>
+      <title>Container Image Security </title>
+      <link>https://kubedaily.com/containersecurity/container-image-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/container-image-security/</guid>
+      <description>Container Image Security Building secure container images Choosing base images Alpine Pros very small images: the community pays a lot attention on minimizing image sizes minimum functionality: only absolutely necessary packages contained lightweight init system: like Gentoo, Alpine uses OpenRC, a lightweight alternative to systemd musl performance: for some cases, musl libc can be more performant than glibc Cons rather Poor Documentation Small team : Currently there are 3 developer listed as the alpine linux team possible incompatibilities: musl libc may cause problems with some C-based plugins and adjustments may be necessary if you compile software yourself Debian Pro:</description>
+    </item>
+    <item>
+      <title>Container Security</title>
+      <link>https://kubedaily.com/containersecurity/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/overview/</guid>
+      <description>Table of Content Title Link 1.What is container? lab 2.Container vs. Virtualization lab 3.Container Advantage and Disadvantages lab 4.Namespaces lab 5.Cgroups 6.Capabilities lab 7.Docker architecture and its components lab 8.Interacting with container ecosystem lab 9.Attack surface of the container ecosystem lab 10.Environment variables lab 11.Docker volumes lab 12.Docker Networking lab 13.Auditing Docker Security lab 14.Container Image Security lab 15.DockerFile Security Best Practices lab 16.SecretScanner - Finding secrets and passwords in container images and file systems lab 17.</description>
+    </item>
+    <item>
+      <title>Container vs Virtualization</title>
+      <link>https://kubedaily.com/containersecurity/container-vs-virtualization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/container-vs-virtualization/</guid>
+      <description>A Shift from Monolithic to Microservice Architecture Monolithic Application have changed dramarically
+A Decade Ago ( and still valid ) Apps were monolithic Built on single stack such as .NET or Java Long Lived Deployed to a single server Benefits of monolith - Simple to Develop , Test , Deplot &amp;amp; Scale
+simple to develope because of all the tools and IDEs aupport to that kind of application by default easy to deploy because all coponets are packed into one bundle Easy to scale the whole application Disadvantages of monolith</description>
+    </item>
+    <item>
+      <title>Content Trust and Integrity checks</title>
+      <link>https://kubedaily.com/containersecurity/content-trust-and-integrity-checks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/content-trust-and-integrity-checks/</guid>
+      <description>Content Trust and Integrity checks
+Docker Content Trust (DCT) makes it simple and easy to verify the integrity and the publisher of images that you download and run. This is especially important when pulling images over untrusted networks such as the internet.
+docker trust key generate sangam Generating key for sangam... Enter passphrase for new nigel key with ID 1f78609: Repeat passphrase for new nigel key with ID 1f78609: Successfully generated and loaded private key.</description>
+    </item>
+    <item>
+      <title>Create POD with Command and Arguments </title>
+      <link>https://kubedaily.com/k8s/create-pod-with-command-and-arguments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/create-pod-with-command-and-arguments/</guid>
+      <description>kubectl explain pods.spec.containers.command k8s101 git:(main) ✗ kubectl explain pods.spec.containers.command KIND: Pod VERSION: v1 FIELD: command &amp;lt;[]string&amp;gt; DESCRIPTION: Entrypoint array. Not executed within a shell. The container image&amp;#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&amp;#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.</description>
+    </item>
+    <item>
+      <title>Deployments and replication</title>
+      <link>https://kubedaily.com/k8s/deployments-and-replication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/deployments-and-replication/</guid>
+      <description>Kubectl explain Deployment k8sworkshop git:(main) ✗ kubectl explain deployments KIND: Deployment VERSION: apps/v1 DESCRIPTION: Deployment enables declarative updates for Pods and ReplicaSets. FIELDS: apiVersion &amp;lt;string&amp;gt; APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources kind &amp;lt;string&amp;gt; Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Build Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-build-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-build-command/</guid>
+      <description>Docker Compose Build Command docker compose build [OPTIONS] [SERVICE...] If you change a service’s Dockerfile or the contents of its build directory, run docker compose build to rebuild it.
+--build-arg	Set build-time variables for services. --no-cache	Do not use cache when building the image --progress	auto	Set type of progress output (auto, tty, plain, quiet) . --pull	Always attempt to pull a newer version of the image.. --push	Push service images.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Config Command</title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-config-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-config-command/</guid>
+      <description>create dockerfile with following content # syntax=docker/dockerfile:1 FROM python:3.7-alpine WORKDIR /code ENV FLASK_APP=app.py ENV FLASK_RUN_HOST=0.0.0.0 RUN apk add --no-cache gcc musl-dev linux-headers COPY requirements.txt requirements.txt RUN pip install -r requirements.txt EXPOSE 5000 COPY . . CMD [&amp;#34;flask&amp;#34;, &amp;#34;run&amp;#34;] create app.py with following content import time import redis from flask import Flask app = Flask(__name__) cache = redis.Redis(host=&amp;#39;redis&amp;#39;, port=6379) def get_hit_count(): retries = 5 while True: try: return cache.incr(&amp;#39;hits&amp;#39;) except redis.exceptions.ConnectionError as exc: if retries == 0: raise exc retries -= 1 time.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - CP Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-cp-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-cp-command/</guid>
+      <description>Copy files/folders between a service container and the local filesystem # Syntax to Copy from Container to Docker Host docker cp {options} CONTAINER:SRC_PATH DEST_PATH # Syntax to Copy from Docker Host to Container docker cp {options} SRC_PATH CONTAINER:DEST_PATH lets run ngnix container version: &amp;#39;3&amp;#39; services: web: image: nginx:latest run docker compose up docker compose -f docker-compose-ngnix.yml up check running container ➜ dockerworkshop git:(main) ✗ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 008940fdbed8 nginx:latest &amp;#34;/docker-entrypoint.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Create Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-create-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-create-command/</guid>
+      <description>create docker-compose.yml with following content version: &amp;#34;3.9&amp;#34; services: web: build: . ports: - &amp;#34;8000:5000&amp;#34; redis: image: &amp;#34;redis:alpine&amp;#34; Creates containers for a service. ➜ 7-DC-CLI git:(main) ✗ docker compose create [+] Running 7/7 ⠿ redis Pulled 6.1s ⠿ af6eaf76a39c Already exists 0.0s ⠿ 5015c79ed515 Pull complete 0.9s ⠿ 2ca28624189f Pull complete 1.0s ⠿ 4691452befb1 Pull complete 1.6s ⠿ 746fa87aff8c Pull complete 2.1s ⠿ b8496ad2d107 Pull complete 2.2s WARN[0006] Found orphan containers ([7-dc-cli-client-1]) for this project.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Down Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-down-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-down-command/</guid>
+      <description>create docker-compose.yml with following content version: &amp;#34;3.9&amp;#34; services: web: build: . ports: - &amp;#34;8000:5000&amp;#34; redis: image: &amp;#34;redis:alpine&amp;#34; Create docker compose up docker compose up WARN[0000] Found orphan containers ([7-dc-cli-client-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. Attaching to 7-dc-cli-redis-1, 7-dc-cli-web-1 7-dc-cli-redis-1 | 1:C 04 Mar 2023 14:23:46.156 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo 7-dc-cli-redis-1 | 1:C 04 Mar 2023 14:23:46.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Events Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-events-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-events-command/</guid>
+      <description>here is sample voting app cat docker-compose.yml # version is now using &amp;#34;compose spec&amp;#34; # v2 and v3 are now combined! # docker-compose v1.27+ required services: vote: build: ./vote # use python rather than gunicorn for local dev command: python app.py depends_on: redis: condition: service_healthy healthcheck: test: [&amp;#34;CMD&amp;#34;, &amp;#34;curl&amp;#34;, &amp;#34;-f&amp;#34;, &amp;#34;http://localhost&amp;#34;] interval: 15s timeout: 5s retries: 3 start_period: 10s volumes: - ./vote:/app ports: - &amp;#34;5000:80&amp;#34; networks: - front-tier - back-tier result: build: .</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Exec Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-exec-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-exec-command/</guid>
+      <description>Docker Compose Exec into result service docker compose exec result sh # ls Dockerfile docker-compose.test.yml package-lock.json package.json server.js tests views # cat docker-compose.test.yml version: &amp;#39;2&amp;#39; services: sut: build: ./tests/ depends_on: - vote - result - worker networks: - front-tier vote: build: ../vote/ ports: [&amp;#34;80&amp;#34;] depends_on: - redis - db networks: - front-tier - back-tier result: build: . ports: [&amp;#34;80&amp;#34;] depends_on: - redis - db networks: - front-tier - back-tier worker: build: .</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Images Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-images-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-images-command/</guid>
+      <description>example-voting-app git:(main) docker compose images CONTAINER REPOSITORY TAG IMAGE ID SIZE example-voting-app-db-1 postgres 15-alpine 68d4a8d9d3d9 241MB example-voting-app-redis-1 redis alpine 1339d05b97a4 30.4MB example-voting-app-result-1 example-voting-app-result latest 223b94fc00ae 254MB example-voting-app-vote-1 example-voting-app-vote latest 5c1cf62b540c 135MB example-voting-app-worker-1 example-voting-app-worker latest 8f82fda1dae8 195MB </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Kill Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-kill-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-kill-command/</guid>
+      <description>Forces running containers to stop by sending a SIGKILL signal. Optionally the signal can be passed : example-voting-app git:(main) docker-compose kill -s SIGINT [+] Running 4/0 ⠿ Container example-voting-app-redis-1 Killed 0.0s ⠿ Container example-voting-app-worker-1 Killed 0.0s ⠿ Container example-voting-app-db-1 Killed 0.0s ⠿ Container example-voting-app-result-1 Killed 0.0s </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - logs Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-logs-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-logs-command/</guid>
+      <description>View output from containers ➜ example-voting-app git:(main) docker-compose logs example-voting-app-worker-1 | Connected to db example-voting-app-result-1 | [nodemon] 2.0.21 example-voting-app-worker-1 | Found redis at 172.20.0.2 example-voting-app-worker-1 | Connecting to redis example-voting-app-result-1 | [nodemon] to restart at any time, enter `rs` example-voting-app-result-1 | [nodemon] watching path(s): *.* example-voting-app-result-1 | [nodemon] watching extensions: js,mjs,json example-voting-app-result-1 | [nodemon] starting `node server.js` example-voting-app-result-1 | Sat, 04 Mar 2023 18:00:16 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at server.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - ls Command</title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-ls-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-ls-command/</guid>
+      <description>List running compose projects docker-compose ls NAME STATUS CONFIG FILES example-voting-app running(4) /Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/docker-compose.yml ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Pause unpause Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-pause-unpause-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-pause-unpause-command/</guid>
+      <description>example-voting-app git:(main) docker compose pause [+] Running 4/0 ⠿ Container example-voting-app-db-1 Paused 0.0s ⠿ Container example-voting-app-redis-1 Paused 0.0s ⠿ Container example-voting-app-worker-1 Paused 0.0s ⠿ Container example-voting-app-result-1 Paused 0.0s ➜ example-voting-app git:(main) Pauses running containers of a service. They can be unpaused with docker compose unpause. docker compose unpause [+] Running 4/0 ⠿ Container example-voting-app-worker-1 Unpaused 0.0s ⠿ Container example-voting-app-redis-1 Unpaused 0.0s ⠿ Container example-voting-app-result-1 Unpaused 0.0s ⠿ Container example-voting-app-db-1 Unpaused 0.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - Port Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-port-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-port-command/</guid>
+      <description>Print the public port for a port binding. docker compose port result 80 0.0.0.0:5001 ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - ps Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-ps-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-ps-command/</guid>
+      <description>List containers docker compose ps NAME IMAGE COMMAND SERVICE CREATED STATUS PORTS example-voting-app-db-1 postgres:15-alpine &amp;#34;docker-entrypoint.s…&amp;#34; db 4 hours ago Up About an hour (healthy) 5432/tcp example-voting-app-redis-1 redis:alpine &amp;#34;docker-entrypoint.s…&amp;#34; redis 4 hours ago Up About an hour (healthy) 6379/tcp example-voting-app-result-1 example-voting-app-result &amp;#34;nodemon server.js&amp;#34; result About an hour ago Up About an hour 0.0.0.0:5858-&amp;gt;5858/tcp, 0.0.0.0:5001-&amp;gt;80/tcp example-voting-app-worker-1 example-voting-app-worker &amp;#34;dotnet Worker.dll&amp;#34; worker About an hour ago Up About an hour ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - pull Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-pull-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-pull-command/</guid>
+      <description>Pull service images example-voting-app git:(main) docker compose pull [+] Running 5/5 ⠿ vote Skipped - No image to be pulled 0.0s ⠿ result Skipped - No image to be pulled 0.0s ⠿ worker Skipped - No image to be pulled 0.0s ⠿ redis Pulled 2.8s ⠿ db Pulled 2.8s </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - push Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-push-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-push-command/</guid>
+      <description>Push service images services: service1: build: . image: localhost:5000/yourimage ## goes to local registry service2: build: . image: your-dockerid/yourimage ## goes to your repository on Docker Hub </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - restart Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-restart-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-restart-command/</guid>
+      <description>restart service images docker compose restart [+] Running 5/5 ⠿ Container example-voting-app-db-1 Started 0.7s ⠿ Container example-voting-app-redis-1 Started 0.7s ⠿ Container example-voting-app-result-1 Started 0.6s ⠿ Container example-voting-app-vote-1 Started 0.5s ⠿ Container example-voting-app-worker-1 Started 0.4s ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - rm Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-rm-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-rm-command/</guid>
+      <description>Removes stopped service containers ➜ example-voting-app git:(main) docker compose stop [+] Running 5/5 ⠿ Container example-voting-app-vote-1 Stopped 0.3s ⠿ Container example-voting-app-result-1 Stopped 0.3s ⠿ Container example-voting-app-worker-1 Stopped 0.1s ⠿ Container example-voting-app-db-1 Stopped 0.1s ⠿ Container example-voting-app-redis-1 Stopped 0.2s ➜ example-voting-app git:(main) docker compose rm ? Going to remove example-voting-app-vote-1, example-voting-app-result-1, example-voting-app-worker-1, example-voting-app-db-1, example-voting-app-redis-1 Yes [+] Running 5/0 ⠿ Container example-voting-app-redis-1 Removed 0.0s ⠿ Container example-voting-app-vote-1 Removed 0.0s ⠿ Container example-voting-app-result-1 Removed 0.</description>
+    </item>
+    <item>
+      <title>Docker Compose CLI - run Command </title>
+      <link>https://kubedaily.com/docker/docker-compose-cli-run-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-cli-run-command/</guid>
+      <description>➜ example-voting-app git:(main) docker compose run db PostgreSQL Database directory appears to contain a database; Skipping initialization 2023-03-04 19:16:58.496 UTC [1] LOG: starting PostgreSQL 15.2 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 12.2.1_git20220924-r4) 12.2.1 20220924, 64-bit 2023-03-04 19:16:58.496 UTC [1] LOG: listening on IPv4 address &amp;#34;0.0.0.0&amp;#34;, port 5432 2023-03-04 19:16:58.496 UTC [1] LOG: listening on IPv6 address &amp;#34;::&amp;#34;, port 5432 2023-03-04 19:16:58.498 UTC [1] LOG: listening on Unix socket &amp;#34;/var/run/postgresql/.s.PGSQL.5432&amp;#34; 2023-03-04 19:16:58.</description>
+    </item>
+    <item>
+      <title>Docker Compose with Volume Mount</title>
+      <link>https://kubedaily.com/docker/docker-compose-with-volume-mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-compose-with-volume-mount/</guid>
+      <description>Lets build docker compose file version: &amp;#39;3&amp;#39; services: phpapp: image: php:7.2-apache ports: - &amp;#34;8080:80&amp;#34; volumes: - &amp;#34;./:/var/www/html&amp;#34; above when we do docker compose up it will start apache with php 7.2 it will mount corrent directory to /var/www/html also it mount port 80 of the container to port 8080 on the host
+create index.php with following content &amp;lt;?php echo &amp;#34;hello world \n\n&amp;#34;; run with docker compose 2-DC-Vol-Mount git:(main) ✗ docker compose up [+] Running 15/15 ⠿ phpapp Pulled 13.</description>
+    </item>
+    <item>
+      <title>Docker Daemon security configurations</title>
+      <link>https://kubedaily.com/containersecurity/docker-daemon-security-configurations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/docker-daemon-security-configurations/</guid>
+      <description>docker daemon security configuration Install docker CE 19.03
+# yum install -y yum-utils device-mapper-persistent-data lvm2 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo # yum install -y docker-ce [root@localhost docker]# docker --version Docker version 19.03.8, build afacb8b Daemon security configuration There is no configuration file by default, which needs to be created separately/etc/docker/daemon.json, the following configurations are all local test examples configured on this file.
+{ &amp;#34;icc&amp;#34;: false, &amp;#34;log-level&amp;#34;: &amp;#34;info&amp;#34;, &amp;#34;log-driver&amp;#34;: &amp;#34;json-file&amp;#34;, &amp;#34;log-opts&amp;#34;: { &amp;#34;max-size&amp;#34;: &amp;#34;10m&amp;#34;, &amp;#34;max-file&amp;#34;:&amp;#34;5&amp;#34;, &amp;#34;labels&amp;#34;: &amp;#34;somelabel&amp;#34;, &amp;#34;env&amp;#34;: &amp;#34;os,customer&amp;#34; }, &amp;#34;iptables&amp;#34;: true, &amp;#34;userns-remap&amp;#34;: &amp;#34;default&amp;#34;, &amp;#34;userland-proxy&amp;#34;: false, &amp;#34;experimental&amp;#34;: false, &amp;#34;selinux-enabled&amp;#34;: true, &amp;#34;live-restore&amp;#34;: true, &amp;#34;no-new-privileges&amp;#34;: true, &amp;#34;cgroup-parent&amp;#34;: &amp;#34;/foobar&amp;#34;, &amp;#34;seccomp-profile&amp;#34;: &amp;#34;/etc/docker/seccomp/default-no-chmod.</description>
+    </item>
+    <item>
+      <title>Docker events</title>
+      <link>https://kubedaily.com/containersecurity/docker-events/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/docker-events/</guid>
+      <description>Docker events Docker events describe the activities taken by your Docker daemon. Most interactions with objects such as containers, images, volumes, and networks record an event, creating a log that you can use to inspect past changes.
+There are many different kinds of event that identify specific changes in your environment:
+Creating and removing containers Container health check statuses Commands executed inside containers with docker exec Pulling and pushing images Creating, destroying, mounting, and unmounting volumes Enabling and disabling Docker daemon plugins $ docker run --rm hello-world Several events should now appear in the terminal window that’s running the docker events command:</description>
+    </item>
+    <item>
+      <title>Docker Hello World Example</title>
+      <link>https://kubedaily.com/docker/docker-hello-world-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-hello-world-example/</guid>
+      <description>run your first hello world example docker run hello-world is a command that runs a simple Docker container to verify that Docker is correctly installed on your system and working as expected.
+When you run this command, Docker will first check if the &amp;ldquo;hello-world&amp;rdquo; image is available locally. If the image is not found, Docker will download it from the Docker Hub registry.
+Once the &amp;ldquo;hello-world&amp;rdquo; image is available, Docker will create a container from the image and run it.</description>
+    </item>
+    <item>
+      <title>Docker host security configurations</title>
+      <link>https://kubedaily.com/containersecurity/docker-host-security-configurations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/docker-host-security-configurations/</guid>
+      <description>SecComp and AppArmor Docker works with major Linux MAC technologies such as AppArmor and SELinux.
+Depending on your Linux distribution, Docker applies a default AppArmor profile to all new containers. According to the Docker documentation, this default profile is “moderately protective while providing wide application compatibility”.
+Docker also lets you start containers without a policy applied, as well as giving you the ability to customize policies to meet specific requirements. This is also very powerful, but can also be prohibitively complex.</description>
+    </item>
+    <item>
+      <title>Docker Image Filtering</title>
+      <link>https://kubedaily.com/docker/docker-image-filtering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-image-filtering/</guid>
+      <description>running docker run alpine command would download the Alpine Linux image from Docker Hub and start a new container based on that image. You can then use the container to run commands or applications. When you exit the container, it will stop running.
+Alpine Linux is a lightweight Linux distribution that is commonly used in Docker containers due to its small size and security features.
+dockerworkshop git:(main) ✗ docker pull alpine:3.</description>
+    </item>
+    <item>
+      <title>Docker Networking </title>
+      <link>https://kubedaily.com/containersecurity/docker-networking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/docker-networking/</guid>
+      <description>Docker Networking The Container Netwotk Model (CNM) is the design document for Docker Networking which is implemented via &amp;rsquo;libnetwork&amp;rsquo; in golang
+Sandbox - isolated network stavk Endpount - Virtual Ethernet Interfece Network - Virtual Switch (bridge) Note - Libnetwork -&amp;gt; implemenrs the control and management plane functions
+Network Specific Drivers -&amp;gt; implemenrs the data plane while also handling the connectivity and isolation
+Docker Native Network Drivers Bridge - uses a software bridge whicha allows containers connected to the same bridge network to communicate</description>
+    </item>
+    <item>
+      <title>Docker Registry security configurations </title>
+      <link>https://kubedaily.com/containersecurity/docker-registry-security-configurations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/docker-registry-security-configurations/</guid>
+      <description>What will you learn?
+InteractIing with insecure registry with curl Fetching images using curl and analyzing image layers Attacking protected Docker registry Backdooring images and leveraging auto-deployment mechanisms to attack Docker host
+Intracting with Insecure Registry [node1] (local) root@192.168.0.18 ~ $ docker run -d \ -p 5000:5000 \ --name registry \ -v /registry/data:/var/lib/registry \ --restart always \ registry:2 Unable to find image &amp;#39;registry:2&amp;#39; locally 2: Pulling from library/registry ca7dd9ec2225: Pull complete c41ae7ad2b39: Pull complete 1ed0fc8a6161: Pull complete 21df229223d2: Pull complete 626897ccab21: Pull complete Digest: sha256:ce14a6258f37702ff3cd92232a6f5b81ace542d9f1631966999e9f7c1ee6ddba Status: Downloaded newer image for registry:2 729cabb707e247e548ff84aa096c03e922e39e78bbe3c65753478305575576a6 check</description>
+    </item>
+    <item>
+      <title>Docker volumes </title>
+      <link>https://kubedaily.com/containersecurity/docker-volumes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/docker-volumes/</guid>
+      <description>Docker volumes
+How to create encrypted data volume Create a Docker volume using the docker volume create command, for example:
+$ docker volume create encrypted_volume Create a Docker container that will be used to create the encrypted volume. For this, you can use a tool like luksipc, which allows you to create a LUKS-encrypted file within a container.
+Run the luksipccontainer with the --volume flag to specify the Docker volume you want to encrypt.</description>
+    </item>
+    <item>
+      <title>Docker Wordpress Example </title>
+      <link>https://kubedaily.com/docker/docker-wordpress-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/docker-wordpress-example/</guid>
+      <description>create wordpress docker compose wordpress: image: wordpress links: - mariadb:mysql environment: - WORDPRESS_DB_PASSWORD=password - WORDPRESS_DB_USER=root ports: - &amp;#34;public_ip:80:80&amp;#34; volumes: - ./html:/var/www/html mariadb: image: mariadb environment: - MYSQL_ROOT_PASSWORD=password - MYSQL_DATABASE=wordpress volumes: - ./database:/var/lib/mysql run docker compose docker compose up </description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - ADD instruction </title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-add-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-add-instruction/</guid>
+      <description>Here&amp;rsquo;s an example of a Dockerfile that uses the ADD instruction to copy a local file into a Docker image:
+FROM ubuntu:latest WORKDIR /app ADD example.txt /app/ CMD [&amp;#34;cat&amp;#34;, &amp;#34;/app/example.txt&amp;#34;] Build Dockerfile Dockerfile git:(main) ✗ docker build -t sangam14/add-dockerfile -f dockerfile.add . [+] Building 5.2s (9/9) FINISHED =&amp;gt; [internal] load build definition from dockerfile.add 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 131B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - ARG instruction</title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-arg-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-arg-instruction/</guid>
+      <description>FROM alpine ENV key1=&amp;#34;ENV is stronger than an ARG&amp;#34; RUN echo ${key1} ARG key1=&amp;#34;not going to matter&amp;#34; RUN echo ${key1} RUN echo ${key2} ARG key2=&amp;#34;defaultValue&amp;#34; RUN echo ${key2} ENV key2=&amp;#34;ENV value takes over&amp;#34; RUN echo ${key2} CMD [&amp;#34;sh&amp;#34;] Build Dockerfile Dockerfile git:(main) ✗ docker build -t sangam14/arg-dockerfile -f dockerfile.arg . [+] Building 3.5s (11/11) FINISHED =&amp;gt; [internal] load build definition from dockerfile.arg 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 336B 0.0s =&amp;gt; [internal] load .</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - CMD instruction </title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-cmd-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-cmd-instruction/</guid>
+      <description>The CMD command we saw earlier followed the Shell syntax:
+CMD executable parameter1 parameter2 However, it is better practice to use the JSON array format:
+CMD [&amp;#34;executable&amp;#34;, &amp;#34;parameter1&amp;#34;, &amp;#34;parameter2&amp;#34;] A CMD command can be overridden by providing the executable and its parameters in the docker ​run command. For example:
+FROM ubuntu RUN apt-get update CMD [&amp;#34;echo&amp;#34; , &amp;#34;Join CloudNativeFolks Community&amp;#34;] build dockerfile docker build -t sangam14/cmd-dockerfile -f dockerfile.cmd . [+] Building 8.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - COPY instruction</title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-copy-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-copy-instruction/</guid>
+      <description>COPY is a dockerfile command that copies files from a local source location to a destination in the Docker container. A Dockerfile is a text file with instructions to set up a Docker container.
+create myfile1.txt and myfile2.txt with following content :
+# myfile1.txt Hello This is my first file ! This is file will be copied in /usr/share directory from Docker host to Docker Container. # myfile2.txt Hello This is my second file !</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - Entrypoint instruction </title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-entrypoint-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-entrypoint-instruction/</guid>
+      <description>Running a Docker Container with ENTRYPOINT Let&amp;rsquo;s learn the details in this case by actually executing ENTRYPOINT in exec form. The following is an example of a Dockerfile that uses the exec form of ENTRYPOINT, which outputs a character string on the command line.
+FROM alpine ENTRYPOINT [&amp;#34;echo&amp;#34;, &amp;#34;Hello!&amp;#34;] Build dockerfile ➜ Dockerfile git:(main) ✗ docker build -t sangam14/entrypoint-dockerfile -f dockerfile.entrypoint . [+] Building 3.2s (6/6) FINISHED =&amp;gt; [internal] load build definition from dockerfile.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - ENV instruction </title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-env-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-env-instruction/</guid>
+      <description>cat dockerfile
+FROM alpine ENV appDescription This app is a sample of using ENV instructions ENV appName=env-demo ENV note1=&amp;#34;The First Note First&amp;#34; note2=The\ Second\ Note\ Second \ note3=&amp;#34;The Third Note Third&amp;#34; ENV changeMe=&amp;#34;Old Value&amp;#34; CMD [&amp;#34;sh&amp;#34;] build dockerfile ➜ Dockerfile git:(main) ✗ docker build -t sangam14/env-dockerfile -f dockerfile.env . [+] Building 0.1s (5/5) FINISHED =&amp;gt; [internal] load build definition from dockerfile.env 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 279B 0.0s =&amp;gt; [internal] load .</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - HEALTHCHECK instruction</title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-healthcheck-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-healthcheck-instruction/</guid>
+      <description>cat Dockerfile
+FROM nginx build docker container docker build -t sangam14/healthcheck-dockerfile -f dockerfile.healthcheck . [+] Building 1.4s (6/6) FINISHED =&amp;gt; [internal] load build definition from dockerfile.healthcheck 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 244B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.0s =&amp;gt; [internal] load metadata for docker.io/library/alpine:latest 0.0s =&amp;gt; CACHED [1/2] FROM docker.io/library/alpine 0.0s =&amp;gt; [2/2] RUN apk add curl 1.3s =&amp;gt; exporting to image 0.0s =&amp;gt; =&amp;gt; exporting layers 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - ONBUILD instruction </title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-onbuild-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-onbuild-instruction/</guid>
+      <description>The ONBUILD instruction The ONBUILD instruction is a trigger. It sets instructions that will be executed when another image is built from the image being build.
+This is useful for building images which will be used as a base to build other images.
+ONBUILD COPY . /src You can&amp;rsquo;t chain ONBUILD instructions with ONBUILD. ONBUILD can&amp;rsquo;t be used to trigger FROM instructions.
+FROM nginx:1.16-alpine WORKDIR /usr/share/nginx/html ONBUILD COPY index.html . build dockerfile docker build -t sangam14/onbuild-dockerfile -f dockerfile.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - RUN instruction </title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-run-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-run-instruction/</guid>
+      <description>The RUN command is the central executing directive for Dockerfiles. It takes a command as its argument and runs it to form the image. Unlike CMD, it actually is used to build the image (forming another layer on top of the previous one which is committed).
+create dockerfile with following content FROM ubuntu RUN id RUN useradd --create-home -m -s /bin/bash dev # Add a fun prompt for dev user of my-app # whale: &amp;#34;\xF0\x9F\x90\xB3&amp;#34; # alien:&amp;#34;\xF0\x9F\x91\xBD&amp;#34; # fish:&amp;#34;\xF0\x9F\x90\xA0&amp;#34; # elephant:&amp;#34;\xF0\x9F\x91\xBD&amp;#34; # moneybag:&amp;#34;\xF0\x9F\x92\xB0&amp;#34; RUN echo &amp;#39;PS1=&amp;#34;\[$(tput bold)$(tput setaf 4)\]my-app $(echo -e &amp;#34;\xF0\x9F\x90\xB3&amp;#34;) \[$(tput sgr0)\] [\\u@\\h]:\\W \\$ &amp;#34;&amp;#39; &amp;gt;&amp;gt; /home/dev/.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - USER instruction</title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-user-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-user-instruction/</guid>
+      <description>cat dockerfile.user
+FROM alpine USER dockerworkshop:dockerworkshop CMD [&amp;#34;sh&amp;#34;] build dockerfile docker build -t sangam14/user-dockerfile -f dockerfile.user . [+] Building 0.1s (5/5) FINISHED =&amp;gt; [internal] load build definition from dockerfile.user 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 105B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.0s =&amp;gt; [internal] load metadata for docker.io/library/alpine:latest 0.0s =&amp;gt; CACHED [1/1] FROM docker.io/library/alpine 0.0s =&amp;gt; exporting to image 0.0s =&amp;gt; =&amp;gt; exporting layers 0.0s =&amp;gt; =&amp;gt; writing image sha256:48482459d09aecafaa0db190d6995b6d2339c0383c6cd97fafbea288124332c7 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - Volume instruction</title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-volume-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-volume-instruction/</guid>
+      <description>cat dockerfile.vol
+FROM alpine RUN mkdir /myvol RUN echo &amp;#34;hello world&amp;#34; &amp;gt; /myvol/greeting VOLUME /myvol CMD [&amp;#34;sh&amp;#34;] Build above dockerfile docker build -t sangam14/vol-dockerfile -f dockerfile.vol . [+] Building 0.4s (7/7) FINISHED =&amp;gt; [internal] load build definition from dockerfile.vol 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 140B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.0s =&amp;gt; [internal] load metadata for docker.io/library/alpine:latest 0.0s =&amp;gt; CACHED [1/3] FROM docker.io/library/alpine 0.0s =&amp;gt; [2/3] RUN mkdir /myvol 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile Lab - WORKDIR instruction </title>
+      <link>https://kubedaily.com/docker/dockerfile-lab-workdir-instruction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/dockerfile-lab-workdir-instruction/</guid>
+      <description>The WORKDIR command is used to define the working directory of a Docker container at any given time. The command is specified in the Dockerfile.
+Any RUN, CMD, ADD, COPY, or ENTRYPOINT command will be executed in the specified working directory.
+WORKDIR instruction Dockerfile for Docker Quick Start FROM ubuntu WORKDIR /var/www/html RUN apt-get update &amp;amp;&amp;amp; apt-get install -y nginx COPY index.html . ENTRYPOINT [&amp;#34;nginx&amp;#34;, &amp;#34;-g&amp;#34;, &amp;#34;daemon off;&amp;#34;] build dockerfile docker build -t sangam14/workdir-dockerfile -f dockerfile.</description>
+    </item>
+    <item>
+      <title>DockerFile Security Best Practices </title>
+      <link>https://kubedaily.com/containersecurity/dockerfile-security-best-practices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/dockerfile-security-best-practices/</guid>
+      <description>DockerFile Security Best Practices Choose Minimal Base Images FROM alpine WORKDIR /app COPY package.json /app RUN npm install CMD [“node”,“index.js”] Remove Cache Packages FROM alpine RUN apk add nginx &amp;amp;&amp;amp; rm -rf /var/cache/apt/* COPY index.html /var/www/html/ EXPOSE 80 CMD [“nginx”,“-g”,“daemon off;”] FROM alpine RUN apk add –no-cache nginx COPY index.html /var/www/html/ EXPOSE 80 CMD [“nginx”,“-g”,“daemon off;”] avoid multilayers FROM alpine RUN apk update RUN apk add curl RUN apk add nodejs RUN apk add nginx-1.</description>
+    </item>
+    <item>
+      <title>DockerScan</title>
+      <link>https://kubedaily.com/containersecurity/dockerscan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/dockerscan/</guid>
+      <description>DockerScan Docker Scan Support actions for docker registory scanning , image analysis and image meta information exaction to look for password , URL/ IP etc in the envirmonment variavle and any kind of sudo call by user
+create a directory for this $ sudo mkdir dockersec-2 $ cd dockersec-2 check pyhon version which mustt be greater then 3.5 and must have pip installed
+$ python3 --version $ sudo apt install python3-pip $ which pip3 `` Install Dockerscan with pip3 $ sudo /user/bin/pip3 install dockerscan</description>
+    </item>
+    <item>
+      <title>Environment variables </title>
+      <link>https://kubedaily.com/containersecurity/environment-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/environment-variables/</guid>
+      <description>Environment variables example of using an environment variable in a Dockerfile:
+FROM alpine:latest # Set an environment variable ENV MY_VAR &amp;#34;Hello World&amp;#34; # Use the environment variable in a command RUN echo $MY_VAR &amp;gt; /app/output.txt CMD [&amp;#34;cat&amp;#34;, &amp;#34;/app/output.txt&amp;#34;] In this example, the environment variable MY_VAR is set to the value &amp;ldquo;Hello World&amp;rdquo;. This variable is then used in the RUN command to create an output.txt file with the contents &amp;ldquo;Hello World&amp;rdquo;.</description>
+    </item>
+    <item>
+      <title>Host Volume Mount - Data persistentence </title>
+      <link>https://kubedaily.com/docker/host-volume-mount-data-persistentence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/host-volume-mount-data-persistentence/</guid>
+      <description>we already used database with web app but docker containers are ephermal. this means they are losing data once removed or re-started so somewhere need to find data persistent
+create docker-compose.yml using following content
+version: &amp;#39;3&amp;#39; services: db: image: mysql:latest restart: always container_name: myphpapp-db environment: MYSQL_ROOT_PASSWORD: somepass MYSQL_DATABASE: somedatabase dbclient: image: mysql:latest depends_on: - db command: mysql -uroot -psomepass -hdb MYSQL_DATABASE will create an empty database with the name &amp;ldquo;somedatabase&amp;rdquo; at first</description>
+    </item>
+    <item>
+      <title>Images and Container As Tar file</title>
+      <link>https://kubedaily.com/docker/images-and-container-as-tar-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/images-and-container-as-tar-file/</guid>
+      <description>Images and Container as Tarfile Docker provides the ability to save images and containers as tar files, which can be useful for sharing with others or transferring between systems. Here&amp;rsquo;s how to do it:
+docker pull nginx:latest latest: Pulling from library/nginx 5731adb3a4ab: Pull complete 8785c8f663d3: Pull complete 023b6bd393e4: Pull complete fd8f86b165b0: Pull complete 8f41e7c12976: Pull complete 3b5338ea7d08: Pull complete Digest: sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8 Status: Downloaded newer image for nginx:latest docker.io/library/nginx:latest Saving an Image as a Tar File To save a Docker image as a tar file, use the docker save command with the image name and output file name:</description>
+    </item>
+    <item>
+      <title>Ingress Controller</title>
+      <link>https://kubedaily.com/k8s/ingress-controller/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/ingress-controller/</guid>
+      <description>enable ingress addon k8s101 git:(main) ✗ minikube addons enable ingress 💡 ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub. You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS 💡 After the addon is enabled, please run &amp;#34;minikube tunnel&amp;#34; and your ingress resources would be available at &amp;#34;127.0.0.1&amp;#34; ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1 ▪ Using image k8s.gcr.io/ingress-nginx/controller:v1.2.1 ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1 🔎 Verifying ingress addon... 🌟 The &amp;#39;ingress&amp;#39; addon is enabled ➜ k8s101 git:(main) ✗ verify ngnix controller running ➜ k8s101 git:(main) ✗ kubectl get pods -n ingress-nginx NAME READY STATUS RESTARTS AGE ingress-nginx-admission-create-fxzbs 0/1 Completed 0 4m7s ingress-nginx-admission-patch-jw98n 0/1 Completed 1 4m7s ingress-nginx-controller-5959f988fd-tv8x8 1/1 Running 0 4m7s verify all pods running ➜ k8s101 git:(main) ✗ kubectl get pods -n kube-system NAME READY STATUS RESTARTS AGE coredns-565d847f94-bl9qz 1/1 Running 0 12h etcd-minikube 1/1 Running 0 12h kube-apiserver-minikube 1/1 Running 0 12h kube-controller-manager-minikube 1/1 Running 0 12h kube-proxy-qj7s7 1/1 Running 0 12h kube-scheduler-minikube 1/1 Running 0 12h storage-provisioner 1/1 Running 2 (12h ago) 12h Deploy Hello World App ➜ k8s101 git:(main) ✗ kubectl create deployment web --image=gcr.</description>
+    </item>
+    <item>
+      <title>Interacting with container ecosystem </title>
+      <link>https://kubedaily.com/containersecurity/interacting-with-container-ecosystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/interacting-with-container-ecosystem/</guid>
+      <description>Interacting with container ecosystem Docker Images and Image Layers
+In Docker, an image is a lightweight, stand-alone, executable package that includes everything needed to run a piece of software, including the application code, libraries, dependencies, and runtime. It&amp;rsquo;s used to build and run containerized applications.
+A Docker image is made up of a series of layers, where each layer represents an instruction in the image&amp;rsquo;s Dockerfile. When you build an image, each instruction in the Dockerfile creates a new layer in the image.</description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>https://kubedaily.com/k8s/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/overview/</guid>
+      <description>Table of Content Title Link 1.Pre-requisit for this lab lab 2.Basics of Pod lab 3.Create POD with Command and Arguments lab 4.Multi-Container Pods lab 5.Deployments &amp;amp; replication lab 6.Labels &amp;amp; Selectors lab 7.Kubernetes Service lab 8.Service Type: NodePort,ClusterIP,LoadBalancer lab 9.Ingress Controller lab 10.ConfigMap lab What next &amp;raquo;
+[kubernetes Security] [helm workshop] [Service Mesh] </description>
+    </item>
+    <item>
+      <title>Kubernetes Service  </title>
+      <link>https://kubedaily.com/k8s/kubernetes-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/kubernetes-service/</guid>
+      <description>kubectl explain svc ➜ k8s101 git:(main) ✗ kubectl explain svc KIND: Service VERSION: v1 DESCRIPTION: Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy. FIELDS: apiVersion &amp;lt;string&amp;gt; APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.</description>
+    </item>
+    <item>
+      <title>Labels and Selectors </title>
+      <link>https://kubedaily.com/k8s/labels-and-selectors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/labels-and-selectors/</guid>
+      <description>Labels - Maps (aka Dictionaries) ➜ k8s101 git:(main) ✗ kubectl explain deployment.metadata.labels KIND: Deployment VERSION: apps/v1 FIELD: labels &amp;lt;map[string]string&amp;gt; DESCRIPTION: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels Labels are attached to Kubernetes objects and are simple key: value pairs or maps(dictionary). Labels are used to store identifying information about a thing that you might need to query against.</description>
+    </item>
+    <item>
+      <title>Multi-Container Pods</title>
+      <link>https://kubedaily.com/k8s/multi-container-pods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/multi-container-pods/</guid>
+      <description>Why does Kubernetes allow more than one container in a Pod Containers in a Pod runs on a &amp;ldquo;logical host&amp;rdquo;: they use the same network namespace (same IP address and port space), they can use shared volumes using several containers for an application is simpler to use, more transparent, and allows decoupling software dependencies Use Cases for Multi-Container Pods The primary purpose of a multi-container Pod is to support co-located, co-managed helper processes for a main program</description>
+    </item>
+    <item>
+      <title>Named Volume Mount - Data persistentence </title>
+      <link>https://kubedaily.com/docker/named-volume-mount-data-persistentence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/named-volume-mount-data-persistentence/</guid>
+      <description>create volume 6-DC-name-volume git:(main) ✗ docker volume create --name my-vol my-vol create docker-compose.yml with following content version: &amp;#39;3.7&amp;#39; services: db: image: mysql:latest restart: always container_name: myphpapp-db environment: MYSQL_ROOT_PASSWORD: somepass MYSQL_DATABASE: somedatabase volumes: - my-vol:/var/lib/mysql volumes: my-vol: name: my-vol run docker compose docker compose up -d WARN[0000] volume &amp;#34;my-vol&amp;#34; already exists but was not created by Docker Compose. Use `external: true` to use an existing volume [+] Running 1/1 ⠿ Container myphpapp-db Started 0.</description>
+    </item>
+    <item>
+      <title>Namespaces </title>
+      <link>https://kubedaily.com/containersecurity/namespaces/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/namespaces/</guid>
+      <description>Namespaces There are several types of namespaces in containers, including:
+PID Namespaces:
+These namespaces isolate the process IDs of containers from the host system and from other containers. This means that each container has its own set of process IDs, which helps to prevent conflicts and ensures that containers cannot access processes belonging to other containers or the host system. Network Namespaces:
+These namespaces isolate the network interfaces and IP addresses of containers from the host system and from other containers.</description>
+    </item>
+    <item>
+      <title>Newtorking in Docker Compose </title>
+      <link>https://kubedaily.com/docker/newtorking-in-docker-compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/newtorking-in-docker-compose/</guid>
+      <description>creating and using networks in docker-compose.yml version: &amp;#34;3.7&amp;#34; services: app1: image: httpd:latest container_name: app1 ports: - 8080:80 networks: - app1_net networks: app1_net: run docker compose up docker-compose up Open browser http://localhost:8080 Observe the output
+On a second terminal docker ps Observe the networking part! docker inspect app1 Stops the docker-compose docker-compose rm </description>
+    </item>
+    <item>
+      <title>Newtorking in Docker Compose with ngnix</title>
+      <link>https://kubedaily.com/docker/newtorking-in-docker-compose-with-ngnix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/newtorking-in-docker-compose-with-ngnix/</guid>
+      <description>create docker-compose.yml with following content :
+version: &amp;#34;3.7&amp;#34; services: web: image: nginx:alpine volumes: - ./nginx.conf:/etc/nginx/nginx.conf ports: - 8080:80 networks: - app1_net - app2_net app1: image: httpd:latest networks: - app1_net app2: image: httpd:latest networks: - app2_net networks: app1_net: app2_net: the following nginx.conf configuration file in the same directory: events {} http { server { listen 80; listen [::]:80; server_name example.com; location / { proxy_pass http://app1:80/; } location /app2 { proxy_pass http://app2:80/; } } } run docker compose docker compose up Go to http://localhost:8080 and observer the command line •	It will show you the nignx-container web_1 container (reverse_proxy) was requested •	And forwarded the request to “app1” container •	Reload a few times to make this more obvious Go to http://localhost:8080/app2 and observe the command line •	It will show you again that nginx-container web_1 container (reverse_proxy) was requested •	And now forwards to “app2” container •	Reload a few times to make this more obvious </description>
+    </item>
+    <item>
+      <title>Overview</title>
+      <link>https://kubedaily.com/docker/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/overview/</guid>
+      <description>Table of Content Title Link 1.Pre-requisit for this lab Lab 2.Docker Hello World Example Lab 3.Docker Image Filtering 4.Images and Container As Tar file Lab 5.Push first Nginx Web app To DockerHub Lab 6.Build a Base Image from Scratch Lab 7.Dockerfile Lab - ADD instruction Lab 8.Dockerfile Lab - COPY instruction Lab 9.Dockerfile Lab - CMD instruction Lab 10.Dockerfile Lab - Entrypoint instruction Lab 11.Dockerfile Lab - WORKDIR instruction Lab 12.</description>
+    </item>
+    <item>
+      <title>Pre-requisit for this lab</title>
+      <link>https://kubedaily.com/docker/pre-requisit-for-this-lab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/pre-requisit-for-this-lab/</guid>
+      <description>Here are the steps to create a Docker Hub account:
+Go to https://hub.docker.com/signup and click on the &amp;ldquo;Sign Up&amp;rdquo; button. Fill out the registration form with your name, email address, and password. Agree to the terms of service and privacy policy by checking the box. Click on the &amp;ldquo;Sign Up&amp;rdquo; button to complete the registration process. You will receive a verification email from Docker Hub. Follow the link in the email to verify your email address.</description>
+    </item>
+    <item>
+      <title>Push first Nginx Web app To DockerHub</title>
+      <link>https://kubedaily.com/docker/push-first-nginx-web-app-to-dockerhub/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/push-first-nginx-web-app-to-dockerhub/</guid>
+      <description>Pull nginx image from dockerhub using dockerworkshop git:(main) ✗ docker pull nginx Using default tag: latest latest: Pulling from library/nginx Digest: sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8 Status: Image is up to date for nginx:latest docker.io/library/nginx:latest Run Docker with ngnix dockerworkshop git:(main) ✗ docker run --name docker-nginx -p 80:80 -d nginx 63258aebdc2d8ea40a0099efb3e51f8b15db2fe2dc048da3901843b4782d19fb –name docker-nginx : Name given to the container that is run is docker-nginx-p 80:80 : the port we are exposing and mapping from local machine port number to that of container, in the format local_machine_port:container_port-d : Detached mode – Runs the container in background</description>
+    </item>
+    <item>
+      <title>RBAC </title>
+      <link>https://kubedaily.com/k8s/rbac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/rbac/</guid>
+      <description>Role Based Access Control (RBAC) Role-Based Access Control (RBAC) in Kubernetes is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In the context of Kubernetes, RBAC allows you to control who has access to the Kubernetes API and what they can do with those resources
+- Rules: A rule is a set of operations (verbs) that can be carried out on a group of resources which belong to different API Groups.</description>
+    </item>
+    <item>
+      <title>Running multiple docker containers from CLI </title>
+      <link>https://kubedaily.com/docker/running-multiple-docker-containers-from-cli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/running-multiple-docker-containers-from-cli/</guid>
+      <description>We will create two containers (linux1, linux2) based on the same image (ubuntu) docker run -it -d --rm --name linux1 ubuntu /bin/bash additional flags: -dstarts the container as “detached”. Use “docker attach” to attach to it later on. --rm cleans up the container after stopping. The container will be removed, basically the same as “docker rm container_identifier” after stopping the container. So everything is kept tidy. --name will give the container a dedicated name, which makes it easier to address the container later on.</description>
+    </item>
+    <item>
+      <title>Scanning Docker for vulnerabilities with ThraetMappeper </title>
+      <link>https://kubedaily.com/containersecurity/scanning-docker-for-vulnerabilities-with-thraetmappeper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/scanning-docker-for-vulnerabilities-with-thraetmappeper/</guid>
+      <description>Orignally published on CloudNativeFolks
+ThreatMapper
+ThreatMapper hunts for threats in your production platforms, and ranks these threats based on their risk-of-exploit. It uncovers vulnerable software components, exposed secrets and deviations from good security practice. ThreatMapper uses a combination of agent-based inspection and agent-less monitoring to provide the widest possible coverage to detect threats.
+ThreatMapper carries on the good &amp;lsquo;shift left&amp;rsquo; security practices that you already employ in your development pipelines. It continues to monitor running applications against emerging software vulnerabilities and monitors the host and cloud configuration against industry-expert benchmarks.</description>
+    </item>
+    <item>
+      <title>SecretScanner - Finding secrets and passwords in container images and file systems </title>
+      <link>https://kubedaily.com/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/</guid>
+      <description>Published on CloudNativeFolks
+One of most common mistake is leaking Secrets via docker images or file system in this blogpost we will use Deepfence&amp;rsquo;s Open Source Project SecretScanner
+few days back I found this interesting tweet discussion from cybersecurity community members !
+here you see article around Uber security incidence
+%[https://www.uber.com/newsroom/security-update/]
+lets understand why secret scanner help you securing your container images and file system
+If you see DockerHub most of images and public and thousands of secrets leaked over the year</description>
+    </item>
+    <item>
+      <title>Security Linting of Dockerfiles</title>
+      <link>https://kubedaily.com/containersecurity/security-linting-of-dockerfiles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/security-linting-of-dockerfiles/</guid>
+      <description>hadolint Hadolint comes with a robust and easy to use CLI. You can install it on a variety of platforms, including macOS using brew install hadolint.
+Confirm the installation was successful with the following command:
+$ hadolint --help hadolint - Dockerfile Linter written in Haskell We’ll use the following Dockerfile as an example, which can be used to run a Python Django web server. On the surface, it looks fine but we’ll see it has a lot of problems.</description>
+    </item>
+    <item>
+      <title>Service Type - NodePort,ClusterIP,LoadBalancer </title>
+      <link>https://kubedaily.com/k8s/service-type-nodeportclusteriploadbalancer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/k8s/service-type-nodeportclusteriploadbalancer/</guid>
+      <description>Service Type1: NodePort NodePort service helps expose the Service on each Node’s IP at a static port (the NodePort). NodePort The port is available to all the workers in the cluster. A ClusterIP Service, to which the NodePort Service routes are automatically created. One would be able to contact the NodePort Service, from outside the cluster, by requesting :. The port on the POD is called the targetPort and the one connecting the NodePort service to the POD is called port.</description>
+    </item>
+    <item>
+      <title>Setup local network </title>
+      <link>https://kubedaily.com/docker/setup-local-network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/setup-local-network/</guid>
+      <description>Docker network create command syntax docker network create --help view current networks docker network ls clear Create a new overlay network, with all default options docker network create -d overlay defaults-over Create a new overlay network with specific IP settings docker network create -d overlay \ --subnet=172.30.0.0/24 \ --ip-range=172.30.0.0/28 \ --gateway=172.30.0.254 \ specifics-over view current networks again docker network ls Initial validation docker network inspect specifics-over --format &amp;#39;{{json .IPAM.Config}}&amp;#39; | jq clear</description>
+    </item>
+    <item>
+      <title>Setup Remote network </title>
+      <link>https://kubedaily.com/docker/setup-remote-network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/setup-remote-network/</guid>
+      <description>Docker network managment command docker network --help clear Starting on ubuntu-node01: Install and setup the weave driver sudo curl -L git.io/weave -o /usr/local/bin/weave sudo chmod a+x /usr/local/bin/weave export CHECKPOINT_DISABLE=1 weave launch eval $(weave env) clear
+Now on ubuntu-node02: Install and setup the weave driver sudo curl -L git.io/weave -o /usr/local/bin/weave sudo chmod a+x /usr/local/bin/weave export CHECKPOINT_DISABLE=1 weave launch eval $(weave env) clear
+Now, back on ubuntu-node01:Bring node02 in as a peer on node01&amp;rsquo;s weave network weave connect ubuntu-node02 Starting with ubuntu-node01:Run a container detached on node01 docker container run -d --name app01 alpine tail -f /dev/null Now, launch a container on ubuntu-node02: Run a container detached on node02 docker container run -d --name app02 alpine tail -f /dev/null Since we are on node02, we will check there first&amp;hellip; From inside the app02 container running on node02, let&amp;rsquo;s ping the app01 container running on node01 docker container exec -it app02 ping -c 4 app01 Similarly, from inside the app01 container running on node01, let&amp;rsquo;s ping the app02 container running on node02 docker container exec -it app01 ping -c 4 app02 clear</description>
+    </item>
+    <item>
+      <title>Simple php apache and database using docker compose</title>
+      <link>https://kubedaily.com/docker/simple-php-apache-and-database-using-docker-compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/simple-php-apache-and-database-using-docker-compose/</guid>
+      <description>we will see detach form logs upon start and user multiservices in one docker container
+version: &amp;#39;3&amp;#39; services: phpapp: build: context: ./ dockerfile: Dockerfile image: phpapp:123 ports: - &amp;#34;8080:80&amp;#34; volumes: - &amp;#34;./:/var/www/html&amp;#34; container_name: myphpapp-app db: image: mysql:5.7 restart: always environment: MYSQL_ROOT_PASSWORD: my!!!root!!!pw container_name: myphpapp-db here you see two services phpapp and myphpapp-app and image called phpapp with 123 tag
+another service called db form mysql this container restarts always which means it crashes ?</description>
+    </item>
+    <item>
+      <title>Sock Shop Docker Compose and Weave</title>
+      <link>https://kubedaily.com/containersecurity/sock-shop-docker-compose-and-weave/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/sock-shop-docker-compose-and-weave/</guid>
+      <description>Sock Shop Docker Compose &amp;amp; Weave
+Pre-requisites Install Docker Install Weave Scope Install Weave Net
+git clone https://github.com/microservices-demo/microservices-demo cd microservices-demo curl -sSL https://get.docker.com/ | sh apt-get install -yq python-pip build-essential python-dev pip install docker-compose curl -L git.io/weave -o /usr/local/bin/weave chmod a+x /usr/local/bin/weave Launch Weave Scope
+sudo curl -L git.io/scope -o /usr/local/bin/scope sudo chmod a+x /usr/local/bin/scope scope launch Weave launch
+weave launch docker-compose -f deploy/docker-compose-weave/docker-compose.yml up -d </description>
+    </item>
+    <item>
+      <title>Static Analysis of container images library for container </title>
+      <link>https://kubedaily.com/containersecurity/static-analysis-of-container-images-library-for-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/static-analysis-of-container-images-library-for-container/</guid>
+      <description>Packetstreamer SBOM and vulnerability scanner for container images
+https://github.com/deepfence/package-scanner
+Download binary
+package-scanner_Darwin_arm64.tar.gz package-scanner_Darwin_x86_64.tar.gz package-scanner_Linux_arm64.tar.gz package-scanner_Linux_x86_64.tar.gz package-scanner_darwin_amd64_v1 package-scanner_darwin_arm64 package-scanner_linux_amd64_v1 package-scanner_linux_arm64 ClI usage
+scan a docker image for vulnerabilities
+./package-scannner -source nginx:latest Scan a docker images , filter for critical vulnerabilities
+./package-scanner -source nginx:latest -severity critical Scan a docker images with CVEs
+./package-scanner -source nginx:latest INFO[2023-01-06T15:10:15+05:30] autodetect.go:91 trying to connect to endpoint &amp;#39;unix:///var/run/docker.sock&amp;#39; with timeout &amp;#39;10s&amp;#39; INFO[2023-01-06T15:10:15+05:30] autodetect.go:116 connected successfully using endpoint: unix:///var/run/docker.</description>
+    </item>
+    <item>
+      <title>What is container?</title>
+      <link>https://kubedaily.com/containersecurity/what-is-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/containersecurity/what-is-container/</guid>
+      <description>what is container ?
+A container is full package (or) grouping of an entire runtime enviroment of an application ncluding its binaries, the runtime to run the application, System related tools, System libraries, Settings, and configurations. thats the defination come to mind when you learn ? to better understanding we need to go back to Operating Syatem basics and how its work
+when a program?process is running on your computer it gives a call to kernel using SystemCall End Point whatever it needs to access any of the</description>
+    </item>
+    <item>
+      <title>Write First Docker Compose file </title>
+      <link>https://kubedaily.com/docker/write-first-docker-compose-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/write-first-docker-compose-file/</guid>
+      <description>cat Dockerfile
+FROM php:7.2-apache COPY index.php /var/www/html add index.php file
+&amp;lt;?php echo &amp;#34;hello world \n\n&amp;#34;; creat docker-compose.yaml
+version: &amp;#39;3&amp;#39; services: phpapp: ports: - &amp;#34;8080:80&amp;#34; build: context: ./ dockerfile: Dockerfile to run docker compose
+docker compose up --build output
+1-DC git:(main) ✗ docker compose up [+] Building 21.2s (10/10) FINISHED =&amp;gt; [internal] booting buildkit 3.8s =&amp;gt; =&amp;gt; pulling image moby/buildkit:buildx-stable-1 2.8s =&amp;gt; =&amp;gt; creating container buildx_buildkit_great_brahmagupta0 1.1s =&amp;gt; [internal] load build definition from Dockerfile 0.</description>
+    </item>
+  </channel>
+</rss>

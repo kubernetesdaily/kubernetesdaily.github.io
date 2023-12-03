@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kubectl explain pod">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Basics of Pod · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/k8s/basics-of-pod/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/" ><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/"  class="active"><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">k8s</strong>
+          
+          <a class="sidebar-link " href="/k8s/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">⎈ kubernetes</strong>
+          
+          <a class="sidebar-link " href="/k8s/pre-requisit-for-this-lab/">
+            
+              Pre-requisit for this lab
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/k8s/basics-of-pod/">
+            
+              Basics of Pod
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/create-pod-with-command-and-arguments/">
+            
+              Create POD with Command and Arguments
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/multi-container-pods/">
+            
+              Multi-Container Pods
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/deployments-and-replication/">
+            
+              Deployments and replication
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/labels-and-selectors/">
+            
+              Labels and Selectors
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/kubernetes-service/">
+            
+              Kubernetes Service
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/service-type-nodeportclusteriploadbalancer/">
+            
+              Service Type - NodePort,ClusterIP,LoadBalancer
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/ingress-controller/">
+            
+              Ingress Controller
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/k8s/configmap/">
+            
+              ConfigMap
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Basics of Pod</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <h4 id="0-what-is-pod-learn-via-kubectl-explain">0. What is POD learn via Kubectl Explain</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl explain pod 
+</span></span><span class="line"><span class="cl">KIND:     Pod
+</span></span><span class="line"><span class="cl">VERSION:  v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DESCRIPTION:
+</span></span><span class="line"><span class="cl">     Pod is a collection of containers that can run on a host. This resource is
+</span></span><span class="line"><span class="cl">     created by clients and scheduled onto hosts.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FIELDS:
+</span></span><span class="line"><span class="cl">   apiVersion   &lt;string&gt;
+</span></span><span class="line"><span class="cl">     APIVersion defines the versioned schema of this representation of an
+</span></span><span class="line"><span class="cl">     object. Servers should convert recognized schemas to the latest internal
+</span></span><span class="line"><span class="cl">     value, and may reject unrecognized values. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   kind &lt;string&gt;
+</span></span><span class="line"><span class="cl">     Kind is a string value representing the REST resource this object
+</span></span><span class="line"><span class="cl">     represents. Servers may infer this from the endpoint the client submits
+</span></span><span class="line"><span class="cl">     requests to. Cannot be updated. In CamelCase. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   metadata     &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Standard object<span class="err">&#39;</span>s metadata. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   spec &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Specification of the desired behavior of the pod. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   status       &lt;Object&gt;
+</span></span><span class="line"><span class="cl">     Most recently observed status of the pod. This data may not be up to date.
+</span></span><span class="line"><span class="cl">     Populated by the system. Read-only. More info:
+</span></span><span class="line"><span class="cl">     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+</span></span></code></pre></div><h4 id="1-create-a-pod-from-nginx-image">1. Create a Pod from Nginx Image</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl run nginx --image<span class="o">=</span>nginx
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pod/nginx created
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜ k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get pods
+</span></span><span class="line"><span class="cl">NAME    READY   STATUS    RESTARTS   AGE
+</span></span><span class="line"><span class="cl">nginx   1/1     Running   <span class="m">0</span>          25s
+</span></span></code></pre></div><h4 id="2-create-a-pod-and-expose-a-port">2. Create a Pod and Expose a Port</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl run nginx-port --image<span class="o">=</span>nginx --port<span class="o">=</span><span class="m">80</span>
+</span></span><span class="line"><span class="cl">pod/nginx-port created
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl describe pod nginx-port
+</span></span><span class="line"><span class="cl">Name:             nginx-port
+</span></span><span class="line"><span class="cl">Namespace:        default
+</span></span><span class="line"><span class="cl">Priority:         <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Service Account:  default
+</span></span><span class="line"><span class="cl">Node:             minikube/192.168.49.2
+</span></span><span class="line"><span class="cl">Start Time:       Mon, <span class="m">06</span> Mar <span class="m">2023</span> 01:44:56 +0530
+</span></span><span class="line"><span class="cl">Labels:           <span class="nv">run</span><span class="o">=</span>nginx-port
+</span></span><span class="line"><span class="cl">Annotations:      &lt;none&gt;
+</span></span><span class="line"><span class="cl">Status:           Running
+</span></span><span class="line"><span class="cl">IP:               172.17.0.4
+</span></span><span class="line"><span class="cl">IPs:
+</span></span><span class="line"><span class="cl">  IP:  172.17.0.4
+</span></span><span class="line"><span class="cl">Containers:
+</span></span><span class="line"><span class="cl">  nginx-port:
+</span></span><span class="line"><span class="cl">    Container ID:   docker://8260b161cc305d1cf4060dff9edbd0b05e86d9c4fc441b5a0a51b9dbe35403d3
+</span></span><span class="line"><span class="cl">    Image:          nginx
+</span></span><span class="line"><span class="cl">    Image ID:       docker-pullable://nginx@sha256:aa0afebbb3cfa473099a62c4b32e9b3fb73ed23f2a75a65ce1d4b4f55a5c2ef2
+</span></span><span class="line"><span class="cl">    Port:           80/TCP
+</span></span><span class="line"><span class="cl">    Host Port:      0/TCP
+</span></span><span class="line"><span class="cl">    State:          Running
+</span></span><span class="line"><span class="cl">      Started:      Mon, <span class="m">06</span> Mar <span class="m">2023</span> 01:44:59 +0530
+</span></span><span class="line"><span class="cl">    Ready:          True
+</span></span><span class="line"><span class="cl">    Restart Count:  <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    Environment:    &lt;none&gt;
+</span></span><span class="line"><span class="cl">    Mounts:
+</span></span><span class="line"><span class="cl">      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-ffpjx <span class="o">(</span>ro<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Conditions:
+</span></span><span class="line"><span class="cl">  Type              Status
+</span></span><span class="line"><span class="cl">  Initialized       True 
+</span></span><span class="line"><span class="cl">  Ready             True 
+</span></span><span class="line"><span class="cl">  ContainersReady   True 
+</span></span><span class="line"><span class="cl">  PodScheduled      True 
+</span></span><span class="line"><span class="cl">Volumes:
+</span></span><span class="line"><span class="cl">  kube-api-access-ffpjx:
+</span></span><span class="line"><span class="cl">    Type:                    Projected <span class="o">(</span>a volume that contains injected data from multiple sources<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    TokenExpirationSeconds:  <span class="m">3607</span>
+</span></span><span class="line"><span class="cl">    ConfigMapName:           kube-root-ca.crt
+</span></span><span class="line"><span class="cl">    ConfigMapOptional:       &lt;nil&gt;
+</span></span><span class="line"><span class="cl">    DownwardAPI:             <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">QoS Class:                   BestEffort
+</span></span><span class="line"><span class="cl">Node-Selectors:              &lt;none&gt;
+</span></span><span class="line"><span class="cl">Tolerations:                 node.kubernetes.io/not-ready:NoExecute <span class="nv">op</span><span class="o">=</span>Exists <span class="k">for</span> 300s
+</span></span><span class="line"><span class="cl">                             node.kubernetes.io/unreachable:NoExecute <span class="nv">op</span><span class="o">=</span>Exists <span class="k">for</span> 300s
+</span></span><span class="line"><span class="cl">Events:
+</span></span><span class="line"><span class="cl">  Type    Reason     Age   From               Message
+</span></span><span class="line"><span class="cl">  ----    ------     ----  ----               -------
+</span></span><span class="line"><span class="cl">  Normal  Scheduled  20s   default-scheduler  Successfully assigned default/nginx-port to minikube
+</span></span><span class="line"><span class="cl">  Normal  Pulling    20s   kubelet            Pulling image <span class="s2">&#34;nginx&#34;</span>
+</span></span><span class="line"><span class="cl">  Normal  Pulled     18s   kubelet            Successfully pulled image <span class="s2">&#34;nginx&#34;</span> in 2.236192917s
+</span></span><span class="line"><span class="cl">  Normal  Created    18s   kubelet            Created container nginx-port
+</span></span><span class="line"><span class="cl">  Normal  Started    18s   kubelet            Started container nginx-port
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ 
+</span></span></code></pre></div><h4 id="3-output-the-manifest-file">3. Output the Manifest File</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl run nginx --image<span class="o">=</span>nginx --port<span class="o">=</span><span class="m">80</span> --dry-run<span class="o">=</span>client -o yaml
+</span></span><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: Pod
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  creationTimestamp: null
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    run: nginx
+</span></span><span class="line"><span class="cl">  name: nginx
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  containers:
+</span></span><span class="line"><span class="cl">  - image: nginx
+</span></span><span class="line"><span class="cl">    name: nginx
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">    - containerPort: <span class="m">80</span>
+</span></span><span class="line"><span class="cl">    resources: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">  dnsPolicy: ClusterFirst
+</span></span><span class="line"><span class="cl">  restartPolicy: Always
+</span></span><span class="line"><span class="cl">status: <span class="o">{}</span>
+</span></span></code></pre></div><p>alternative</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"> kubectl run nginx --image<span class="o">=</span>nginx --port<span class="o">=</span><span class="m">80</span> --dry-run<span class="o">=</span>client -o yaml &gt; ngnix.yaml
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ ls
+</span></span><span class="line"><span class="cl">LICENSE           context           data              ngnix.yaml        package.json      styles
+</span></span><span class="line"><span class="cl">README.md         course.json       lessons           node_modules      pages             workshop
+</span></span><span class="line"><span class="cl">components        csv               next.config.js    package-lock.json public
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ cat ngnix.yaml 
+</span></span><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: Pod
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  creationTimestamp: null
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    run: nginx
+</span></span><span class="line"><span class="cl">  name: nginx
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  containers:
+</span></span><span class="line"><span class="cl">  - image: nginx
+</span></span><span class="line"><span class="cl">    name: nginx
+</span></span><span class="line"><span class="cl">    ports:
+</span></span><span class="line"><span class="cl">    - containerPort: <span class="m">80</span>
+</span></span><span class="line"><span class="cl">    resources: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">  dnsPolicy: ClusterFirst
+</span></span><span class="line"><span class="cl">  restartPolicy: Always
+</span></span><span class="line"><span class="cl">status: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ 
+</span></span></code></pre></div><h4 id="4-delete-pods">4. Delete PODS</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"> k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl delete pod nginx
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;nginx&#34;</span> deleted
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl delete pod --all
+</span></span><span class="line"><span class="cl">pod <span class="s2">&#34;nginx-port&#34;</span> deleted
+</span></span></code></pre></div><h4 id="list-the-worker-node">List the Worker Node</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl get nodes 
+</span></span></code></pre></div><h4 id="create-a-new-pod-from-nginx-image">Create a new POD from Nginx Image</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl run mywebserver --image<span class="o">=</span>nginx
+</span></span></code></pre></div><h4 id="list--the-pods-that-are-currently-running">List  the PODS that are currently running.</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl get pods
+</span></span></code></pre></div><h4 id="connect-inside-the-pod">Connect inside the POD</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl <span class="nb">exec</span> -it mywebserver -- bash
+</span></span></code></pre></div><p>You can come out of the POD with CTRL+D</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl <span class="nb">exec</span> -it mywebserver -- ls -l /
+</span></span></code></pre></div><h4 id="delete-the-pod">Delete the POD</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl delete pod mywebserver
+</span></span></code></pre></div><h5 id="pod-expose-portyaml">pod-expose-port.yaml</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: Pod
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: nginx-pod
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  containers:
+</span></span><span class="line"><span class="cl">  -  image: nginx
+</span></span><span class="line"><span class="cl">     name: democontainer
+</span></span><span class="line"><span class="cl">     ports:
+</span></span><span class="line"><span class="cl">       - containerPort: <span class="m">8080</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl apply -f pod-expose-port.yaml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl get pods
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kubectl describe pod nginx-pod
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl explain pod.spec.containers.ports
+</span></span><span class="line"><span class="cl">KIND:     Pod
+</span></span><span class="line"><span class="cl">VERSION:  v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">RESOURCE: ports &lt;<span class="o">[]</span>Object&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DESCRIPTION:
+</span></span><span class="line"><span class="cl">     List of ports to expose from the container. Not specifying a port here DOES
+</span></span><span class="line"><span class="cl">     NOT prevent that port from being exposed. Any port which is listening on
+</span></span><span class="line"><span class="cl">     the default <span class="s2">&#34;0.0.0.0&#34;</span> address inside a container will be accessible from
+</span></span><span class="line"><span class="cl">     the network. Modifying this array with strategic merge patch may corrupt
+</span></span><span class="line"><span class="cl">     the data. For more information See
+</span></span><span class="line"><span class="cl">     https://github.com/kubernetes/kubernetes/issues/108255. Cannot be updated.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     ContainerPort represents a network port in a single container.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FIELDS:
+</span></span><span class="line"><span class="cl">   containerPort        &lt;integer&gt; -required-
+</span></span><span class="line"><span class="cl">     Number of port to expose on the pod<span class="err">&#39;</span>s IP address. This must be a valid port
+</span></span><span class="line"><span class="cl">     number, <span class="m">0</span> &lt; x &lt; 65536.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   hostIP       &lt;string&gt;
+</span></span><span class="line"><span class="cl">     What host IP to <span class="nb">bind</span> the external port to.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   hostPort     &lt;integer&gt;
+</span></span><span class="line"><span class="cl">     Number of port to expose on the host. If specified, this must be a valid
+</span></span><span class="line"><span class="cl">     port number, <span class="m">0</span> &lt; x &lt; 65536. If HostNetwork is specified, this must match
+</span></span><span class="line"><span class="cl">     ContainerPort. Most containers <span class="k">do</span> not need this.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   name &lt;string&gt;
+</span></span><span class="line"><span class="cl">     If specified, this must be an IANA_SVC_NAME and unique within the pod. Each
+</span></span><span class="line"><span class="cl">     named port in a pod must have a unique name. Name <span class="k">for</span> the port that can be
+</span></span><span class="line"><span class="cl">     referred to by services.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   protocol     &lt;string&gt;
+</span></span><span class="line"><span class="cl">     Protocol <span class="k">for</span> port. Must be UDP, TCP, or SCTP. Defaults to <span class="s2">&#34;TCP&#34;</span>.
+</span></span><span class="line"><span class="cl">     Possible enum values:
+</span></span><span class="line"><span class="cl">     - <span class="sb">`</span><span class="s2">&#34;SCTP&#34;</span><span class="sb">`</span> is the SCTP protocol.
+</span></span><span class="line"><span class="cl">     - <span class="sb">`</span><span class="s2">&#34;TCP&#34;</span><span class="sb">`</span> is the TCP protocol.
+</span></span><span class="line"><span class="cl">     - <span class="sb">`</span><span class="s2">&#34;UDP&#34;</span><span class="sb">`</span> is the UDP protocol.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">➜  k8sworkshop git:<span class="o">(</span>main<span class="o">)</span> ✗ 
+</span></span></code></pre></div><h3 id="finding-a-pods-cluster-ip">Finding a Pod’s Cluster IP</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get pod -o wide
+</span></span><span class="line"><span class="cl">NAME         READY   STATUS    RESTARTS   AGE    IP           NODE       NOMINATED NODE   READINESS GATES
+</span></span><span class="line"><span class="cl">nginx-pod    1/1     Running   <span class="m">0</span>          95s    172.17.0.7   minikube   &lt;none&gt;           &lt;none&gt;
+</span></span><span class="line"><span class="cl">nginx-port   1/1     Running   <span class="m">0</span>          108m   172.17.0.3   minikube   &lt;none&gt;           &lt;none&gt;
+</span></span></code></pre></div><h3 id="finding-a-services-ip">Finding a Service’s IP</h3>
+<p>We can find a Service IP using kubectl as well. In this case we will list all services in all namespaces:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get service --all-namespaces
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NAMESPACE              NAME                        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>                  AGE
+</span></span><span class="line"><span class="cl">default                kubernetes                  ClusterIP   10.96.0.1       &lt;none&gt;        443/TCP                  114d
+</span></span><span class="line"><span class="cl">kube-system            kube-dns                    ClusterIP   10.96.0.10      &lt;none&gt;        53/UDP,53/TCP,9153/TCP   114d
+</span></span><span class="line"><span class="cl">kube-system            metrics-server              ClusterIP   10.106.73.183   &lt;none&gt;        443/TCP                  36m
+</span></span><span class="line"><span class="cl">kubernetes-dashboard   dashboard-metrics-scraper   ClusterIP   10.109.38.100   &lt;none&gt;        8000/TCP                 110m
+</span></span><span class="line"><span class="cl">kubernetes-dashboard   kubernetes-dashboard        ClusterIP   10.108.78.110   &lt;none&gt;        80/TCP                   110m
+</span></span><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">➜  k8s101 git:<span class="o">(</span>main<span class="o">)</span> ✗ kubectl get pod nginx-pod  --template<span class="o">=</span><span class="s1">&#39;{{(index (index .spec.containers 0).ports 0).containerPort}}{{&#34;\n&#34;}}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="m">8080</span>
+</span></span></code></pre></div>
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/k8s/pre-requisit-for-this-lab/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/k8s/create-pod-with-command-and-arguments/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+        <li><a href="#finding-a-pods-cluster-ip">Finding a Pod’s Cluster IP</a></li>
+        <li><a href="#finding-a-services-ip">Finding a Service’s IP</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

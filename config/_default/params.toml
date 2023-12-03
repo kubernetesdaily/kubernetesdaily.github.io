@@ -1,0 +1,30 @@
+description = 'Demestifying Container and Orchestration Ecosystem'
+
+author = 'CloudNativeFolks'
+authorURL = 'https://discord.gg/rEvr7vq'
+
+currentYear = 2023
+# projectStartYear = 2020
+
+
+twitterURL = 'https://twitter.com/i/communities/1499311438745468931'
+githubURL = 'https://github.com/sangam14'
+youtubeURL = 'https://www.youtube.com/@CloudNativeFolks'
+
+githubRepo = 'Kubernetesdaily/kubernetesdaily.github.io'
+
+
+[algolia]
+[algolia.en]
+container = '#site-header-search'
+appId = ''
+indexName = ''
+apiKey = ''
+
+#[[githubRepos]]
+#name = 'Website'
+#repo = 'Kubernetesdaily/kubernetesdaily.github.io'
+#icon = "<i class='icon icon-book'></i>"
+#description = 'The repository of the website.'
+
+

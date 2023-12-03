@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on Linux Collective</title>
+    <link>https://linuxcollective.github.io/docs/</link>
+    <description>Recent content in Docs on Linux Collective</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="https://linuxcollective.github.io/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>level &amp; Layer abstraction</title>
+      <link>https://linuxcollective.github.io/docs/level-layer-abstraction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxcollective.github.io/docs/level-layer-abstraction/</guid>
+      <description>Using abstraction to split computing systems into components makes things easier to understand, but it doesn’t work without organization.
+We arrange components into layers or levels, classifications (or groupings) of components according to where the components sit between the user and the hardware. Web browsers, games, and such sit at the top layer; at the bottom layer we have the memory in the computer hardware—the 0s and 1s. The operating system occupies many of the layers in between.</description>
+    </item>
+    
+    <item>
+      <title>Linux Distros</title>
+      <link>https://linuxcollective.github.io/docs/linux-distros/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxcollective.github.io/docs/linux-distros/</guid>
+      <description>Linux Distributions or Distros are operating systems with different software packages built on the Linux kernel. There are hundreds of distros built to serve one or more needs of its user. This diversity is what makes Linux the perfect tinkerer operating system.
+Common Linux Distributions Ubuntu - A user-friendly and widely-adopted distribution backed by Canonical. Fedora - Red Hat&amp;rsquo;s community-driven distribution, known for cutting-edge features. Debian - A universal operating system and the base for many other distributions.</description>
+    </item>
+    
+    <item>
+      <title>Linux History</title>
+      <link>https://linuxcollective.github.io/docs/linux-history/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxcollective.github.io/docs/linux-history/</guid>
+      <description>here&amp;rsquo;s a summarized overview of the history of Linux broken down by years:
+1991: Linus Torvalds, a Finnish student, releases the first version of the Linux kernel (0.01) as an open-source project. This marks the beginning of the Linux operating system.
+1992: The second version of the Linux kernel (0.12) is released, and the first Linux-related newsgroup is created. The concept of &amp;ldquo;Linux distributions&amp;rdquo; starts to emerge as various individuals and groups package the kernel with different software packages.</description>
+    </item>
+    
+    <item>
+      <title>Overview</title>
+      <link>https://linuxcollective.github.io/docs/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://linuxcollective.github.io/docs/overview/</guid>
+      <description>Welcome To linux collective
+What is Linux Collective? Linux Collective is a community of Linux users, developers, and enthusiasts. We are a group of people who love Linux and want to help others use it better. We provide support for Linux users, developers, and enthusiasts. We also provide resources for people who want to learn more about Linux or get involved with the community.
+What is Linux? Linux is an operating system that was created by Linus Torvalds in 1991.</description>
+    </item>
+    
+  </channel>
+</rss>

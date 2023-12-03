@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Demestifying Container and Orchestration Ecosystem">
+<meta name="author" content="CloudNativeFolks">
+
+<title>blog · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/blog/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/" ><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/"  class="active"><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card-content h2 {
+        margin: 0 0 10px;
+    }
+
+    .card-content p {
+        color: #666;
+        font-size: 0.9em;
+    }
+</style>
+
+<div class="grid-container">
+    
+    <div class="card">
+        <div class="card-content">
+            <h2>Flannel is a network fabric for containers, designed for Kubernetes.</h2>
+            <a href="https://kubedaily.com/blog/flannel/">Read More</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-content">
+            <h2>Arkade Open Source Marketplace for Kubernetes</h2>
+            <a href="https://kubedaily.com/blog/arkade-open-source-marketplace-for-kubernetes/">Read More</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-content">
+            <h2>CertManager - Automatically provision and manage TLS certificates in Kubernetes</h2>
+            <a href="https://kubedaily.com/blog/certmanager/">Read More</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-content">
+            <h2>Okteto Develop your applications directly in your Kubernetes Cluster</h2>
+            <a href="https://kubedaily.com/blog/okteto/">Read More</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-content">
+            <h2>Werf A solution for implementing efficient and consistent software</h2>
+            <a href="https://kubedaily.com/blog/werf/">Read More</a>
+        </div>
+    </div>
+    
+</div>
+
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

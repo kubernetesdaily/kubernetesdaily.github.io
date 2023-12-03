@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Demestifying Container and Orchestration Ecosystem">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Dive · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/containersecurity/dive/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/"  class="active"><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">Container Security</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">🔒ContainerSecurity</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/what-is-container/">
+            
+              What is container?
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-vs-virtualization/">
+            
+              Container vs Virtualization
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/namespaces/">
+            
+              Namespaces
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/cgroups/">
+            
+              Cgroups
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/capabilities/">
+            
+              Capabilities
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-architecture-and-its-components/">
+            
+              Docker architecture and its components
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/interacting-with-container-ecosystem/">
+            
+              Interacting with container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/attack-surface-of-the-container-ecosystem/">
+            
+              Attack surface of the container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-volumes/">
+            
+              Docker volumes
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-networking/">
+            
+              Docker Networking
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/auditing-docker-security/">
+            
+              Auditing Docker Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-image-security/">
+            
+              Container Image Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerfile-security-best-practices/">
+            
+              DockerFile Security Best Practices
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/">
+            
+              SecretScanner - Finding secrets and passwords in container images and file systems
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/yarahunter-malware-scanner-for-container-images/">
+            
+              YaraHunter - Malware Scanner for Container Images
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/security-linting-of-dockerfiles/">
+            
+              Security Linting of Dockerfiles
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/static-analysis-of-container-images-library-for-container/">
+            
+              Static Analysis of container images library for container
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-host-security-configurations/">
+            
+              Docker host security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-daemon-security-configurations/">
+            
+              Docker Daemon security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/content-trust-and-integrity-checks/">
+            
+              Content Trust and Integrity checks
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-registry-security-configurations/">
+            
+              Docker Registry security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerscan/">
+            
+              DockerScan
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/containersecurity/dive/">
+            
+              Dive
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-events/">
+            
+              Docker events
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Dive</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <h1 id="dive">Dive</h1>
+<ul>
+<li>Ubuntu /Debian</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb sudo apt install ./dive_0.9.2_linux_amd64.deb
+</span></span></code></pre></div><ul>
+<li>RHEL/CemtOS</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -OL https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm rpm -i dive_0.9.2_linux_amd64.rpm
+</span></span></code></pre></div><ul>
+<li>Arch Linux</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ay -S dive
+</span></span></code></pre></div><p>Mac OS X</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install dive
+</span></span></code></pre></div><h1 id="how-to-use-dive">How to use Dive</h1>
+<p>To analyze a Docker image simply run dive with an image tag/id/digest:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ dive &lt;your-image-tag&gt;
+</span></span></code></pre></div><p>or if you want to build your image then jump straight into analyzing it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ dive build -t &lt;some-tag&gt; 
+</span></span></code></pre></div><p>example  ngnix image</p>
+<p><img src="./images/dive.png" alt=""></p>
+<p>another tool that make this all more easy</p>
+<p><a href="https://github.com/prakhar1989/dive-in" target="_blank">https://github.com/prakhar1989/dive-in</a></p>
+<p><img src="./images/1.png" alt=""></p>
+<p><img src="./images/2.png" alt=""></p>
+<h1 id="recommanded-tool-slimai">recommanded tool slim.ai</h1>
+<p>Remove friction by securing your software supply chain with optimized containers specific to your application needs, while automatically reducing vulnerabilities in the process.</p>
+<p><a href="https://slim.ai/" target="_blank">https://slim.ai/</a></p>
+<p>portal.slim.ai</p>
+
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/containersecurity/dockerscan/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/containersecurity/docker-events/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents"></nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

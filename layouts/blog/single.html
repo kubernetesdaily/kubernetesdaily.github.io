@@ -1,0 +1,15 @@
+{{ define "title" }}
+{{ .Title }} | Blog | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ partial "article-nav" . }}
+{{ partial "article-header" . }}
+{{ partial "blog/hero.html" . }}
+<div id="article-content">
+    {{ $content := .Content }}
+    {{ $content = replaceRE `<a href="(https?://.+)">` `<a href="$1" target="_blank">` $content | safeHTML }}
+    {{ $content | safeHTML }}
+  </div>
+{{ partial "toc" . }}
+{{ end }}

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Container Image Security">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Container Image Security · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/containersecurity/container-image-security/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/"  class="active"><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">Container Security</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">🔒ContainerSecurity</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/what-is-container/">
+            
+              What is container?
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-vs-virtualization/">
+            
+              Container vs Virtualization
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/namespaces/">
+            
+              Namespaces
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/cgroups/">
+            
+              Cgroups
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/capabilities/">
+            
+              Capabilities
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-architecture-and-its-components/">
+            
+              Docker architecture and its components
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/interacting-with-container-ecosystem/">
+            
+              Interacting with container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/attack-surface-of-the-container-ecosystem/">
+            
+              Attack surface of the container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-volumes/">
+            
+              Docker volumes
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-networking/">
+            
+              Docker Networking
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/auditing-docker-security/">
+            
+              Auditing Docker Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/containersecurity/container-image-security/">
+            
+              Container Image Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerfile-security-best-practices/">
+            
+              DockerFile Security Best Practices
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/">
+            
+              SecretScanner - Finding secrets and passwords in container images and file systems
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/yarahunter-malware-scanner-for-container-images/">
+            
+              YaraHunter - Malware Scanner for Container Images
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/security-linting-of-dockerfiles/">
+            
+              Security Linting of Dockerfiles
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/static-analysis-of-container-images-library-for-container/">
+            
+              Static Analysis of container images library for container
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-host-security-configurations/">
+            
+              Docker host security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-daemon-security-configurations/">
+            
+              Docker Daemon security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/content-trust-and-integrity-checks/">
+            
+              Content Trust and Integrity checks
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-registry-security-configurations/">
+            
+              Docker Registry security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerscan/">
+            
+              DockerScan
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dive/">
+            
+              Dive
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-events/">
+            
+              Docker events
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Container Image Security</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <h2 id="container-image-security">Container Image Security</h2>
+<ul>
+<li>Building secure container images</li>
+</ul>
+<h2 id="choosing-base-images">Choosing base images</h2>
+<h1 id="alpine">Alpine</h1>
+<ul>
+<li>Pros
+<ul>
+<li>very small images: the community pays a lot attention on minimizing image sizes</li>
+<li>minimum functionality: only absolutely necessary packages contained</li>
+<li>lightweight init system: like Gentoo, Alpine uses OpenRC, a lightweight alternative to systemd</li>
+<li>musl performance: for some cases, <a href="https://musl.libc.org">musl libc</a> can be more performant than <a href="https://www.gnu.org/software/libc/" target="_blank">glibc</a></li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>rather Poor Documentation</li>
+<li>Small team : Currently there are  <a href="https://wiki.alpinelinux.org/wiki/Alpine_Linux:Developers" target="_blank">3 developer listed </a> as the alpine linux team</li>
+<li>possible incompatibilities: musl libc may cause problems with some C-based plugins and adjustments may be necessary if you compile software yourself</li>
+</ul>
+</li>
+</ul>
+<h1 id="debian">Debian</h1>
+<ul>
+<li>
+<p>Pro:</p>
+<ul>
+<li>small images: the size of slimmed down Debian images (such as minideb by Bitnami) is almost on par with Alpine (e.g. m<a href="https://github.com/bitnami/minideb">minideb</a>  + Python is <a href="https://dzone.com/articles/minideb-a-minimalist-debian-based-docker-image" target="_blank">just 7 MB larger than Alpine + Python</a>)</li>
+<li>lots of packages: there&rsquo;s hardly any software for Linux which hasn&rsquo;t been packaged for Debian</li>
+<li>well tested: due to its popularity, Debian is used widely and issues are more likely to be found</li>
+<li>comprehensive documentation; also, the community produced a big amount of additional documentations and tutorials</li>
+<li>more security reviews: again, due to its larger community, Debian gets more attention and its more likely that    vulnerabilities are discovered, e.g in glibc versus in musl libc (assumption). Debian also has a <a href="https://www.debian.org/security/" target="_blank">security audit team</a>, which proactively looks for security issues.</li>
+<li>provenance: validating authenticity of packages is possible, e.g. with debsigs / dpkgsig</li>
+</ul>
+</li>
+<li>
+<p>Con:</p>
+<ul>
+<li>slightly larger attack surface: minideb consists of about 35 packages (such as bash, grep, hostname, mount …) due to apt depending on it</li>
+<li>more false positives: scanners may report more false positives you need to look at</li>
+</ul>
+</li>
+</ul>
+<h1 id="distroless-images">Distroless images</h1>
+<p>simple distroless Golang Example</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> golang:1.18 as build</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> /go/src/app</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go mod download<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go vet -v<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go <span class="nb">test</span> -v<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> go build -o /go/bin/app<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> gcr.io/distroless/static-debian11</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>build /go/bin/app /<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;/app&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></div><ul>
+<li>
+<p>Distroless 2.0 project - uses Alpine as a minimalistic &amp; secure base image, and with the help of two tools, apko and melange, allows to build an application-tailored image containing only (mostly?) the necessary bits.</p>
+</li>
+<li>
+<p>What is apko ?</p>
+<ul>
+<li>Declarative OCI image builder tool based on apk</li>
+<li>Images are defined in YAML files</li>
+<li>Build are fully reproducible</li>
+<li>Automatically generates SBOMs for every imahes</li>
+<li>Platform-agnostic buids via Docker + apko images</li>
+</ul>
+</li>
+<li>
+<p>example of apko.yaml file</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">contents</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">repositories</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">https://dl-cdn.alpinelinux.org/alpine/edge/main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">packages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">alpine-base</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">entrypoint</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">/bin/sh -l</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># optional environment configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="l">/usr/sbin:/sbin:/usr/bin:/bin</span><span class="w">
+</span></span></span></code></pre></div><p>Buiding the images with apko via Docker</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -v <span class="s2">&#34;</span><span class="nv">$PWD</span><span class="s2">&#34;</span>:/work cgr.dev/chainguard/apko build examples/alpine-base.yaml apko-alpine:edge apko-alpine.tar
+</span></span></code></pre></div><p>test the image with docker</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker load &lt; alpine.tar
+</span></span><span class="line"><span class="cl">$ docker run -it apko-alpine:test 
+</span></span></code></pre></div><ul>
+<li>
+<p>Why apko ?</p>
+<ul>
+<li>Introduced by alphine , it used a different methodology to handle package management</li>
+<li>Package Installation or removal is done as a side effect of modifyinh the system state</li>
+<li>This creates the ideal conditions for reproducible and declaratve pipelines</li>
+</ul>
+</li>
+<li>
+<p>where do package come from ?</p>
+<ul>
+<li>for alphine-base images , use Alphine apks found at pkgs.alpinelinux.org/packages</li>
+<li>for wolfi images , use wolfi apks that are listed in the wolfi-os repository  hosted at packages.wolfi.dev/os</li>
+<li>Don&rsquo;t mix!</li>
+<li>You cam also create your own apks with melange</li>
+</ul>
+</li>
+<li>
+<p>why distroless ?</p>
+<ul>
+<li>Minimalist container images with only what&rsquo;s absolutely necessary to build or execute your application</li>
+<li>Popular base images are full of software that only makes sense on bare metal</li>
+<li>No need for package managers or interactive shells on production images</li>
+<li>less dependencies = less attack surface</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run cgr.dev/chainguard/apko version
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -v <span class="s2">&#34;</span><span class="nv">$PWD</span><span class="s2">&#34;</span>:/work cgr.dev/chainguard/apko build examples/alpine-base.yaml apko-alpine:edge apko-alpine.tar
+</span></span></code></pre></div><h1 id="scratch-images">Scratch Images</h1>
+<p>The default golang image is great! It allows you to quickly build and test your golang projects. But it has a few draw backs, it is a massive 964 MB even the slimmed down alpine based image is 327 MB, not only that but having unused binaries and packages opens you up to security flaws.</p>
+<p>Using a multi-stage image will allow you to build smaller images by dropping all the packages used to build the binaries and only including the ones required during runtime.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="c"># Create a builder stage</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> golang:alpine as builder</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apk update<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apk add --no-cache git ca-certificates <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> update-ca-certificates<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> . .<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Fetch dependencies</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go mod download<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go mod verify<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Build the binary</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> <span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span> <span class="nv">GOOS</span><span class="o">=</span>linux <span class="nv">GOARCH</span><span class="o">=</span>amd64 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    go build -ldflags<span class="o">=</span><span class="s2">&#34;-w -s&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -o /go/bin/my-docker-binary<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Create clean image</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> alpine:latest</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Copy only the static binary</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> --from<span class="o">=</span>builder /go/bin/my-docker-binary <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    /go/bin/my-docker-binary<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Run the binary</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&#34;/go/bin/my-docker-binary&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></div><p>Great now we have an image thats 20 MB thats a 95% reduction! Remember these are production images so we use -ldflags=&quot;-w -s&quot; to turn off debug information -w and Go symbols -s.</p>
+<h2 id="scratch-image-and-lowest-privilege-user">Scratch Image and Lowest Privilege User</h2>
+<p>Now to get rid of all those unused packages. Instead of using the alpine image as our final stage we will use the scratch image which has literally nothing!</p>
+<p>Will will take this opportunity to also create a non-root user. Add the following snippet to your builder stage</p>
+<pre tabindex="0"><code>
+ENV USER=appuser
+ENV UID=10001 
+
+RUN adduser \    
+    --disabled-password \    
+    --gecos &#34;&#34; \    
+    --home &#34;/nonexistent&#34; \    
+    --shell &#34;/sbin/nologin&#34; \    
+    --no-create-home \    
+    --uid &#34;$\{UID\}&#34; \    
+    &#34;$\{USER\}&#34;
+</code></pre><p>We will need to copy over the ca-certificates to the final stage, this is only required if you are making https calls and we will also need to copy over the passwd and group files to use our appuser. Finally we need get the stage to use our user.</p>
+<pre tabindex="0"><code># Copy over the necessary files
+COPY --from=builder \
+    /etc/ssl/certs/ca-certificates.crt \
+    /etc/ssl/certs/
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
+# Use our user!
+USER appuser:appuser
+</code></pre><p>So finally your Dockerfile should look something like this:</p>
+<pre tabindex="0"><code># Create a builder stage
+FROM golang:alpine as builder
+
+RUN apk update
+RUN apk add --no-cache git ca-certificates \
+    &amp;&amp; update-ca-certificates
+
+ENV USER=appuser
+ENV UID=10001 
+
+RUN adduser \    
+    --disabled-password \    
+    --gecos &#34;&#34; \    
+    --home &#34;/nonexistent&#34; \    
+    --shell &#34;/sbin/nologin&#34; \    
+    --no-create-home \    
+    --uid &#34;${UID}&#34; \    
+    &#34;${USER}&#34;
+
+COPY . .
+
+# Fetch dependencies
+RUN go mod download
+RUN go mod verify
+
+# Build the binary
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build -ldflags=&#34;-w -s&#34; \
+    -o /go/bin/my-docker-binary
+
+# Create clean image
+FROM scratch
+
+# Copy only the static binary
+COPY --from=builder \
+    /go/bin/my-docker-binary \
+    /go/bin/my-docker-binary
+COPY --from=builder \
+    /etc/ssl/certs/ca-certificates.crt \
+    /etc/ssl/certs/
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
+
+# Use our user!
+USER appuser:appuser
+
+# Run the binary
+ENTRYPOINT [&#34;/go/bin/my-docker-binary&#34;]
+</code></pre>
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/containersecurity/auditing-docker-security/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/containersecurity/dockerfile-security-best-practices/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#container-image-security">Container Image Security</a></li>
+    <li><a href="#choosing-base-images">Choosing base images</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#scratch-image-and-lowest-privilege-user">Scratch Image and Lowest Privilege User</a></li>
+  </ul>
+</nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

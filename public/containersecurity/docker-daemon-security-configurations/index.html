@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Demestifying Container and Orchestration Ecosystem">
+<meta name="author" content="CloudNativeFolks">
+
+<title>Docker Daemon security configurations · kubedaily</title>
+
+<link rel="canonical" href="https://kubedaily.com/containersecurity/docker-daemon-security-configurations/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/base.css" integrity="">
+
+
+
+<link rel="stylesheet" href="/scss/theme/default.css" integrity="">
+
+
+
+  <link rel="preconnect" href="https://-dsn.algolia.net" crossorigin />
+  
+  <link rel="stylesheet" href="/scss/component/docsearch.css" integrity=""/>
+
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/img/icon/favicon.ico">
+<link rel="icon" href="/img/icon/icon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="/img/icon/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/icon/icon-180.png" sizes="180x180">
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '');
+</script>
+    <script 
+     src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+  </script>
+  <script 
+      src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+  </script>
+  <script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+  </head>
+  <body>
+    <header id="site-header">
+  
+  <div id="site-header-brand">
+    <a href="/">kubedaily</a>
+  </div>
+
+  
+  <div id="site-header-controls">
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="theme selector">
+        <i class="icon icon-brightness"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        <li role="menuitem"><button class="color-scheme" data-value="light"><i class="icon icon-light-mode"></i> Light</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="dark"><i class="icon icon-dark-mode"></i> Dark &nbsp;</button></li>
+        <li role="menuitem"><button class="color-scheme" data-value="night"><i class="icon icon-night-mode"></i> Night</button></li>
+      </ul>
+    </div>
+
+    
+    <div class="dropdown">
+      <button class="dropdown-btn" aria-haspopup="menu" aria-label="language selector">
+        <i class="icon icon-translate"></i>
+        <i class="icon icon-select"></i>
+      </button>
+      <ul role="menu" class="dropdown-menu">
+        
+          <li role="menuitem"><a href="#">English</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div id="site-header-menu">
+    <nav>
+      <ul>
+        
+        
+        
+          
+          <li><a href="/" ><i class='icon icon-home'></i>Home</a></li>
+        
+          
+          <li><a href="/docker/" ><i class='icon icons8-docker '></i>Docker</a></li>
+        
+          
+          <li><a href="/containersecurity/"  class="active"><i class='icon icon-book'></i>ContainerSecurity</a></li>
+        
+          
+          <li><a href="/k8s/" ><i class='icon icons8-kubernetes'></i>Kubernetes</a></li>
+        
+          
+          <li><a href="/blog/" ><i class='icon icon-book'></i>blog</a></li>
+        
+          
+          <li><a href="https://kubedaily.com/cloudnativetools/" ><i class='icon icon-book'></i>cloudnativetools</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+
+  
+
+</header>
+    
+<div id="site-main-content-wrapper">
+  
+  
+    <aside id="sidebar">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+
+  <div class="sticky"><strong class="sidebar-section">Container Security</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/overview/">
+            
+              Overview
+            
+          </a>
+
+        <strong class="sidebar-section">🔒ContainerSecurity</strong>
+          
+          <a class="sidebar-link " href="/containersecurity/what-is-container/">
+            
+              What is container?
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-vs-virtualization/">
+            
+              Container vs Virtualization
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/namespaces/">
+            
+              Namespaces
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/cgroups/">
+            
+              Cgroups
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/capabilities/">
+            
+              Capabilities
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-architecture-and-its-components/">
+            
+              Docker architecture and its components
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/interacting-with-container-ecosystem/">
+            
+              Interacting with container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/attack-surface-of-the-container-ecosystem/">
+            
+              Attack surface of the container ecosystem
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-volumes/">
+            
+              Docker volumes
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-networking/">
+            
+              Docker Networking
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/auditing-docker-security/">
+            
+              Auditing Docker Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/container-image-security/">
+            
+              Container Image Security
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerfile-security-best-practices/">
+            
+              DockerFile Security Best Practices
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/">
+            
+              SecretScanner - Finding secrets and passwords in container images and file systems
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/yarahunter-malware-scanner-for-container-images/">
+            
+              YaraHunter - Malware Scanner for Container Images
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/security-linting-of-dockerfiles/">
+            
+              Security Linting of Dockerfiles
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/static-analysis-of-container-images-library-for-container/">
+            
+              Static Analysis of container images library for container
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-host-security-configurations/">
+            
+              Docker host security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link current" href="/containersecurity/docker-daemon-security-configurations/">
+            
+              Docker Daemon security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/content-trust-and-integrity-checks/">
+            
+              Content Trust and Integrity checks
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-registry-security-configurations/">
+            
+              Docker Registry security configurations
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dockerscan/">
+            
+              DockerScan
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/dive/">
+            
+              Dive
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity/docker-events/">
+            
+              Docker events
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+          
+          <a class="sidebar-link " href="/containersecurity//">
+            
+              
+            
+          </a>
+
+        
+  </div>
+</aside>
+  
+  <main>
+    <article id="article">
+      <nav id="article-nav">
+  <button id="article-nav-menu-btn"><i class="icon icon-menu"></i> On this section</button>
+  <button id="article-nav-toc-btn"><i class="icon icon-toc"></i> On this page</button>
+</nav>
+      <header id="article-header">
+  <h1>Docker Daemon security configurations</h1>
+</header>
+      <div id="article-content">
+        
+        
+        <h1 id="docker-daemon-security-configuration">docker daemon security configuration</h1>
+<p>Install docker CE 19.03</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># yum install -y yum-utils device-mapper-persistent-data lvm2</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># yum install -y docker-ce</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost docker<span class="o">]</span><span class="c1"># docker --version</span>
+</span></span><span class="line"><span class="cl">Docker version 19.03.8, build afacb8b
+</span></span></code></pre></div><h1 id="daemon-security-configuration">Daemon security configuration</h1>
+<p>There is no configuration file by default, which needs to be created separately/etc/docker/daemon.json, the following configurations are all local test examples configured on this file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;icc&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;log-level&#34;</span><span class="p">:</span> <span class="s2">&#34;info&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;log-driver&#34;</span><span class="p">:</span> <span class="s2">&#34;json-file&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;log-opts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;max-size&#34;</span><span class="p">:</span> <span class="s2">&#34;10m&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;max-file&#34;</span><span class="p">:</span><span class="s2">&#34;5&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;labels&#34;</span><span class="p">:</span> <span class="s2">&#34;somelabel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;env&#34;</span><span class="p">:</span> <span class="s2">&#34;os,customer&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">},</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;iptables&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;userns-remap&#34;</span><span class="p">:</span> <span class="s2">&#34;default&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;userland-proxy&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;experimental&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;selinux-enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;live-restore&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;no-new-privileges&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;cgroup-parent&#34;</span><span class="p">:</span> <span class="s2">&#34;/foobar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;seccomp-profile&#34;</span><span class="p">:</span> <span class="s2">&#34;/etc/docker/seccomp/default-no-chmod.json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;tls&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;tlsverify&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;tlscacert&#34;</span><span class="p">:</span> <span class="s2">&#34;/etc/docker/CA/ca.pem&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;tlscert&#34;</span><span class="p">:</span> <span class="s2">&#34;/etc/docker/CA/server-cert.pem&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;tlskey&#34;</span><span class="p">:</span> <span class="s2">&#34;/etc/docker/CA/server-key.pem&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h1 id="configure-access-to-docker-daemon-through-https-and-certificate-authentication">configure access to docker daemon through HTTPS and certificate authentication</h1>
+<p>Server certificate</p>
+<p>Create a host and define a domain (IP can also be used). The corresponding certificate will be generated according to the domain. It is generally used to register the CN in the certificate:</p>
+<p>Create certificate Directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir -p /etc/docker/dockerd/CA <span class="o">&amp;&amp;</span> <span class="nb">cd</span> /etc/docker/dockerd/CA
+</span></span></code></pre></div><p>Generate the key certificate and fill in the key certificate password twice:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl genrsa -aes256 -out ca-key.pem <span class="m">4096</span>
+</span></span></code></pre></div><p>To generate a CA certificate, you need to enter the basic information of the registration certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl req -new -x509 -days <span class="m">365</span> -key ca-key.pem -sha256 -out ca.pem
+</span></span></code></pre></div><p>Create server certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl genrsa -out server-key.pem <span class="m">4096</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ openssl req -subj <span class="s2">&#34;/CN=localhsot&#34;</span> -sha256 -new -key server-key.pem -out server.csr
+</span></span></code></pre></div><p>Set the IP address specified by the certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">subjectAltName</span> <span class="o">=</span> DNS:localhost,IP:127.0.0.1 &gt;&gt; extfile.cnf
+</span></span></code></pre></div><p>Set the extended usage property of the docker daemon key to server authentication only:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">extendedKeyUsage</span> <span class="o">=</span> serverAuth &gt;&gt; extfile.cnf
+</span></span></code></pre></div><p>Generate server cert certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl x509 -req -days <span class="m">3650</span> -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem -extfile extfile.cnf
+</span></span></code></pre></div><p>Client certificate</p>
+<p>Create client certificate: (or current directory)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl genrsa -out key.pem <span class="m">4096</span>
+</span></span><span class="line"><span class="cl">$ openssl req -subj <span class="s1">&#39;/CN=localhost&#39;</span> -new -key key.pem -out client.csr
+</span></span></code></pre></div><p>To make the key suitable for client authentication, create an extended profile:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">extendedKeyUsage</span> <span class="o">=</span> clientAuth &gt;&gt; extfile.cnf
+</span></span></code></pre></div><p>Generate client cert certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl x509 -req -days <span class="m">3650</span> -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile.cnf
+</span></span></code></pre></div><p>use</p>
+<p>Give corresponding permissions to the certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ chmod -v <span class="m">0400</span> ca-key.pem key.pem server-key.pem
+</span></span><span class="line"><span class="cl">$ chmod -v <span class="m">0444</span> ca.pem server-cert.pem cert.pem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@localhost CA<span class="o">]</span><span class="c1"># ls</span>
+</span></span><span class="line"><span class="cl">ca-key.pem ca.pem ca.srl cert.pem client.csr extfile.cnf key.pem server-cert.pem server.csr server-key.pem
+</span></span></code></pre></div><p>Server configuration /etc/docker/daemon.json</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tls&#34;</span><span class="err">:</span> <span class="kc">true</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tlsverify&#34;</span><span class="err">:</span> <span class="kc">true</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tlscacert&#34;</span><span class="err">:</span> <span class="s2">&#34;/etc/docker/CA/ca.pem&#34;</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tlscert&#34;</span><span class="err">:</span> <span class="s2">&#34;/etc/docker/CA/server-cert.pem&#34;</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;tlskey&#34;</span><span class="err">:</span> <span class="s2">&#34;/etc/docker/CA/server-key.pem&#34;</span>
+</span></span></code></pre></div><p>Client configuration</p>
+<p>Set the client certificate on the server and place it in the corresponding location:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cp -v <span class="o">{</span>ca,cert,key<span class="o">}</span>.pem ~/.docker
+</span></span><span class="line"><span class="cl">$ <span class="nb">export</span> <span class="nv">DOCKER_HOST</span><span class="o">=</span>tcp://<span class="nv">$HOST</span>:2376 <span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="m">1</span>
+</span></span></code></pre></div><p>Simulate the test as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">$</span> <span class="err">curl</span> <span class="err">https:</span><span class="c1">//$HOST:2376/images/json 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="err">--cert</span> <span class="err">~/.docker/cert.pem</span> 
+</span></span><span class="line"><span class="cl"> <span class="err">--key</span> <span class="err">~/.docker/key.pem</span> 
+</span></span><span class="line"><span class="cl"> <span class="err">--cacert</span> <span class="err">~/.docker/ca.pem</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="p">[{</span><span class="nt">&#34;Containers&#34;</span><span class="p">:</span><span class="mi">-1</span><span class="p">,</span><span class="nt">&#34;Created&#34;</span><span class="p">:</span><span class="mi">1540777343</span><span class="p">,</span><span class="nt">&#34;Id&#34;</span><span class="p">:</span><span class="s2">&#34;sha256:55e7b305dc477345434ce3bd3941940481f982eea31c8f28c0670d59c63d544b&#34;</span><span class="p">,</span><span class="nt">&#34;Labels&#34;</span><span class="p">:</span><span class="err">nu</span>
+</span></span></code></pre></div><h1 id="using-namespace-isolation-technology">using namespace isolation technology</h1>
+<p>Namespace is an isolation technology. Docker uses the isolation technology to open a specific namespace and create some special processes, but the use of namespace is conditional. The system will create a dockremap and map it to the container through the ID values corresponding to / etc / subuid and / etc / subuid; The actual situation still uses the ordinary permission of dockremap to achieve the effect of automatic isolation.</p>
+<p>Modify first/etc/sysctl.conf</p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># echo “user.max_user_namespaces=15076” &gt;&gt; /etc/sysctl.conf
+</code></pre><p>stay /etc/docker/daemon.json Add the configuration item “userns remap”: “default”</p>
+<p>Be careful when modifying this configuration. If you have deployed a set of docker environment, after enabling this option, you will switch to the isolated environment, and the previous docker container will not be used!</p>
+<pre tabindex="0"><code>
+[root@localhost docker]# cat /etc/subuid
+dockremap:100000:65536
+</code></pre><h1 id="setting-the-partition-of-docker">setting the partition of docker</h1>
+<p>Create a separate partition for the container. The default partition isvarlibdocker, including local images, containers, networks and other related things.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">root@localhost docker<span class="o">]</span><span class="c1"># ls /var/lib/docker</span>
+</span></span></code></pre></div><p>100000.100000  builder  buildkit  containers  image  network  overlay2  plugins  runtimes  swarm  tmp  trust  volumes</p>
+<p>You can use “data root”: “to configure the default partition location.</p>
+<h1 id="limit-traffic-between-default-bridge-containers">limit traffic between default bridge containers</h1>
+<p>When the docker service is started, a forwarding policy will be added to the forward chain of iptables by default. Whether the policy is accept or drop depends on whether — ICC = true (default) or — ICC = false is configured. If — iptables = false is manually specified, iptables rules will not be added.</p>
+<p>By default, all network communication is allowed between containers on the same host on the default bridge. If not required, the communication between all containers is limited. Link specific containers that need to communicate together, or create a custom network and join only containers that need to communicate with the custom network.</p>
+<p>Configure to limit the traffic “ICC” between containers on the default bridge: false</p>
+<h1 id="configuration-log">configuration log</h1>
+<p>Configure the centralized remote log, set the log process — log level level to info, log record format JSON, local log record</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;log-level&#34;</span><span class="err">:</span> <span class="s2">&#34;info&#34;</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;log-driver&#34;</span><span class="err">:</span> <span class="s2">&#34;json-file&#34;</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;log-opts&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;max-size&#34;</span><span class="p">:</span> <span class="s2">&#34;10m&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;max-file&#34;</span><span class="p">:</span><span class="s2">&#34;5&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;labels&#34;</span><span class="p">:</span> <span class="s2">&#34;somelabel&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;env&#34;</span><span class="p">:</span> <span class="s2">&#34;os,customer&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="err">,</span>
+</span></span></code></pre></div><p><img src="./images/config-remote.jpg" alt="Alt text"></p>
+<p>The docker logging driver receives the container log and forwards it to a remote destination or file. The default logging driver isjson-file。 It stores container logs on local disk in JSON format. Docker has a plug-in architecture for logging, so there are plug-ins for open source tools and commercial tools:</p>
+<p>Journaled – stores the container log in the system log</p>
+<p>Syslog driver – supports UDP, TCP, TLS</p>
+<p>Fluent D – supports connecting TCP or UNIX sockets to fluent D</p>
+<p>Splunk – http / HTTPS forwarding to Splunk server</p>
+<p>Gel – UDP logs forwarded to graylog2</p>
+<p>Example fluent</p>
+<pre tabindex="0"><code>{
+ &#34;log-driver&#34;: &#34;fluentd&#34;,
+ &#34;log-opts&#34;: {
+ &#34;fluentd-address&#34;: &#34;fluentdhost:24224&#34;
+ }
+ }
+</code></pre><p>Using syslog</p>
+<pre tabindex="0"><code>{
+ &#34;log-driver&#34;: &#34;syslog&#34;,
+ &#34;log-opts&#34;: {
+ &#34;syslog-address&#34;: &#34;udp://1.2.3.4:1111&#34;
+ }
+}
+</code></pre><h1 id="setting-ulimit">setting ulimit</h1>
+<pre tabindex="0"><code>{
+ &#34;default-ulimits&#34;: {
+ &#34;nofile&#34;: {
+  &#34;Name&#34;: &#34;nofile&#34;,
+  &#34;Hard&#34;: 64000,
+  &#34;Soft&#34;: 64000
+ }
+ }
+}
+</code></pre><h1 id="setting-cgroup">setting CGroup</h1>
+<p>The cggroup parent option allows you to set the default cggroup parent for the container. If this option is not set, the default value for FS CGroup driver is / docker; For SYSTEMd CGroup driver, the default is system slice 。</p>
+<p>If CGroup has a forward slash (/), CGroup is created under the root CGroup, otherwise CGroup is created under the daemon CGroup.</p>
+<p>Assuming that the daemon runs in CGroup daemon CGroup, then — CGroup parent = / foobar creates a CGroup in / sys / FS / CGroup / memory / foobar, while — CGroup parent = foobar creates a CGroup/sys/fs/cgroup/memory/daemoncgroup/foobar Create CGroup in.</p>
+<p>SYSTEMd CGroup driver has different rules for – CGroup parent. System D represents the hierarchy by slice, and the name of the slice encodes the position in the tree. Therefore, the — CGroup parent of SYSTEMd CGroup should be the slice name. Names can contain a series of names separated by dashes that describe the path from the root slice to the slice. For example, — CGroup parent = user-a-b.slice indicates that the memory of the container is CGroup /sys/fs/cgroup/memory/user.slice/user-a.slice/user-a-b.slice/docker-.scope Created in.</p>
+<p>You can also use container run to set it. Using the — CGroup parent option on docker create and docker run will take precedence over the — CGroup parent option on the daemon.</p>
+<h1 id="configuring-seccomp">configuring seccomp</h1>
+<p>For the test configuration file used, it is forbidden to use the Chmod command in docker</p>
+<pre tabindex="0"><code>https://github.com/docker/labs/blob/master/security/seccomp/seccomp-profiles/default-no-chmod.json
+[root@localhost docker]# docker run --rm -it alpine sh
+/ # ls bin etc lib mnt proc run srv tmp var
+dev home media opt root sbin sys usr / # touch foo.sh
+/ # chmod +x foo.sh
+chmod: foo.sh: Operation not permitted
+/ # exit
+</code></pre><p>It can actually complete some system related calls of prohibition, permission and alarm. Refer to:https://github.com/torvalds/linux/blob/master/arch/x86/entry/syscalls/syscall_64.tbl</p>
+<h1 id="disable-the-experimental-function-of-docker">disable the experimental function of docker</h1>
+<p>Set “experimental”: false</p>
+<p>2.11 restrict containers from raising rights through suid or sgid</p>
+<p>The no new privileges security option prevents application processes within the container from gaining new privileges during execution.</p>
+<p>For example: there is a program with setuid / setgid bit set in the image, such as sudo. The process in the container also has (file) permission to execute the program. Any operation attempting to obtain privileges through facilities such as setuid / setgid will be rejected.</p>
+<h1 id="daemon-configuration-example-description-linux">Daemon configuration example description (Linux)</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;authorization-plugins&#34;</span>: <span class="o">[]</span>,//access authorization plugin
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;data-root&#34;</span>: <span class="s2">&#34;&#34;</span>, //the root directory of docker data persistent storage, the default is /var/lib/docker
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;dns&#34;</span>: <span class="o">[]</span>, //DNS server
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;dns-opts&#34;</span>: <span class="o">[]</span>,//DNS configuration options, such as ports, etc.
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;dns-search&#34;</span>: <span class="o">[]</span>,//DNS search domain name
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;exec-opts&#34;</span>: <span class="o">[]</span>, //execution options
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;exec-root&#34;</span>: <span class="s2">&#34;&#34;</span>,//The root directory of the file in the execution state
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;experimental&#34;</span>: false,//whether to <span class="nb">enable</span> experimental features
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;features&#34;</span>: <span class="o">{}</span>,//Enable or disable specific features. Such as: <span class="o">{</span><span class="s2">&#34;buildkit&#34;</span>: true<span class="o">}</span> makes buildkit the default docker image builder.
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;storage-driver&#34;</span>: <span class="s2">&#34;&#34;</span>,//Storage driver <span class="nb">type</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;storage-opts&#34;</span>: <span class="o">[]</span>,//storage options
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;labels&#34;</span>: <span class="o">[]</span>,//key-value pair label docker metadata
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;live-restore&#34;</span>: true, //whether to keep the container alive when dockerd hangs up <span class="o">(</span>to avoid the container <span class="nb">exit</span> caused by the docker service exception<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;log-driver&#34;</span>: <span class="s2">&#34;json-file&#34;</span>,//The driver of the container log
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;log-opts&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;max-size&#34;</span>: <span class="s2">&#34;10m&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;max-file&#34;</span>: <span class="s2">&#34;5&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;labels&#34;</span>: <span class="s2">&#34;somelabel&#34;</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;env&#34;</span>: <span class="s2">&#34;os,customer&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,//Options <span class="k">for</span> container logs
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;mtu&#34;</span>: 0,//Set container network MTU <span class="o">(</span>Maximum Transmission Unit<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;pidfile&#34;</span>: <span class="s2">&#34;&#34;</span>,//The location of the daemon PID file
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;cluster-store&#34;</span>: <span class="s2">&#34;&#34;</span>,//URL of the cluster storage system
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;cluster-store-opts&#34;</span>: <span class="o">{}</span>,//Configure cluster storage
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;cluster-advertise&#34;</span>: <span class="s2">&#34;&#34;</span>,//External address name
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;max-concurrent-downloads&#34;</span>: 3,//Set the maximum concurrency of each pull process
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;max-concurrent-uploads&#34;</span>: 5,//Set the maximum concurrency of each push process
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;default-shm-size&#34;</span>: <span class="s2">&#34;64M&#34;</span>,//Set the default shared memory size
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;shutdown-timeout&#34;</span>: 15,//Set the shutdown timeout period
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;debug&#34;</span>: true,//Enable debug mode
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;hosts&#34;</span>: <span class="o">[]</span>,//The listening address of the dockerd daemon process
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;log-level&#34;</span>: <span class="s2">&#34;&#34;</span>,//log level
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;tls&#34;</span>: true, //Enable the Transport Layer Security Protocol TLS
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;tlsverify&#34;</span>: true, //Enable the transport layer security protocol and verify the remote address
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;tlscacert&#34;</span>: <span class="s2">&#34;&#34;</span>,//CA signature file path
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;tlscert&#34;</span>: <span class="s2">&#34;&#34;</span>,//TLS certificate file path
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;tlskey&#34;</span>: <span class="s2">&#34;&#34;</span>,//TLS key file path
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;swarm-default-advertise-addr&#34;</span>: <span class="s2">&#34;&#34;</span>, //swarm external address
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;api-cors-header&#34;</span>: <span class="s2">&#34;&#34;</span>,//Set CORS <span class="o">(</span>Cross-origin resource sharing<span class="o">)</span> header
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;selinux-enabled&#34;</span>: false,//Enable selinux <span class="o">(</span>mandatory access control <span class="k">for</span> users, processes, applications, files<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;userns-remap&#34;</span>: <span class="s2">&#34;&#34;</span>,//Set user/group <span class="k">for</span> user namespace
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;group&#34;</span>: <span class="s2">&#34;&#34;</span>, //Docker is in the group
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;cgroup-parent&#34;</span>: <span class="s2">&#34;&#34;</span>,//Set the parent class of cgroup of all containers
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;default-ulimits&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;nofile&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;nofile&#34;</span>,
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;Hard&#34;</span>: 64000,
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;Soft&#34;</span>: <span class="m">64000</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,//Set the <span class="nb">ulimit</span> of all containers
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;init&#34;</span>: false,//The container performs initialization to forward signals or control <span class="o">(</span>reap<span class="o">)</span> processes
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;init-path&#34;</span>: <span class="s2">&#34;/usr/libexec/docker-init&#34;</span>, //docker-init file path
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;ipv6&#34;</span>: false,//support IPV6 network
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;iptables&#34;</span>: false,//Enable firewall rules
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;ip-forward&#34;</span>: false, //Open net.ipv4.ip_forward
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;ip-masq&#34;</span>: false,//Enable ip masking <span class="o">(</span>the technology of rewriting the <span class="nb">source</span> IP address or destination IP address when the IP packet passes through a router or firewall<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;userland-proxy&#34;</span>: false, //userland proxy
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;userland-proxy-path&#34;</span>: <span class="s2">&#34;/usr/libexec/docker-proxy&#34;</span>, //userland proxy path
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;ip&#34;</span>: <span class="s2">&#34;0.0.0.0&#34;</span>,//Default IP
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;bridge&#34;</span>: <span class="s2">&#34;&#34;</span>,//Attach the container to the bridge identifier on the bridge network
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;bip&#34;</span>: <span class="s2">&#34;&#34;</span>,//Specify bridge IP
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;fixed-cidr&#34;</span>: <span class="s2">&#34;&#34;</span>,//<span class="o">(</span>ipv4<span class="o">)</span> subnetting, that is, limiting the range of ip address allocation to control the network segment to which the container belongs to achieve network access between containers <span class="o">(</span>the same host or between different hosts<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;fixed-cidr-v6&#34;</span>: <span class="s2">&#34;&#34;</span>, //<span class="o">(</span>ipv6<span class="o">)</span> subnetting
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;default-gateway&#34;</span>: <span class="s2">&#34;&#34;</span>,//default gateway
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;default-gateway-v6&#34;</span>: <span class="s2">&#34;&#34;</span>,//default ipv6 gateway
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;icc&#34;</span>: false,//Inter-container communication
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;raw-logs&#34;</span>: false, //raw logs <span class="o">(</span>no color, full timestamp<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;allow-nondistributable-artifacts&#34;</span>: <span class="o">[]</span>,//Registry warehouse submitted by products that are not distributed externally
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[]</span>,//registry warehouse mirror acceleration address
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;seccomp-profile&#34;</span>: <span class="s2">&#34;&#34;</span>, //seccomp configuration file
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;insecure-registries&#34;</span>: <span class="o">[]</span>,//Configure non-https registry address
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;no-new-privileges&#34;</span>: false, //Disable new privileges
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;default-runtime&#34;</span>: <span class="s2">&#34;runc&#34;</span>, //OCI alliance <span class="o">(</span>The Open Container Initiative<span class="o">)</span> default runtime environment
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;oom-score-adjust&#34;</span>: -500,//Priority of memory overflow being killed <span class="o">(</span>-1000~1000<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;node-generic-resources&#34;</span>: <span class="o">[</span><span class="s2">&#34;NVIDIA-GPU=UUID1&#34;</span>, <span class="s2">&#34;NVIDIA-GPU=UUID2&#34;</span><span class="o">]</span>,//Resource nodes announced to the public
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;runtimes&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;cc-runtime&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;path&#34;</span>: <span class="s2">&#34;/usr/bin/cc-runtime&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;custom&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;path&#34;</span>: <span class="s2">&#34;/usr/local/bin/my-runc-replacement&#34;</span>,
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;runtimeArgs&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;--debug&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">]</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,//Runtime
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;default-address-pools&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">  <span class="o">{</span><span class="s2">&#34;base&#34;</span>:<span class="s2">&#34;172.80.0.0/16&#34;</span>,<span class="s2">&#34;size&#34;</span>:24<span class="o">}</span>, //Default dhcp assigned address
+</span></span><span class="line"><span class="cl">  <span class="o">{</span><span class="s2">&#34;base&#34;</span>:<span class="s2">&#34;172.90.0.0/16&#34;</span>,<span class="s2">&#34;size&#34;</span>:24<span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div>
+      </div>
+      
+
+
+
+
+
+
+
+
+  
+  
+  
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+        
+          
+        
+
+      
+    
+        
+
+      
+    
+        
+
+        
+          
+        
+
+        
+        
+
+
+<footer id="article-footer">
+  <time id="article-last-updated" datetime="2023-11-26"><i class="icon icon-calendar"></i>&nbsp;Last updated: 2023-11-26</time>
+
+  
+    <a id="article-prev-link" href="/containersecurity/docker-host-security-configurations/"><i class="icon icon-prev icon-colored"></i> Prev</a>
+  
+
+  
+    <a id="article-next-link"  href="/containersecurity/content-trust-and-integrity-checks/">Next <i class="icon icon-next icon-colored"></i></a>
+  
+</footer>
+    </article>
+    <aside id="toc">
+  <span class="btn-close"><i class="icon icon-close"></i></span>
+  <div class="sticky">
+    <strong><i class="icon icon-toc"></i> On this page</strong>
+    <nav id="TableOfContents"></nav>
+  </div>
+</aside>
+  </main>
+</div>
+
+    <footer id="site-footer">
+  
+  <div id="site-footer-copyright">
+    <a href="https://discord.gg/rEvr7vq" target="_blank">
+      <i class="icon icon-copyright"></i> 2023 CloudNativeFolks
+    </a>
+  </div>
+
+  
+  <div id="site-footer-social">
+
+    
+
+    
+    <a href="https://twitter.com/i/communities/1499311438745468931" target="_blank" aria-label="twitter url">
+      <i class="icon icon-twitter icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://github.com/sangam14" target="_blank" aria-label="github url">
+      <i class="icon icon-github icon-colored"></i>
+    </a>
+    
+
+    
+    <a href="https://www.youtube.com/@CloudNativeFolks" target="_blank" aria-label="youtube url">
+      <i class="icon icon-youtube icon-colored"></i>
+    </a>
+    
+
+  </div>
+
+  
+  <center> <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fkubedaily.com"><img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fkubedaily.com&label=KubeDaily&labelColor=%232ccce4&countColor=%2337d67a" /></a> </center> 
+
+  
+  <div id="site-footer-love">
+    Made with <i class="icon icon-love icon-colored"></i> &nbsp;from&nbsp;<a href="https://blog.cloudnativefolks.org" target="_blank">@CloudNativeFollks</a>
+  </div>
+</footer>
+    
+
+
+
+
+
+
+<script type="text/javascript" src="/js/base.min.js"></script>
+
+
+
+  
+  <script src="/js/component/docsearch.min.js"></script>
+  <script type="application/javascript">
+      docsearch({
+          container: '#site-header-search',
+          appId: '',
+          indexName: '',
+          apiKey: '',
+      });
+  </script>
+
+
+<script type="application/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js?2023-12-03')
+            .catch(function(err) {console.error('ServiceWorker registration failed: ', err);});
+    }
+</script>
+  </body>
+</html>

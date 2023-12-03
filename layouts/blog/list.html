@@ -1,0 +1,47 @@
+{{ define "main" }}
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card-content h2 {
+        margin: 0 0 10px;
+    }
+
+    .card-content p {
+        color: #666;
+        font-size: 0.9em;
+    }
+</style>
+{{ range .Site.Taxonomies.categories }}
+<div class="grid-container">
+    {{ range .Pages }}
+    <div class="card">
+        <div class="card-content">
+            <h2>{{ .Title }}</h2>
+            <a href="{{ .Permalink }}">Read More</a>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+{{ end }}
