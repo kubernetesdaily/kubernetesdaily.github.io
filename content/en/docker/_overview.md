@@ -8,7 +8,10 @@ aliases:
 
 ### The Ultimate Docker Workshop 
 
+
 ![](/images/docker-workshop-banner.png)
+
+
 
 Table of content 
 
