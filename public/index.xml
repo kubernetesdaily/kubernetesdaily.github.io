@@ -45,6 +45,13 @@ Flannel is responsible for providing a layer 3 IPv4 network between multiple nod
       <description>Getting started with Oketo CLI Macos/Linux ➜ curl https://get.okteto.com -sSfL | sh &amp;gt; Using Release Channel: stable &amp;gt; Using Version: 2.14.0 &amp;gt; Downloading https://downloads.okteto.com/cli/stable/2.14.0/okteto-Darwin-arm64 % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 100 74.8M 100 74.8M 0 0 20.0M 0 0:00:03 0:00:03 --:--:-- 20.0M Login into Okteto Cloud via Github Account Configuring Okteto CLI with Okteto Cloud ➜ okteto context A context defines the default cluster/namespace for any Okteto CLI command.</description>
     </item>
     <item>
+      <title>Porter - Create an installer bundling your application, client tools, configuration, and deployment logic for easy distribution and execution with a single command</title>
+      <link>https://kubedaily.com/blog/porter/readme/</link>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/porter/readme/</guid>
+      <description>Porter - Create an installer bundling your application, client tools, configuration, and deployment logic for easy distribution and execution with a single command Porter is a CNCF project implementing the CNAB specification. It provides a CLI and Kubernetes Operator to create, publish, install, and maintain CNABs. Porter provides a consistent, platform-agnostic way to deploy and manage cloud native applications, making it easier to automate and manage the lifecycle of your applications</description>
+    </item>
+    <item>
       <title>Werf A solution for implementing efficient and consistent software</title>
       <link>https://kubedaily.com/blog/werf/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
@@ -404,6 +411,14 @@ Network Specific Drivers -&amp;gt; implemenrs the data plane while also handling
 Docker Native Network Drivers Bridge - uses a software bridge whicha allows containers connected to the same bridge network to communicate</description>
     </item>
     <item>
+      <title>Docker Prerequisites</title>
+      <link>https://kubedaily.com/docker/pre-requisit-for-this-lab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/pre-requisit-for-this-lab/</guid>
+      <description>Here are the steps to create a Docker Hub account:
+Go to https://hub.docker.com/signup and click on the &amp;ldquo;Sign Up&amp;rdquo; button. Fill out the registration form with your name, email address, and password. Agree to the terms of service and privacy policy by checking the box. Click on the &amp;ldquo;Sign Up&amp;rdquo; button to complete the registration process. You will receive a verification email from Docker Hub. Follow the link in the email to verify your email address.</description>
+    </item>
+    <item>
       <title>Docker Registry security configurations </title>
       <link>https://kubedaily.com/containersecurity/docker-registry-security-configurations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -654,15 +669,7 @@ version: &amp;#34;3.7&amp;#34; services: web: image: nginx:alpine volumes: - ./n
       <link>https://kubedaily.com/docker/overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://kubedaily.com/docker/overview/</guid>
-      <description>Table of Content Title Link 1.Pre-requisit for this lab Lab 2.Docker Hello World Example Lab 3.Docker Image Filtering 4.Images and Container As Tar file Lab 5.Push first Nginx Web app To DockerHub Lab 6.Build a Base Image from Scratch Lab 7.Dockerfile Lab - ADD instruction Lab 8.Dockerfile Lab - COPY instruction Lab 9.Dockerfile Lab - CMD instruction Lab 10.Dockerfile Lab - Entrypoint instruction Lab 11.Dockerfile Lab - WORKDIR instruction Lab 12.</description>
-    </item>
-    <item>
-      <title>Pre-requisit for this lab</title>
-      <link>https://kubedaily.com/docker/pre-requisit-for-this-lab/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kubedaily.com/docker/pre-requisit-for-this-lab/</guid>
-      <description>Here are the steps to create a Docker Hub account:
-Go to https://hub.docker.com/signup and click on the &amp;ldquo;Sign Up&amp;rdquo; button. Fill out the registration form with your name, email address, and password. Agree to the terms of service and privacy policy by checking the box. Click on the &amp;ldquo;Sign Up&amp;rdquo; button to complete the registration process. You will receive a verification email from Docker Hub. Follow the link in the email to verify your email address.</description>
+      <description>Table of Content Title Link 1.Docker Prerequisites Lab 2.Docker Hello World Example Lab 3.Docker Image Filtering 4.Images and Container As Tar file Lab 5.Push first Nginx Web app To DockerHub Lab 6.Build a Base Image from Scratch Lab 7.Dockerfile Lab - ADD instruction Lab 8.Dockerfile Lab - COPY instruction Lab 9.Dockerfile Lab - CMD instruction Lab 10.Dockerfile Lab - Entrypoint instruction Lab 11.Dockerfile Lab - WORKDIR instruction Lab 12.Dockerfile Lab - RUN instruction Lab 13.</description>
     </item>
     <item>
       <title>Push first Nginx Web app To DockerHub</title>

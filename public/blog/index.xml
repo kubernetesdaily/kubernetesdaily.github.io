@@ -37,6 +37,13 @@ Flannel is responsible for providing a layer 3 IPv4 network between multiple nod
       <description>Getting started with Oketo CLI Macos/Linux ➜ curl https://get.okteto.com -sSfL | sh &amp;gt; Using Release Channel: stable &amp;gt; Using Version: 2.14.0 &amp;gt; Downloading https://downloads.okteto.com/cli/stable/2.14.0/okteto-Darwin-arm64 % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 100 74.8M 100 74.8M 0 0 20.0M 0 0:00:03 0:00:03 --:--:-- 20.0M Login into Okteto Cloud via Github Account Configuring Okteto CLI with Okteto Cloud ➜ okteto context A context defines the default cluster/namespace for any Okteto CLI command.</description>
     </item>
     <item>
+      <title>Porter - Create an installer bundling your application, client tools, configuration, and deployment logic for easy distribution and execution with a single command</title>
+      <link>https://kubedaily.com/blog/porter/readme/</link>
+      <pubDate>Sat, 18 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/blog/porter/readme/</guid>
+      <description>Porter - Create an installer bundling your application, client tools, configuration, and deployment logic for easy distribution and execution with a single command Porter is a CNCF project implementing the CNAB specification. It provides a CLI and Kubernetes Operator to create, publish, install, and maintain CNABs. Porter provides a consistent, platform-agnostic way to deploy and manage cloud native applications, making it easier to automate and manage the lifecycle of your applications</description>
+    </item>
+    <item>
       <title>Werf A solution for implementing efficient and consistent software</title>
       <link>https://kubedaily.com/blog/werf/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>

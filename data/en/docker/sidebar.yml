@@ -4,55 +4,51 @@
 
 - title: 🐳 Learn Docker
   pages:
-  - title: Pre-requisit for this lab
-  - title: Docker Hello World Example
+  - title: Docker Prerequisites
+  - title: Hello World in Docker
   - title: Docker Image Filtering
-  - title: Images and Container As Tar file
-  - title: Push first Nginx Web app To DockerHub
-  - title: Build a Base Image from Scratch
-  - title: Dockerfile Lab - ADD instruction
-  - title: Dockerfile Lab - COPY instruction
-  - title: Dockerfile Lab - CMD instruction
-  - title: Dockerfile Lab - Entrypoint instruction
-  - title: Dockerfile Lab - WORKDIR instruction
-  - title: Dockerfile Lab - RUN instruction
-  - title: Dockerfile Lab - ARG instruction
-  - title: Dockerfile Lab - Volume instruction
-  - title: Dockerfile Lab - USER instruction
-  - title: Dockerfile Lab - HEALTHCHECK instruction
-  - title: Dockerfile Lab - ENV instruction
-  - title: Dockerfile Lab - ONBUILD instruction
-  - title: Running multiple docker containers from CLI
-  - title: Write First Docker Compose file
-  - title: Docker Compose with Volume Mount
-  - title: Build Own Dockerfile and Docker Compose with Custom configuration
-  - title: Simple php apache and database using docker compose
-  - title: Host Volume Mount - Data persistentence
-  - title: Named Volume Mount - Data persistentence
-  - title: Docker Compose CLI - Build Command
-  - title: Docker Compose CLI - Config Command
-  - title: Docker Compose CLI - CP Command
-  - title: Docker Compose CLI - Create Command
-  - title: Docker Compose CLI - Down Command
-  - title: Docker Compose CLI - Events Command
-  - title: Docker Compose CLI - Exec Command
-  - title: Docker Compose CLI - Images Command
-  - title: Docker Compose CLI - Kill Command
-  - title: Docker Compose CLI - logs Command
-  - title: Docker Compose CLI - ls Command
-  - title: Docker Compose CLI - Pause unpause Command
-  - title: Docker Compose CLI - Port Command
-  - title: Docker Compose CLI - ps Command
-  - title: Docker Compose CLI - pull Command
-  - title: Docker Compose CLI - push Command
-  - title: Docker Compose CLI - rm Command
-  - title: Docker Compose CLI - run Command
-  - title: Setup local network
-  - title: Setup Remote network
+  - title: Images as Tar Files
+  - title: Pushing to DockerHub
+  - title: Building a Base Image
+  - title: Dockerfile ADD
+  - title: Dockerfile COPY
+  - title: Dockerfile CMD
+  - title: Dockerfile Entrypoint
+  - title: Dockerfile WORKDIR
+  - title: Dockerfile RUN 
+  - title: Dockerfile ARG 
+  - title: Dockerfile Volume 
+  - title: Dockerfile USER 
+  - title: Dockerfile HEALTHCHECK 
+  - title: Dockerfile ENV 
+  - title: Dockerfile ONBUILD 
+  - title: Multi-Container CLI
+  - title: Docker Compose Basics
+  - title: Docker Compose Volumes
+  - title: Custom Dockerfile with Compose
+  - title: PHP, Apache, and DB with Compose
+  - title: Host Volume Mount
+  - title: Named Volume Mount
+  - title: Compose Build Command
+  - title: Compose Config Command
+  - title: Compose CP Command
+  - title: Compose Create Command
+  - title: Compose Down Command
+  - title: Compose Events Command
+  - title: Compose Exec Command
+  - title: Compose Images Command
+  - title: Compose Kill Command
+  - title: Compose Logs Command
+  - title: Compose ls Command
+  - title: Compose Pause unpause Command
+  - title: Compose Port Command
+  - title: Compose Ps Command
+  - title: Compose Pull Command
+  - title: Compose Push Command
+  - title: Compose Rm Command
+  - title: Compose Run Command
+  - title: Local Network Setup
+  - title: Remote Network Setup
   - title: Newtorking in Docker Compose
-  - title: Newtorking in Docker Compose with ngnix
+  - title: Compose Networking with Nginx
   - title: Docker Wordpress Example
-  - title:
-  - title:
-  - title:
-  - title:

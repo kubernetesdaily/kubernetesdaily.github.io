@@ -190,6 +190,14 @@ Alpine Linux is a lightweight Linux distribution that is commonly used in Docker
 dockerworkshop git:(main) ✗ docker pull alpine:3.</description>
     </item>
     <item>
+      <title>Docker Prerequisites</title>
+      <link>https://kubedaily.com/docker/pre-requisit-for-this-lab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kubedaily.com/docker/pre-requisit-for-this-lab/</guid>
+      <description>Here are the steps to create a Docker Hub account:
+Go to https://hub.docker.com/signup and click on the &amp;ldquo;Sign Up&amp;rdquo; button. Fill out the registration form with your name, email address, and password. Agree to the terms of service and privacy policy by checking the box. Click on the &amp;ldquo;Sign Up&amp;rdquo; button to complete the registration process. You will receive a verification email from Docker Hub. Follow the link in the email to verify your email address.</description>
+    </item>
+    <item>
       <title>Docker Wordpress Example </title>
       <link>https://kubedaily.com/docker/docker-wordpress-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -342,15 +350,7 @@ version: &amp;#34;3.7&amp;#34; services: web: image: nginx:alpine volumes: - ./n
       <link>https://kubedaily.com/docker/overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://kubedaily.com/docker/overview/</guid>
-      <description>Table of Content Title Link 1.Pre-requisit for this lab Lab 2.Docker Hello World Example Lab 3.Docker Image Filtering 4.Images and Container As Tar file Lab 5.Push first Nginx Web app To DockerHub Lab 6.Build a Base Image from Scratch Lab 7.Dockerfile Lab - ADD instruction Lab 8.Dockerfile Lab - COPY instruction Lab 9.Dockerfile Lab - CMD instruction Lab 10.Dockerfile Lab - Entrypoint instruction Lab 11.Dockerfile Lab - WORKDIR instruction Lab 12.</description>
-    </item>
-    <item>
-      <title>Pre-requisit for this lab</title>
-      <link>https://kubedaily.com/docker/pre-requisit-for-this-lab/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kubedaily.com/docker/pre-requisit-for-this-lab/</guid>
-      <description>Here are the steps to create a Docker Hub account:
-Go to https://hub.docker.com/signup and click on the &amp;ldquo;Sign Up&amp;rdquo; button. Fill out the registration form with your name, email address, and password. Agree to the terms of service and privacy policy by checking the box. Click on the &amp;ldquo;Sign Up&amp;rdquo; button to complete the registration process. You will receive a verification email from Docker Hub. Follow the link in the email to verify your email address.</description>
+      <description>Table of Content Title Link 1.Docker Prerequisites Lab 2.Docker Hello World Example Lab 3.Docker Image Filtering 4.Images and Container As Tar file Lab 5.Push first Nginx Web app To DockerHub Lab 6.Build a Base Image from Scratch Lab 7.Dockerfile Lab - ADD instruction Lab 8.Dockerfile Lab - COPY instruction Lab 9.Dockerfile Lab - CMD instruction Lab 10.Dockerfile Lab - Entrypoint instruction Lab 11.Dockerfile Lab - WORKDIR instruction Lab 12.Dockerfile Lab - RUN instruction Lab 13.</description>
     </item>
     <item>
       <title>Push first Nginx Web app To DockerHub</title>

@@ -36,5 +36,12 @@ export PATH=$PATH:~/.porter
 ➜  export PATH=$PATH:~/.porter
 ```
 
+#### export path 
+
+```
+echo 'export PATH=$PATH:~/.porter' >> ~/.zprofile && source ~/.zprofile
+
+```
+
 #### Initialize a New Porter Project
 
