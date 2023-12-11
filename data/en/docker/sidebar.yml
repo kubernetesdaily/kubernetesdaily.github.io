@@ -23,6 +23,7 @@
   - title: Dockerfile ENV 
   - title: Dockerfile ONBUILD 
   - title: Multi-Container CLI
+  - title: Multi-Arch Container
   - title: Docker Compose Basics
   - title: Docker Compose Volumes
   - title: Custom Dockerfile with Compose
@@ -47,6 +48,7 @@
   - title: Compose Push Command
   - title: Compose Rm Command
   - title: Compose Run Command
+  - title: Compose Watch Command
   - title: Local Network Setup
   - title: Remote Network Setup
   - title: Newtorking in Docker Compose

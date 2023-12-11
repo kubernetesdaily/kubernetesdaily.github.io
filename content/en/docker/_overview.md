@@ -6,13 +6,11 @@ aliases:
 ---
 
 
-### Table of Content 
+### The Ultimate Docker Workshop 
 
-# Docker Tutorial
+![](/images/docker-workshop-banner.png)
 
-This repository contains documentation and examples for various Docker topics.
-
-## Table of Contents
+Table of content 
 
 - [Prerequisites](#prerequisites)
 - [Hello World in Docker](#hello-world-in-docker)
@@ -33,6 +31,7 @@ This repository contains documentation and examples for various Docker topics.
 - [Dockerfile ENV](#dockerfile-env)
 - [Dockerfile ONBUILD](#dockerfile-onbuild)
 - [Multi-Container CLI](#multi-container-cli)
+- [Multi-Arch Container](TODO)
 - [Docker Compose Basics](#docker-compose-basics)
 - [Docker Compose Volumes](#docker-compose-volumes)
 - [Custom Dockerfile with Compose](#custom-dockerfile-with-compose)
@@ -58,6 +57,7 @@ This repository contains documentation and examples for various Docker topics.
 - [Compose Restart Command](#compose-restart-command)
 - [Compose rm Command](#compose-rm-command)
 - [Compose run Command](#compose-run-command)
+- [Compose Watch Command](TODO)
 - [Local Network Setup](#local-network-setup)
 - [Remote Network Setup](#remote-network-setup)
 - [Networking in Compose](#networking-in-compose)
