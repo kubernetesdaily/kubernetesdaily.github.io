@@ -4,7 +4,7 @@
  <img src="static/img/logos/KubeDaily-4.png">
 
 
-<p> <center> <strong> Demestifying Container and Orchestration Ecosystem </strong> </center> </p>
+<p> <center> <strong> Demystifying </strong> </center> </p>
 <div style="text-align: center;">
 <center> <strong> <a href="https://discord.gg/vs7GfMzJQq" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;">Join CloudNativeFolks Community</a> </strong></center>
 </div>
