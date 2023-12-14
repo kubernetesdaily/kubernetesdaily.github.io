@@ -42,28 +42,29 @@ Table of content
 |Multi-Container CLI|[lab](https://kubedaily.com/docker/multi-container-cli/)| 
 |Multi-Arch Container|[lab](https://kubedaily.com/docker/multi-arch-container/)| 
 |Docker Compose Basics|[lab](https://kubedaily.com/docker/docker-compose-basics/)| 
-|Docker Compose Volumes|[lab]| 
-|Custom Dockerfile with Compose|[lab]| 
-|PHP, Apache, and DB with Compose|[lab]| 
-|Host Volume Mount|[lab]| 
-|Named Volume Mount|[lab]| 
-|Compose Build Command|[lab]| 
-|Compose Config Command|[lab]| 
-|Compose CP Command|[lab]| 
-|Compose Create Command|[lab]| 
-|Compose Down Command|[lab]| 
-|Compose Events Command|[lab]| 
-|Compose Exec Command|[lab]| 
-|Compose Images Command|[lab]| 
-|Compose Logs Command|[lab]| 
-|Compose ls Command|[lab]| 
-|Compose Pause/Unpause|[lab]| 
-|Compose Port Command|[lab]| 
-|Compose ps Command|[lab]| 
-|Compose Pull Command|[lab]| 
-|Compose Push Command|[lab]| 
+|Docker Compose Volumes|[lab](https://kubedaily.com/docker/compose-volume-mount/)| 
+|Custom Dockerfile with Compose|[lab](https://kubedaily.com/docker/custom-dockerfile-with-compose/)| 
+|PHP, Apache, and DB with Compose|[lab](https://kubedaily.com/docker/php-apache-and-db-with-compose/)| 
+|Host Volume Mount|[lab](https://kubedaily.com/docker/host-volume-mount/)| 
+|Named Volume Mount|[lab](https://kubedaily.com/docker/named-volume-mount/)| 
+|Compose Build Command|[lab](https://kubedaily.com/docker/compose-build-command/)| 
+|Compose Config Command|[lab](https://kubedaily.com/docker/compose-config-command/)| 
+|Compose CP Command|[lab](https://kubedaily.com/docker/compose-cp-command/)| 
+|Compose Create Command|[lab](https://kubedaily.com/docker/compose-create-command/)| 
+|Compose Down Command|[lab](https://kubedaily.com/docker/compose-down-command/)| 
+|Compose Events Command|[lab](https://kubedaily.com/docker/compose-down-command/)| 
+|Compose Exec Command|[lab](https://kubedaily.com/docker/compose-exec-command/)| 
+|Compose Images Command|[lab](https://kubedaily.com/docker/compose-images-command/)| 
+|Compose Kill Command|[lab](https://kubedaily.com/docker/compose-kill-command/)| 
+|Compose Logs Command|[lab](https://kubedaily.com/docker/compose-logs-command/) | 
+|Compose ls Command|[lab](https://kubedaily.com/docker/compose-ls-command/)| 
+|Compose Pause/Unpause|[lab](https://kubedaily.com/docker/compose-pause-unpause-command/)| 
+|Compose Port Command|[lab](https://kubedaily.com/docker/compose-port-command/)| 
+|Compose ps Command|[lab](https://kubedaily.com/docker/compose-ps-command/)| 
+|Compose Pull Command|[lab](https://kubedaily.com/docker/compose-pull-command/)| 
+|Compose Push Command|[lab](https://kubedaily.com/docker/compose-push-command/)| 
 |Compose Restart Command|[lab]| 
-|Compose rm Command|[lab]| 
+|Compose rm Command|[lab](https://kubedaily.com/docker/compose-rm-command/)| 
 |Compose run Command|[lab]| 
 |Compose Watch Command|[lab]| 
 |Local Network Setup|[lab]| 

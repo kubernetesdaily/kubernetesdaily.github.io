@@ -46,6 +46,7 @@
   - title: Compose Ps Command
   - title: Compose Pull Command
   - title: Compose Push Command
+  - title: Compose Restart Command
   - title: Compose Rm Command
   - title: Compose Run Command
   - title: Compose Watch Command
