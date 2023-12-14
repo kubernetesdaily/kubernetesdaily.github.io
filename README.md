@@ -63,15 +63,15 @@ Table of content
 |Compose ps Command|[lab](https://kubedaily.com/docker/compose-ps-command/)| 
 |Compose Pull Command|[lab](https://kubedaily.com/docker/compose-pull-command/)| 
 |Compose Push Command|[lab](https://kubedaily.com/docker/compose-push-command/)| 
-|Compose Restart Command|[lab]| 
+|Compose Restart Command|[lab](https://kubedaily.com/docker/compose-restart-command/)| 
 |Compose rm Command|[lab](https://kubedaily.com/docker/compose-rm-command/)| 
-|Compose run Command|[lab]| 
-|Compose Watch Command|[lab]| 
-|Local Network Setup|[lab]| 
-|Remote Network Setup|[lab]| 
-|Networking in Compose|[lab]| 
-|Compose Networking with Nginx|[lab]| 
-|Docker Wordpress Example|[lab]| 
+|Compose run Command|[lab](https://kubedaily.com/docker/compose-run-command/)|
+|Compose Watch Command|[lab](https://kubedaily.com/docker/compose-watch-command/)| 
+|Local Network Setup|[lab](https://kubedaily.com/docker/local-network-setup/)| 
+|Remote Network Setup|[lab](https://kubedaily.com/docker/remote-network-setup/)| 
+|Networking in Compose|[lab](https://kubedaily.com/docker/newtorking-in-docker-compose/)| 
+|Compose Networking with Nginx|[lab](https://kubedaily.com/docker/compose-networking-with-nginx/)| 
+|Docker Wordpress Example|[lab](https://kubedaily.com/docker/docker-wordpress-example/)| 
 
 
 
@@ -87,16 +87,16 @@ Table of content
 Table of content 
 | Title | Link |
 | --------- | ------- |
-|1.Pre-requisit for this lab|[lab]| 
-|2.Basics of Pod|[lab]| 
-|3.Create POD with Command and Arguments|[lab]| 
-|4.Multi-Container Pods|[lab]| 
-|5.Deployments & replication|[lab]| 
-|6.Labels & Selectors|[lab]| 
-|7.Kubernetes Service|[lab]| 
-|8.Service Type: NodePort,ClusterIP,LoadBalancer|[lab]| 
-|9.Ingress Controller|[lab]| 
-|10.ConfigMap|[lab]| 
+|1.Pre-requisit for this lab|[lab](https://kubedaily.com/k8s/pre-requisit-for-this-lab/)| 
+|2.Basics of Pod|[lab](https://kubedaily.com/k8s/basics-of-pod/)| 
+|3.Create POD with Command and Arguments|[lab](https://kubedaily.com/k8s/create-pod-with-command-and-arguments/)| 
+|4.Multi-Container Pods|[lab](https://kubedaily.com/k8s/multi-container-pods/)| 
+|5.Deployments & replication|[lab](https://kubedaily.com/k8s/deployments-and-replication/)| 
+|6.Labels & Selectors|[lab](https://kubedaily.com/k8s/labels-and-selectors/)| 
+|7.Kubernetes Service|[lab](https://kubedaily.com/k8s/kubernetes-service/)| 
+|8.Service Type: NodePort,ClusterIP,LoadBalancer|[lab](https://kubedaily.com/k8s/service-type-nodeportclusteriploadbalancer/)| 
+|9.Ingress Controller|[lab](https://kubedaily.com/k8s/ingress-controller/)| 
+|10.ConfigMap|[lab](https://kubedaily.com/k8s/configmap/)| 
 
 
 
