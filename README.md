@@ -34,14 +34,14 @@ Table of content
 |Dockerfile WORKDIR|[lab](https://kubedaily.com/docker/dockerfile-workdir/)| 
 |Dockerfile RUN|[lab](https://kubedaily.com/docker/dockerfile-run/)| 
 |Dockerfile ARG|[lab](https://kubedaily.com/docker/dockerfile-arg/)| 
-|Dockerfile Volume|[lab]| 
-|Dockerfile USER|[lab]| 
-|Dockerfile HEALTHCHECK|[lab]| 
-|Dockerfile ENV|[lab]| 
-|Dockerfile ONBUILD|[lab]| 
-|Multi-Container CLI|[lab]| 
-|Multi-Arch Container|[lab]| 
-|Docker Compose Basics|[lab]| 
+|Dockerfile Volume|[lab](https://kubedaily.com/docker/dockerfile-volume/)| 
+|Dockerfile USER|[lab](https://kubedaily.com/docker/dockerfile-user/)| 
+|Dockerfile HEALTHCHECK|[lab](https://kubedaily.com/docker/dockerfile-healthcheck/)| 
+|Dockerfile ENV|[lab](https://kubedaily.com/docker/dockerfile-env/)| 
+|Dockerfile ONBUILD|[lab](https://kubedaily.com/docker/dockerfile-onbuild/)| 
+|Multi-Container CLI|[lab](https://kubedaily.com/docker/multi-container-cli/)| 
+|Multi-Arch Container|[lab](https://kubedaily.com/docker/multi-arch-container/)| 
+|Docker Compose Basics|[lab](https://kubedaily.com/docker/docker-compose-basics/)| 
 |Docker Compose Volumes|[lab]| 
 |Custom Dockerfile with Compose|[lab]| 
 |PHP, Apache, and DB with Compose|[lab]| 

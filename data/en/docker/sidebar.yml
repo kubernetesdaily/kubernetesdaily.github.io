@@ -25,7 +25,7 @@
   - title: Multi-Container CLI
   - title: Multi-Arch Container
   - title: Docker Compose Basics
-  - title: Docker Compose Volumes
+  - title: Compose Volume Mount
   - title: Custom Dockerfile with Compose
   - title: PHP, Apache, and DB with Compose
   - title: Host Volume Mount
