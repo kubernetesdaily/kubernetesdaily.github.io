@@ -117,3 +117,20 @@ Table of content
 
 
 </strong>
+
+
+
+
+### [Learn about Tools in depth](https://kubedaily.com/blog/)
+    
+    
+[List of tools](https://kubedaily.com/cloudnativetools/)
+
+
+| Title | Link | Tag | Author
+| --------- | ------- | ----- | ----- |
+| [Okteto](https://github.com/okteto/okteto) | [Learn](https://kubedaily.com/blog/okteto/) | Development Tools | Sangam Biradar
+| [cert-manager](https://github.com/cert-manager/cert-manager) | [Learn](https://kubedaily.com/blog/certmanager/) | Networking | Sangam Biradar 
+| [flannel](https://github.com/flannel-io/flannel) | [Learn](https://kubedaily.com/blog/flannel/) | Networking | Sangam Biradar 
+| [werf](https://github.com/werf/werf) | [Learn](https://kubedaily.com/blog/werf/) | Continuous Integration & Delivery | Sangam Biradar 
+| [werf](https://github.com/werf/werf) | [Learn](https://kubedaily.com/blog/werf/) | Continuous Integration & Delivery | Sangam Biradar 
