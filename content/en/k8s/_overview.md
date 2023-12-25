@@ -21,6 +21,14 @@ aliases:
 git clone https://github.com/kubernetesdaily/k8sworkshop.git
 ```
 
+k'exp - Kubernetes Explorer
+
+```
+GOOS=darwin
+GOARCH=arm64
+curl -Ls -o kexp.tar.gz "https://github.com/iximiuz/kexp/releases/latest/download/kexp_${GOOS}_${GOARCH}.tar.gz"
+tar xvzf kexp.tar.gz
+```
 
 Table of content 
 | Title | Link |
@@ -35,7 +43,7 @@ Table of content
 |8.Service Type: NodePort,ClusterIP,LoadBalancer|[lab](https://kubedaily.com/k8s/service-type-nodeportclusteriploadbalancer/)| 
 |9.Ingress Controller|[lab](https://kubedaily.com/k8s/ingress-controller/)| 
 |10.ConfigMap|[lab](https://kubedaily.com/k8s/configmap/)| 
-
+|11.RBAC | [lab](https://kubedaily.com/k8s/rbac/)
 
 
 What next >> 
