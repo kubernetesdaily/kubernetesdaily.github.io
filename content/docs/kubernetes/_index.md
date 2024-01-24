@@ -1,6 +1,6 @@
 ---
 weight: 500
-title: "Learn Docker"
+title: "Learn kubenetes"
 description: "Guides to getting start Docker."
 icon: menu_book
 date: 2022-11-22T12:36:15+00:00

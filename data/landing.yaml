@@ -55,7 +55,7 @@ featureGrid:
   subtitle: Learn Container Technolgy.
 
   items:
-    - title: Docker
+    - title: ContainerD
       icon: Docker
       description: Rust emphasizes memory safety without using a garbage collector. It achieves this through its unique ownership model, which helps prevent common memory-related errors like buffer overflows..
 
