@@ -7,7 +7,7 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with git submod
 defaultContentLanguage = 'en'
 [languages]
   [languages.en]
-    title = "RustLabs"
+    title = "KubeDaily"
     languageName = "English"
     weight = 10
  
@@ -60,7 +60,7 @@ defaultContentLanguage = 'en'
         # rss = true                    # show rss icon with link
 
     [params.docs] # Parameters for the /docs 'template'
-        title           = "Learn Rust"           # default html title for documentation pages/sections
+        title           = "Learn Container Technology"           # default html title for documentation pages/sections
 
         # pathName        = "docs"                            # path name for documentation site | default "docs"
 

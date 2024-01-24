@@ -56,7 +56,7 @@ featureGrid:
 
   items:
     - title: ContainerD
-      icon: Docker
+      icon: basket
       description: Rust emphasizes memory safety without using a garbage collector. It achieves this through its unique ownership model, which helps prevent common memory-related errors like buffer overflows..
 
     - title: Concurrency
