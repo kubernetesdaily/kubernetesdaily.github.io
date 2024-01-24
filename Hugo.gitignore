@@ -1,13 +1,12 @@
-# Generated files by hugo
-/public/
-/resources/_gen/
-/assets/jsconfig.json
-hugo_stats.json
+Thumbs.db
 .DS_Store
-# Executable may be added to repository
-hugo.exe
-hugo.darwin
-hugo.linux
-.DS_Store
-# Temporary lock file while building
-/.hugo_build.lock
+.dist
+.tmp
+.sass-cache
+npm-debug.log
+node_modules
+builds
+package-lock.json
+.hugo_build.lock
+public
+resources

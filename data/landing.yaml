@@ -1,0 +1,92 @@
+# Note: Template blocks require a 'weight' parameter so they're correctly ordered on the landing page
+
+# Hero
+hero:
+  enable: true
+  weight: 10
+  template: hero
+
+  backgroundImage:
+    path: "images/templates/hero"
+    filename:
+      desktop: "gradient-desktop.webp"
+      mobile: "gradient-mobile.webp"
+
+  badge:
+    text: v0.0.0
+    color: primary # primary, secondary, success, danger, warning, info, light, dark
+    pill: false # boolean
+    soft: true # boolean
+
+  # titleLogo:
+  # path: "images/logos"
+  # filename: "logo.svg"
+  # height: 80px
+
+  title: "KubeDaily"
+  subtitle: "Demestifying Container and Orchestration Ecosystem"
+
+  image:
+    path: "images" # path to image under configured assets directory. default 'images'
+    filename: "rustlabs.png" # filename of your hero image (including file extension)
+    alt: "Lotus Docs Screenshot" # Optional but recommended
+    boxShadow: true # default 'false' (excludes .svg images)
+    rounded: true # round the image corners? default 'false' (excludes .svg images)
+
+  # ctaButton:
+  # icon: rocket_launch
+  # btnText: "Get Started"
+  # url: "/docs/"
+
+  cta2Button:
+    icon: chat
+    btnText: "CloudNativeFolks Community "
+    url: "https://discord.gg/NQspwGBDVs"
+
+  info: "**Open Source** | **Community Driven** "
+
+# Feature Grid
+featureGrid:
+  enable: true
+  weight: 20
+  template: feature grid
+
+  title: Why choose KubeDaily?
+  subtitle: Learn Container Technolgy.
+
+  items:
+    - title: Docker
+      icon: Docker
+      description: Rust emphasizes memory safety without using a garbage collector. It achieves this through its unique ownership model, which helps prevent common memory-related errors like buffer overflows..
+
+    - title: Concurrency
+      icon: settings_input_component
+      description: Rust's ownership and type systems make concurrent programming more manageable and less prone to errors, allowing for safe and efficient execution of parallel code.
+
+    - title: Performance
+      icon: speed
+      description: As a systems programming language, Rust offers performance similar to C and C++. It's designed for speed and efficiency, making it ideal for performance-critical applications.
+
+    - title: Zero-Cost Abstractions
+      icon: memory
+      description: Rust provides high-level abstractions without sacrificing performance. Its zero-cost abstractions mean you don't pay a runtime cost for using higher-level features.
+
+    - title: Modern Tooling
+      icon: build
+      description: Rust has a modern toolchain including Cargo (its package manager), a built-in test framework, and excellent documentation, enhancing developer productivity and ease of use..
+
+    - title: Cross-Platform Compatibility
+      icon: devices
+      description: "Rust supports cross-platform development, making it easier to write code that runs on multiple operating systems and architectures"
+
+    - title: Vibrant Community
+      icon: people
+      description: Rust has a rapidly growing, active community. This leads to a rich ecosystem of libraries (crates), tools, and resources for developers.
+
+    - title: WebAssembly (Wasm) Support
+      icon: web
+      description: Rust has first-class support for WebAssembly, a binary instruction format for a stack-based virtual machine. This makes Rust an ideal choice for building high-performance web applications and allows code written in Rust to be run in web browsers at near-native speed.
+
+    - title: Active Development and Corporate Support
+      icon: build
+      description: Rust is under active development with contributions from individuals and companies. Big tech companies like Microsoft, Google, and Amazon are increasingly investing in Rust, showing its growing importance in the industry.
