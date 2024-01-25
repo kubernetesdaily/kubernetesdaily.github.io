@@ -154,14 +154,14 @@ defaultContentLanguage = 'en'
     identifier = "docs"
     weight = 10
 
-# [[menu.primary]]
-#     name  = "Showcase"
-#     url = "/showcase"
-#     identifier = "showcase"
-#     weight = 20
+[[menu.primary]]
+   name  = "Blog"
+   url = "blog/"
+   identifier = "blog"
+   weight = 20
 
-# [[menu.primary]]
-#     name  = "Community"
-#     url = "https://github.com/colinwilson/lotusdocs/discussions"
-#     identifier = "community"
-#     weight = 30
+[[menu.primary]]
+  name  = "Tools"
+  url = "https://kubedaily.com/cloudnativetools/"
+ identifier = "tools"
+ weight = 30
