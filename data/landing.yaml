@@ -18,18 +18,18 @@ hero:
     pill: false # boolean
     soft: true # boolean
 
-  # titleLogo:
-  # path: "images/logos"
-  # filename: "logo.svg"
-  # height: 80px
+  titleLogo:
+  path: "images/logos"
+  filename: "logo.svg"
+  height: 80px
 
   title: "KubeDaily"
   subtitle: "Demestifying Container and Orchestration Ecosystem"
 
   image:
     path: "images" # path to image under configured assets directory. default 'images'
-    filename: "rustlabs.png" # filename of your hero image (including file extension)
-    alt: "Lotus Docs Screenshot" # Optional but recommended
+    filename: "kubedaily.png" # filename of your hero image (including file extension)
+    alt: "kubedaily" # Optional but recommended
     boxShadow: true # default 'false' (excludes .svg images)
     rounded: true # round the image corners? default 'false' (excludes .svg images)
 
@@ -55,38 +55,26 @@ featureGrid:
   subtitle: Learn Container Technolgy.
 
   items:
+    - title: Open Container Initiative
+      icon: start
+      description: Open Container Initiative (OCI) is an open governance structure for the express purpose of creating open industry standards around container formats and runtime.
+
     - title: ContainerD
-      icon: basket
-      description: Rust emphasizes memory safety without using a garbage collector. It achieves this through its unique ownership model, which helps prevent common memory-related errors like buffer overflows..
+      icon: ▣
+      description: ContainerD is an industry-standard container runtime with an emphasis on simplicity, robustness and portability. It is available as a daemon for Linux and Windows, which can manage the complete container lifecycle of its host system image transfer and storage, container execution and supervision, low-level storage and network attachments, etc..
 
-    - title: Concurrency
-      icon: settings_input_component
-      description: Rust's ownership and type systems make concurrent programming more manageable and less prone to errors, allowing for safe and efficient execution of parallel code.
+    - title: Docker
+      icon: 🐳
+      description: Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels.
 
-    - title: Performance
-      icon: speed
-      description: As a systems programming language, Rust offers performance similar to C and C++. It's designed for speed and efficiency, making it ideal for performance-critical applications.
+    - title: kubernetes
+      icon: ⎈
+      description: kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
 
-    - title: Zero-Cost Abstractions
-      icon: memory
-      description: Rust provides high-level abstractions without sacrificing performance. Its zero-cost abstractions mean you don't pay a runtime cost for using higher-level features.
+    - title: Helm 
+      icon: 👷⎈
+      description: Helm is a tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.
 
-    - title: Modern Tooling
-      icon: build
-      description: Rust has a modern toolchain including Cargo (its package manager), a built-in test framework, and excellent documentation, enhancing developer productivity and ease of use..
-
-    - title: Cross-Platform Compatibility
-      icon: devices
-      description: "Rust supports cross-platform development, making it easier to write code that runs on multiple operating systems and architectures"
-
-    - title: Vibrant Community
-      icon: people
-      description: Rust has a rapidly growing, active community. This leads to a rich ecosystem of libraries (crates), tools, and resources for developers.
-
-    - title: WebAssembly (Wasm) Support
-      icon: web
-      description: Rust has first-class support for WebAssembly, a binary instruction format for a stack-based virtual machine. This makes Rust an ideal choice for building high-performance web applications and allows code written in Rust to be run in web browsers at near-native speed.
-
-    - title: Active Development and Corporate Support
-      icon: build
-      description: Rust is under active development with contributions from individuals and companies. Big tech companies like Microsoft, Google, and Amazon are increasingly investing in Rust, showing its growing importance in the industry.
+    - title: Istio
+      icon: ⛵
+      description: Istio is an open-source service mesh that provides a key set of functionality across the microservices in a Kubernetes cluster. Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
