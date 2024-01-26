@@ -1,13 +1,13 @@
 {{ define "main" }}
     <div class="row">
         {{ range .Pages }}
-            <div class="col-md-4 mb-4">
-                <div class="card">
+            <!-- Use Bootstrap's responsive grid system -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                         </h5>
-
                         <p class="text-muted">Posted on {{ .Date.Format "January 2, 2006" }}</p>
                     </div>
                 </div>
