@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 400
 title: "Learn Docker"
 description: "Guides to getting start Docker."
 icon: menu_book
