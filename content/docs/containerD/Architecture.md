@@ -1,7 +1,7 @@
 ---
 title: "Architecture of containerd"
 slug: "architecture-of-containerd"
-weight : 1
+weight : 2
 ---
 
 
