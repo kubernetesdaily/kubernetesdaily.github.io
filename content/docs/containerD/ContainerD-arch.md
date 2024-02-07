@@ -1,5 +1,5 @@
 ---
-title: "architecture of containerd"
+title: "Architecture of containerd"
 slug: "architecture-of-containerd"
 weight : 1
 ---
