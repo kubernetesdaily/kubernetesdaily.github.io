@@ -1,5 +1,5 @@
 ---
-title: "Understand Containerd and ContainerD CLI ctr "
+title: " ContainerD CLI ctr "
 weight : 4
 ---
 
