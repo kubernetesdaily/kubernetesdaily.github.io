@@ -182,8 +182,8 @@ sangam@sangam:~/plugins$ popd
 ```
 
 
-#### define 
-
+#### define net conf 
+```
 sudo mkdir -p /etc/cni/net.d
 
 cat <<EOF | sudo tee /etc/cni/net.d/10-mynet.conf
@@ -202,7 +202,7 @@ cat <<EOF | sudo tee /etc/cni/net.d/10-mynet.conf
 }
 EOF
 
-
+```
 #### lets run your aphine image 
 
 ```
