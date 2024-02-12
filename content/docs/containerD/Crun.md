@@ -50,6 +50,7 @@ sudo systemctl restart containerd
 
 ### install crun via binary 
 
+```
 demo@sangam:~$ sudo wget -O /usr/local/bin/crun https://github.com/containers/crun/releases/download/1.14.1/crun-1.14.1-linux-arm64
 --2024-02-12 13:26:38--  https://github.com/containers/crun/releases/download/1.14.1/crun-1.14.1-linux-arm64
 Resolving github.com (github.com)... 20.207.73.82
@@ -118,5 +119,5 @@ To try something more ambitious, you can run an Ubuntu container with:
 
 Share images, automate workflows, and more with a free Docker ID:
  https://hub.docker.com/
-
+```
 
