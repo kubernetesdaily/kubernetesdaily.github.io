@@ -14,6 +14,8 @@ sudo mv ./nerdctl /usr/local/bin
 
 
 #### verify nerctl 
+
+```
 sangam@demo:~$ sudo nerdctl
 nerdctl is a command line interface for containerd
 
@@ -97,7 +99,7 @@ Flags:
   -v, --version                  version for nerdctl
 
 Run 'nerdctl COMMAND --help' for more information on a command.
-
+```
 
 #### nerdctl system info 
 
@@ -137,6 +139,7 @@ WARNING: bridge-nf-call-ip6tables is disabled
 ```
 ### install cni plugin 
 
+```
 wget https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-arm64-v1.1.1.tgz
 
 sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-arm64-v1.1.1.tgz
@@ -157,14 +160,18 @@ sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-arm64-v1.1.1.tgz
 ./ptp
 ./ipvlan
 ./bandwidth
+```
 
 ### make sure iptables package installed 
+
 ```
 sudo apt-get install iptables
+
 ```
 
 ### run first hello world container
 
+```
 sangam@demo:~$ sudo nerdctl run hello-world
 
 Hello from Docker!
@@ -187,7 +194,7 @@ Share images, automate workflows, and more with a free Docker ID:
 
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
-
+```
 
 
 # nerdctl Command Cheatsheet
