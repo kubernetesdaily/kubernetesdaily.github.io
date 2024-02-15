@@ -55,9 +55,9 @@ defaultContentLanguage = 'en'
 
     [params.social]
         github = ""        # YOUR_GITHUB_ID or YOUR_GITHUB_URL
-        twitter = ""       # YOUR_TWITTER_ID
+        twitter = "kubedaily"       # YOUR_TWITTER_ID
         # instagram = "colinwilson"     # YOUR_INSTAGRAM_ID
-        # rss = true                    # show rss icon with link
+         rss = true                    # show rss icon with link
 
     [params.docs] # Parameters for the /docs 'template'
         title           = "Learn Container Technology"           # default html title for documentation pages/sections
