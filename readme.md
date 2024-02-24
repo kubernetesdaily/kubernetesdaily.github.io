@@ -151,3 +151,16 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 | [flannel](https://github.com/flannel-io/flannel) | [Learn](https://kubedaily.com/blog/flannel/) | Networking | Sangam Biradar 
 | [werf](https://github.com/werf/werf) | [Learn](https://kubedaily.com/blog/werf/) | Continuous Integration & Delivery | Sangam Biradar 
 
+
+
+#### Contributor Note 
+
+This Is Not
+- This is not a replacement for the official documentations.
+- This is not an exhaustive guide.
+
+This Is
+- This is a collaborative and personal effort.
+- This is a project that is expected to evolve and gain from others' inputs.
+
+meaningful contributions welcome 🙏
