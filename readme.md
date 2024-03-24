@@ -117,7 +117,6 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 
 10 Labs
 
-
 | No. | Title |
 |--- | --------- |
 |1 | Pre-requisit for this lab|
@@ -133,13 +132,18 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 
 ### The Ultimate Helm Workshop 
 
+```
+git clone https://github.com/kubernetesdaily/helm-workshop.git
+```
 
 | No. | Title                                  |
 |-----|----------------------------------------|
 | 1 | Basics of Helm |
-
-
-
+| 2 | Deep Dive into Charts |
+| 3 | Work with Multiple Values |
+| 4 | Create Template file |
+| 5 | advance Template with If statement |
+| 6 | Else and Else If statement |
 
 </strong>
 
