@@ -27,10 +27,10 @@ helm installed into /usr/local/bin/helm
 ```
 (base) ➜  helm-workshop git:(main) helm create application-1 
 Creating application-1
-
 ```
 
 ### Structure of the chart 
+
 ```
 (base) ➜  application-1 git:(main) ✗ tree
 .
@@ -50,7 +50,6 @@ Creating application-1
 
 4 directories, 10 files
 (base) ➜  application-1 git:(main) ✗ 
-
 ```
 
 deleted unwanted files 
@@ -65,18 +64,17 @@ base) ➜  application-1 git:(main) ✗ tree
 │   ├── service.yaml
 │   └── tests
 └── values.yaml
-
 ```
 
 ### Configuration the yamls files from scratch 
 
 create ngnix deployment with 3 replicas and use nodeport to expose ports 
 
- 
 
 
 ### how to deploy the chart 
 
+```
 (base) ➜  application-1 git:(main) ✗ helm install chart-1 .
 W0323 05:55:21.671543    6164 warnings.go:70] unknown field "spec.ports[0].nodeport"
 NAME: chart-1
@@ -104,9 +102,10 @@ ip addess + port a
 (base) ➜  application-1 git:(main) ✗ helm list 
 NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
 chart-1 default         1               2024-03-23 05:55:21.559484 +0530 IST    deployed        application-1-0.1.0     1.16.0   
-
+```
 ### delete the chart 
 
-
+```
 (base) ➜  application-1 git:(main) ✗ helm uninstall chart-1
 release "chart-1" uninstalled
+```

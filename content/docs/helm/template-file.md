@@ -13,8 +13,6 @@ app: ngnix
 version: "1.0"
 team: myteam
 {{- end }}
-
-
 ```
 
 ```
@@ -62,6 +60,4 @@ spec:
         - name: nginx
           image: "ngnix:latest"
 (base) ➜  application-1 git:(main) ✗ 
-
-
 ```
