@@ -144,6 +144,7 @@ git clone https://github.com/kubernetesdaily/helm-workshop.git
 | 4 | Create Template file |
 | 5 | advance Template with If statement |
 | 6 | Else and Else If statement |
+| 7 | 50 Helm Template Cheatsheets |
 
 </strong>
 
