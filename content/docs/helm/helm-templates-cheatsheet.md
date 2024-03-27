@@ -258,8 +258,6 @@ weight: 7
           targetAverageUtilization: 50
     ```
 
-Certainly! Here are some more examples of Helm chart template functionalities:
-
 ### Accessing Values:
 
 28. **Accessing Values from Dependencies**:
