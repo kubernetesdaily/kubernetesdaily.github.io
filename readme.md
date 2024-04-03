@@ -23,6 +23,7 @@
 | 5| Kata Containers |
 |6 | Firecraker -  TODO | 
 | 7| ContaiNerd + Nerdctl | 
+|8| contaiNERD + runwasi |
 
 
 ### The Ultimate Docker Workshop 
