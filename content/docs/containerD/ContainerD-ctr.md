@@ -4,7 +4,7 @@ weight : 4
 ---
 
 
-### update ubuntu server 
+#### update ubuntu server 
 
 ```
 sudo apt-get update
@@ -779,24 +779,23 @@ docker.io/library/alpine:latest
 ```
 
 ### export as tar 
-
+```
 sangam@sangam:~$ sudo ctr image export --all-platforms  \
 image-layout-alpine.tar  docker.io/library/alpine:latest
 sangam@sangam:~$ ls
 code-server  image-layout-alpine.tar  runc-sangam-demo
 sangam@sangam:~$ 
-
+```
 #### extract the tar file 
-
+```
 sangam@sangam:~$ tar xf image-layout-alpine.tar
 sangam@sangam:~$ ls
 blobs  code-server  image-layout-alpine.tar  index.json  manifest.json  oci-layout  runc-sangam-demo
-
+```
 
 #### skiped unwanted file and see what we got in tar 
 
 ```
-
 sangam@sangam:~$ tree -I 'runc-sangam-demo|code-server'
 .
 ├── blobs
@@ -847,8 +846,6 @@ sangam@sangam:~$ cat manifest.json  | jq .
     ]
   }
 ]
-
-
 ```
 
 which appears to be a manifest list or an image index in the OCI (Open Container Initiative) format. It's a JSON file that describes an image in a container registry, such as Docker Hub
@@ -857,7 +854,6 @@ which appears to be a manifest list or an image index in the OCI (Open Container
 ### read image config and image layers 
 
 ```
-
 sangam@sangam:~$ cat ./blobs/sha256/c5b1261d6d3e43071626931fc004f70149baeba2c8ec672bd4f27761f8e1ad6b | jq .
 {
   "manifests": [
