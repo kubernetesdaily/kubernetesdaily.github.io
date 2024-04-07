@@ -149,7 +149,7 @@ defaultContentLanguage = 'en'
 
 [menu]
 [[menu.primary]]
-    name  = "Docs"
+    name  = "Workshop"
     url = "docs/"
     identifier = "docs"
     weight = 10
@@ -165,3 +165,10 @@ defaultContentLanguage = 'en'
   url = "https://kubedaily.com/cloudnativetools/"
  identifier = "tools"
  weight = 30
+
+
+[[menu.primary]]
+   name  = "meetups"
+   url = "meetups/"
+   identifier = "meetups"
+   weight = 40

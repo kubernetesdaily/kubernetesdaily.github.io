@@ -1,0 +1,20 @@
+{{- /* This render hook now simply outputs the link text without altering the destination URL. */}}
+
+{{- $renderHookName := "link" }}
+{{- $minHugoVersion := "0.114.0" }}
+{{- if lt hugo.Version $minHugoVersion }}
+  {{- errorf "The %q render hook requires Hugo v%s or later." $renderHookName $minHugoVersion }}
+{{- end }}
+
+{{- /* Set attributes for anchor element. */}}
+{{- $attrs := dict "href" .Destination }}
+{{- with .Title }}
+  {{- $attrs = merge $attrs (dict "title" .) }}
+{{- end }}
+
+{{- /* Render anchor element. */}}
+<a
+  {{- range $k, $v := $attrs }}
+    {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+  {{- end -}}
+>{{ .Text | safeHTML }}</a>
