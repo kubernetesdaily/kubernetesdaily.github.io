@@ -450,3 +450,10 @@ weight: 7
     requiredValue: {{ required "Value is required" .Values.requiredValue }}
     ```
 
+### Multiple pipelines:
+
+51. **Manipulate value with multiple pipelines**:
+    ```yaml
+    domain: {{ .Values.domain | lower | trunc 9 | quote}}
+    ```
+
