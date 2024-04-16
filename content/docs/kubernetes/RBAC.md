@@ -1,5 +1,6 @@
 ---
 title: "RBAC"
+description: "Manage role based access control (RBAC)"
 slug: "RBAC"
 weight : 11
 ---

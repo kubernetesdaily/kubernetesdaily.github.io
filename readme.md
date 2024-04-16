@@ -133,10 +133,10 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 
 #### Cluster Architecture, Installation, and Configuration
 
-| No. | Title |
-|--- | --------- |
-|1 |Manage role based access control (RBAC)|
-|2 |Use Kubeadm to install a basic cluster|
+| No. | Title | Link |
+|--- | --------- | --------- |
+|1 |Manage role based access control (RBAC)|[RBAC](content/docs/kubernetes/RBAC.md)|
+|2 |Use Kubeadm to install a basic cluster| 
 |3 |Manage a highly-available Kubernetes cluster|
 |4 |Provision underlying infrastructure to deploy a Kubernetes cluster|
 |5 |Perform a version upgrade on a Kubernetes cluster using Kubeadm|
@@ -184,6 +184,106 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 |5 |Troubleshoot cluster component failure|
 |6 |Troubleshoot networking|
 
+
+#### Application Design and Build
+| No. | Title |
+|--- | --------- |
+|1 |Define, Build, and Modify Container Images |
+|2 |Understand Jobs and CronJobs |
+|3 |Understand Multi-Container Pod Design Patterns |
+|4 |Utilize Persistent and Ephemeral Volumes | 
+
+#### Application Deployment
+| No. | Title |
+|--- | --------- |
+|1 |Deployments and Rolling Updates |
+|2 |Deployments and Rollbacks |
+|3 |Scale Applications |
+|4 |Deployment Patterns |
+|5 |Use the Helm Package Manager to Deploy Existing Packages|
+
+#### Application Environment, Configuration, and Security
+| No. | Title |
+|--- | --------- |
+|1 | Discover and Use Resources that Extend Kubernetes |
+|2 | Understanding Authentication, Authorization and Admission Control |
+|3 | Resource Requests and Limits |
+|4 | LimitRanges |
+|5 | Namespace Quotas |
+|6 | ConfigMaps |
+|7 | Secrets |
+|8 | Mounting ConfigMaps/Secrets as Volumes or Environment Variables |
+|9 | Service Accounts | 
+|10 | SecurityContext | 
+
+
+#### Services and networking
+| No. | Title |
+|--- | --------- |
+|1 |Services and Other Network Primitives |
+|2 |Ingress Controllers and Ingress Resources |
+|3 |Using Network Policies| 
+
+####  Application Observability and Maintenance
+| No. | Title |
+|--- | --------- |
+|1 |Understand API Deprecations|
+|2 |Liveness Probes and Readiness Probes|
+|3 |Container Logging|
+|4 |Monitoring Applications|
+|5 |Debugging|
+
+#### Cluster Setup
+| No. | Title |
+|--- | --------- |
+|1| Using Network Security Policies to restrict cluster level access |
+|2|Use CIS benchmark to review the security configuration of Kubernetes components |
+|3|Properly set up Ingress objects with security control |
+|4|Protect Node Metadata and endpoint |
+|5|Minimize the use of, and access to GUI elements |
+|6|Verifying platform binaries before deploying |
+
+#### Cluster Hardening
+| No. | Title |
+|--- | --------- |
+|1|Restrict access to Kubernetes API |
+|2|Use Role Based Access Controls to minimize exposure |
+|3|Exercise caution in using service accounts |
+|4|Update Kubernetes frequently | 
+
+#### System Hardening
+| No. | Title |
+|--- | --------- |
+|1| Minimize Host OS Footprint |
+|2|Minimize IAM roles |
+|3|Minimize external access to the network |
+|4|Appropriately use kernel hardening tools such as AppArmor, seccomp |
+
+#### Minimize Microservice Vulnerabilities
+| No. | Title |
+|--- | --------- |
+|1|Setup appropriate OS-level security domains|
+|2|Managing Kubernetes Secrets|
+|3|Use Container Runtime Sandboxes in Multi-tenant environments|
+|4|Implement pod-to-pod encryption by use of mTLS|
+
+#### Supply Chain Security
+| No. | Title |
+|--- | --------- |
+|1|Minimize Base Image Footprint|
+|2|Secure Supply Chain: Allowing image registries, sign and validate images|
+|3|Use Static Analysis of User Workloads|
+|4|Scan Images for Known Vulnerabilities|
+
+#### Monitoring, Logging, and Runtime Security
+| No. | Title |
+|--- | --------- |
+|1|Perform behavior analytics of syscall process and file activities at the host and container level to detect malicious activities|
+|2|Detect threats within the physical infrastructure, apps, networks, data, users, and workloads|
+|3|Detect all phases of attack regardless of where it occurs and how it spreads|
+|4|Perform deep analytical investigation and identification of bad actors within an environment|
+|5|Ensure immutability of containers at runtime|
+|6|Use Audit Logs to monitor access|
 
 
 ### The Ultimate Helm Workshop 
