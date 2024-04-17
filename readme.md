@@ -66,34 +66,34 @@ git clone https://github.com/kubernetesdaily/dockerworkshop.git
 | 20  | Multi-Arch Container                   | [🔗](content/docs/docker/Multi-Arch-Container.md)|
 | 21  | Docker Compose Basics                  | [🔗](content/docs/docker/write-first-Docker_compose.md) |
 | 22  | Docker Compose Volumes                 | [🔗](content/docs/docker/Docker-Compose-volumes.md) | 
-| 23  | Custom Dockerfile with Compose         |
-| 24  | PHP, Apache, and DB with Compose       |
-| 25  | Host Volume Mount                      |
-| 26  | Named Volume Mount                     |
-| 27  | Compose Build Command                  |
-| 28  | Compose Config Command                 |
-| 29  | Compose CP Command                     |
-| 30  | Compose Create Command                 |
-| 31  | Compose Down Command                   |
-| 32  | Compose Events Command                 |
-| 33  | Compose Exec Command                   |
-| 34  | Compose Images Command                 |
-| 35  | Compose Kill Command                   |
-| 36  | Compose Logs Command                   |
-| 37  | Compose ls Command                     |
-| 38  | Compose Pause/Unpause                  |
-| 39  | Compose Port Command                   |
-| 40  | Compose ps Command                     |
-| 41  | Compose Pull Command                   |
-| 42  | Compose Push Command                   |
-| 43  | Compose Restart Command                |
-| 44  | Compose run Command                    |
-| 45  | Compose Watch Command                  |
-| 46  | Local Network Setup                    |
-| 47  | Remote Network Setup                   |
-| 48  | Networking in Compose                  |
-| 49  | Compose Networking with Nginx          |
-| 50  | Docker Wordpress Example               |
+| 23  | Custom Dockerfile with Compose         | [🔗](content/docs/docker/Custom-Docker-Compose.md) |
+| 24  | PHP, Apache, and DB with Compose       | [🔗](content/docs/docker/php-database-docker-compose.md) |
+| 25  | Host Volume Mount                      | [🔗](content/docs/docker/Host-Volume-mount.md)|
+| 26  | Named Volume Mount                     | [🔗](content/docs/docker/Name-volume-mount.md)|
+| 27  | Compose Build Command                  | [🔗](content/docs/docker/docker-compose-build.md)|
+| 28  | Compose Config Command                 | [🔗](content/docs/docker/docker-compose-config.md)
+| 29  | Compose CP Command                     | [🔗](content/docs/docker/docker-compose-cp.md) | 
+| 30  | Compose Create Command                 | [🔗](content/docs/docker/docker-compose-create.md)| 
+| 31  | Compose Down Command                   | [🔗](content/docs/docker/docker-compose-down.md)| 
+| 32  | Compose Events Command                 | [🔗](content/docs/docker/docker-compose-events.md) | 
+| 33  | Compose Exec Command                   | [🔗](content/docs/docker/docker-compose-exec.md) |
+| 34  | Compose Images Command                 | [🔗](content/docs/docker/docker-compose-images.md)| 
+| 35  | Compose Kill Command                   | [🔗](
+| 36  | Compose Logs Command                   | [🔗](
+| 37  | Compose ls Command                     | [🔗](
+| 38  | Compose Pause/Unpause                  | [🔗](
+| 39  | Compose Port Command                   | 🔗](
+| 40  | Compose ps Command                     | [🔗](
+| 41  | Compose Pull Command                   | [🔗](
+| 42  | Compose Push Command                   | [🔗](
+| 43  | Compose Restart Command                | [🔗](
+| 44  | Compose run Command                    | [🔗](
+| 45  | Compose Watch Command                  | [🔗](
+| 46  | Local Network Setup                    | [🔗](
+| 47  | Remote Network Setup                   | [🔗](
+| 48  | Networking in Compose                  | [🔗](
+| 49  | Compose Networking with Nginx          | [🔗](
+| 50  | Docker Wordpress Example               | [🔗](
 
 
 
@@ -120,136 +120,136 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 
 | No. | Title |
 |--- | --------- |
-|1 | Pre-requisit for this lab|
-|2 | Basics of Pod|
-|3 | Create POD with Command and Arguments|
-|4 | Multi-Container Pods| 
+|1 | Pre-requisit for this lab| [🔗](
+|2 | Basics of Pod| [🔗](
+|3 | Create POD with Command and Arguments| [🔗](
+|4 | Multi-Container Pods|  [🔗](
 |5 | Deployments & replication|
-|6 | Labels & Selectors|
-|7 | Kubernetes Service|
+|6 | Labels & Selectors| [🔗](
+|7 | Kubernetes Service| [🔗](
 |8 | Service Type: NodePort,ClusterIP,LoadBalancer|
-|9 | Ingress Controller|
-|10| ConfigMap|
+|9 | Ingress Controller| [🔗](
+|10| ConfigMap| [🔗](
 
 #### Cluster Architecture, Installation, and Configuration
 
 | No. | Title | Link |
 |--- | --------- | --------- |
-|1 |Manage role based access control (RBAC)|[RBAC](content/docs/kubernetes/RBAC.md)|
-|2 |Use Kubeadm to install a basic cluster| 
-|3 |Manage a highly-available Kubernetes cluster|
-|4 |Provision underlying infrastructure to deploy a Kubernetes cluster|
-|5 |Perform a version upgrade on a Kubernetes cluster using Kubeadm|
-|6 |Implement etcd backup and restore|
+|1 |Manage role based access control (RBAC)|[🔗](content/docs/kubernetes/RBAC.md)|
+|2 |Use Kubeadm to install a basic cluster| |[🔗](
+|3 |Manage a highly-available Kubernetes cluster||[🔗](
+|4 |Provision underlying infrastructure to deploy a Kubernetes cluster||[🔗](
+|5 |Perform a version upgrade on a Kubernetes cluster using Kubeadm||[🔗](
+|6 |Implement etcd backup and restore||[🔗](
 
 #### Workloads and Scheduling
 
 | No. | Title |
 |--- | --------- |
-|1 |Understand deployments and how to perform rolling update and rollbacks|
-|2 |Use ConfigMaps and Secrets to configure applications|
-|3 |Know how to scale applications|
-|4 |Understand the primitives used to create robust, self-healing, application deployments|
-|5 |Understand how resource limits can affect Pod scheduling|
-|6 |Awareness of manifest management and common templating tools|
+|1 |Understand deployments and how to perform rolling update and rollbacks||[🔗](
+|2 |Use ConfigMaps and Secrets to configure applications||[🔗](
+|3 |Know how to scale applications||[🔗](
+|4 |Understand the primitives used to create robust, self-healing, application deployments||[🔗](
+|5 |Understand how resource limits can affect Pod scheduling||[🔗](
+|6 |Awareness of manifest management and common templating tools||[🔗](
 
 #### Services and Networking
 
 | No. | Title |
 |--- | --------- |
-|1 |Understand host networking configuration on the cluster nodes|
-|2 |Understand connectivity between Pods|
-|3 |Understand ClusterIP, NodePort, LoadBalancer service types and endpoints|
-|4 |Know how to use Ingress controllers and Ingress resources |
-|5 |Know how to configure and use CoreDNS |
-|6 |Choose an appropriate container network interface plugin |
+|1 |Understand host networking configuration on the cluster nodes||[🔗](
+|2 |Understand connectivity between Pods||[🔗](
+|3 |Understand ClusterIP, NodePort, LoadBalancer service types and endpoints||[🔗](
+|4 |Know how to use Ingress controllers and Ingress resources ||[🔗](
+|5 |Know how to configure and use CoreDNS ||[🔗](
+|6 |Choose an appropriate container network interface plugin ||[🔗](
 
 #### Storage
 
 | No. | Title |
 |--- | --------- |
-|1 |Understand storage classes, persistent volumes|
-|2 |Understand volume mode, access modes and reclaim policies for volumes|
-|3 |Understand persistent volume claims primitive|
-|4 |Know how to configure applications with persistent storage|
+|1 |Understand storage classes, persistent volumes||[🔗](
+|2 |Understand volume mode, access modes and reclaim policies for volumes||[🔗](
+|3 |Understand persistent volume claims primitive||[🔗](
+|4 |Know how to configure applications with persistent storage||[🔗](
 
 #### Troubleshooting
 
 | No. | Title |
 |--- | --------- |
-|1 |Evaluate cluster and node logging|
-|2 |Understand how to monitor applications|
-|3 |Manage container stdout & stderr logs|
-|4 |Troubleshoot application failure|
-|5 |Troubleshoot cluster component failure|
-|6 |Troubleshoot networking|
+|1 |Evaluate cluster and node logging||[🔗](
+|2 |Understand how to monitor applications||[🔗](
+|3 |Manage container stdout & stderr logs||[🔗](
+|4 |Troubleshoot application failure||[🔗](
+|5 |Troubleshoot cluster component failure||[🔗](
+|6 |Troubleshoot networking||[🔗](
 
 
 #### Application Design and Build
 | No. | Title |
 |--- | --------- |
-|1 |Define, Build, and Modify Container Images |
-|2 |Understand Jobs and CronJobs |
-|3 |Understand Multi-Container Pod Design Patterns |
-|4 |Utilize Persistent and Ephemeral Volumes | 
+|1 |Define, Build, and Modify Container Images ||[🔗](
+|2 |Understand Jobs and CronJobs ||[🔗](
+|3 |Understand Multi-Container Pod Design Patterns ||[🔗](
+|4 |Utilize Persistent and Ephemeral Volumes | |[🔗](
 
 #### Application Deployment
 | No. | Title |
 |--- | --------- |
-|1 |Deployments and Rolling Updates |
-|2 |Deployments and Rollbacks |
-|3 |Scale Applications |
-|4 |Deployment Patterns |
-|5 |Use the Helm Package Manager to Deploy Existing Packages|
+|1 |Deployments and Rolling Updates ||[🔗](
+|2 |Deployments and Rollbacks ||[🔗](
+|3 |Scale Applications ||[🔗](
+|4 |Deployment Patterns ||[🔗](
+|5 |Use the Helm Package Manager to Deploy Existing Packages||[🔗](
 
 #### Application Environment, Configuration, and Security
 | No. | Title |
 |--- | --------- |
-|1 | Discover and Use Resources that Extend Kubernetes |
-|2 | Understanding Authentication, Authorization and Admission Control |
-|3 | Resource Requests and Limits |
-|4 | LimitRanges |
-|5 | Namespace Quotas |
-|6 | ConfigMaps |
-|7 | Secrets |
-|8 | Mounting ConfigMaps/Secrets as Volumes or Environment Variables |
-|9 | Service Accounts | 
-|10 | SecurityContext | 
+|1 | Discover and Use Resources that Extend Kubernetes ||[🔗](
+|2 | Understanding Authentication, Authorization and Admission Control ||[🔗](
+|3 | Resource Requests and Limits ||[🔗](
+|4 | LimitRanges ||[🔗](
+|5 | Namespace Quotas ||[🔗](
+|6 | ConfigMaps ||[🔗](
+|7 | Secrets ||[🔗](
+|8 | Mounting ConfigMaps/Secrets as Volumes or Environment Variables ||[🔗](
+|9 | Service Accounts | |[🔗](
+|10 | SecurityContext | |[🔗](
 
 
 #### Services and networking
 | No. | Title |
 |--- | --------- |
-|1 |Services and Other Network Primitives |
-|2 |Ingress Controllers and Ingress Resources |
-|3 |Using Network Policies| 
+|1 |Services and Other Network Primitives ||[🔗](
+|2 |Ingress Controllers and Ingress Resources ||[🔗](
+|3 |Using Network Policies| |[🔗](
 
 ####  Application Observability and Maintenance
 | No. | Title |
 |--- | --------- |
-|1 |Understand API Deprecations|
-|2 |Liveness Probes and Readiness Probes|
-|3 |Container Logging|
-|4 |Monitoring Applications|
-|5 |Debugging|
+|1 |Understand API Deprecations||[🔗](
+|2 |Liveness Probes and Readiness Probes||[🔗](
+|3 |Container Logging||[🔗](
+|4 |Monitoring Applications||[🔗](
+|5 |Debugging||[🔗](
 
 #### Cluster Setup
 | No. | Title |
 |--- | --------- |
-|1| Using Network Security Policies to restrict cluster level access |
-|2|Use CIS benchmark to review the security configuration of Kubernetes components |
-|3|Properly set up Ingress objects with security control |
-|4|Protect Node Metadata and endpoint |
-|5|Minimize the use of, and access to GUI elements |
-|6|Verifying platform binaries before deploying |
+|1| Using Network Security Policies to restrict cluster level access ||[🔗](
+|2|Use CIS benchmark to review the security configuration of Kubernetes components ||[🔗](
+|3|Properly set up Ingress objects with security control ||[🔗](
+|4|Protect Node Metadata and endpoint ||[🔗](
+|5|Minimize the use of, and access to GUI elements ||[🔗](
+|6|Verifying platform binaries before deploying ||[🔗](
 
 #### Cluster Hardening
 | No. | Title |
 |--- | --------- |
-|1|Restrict access to Kubernetes API |
-|2|Use Role Based Access Controls to minimize exposure |
-|3|Exercise caution in using service accounts |
-|4|Update Kubernetes frequently | 
+|1|Restrict access to Kubernetes API ||[🔗](
+|2|Use Role Based Access Controls to minimize exposure ||[🔗](
+|3|Exercise caution in using service accounts ||[🔗](
+|4|Update Kubernetes frequently | |[🔗](
 
 #### System Hardening
 | No. | Title |
