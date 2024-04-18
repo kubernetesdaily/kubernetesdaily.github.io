@@ -27,3 +27,45 @@ kubeadm join 192.168.100.100:6443 --token 3ua85a.rl5riytxhvc7fs1e --discovery-to
 
 Run this command on any additional nodes that meet the prerequisites mentioned earlier in this module:
 
+```
+```
+workernode@workernode:~$ sudo rm /etc/kubernetes/kubelet.conf
+sudo rm /etc/kubernetes/bootstrap-kubelet.conf
+sudo rm /etc/kubernetes/pki/ca.crt
+workernode@workernode:~$ sudo ss -ltnp | grep :10250
+LISTEN 0      4096               *:10250            *:*    users:(("kubelet",pid=23209,fd=20))       
+workernode@workernode:~$ sudo systemctl stop kubelet
+sudo systemctl disable kubelet
+Removed /etc/systemd/system/multi-user.target.wants/kubelet.service.
+workernode@workernode:~$ sudo kubeadm reset
+W0418 18:46:14.265856   23698 preflight.go:56] [reset] WARNING: Changes made to this host by 'kubeadm init' or 'kubeadm join' will be reverted.
+[reset] Are you sure you want to proceed? [y/N]: y
+[preflight] Running pre-flight checks
+W0418 18:46:15.832641   23698 removeetcdmember.go:106] [reset] No kubeadm config, using etcd pod spec to get data directory
+[reset] Deleted contents of the etcd data directory: /var/lib/etcd
+[reset] Stopping the kubelet service
+[reset] Unmounting mounted directories in "/var/lib/kubelet"
+[reset] Deleting contents of directories: [/etc/kubernetes/manifests /var/lib/kubelet /etc/kubernetes/pki]
+[reset] Deleting files: [/etc/kubernetes/admin.conf /etc/kubernetes/super-admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/bootstrap-kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf]
+
+The reset process does not clean CNI configuration. To do so, you must remove /etc/cni/net.d
+
+The reset process does not reset or clean up iptables rules or IPVS tables.
+If you wish to reset iptables, you must do so manually by using the "iptables" command.
+
+If your cluster was setup to utilize IPVS, run ipvsadm --clear (or similar)
+to reset your system's IPVS tables.
+
+The reset process does not clean your kubeconfig files and you must remove them manually.
+Please, check the contents of the $HOME/.kube/config file.
+workernode@workernode:~$ sudo kubeadm join 192.168.129.135:6443 --token dfs0h9.pru6ez9v84qbw98k --discovery-token-ca-cert-hash sha256:27e8c63c7355d79dd2b0dc98dadcd46e87b3ef05ab181caaddf2c1b2488ae474 
+[preflight] Running pre-flight checks
+	[WARNING Service-Kubelet]: kubelet service is not enabled, please run 'systemctl enable kubelet.service'
+[preflight] Reading configuration from the cluster...
+[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
+[kubelet-start] Starting the kubelet
+[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+
+```
