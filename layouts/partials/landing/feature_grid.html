@@ -1,6 +1,9 @@
 {{ $sectionTitle := .Scratch.Get "sectionTitle" }}
 {{ with (index .Site.Data.landing $sectionTitle) }}
 {{ if eq .enable true }}
+<script 
+src="/assets/js/collapse.js">
+</script>
 <!-- Features Start -->
 <section id="{{ $sectionTitle }}">
     <div class="container mt-100 mt-60">
@@ -29,6 +32,42 @@
                                 <div class="flex-1">
                                     <h4 class="title">{{ .title }}</h4>
                                     <p class="text-muted para mb-0">{{ .description | markdownify }}</p>
+                                    
+                                    
+                                        <div class="card">
+                                          <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                knowldege base
+                                              </button>
+                                            </h5>
+                                          </div>
+                                      
+                                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Title</th>
+                                                            <th>Labs</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{ range .modules }}
+                                                        <tr>
+                                                            <td>{{ .title }}</td>
+                                                            <td><a href="{{ .url }}" target="_blank"> Learn </a></td>
+                                                        </tr>
+                                                        {{ end }}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                 
+                                      
+                                      
+
                                     {{ with .ctaLink }}
                                     <div class="mt-2">
                                         <a href="{{ .url }}" class="mt-3 h6 text-primary">{{ .text | markdownify }} <i class="material-icons align-top">chevron_right</i></a>

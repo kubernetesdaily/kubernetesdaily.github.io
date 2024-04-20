@@ -58,14 +58,20 @@ featureGrid:
     - title: Open Container Initiative
       icon: start
       description: Open Container Initiative (OCI) is an open governance structure for the express purpose of creating open industry standards around container formats and runtime.
-
+      
     - title: ContainerD
       icon: ▣
       description: ContainerD is an industry-standard container runtime with an emphasis on simplicity, robustness and portability. It is available as a daemon for Linux and Windows, which can manage the complete container lifecycle of its host system image transfer and storage, container execution and supervision, low-level storage and network attachments, etc..
-
+      modules:
+        - title: "HTML Basics"
+          url: "https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/content/docs/docker/hello-world.md"
+        - title: "CSS Fundamentals"
+          url: "3 hours"
     - title: Docker
       icon: 🐳
       description: Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels.
+     
+          
 
     - title: kubernetes
       icon: ⎈
