@@ -1,9 +1,14 @@
 {{ $sectionTitle := .Scratch.Get "sectionTitle" }}
 {{ with (index .Site.Data.landing $sectionTitle) }}
 {{ if eq .enable true }}
-<script 
-src="/assets/js/collapse.js">
-</script>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and its dependencies (jQuery and Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <!-- Features Start -->
 <section id="{{ $sectionTitle }}">
     <div class="container mt-100 mt-60">
@@ -37,13 +42,14 @@ src="/assets/js/collapse.js">
                                         <div class="card">
                                           <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
-                                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Workshop Tracks
+                                              
+     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                Workshop Tracks <i class="material-icons align-top">chevron_right</i>
                                               </button>
                                             </h5>
                                           </div>
                                       
-                                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="collapse" id="collapseExample">
                                             <div class="card-body">
                                                 <table class="table">
                                                     <thead>
@@ -64,7 +70,7 @@ src="/assets/js/collapse.js">
                                             </div>
                                           </div>
                                         </div>
-                                 
+                                   
                                       
                                       
 
