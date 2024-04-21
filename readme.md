@@ -294,13 +294,13 @@ git clone https://github.com/kubernetesdaily/helm-workshop.git
 
 | No. | Title                                  |
 |-----|----------------------------------------|
-| 1 | Basics of Helm |
-| 2 | Deep Dive into Charts |
-| 3 | Work with Multiple Values |
-| 4 | Create Template file |
-| 5 | advance Template with If statement |
-| 6 | Else and Else If statement |
-| 7 | 50 Helm Template Cheatsheets |
+| 1 | Basics of Helm |[🔗](./content/docs/helm/install-helm.md)|
+| 2 | Deep Dive into Charts | [🔗](./content/docs/helm/deep-dive-chart.md)|
+| 3 | Work with Multiple Values |[🔗](./content/docs/helm/%20multiple-values.md) |
+| 4 | Create Template file |[🔗](./content/docs/helm/template-file.md)| 
+| 5 | advance Template with If statement |[🔗](./content/docs/helm/advance-if-statement.md)| 
+| 6 | Else and Else If statement |[🔗](./content/docs/helm/Else-Else-If-statement.md) |
+| 7 | 50 Helm Template Cheatsheets |[🔗](./content/docs/helm/helm-templates-cheatsheet.md) |
 
 </strong>
 

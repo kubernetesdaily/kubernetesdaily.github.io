@@ -55,9 +55,7 @@ featureGrid:
   subtitle: Learn Container Technolgy.
 
   items:
-    - title: Open Container Initiative
-      icon: start
-      description: Open Container Initiative (OCI) is an open governance structure for the express purpose of creating open industry standards around container formats and runtime.
+ 
       
     - title: ContainerD
       icon: ▣
@@ -165,6 +163,22 @@ featureGrid:
     - title: Helm 
       icon: 👷⎈
       description: Helm is a tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.
+      modules:
+       - title: "Basics of Helm"
+         url: "./content/docs/helm/install-helm.md"
+       - title: "Deep Dive into Charts"
+         url: "./content/docs/helm/deep-dive-chart.md"
+       - title: "Work with Multiple Values"
+         url: "./content/docs/helm/multiple-values.md"
+       - title: "Create Template file"
+         url: "./content/docs/helm/template-file.md"
+       - title: "Advance Template with If statement"
+         url: "./content/docs/helm/advance-if-statement.md"
+       - title: "Else and Else If statement"
+         url: "./content/docs/helm/Else-Else-If-statement.md"
+       - title: "50 Helm Template Cheatsheets"
+         url: "./content/docs/helm/helm-templates-cheatsheet.md"
+
 
     - title: Istio
       icon: ⛵
