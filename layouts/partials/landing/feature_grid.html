@@ -43,13 +43,13 @@
                                           <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
                                               
-     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{ .title }}" aria-expanded="false" aria-controls="collapseExample{{ .title }}">
                                                 Workshop Tracks <i class="material-icons align-top">chevron_right</i>
-                                              </button>
+                                            </button>
                                             </h5>
                                           </div>
                                       
-                                          <div class="collapse" id="collapseExample">
+                                          <div class="collapse" id="collapseExample{{ .title }}">
                                             <div class="card-body">
                                                 <table class="table">
                                                     <thead>
