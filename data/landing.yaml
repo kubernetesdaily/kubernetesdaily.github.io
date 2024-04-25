@@ -159,6 +159,11 @@ featureGrid:
     - title: kubernetes
       icon: ⎈
       description: kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
+      modules:
+       - title: "pre-requisites to install kubeadm"
+         url: "content/docs/kubernetes/pre-requisites-kubeadm.md"
+       - title: "Use Kubeadm to install a basic cluster"
+         url: "content/docs/kubernetes/kubeadm.md"
 
     - title: Helm 
       icon: 👷⎈
