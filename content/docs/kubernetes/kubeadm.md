@@ -5,149 +5,25 @@ slug: "kubeadm"
 weight: 3
 ---
 
-kubeadm is the reference installer for Kubernetes that sets up a minimally viable Kubernetes cluster using some best practices. It simplifies the initialization of control plane nodes, the addition (or removal) of nodes to a Kubernetes cluster, and also handles control plane and Kubelet configuration updates.
+````
+#!/bin/bash
 
-Kubeadm has a variety of commands and subcommands that will allow you to:
-- Create a control plane kubeadm init
-- Add a node kubeadm join
-- Regenerate certificates kubeadm certificates renew
-- Upgrade clusters kubeadm upgrade
+# Step 04 ) Cluster Creation : https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
 
-A typical kubeadm setup consists of the following characteristics (which you are present in many Kubernetes distributions):
- - Control plane components (like the API Server or scheduler) running as pods
- - Certificate-based communication between the API server and its clients
- - kube-proxy to set up services
- - CoreDNS to provide in-cluster DNS
-In order to successfully use Kubeadm, the node must have a kubelet and container runtime installed on the machine:
+# Initialize control-plane node : https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#initializing-your-control-plane-node
 
-```
-s#!/bin/bash
- 
-sudo apt update
- 
-sudo apt install docker.io -y
-sudo systemctl enable --now docker
- 
-sudo swapoff -a
- 
-sudo apt install -y apt-transport-https ca-certificates curl
- 
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
- 
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
- 
-sudo apt update 
- 
-sudo apt install -y kubeadm=1.29.1-1.1 kubelet=1.29.1-1.1 kubectl=1.29.1-1.1
- 
+# we dont have multiple control plane nodes
+# Choose POD Network Addon 
+# --pod-network-cidr , --apiserver-advertise-address
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.56.11
 
-```
+#--------- Alhamdulillah: Cluster Configuration Completed------------------#
 
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-
-### 1. **bridge-nf-call-iptables Does Not Exist**
-This error occurs because the `bridge-nf-call-iptables` is not enabled, which is necessary for the iptables proxy to see bridged traffic properly. You need to enable this setting to ensure that network packets are properly forwarded by the host.
-
-**Enable `bridge-nf-call-iptables`**:
-1. Load the `br_netfilter` module:
-   ```bash
-   sudo modprobe br_netfilter
-   ```
-2. Set `bridge-nf-call-iptables` to 1:
-   ```bash
-   sudo sysctl net.bridge.bridge-nf-call-iptables=1
-   ```
-3. To make this change persistent across reboots, add it to your sysctl configuration:
-   ```bash
-   echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
-   ```
-
-### 2. **IP Forwarding Not Enabled**
-Kubernetes requires IP forwarding to be enabled to allow containers to communicate with each other and the outside world.
-
-**Enable IP forwarding**:
-1. Set IP forwarding to 1:
-   ```bash
-   sudo sysctl net.ipv4.ip_forward=1
-   ```
-2. To make this setting permanent:
-   ```bash
-   echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
-   ```
-3. Apply the sysctl settings:
-   ```bash
-   sudo sysctl -p
-   ```
-
-### Final Steps
-After making these changes, re-run your `kubeadm init` command to proceed with the Kubernetes initialization:
-
-```bash
-sudo kubeadm init --cri-socket=unix:///var/run/containerd/containerd.sock
-```
-
-These settings will ensure that your system is configured correctly for network traffic management, which is essential for a Kubernetes cluster to function properly. If you continue to experience issues or encounter new errors, rechecking the configurations and ensuring all prerequisites are met before initializing Kubernetes can be helpful.
-
-
-
-Once installed, kubeadm init will initialize a control plane for your cluster.
-
-```
-sudo kubeadm init --cri-socket=unix:///var/run/containerd/containerd.sock
-I0418 14:20:15.325900   51055 version.go:256] remote version is much newer: v1.30.0; falling back to: stable-1.29
-[init] Using Kubernetes version: v1.29.4
-[preflight] Running pre-flight checks
-[preflight] Pulling images required for setting up a Kubernetes cluster
-[preflight] This might take a minute or two, depending on the speed of your internet connection
-[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
-W0418 14:20:38.012478   51055 checks.go:835] detected that the sandbox image "registry.k8s.io/pause:3.8" of the container runtime is inconsistent with that used by kubeadm. It is recommended that using "registry.k8s.io/pause:3.9" as the CRI sandbox image.
-[certs] Using certificateDir folder "/etc/kubernetes/pki"
-[certs] Generating "ca" certificate and key
-[certs] Generating "apiserver" certificate and key
-[certs] apiserver serving cert is signed for DNS names [kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local sangam] and IPs [10.96.0.1 192.168.129.135]
-[certs] Generating "apiserver-kubelet-client" certificate and key
-[certs] Generating "front-proxy-ca" certificate and key
-[certs] Generating "front-proxy-client" certificate and key
-[certs] Generating "etcd/ca" certificate and key
-[certs] Generating "etcd/server" certificate and key
-[certs] etcd/server serving cert is signed for DNS names [localhost sangam] and IPs [192.168.129.135 127.0.0.1 ::1]
-[certs] Generating "etcd/peer" certificate and key
-[certs] etcd/peer serving cert is signed for DNS names [localhost sangam] and IPs [192.168.129.135 127.0.0.1 ::1]
-[certs] Generating "etcd/healthcheck-client" certificate and key
-[certs] Generating "apiserver-etcd-client" certificate and key
-[certs] Generating "sa" key and public key
-[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
-[kubeconfig] Writing "admin.conf" kubeconfig file
-[kubeconfig] Writing "super-admin.conf" kubeconfig file
-[kubeconfig] Writing "kubelet.conf" kubeconfig file
-[kubeconfig] Writing "controller-manager.conf" kubeconfig file
-[kubeconfig] Writing "scheduler.conf" kubeconfig file
-[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests"
-[control-plane] Using manifest folder "/etc/kubernetes/manifests"
-[control-plane] Creating static Pod manifest for "kube-apiserver"
-[control-plane] Creating static Pod manifest for "kube-controller-manager"
-[control-plane] Creating static Pod manifest for "kube-scheduler"
-[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
-[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
-[kubelet-start] Starting the kubelet
-[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
-[apiclient] All control plane components are healthy after 7.004807 seconds
-[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
-[kubelet] Creating a ConfigMap "kubelet-config" in namespace kube-system with the configuration for the kubelets in the cluster
-[upload-certs] Skipping phase. Please see --upload-certs
-[mark-control-plane] Marking the node sangam as control-plane by adding the labels: [node-role.kubernetes.io/control-plane node.kubernetes.io/exclude-from-external-load-balancers]
-[mark-control-plane] Marking the node sangam as control-plane by adding the taints [node-role.kubernetes.io/control-plane:NoSchedule]
-[bootstrap-token] Using token: lsz2er.aq8iqirypexwftb5
-[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
-[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to get nodes
-[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
-[bootstrap-token] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
-[bootstrap-token] Configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
-[bootstrap-token] Creating the "cluster-info" ConfigMap in the "kube-public" namespace
-[kubelet-finalize] Updating "/etc/kubernetes/kubelet.conf" to point to a rotatable kubelet client certificate and key
-[addons] Applied essential addon: CoreDNS
-[addons] Applied essential addon: kube-proxy
-
+# Message from Kubernetes Configuration:
 Your Kubernetes control-plane has initialized successfully!
 
 To start using your cluster, you need to run the following as a regular user:
@@ -166,59 +42,41 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.129.135:6443 --token lsz2er.aq8iqirypexwftb5 \
-	--discovery-token-ca-cert-hash sha256:99791033630ab01203be30b3306fdf36ec574f40fda2d908f54a976d4b4a3d27 
-sangam@sangam:~$ 
+kubeadm join 192.168.56.11:6443 --token rfmw9v.exud3pc7riu0vnb4 \
+        --discovery-token-ca-cert-hash sha256:d2e00be36a8b5e7b8034800fecd271355e6fd2af2c5d7618b5c98f64b510a0d9
 
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/latest_release/weave-daemonset-k8s-1.11.yaml
 
-```
+kubectl get pods -A  #now it shows the containres are up and running
+# What did I change : Make sure you remove ipv6 settings , if its an Azure environment makesure on NIC , IP Forwarding is enabled
 
+# Now add weavenet address space
+# If you set --cluster-cidr option in kube-proxy make sure it matches the IPALLOC_RANGE given to Weavenet
+# ealier we passed : 10.244.0.0/16 as pod network, make sure to pass the same to enviorment variable of IPALLOC_RANGE
+container:
+  - name: weave
+    env:
+      -name: IPALLOC_RANGE
+       value: 10.244.0.0/16
 
-```
-workernode@workernode:~$ sudo rm /etc/kubernetes/kubelet.conf
-sudo rm /etc/kubernetes/bootstrap-kubelet.conf
-sudo rm /etc/kubernetes/pki/ca.crt
-workernode@workernode:~$ sudo ss -ltnp | grep :10250
-LISTEN 0      4096               *:10250            *:*    users:(("kubelet",pid=23209,fd=20))       
-workernode@workernode:~$ sudo systemctl stop kubelet
-sudo systemctl disable kubelet
-Removed /etc/systemd/system/multi-user.target.wants/kubelet.service.
-workernode@workernode:~$ sudo kubeadm reset
-W0418 18:46:14.265856   23698 preflight.go:56] [reset] WARNING: Changes made to this host by 'kubeadm init' or 'kubeadm join' will be reverted.
-[reset] Are you sure you want to proceed? [y/N]: y
-[preflight] Running pre-flight checks
-W0418 18:46:15.832641   23698 removeetcdmember.go:106] [reset] No kubeadm config, using etcd pod spec to get data directory
-[reset] Deleted contents of the etcd data directory: /var/lib/etcd
-[reset] Stopping the kubelet service
-[reset] Unmounting mounted directories in "/var/lib/kubelet"
-[reset] Deleting contents of directories: [/etc/kubernetes/manifests /var/lib/kubelet /etc/kubernetes/pki]
-[reset] Deleting files: [/etc/kubernetes/admin.conf /etc/kubernetes/super-admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/bootstrap-kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf]
+kubectl get ds -A
+kubectl edit ds weave-net -n kube-system
+# save above config
+kubectl get pods -A
 
-The reset process does not clean CNI configuration. To do so, you must remove /etc/cni/net.d
+#---- on Worker Nodes -------------------#
+sudo kubeadm join 192.168.56.11:6443 --token rfmw9v.exud3pc7riu0vnb4 \
+        --discovery-token-ca-cert-hash sha256:d2e00be36a8b5e7b8034800fecd271355e6fd2af2c5d7618b5c98f64b510a0d9
 
-The reset process does not reset or clean up iptables rules or IPVS tables.
-If you wish to reset iptables, you must do so manually by using the "iptables" command.
-
-If your cluster was setup to utilize IPVS, run ipvsadm --clear (or similar)
-to reset your system's IPVS tables.
-
-The reset process does not clean your kubeconfig files and you must remove them manually.
-Please, check the contents of the $HOME/.kube/config file.
-workernode@workernode:~$ sudo kubeadm join 192.168.129.135:6443 --token dfs0h9.pru6ez9v84qbw98k --discovery-token-ca-cert-hash sha256:27e8c63c7355d79dd2b0dc98dadcd46e87b3ef05ab181caaddf2c1b2488ae474 
-[preflight] Running pre-flight checks
-	[WARNING Service-Kubelet]: kubelet service is not enabled, please run 'systemctl enable kubelet.service'
-[preflight] Reading configuration from the cluster...
-[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
-[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
-[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
-[kubelet-start] Starting the kubelet
-[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+#--- I have successfully spun an kubernetes cluster , I can -----------#
 
 ```
+
 
 
 > NOTE 
-
 ```
 #!/bin/bash
 
