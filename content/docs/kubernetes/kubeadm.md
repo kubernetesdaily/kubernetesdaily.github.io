@@ -2,7 +2,7 @@
 title: "kubeadm"
 description: " Use Kubeadm to install a basic cluster "
 slug: "kubeadm"
-weight: 800
+weight: 3
 ---
 
 kubeadm is the reference installer for Kubernetes that sets up a minimally viable Kubernetes cluster using some best practices. It simplifies the initialization of control plane nodes, the addition (or removal) of nodes to a Kubernetes cluster, and also handles control plane and Kubelet configuration updates.
