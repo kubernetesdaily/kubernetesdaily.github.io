@@ -164,6 +164,12 @@ featureGrid:
          url: "/content/docs/kubernetes/pre-requisites-kubeadm.md"
        - title: "Use Kubeadm to install a basic cluster"
          url: "/content/docs/kubernetes/kubeadm.md"
+       - title: "Manage a highly-available Kubernetes cluster"
+         url: "/content/docs/kubernetes/HA-cluster.md"
+       - title: "Use Kubeadm to upgrade a cluster"
+         url: "/content/docs/kubernetes/kubeadm-upgrade.md"
+       - title: "etc backup and restore"
+         url: "/content/docs/kubernetes/etcd-backup.md"
 
     - title: Helm 
       icon: 👷⎈

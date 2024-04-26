@@ -138,10 +138,9 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 |1 |Manage role based access control (RBAC)|[🔗](content/docs/kubernetes/RBAC.md)|
 |2 | Includes configuring pre-requisites to install kubeadm |[🔗](content/docs/kubernetes/pre-requisites-kubeadm.md)|
 |3 |Use Kubeadm to install a basic cluster| |[🔗](content/docs/kubernetes/kubeadm.md)|
-|4 |Manage a highly-available Kubernetes cluster||[🔗](
-|5 |Provision underlying infrastructure to deploy a Kubernetes cluster||[🔗](
-|6 |Perform a version upgrade on a Kubernetes cluster using Kubeadm||[🔗](
-|7 |Implement etcd backup and restore||[🔗](
+|4 |Manage a highly-available Kubernetes cluster||[🔗](content/docs/kubernetes/HA-cluster.md) | 
+|5 |Perform a version upgrade on a Kubernetes cluster using Kubeadm||[🔗](content/docs/kubernetes/kubeadm-upgrade.md)|
+|6 |Implement etcd backup and restore||[🔗](content/docs/kubernetes/etcd-backup.md)|
 
 #### Workloads and Scheduling
 
