@@ -2,7 +2,7 @@
 title: "HA Cluster"
 description: " Manage a Highly-Available Kubernetes Cluster "
 slug: "HA Cluster"
-weight: 810
+weight: 4
 ---
 
 
