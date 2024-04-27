@@ -2,7 +2,7 @@
 title: "Create POD with Command and Arguments "
 description: " Kubectl explain pod  "
 slug: "Create-POD-with-Command-and-Arguments"
-weight : 730
+weight : 9
 ---
 
 ####  kubectl explain pods.spec.containers.command  

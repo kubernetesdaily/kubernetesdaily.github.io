@@ -168,7 +168,7 @@ defaultContentLanguage = 'en'
 
 
 [[menu.primary]]
-   name  = "meetups"
+   name  = "Meetups"
    url = "meetups/"
    identifier = "meetups"
    weight = 40

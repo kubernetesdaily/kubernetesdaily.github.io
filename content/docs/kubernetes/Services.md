@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes Service  "
-weight : 7
+weight : 13
 ---
 
 #### kubectl explain svc 

@@ -2,7 +2,7 @@
 title: "Labels and Selectors "
 description: " Selectors Labels  "
 slug: "Labels-and-Selectors"
-weight : 760
+weight : 8
 ---
 
 #### Labels -  Maps (aka Dictionaries)

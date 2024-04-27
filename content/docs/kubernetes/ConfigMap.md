@@ -2,7 +2,7 @@
 title: "ConfigMap "
 description: " kubernetes Config "
 slug: "ConfigMap"
-weight: 790
+weight: 12
 ---
 
 

@@ -156,9 +156,9 @@ featureGrid:
           url: "/content/docs/docker/docker-compose-images.md"
    
    
-    - title: kubernetes
+    - title: Kubernetes
       icon: ⎈
-      description: kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
+      description: Kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.
       modules:
        - title: "pre-requisites to install kubeadm"
          url: "/content/docs/kubernetes/pre-requisites-kubeadm.md"
@@ -170,7 +170,23 @@ featureGrid:
          url: "/content/docs/kubernetes/kubeadm-upgrade.md"
        - title: "etc backup and restore"
          url: "/content/docs/kubernetes/etcd-backup.md"
-
+       - title: "Manage role based access control (RBAC)"
+         url: "/content/docs/kubernetes/RBAC.md"
+       - title : "Basics of Pod"
+         url : "/content/docs/kubernetes/Basics-of-pods.md"
+       - title : "Create POD with Command and Arguments"
+         url : "/content/docs/kubernetes/pod-command-args.md"
+       - title: "Multi-Container Pods"
+         url : "/content/docs/kubernetes/multipod-container.md"
+       - title: "Labels & Selectors" 
+         url: "/content/docs/kubernetes/labels-selectors.md"
+       - title: "Kubernetes Service"
+         url: "/content/docs/kubernetes/Services.md"
+       - title: "Understand deployments and how to perform rolling update and rollbacks"
+         url: "content/docs/kubernetes/Deployment-Replicaset.md"
+       - title: Use ConfigMaps and Secrets to configure applications
+         url: "content/docs/kubernetes/ConfigMap.md"
+         
     - title: Helm 
       icon: 👷⎈
       description: Helm is a tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.

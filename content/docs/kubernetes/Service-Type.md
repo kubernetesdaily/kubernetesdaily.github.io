@@ -2,7 +2,7 @@
 title: "Service Type - NodePort,ClusterIP,LoadBalancer "
 description: " kubernetes Service "
 slug: "Service-Type-NodePort,ClusterIP,LoadBalancer"
-weight : 8
+weight : 14
 ---
 
 #### Service Type1: NodePort

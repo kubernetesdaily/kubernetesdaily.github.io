@@ -2,7 +2,7 @@
 title: "Deployments and replication"
 description: " Use Cases for Multi-Container Pods  "
 slug: "Deployments-and-replication"
-weight : 750
+weight: 11
 ---
 
 

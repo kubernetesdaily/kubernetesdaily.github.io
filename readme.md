@@ -121,37 +121,38 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 | No. | Title |
 |--- | --------- |
 |1 | Pre-requisit for this lab| [🔗](
-|2 | Basics of Pod| [🔗](
-|3 | Create POD with Command and Arguments| [🔗](
-|4 | Multi-Container Pods|  [🔗](
-|5 | Deployments & replication|
-|6 | Labels & Selectors| [🔗](
-|7 | Kubernetes Service| [🔗](
+
 |8 | Service Type: NodePort,ClusterIP,LoadBalancer|
 |9 | Ingress Controller| [🔗](
-|10| ConfigMap| [🔗](
+
 
 #### Cluster Architecture, Installation, and Configuration
 
 | No. | Title | Link |
 |--- | --------- | --------- |
-|1 |Manage role based access control (RBAC)|[🔗](content/docs/kubernetes/RBAC.md)|
-|2 | Includes configuring pre-requisites to install kubeadm |[🔗](content/docs/kubernetes/pre-requisites-kubeadm.md)|
-|3 |Use Kubeadm to install a basic cluster| |[🔗](content/docs/kubernetes/kubeadm.md)|
-|4 |Manage a highly-available Kubernetes cluster||[🔗](content/docs/kubernetes/HA-cluster.md) | 
-|5 |Perform a version upgrade on a Kubernetes cluster using Kubeadm||[🔗](content/docs/kubernetes/kubeadm-upgrade.md)|
-|6 |Implement etcd backup and restore||[🔗](content/docs/kubernetes/etcd-backup.md)|
+|1|Includes configuring pre-requisites to install kubeadm |[🔗](content/docs/kubernetes/pre-requisites-kubeadm.md)|
+|2 |Use Kubeadm to install a basic cluster|[🔗](content/docs/kubernetes/kubeadm.md)|
+|3 |Manage a highly-available Kubernetes cluster|[🔗](content/docs/kubernetes/HA-cluster.md)| 
+|4 |Perform a version upgrade on a Kubernetes cluster using Kubeadm|[🔗](content/docs/kubernetes/kubeadm-upgrade.md)|
+|5 |Implement etcd backup and restore|[🔗](content/docs/kubernetes/etcd-backup.md)|
+|6 |Manage role based access control (RBAC)|[🔗](content/docs/kubernetes/RBAC.md)|
 
-#### Workloads and Scheduling
 
-| No. | Title |
-|--- | --------- |
-|1 |Understand deployments and how to perform rolling update and rollbacks||[🔗](
-|2 |Use ConfigMaps and Secrets to configure applications||[🔗](
-|3 |Know how to scale applications||[🔗](
-|4 |Understand the primitives used to create robust, self-healing, application deployments||[🔗](
-|5 |Understand how resource limits can affect Pod scheduling||[🔗](
-|6 |Awareness of manifest management and common templating tools||[🔗](
+#### Workloads , Scheduling, Application Design and Build
+
+| No. | Title | Link |
+|--- | --------- |--------- |
+|1 | Basics of Pod| [🔗](./content/docs/kubernetes/Basics-of-pods.md)|
+|2 | Create POD with Command and Arguments| [🔗](./content/docs/kubernetes/pod-command-args.md) |
+|3 | Multi-Container Pods | [🔗](/content/docs/kubernetes/multipod-container.md)|
+|4 | Labels & Selectors| [🔗](./content/docs/kubernetes/labels-selectors.md)|
+|5 | Kubernetes Service| [🔗](./content/docs/kubernetes/Services.md)| 
+|6 |Understand deployments and how to perform rolling update and rollbacks||[🔗](content/docs/kubernetes/Deployment-Replicaset.md)|
+|7 |Use ConfigMaps and Secrets to configure applications||[🔗](content/docs/kubernetes/ConfigMap.md) |
+|8 |Know how to scale applications||[🔗](  |
+|9 |Understand the primitives used to create robust, self-healing, application deployments||[🔗]( |
+|10 |Understand how resource limits can affect Pod scheduling||[🔗](  |
+|11 |Awareness of manifest management and common templating tools||[🔗]( |
 
 #### Services and Networking
 

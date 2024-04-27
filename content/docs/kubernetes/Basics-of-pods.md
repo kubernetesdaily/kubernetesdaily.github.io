@@ -1,6 +1,6 @@
 ---
 title: "Basics of Pod"
-weight: 2
+weight: 7
 ---
 
 
