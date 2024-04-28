@@ -116,16 +116,6 @@ git clone https://github.com/kubernetesdaily/dockerworkshop.git
 git clone https://github.com/kubernetesdaily/k8sworkshop.git
 ```
 
-10 Labs
-
-| No. | Title |
-|--- | --------- |
-|1 | Pre-requisit for this lab| [🔗](
-
-|8 | Service Type: NodePort,ClusterIP,LoadBalancer|
-|9 | Ingress Controller| [🔗](
-
-
 #### Cluster Architecture, Installation, and Configuration
 
 | No. | Title | Link |
@@ -147,23 +137,22 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 |3 | Multi-Container Pods | [🔗](/content/docs/kubernetes/multipod-container.md)|
 |4 | Labels & Selectors| [🔗](./content/docs/kubernetes/labels-selectors.md)|
 |5 | Kubernetes Service| [🔗](./content/docs/kubernetes/Services.md)| 
-|6 |Understand deployments and how to perform rolling update and rollbacks||[🔗](content/docs/kubernetes/Deployment-Replicaset.md)|
-|7 |Use ConfigMaps and Secrets to configure applications||[🔗](content/docs/kubernetes/ConfigMap.md) |
-|8 |Know how to scale applications||[🔗](  |
-|9 |Understand the primitives used to create robust, self-healing, application deployments||[🔗]( |
-|10 |Understand how resource limits can affect Pod scheduling||[🔗](  |
-|11 |Awareness of manifest management and common templating tools||[🔗]( |
+|6 |Understand deployments and how to perform rolling update and rollbacks|[🔗](content/docs/kubernetes/Deployment-Replicaset.md)|
+|7 |Use ConfigMaps and Secrets to configure applications|[🔗](content/docs/kubernetes/ConfigMap.md)|
+|8|Understand the primitives used to create robust, self-healing, application deployments||[🔗]( |
+|9 |Understand how resource limits can affect Pod scheduling||[🔗](  |
+|10 |Awareness of manifest management and common templating tools||[🔗]( |
 
 #### Services and Networking
 
 | No. | Title |
 |--- | --------- |
-|1 |Understand host networking configuration on the cluster nodes||[🔗](
-|2 |Understand connectivity between Pods||[🔗](
-|3 |Understand ClusterIP, NodePort, LoadBalancer service types and endpoints||[🔗](
-|4 |Know how to use Ingress controllers and Ingress resources ||[🔗](
-|5 |Know how to configure and use CoreDNS ||[🔗](
-|6 |Choose an appropriate container network interface plugin ||[🔗](
+|1 |Understand host networking configuration on the cluster nodes|[🔗]( |
+|2 |Understand connectivity between Pods|[🔗]( |
+|3 |Understand ClusterIP, NodePort, LoadBalancer service types and endpoints|[🔗](./content/docs/kubernetes/Service-Type.md)|
+|4 |Know how to use Ingress controllers and Ingress resources |[🔗](./content/docs/kubernetes/Ingress-Controller.md)|
+|5 |Know how to configure and use CoreDNS |[🔗]( |
+|6 |Choose an appropriate container network interface plugin |[🔗]( |
 
 #### Storage
 
