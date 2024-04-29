@@ -139,7 +139,7 @@ git clone https://github.com/kubernetesdaily/k8sworkshop.git
 |5 | Kubernetes Service| [🔗](./content/docs/kubernetes/Services.md)| 
 |6 |Understand deployments and how to perform rolling update and rollbacks|[🔗](content/docs/kubernetes/Deployment-Replicaset.md)|
 |7 |Use ConfigMaps and Secrets to configure applications|[🔗](content/docs/kubernetes/ConfigMap.md)|
-|8|Understand the primitives used to create robust, self-healing, application deployments||[🔗]( |
+|8|Understand the primitives used to create robust, self-healing, application deployments|[🔗]( |
 |9 |Understand how resource limits can affect Pod scheduling||[🔗](  |
 |10 |Awareness of manifest management and common templating tools||[🔗]( |
 
