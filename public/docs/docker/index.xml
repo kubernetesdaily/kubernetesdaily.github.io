@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learn Docker on KubeDaily</title>
+    <link>//localhost:1313/docs/docker/</link>
+    <description>Recent content in Learn Docker on KubeDaily</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 25 Jan 2024 04:33:12 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Prerequisites</title>
+      <link>//localhost:1313/docs/docker/docker-prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/docker-prerequisites/</guid>
+      <description>Here are the steps to create a Docker Hub account:&#xA;Go to https://hub.docker.com/signup and click on the &amp;ldquo;Sign Up&amp;rdquo; button. Fill out the registration form with your name, email address, and password. Agree to the terms of service and privacy policy by checking the box. Click on the &amp;ldquo;Sign Up&amp;rdquo; button to complete the registration process. You will receive a verification email from Docker Hub. Follow the link in the email to verify your email address.</description>
+    </item>
+    <item>
+      <title>Hello World in Docker</title>
+      <link>//localhost:1313/docs/docker/hello-world-in-docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/hello-world-in-docker/</guid>
+      <description>run your first hello world example link docker run hello-world is a command that runs a simple Docker container to verify that Docker is correctly installed on your system and working as expected.&#xA;When you run this command, Docker will first check if the &amp;ldquo;hello-world&amp;rdquo; image is available locally. If the image is not found, Docker will download it from the Docker Hub registry.&#xA;Once the &amp;ldquo;hello-world&amp;rdquo; image is available, Docker will create a container from the image and run it.</description>
+    </item>
+    <item>
+      <title>Docker Image Filtering</title>
+      <link>//localhost:1313/docs/docker/docker-images-filter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/docker-images-filter/</guid>
+      <description>running docker run alpine command would download the Alpine Linux image from Docker Hub and start a new container based on that image. You can then use the container to run commands or applications. When you exit the container, it will stop running.&#xA;Alpine Linux is a lightweight Linux distribution that is commonly used in Docker containers due to its small size and security features.&#xA;dockerworkshop git:(main) ✗ docker pull alpine:3.</description>
+    </item>
+    <item>
+      <title>Images as Tar Files</title>
+      <link>//localhost:1313/docs/docker/images-as-tar-files/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/images-as-tar-files/</guid>
+      <description>Images and Container as Tarfile linkDocker provides the ability to save images and containers as tar files, which can be useful for sharing with others or transferring between systems. Here&amp;rsquo;s how to do it:&#xA;docker pull nginx:latest latest: Pulling from library/nginx 5731adb3a4ab: Pull complete 8785c8f663d3: Pull complete 023b6bd393e4: Pull complete fd8f86b165b0: Pull complete 8f41e7c12976: Pull complete 3b5338ea7d08: Pull complete Digest: sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8 Status: Downloaded newer image for nginx:latest docker.io/library/nginx:latest Saving an Image as a Tar File linkTo save a Docker image as a tar file, use the docker save command with the image name and output file name:</description>
+    </item>
+    <item>
+      <title>Pushing to DockerHub</title>
+      <link>//localhost:1313/docs/docker/pushing-to-dockerhub/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/pushing-to-dockerhub/</guid>
+      <description>Pull nginx image from dockerhub using link dockerworkshop git:(main) ✗ docker pull nginx Using default tag: latest latest: Pulling from library/nginx Digest: sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8 Status: Image is up to date for nginx:latest docker.io/library/nginx:latest Run Docker with ngnix link dockerworkshop git:(main) ✗ docker run --name docker-nginx -p 80:80 -d nginx 63258aebdc2d8ea40a0099efb3e51f8b15db2fe2dc048da3901843b4782d19fb –name docker-nginx : Name given to the container that is run is docker-nginx-p 80:80 : the port we are exposing and mapping from local machine port number to that of container, in the format local_machine_port:container_port-d : Detached mode – Runs the container in background</description>
+    </item>
+    <item>
+      <title>Building a Base Image</title>
+      <link>//localhost:1313/docs/docker/building-a-base-image/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/building-a-base-image/</guid>
+      <description>write simple c program link #include&amp;lt;stdio.h&amp;gt; int main() { printf(&amp;#34;dockerworkshop&amp;#34;); } Compile C program link gcc -o hello hello.c ✗ ./hello dockerworkshop% create dockerfile with following content : link FROM scratch ADD hello / CMD [&amp;#34;/hello&amp;#34;] Build Dockerfile without any base image link Dockerfile git:(main) ✗ docker build -t sangam14/hello-scratch -f dockerfile.hello . [&amp;#43;] Building 0.1s (5/5) FINISHED =&amp;gt; [internal] load build definition from dockerfile.hello 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 87B 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile ADD</title>
+      <link>//localhost:1313/docs/docker/dockerfile-add/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-add/</guid>
+      <description>Here&amp;rsquo;s an example of a Dockerfile that uses the ADD instruction to copy a local file into a Docker image:&#xA;FROM ubuntu:latest WORKDIR /app ADD example.txt /app/ CMD [&amp;#34;cat&amp;#34;, &amp;#34;/app/example.txt&amp;#34;] Build Dockerfile link Dockerfile git:(main) ✗ docker build -t sangam14/add-dockerfile -f dockerfile.add . [&amp;#43;] Building 5.2s (9/9) FINISHED =&amp;gt; [internal] load build definition from dockerfile.add 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 131B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile COPY</title>
+      <link>//localhost:1313/docs/docker/dockerfile-copy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-copy/</guid>
+      <description>COPY is a dockerfile command that copies files from a local source location to a destination in the Docker container. A Dockerfile is a text file with instructions to set up a Docker container.&#xA;create myfile1.txt and myfile2.txt with following content :&#xA;# myfile1.txt Hello This is my first file ! This is file will be copied in /usr/share directory from Docker host to Docker Container. # myfile2.txt Hello This is my second file !</description>
+    </item>
+    <item>
+      <title>Dockerfile CMD</title>
+      <link>//localhost:1313/docs/docker/dockerfile-cmd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-cmd/</guid>
+      <description>The CMD command we saw earlier followed the Shell syntax:&#xA;CMD executable parameter1 parameter2 However, it is better practice to use the JSON array format:&#xA;CMD [&amp;#34;executable&amp;#34;, &amp;#34;parameter1&amp;#34;, &amp;#34;parameter2&amp;#34;] A CMD command can be overridden by providing the executable and its parameters in the docker ​run command. For example:&#xA;FROM ubuntu RUN apt-get update CMD [&amp;#34;echo&amp;#34; , &amp;#34;Join CloudNativeFolks Community&amp;#34;] build dockerfile link docker build -t sangam14/cmd-dockerfile -f dockerfile.cmd . [&amp;#43;] Building 8.</description>
+    </item>
+    <item>
+      <title>Dockerfile Entrypoint</title>
+      <link>//localhost:1313/docs/docker/dockerfile-entrypoint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-entrypoint/</guid>
+      <description>Running a Docker Container with ENTRYPOINT linkLet&amp;rsquo;s learn the details in this case by actually executing ENTRYPOINT in exec form. The following is an example of a Dockerfile that uses the exec form of ENTRYPOINT, which outputs a character string on the command line.&#xA;FROM alpine ENTRYPOINT [&amp;#34;echo&amp;#34;, &amp;#34;Hello!&amp;#34;] Build dockerfile link ➜ Dockerfile git:(main) ✗ docker build -t sangam14/entrypoint-dockerfile -f dockerfile.entrypoint . [&amp;#43;] Building 3.2s (6/6) FINISHED =&amp;gt; [internal] load build definition from dockerfile.</description>
+    </item>
+    <item>
+      <title>Dockerfile WORKDIR</title>
+      <link>//localhost:1313/docs/docker/dockerfile-workdir/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-workdir/</guid>
+      <description>The WORKDIR command is used to define the working directory of a Docker container at any given time. The command is specified in the Dockerfile.&#xA;Any RUN, CMD, ADD, COPY, or ENTRYPOINT command will be executed in the specified working directory.&#xA;WORKDIR instruction Dockerfile for Docker Quick Start link FROM ubuntu WORKDIR /var/www/html RUN apt-get update &amp;amp;&amp;amp; apt-get install -y nginx COPY index.html . ENTRYPOINT [&amp;#34;nginx&amp;#34;, &amp;#34;-g&amp;#34;, &amp;#34;daemon off;&amp;#34;] build dockerfile link docker build -t sangam14/workdir-dockerfile -f dockerfile.</description>
+    </item>
+    <item>
+      <title>Dockerfile RUN </title>
+      <link>//localhost:1313/docs/docker/dockerfile-run/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-run/</guid>
+      <description>The RUN command is the central executing directive for Dockerfiles. It takes a command as its argument and runs it to form the image. Unlike CMD, it actually is used to build the image (forming another layer on top of the previous one which is committed).&#xA;create dockerfile with following content link FROM ubuntu RUN id RUN useradd --create-home -m -s /bin/bash dev # Add a fun prompt for dev user of my-app # whale: &amp;#34;\xF0\x9F\x90\xB3&amp;#34; # alien:&amp;#34;\xF0\x9F\x91\xBD&amp;#34; # fish:&amp;#34;\xF0\x9F\x90\xA0&amp;#34; # elephant:&amp;#34;\xF0\x9F\x91\xBD&amp;#34; # moneybag:&amp;#34;\xF0\x9F\x92\xB0&amp;#34; RUN echo &amp;#39;PS1=&amp;#34;\[$(tput bold)$(tput setaf 4)\]my-app $(echo -e &amp;#34;\xF0\x9F\x90\xB3&amp;#34;) \[$(tput sgr0)\] [\\u@\\h]:\\W \\$ &amp;#34;&amp;#39; &amp;gt;&amp;gt; /home/dev/.</description>
+    </item>
+    <item>
+      <title>Dockerfile ARG </title>
+      <link>//localhost:1313/docs/docker/dockerfile-arg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-arg/</guid>
+      <description>FROM alpine ENV key1=&amp;#34;ENV is stronger than an ARG&amp;#34; RUN echo ${key1} ARG key1=&amp;#34;not going to matter&amp;#34; RUN echo ${key1} RUN echo ${key2} ARG key2=&amp;#34;defaultValue&amp;#34; RUN echo ${key2} ENV key2=&amp;#34;ENV value takes over&amp;#34; RUN echo ${key2} CMD [&amp;#34;sh&amp;#34;] Build Dockerfile link Dockerfile git:(main) ✗ docker build -t sangam14/arg-dockerfile -f dockerfile.arg . [&amp;#43;] Building 3.5s (11/11) FINISHED =&amp;gt; [internal] load build definition from dockerfile.arg 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 336B 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile Volume</title>
+      <link>//localhost:1313/docs/docker/dockerfile-volume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-volume/</guid>
+      <description>cat dockerfile.vol&#xA;FROM alpine RUN mkdir /myvol RUN echo &amp;#34;hello world&amp;#34; &amp;gt; /myvol/greeting VOLUME /myvol CMD [&amp;#34;sh&amp;#34;] Build above dockerfile link docker build -t sangam14/vol-dockerfile -f dockerfile.vol . [&amp;#43;] Building 0.4s (7/7) FINISHED =&amp;gt; [internal] load build definition from dockerfile.vol 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 140B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.0s =&amp;gt; [internal] load metadata for docker.io/library/alpine:latest 0.0s =&amp;gt; CACHED [1/3] FROM docker.io/library/alpine 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile USER</title>
+      <link>//localhost:1313/docs/docker/dockerfile-user/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-user/</guid>
+      <description>cat dockerfile.user&#xA;FROM alpine USER dockerworkshop:dockerworkshop CMD [&amp;#34;sh&amp;#34;] build dockerfile link docker build -t sangam14/user-dockerfile -f dockerfile.user . [&amp;#43;] Building 0.1s (5/5) FINISHED =&amp;gt; [internal] load build definition from dockerfile.user 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 105B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.0s =&amp;gt; [internal] load metadata for docker.io/library/alpine:latest 0.0s =&amp;gt; CACHED [1/1] FROM docker.io/library/alpine 0.0s =&amp;gt; exporting to image 0.0s =&amp;gt; =&amp;gt; exporting layers 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile HEALTHCHECK</title>
+      <link>//localhost:1313/docs/docker/dockerfile-healthcheck/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-healthcheck/</guid>
+      <description>cat Dockerfile&#xA;FROM nginx build docker container link docker build -t sangam14/healthcheck-dockerfile -f dockerfile.healthcheck . [&amp;#43;] Building 1.4s (6/6) FINISHED =&amp;gt; [internal] load build definition from dockerfile.healthcheck 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 244B 0.0s =&amp;gt; [internal] load .dockerignore 0.0s =&amp;gt; =&amp;gt; transferring context: 2B 0.0s =&amp;gt; [internal] load metadata for docker.io/library/alpine:latest 0.0s =&amp;gt; CACHED [1/2] FROM docker.io/library/alpine 0.0s =&amp;gt; [2/2] RUN apk add curl 1.3s =&amp;gt; exporting to image 0.0s =&amp;gt; =&amp;gt; exporting layers 0.</description>
+    </item>
+    <item>
+      <title>Dockerfile ENV</title>
+      <link>//localhost:1313/docs/docker/dockerfile-env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-env/</guid>
+      <description>cat dockerfile&#xA;FROM alpine ENV appDescription This app is a sample of using ENV instructions ENV appName=env-demo ENV note1=&amp;#34;The First Note First&amp;#34; note2=The\ Second\ Note\ Second \ note3=&amp;#34;The Third Note Third&amp;#34; ENV changeMe=&amp;#34;Old Value&amp;#34; CMD [&amp;#34;sh&amp;#34;] build dockerfile link ➜ Dockerfile git:(main) ✗ docker build -t sangam14/env-dockerfile -f dockerfile.env . [&amp;#43;] Building 0.1s (5/5) FINISHED =&amp;gt; [internal] load build definition from dockerfile.env 0.0s =&amp;gt; =&amp;gt; transferring dockerfile: 279B 0.0s =&amp;gt; [internal] load .</description>
+    </item>
+    <item>
+      <title>Dockerfile ONBUILD</title>
+      <link>//localhost:1313/docs/docker/dockerfile-onbuild/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/dockerfile-onbuild/</guid>
+      <description>The ONBUILD instruction linkThe ONBUILD instruction is a trigger. It sets instructions that will be executed when another image is built from the image being build.&#xA;This is useful for building images which will be used as a base to build other images.&#xA;ONBUILD COPY . /src You can&amp;rsquo;t chain ONBUILD instructions with ONBUILD. ONBUILD can&amp;rsquo;t be used to trigger FROM instructions.&#xA;FROM nginx:1.16-alpine WORKDIR /usr/share/nginx/html ONBUILD COPY index.html . build dockerfile link docker build -t sangam14/onbuild-dockerfile -f dockerfile.</description>
+    </item>
+    <item>
+      <title>Multi-Container CLI </title>
+      <link>//localhost:1313/docs/docker/multi-container-cli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/multi-container-cli/</guid>
+      <description>We will create two containers (linux1, linux2) based on the same image (ubuntu) link docker run -it -d --rm --name linux1 ubuntu /bin/bash additional flags: -dstarts the container as “detached”. Use “docker attach” to attach to it later on. --rm cleans up the container after stopping. The container will be removed, basically the same as “docker rm container_identifier” after stopping the container. So everything is kept tidy. --name will give the container a dedicated name, which makes it easier to address the container later on.</description>
+    </item>
+    <item>
+      <title>Docker Compose Basics</title>
+      <link>//localhost:1313/docs/docker/docker-compose-basics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/docker-compose-basics/</guid>
+      <description>cat Dockerfile&#xA;FROM php:7.2-apache COPY index.php /var/www/html add index.php file&#xA;&amp;lt;?php echo &amp;#34;hello world \n\n&amp;#34;; creat docker-compose.yaml&#xA;version: &amp;#39;3&amp;#39; services: phpapp: ports: - &amp;#34;8080:80&amp;#34; build: context: ./ dockerfile: Dockerfile to run docker compose&#xA;docker compose up --build output&#xA;1-DC git:(main) ✗ docker compose up [&amp;#43;] Building 21.2s (10/10) FINISHED =&amp;gt; [internal] booting buildkit 3.8s =&amp;gt; =&amp;gt; pulling image moby/buildkit:buildx-stable-1 2.8s =&amp;gt; =&amp;gt; creating container buildx_buildkit_great_brahmagupta0 1.1s =&amp;gt; [internal] load build definition from Dockerfile 0.</description>
+    </item>
+    <item>
+      <title>Compose Volume Mount</title>
+      <link>//localhost:1313/docs/docker/compose-volume-mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-volume-mount/</guid>
+      <description>Lets build docker compose file link version: &amp;#39;3&amp;#39; services: phpapp: image: php:7.2-apache ports: - &amp;#34;8080:80&amp;#34; volumes: - &amp;#34;./:/var/www/html&amp;#34; above when we do docker compose up it will start apache with php 7.2 it will mount corrent directory to /var/www/html also it mount port 80 of the container to port 8080 on the host&#xA;create index.php with following content link &amp;lt;?php echo &amp;#34;hello world \n\n&amp;#34;; run with docker compose link 2-DC-Vol-Mount git:(main) ✗ docker compose up [&amp;#43;] Running 15/15 ⠿ phpapp Pulled 13.</description>
+    </item>
+    <item>
+      <title>Custom Dockerfile with Compose</title>
+      <link>//localhost:1313/docs/docker/custom-dockerfile-with-compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/custom-dockerfile-with-compose/</guid>
+      <description>Build Own Dockerfile and Docker Compose with Custom configuration linkcrate docker compose file with following content&#xA;version: &amp;#39;3&amp;#39; services: phpapp: build: context: ./ dockerfile: Dockerfile image: phpapp:123 ports: - &amp;#34;8080:80&amp;#34; volumes: - &amp;#34;./:/var/www/html&amp;#34; container_name: my-php-app here using dockerfile to generate an image mount folder inside your directory automatically create index.php with following content link &amp;lt;?php phpinfo(); build docker compose file link 3-DC-Custom git:(main) ✗ docker compose up [&amp;#43;] Running 0/1 ⠿ phpapp Warning 3.</description>
+    </item>
+    <item>
+      <title>PHP, Apache, and DB with Compose</title>
+      <link>//localhost:1313/docs/docker/php-apache-and-db-with-compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/php-apache-and-db-with-compose/</guid>
+      <description>we will see detach form logs upon start and user multiservices in one docker container&#xA;version: &amp;#39;3&amp;#39; services: phpapp: build: context: ./ dockerfile: Dockerfile image: phpapp:123 ports: - &amp;#34;8080:80&amp;#34; volumes: - &amp;#34;./:/var/www/html&amp;#34; container_name: myphpapp-app db: image: mysql:5.7 restart: always environment: MYSQL_ROOT_PASSWORD: my!!!root!!!pw container_name: myphpapp-db here you see two services phpapp and myphpapp-app and image called phpapp with 123 tag&#xA;another service called db form mysql this container restarts always which means it crashes ?</description>
+    </item>
+    <item>
+      <title>Host Volume Mount</title>
+      <link>//localhost:1313/docs/docker/host-volume-mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/host-volume-mount/</guid>
+      <description>we already used database with web app but docker containers are ephermal. this means they are losing data once removed or re-started so somewhere need to find data persistent&#xA;create docker-compose.yml using following content&#xA;version: &amp;#39;3&amp;#39; services: db: image: mysql:latest restart: always container_name: myphpapp-db environment: MYSQL_ROOT_PASSWORD: somepass MYSQL_DATABASE: somedatabase dbclient: image: mysql:latest depends_on: - db command: mysql -uroot -psomepass -hdb MYSQL_DATABASE will create an empty database with the name &amp;ldquo;somedatabase&amp;rdquo; at first</description>
+    </item>
+    <item>
+      <title>Named Volume Mount</title>
+      <link>//localhost:1313/docs/docker/named-volume-mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/named-volume-mount/</guid>
+      <description>create volume link 6-DC-name-volume git:(main) ✗ docker volume create --name my-vol my-vol create docker-compose.yml with following content link version: &amp;#39;3.7&amp;#39; services: db: image: mysql:latest restart: always container_name: myphpapp-db environment: MYSQL_ROOT_PASSWORD: somepass MYSQL_DATABASE: somedatabase volumes: - my-vol:/var/lib/mysql volumes: my-vol: name: my-vol run docker compose link docker compose up -d WARN[0000] volume &amp;#34;my-vol&amp;#34; already exists but was not created by Docker Compose. Use `external: true` to use an existing volume [&amp;#43;] Running 1/1 ⠿ Container myphpapp-db Started 0.</description>
+    </item>
+    <item>
+      <title>Compose Build Command</title>
+      <link>//localhost:1313/docs/docker/compose-build-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-build-command/</guid>
+      <description>Docker Compose Build Command link docker compose build [OPTIONS] [SERVICE...] If you change a service’s Dockerfile or the contents of its build directory, run docker compose build to rebuild it.&#xA;--build-arg&#x9;Set build-time variables for services.&#xA;--no-cache&#x9;Do not use cache when building the image --progress&#x9;auto&#x9;Set type of progress output (auto, tty, plain, quiet) .&#xA;--pull&#x9;Always attempt to pull a newer version of the image..&#xA;--push&#x9;Push service images.</description>
+    </item>
+    <item>
+      <title>Compose Config Command</title>
+      <link>//localhost:1313/docs/docker/compose-config-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-config-command/</guid>
+      <description>create dockerfile with following content link # syntax=docker/dockerfile:1 FROM python:3.7-alpine WORKDIR /code ENV FLASK_APP=app.py ENV FLASK_RUN_HOST=0.0.0.0 RUN apk add --no-cache gcc musl-dev linux-headers COPY requirements.txt requirements.txt RUN pip install -r requirements.txt EXPOSE 5000 COPY . . CMD [&amp;#34;flask&amp;#34;, &amp;#34;run&amp;#34;] create app.py with following content link import time import redis from flask import Flask app = Flask(__name__) cache = redis.Redis(host=&amp;#39;redis&amp;#39;, port=6379) def get_hit_count(): retries = 5 while True: try: return cache.incr(&amp;#39;hits&amp;#39;) except redis.</description>
+    </item>
+    <item>
+      <title>Compose CP Command</title>
+      <link>//localhost:1313/docs/docker/compose-cp-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-cp-command/</guid>
+      <description>Copy files/folders between a service container and the local filesystem link # Syntax to Copy from Container to Docker Host docker cp {options} CONTAINER:SRC_PATH DEST_PATH # Syntax to Copy from Docker Host to Container docker cp {options} SRC_PATH CONTAINER:DEST_PATH lets run ngnix container link version: &amp;#39;3&amp;#39; services: web: image: nginx:latest run docker compose up link docker compose -f docker-compose-ngnix.yml up check running container link ➜ dockerworkshop git:(main) ✗ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 008940fdbed8 nginx:latest &amp;#34;/docker-entrypoint.</description>
+    </item>
+    <item>
+      <title>Compose Create Command</title>
+      <link>//localhost:1313/docs/docker/compose-create-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-create-command/</guid>
+      <description>create docker-compose.yml with following content link version: &amp;#34;3.9&amp;#34; services: web: build: . ports: - &amp;#34;8000:5000&amp;#34; redis: image: &amp;#34;redis:alpine&amp;#34; Creates containers for a service. link ➜ 7-DC-CLI git:(main) ✗ docker compose create [&amp;#43;] Running 7/7 ⠿ redis Pulled 6.1s ⠿ af6eaf76a39c Already exists 0.0s ⠿ 5015c79ed515 Pull complete 0.9s ⠿ 2ca28624189f Pull complete 1.0s ⠿ 4691452befb1 Pull complete 1.6s ⠿ 746fa87aff8c Pull complete 2.1s ⠿ b8496ad2d107 Pull complete 2.2s WARN[0006] Found orphan containers ([7-dc-cli-client-1]) for this project.</description>
+    </item>
+    <item>
+      <title>Compose Down Command </title>
+      <link>//localhost:1313/docs/docker/compose-down-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-down-command/</guid>
+      <description>create docker-compose.yml with following content link version: &amp;#34;3.9&amp;#34; services: web: build: . ports: - &amp;#34;8000:5000&amp;#34; redis: image: &amp;#34;redis:alpine&amp;#34; Create docker compose up link docker compose up WARN[0000] Found orphan containers ([7-dc-cli-client-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up. Attaching to 7-dc-cli-redis-1, 7-dc-cli-web-1 7-dc-cli-redis-1 | 1:C 04 Mar 2023 14:23:46.156 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo 7-dc-cli-redis-1 | 1:C 04 Mar 2023 14:23:46.</description>
+    </item>
+    <item>
+      <title>Compose Events Command </title>
+      <link>//localhost:1313/docs/docker/compose-events-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-events-command/</guid>
+      <description>here is sample voting app link cat docker-compose.yml # version is now using &amp;#34;compose spec&amp;#34; # v2 and v3 are now combined! # docker-compose v1.27&amp;#43; required services: vote: build: ./vote # use python rather than gunicorn for local dev command: python app.py depends_on: redis: condition: service_healthy healthcheck: test: [&amp;#34;CMD&amp;#34;, &amp;#34;curl&amp;#34;, &amp;#34;-f&amp;#34;, &amp;#34;http://localhost&amp;#34;] interval: 15s timeout: 5s retries: 3 start_period: 10s volumes: - ./vote:/app ports: - &amp;#34;5000:80&amp;#34; networks: - front-tier - back-tier result: build: .</description>
+    </item>
+    <item>
+      <title>Compose Exec Command </title>
+      <link>//localhost:1313/docs/docker/compose-exec-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-exec-command/</guid>
+      <description>Docker Compose Exec into result service link docker compose exec result sh # ls Dockerfile docker-compose.test.yml package-lock.json package.json server.js tests views # cat docker-compose.test.yml version: &amp;#39;2&amp;#39; services: sut: build: ./tests/ depends_on: - vote - result - worker networks: - front-tier vote: build: ../vote/ ports: [&amp;#34;80&amp;#34;] depends_on: - redis - db networks: - front-tier - back-tier result: build: . ports: [&amp;#34;80&amp;#34;] depends_on: - redis - db networks: - front-tier - back-tier worker: build: .</description>
+    </item>
+    <item>
+      <title>Compose Images Command</title>
+      <link>//localhost:1313/docs/docker/compose-images-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-images-command/</guid>
+      <description> example-voting-app git:(main) docker compose images CONTAINER REPOSITORY TAG IMAGE ID SIZE example-voting-app-db-1 postgres 15-alpine 68d4a8d9d3d9 241MB example-voting-app-redis-1 redis alpine 1339d05b97a4 30.4MB example-voting-app-result-1 example-voting-app-result latest 223b94fc00ae 254MB example-voting-app-vote-1 example-voting-app-vote latest 5c1cf62b540c 135MB example-voting-app-worker-1 example-voting-app-worker latest 8f82fda1dae8 195MB </description>
+    </item>
+    <item>
+      <title>Compose Kill Command</title>
+      <link>//localhost:1313/docs/docker/compose-kill-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-kill-command/</guid>
+      <description>Forces running containers to stop by sending a SIGKILL signal. Optionally the signal can be passed : link example-voting-app git:(main) docker-compose kill -s SIGINT [&amp;#43;] Running 4/0 ⠿ Container example-voting-app-redis-1 Killed 0.0s ⠿ Container example-voting-app-worker-1 Killed 0.0s ⠿ Container example-voting-app-db-1 Killed 0.0s ⠿ Container example-voting-app-result-1 Killed 0.0s </description>
+    </item>
+    <item>
+      <title>Compose Logs Command</title>
+      <link>//localhost:1313/docs/docker/compose-logs-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-logs-command/</guid>
+      <description>View output from containers link ➜ example-voting-app git:(main) docker-compose logs example-voting-app-worker-1 | Connected to db example-voting-app-result-1 | [nodemon] 2.0.21 example-voting-app-worker-1 | Found redis at 172.20.0.2 example-voting-app-worker-1 | Connecting to redis example-voting-app-result-1 | [nodemon] to restart at any time, enter `rs` example-voting-app-result-1 | [nodemon] watching path(s): *.* example-voting-app-result-1 | [nodemon] watching extensions: js,mjs,json example-voting-app-result-1 | [nodemon] starting `node server.js` example-voting-app-result-1 | Sat, 04 Mar 2023 18:00:16 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at server.</description>
+    </item>
+    <item>
+      <title>Compose ls Command</title>
+      <link>//localhost:1313/docs/docker/compose-ls-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-ls-command/</guid>
+      <description>List running compose projects link docker-compose ls NAME STATUS CONFIG FILES example-voting-app running(4) /Users/sangambiradar/Documents/GitHub/dockerworkshop/workshop/Docker102/Docker-Compose/example-voting-app/docker-compose.yml ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Compose Pause unpause Command</title>
+      <link>//localhost:1313/docs/docker/compose-pause-unpause-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-pause-unpause-command/</guid>
+      <description>example-voting-app git:(main) docker compose pause [&amp;#43;] Running 4/0 ⠿ Container example-voting-app-db-1 Paused 0.0s ⠿ Container example-voting-app-redis-1 Paused 0.0s ⠿ Container example-voting-app-worker-1 Paused 0.0s ⠿ Container example-voting-app-result-1 Paused 0.0s ➜ example-voting-app git:(main) Pauses running containers of a service. They can be unpaused with docker compose unpause. link docker compose unpause [&amp;#43;] Running 4/0 ⠿ Container example-voting-app-worker-1 Unpaused 0.0s ⠿ Container example-voting-app-redis-1 Unpaused 0.0s ⠿ Container example-voting-app-result-1 Unpaused 0.0s ⠿ Container example-voting-app-db-1 Unpaused 0.</description>
+    </item>
+    <item>
+      <title>Compose Port Command</title>
+      <link>//localhost:1313/docs/docker/compose-port-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-port-command/</guid>
+      <description>Print the public port for a port binding. link docker compose port result 80 0.0.0.0:5001 ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Compose Ps Command</title>
+      <link>//localhost:1313/docs/docker/compose-ps-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-ps-command/</guid>
+      <description>List containers link docker compose ps NAME IMAGE COMMAND SERVICE CREATED STATUS PORTS example-voting-app-db-1 postgres:15-alpine &amp;#34;docker-entrypoint.s…&amp;#34; db 4 hours ago Up About an hour (healthy) 5432/tcp example-voting-app-redis-1 redis:alpine &amp;#34;docker-entrypoint.s…&amp;#34; redis 4 hours ago Up About an hour (healthy) 6379/tcp example-voting-app-result-1 example-voting-app-result &amp;#34;nodemon server.js&amp;#34; result About an hour ago Up About an hour 0.0.0.0:5858-&amp;gt;5858/tcp, 0.0.0.0:5001-&amp;gt;80/tcp example-voting-app-worker-1 example-voting-app-worker &amp;#34;dotnet Worker.dll&amp;#34; worker About an hour ago Up About an hour ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Compose Pull Command</title>
+      <link>//localhost:1313/docs/docker/compose-pull-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-pull-command/</guid>
+      <description>Pull service images link example-voting-app git:(main) docker compose pull [&amp;#43;] Running 5/5 ⠿ vote Skipped - No image to be pulled 0.0s ⠿ result Skipped - No image to be pulled 0.0s ⠿ worker Skipped - No image to be pulled 0.0s ⠿ redis Pulled 2.8s ⠿ db Pulled 2.8s </description>
+    </item>
+    <item>
+      <title>Compose Push Command</title>
+      <link>//localhost:1313/docs/docker/compose-push-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-push-command/</guid>
+      <description>Push service images link services: service1: build: . image: localhost:5000/yourimage ## goes to local registry service2: build: . image: your-dockerid/yourimage ## goes to your repository on Docker Hub </description>
+    </item>
+    <item>
+      <title>Compose Restart Command</title>
+      <link>//localhost:1313/docs/docker/compose-restart-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-restart-command/</guid>
+      <description>restart service images link docker compose restart [&amp;#43;] Running 5/5 ⠿ Container example-voting-app-db-1 Started 0.7s ⠿ Container example-voting-app-redis-1 Started 0.7s ⠿ Container example-voting-app-result-1 Started 0.6s ⠿ Container example-voting-app-vote-1 Started 0.5s ⠿ Container example-voting-app-worker-1 Started 0.4s ➜ example-voting-app git:(main) </description>
+    </item>
+    <item>
+      <title>Compose Rm Command </title>
+      <link>//localhost:1313/docs/docker/compose-rm-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-rm-command/</guid>
+      <description>Removes stopped service containers link ➜ example-voting-app git:(main) docker compose stop [&amp;#43;] Running 5/5 ⠿ Container example-voting-app-vote-1 Stopped 0.3s ⠿ Container example-voting-app-result-1 Stopped 0.3s ⠿ Container example-voting-app-worker-1 Stopped 0.1s ⠿ Container example-voting-app-db-1 Stopped 0.1s ⠿ Container example-voting-app-redis-1 Stopped 0.2s ➜ example-voting-app git:(main) docker compose rm ? Going to remove example-voting-app-vote-1, example-voting-app-result-1, example-voting-app-worker-1, example-voting-app-db-1, example-voting-app-redis-1 Yes [&amp;#43;] Running 5/0 ⠿ Container example-voting-app-redis-1 Removed 0.0s ⠿ Container example-voting-app-vote-1 Removed 0.0s ⠿ Container example-voting-app-result-1 Removed 0.</description>
+    </item>
+    <item>
+      <title>Compose Run Command</title>
+      <link>//localhost:1313/docs/docker/compose-run-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-run-command/</guid>
+      <description>➜ example-voting-app git:(main) docker compose run db PostgreSQL Database directory appears to contain a database; Skipping initialization 2023-03-04 19:16:58.496 UTC [1] LOG: starting PostgreSQL 15.2 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 12.2.1_git20220924-r4) 12.2.1 20220924, 64-bit 2023-03-04 19:16:58.496 UTC [1] LOG: listening on IPv4 address &amp;#34;0.0.0.0&amp;#34;, port 5432 2023-03-04 19:16:58.496 UTC [1] LOG: listening on IPv6 address &amp;#34;::&amp;#34;, port 5432 2023-03-04 19:16:58.498 UTC [1] LOG: listening on Unix socket &amp;#34;/var/run/postgresql/.s.PGSQL.5432&amp;#34; 2023-03-04 19:16:58.</description>
+    </item>
+    <item>
+      <title>Local Network Setup</title>
+      <link>//localhost:1313/docs/docker/local-network-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/local-network-setup/</guid>
+      <description>Docker network create command syntax link docker network create --help view current networks link docker network ls clear Create a new overlay network, with all default options link docker network create -d overlay defaults-over Create a new overlay network with specific IP settings link docker network create -d overlay \ --subnet=172.30.0.0/24 \ --ip-range=172.30.0.0/28 \ --gateway=172.30.0.254 \ specifics-over view current networks again link docker network ls Initial validation link docker network inspect specifics-over --format &amp;#39;{{json .</description>
+    </item>
+    <item>
+      <title>Remote Network Setup</title>
+      <link>//localhost:1313/docs/docker/remote-network-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/remote-network-setup/</guid>
+      <description>Docker network managment command link docker network --help clear Starting on ubuntu-node01: Install and setup the weave driver link sudo curl -L git.io/weave -o /usr/local/bin/weave sudo chmod a&amp;#43;x /usr/local/bin/weave export CHECKPOINT_DISABLE=1 weave launch eval $(weave env) clear&#xA;Now on ubuntu-node02: Install and setup the weave driver link sudo curl -L git.io/weave -o /usr/local/bin/weave sudo chmod a&amp;#43;x /usr/local/bin/weave export CHECKPOINT_DISABLE=1 weave launch eval $(weave env) clear&#xA;Now, back on ubuntu-node01:Bring node02 in as a peer on node01&amp;rsquo;s weave network link weave connect ubuntu-node02 Starting with ubuntu-node01:Run a container detached on node01 link docker container run -d --name app01 alpine tail -f /dev/null Now, launch a container on ubuntu-node02: Run a container detached on node02 link docker container run -d --name app02 alpine tail -f /dev/null Since we are on node02, we will check there first&amp;hellip; linkFrom inside the app02 container running on node02, linklet&amp;rsquo;s ping the app01 container running on node01 link docker container exec -it app02 ping -c 4 app01 Similarly, from inside the app01 container running on node01, linklet&amp;rsquo;s ping the app02 container running on node02 link docker container exec -it app01 ping -c 4 app02 clear</description>
+    </item>
+    <item>
+      <title>Newtorking in Docker Compose</title>
+      <link>//localhost:1313/docs/docker/newtorking-in-docker-compose/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/newtorking-in-docker-compose/</guid>
+      <description>creating and using networks in docker-compose.yml link version: &amp;#34;3.7&amp;#34; services: app1: image: httpd:latest container_name: app1 ports: - 8080:80 networks: - app1_net networks: app1_net: run docker compose up link docker-compose up Open browser link http://localhost:8080 Observe the output&#xA;On a second terminal link docker ps Observe the networking part! link docker inspect app1 Stops the docker-compose link docker-compose rm </description>
+    </item>
+    <item>
+      <title>Compose Networking with Nginx</title>
+      <link>//localhost:1313/docs/docker/compose-networking-with-nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-networking-with-nginx/</guid>
+      <description>create docker-compose.yml with following content :&#xA;version: &amp;#34;3.7&amp;#34; services: web: image: nginx:alpine volumes: - ./nginx.conf:/etc/nginx/nginx.conf ports: - 8080:80 networks: - app1_net - app2_net app1: image: httpd:latest networks: - app1_net app2: image: httpd:latest networks: - app2_net networks: app1_net: app2_net: the following nginx.conf configuration file in the same directory: link events {} http { server { listen 80; listen [::]:80; server_name example.com; location / { proxy_pass http://app1:80/; } location /app2 { proxy_pass http://app2:80/; } } } run docker compose link docker compose up Go to http://localhost:8080 and observer the command line link•&#x9;It will show you the nignx-container web_1 container (reverse_proxy) was requested •&#x9;And forwarded the request to “app1” container •&#x9;Reload a few times to make this more obvious Go to http://localhost:8080/app2 and observe the command line link•&#x9;It will show you again that nginx-container web_1 container (reverse_proxy) was requested •&#x9;And now forwards to “app2” container •&#x9;Reload a few times to make this more obvious </description>
+    </item>
+    <item>
+      <title>Docker Wordpress Example</title>
+      <link>//localhost:1313/docs/docker/docker-wordpress-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/docker-wordpress-example/</guid>
+      <description>create wordpress docker compose link wordpress: image: wordpress links: - mariadb:mysql environment: - WORDPRESS_DB_PASSWORD=password - WORDPRESS_DB_USER=root ports: - &amp;#34;public_ip:80:80&amp;#34; volumes: - ./html:/var/www/html mariadb: image: mariadb environment: - MYSQL_ROOT_PASSWORD=password - MYSQL_DATABASE=wordpress volumes: - ./database:/var/lib/mysql run docker compose link docker compose up </description>
+    </item>
+    <item>
+      <title>Multi-Arch Container</title>
+      <link>//localhost:1313/docs/docker/multi-arch-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/multi-arch-container/</guid>
+      <description>build multi arch container images using buildx link</description>
+    </item>
+    <item>
+      <title>Compose Watch Command</title>
+      <link>//localhost:1313/docs/docker/compose-watch-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/docker/compose-watch-command/</guid>
+      <description>Docker Composer sync build watch link</description>
+    </item>
+  </channel>
+</rss>

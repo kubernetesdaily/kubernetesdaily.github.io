@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learn Helm on KubeDaily</title>
+    <link>//localhost:1313/docs/helm/</link>
+    <description>Recent content in Learn Helm on KubeDaily</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 14 Apr 2024 19:26:40 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/helm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basics of Helm</title>
+      <link>//localhost:1313/docs/helm/install-helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/helm/install-helm/</guid>
+      <description>git clone&#xA;Install Helm 3 link ~ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 100 11679 100 11679 0 0 32332 0 --:--:-- --:--:-- --:--:-- 32262 Downloading https://get.helm.sh/helm-v3.14.3-darwin-arm64.tar.gz Verifying checksum... Done. Preparing to install helm into /usr/local/bin Password: helm installed into /usr/local/bin/helm Creating the chart link (base) ➜ helm-workshop git:(main) helm create application-1 Creating application-1 Structure of the chart link (base) ➜ application-1 git:(main) ✗ tree .</description>
+    </item>
+    <item>
+      <title>Deep Dive into Charts</title>
+      <link>//localhost:1313/docs/helm/deep-dive-chart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/helm/deep-dive-chart/</guid>
+      <description>create new chart link (base) ➜ helm-workshop git:(main) ✗ cd new-chart (base) ➜ new-chart git:(main) ✗ ls Chart.yaml charts templates values.yaml (base) ➜ new-chart git:(main) ✗ charts linkif you see your file structure you don&amp;rsquo;t see charts folder&#xA;. ├── Chart.yaml ├── charts ├── templates │ ├── NOTES.txt │ ├── _helpers.tpl │ ├── deployment.yaml │ ├── hpa.yaml │ ├── ingress.yaml │ ├── service.yaml │ ├── serviceaccount.yaml │ └── tests │ └── test-connection.</description>
+    </item>
+    <item>
+      <title>Working with Multiple Values</title>
+      <link>//localhost:1313/docs/helm/-multiple-values/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/helm/-multiple-values/</guid>
+      <description>create another values file link # Default values for application-1. # This is a YAML-formatted file. # Declare variables to be passed into your templates. deployment: replicaCount: 1 name: new-deployememt image: app: ngnix version: latest service: name: my-service type: NodePort port: 80 targetPort: 80 nodePort: 32046 selector: app: ngnix just chamged nortport value here&#xA;install chart again link base) ➜ application-1 git:(main) ✗ helm install chart-1 . W0325 04:26:44.306101 7525 warnings.</description>
+    </item>
+    <item>
+      <title>creating template file and access through it </title>
+      <link>//localhost:1313/docs/helm/template-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/helm/template-file/</guid>
+      <description>create helper template file linkcreate file with name _my-template.tpl&#xA;{{- define &amp;#34;labels&amp;#34; }} app: ngnix version: &amp;#34;1.0&amp;#34; team: myteam {{- end }} (base) ➜ application-1 git:(main) ✗ helm template . --- # Source: application-1/templates/service.yaml apiVersion: v1 kind: Service metadata: name: my-service labels: app: ngnix spec: type: NodePort ports: - port: 80 targetPort: 80 nodeport: 32036 protocol: TCP name: http selector: app: ngnix --- # Source: application-1/templates/deployment.yaml apiVersion: apps/v1 kind: Deployment metadata: name: my-deployememt labels: app: ngnix version: &amp;#34;1.</description>
+    </item>
+    <item>
+      <title>Advance Temaplate with if statement</title>
+      <link>//localhost:1313/docs/helm/advance-if-statement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/helm/advance-if-statement/</guid>
+      <description>update your deployment file link apiVersion: apps/v1 kind: Deployment metadata: name: {{ .Values.deployment.name }} labels: {{- include &amp;#34;labels&amp;#34; . | nindent 4 }} spec: replicas: {{ .Values.deployment.replicaCount }} selector: matchLabels: app: nginx template: metadata: labels: app: nginx spec: containers: - name: nginx image: &amp;#34;{{ .Values.deployment.image.app }}:{{ .Values.deployment.image.version }}&amp;#34; ports: - name: http containerPort: 80 protocol: TCP {{- if eq .Values.container1.enabled true }} {{- include &amp;#34;container1&amp;#34; . | nindent 8 }} {{- end }} create new template file link {{- define &amp;#34;container1&amp;#34; }} - name: new-container image: &amp;#34;{{ .</description>
+    </item>
+    <item>
+      <title>else and else if statement</title>
+      <link>//localhost:1313/docs/helm/else-else-if-statement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/helm/else-else-if-statement/</guid>
+      <description>update your templ link {{- define &amp;#34;container1&amp;#34; }} - name: new-container image: &amp;#34;{{ .Values.deployment.image.app }}:{{ .Values.deployment.image.version }}&amp;#34; ports: - name: http containerPort: 80 protocol: TCP {{- end }} {{- define &amp;#34;container2&amp;#34; }} - name: new-container2 image: &amp;#34;{{ .Values.deployment.image.app }}:{{ .Values.deployment.image.version }}&amp;#34; ports: - name: http containerPort: 80 protocol: TCP {{- end }} make your container value as false link # Default values for application-1. # This is a YAML-formatted file. # Declare variables to be passed into your templates.</description>
+    </item>
+    <item>
+      <title>50 Helm Template Cheatsheets</title>
+      <link>//localhost:1313/docs/helm/helm-templates-cheatsheet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/helm/helm-templates-cheatsheet/</guid>
+      <description>Basic Template Functions: link Access a Value from values.yaml:&#xA;replicas: {{ .Values.replicaCount }} Access Release Information:&#xA;releaseName: {{ .Release.Name }} releaseNamespace: {{ .Release.Namespace }} Access Chart Information:&#xA;chartName: {{ .Chart.Name }} chartVersion: {{ .Chart.Version }} Port Configuration:&#xA;containerPort: {{ .Values.containerPort }} Conditional Blocks: link Conditional Rendering:&#xA;{{- if .Values.enableFeature }} featureEnabled: true {{- end }} Conditional Rendering with Else Block:&#xA;{{- if .Values.enableFeature }} featureEnabled: true {{- else }} featureEnabled: false {{- end }} Loops: link Loop Over a List:</description>
+    </item>
+  </channel>
+</rss>

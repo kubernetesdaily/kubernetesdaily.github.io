@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">KubeDaily Blog - Learn Kubernetes Tools in depth</a>
+            
+        </div>
+    </nav>
+
+    
+    <div class="container mt-5">
+        
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="card-title">Arkade Open Source Marketplace for Kubernetes</h1>
+            <p class="text-muted">Posted on February 13, 2023</p>
+            <div class="card-text">
+                
+
+<a href="https://github.com/alexellis/arkade"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/alexellis/arkade.png" width="460px"></a> 
+
+
+<h3 id="getting-started-with-arkade-cli">Getting started with Arkade CLI <a href="#getting-started-with-arkade-cli" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3><ul>
+<li>Macos/Linux</li>
+</ul>
+
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="af9aa4f" class="language-bash ">
+  <code>
+~ curl -sLS https://get.arkade.dev | sudo sh
+
+Password:
+Downloading package https://github.com/alexellis/arkade/releases/download/0.9.7/arkade-darwin-arm64 as /tmp/arkade-darwin-arm64
+Download complete.
+
+Running with sufficient permissions to attempt to move arkade to /usr/local/bin
+New version of arkade installed to /usr/local/bin
+Creating alias &#39;ark&#39; for &#39;arkade&#39;.
+            _             _      
+  __ _ _ __| | ____ _  __| | ___ 
+ / _` | &#39;__| |/ / _` |/ _` |/ _ \
+| (_| | |  |   &lt; (_| | (_| |  __/
+ \__,_|_|  |_|\_\__,_|\__,_|\___|
+
+Open Source Marketplace For Developer Tools
+
+Version: 0.9.7
+Git Commit: 461fb7a9d05d7e3d13a39e03e1e38b6936cb15bd
+
+ 🐳 arkade needs your support: https://github.com/sponsors/alexellis
+➜  ~ </code>
+  </pre>
+  </div>
+<h3 id="get-list-of-most-needed-tools--cli-for-all-kubenetes-developer">Get list of most needed tools &amp; CLI for all Kubenetes Developer <a href="#get-list-of-most-needed-tools--cli-for-all-kubenetes-developer" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="9695362" class="language-bash ">
+  <code>➜  ~ arkade get 
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+|       TOOL       |                         DESCRIPTION                          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| actions-usage    | Get usage insights from GitHub Actions.                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| actuated-cli     | Official CLI for actuated.dev                                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| argocd           | Declarative, GitOps continuous delivery tool for Kubernetes. |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| argocd-autopilot | An opinionated way of installing Argo-CD and managing GitOps |
+|                  | repositories.                                                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| arkade           | Portable marketplace for downloading your favourite devops   |
+|                  | CLIs and installing helm charts, with a single command.      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| autok3s          | Run Rancher Lab&#39;s lightweight Kubernetes distribution k3s    |
+|                  | everywhere.                                                  |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| buildx           | Docker CLI plugin for extended build capabilities with       |
+|                  | BuildKit.                                                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| bun              | Bun is an incredibly fast JavaScript runtime, bundler,       |
+|                  | transpiler and package manager – all in one.                 |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| butane           | Translates human readable Butane Configs into machine        |
+|                  | readable Ignition Configs                                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| caddy            | Caddy is an extensible server platform that uses TLS by      |
+|                  | default                                                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| cilium           | CLI to install, manage &amp; troubleshoot Kubernetes clusters    |
+|                  | running Cilium.                                              |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| civo             | CLI for interacting with your Civo resources.                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| clusterawsadm    | Kubernetes Cluster API Provider AWS Management Utility       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| clusterctl       | The clusterctl CLI tool handles the lifecycle of a Cluster   |
+|                  | API management cluster                                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| cmctl            | cmctl is a CLI tool that helps you manage cert-manager and   |
+|                  | its resources inside your cluster.                           |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| conftest         | Write tests against structured configuration data using the  |
+|                  | Open Policy Agent Rego query language                        |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| cosign           | Container Signing, Verification and Storage in an OCI        |
+|                  | registry.                                                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| cr               | Hosting Helm Charts via GitHub Pages and Releases            |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| crane            | crane is a tool for interacting with remote images and       |
+|                  | registries                                                   |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| croc             | Easily and securely send things from one computer to another |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| dagger           | A portable devkit for CI/CD pipelines.                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| devspace         | Automate your deployment workflow with DevSpace and develop  |
+|                  | software directly inside Kubernetes.                         |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| dive             | A tool for exploring each layer in a docker image            |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| docker-compose   | Define and run multi-container applications with Docker.     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| doctl            | Official command line interface for the DigitalOcean API.    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| eksctl           | Amazon EKS Kubernetes cluster management                     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| eksctl-anywhere  | Run Amazon EKS on your own infrastructure                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| faas-cli         | Official CLI for OpenFaaS.                                   |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| firectl          | Command-line tool that lets you run arbitrary Firecracker    |
+|                  | MicroVMs                                                     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| flux             | Continuous Delivery solution for Kubernetes powered by       |
+|                  | GitOps Toolkit.                                              |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| flyctl           | Command line tools for fly.io services                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| fstail           | Tail modified files in a directory.                          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| fzf              | General-purpose command-line fuzzy finder                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| gh               | GitHub’s official command line tool.                         |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| golangci-lint    | Go linters aggregator.                                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| gomplate         | A flexible commandline tool for template rendering. Supports |
+|                  | lots of local and remote datasources.                        |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| goreleaser       | Deliver Go binaries as fast and easily as possible           |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| grafana-agent    | Grafana Agent is a telemetry collector for sending           |
+|                  | metrics, logs, and trace data to the opinionated Grafana     |
+|                  | observability stack.                                         |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| grype            | A vulnerability scanner for container images and filesystems |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| hadolint         | A smarter Dockerfile linter that helps you build best        |
+|                  | practice Docker images                                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| helm             | The Kubernetes Package Manager: Think of it like             |
+|                  | apt/yum/homebrew for Kubernetes.                             |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| helmfile         | Deploy Kubernetes Helm Charts                                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| hey              | Load testing tool                                            |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| hostctl          | Dev tool to manage /etc/hosts like a pro!                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| hubble           | CLI for network, service &amp; security observability for        |
+|                  | Kubernetes clusters running Cilium.                          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| hugo             | Static HTML and CSS website generator.                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| influx           | InfluxDB’s command line interface (influx) is an interactive |
+|                  | shell for the HTTP API.                                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| inlets-pro       | Cloud Native Tunnel for HTTP and TCP traffic.                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| inletsctl        | Automates the task of creating an exit-server (tunnel        |
+|                  | server) on public cloud infrastructure.                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| istioctl         | Service Mesh to establish a programmable, application-aware  |
+|                  | network using the Envoy service proxy.                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| jq               | jq is a lightweight and flexible command-line JSON processor |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| just             | Just a command runner                                        |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k0s              | Zero Friction Kubernetes                                     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k0sctl           | A bootstrapping and management tool for k0s clusters         |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k10multicluster  | Multi-cluster support for K10.                               |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k10tools         | Tools for evaluating and debugging K10.                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k3d              | Helper to run Rancher Lab&#39;s k3s in Docker.                   |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k3s              | Lightweight Kubernetes                                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k3sup            | Bootstrap Kubernetes with k3s over SSH &lt; 1 min.              |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| k9s              | Provides a terminal UI to interact with your Kubernetes      |
+|                  | clusters.                                                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kail             | Kubernetes log viewer.                                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kanctl           | Framework for application-level data management on           |
+|                  | Kubernetes.                                                  |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kgctl            | A CLI to manage Kilo, a multi-cloud network overlay built on |
+|                  | WireGuard and designed for Kubernetes.                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kim              | Build container images inside of Kubernetes. (Experimental)  |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kind             | Run local Kubernetes clusters using Docker container nodes.  |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kops             | Production Grade K8s Installation, Upgrades, and Management. |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| krew             | Package manager for kubectl plugins.                         |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kube-bench       | Checks whether Kubernetes is deployed securely by running    |
+|                  | the checks documented in the CIS Kubernetes Benchmark.       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubebuilder      | Framework for building Kubernetes APIs using custom resource |
+|                  | definitions (CRDs).                                          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubecm           | Easier management of kubeconfig.                             |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubeconform      | A FAST Kubernetes manifests validator, with support for      |
+|                  | Custom Resources                                             |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubectl          | Run commands against Kubernetes clusters                     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubectx          | Faster way to switch between clusters.                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubens           | Switch between Kubernetes namespaces smoothly.               |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubescape        | kubescape is the first tool for testing if Kubernetes        |
+|                  | is deployed securely as defined in Kubernetes Hardening      |
+|                  | Guidance by to NSA and CISA                                  |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubeseal         | A Kubernetes controller and tool for one-way encrypted       |
+|                  | Secrets                                                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubestr          | Kubestr discovers, validates and evaluates your Kubernetes   |
+|                  | storage options.                                             |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubetail         | Bash script to tail Kubernetes logs from multiple pods at    |
+|                  | the same time.                                               |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kubeval          | Validate your Kubernetes configuration files, supports       |
+|                  | multiple Kubernetes versions                                 |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kumactl          | kumactl is a CLI to interact with Kuma and its data          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| kustomize        | Customization of kubernetes YAML configurations              |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| lazygit          | A simple terminal UI for git commands.                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| linkerd2         | Ultralight, security-first service mesh for Kubernetes.      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| mc               | MinIO Client is a replacement for ls, cp, mkdir, diff and    |
+|                  | rsync commands for filesystems and object storage.           |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| metal            | Official Equinix Metal CLI                                   |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| minikube         | Runs the latest stable release of Kubernetes, with support   |
+|                  | for standard Kubernetes features.                            |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| mixctl           | A tiny TCP load-balancer.                                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| mkcert           | A simple zero-config tool to make locally trusted            |
+|                  | development certificates with any names you&#39;d like.          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| nats             | Utility to interact with and manage NATS.                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| nats-server      | Cloud native message bus and queue server                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| nerdctl          | Docker-compatible CLI for containerd, with support for       |
+|                  | Compose                                                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| nova             | Find outdated or deprecated Helm charts running in your      |
+|                  | cluster.                                                     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| oh-my-posh       | A prompt theme engine for any shell that can display         |
+|                  | kubernetes information.                                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| opa              | General-purpose policy engine that enables unified,          |
+|                  | context-aware policy enforcement across the entire stack.    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| operator-sdk     | Operator SDK is a tool for scaffolding and generating code   |
+|                  | for building Kubernetes operators                            |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| osm              | Open Service Mesh uniformly manages, secures, and gets       |
+|                  | out-of-the-box observability features.                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| pack             | Build apps using Cloud Native Buildpacks.                    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| packer           | Build identical machine images for multiple platforms from a |
+|                  | single source configuration.                                 |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| polaris          | Run checks to ensure Kubernetes pods and controllers are     |
+|                  | configured using best practices.                             |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| popeye           | Scans live Kubernetes cluster and reports potential issues   |
+|                  | with deployed resources and configurations.                  |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| porter           | With Porter you can package your application artifact,       |
+|                  | tools, etc. as a bundle that can distribute and install.     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| promtool         | Prometheus rule tester and debugging utility                 |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| rekor-cli        | Secure Supply Chain - Transparency Log                       |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| rpk              | Kafka compatible streaming platform for mission critical     |
+|                  | workloads.                                                   |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| run-job          | Run a Kubernetes Job and get the logs when it&#39;s done.        |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| scaleway-cli     | Scaleway CLI is a tool to help you pilot your Scaleway       |
+|                  | infrastructure directly from your terminal.                  |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| sops             | Simple and flexible tool for managing secrets                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| stern            | Multi pod and container log tailing for Kubernetes.          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| syft             | CLI tool and library for generating a Software Bill of       |
+|                  | Materials from container images and filesystems              |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| talosctl         | The command-line tool for managing Talos Linux OS.           |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| tctl             | Temporal CLI.                                                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| terraform        | Infrastructure as Code for major cloud providers.            |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| terragrunt       | Terragrunt is a thin wrapper for Terraform that provides     |
+|                  | extra tools for working with multiple Terraform modules      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| terrascan        | Detect compliance and security violations across             |
+|                  | Infrastructure as Code.                                      |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| tfsec            | Security scanner for your Terraform code                     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| tilt             | A multi-service dev environment for teams on Kubernetes.     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| tkn              | A CLI for interacting with Tekton.                           |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| trivy            | Vulnerability Scanner for Containers and other Artifacts,    |
+|                  | Suitable for CI.                                             |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| vagrant          | Tool for building and distributing development environments. |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| vault            | A tool for secrets management, encryption as a service, and  |
+|                  | privileged access management.                                |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| vcluster         | Create fully functional virtual Kubernetes clusters - Each   |
+|                  | vcluster runs inside a namespace of the underlying k8s       |
+|                  | cluster.                                                     |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| viddy            | A modern watch command. Time machine and pager etc.          |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| waypoint         | Easy application deployment for Kubernetes and Amazon ECS    |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+| yq               | Portable command-line YAML processor.                        |
+&#43;------------------&#43;--------------------------------------------------------------&#43;
+There are 124 tools, use `arkade get NAME` to download one.</code>
+  </pre>
+  </div>
+<h3 id="install-any-above-tool-with-simple-syntax">Install any above tool with simple syntax <a href="#install-any-above-tool-with-simple-syntax" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="cfd9ca3" class="language-bash ">
+  <code>arkade get &lt; NAME OF TOOL &gt; </code>
+  </pre>
+  </div>
+<h3 id="lets-install-one-of-tool">lets install one of tool <a href="#lets-install-one-of-tool" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3><p>kubeconform -  A FAST Kubernetes manifests validator, with support for Custom Resources</p>
+
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="f696050" class="language-bash ">
+  <code>arkade get kubeconform </code>
+  </pre>
+  </div>
+<p>output</p>
+
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="91e8207" class="language-bash ">
+  <code>Downloading: kubeconform
+2023/04/02 10:12:06 Looking up version for kubeconform
+2023/04/02 10:12:08 Found: v0.6.1
+Downloading: https://github.com/yannh/kubeconform/releases/download/v0.6.1/kubeconform-darwin-arm64.tar.gz
+5.17 MiB / 5.17 MiB [--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------] 100.00%
+/var/folders/xy/3ssjv1j152x3_0ryt4yb982c0000gn/T/kubeconform-darwin-arm64.tar.gz written.
+2023/04/02 10:12:11 Looking up version for kubeconform
+2023/04/02 10:12:11 Found: v0.6.1
+2023/04/02 10:12:11 Extracted: /var/folders/xy/3ssjv1j152x3_0ryt4yb982c0000gn/T/kubeconform
+2023/04/02 10:12:11 Copying /var/folders/xy/3ssjv1j152x3_0ryt4yb982c0000gn/T/kubeconform to /Users/sangambiradar/.arkade/bin/kubeconform
+
+Wrote: /Users/sangambiradar/.arkade/bin/kubeconform (9.824MB)
+
+# Add arkade binary directory to your PATH variable
+export PATH=$PATH:$HOME/.arkade/bin/
+
+# Test the binary:
+/Users/sangambiradar/.arkade/bin/kubeconform
+
+# Or install with:
+sudo mv /Users/sangambiradar/.arkade/bin/kubeconform /usr/local/bin/
+
+🐳 arkade needs your support: https://github.com/sponsors/alexellis
+➜  ~ export PATH=$PATH:$HOME/.arkade/bin/
+➜  ~ /Users/sangambiradar/.arkade/bin/kubeconform
+2023/04/02 10:12:35 failing to read data from stdin
+➜  ~ sudo mv /Users/sangambiradar/.arkade/bin/kubeconform /usr/local/bin/
+Password:
+➜  ~ kubeconform                                              
+2023/04/02 10:13:00 failing to read data from stdin
+➜  ~ kubeconform -h
+Usage: kubeconform [OPTION]... [FILE OR FOLDER]...
+  -cache string
+    	cache schemas downloaded via HTTP to this folder
+  -debug
+    	print debug information
+  -exit-on-error
+    	immediately stop execution when the first error is encountered
+  -h	show help information
+  -ignore-filename-pattern value
+    	regular expression specifying paths to ignore (can be specified multiple times)
+  -ignore-missing-schemas
+    	skip files with missing schemas instead of failing
+  -insecure-skip-tls-verify
+    	disable verification of the server&#39;s SSL certificate. This will make your HTTPS connections insecure
+  -kubernetes-version string
+    	version of Kubernetes to validate against, e.g.: 1.18.0 (default &#34;master&#34;)
+  -n int
+    	number of goroutines to run concurrently (default 4)
+  -output string
+    	output format - json, junit, tap, text (default &#34;text&#34;)
+  -reject string
+    	comma-separated list of kinds or GVKs to reject
+  -schema-location value
+    	override schemas location search path (can be specified multiple times)
+  -skip string
+    	comma-separated list of kinds or GVKs to ignore
+  -strict
+    	disallow additional properties not in schema or duplicated keys
+  -summary
+    	print a summary at the end (ignored for junit output)
+  -v	show version information
+  -verbose
+    	print results for all resources (ignored for tap and junit output)</code>
+  </pre>
+  </div>
+<h3 id="lets-create-ngnix-deployement-and-validate-kubernetes-manifest">lets create ngnix deployement and validate kubernetes manifest <a href="#lets-create-ngnix-deployement-and-validate-kubernetes-manifest" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="8ad9249" class="language-yaml ">
+  <code>apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: &#34;bob&#34;
+spec:
+  replicas: asd&#34;
+  selector:
+    app: nginx
+  templates:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80</code>
+  </pre>
+  </div>
+<h3 id="check-it-out-if-above-kubenetes-menifest-valid-or-not-with-summary-in-json-format">check it out if above kubenetes menifest Valid or not with Summary in Json format <a href="#check-it-out-if-above-kubenetes-menifest-valid-or-not-with-summary-in-json-format" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="bb665f3" class="language-bash ">
+  <code>kubeconform -summary -output json ngnix.yaml
+{
+  &#34;resources&#34;: [
+    {
+      &#34;filename&#34;: &#34;ngnix.yaml&#34;,
+      &#34;kind&#34;: &#34;ReplicationController&#34;,
+      &#34;name&#34;: &#34;bob&#34;,
+      &#34;version&#34;: &#34;v1&#34;,
+      &#34;status&#34;: &#34;statusInvalid&#34;,
+      &#34;msg&#34;: &#34;problem validating schema. Check JSON formatting: jsonschema: &#39;/spec/replicas&#39; does not validate with https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone/replicationcontroller-v1.json#/properties/spec/properties/replicas/type: expected integer or null, but got string&#34;,
+      &#34;validationErrors&#34;: [
+        {
+          &#34;path&#34;: &#34;/spec/replicas&#34;,
+          &#34;msg&#34;: &#34;expected integer or null, but got string&#34;
+        }
+      ]
+    }
+  ],
+  &#34;summary&#34;: {
+    &#34;valid&#34;: 0,
+    &#34;invalid&#34;: 1,
+    &#34;errors&#34;: 0,
+    &#34;skipped&#34;: 0
+  }
+}</code>
+  </pre>
+  </div>
+<h3 id="add-and-contribute-your-favourite-cloudnative-tool-to-arkade">add and contribute your favourite cloudNative Tool To arkade <a href="#add-and-contribute-your-favourite-cloudnative-tool-to-arkade" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3><p>here is example one of tool - 
+<a href="https://github.com/tenable/terrascan">https://github.com/tenable/terrascan</a>
+</p>
+<ul>
+<li>append your tool with dyanamic templating you will find lot of examples here to learn :- 
+<a href="https://github.com/alexellis/arkade/blob/master/pkg/get/tools.go">https://github.com/alexellis/arkade/blob/master/pkg/get/tools.go</a>
+</li>
+</ul>
+
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="4397f22" class="language-bash ">
+  <code>tools = append(tools, Tool{
+Owner: &#34;tenable&#34;,
+Repo: &#34;terrascan&#34;,
+Name: &#34;terrascan&#34;,
+Description: &#34;Detect compliance and security violations across Infrastructure as Code.&#34;, BinaryTemplate: `
+{{$osStr := &#34;&#34;}}
+{{ if HasPrefix .OS &#34;ming&#34; -}}
+{{$osStr = &#34;Windows&#34;}}
+{{- else if eq .OS &#34;linux&#34; -}}
+{{$osStr = &#34;Linux&#34;}}
+{{- else if eq .OS &#34;darwin&#34; -}}
+{{$osStr = &#34;Darwin&#34;}}
+{{- end -}}
+{{$archStr := .Arch}}
+{{- if eq .Arch &#34;aarch64&#34; -}}
+{{$archStr = &#34;arm64&#34;}}
+{{- else if eq .Arch &#34;x86_64&#34; -}}
+{{$archStr = &#34;x86_64&#34;}}
+{{- end -}}
+{{.Name}}_{{slice .Version 1}}_{{$osStr}}_{{$archStr}}.tar.gz`,
+})
+return tools }</code>
+  </pre>
+  </div>
+<h3 id="write-test-cases-for-above-tool">write test cases for above tool <a href="#write-test-cases-for-above-tool" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="4dc9095" class="language-bash ">
+  <code>func Test_DownloadTerrascan(t *testing.T) { tools := MakeTools()
+name := &#34;terrascan&#34;
+tool := getTool(name, tools)
+tests := []test{
+{
+os: &#34;darwin&#34;,
+arch: arch64bit,
+version: &#34;v1.11.0&#34;,
+url: `https://github.com/tenable/terrascan/releases/download/v1.11.0/terrascan_1.11.0_Darwin_x86_64.tar.gz`,
+},
+{
+os: &#34;darwin&#34;,
+arch: archARM64,
+version: &#34;v1.11.0&#34;,
+url: `https://github.com/tenable/terrascan/releases/download/v1.11.0/terrascan_1.11.0_Darwin_arm64.tar.gz`,
+},
+{
+os: &#34;linux&#34;,
+arch: arch64bit,
+version: &#34;v1.11.0&#34;,
+url: `https://github.com/tenable/terrascan/releases/download/v1.11.0/terrascan_1.11.0_Linux_x86_64.tar.gz`,
+},
+{
+os: &#34;linux&#34;,
+arch: archARM64,
+version: &#34;v1.11.0&#34;,
+url: `https://github.com/tenable/terrascan/releases/download/v1.11.0/terrascan_1.11.0_Linux_arm64.tar.gz`,
+},
+{
+os: &#34;ming&#34;,
+arch: arch64bit,
+version: &#34;v1.11.0&#34;,
+url: `https://github.com/tenable/terrascan/releases/download/v1.11.0/terrascan_1.11.0_Windows_x86_64.tar.gz`,
+}, }
+for _, tc := range tests {
+t.Run(tc.os&#43;&#34; &#34;&#43;tc.arch&#43;&#34; &#34;&#43;tc.version, func(r *testing.T) {
+got, err := tool.GetURL(tc.os, tc.arch, tc.version, false) if err != nil {
+t.Fatal(err) }
+if got != tc.url {
+t.Errorf(&#34;want: %s, got: %s&#34;, tc.url, got) }
+}) }
+}</code>
+  </pre>
+  </div>
+<p>Join 
+<a href="https://discord.gg/rEvr7vq">CloudNativeFolks Community</a>
+ or Reach out to me on twitter 
+<a href="https://twitter.com/sangamtwts">@sangamtwts</a>
+</p>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+</html>

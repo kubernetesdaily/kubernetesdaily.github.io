@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learn kubenetes on KubeDaily</title>
+    <link>//localhost:1313/docs/kubernetes/</link>
+    <description>Recent content in Learn kubenetes on KubeDaily</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 29 Apr 2024 11:44:50 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pre-requisites</title>
+      <link>//localhost:1313/docs/kubernetes/pre-requisites-kubeadm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/pre-requisites-kubeadm/</guid>
+      <description>Includes configuring pre-requisites to install kubeadm linkstep 01) Enable following ports and protcols link on kubemaster : Open following ports : https://kubernetes.io/docs/reference/networking/ports-and-protocols/ sudo ufw status sudo ufw enable sudo ufw allow 80/tcp sudo ufw allow 443/tcp sudo ufw allow 22/tcp sudo ufw allow 6443/tcp sudo ufw allow 2379/tcp sudo ufw allow 2380/tcp sudo ufw allow 10250/tcp sudo ufw allow 10259/tcp sudo ufw allow 10257/tcp sudo ufw allow 30000:32767/tcp sudo ufw reload sudo ufw status ###### ----- kubenode01, kubenode02 ---# sudo ufw status sudo ufw enable sudo ufw allow 80/tcp sudo ufw allow 443/tcp sudo ufw allow 22/tcp sudo ufw allow 10250/tcp sudo ufw allow 30000:32767/tcp sudo ufw reload sudo ufw status sudo iptables -L #--- on all nodes step 02) link ------ Install Container Runtime ----------# #---- on all nodes : Forwarding IPv4 and letting iptables see bridged traffic : https://kubernetes.</description>
+    </item>
+    <item>
+      <title>kubeadm</title>
+      <link>//localhost:1313/docs/kubernetes/kubeadm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/kubeadm/</guid>
+      <description>#!/bin/bash # Step 04 ) Cluster Creation : https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/ # Initialize control-plane node : https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#initializing-your-control-plane-node # we dont have multiple control plane nodes # Choose POD Network Addon # --pod-network-cidr , --apiserver-advertise-address sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.56.11 #--------- Alhamdulillah: Cluster Configuration Completed------------------# mkdir -p $HOME/.kube sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config sudo chown $(id -u):$(id -g) $HOME/.kube/config # Message from Kubernetes Configuration: Your Kubernetes control-plane has initialized successfully! To start using your cluster, you need to run the following as a regular user: mkdir -p $HOME/.</description>
+    </item>
+    <item>
+      <title>HA Cluster</title>
+      <link>//localhost:1313/docs/kubernetes/ha-cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/ha-cluster/</guid>
+      <description>Kubernetes utilizes a microservices architecture, with all requests initially directed to a central API server microservice, supported by various other components. For high availability in a Kubernetes cluster, it&amp;rsquo;s common to add more control plane nodes, each hosting additional instances of the API Server, Scheduler, and Controller Manager. If etcd is part of the control plane nodes, additional members will also be added to the etcd cluster.&#xA;In a setup with multiple control plane nodes, several API Servers operate concurrently in a highly available configuration, all interfacing with the same etcd cluster.</description>
+    </item>
+    <item>
+      <title>kubeadm upgrade &amp; downgrade </title>
+      <link>//localhost:1313/docs/kubernetes/kubeadm-upgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/kubeadm-upgrade/</guid>
+      <description>Perform Version Upgrades on a Kubernetes Cluster using kubeadm&#xA;Upgrading a Kubernetes cluster involves updating its core components, which include the Kubernetes API Server, Scheduler, Controller Manager, etcd, and Kubelets. Kubeadm simplifies this process by managing the container versions of these control plane components. Additional tasks such as renewing certificates and updating kubelet configurations are also handled by Kubeadm, utilizing the kubeadm upgrade commands.&#xA;When planning an upgrade, you must first decide on the target version.</description>
+    </item>
+    <item>
+      <title>etcd Backup and Restore</title>
+      <link>//localhost:1313/docs/kubernetes/etcd-backup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/etcd-backup/</guid>
+      <description>etcd Backup and Restore&#xA;Etcd maintains the active state of the cluster, with the API Servers interacting by writing to and retrieving data from it. Each transaction executed in etcd is logged in a Write-Ahead Log (WAL) file specific to each cluster member. These files, which are updated by transactions initiated by the cluster&amp;rsquo;s &amp;ldquo;leader,&amp;rdquo; are periodically condensed into snapshots to conserve space. This snapshotting process is an integral part of etcd&amp;rsquo;s routine operations, and snapshots can also be manually triggered using the etcdctl tool with the snapshot save command.</description>
+    </item>
+    <item>
+      <title>Basics of Pod</title>
+      <link>//localhost:1313/docs/kubernetes/basics-of-pods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/basics-of-pods/</guid>
+      <description>0. What is POD learn via Kubectl Explain link kubectl explain pod KIND: Pod VERSION: v1 DESCRIPTION: Pod is a collection of containers that can run on a host. This resource is created by clients and scheduled onto hosts. FIELDS: apiVersion &amp;lt;string&amp;gt; APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.</description>
+    </item>
+    <item>
+      <title>Labels and Selectors </title>
+      <link>//localhost:1313/docs/kubernetes/labels-and-selectors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/labels-and-selectors/</guid>
+      <description>Labels - Maps (aka Dictionaries) link ➜ k8s101 git:(main) ✗ kubectl explain deployment.metadata.labels KIND: Deployment VERSION: apps/v1 FIELD: labels &amp;lt;map[string]string&amp;gt; DESCRIPTION: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels Labels are attached to Kubernetes objects and are simple key: value pairs or maps(dictionary). Labels are used to store identifying information about a thing that you might need to query against.</description>
+    </item>
+    <item>
+      <title>Create POD with Command and Arguments </title>
+      <link>//localhost:1313/docs/kubernetes/create-pod-with-command-and-arguments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/create-pod-with-command-and-arguments/</guid>
+      <description>kubectl explain pods.spec.containers.command link k8s101 git:(main) ✗ kubectl explain pods.spec.containers.command KIND: Pod VERSION: v1 FIELD: command &amp;lt;[]string&amp;gt; DESCRIPTION: Entrypoint array. Not executed within a shell. The container image&amp;#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&amp;#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.</description>
+    </item>
+    <item>
+      <title>Multi-Container Pods</title>
+      <link>//localhost:1313/docs/kubernetes/multi-container-pods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/multi-container-pods/</guid>
+      <description>Why does Kubernetes allow more than one container in a Pod link Containers in a Pod runs on a &amp;ldquo;logical host&amp;rdquo;: they use the same network namespace (same IP address and port space), they can use shared volumes using several containers for an application is simpler to use, more transparent, and allows decoupling software dependencies Use Cases for Multi-Container Pods linkThe primary purpose of a multi-container Pod is to support co-located, co-managed helper processes for a main program</description>
+    </item>
+    <item>
+      <title>Deployments and replication</title>
+      <link>//localhost:1313/docs/kubernetes/deployments-and-replication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/deployments-and-replication/</guid>
+      <description>Kubectl explain Deployment link k8sworkshop git:(main) ✗ kubectl explain deployments KIND: Deployment VERSION: apps/v1 DESCRIPTION: Deployment enables declarative updates for Pods and ReplicaSets. FIELDS: apiVersion &amp;lt;string&amp;gt; APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources kind &amp;lt;string&amp;gt; Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to.</description>
+    </item>
+    <item>
+      <title>RBAC</title>
+      <link>//localhost:1313/docs/kubernetes/rbac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/rbac/</guid>
+      <description>Steps to Set Up X509 Certificate Authentication link mkdir newusercrt cd newusercrt openssl genrsa --out sangam.key 2048 openssl req -new -key sangam.key -out sangam.csr -subj &amp;#34;/CN=sangam/O=group1&amp;#34; This creates a private key (sangam.key) and a CSR (sangam.csr). The CN (Common Name) is set to the user&amp;rsquo;s name, and O (Organization) is an optional field to specify a group.&#xA;Create a CertificateSigningRequest in Kubernetes linkEncode the CSR in base64 and create a YAML file for the Kubernetes CSR object:</description>
+    </item>
+    <item>
+      <title>ConfigMap </title>
+      <link>//localhost:1313/docs/kubernetes/configmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/configmap/</guid>
+      <description>craete index-html-configmap.yaml with following content link apiVersion: v1 kind: ConfigMap metadata: name: index-html-configmap namespace: default data: index.html: | &amp;lt;html&amp;gt; &amp;lt;h1&amp;gt;Welcome&amp;lt;/h1&amp;gt; &amp;lt;/br&amp;gt; &amp;lt;h1&amp;gt;Hi! This is a configmap Index file &amp;lt;/h1&amp;gt; &amp;lt;/html&amp;gt; ➜ k8s101 git:(main) ✗ kubectl apply -f index-html-configmap.yaml configmap/index-html-configmap created craete nginx.yaml with following content link apiVersion: apps/v1 kind: Deployment metadata: name: nginx-deployment namespace: default spec: selector: matchLabels: app: nginx replicas: 2 template: metadata: labels: app: nginx spec: containers: - name: nginx image: nginx:latest ports: - containerPort: 80 volumeMounts: - name: nginx-index-file mountPath: /usr/share/nginx/html/ volumes: - name: nginx-index-file configMap: name: index-html-configmap ➜ k8s101 git:(main) ✗ kubectl apply -f ngnix.</description>
+    </item>
+    <item>
+      <title>Kubernetes Service  </title>
+      <link>//localhost:1313/docs/kubernetes/services/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/services/</guid>
+      <description>kubectl explain svc link ➜ k8s101 git:(main) ✗ kubectl explain svc KIND: Service VERSION: v1 DESCRIPTION: Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy. FIELDS: apiVersion &amp;lt;string&amp;gt; APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.</description>
+    </item>
+    <item>
+      <title>Service Type - NodePort,ClusterIP,LoadBalancer </title>
+      <link>//localhost:1313/docs/kubernetes/service-type-nodeportclusteriploadbalancer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/service-type-nodeportclusteriploadbalancer/</guid>
+      <description>Service Type1: NodePort linkNodePort service helps expose the Service on each Node’s IP at a static port (the NodePort). NodePort The port is available to all the workers in the cluster. A ClusterIP Service, to which the NodePort Service routes are automatically created. One would be able to contact the NodePort Service, from outside the cluster, by requesting :. The port on the POD is called the targetPort and the one connecting the NodePort service to the POD is called port.</description>
+    </item>
+    <item>
+      <title>NetworkPolicy </title>
+      <link>//localhost:1313/docs/kubernetes/networkpolicy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/networkpolicy/</guid>
+      <description>Creating effective Kubernetes Network Policies involves defining rules that explicitly allow or deny traffic to and from your pods. Here are some example policies to help you understand how to set up both restrictive (deny) and permissive (allow) behaviors in your cluster.&#xA;1. Default Deny All Traffic to a Namespace linkA common starting point in securing a namespace in Kubernetes is to deny all traffic to all pods within a namespace.</description>
+    </item>
+    <item>
+      <title>Use Core DNS</title>
+      <link>//localhost:1313/docs/kubernetes/use-core-dns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/use-core-dns/</guid>
+      <description>sangam@sangam:~$ kubectl create service clusterip my-service &amp;ndash;tcp=8080:8080 service/my-service created sangam@sangam:~$ kubectl get service NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE kubernetes ClusterIP 10.96.0.1 443/TCP 45h my-service ClusterIP 10.106.213.25 8080/TCP 5s sangam@sangam:~$ kubectl run busybox &amp;ndash;image=busybox -it &amp;ndash; /bin/sh If you don&amp;rsquo;t see a command prompt, try pressing enter. / # / # / # nslookup 10.106.213.25 Server:&#x9;10.96.0.10 Address:&#x9;10.96.0.10:53&#xA;25.213.106.10.in-addr.arpa&#x9;name = my-service.default.svc.cluster.local&#xA;/ # exit</description>
+    </item>
+    <item>
+      <title>Ingress Controller</title>
+      <link>//localhost:1313/docs/kubernetes/ingress-controller/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/ingress-controller/</guid>
+      <description>enable ingress addon link k8s101 git:(main) ✗ minikube addons enable ingress 💡 ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub. You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS 💡 After the addon is enabled, please run &amp;#34;minikube tunnel&amp;#34; and your ingress resources would be available at &amp;#34;127.0.0.1&amp;#34; ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1 ▪ Using image k8s.gcr.io/ingress-nginx/controller:v1.2.1 ▪ Using image k8s.gcr.io/ingress-nginx/kube-webhook-certgen:v1.1.1 🔎 Verifying ingress addon.</description>
+    </item>
+    <item>
+      <title>Pre-requisit for this lab</title>
+      <link>//localhost:1313/docs/kubernetes/pre-requisit-for-this-lab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/kubernetes/pre-requisit-for-this-lab/</guid>
+      <description>Install Minikube link https://minikube.sigs.k8s.io/docs/start/ // i&amp;#39;m using mac so my installation step will be diffeent from you folks curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64 sudo install minikube-darwin-amd64 /usr/local/bin/minikube ceate cluster using minikube link ➜ k8sworkshop git:(main) ✗ minikube start 😄 minikube v1.28.0 on Darwin 13.2.1 (arm64) ✨ Using the docker driver based on existing profile 👍 Starting control plane node minikube in cluster minikube 🚜 Pulling base image ... 🔄 Restarting existing docker container for &amp;#34;minikube&amp;#34; .</description>
+    </item>
+  </channel>
+</rss>

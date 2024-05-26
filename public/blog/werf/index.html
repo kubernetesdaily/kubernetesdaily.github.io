@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">KubeDaily Blog - Learn Kubernetes Tools in depth</a>
+            
+        </div>
+    </nav>
+
+    
+    <div class="container mt-5">
+        
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="card-title">Werf A solution for implementing efficient and consistent software</h1>
+            <p class="text-muted">Posted on February 19, 2023</p>
+            <div class="card-text">
+                
+
+<center>
+ <a href="https://github.com/werf/werf"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/werf/werf.png" width="460px"></a> </center>
+
+<h4 id="install-werf">Install Werf <a href="#install-werf" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h4>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="0f93844" class="language-bash ">
+  <code>➜  ~  curl -sSLO https://werf.io/install.sh &amp;&amp; chmod &#43;x install.sh
+➜  ~ ./install.sh --version 1.2 --channel stable
+[INPUT REQUIRED] Current login shell is &#34;zsh&#34;. Press ENTER to setup werf for this shell or choose another one.
+[b]ash/[z]sh/[a]bort? Default: zsh.
+z
+[INPUT REQUIRED] trdl is going to be installed in &#34;/Users/sangambiradar/bin/&#34;. Add this directory to your $PATH in &#34;/Users/sangambiradar/.zshrc&#34; and &#34;/Users/sangambiradar/.zprofile&#34;? (strongly recommended)
+[y]es/[a]bort/[s]kip? Default: yes.
+yes
+[INFO] Installing trdl to &#34;/Users/sangambiradar/bin/&#34;.
+
+[INFO] Adding werf repo to trdl.
+[INPUT REQUIRED] Add automatic werf activation to &#34;/Users/sangambiradar/.zshrc&#34; and &#34;/Users/sangambiradar/.zprofile&#34;? (recommended for interactive usage, not recommended for CI)
+[y]es/[a]bort/[s]kip? Default: yes.
+[INFO] werf installation finished successfully!
+[INFO] Open new shell session if you have enabled werf autoactivation or activate werf manually with:
+$ source $(&#34;/Users/sangambiradar/bin/trdl&#34; use werf &#34;1.2&#34; &#34;stable&#34;)</code>
+  </pre>
+  </div>
+<h3 id="werf-use-trdl">werf use trdl <a href="#werf-use-trdl" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3><p>trdl is an Open Source solution providing a secure channel for delivering updates from the Git repository to the end user.</p>
+<p>
+
+
+
+
+
+  
+
+
+
+  
+</p>
+<p>Problems that trdl solves for you</p>
+<ul>
+<li>
+<p>Continuous delivery limitations</p>
+<ul>
+<li>Continuous delivery via the CI system works well for the SaaS model, that is, for software</li>
+<li>hosted on cloud servers. At the same time, you would be hard-pressed to find a tool that is as   fast at delivering code to user devices.</li>
+</ul>
+</li>
+<li>
+<p>Challenges related to implementing a secure delivery</p>
+<ul>
+<li>What complicates things:
+<ul>
+<li>Software release and changes in release channels must only occur based on a collective decision of the team (quorum).</li>
+<li>The system must protect against unauthorized access and data compromise.</li>
+<li>The system must not be compromised by human mistakes, including regulation breaches.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Package manager limitations</p>
+<ul>
+<li>There are many package managers, but they all have common drawbacks:</li>
+<li>Each platform requires its own manager.</li>
+<li>The package creation process is complicated.</li>
+<li>There is a lot of manual work involved: the user has to add the package source, find the package, and install/upgrade/uninstall it.</li>
+</ul>
+</li>
+</ul>
+<h3 id="verify-werf-cli-installed-or-not">verify werf cli installed or not <a href="#verify-werf-cli-installed-or-not" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="688db61" class="language- ">
+  <code>➜  ~ werf
+werf helps to implement and support Continuous Integration and Continuous       
+Delivery.
+
+Find more information at https://werf.io
+
+Delivery commands:
+  converge        Build and push images, then deploy application into Kubernetes
+  dismiss         Delete werf release from Kubernetes
+  bundle          Work with werf bundles: publish bundles into container        
+                  registry and deploy bundles into Kubernetes cluster
+
+Cleaning commands:
+  cleanup         Cleanup project images in the container registry
+  purge           Purge all project images in the container registry
+
+Helper commands:
+  ci-env          Generate werf environment variables for specified CI system
+  build           Build images
+  export          Export images
+  run             Run container for project image
+  kube-run        Run container for project image in Kubernetes
+  compose         Work with docker-compose
+  slugify         Print slugged string by specified format.
+  render          Render Kubernetes templates
+
+Low-level management commands:
+  config          Work with werf.yaml
+  managed-images  Work with managed images which will be preserved during       
+                  cleanup procedure
+  host            Work with werf cache and data of all projects on the host     
+                  machine
+  helm            Manage application deployment with helm
+  cr              Work with container registry: authenticate, list and remove   
+                  images, etc.
+  kubectl         kubectl controls the Kubernetes cluster manager
+
+Other commands:
+  synchronization Run synchronization server
+  completion      Generate bash completion scripts
+  version         Print version
+
+Use &#34;werf &lt;command&gt; --help&#34; for more information about a given command.
+
+Version: v1.2.205
+➜  ~ </code>
+  </pre>
+  </div>
+<h3 id="setup-minikube-for-werf">Setup Minikube for Werf <a href="#setup-minikube-for-werf" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="fe0ddb3" class="language- ">
+  <code> ~ minikube start --vm=true --insecure-registry registry.example.com:80
+😄  minikube v1.30.0 on Darwin 13.3 (arm64)
+✨  Automatically selected the qemu2 driver. Other choices: virtualbox, ssh
+🌐  Automatically selected the builtin network
+❗  You are using the QEMU driver without a dedicated network, which doesn&#39;t support `minikube service` &amp; `minikube tunnel` commands.
+To try the dedicated network see: https://minikube.sigs.k8s.io/docs/drivers/qemu/#networking
+💿  Downloading VM boot image ...
+    &gt; minikube-v1.30.0-arm64.iso....:  65 B / 65 B [---------] 100.00% ? p/s 0s
+    &gt; minikube-v1.30.0-arm64.iso:  330.67 MiB / 330.67 MiB  100.00% 16.06 MiB p
+👍  Starting control plane node minikube in cluster minikube
+💾  Downloading Kubernetes v1.26.3 preload ...
+    &gt; preloaded-images-k8s-v18-v1...:  330.52 MiB / 330.52 MiB  100.00% 16.66 M
+🔥  Creating qemu2 VM (CPUs=2, Memory=4000MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.26.3 on Docker 20.10.23 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring bridge CNI (Container Networking Interface) ...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🔎  Verifying Kubernetes components...
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use &#34;minikube&#34; cluster and &#34;default&#34; namespace by default</code>
+  </pre>
+  </div>
+<p><code>--insecure-registry</code> allows usage of Container Registry without TLS.</p>
+<h3 id="add-on-nginx-ingress-controller--container-registry-to-store-images-">add on NGINX Ingress Controller &amp; Container Registry to store images : <a href="#add-on-nginx-ingress-controller--container-registry-to-store-images-" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="0285b01" class="language- ">
+  <code>➜  ~ minikube addons enable ingress
+💡  ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20230312-helm-chart-4.5.2-28-g66a760794
+    ▪ Using image registry.k8s.io/ingress-nginx/controller:v1.7.0
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20230312-helm-chart-4.5.2-28-g66a760794
+🔎  Verifying ingress addon...
+🌟  The &#39;ingress&#39; addon is enabled
+➜  ~ minikube addons enable registry
+💡  registry is an addon maintained by Google. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+    ▪ Using image gcr.io/google_containers/kube-registry-proxy:0.4
+    ▪ Using image docker.io/registry:2.8.1
+🔎  Verifying registry addon...
+🌟  The &#39;registry&#39; addon is enabled</code>
+  </pre>
+  </div>
+<h3 id="create-ingress-to-access-container-registry">Create Ingress to access Container Registry: <a href="#create-ingress-to-access-container-registry" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="4ba5717" class="language- ">
+  <code>ubectl apply -f - &lt;&lt; EOF
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: registry
+  namespace: kube-system
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: &#34;0&#34;
+spec:
+  rules:
+  - host: registry.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: registry
+            port:
+              number: 80
+EOF</code>
+  </pre>
+  </div>
+<h3 id="allow-usage-of-container-registry-without-tls-for-docker">Allow usage of Container Registry without TLS for docker: <a href="#allow-usage-of-container-registry-without-tls-for-docker" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="cfe0c0b" class="language- ">
+  <code>{
+  &#34;insecure-registries&#34; : [&#34;registry.example.com:80&#34;]
+}</code>
+  </pre>
+  </div>
+<p>add above configuration key
+
+
+
+
+
+
+  
+
+
+
+  
+</p>
+
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="e268c6a" class="language- ">
+  <code>➜  ~   minikube start --vm=true --insecure-registry registry.example.com:80
+😄  minikube v1.30.0 on Darwin 13.3 (arm64)
+✨  Using the qemu2 driver based on existing profile
+👍  Starting control plane node minikube in cluster minikube
+🏃  Updating the running qemu2 &#34;minikube&#34; VM ...
+🐳  Preparing Kubernetes v1.26.3 on Docker 20.10.23 ...
+🔎  Verifying ingress addon...
+    ▪ Using image docker.io/registry:2.8.1
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/google_containers/kube-registry-proxy:0.4
+🔎  Verifying registry addon...
+🌟  Enabled addons: storage-provisioner, ingress, default-storageclass, registry
+🏄  Done! kubectl is now configured to use &#34;minikube&#34; cluster and &#34;default&#34; namespace by default</code>
+  </pre>
+  </div>
+<h3 id="update-hostfile-and-registry-name">update hostfile and registry name <a href="#update-hostfile-and-registry-name" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="9733852" class="language- ">
+  <code> ~ echo &#34;$(minikube ip) vote.quickstart-application.example.com result.quickstart-application.example.com registry.example.com&#34; | sudo tee -a /etc/hosts
+Password:
+10.0.2.15 vote.quickstart-application.example.com result.quickstart-application.example.com registry.example.com
+~ minikube ssh -- &#34;echo $(minikube ip) registry.example.com | sudo tee -a /etc/hosts&#34;
+10.0.2.15 registry.example.com</code>
+  </pre>
+  </div>
+<h3 id="lets-test-out-simple-voting-app">lets test out simple voting app <a href="#lets-test-out-simple-voting-app" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="f2659ba" class="language- ">
+  <code>➜  ~ git clone https://github.com/werf/quickstart-application
+cd quickstart-application
+Cloning into &#39;quickstart-application&#39;...
+remote: Enumerating objects: 1279, done.
+remote: Total 1279 (delta 0), reused 0 (delta 0), pack-reused 1279
+Receiving objects: 100% (1279/1279), 1.05 MiB | 5.09 MiB/s, done.
+Resolving deltas: 100% (515/515), done.</code>
+  </pre>
+  </div>
+<h4 id="we-have-voting--result-and-working-dockerfile-in-werfyaml">we have voting , result and working dockerfile in werf.yaml <a href="#we-have-voting--result-and-working-dockerfile-in-werfyaml" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h4>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="7db3c0e" class="language- ">
+  <code>  quickstart-application git:(main) cat werf.yaml 
+configVersion: 1
+project: quickstart-application
+---
+image: vote
+dockerfile: Dockerfile
+context: vote
+---
+image: result
+dockerfile: Dockerfile
+context: result
+---
+image: worker
+dockerfile: Dockerfile
+context: worker</code>
+  </pre>
+  </div>
+<h3 id="werf-converge">werf converge <a href="#werf-converge" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="ae4b633" class="language- ">
+  <code>werf converge --repo registry.example.com:80/quickstart-application                                                                             
+Version: v1.2.205
+Using werf config render file: /private/var/folders/xy/3ssjv1j152x3_0ryt4yb982c0000gn/T/werf-config-render-1406655825
+
+┌ Concurrent builds plan (no more than 5 images at the same time)
+│ Set #0:
+│ - ⛵ image vote
+│ - ⛵ image result
+│ - ⛵ image worker
+└ Concurrent builds plan (no more than 5 images at the same time)
+
+┌ ⛵ image vote
+│ ┌ Copy suitable stage from secondary :local
+│ │ Use cache image for vote/dockerfile
+│ │      name: registry.example.com:80/quickstart-application:08900098c0a1a06586f8909a6b77927db90bbd21b5a089330ccd6e35-1680637511061
+│ │        id: 2cb9949aa002
+│ │   created: 2023-04-05 01:15:10 &#43;0530 IST
+│ │      size: 51.2 MiB
+│ └ Copy suitable stage from secondary :local (33.85 seconds)
+└ ⛵ image vote (111.86 seconds)
+
+┌ ⛵ image result
+│ ┌ Copy suitable stage from secondary :local
+│ │ Use cache image for result/dockerfile
+│ │      name: registry.example.com:80/quickstart-application:78557a576585e3acba6868f3d28b70b601affb6364e377918b355f8b-1680637519961
+│ │        id: c14efe2c5cae
+│ │   created: 2023-04-05 01:15:19 &#43;0530 IST
+│ │      size: 53.0 MiB
+│ └ Copy suitable stage from secondary :local (43.51 seconds)
+└ ⛵ image result (91.21 seconds)
+
+┌ ⛵ image worker
+│ ┌ Copy suitable stage from secondary :local
+│ │ Use cache image for worker/dockerfile
+│ │      name: registry.example.com:80/quickstart-application:f5eab243c67a973041e7f92ee9f5ff39d0d671536814a10bac957e82-1680637550923
+│ │        id: 74a6e53feb05
+│ │   created: 2023-04-05 01:15:50 &#43;0530 IST
+│ │      size: 74.2 MiB
+│ └ Copy suitable stage from secondary :local (33.76 seconds)
+└ ⛵ image worker (96.56 seconds)
+
+Release &#34;quickstart-application&#34; does not exist. Installing it now.
+
+┌ Waiting for resources to become ready
+│ ┌ Status progress
+│ │ DEPLOYMENT                                                                                                                                  REPLICAS                  AVAILABLE                    UP-TO-DATE                                      
+│ │ db                                                                                                                                          1/1                       0                            1                                               
+│ │ │   POD                                                   READY               RESTARTS                   STATUS                             ---                                                                                                    
+│ │ └── 6676664f7d-sz6ct                                      0/1                 0                          ContainerCreating                  Waiting for: available 0-&gt;1                                                                            
+│ │ redis                                                                                                                                       1/1                       0                            1                                               
+│ │ result                                                                                                                                      1/1                       0                            1                                               
+│ │ vote                                                                                                                                        1/1                       0                            1                                           ↵
+│ │     
+│ │ worker                                                                                                                                      1/1                       0                            1                                               
+│ │ │   POD                                                   READY               RESTARTS                   STATUS                             ---                                                                                                    
+│ │ └── 77b4769cd4-qlhkm                                      0/1                 0                          ContainerCreating                  Waiting for: available 0-&gt;1                                                                            
+│ │ RESOURCE                                                                                                NAMESPACE                         CONDITION: CURRENT (DESIRED)                                                                             
+│ │ Service/vote                                                                                            quickstart-application            -                                                                                                        
+│ │ Service/db                                                                                              quickstart-application            -                                                                                                        
+│ │ Service/redis                                                                                           quickstart-application            -                                                                                                        
+│ │ Service/result                                                                                          quickstart-application            -                                                                                                    ↵
+│ │     
+│ │ Ingress/quickstart-application                                                                          quickstart-application            -                                                                                                        
+│ └ Status progress
+│ 
+  </code>
+  </pre>
+  </div>
+<p>you will see results</p>
+<ul>
+<li>Go to the following URL to vote: vote.quickstart-application.example.com</li>
+<li>Go to the following URL to check the result of voting: result.quickstart-application.example.com</li>
+</ul>
+<p>for more example check it out : 
+<a href="https://werf.io/documentation/v1.2/usage/deploy/overview.html">https://werf.io/documentation/v1.2/usage/deploy/overview.html</a>
+</p>
+<p>Join 
+<a href="https://discord.gg/rEvr7vq">CloudNativeFolks Community</a>
+ or Reach out to me on twitter 
+<a href="https://twitter.com/sangamtwts">@sangamtwts</a>
+</p>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+</html>

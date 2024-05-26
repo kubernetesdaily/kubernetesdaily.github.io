@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Learn ContainerD on KubeDaily</title>
+    <link>//localhost:1313/docs/containerd/</link>
+    <description>Recent content in Learn ContainerD on KubeDaily</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 17 Apr 2024 01:17:53 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/containerd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>History of ContainerD</title>
+      <link>//localhost:1313/docs/containerd/history-of-containerd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/history-of-containerd/</guid>
+      <description>History of ContainerD linkOrigin from Docker: The origins of containerd can be traced back to Docker, the popular container platform. Docker initially included all components required to run a container in a single monolithic binary, which included the container runtime. As Docker grew, there was a need to break down this monolithic structure into more manageable, modular components.&#xA;Announcement and Spin-Off (2016): Docker announced containerd in December 2016 as a core component split off from the Docker Engine.</description>
+    </item>
+    <item>
+      <title>Architecture of containerd</title>
+      <link>//localhost:1313/docs/containerd/architecture-of-containerd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/architecture-of-containerd/</guid>
+      <description>This diagram represents the architecture of containerd, an industry-standard core container runtime. It is designed to be less opinionated and can be used as a base for building a more complex container platform. Let&amp;rsquo;s break down the architecture depicted in the image:&#xA;Ecosystem Layer&#xA;The topmost layer is the ecosystem that interacts with containerd. It includes:&#xA;Platforms: Cloud platforms and container orchestration systems that use containerd as their runtime, such as Google Cloud Platform, Docker, IBM Cloud, Microsoft Azure, Alibaba Cloud, AWS, and others.</description>
+    </item>
+    <item>
+      <title>Introduction to Runc</title>
+      <link>//localhost:1313/docs/containerd/introduction-to-runc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/introduction-to-runc/</guid>
+      <description>install ruc link sangam@sangam:~$ sudo apt-get -y install runc Reading package lists... Done Building dependency tree... Done Reading state information... Done runc is already the newest version (1.1.7-0ubuntu1~22.04.2). 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded. sangam@sangam:~$ runc NAME: runc - Open Container Initiative runtime runc is a command line client for running applications packaged according to the Open Container Initiative (OCI) format and is a compliant implementation of the Open Container Initiative specification.</description>
+    </item>
+    <item>
+      <title> ContainerD CLI ctr </title>
+      <link>//localhost:1313/docs/containerd/containerd-ctr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/containerd-ctr/</guid>
+      <description>update ubuntu server link sudo apt-get update Install the necessary packages link sudo apt-get install apt-transport-https ca-certificates curl software-properties-common install docker link curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - Install Containerd link sudo apt-get install containerd -y Reading package lists... Done Building dependency tree... Done Reading state information... Done containerd is already the newest version (1.7.2-0ubuntu1~22.04.1). containerd set to manually installed. 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</description>
+    </item>
+    <item>
+      <title> Kata Containers </title>
+      <link>//localhost:1313/docs/containerd/kata-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/kata-container/</guid>
+      <description>Kata Containers link $ bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/kata-containers/kata-containers/main/utils/kata-manager.sh)&amp;#34; If your system already has containerd installed, to install Kata Containers and only configure containerd, run:&#xA;$ bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/kata-containers/kata-containers/main/utils/kata-manager.sh) -o&amp;#34; if you have not installed anything use this to get setup everything&#xA;$ bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/kata-containers/kata-containers/main/utils/kata-manager.sh) -h&amp;#34; verify installation link bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/kata-containers/kata-containers/main/utils/kata-manager.sh) -o &amp;gt; &amp;#34; INFO: Checking dependencies INFO: Running pre-checks INFO: Downloading Kata Containers release (latest version) % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 100 132M 100 132M 0 0 5000k 0 0:00:27 0:00:27 --:--:-- 4777k INFO: Installing Kata Containers release 3.</description>
+    </item>
+    <item>
+      <title> firecracker </title>
+      <link>//localhost:1313/docs/containerd/firecracker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/firecracker/</guid>
+      <description>get docker installed https://get.docker.com&#xA;build firecracker linkgit clone https://github.com/firecracker-microvm/firecracker cd firecracker tools/devtool build toolchain=&amp;quot;$(uname -m)-unknown-linux-musl&amp;quot;&#xA;you get output like thjis thats binary&#xA;[Firecracker release.sh 2024-02-11T13:42:36+00:00] Binaries placed under build/cargo_target/aarch64-unknown-linux-musl/debug sangam@sangam:~/firecracker$ toolchain=&amp;quot;$(uname -m)-unknown-linux-musl&amp;quot;&#xA;TODO</description>
+    </item>
+    <item>
+      <title> ContainerD &#43; Crun </title>
+      <link>//localhost:1313/docs/containerd/crun/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/crun/</guid>
+      <description>Install on ubuntu link $ sudo apt-get install -y make git gcc build-essential pkgconf libtool \ libsystemd-dev libprotobuf-c-dev libcap-dev libseccomp-dev libyajl-dev \ go-md2man autoconf python3 automake ContainerD Configuration link demo@sangam:~$ sudo mkdir -p /etc/containerd/ demo@sangam:~$ sudo tee /etc/containerd/config.toml &amp;gt; /dev/null &amp;lt;&amp;lt;EOT version = 2 [plugins.&amp;#34;io.containerd.runtime.v1.linux&amp;#34;] shim_debug = false [plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34;.containerd] default_runtime_name = &amp;#34;crun&amp;#34; [plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34;.containerd.runtimes] [plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34;.containerd.runtimes.crun] runtime_type = &amp;#34;io.containerd.runc.v2&amp;#34; [plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34;.containerd.runtimes.crun.options] BinaryName = &amp;#34;/usr/local/bin/crun&amp;#34; SystemdCgroup = true [plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34;.containerd.runtimes.runsc] runtime_type = &amp;#34;io.containerd.runsc.v1&amp;#34; [plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34;.containerd.runtimes.runsc.options] SystemdCgroup = true [plugins.</description>
+    </item>
+    <item>
+      <title> contaiNERD &#43; nerdctl </title>
+      <link>//localhost:1313/docs/containerd/nerdctl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/nerdctl/</guid>
+      <description>install ContainerD + nerctl link wget https://github.com/containerd/nerdctl/releases/download/v1.7.3/nerdctl-1.7.3-linux-arm64.tar.gz tar -xzf nerdctl-1.7.3-linux-arm64.tar.gz sudo mv ./nerdctl /usr/local/bin verify nerctl link sangam@demo:~$ sudo nerdctl nerdctl is a command line interface for containerd Config file ($NERDCTL_TOML): /etc/nerdctl/nerdctl.toml Usage: nerdctl [flags] Management commands: apparmor Manage AppArmor profiles builder Manage builds container Manage containers image Manage images ipfs Distributing images on IPFS namespace Manage containerd namespaces network Manage networks system Manage containerd volume Manage volumes Commands: attach Attach stdin, stdout, and stderr to a running container.</description>
+    </item>
+    <item>
+      <title> contaiNERD &#43; runwasi </title>
+      <link>//localhost:1313/docs/containerd/runwasi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/runwasi/</guid>
+      <description>install rust link curl --proto &amp;#39;=https&amp;#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh clone runwasi link $ git clone https://github.com/containerd/runwasi.git install wasmedge-containerd-shim link cd runwasi make build-wasmedge INSTALL=&amp;#34;sudo install&amp;#34; LN=&amp;#34;sudo ln -sf&amp;#34; make install-wasmedge run wasm using ctr cli link make load sudo ctr run --rm --runtime=io.containerd.wasmedge.v1 ghcr.io/containerd/runwasi/wasi-demo-app:latest testwasm /wasi-demo-app.wasm echo &amp;#39;hello&amp;#39; </description>
+    </item>
+    <item>
+      <title>Wasm &#43; ContainerD &#43; CRUN </title>
+      <link>//localhost:1313/docs/containerd/wasm-containerd-crun/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containerd/wasm-containerd-crun/</guid>
+      <description>Installing WasmEdge link curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash source $HOME/.wasmedge/env &amp;gt; Using Python: /usr/bin/python3 INFO - CUDA cannot be detected via nvcc INFO - CUDA 12.x cannot be detected via nvidia-smi INFO - Compatible with current configuration INFO - Running Uninstaller WARNING - Uninstaller did not find previous installation WARNING - SHELL variable not found. Using bash as SHELL INFO - shell configuration updated INFO - Downloading WasmEdge |============================================================|100.00 %INFO - Downloaded INFO - Installing WasmEdge INFO - WasmEdge Successfully installed INFO - Run: Verify installation link wasmedge --version the response would be something:-</description>
+    </item>
+  </channel>
+</rss>

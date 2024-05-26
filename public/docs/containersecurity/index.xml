@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Container Security  on KubeDaily</title>
+    <link>//localhost:1313/docs/containersecurity/</link>
+    <description>Recent content in Container Security  on KubeDaily</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 25 Jan 2024 04:33:12 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/docs/containersecurity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interacting with container ecosystem </title>
+      <link>//localhost:1313/docs/containersecurity/interacting-with-container-ecosystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/interacting-with-container-ecosystem/</guid>
+      <description>Interacting with container ecosystem link Docker Images and Image Layers&#xA;In Docker, an image is a lightweight, stand-alone, executable package that includes everything needed to run a piece of software, including the application code, libraries, dependencies, and runtime. It&amp;rsquo;s used to build and run containerized applications.&#xA;A Docker image is made up of a series of layers, where each layer represents an instruction in the image&amp;rsquo;s Dockerfile. When you build an image, each instruction in the Dockerfile creates a new layer in the image.</description>
+    </item>
+    <item>
+      <title>Attack surface of the container ecosystem </title>
+      <link>//localhost:1313/docs/containersecurity/attack-surface-of-the-container-ecosystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/attack-surface-of-the-container-ecosystem/</guid>
+      <description>Container Technology Archiecture link Developer systems (generate images and send them to testing and accreditation) Testing and accreditation systems (validate and verify the contents of images, sign images, and send images to the registry) Registries (store images and distribute images to the orchestrator upon request) Orchestrators (convert images into containers and deploy containers to hosts) Hosts (run and stop containers as directed by the orchestrator) Attack surface of the container ecosystem link One way to start thinking about the threat model is to consider the actors involved.</description>
+    </item>
+    <item>
+      <title>Environment variables </title>
+      <link>//localhost:1313/docs/containersecurity/environment-variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/environment-variables/</guid>
+      <description>Environment variables example of using an environment variable in a Dockerfile:&#xA;FROM alpine:latest # Set an environment variable ENV MY_VAR &amp;#34;Hello World&amp;#34; # Use the environment variable in a command RUN echo $MY_VAR &amp;gt; /app/output.txt CMD [&amp;#34;cat&amp;#34;, &amp;#34;/app/output.txt&amp;#34;] In this example, the environment variable MY_VAR is set to the value &amp;ldquo;Hello World&amp;rdquo;. This variable is then used in the RUN command to create an output.txt file with the contents &amp;ldquo;Hello World&amp;rdquo;.</description>
+    </item>
+    <item>
+      <title>Docker volumes </title>
+      <link>//localhost:1313/docs/containersecurity/docker-volumes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/docker-volumes/</guid>
+      <description>Docker volumes&#xA;How to create encrypted data volume linkCreate a Docker volume using the docker volume create command, for example:&#xA;$ docker volume create encrypted_volume Create a Docker container that will be used to create the encrypted volume. For this, you can use a tool like luksipc, which allows you to create a LUKS-encrypted file within a container.&#xA;Run the luksipccontainer with the --volume flag to specify the Docker volume you want to encrypt.</description>
+    </item>
+    <item>
+      <title>Docker Networking </title>
+      <link>//localhost:1313/docs/containersecurity/docker-networking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/docker-networking/</guid>
+      <description>Docker Networking linkThe Container Netwotk Model (CNM) is the design document for Docker Networking which is implemented via &amp;rsquo;libnetwork&amp;rsquo; in golang&#xA;Sandbox - isolated network stavk Endpount - Virtual Ethernet Interfece Network - Virtual Switch (bridge) Note - Libnetwork -&amp;gt; implemenrs the control and management plane functions&#xA;Network Specific Drivers -&amp;gt; implemenrs the data plane while also handling the connectivity and isolation&#xA;Docker Native Network Drivers link Bridge - uses a software bridge whicha allows containers connected to the same bridge network to communicate</description>
+    </item>
+    <item>
+      <title>Auditing Docker Security </title>
+      <link>//localhost:1313/docs/containersecurity/auditing-docker-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/auditing-docker-security/</guid>
+      <description>Auditing Docker Security linkDOCKER BENCH FOR SECURITY&#xA;Docker Bench for Security is an open source Bash script that checks for various common security best practices of deploying Docker in production environments. The tests are all automated and are based on the CIS Docker Benchmark. More information about Docker Bench for Security can be found on GitHub: https://github.com/docker/docker-bench-security&#xA;auditing docker security with docker bench for security linkThe auditing process can be performed by following the procedures outlined below:</description>
+    </item>
+    <item>
+      <title>Container Image Security </title>
+      <link>//localhost:1313/docs/containersecurity/container-image-security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/container-image-security/</guid>
+      <description>Container Image Security link Building secure container images Choosing base images linkAlpine link Pros very small images: the community pays a lot attention on minimizing image sizes minimum functionality: only absolutely necessary packages contained lightweight init system: like Gentoo, Alpine uses OpenRC, a lightweight alternative to systemd musl performance: for some cases, musl libc can be more performant than glibc Cons rather Poor Documentation Small team : Currently there are 3 developer listed as the alpine linux team possible incompatibilities: musl libc may cause problems with some C-based plugins and adjustments may be necessary if you compile software yourself Debian link Pro:</description>
+    </item>
+    <item>
+      <title>DockerFile Security Best Practices </title>
+      <link>//localhost:1313/docs/containersecurity/dockerfile-security-best-practices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/dockerfile-security-best-practices/</guid>
+      <description>DockerFile Security Best Practices link Choose Minimal Base Images FROM alpine WORKDIR /app COPY package.json /app RUN npm install CMD [“node”,“index.js”] Remove Cache Packages FROM alpine RUN apk add nginx &amp;amp;&amp;amp; rm -rf /var/cache/apt/* COPY index.html /var/www/html/ EXPOSE 80 CMD [“nginx”,“-g”,“daemon off;”] FROM alpine RUN apk add –no-cache nginx COPY index.html /var/www/html/ EXPOSE 80 CMD [“nginx”,“-g”,“daemon off;”] avoid multilayers FROM alpine RUN apk update RUN apk add curl RUN apk add nodejs RUN apk add nginx-1.</description>
+    </item>
+    <item>
+      <title>SecretScanner - Finding secrets and passwords in container images and file systems </title>
+      <link>//localhost:1313/docs/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/secretscanner-finding-secrets-and-passwords-in-container-images-and-file-systems/</guid>
+      <description>Published on CloudNativeFolks&#xA;One of most common mistake is leaking Secrets via docker images or file system in this blogpost we will use Deepfence&amp;rsquo;s Open Source Project SecretScanner&#xA;few days back I found this interesting tweet discussion from cybersecurity community members !&#xA;Find secrets and passwords in container images and file systems https://t.co/ccejD09KR6&#xA;&amp;mdash; Nicolas Krassas (@Dinosn) September 19, 2022 here you see article around Uber security incidence&#xA;%[https://www.uber.com/newsroom/security-update/]&#xA;lets understand why secret scanner help you securing your container images and file system</description>
+    </item>
+    <item>
+      <title> YaraHunter - Malware Scanner for Container Images </title>
+      <link>//localhost:1313/docs/containersecurity/yarahunter-malware-scanner-for-container-images/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/yarahunter-malware-scanner-for-container-images/</guid>
+      <description>What is YARA ? linkYARA was originally developed by Victor Alvarez of VirusTotal and released on github in 2013 .&#xA;YARA , the &amp;ldquo;Pattern matching Swiss knife for malware researchers available on github&#xA;Install yara on Mac link brew install yara Yara is extremely popular within because of different use case : link Identify and classify malware&#xA;Find new samples based on family-specific pattern&#xA;Deploy Yara Rules to identify samples and compromised device for incident response</description>
+    </item>
+    <item>
+      <title>Security Linting of Dockerfiles</title>
+      <link>//localhost:1313/docs/containersecurity/security-linting-of-dockerfiles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/security-linting-of-dockerfiles/</guid>
+      <description>hadolint linkHadolint comes with a robust and easy to use CLI. You can install it on a variety of platforms, including macOS using brew install hadolint.&#xA;Confirm the installation was successful with the following command:&#xA;$ hadolint --help hadolint - Dockerfile Linter written in Haskell We’ll use the following Dockerfile as an example, which can be used to run a Python Django web server. On the surface, it looks fine but we’ll see it has a lot of problems.</description>
+    </item>
+    <item>
+      <title>Static Analysis of container images library for container </title>
+      <link>//localhost:1313/docs/containersecurity/static-analysis-of-container-images-library-for-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/static-analysis-of-container-images-library-for-container/</guid>
+      <description>Packetstreamer linkSBOM and vulnerability scanner for container images&#xA;https://github.com/deepfence/package-scanner&#xA;Download binary&#xA;package-scanner_Darwin_arm64.tar.gz package-scanner_Darwin_x86_64.tar.gz package-scanner_Linux_arm64.tar.gz package-scanner_Linux_x86_64.tar.gz package-scanner_darwin_amd64_v1 package-scanner_darwin_arm64 package-scanner_linux_amd64_v1 package-scanner_linux_arm64 ClI usage&#xA;scan a docker image for vulnerabilities&#xA;./package-scannner -source nginx:latest Scan a docker images , filter for critical vulnerabilities&#xA;./package-scanner -source nginx:latest -severity critical Scan a docker images with CVEs&#xA;./package-scanner -source nginx:latest INFO[2023-01-06T15:10:15&amp;#43;05:30] autodetect.go:91 trying to connect to endpoint &amp;#39;unix:///var/run/docker.sock&amp;#39; with timeout &amp;#39;10s&amp;#39; INFO[2023-01-06T15:10:15&amp;#43;05:30] autodetect.go:116 connected successfully using endpoint: unix:///var/run/docker.</description>
+    </item>
+    <item>
+      <title>Docker host security configurations</title>
+      <link>//localhost:1313/docs/containersecurity/docker-host-security-configurations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/docker-host-security-configurations/</guid>
+      <description>SecComp and AppArmor linkDocker works with major Linux MAC technologies such as AppArmor and SELinux.&#xA;Depending on your Linux distribution, Docker applies a default AppArmor profile to all new containers. According to the Docker documentation, this default profile is “moderately protective while providing wide application compatibility”.&#xA;Docker also lets you start containers without a policy applied, as well as giving you the ability to customize policies to meet specific requirements. This is also very powerful, but can also be prohibitively complex.</description>
+    </item>
+    <item>
+      <title>Docker Daemon security configurations</title>
+      <link>//localhost:1313/docs/containersecurity/docker-daemon-security-configurations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/docker-daemon-security-configurations/</guid>
+      <description>docker daemon security configuration linkInstall docker CE 19.03&#xA;# yum install -y yum-utils device-mapper-persistent-data lvm2 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo # yum install -y docker-ce [root@localhost docker]# docker --version Docker version 19.03.8, build afacb8b Daemon security configuration linkThere is no configuration file by default, which needs to be created separately/etc/docker/daemon.json, the following configurations are all local test examples configured on this file.&#xA;{ &amp;#34;icc&amp;#34;: false, &amp;#34;log-level&amp;#34;: &amp;#34;info&amp;#34;, &amp;#34;log-driver&amp;#34;: &amp;#34;json-file&amp;#34;, &amp;#34;log-opts&amp;#34;: { &amp;#34;max-size&amp;#34;: &amp;#34;10m&amp;#34;, &amp;#34;max-file&amp;#34;:&amp;#34;5&amp;#34;, &amp;#34;labels&amp;#34;: &amp;#34;somelabel&amp;#34;, &amp;#34;env&amp;#34;: &amp;#34;os,customer&amp;#34; }, &amp;#34;iptables&amp;#34;: true, &amp;#34;userns-remap&amp;#34;: &amp;#34;default&amp;#34;, &amp;#34;userland-proxy&amp;#34;: false, &amp;#34;experimental&amp;#34;: false, &amp;#34;selinux-enabled&amp;#34;: true, &amp;#34;live-restore&amp;#34;: true, &amp;#34;no-new-privileges&amp;#34;: true, &amp;#34;cgroup-parent&amp;#34;: &amp;#34;/foobar&amp;#34;, &amp;#34;seccomp-profile&amp;#34;: &amp;#34;/etc/docker/seccomp/default-no-chmod.</description>
+    </item>
+    <item>
+      <title>Content Trust and Integrity checks</title>
+      <link>//localhost:1313/docs/containersecurity/content-trust-and-integrity-checks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/content-trust-and-integrity-checks/</guid>
+      <description>Content Trust and Integrity checks&#xA;Docker Content Trust (DCT) makes it simple and easy to verify the integrity and the publisher of images that you download and run. This is especially important when pulling images over untrusted networks such as the internet.&#xA;docker trust key generate sangam Generating key for sangam... Enter passphrase for new nigel key with ID 1f78609: Repeat passphrase for new nigel key with ID 1f78609: Successfully generated and loaded private key.</description>
+    </item>
+    <item>
+      <title>Docker Registry security configurations </title>
+      <link>//localhost:1313/docs/containersecurity/docker-registry-security-configurations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/docker-registry-security-configurations/</guid>
+      <description>What will you learn?&#xA;InteractIing with insecure registry with curl Fetching images using curl and analyzing image layers Attacking protected Docker registry Backdooring images and leveraging auto-deployment mechanisms to attack Docker host&#xA;Intracting with Insecure Registry link [node1] (local) root@192.168.0.18 ~ $ docker run -d \ -p 5000:5000 \ --name registry \ -v /registry/data:/var/lib/registry \ --restart always \ registry:2 Unable to find image &amp;#39;registry:2&amp;#39; locally 2: Pulling from library/registry ca7dd9ec2225: Pull complete c41ae7ad2b39: Pull complete 1ed0fc8a6161: Pull complete 21df229223d2: Pull complete 626897ccab21: Pull complete Digest: sha256:ce14a6258f37702ff3cd92232a6f5b81ace542d9f1631966999e9f7c1ee6ddba Status: Downloaded newer image for registry:2 729cabb707e247e548ff84aa096c03e922e39e78bbe3c65753478305575576a6 check</description>
+    </item>
+    <item>
+      <title>DockerScan</title>
+      <link>//localhost:1313/docs/containersecurity/dockerscan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/dockerscan/</guid>
+      <description>DockerScan linkDocker Scan Support actions for docker registory scanning , image analysis and image meta information exaction to look for password , URL/ IP etc in the envirmonment variavle and any kind of sudo call by user&#xA;create a directory for this $ sudo mkdir dockersec-2 $ cd dockersec-2 check pyhon version which mustt be greater then 3.5 and must have pip installed&#xA;$ python3 --version $ sudo apt install python3-pip $ which pip3 `` Install Dockerscan with pip3 $ sudo /user/bin/pip3 install dockerscan</description>
+    </item>
+    <item>
+      <title> Dive </title>
+      <link>//localhost:1313/docs/containersecurity/dive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/dive/</guid>
+      <description>Dive link Ubuntu /Debian wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb sudo apt install ./dive_0.9.2_linux_amd64.deb RHEL/CemtOS curl -OL https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.rpm rpm -i dive_0.9.2_linux_amd64.rpm Arch Linux ay -S dive Mac OS X&#xA;brew install dive How to use Dive linkTo analyze a Docker image simply run dive with an image tag/id/digest:&#xA;$ dive &amp;lt;your-image-tag&amp;gt; or if you want to build your image then jump straight into analyzing it:&#xA;$ dive build -t &amp;lt;some-tag&amp;gt; example ngnix image&#xA;another tool that make this all more easy</description>
+    </item>
+    <item>
+      <title>Docker events</title>
+      <link>//localhost:1313/docs/containersecurity/docker-events/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/docker-events/</guid>
+      <description>Docker events linkDocker events describe the activities taken by your Docker daemon. Most interactions with objects such as containers, images, volumes, and networks record an event, creating a log that you can use to inspect past changes.&#xA;There are many different kinds of event that identify specific changes in your environment:&#xA;Creating and removing containers Container health check statuses Commands executed inside containers with docker exec Pulling and pushing images Creating, destroying, mounting, and unmounting volumes Enabling and disabling Docker daemon plugins $ docker run --rm hello-world Several events should now appear in the terminal window that’s running the docker events command:</description>
+    </item>
+    <item>
+      <title>Scanning Docker for vulnerabilities with ThraetMappeper </title>
+      <link>//localhost:1313/docs/containersecurity/scanning-docker-for-vulnerabilities-with-thraetmappeper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/scanning-docker-for-vulnerabilities-with-thraetmappeper/</guid>
+      <description>Orignally published on CloudNativeFolks&#xA;ThreatMapper&#xA;ThreatMapper hunts for threats in your production platforms, and ranks these threats based on their risk-of-exploit. It uncovers vulnerable software components, exposed secrets and deviations from good security practice. ThreatMapper uses a combination of agent-based inspection and agent-less monitoring to provide the widest possible coverage to detect threats.&#xA;ThreatMapper Open source cloud native security observability platform.Linux, K8s, AWS Fargate and more. TypeScript 4.5k 562 ThreatMapper carries on the good &amp;lsquo;shift left&amp;rsquo; security practices that you already employ in your development pipelines.</description>
+    </item>
+    <item>
+      <title>Sock Shop Docker Compose and Weave</title>
+      <link>//localhost:1313/docs/containersecurity/sock-shop-docker-compose-and-weave/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/docs/containersecurity/sock-shop-docker-compose-and-weave/</guid>
+      <description>Sock Shop Docker Compose &amp;amp; Weave&#xA;Pre-requisites Install Docker Install Weave Scope Install Weave Net&#xA;git clone https://github.com/microservices-demo/microservices-demo cd microservices-demo curl -sSL https://get.docker.com/ | sh apt-get install -yq python-pip build-essential python-dev pip install docker-compose curl -L git.io/weave -o /usr/local/bin/weave chmod a&amp;#43;x /usr/local/bin/weave Launch Weave Scope&#xA;sudo curl -L git.io/scope -o /usr/local/bin/scope sudo chmod a&amp;#43;x /usr/local/bin/scope scope launch Weave launch&#xA;weave launch docker-compose -f deploy/docker-compose-weave/docker-compose.yml up -d </description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">KubeDaily Blog - Learn Kubernetes Tools in depth</a>
+            
+        </div>
+    </nav>
+
+    
+    <div class="container mt-5">
+        
+    <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="card-title">Flannel is a network fabric for containers, designed for Kubernetes.</h1>
+            <p class="text-muted">Posted on February 17, 2023</p>
+            <div class="card-text">
+                
+
+<center>
+<a href="https://github.com/flannel-io/flannel"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/flannel-io/flannel.png" width="460px"></a></center>
+
+<h3 id="kubenetes-networking">kubenetes networking <a href="#kubenetes-networking" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3><p>
+
+
+
+
+
+  
+
+
+
+  
+</p>
+<h3 id="networking-details">Networking details <a href="#networking-details" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3><ul>
+<li>
+<p>Platforms like Kubernetes assume that each container (pod) has a unique, routable IP inside the cluster. The advantage of this model is that it removes the port mapping complexities that come from sharing a single host IP.</p>
+</li>
+<li>
+<p>Flannel is responsible for providing a layer 3 IPv4 network between multiple nodes in a cluster. Flannel does not control how containers are networked to the host, only how the traffic is transported between hosts. However, flannel does provide a CNI plugin for Kubernetes and a guidance on integrating with Docker. Flannel is focused on networking</p>
+</li>
+<li>
+<p>Flannel is a network overlay for Kubernetes. It provides a way for pods to communicate with each other even if they are not on the same host. Flannel is a simple and lightweight network overlay that is easy to install and configure.</p>
+</li>
+<li>
+<p>Flannel works by creating a virtual network on top of the physical network. This virtual network is made up of tunnels that connect the pods. The tunnels are created using the VXLAN protocol.</p>
+</li>
+<li>
+<p>When a pod sends a packet to another pod, the packet is encapsulated in a VXLAN header and sent to the tunnel that connects the two pods. The tunnel then decapsulates the packet and sends it to the destination pod.</p>
+</li>
+<li>
+<p>Flannel is a layer 3 network, which means that it supports routing between pods. This is in contrast to some other network overlays, such as Docker Swarm, which are layer 2 networks.</p>
+</li>
+<li>
+<p>Flannel does not control how containers are networked to the host. This is the responsibility of the host&rsquo;s operating system. Flannel only controls how traffic is transported between hosts.</p>
+</li>
+<li>
+<p>Flannel provides a CNI plugin for Kubernetes. This plugin makes it easy to install and configure Flannel with Kubernetes. Flannel also provides guidance on integrating with Docker.</p>
+</li>
+</ul>
+<h4 id="here-are-some-of-the-benefits-of-using-flannel">Here are some of the benefits of using Flannel: <a href="#here-are-some-of-the-benefits-of-using-flannel" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h4><ul>
+<li>It is a simple and lightweight network overlay.</li>
+<li>It is easy to install and configure.</li>
+<li>It does not require any additional infrastructure.</li>
+<li>It is a good choice for small and medium-sized Kubernetes clusters.</li>
+<li>It supports routing between pods.</li>
+<li>It is compatible with Kubernetes and Docker.</li>
+</ul>
+<h3 id="flannel-overlay-network">Flannel Overlay Network <a href="#flannel-overlay-network" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3><p>To achieve kubernetes&rsquo; network requirements, flannel’s idea is simple: create another flat network which runs above the host network, this is the so-called overlay network. All containers(Pod) will be assigned one ip address in this overlay network, they communicate with each other by calling each other’s ip address directly.</p>
+<p>
+
+
+
+
+
+  
+
+
+
+  
+</p>
+<h3 id="minikube-start">minikube start <a href="#minikube-start" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="d8d3ab3" class="language- ">
+  <code>  ~ minikube start 
+😄  minikube v1.30.1 on Darwin 13.3.1 (arm64)
+✨  Using the docker driver based on existing profile
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+🔄  Restarting existing docker container for &#34;minikube&#34; ...
+❗  Image was not built for the current minikube version. To resolve this you can delete and recreate your minikube cluster using the latest images. Expected minikube version: v1.29.0 -&gt; Actual minikube version: v1.30.1
+🐳  Preparing Kubernetes v1.26.3 on Docker 23.0.2 ...
+🔗  Configuring bridge CNI (Container Networking Interface) ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+💡  After the addon is enabled, please run &#34;minikube tunnel&#34; and your ingress resources would be available at &#34;127.0.0.1&#34;
+    ▪ Using image registry.k8s.io/ingress-nginx/controller:v1.7.0
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20230312-helm-chart-4.5.2-28-g66a760794
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20230312-helm-chart-4.5.2-28-g66a760794
+🔎  Verifying ingress addon...
+🌟  Enabled addons: storage-provisioner, default-storageclass, ingress
+🏄  Done! kubectl is now configured to use &#34;minikube&#34; cluster and &#34;default&#34; namespace by default</code>
+  </pre>
+  </div>
+<h3 id="install-flannel-on-minikube">Install Flannel on Minikube <a href="#install-flannel-on-minikube" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="3c1d551" class="language- ">
+  <code>  ~ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+namespace/kube-flannel created
+serviceaccount/flannel created
+clusterrole.rbac.authorization.k8s.io/flannel created
+clusterrolebinding.rbac.authorization.k8s.io/flannel created
+configmap/kube-flannel-cfg created
+daemonset.apps/kube-flannel-ds created</code>
+  </pre>
+  </div>
+<h3 id="minikube-provide-option-to-select-cni-plugins">Minikube provide option to select CNI Plugins <a href="#minikube-provide-option-to-select-cni-plugins" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="c97801a" class="language- ">
+  <code>--cni=&#39;&#39;:
+        CNI plug-in to use. Valid options: auto, bridge, calico, cilium, flannel, kindnet, or path
+        to a CNI manifest (default: auto)</code>
+  </pre>
+  </div>
+<ul>
+<li>while starting minikube define cni flag</li>
+</ul>
+
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="60b52d9" class="language- ">
+  <code> minikube start --cni=flannel
+😄  minikube v1.30.1 on Darwin 13.3.1 (arm64)
+✨  Automatically selected the docker driver. Other choices: qemu2, virtualbox, ssh
+📌  Using Docker Desktop driver with root privileges
+👍  Starting control plane node minikube in cluster minikube
+🚜  Pulling base image ...
+    &gt; gcr.io/k8s-minikube/kicbase...:  336.39 MiB / 336.39 MiB  100.00% 4.83 Mi
+🔥  Creating docker container (CPUs=4, Memory=8192MB) ...
+🐳  Preparing Kubernetes v1.26.3 on Docker 23.0.2 ...
+    ▪ Generating certificates and keys ...
+    ▪ Booting up control plane ...
+    ▪ Configuring RBAC rules ...
+🔗  Configuring Flannel (Container Networking Interface) ...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🔎  Verifying Kubernetes components...
+🌟  Enabled addons: storage-provisioner, default-storageclass
+🏄  Done! kubectl is now configured to use &#34;minikube&#34; cluster and &#34;default&#34; namespace by default    </code>
+  </pre>
+  </div>
+<h3 id="add-another-working-node">add another working node <a href="#add-another-working-node" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="aac6f9b" class="language- ">
+  <code>➜  sangam14.github.io git:(main) ✗ minikube node add   
+😄  Adding node m02 to cluster minikube
+❗  Cluster was created without any CNI, adding a node to it might cause broken networking.
+👍  Starting worker node minikube-m02 in cluster minikube
+🚜  Pulling base image ...
+🔥  Creating docker container (CPUs=4, Memory=8192MB) ...
+🐳  Preparing Kubernetes v1.26.3 on Docker 23.0.2 ...
+🔎  Verifying Kubernetes components...
+🏄  Successfully added m02 to minikube!</code>
+  </pre>
+  </div>
+<h3 id="minikube-node-list">Minikube Node list <a href="#minikube-node-list" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="c24510c" class="language- ">
+  <code> ~ minikube node list
+minikube	192.168.49.2
+minikube-m02	192.168.49.3</code>
+  </pre>
+  </div>
+<h3 id="minikube-create-namespace-kube-flannel">Minikube create namespace kube-flannel <a href="#minikube-create-namespace-kube-flannel" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="f87f094" class="language- ">
+  <code>kubectl get pods -n kube-flannel 
+NAME                    READY   STATUS    RESTARTS   AGE
+kube-flannel-ds-48tbz   1/1     Running   0          21m
+kube-flannel-ds-ltg88   1/1     Running   0          8m52s</code>
+  </pre>
+  </div>
+<h4 id="create-2-busybox-pod">create 2 busybox pod <a href="#create-2-busybox-pod" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h4>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="9392b51" class="language- ">
+  <code>kubectl create -f busybox1.yaml
+kubectl create -f busybox2.yaml</code>
+  </pre>
+  </div>
+<h3 id="get-pods">get pods <a href="#get-pods" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="45e585f" class="language- ">
+  <code>flannel git:(main) ✗ kubectl get pods
+NAME       READY   STATUS    RESTARTS   AGE
+busybox1   1/1     Running   0          31s
+busybox2   1/1     Running   0          45s</code>
+  </pre>
+  </div>
+<h3 id="get-more-details-around-this-pods">get more details around this pods <a href="#get-more-details-around-this-pods" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="94a1a43" class="language- ">
+  <code>kubectl get pods -o wide</code>
+  </pre>
+  </div>
+<h3 id="the-subnet-of-eth0-should-match-the-cni-subnet">The subnet of eth0 should match the CNI subnet <a href="#the-subnet-of-eth0-should-match-the-cni-subnet" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="cb6d25c" class="language- ">
+  <code>flannel git:(main) ✗ kubectl exec --stdin --tty busybox1 -- ifconfig
+eth0      Link encap:Ethernet  HWaddr 52:3B:44:60:37:EB  
+          inet addr:10.244.1.3  Bcast:10.244.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:65485  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:42 (42.0 B)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+➜  flannel git:(main) ✗ kubectl exec --stdin --tty busybox2 -- ifconfig
+eth0      Link encap:Ethernet  HWaddr 5E:FA:9B:2F:A1:69  
+          inet addr:10.244.1.2  Bcast:10.244.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:65485  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:42 (42.0 B)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)</code>
+  </pre>
+  </div>
+<h4 id="we-should-be-able-to-ping-between-pods">We should be able to ping between PoDs. <a href="#we-should-be-able-to-ping-between-pods" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h4>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="34d4a05" class="language- ">
+  <code> flannel git:(main) ✗ kubectl exec --stdin --tty busybox1 -- ping 10.244.1.2
+PING 10.244.1.2 (10.244.1.2): 56 data bytes
+64 bytes from 10.244.1.2: seq=0 ttl=64 time=0.326 ms
+64 bytes from 10.244.1.2: seq=1 ttl=64 time=0.086 ms
+64 bytes from 10.244.1.2: seq=2 ttl=64 time=0.097 ms
+64 bytes from 10.244.1.2: seq=3 ttl=64 time=0.106 ms
+64 bytes from 10.244.1.2: seq=4 ttl=64 time=0.103 ms
+64 bytes from 10.244.1.2: seq=5 ttl=64 time=0.071 ms
+^C</code>
+  </pre>
+  </div>
+<h3 id="pods-in-the-host-network-of-a-node-can-communicate-with-all-pods-on-all-nodes-without-nat">PoDs in the host network of a node can communicate with all pods on all nodes without NAT <a href="#pods-in-the-host-network-of-a-node-can-communicate-with-all-pods-on-all-nodes-without-nat" class="anchor" aria-hidden="true"><i class="material-icons align-middle"></i></a></h3>
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="6c2b3ed" class="language- ">
+  <code>➜  flannel git:(main) ✗ kubectl create -f busybox3.yaml
+pod/busybox3 created
+➜  flannel git:(main) ✗ kubectl get pods -o wide
+NAME       READY   STATUS    RESTARTS      AGE   IP           NODE           NOMINATED NODE   READINESS GATES
+busybox1   1/1     Running   5 (11m ago)   23h   10.244.1.3   minikube-m02   &lt;none&gt;           &lt;none&gt;
+busybox2   1/1     Running   5 (12m ago)   23h   10.244.1.2   minikube-m02   &lt;none&gt;           &lt;none&gt;
+busybox3   1/1     Running   0             20s   10.244.0.3   minikube       &lt;none&gt;           &lt;none&gt;</code>
+  </pre>
+  </div>
+<p>Now starting a  ping from this new PoD busybox 3 (in minikube node ) to busybox1 (in minikube-m02 ).</p>
+
+
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+
+  <div class="prism-codeblock ">
+  <pre id="0848c21" class="language- ">
+  <code> flannel git:(main) ✗ kubectl exec --stdin --tty busybox3 -- ping 10.244.1.3
+PING 10.244.1.3 (10.244.1.3): 56 data bytes
+64 bytes from 10.244.1.3: seq=0 ttl=62 time=0.703 ms
+64 bytes from 10.244.1.3: seq=1 ttl=62 time=0.198 ms
+64 bytes from 10.244.1.3: seq=2 ttl=62 time=0.169 ms
+64 bytes from 10.244.1.3: seq=3 ttl=62 time=0.159 ms
+64 bytes from 10.244.1.3: seq=4 ttl=62 time=0.160 ms
+64 bytes from 10.244.1.3: seq=5 ttl=62 time=0.125 ms
+64 bytes from 10.244.1.3: seq=6 ttl=62 time=0.156 ms
+64 bytes from 10.244.1.3: seq=7 ttl=62 time=0.179 ms
+^C</code>
+  </pre>
+  </div>
+<p>This works as expected. This is possible due to VxLAN implementation in flannel.
+The VxLAN header is 8 bytes long and has the following format:</p>
+<p>24-bit VNID (Virtual Network Identifier): This field identifies the VxLAN network that the packet belongs to.
+8-bit Flags: This field contains a few flags that control how the packet is processed.
+24-bit Reserved: This field is reserved for future use.
+20-byte Outer IP Header: This field contains the IP header of the encapsulated packet.
+The VxLAN header is encapsulated in a UDP packet, which is then sent over the L3 routed infrastructure. The destination UDP port for VxLAN packets is 4789.</p>
+<p>When a VxLAN packet arrives at a VTEP, the VTEP decapsulates the packet and forwards the encapsulated packet to the destination host.</p>
+<p>VxLAN is a popular network virtualization technology that is used to create overlay networks over L3 routed infrastructures. VxLAN is a good choice for network virtualization because it is scalable, efficient, and easy to manage.</p>
+<p>
+
+
+
+
+
+  
+
+
+
+  
+</p>
+<p>Join 
+<a href="https://discord.gg/rEvr7vq">CloudNativeFolks Community</a>
+ or Reach out to me on twitter 
+<a href="https://twitter.com/sangamtwts">@sangamtwts</a>
+</p>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+</html>
