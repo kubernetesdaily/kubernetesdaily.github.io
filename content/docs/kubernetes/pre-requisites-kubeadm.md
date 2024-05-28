@@ -83,13 +83,11 @@ sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables ne
 
 ######  We are selecting option 2 here using apt-get
 
+ install via package manager : https://docs.docker.com/engine/install/ubuntu/
+ Remove old versions  
 ```
-######  install via package manager : https://docs.docker.com/engine/install/ubuntu/
-```
-
-######  Remove old versions
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
-
+```
 ######  setup docker repository
 ######  Add Docker's official GPG key:
 
