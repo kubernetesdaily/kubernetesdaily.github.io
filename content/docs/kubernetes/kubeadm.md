@@ -5,6 +5,36 @@ slug: "kubeadm"
 weight: 3
 ---
 
+### Install kubeadm, kubectl and kubelet on all nodes
+```
+sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates curl
+
+sudo mkdir -m 755 /etc/apt/keyrings
+
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.27/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+sudo apt-get update
+```
+### To see the new version labels
+```
+sudo apt-cache madison kubeadm
+
+sudo apt-get install -y kubelet=1.30 kubeadm=1.30 kubectl=1.30
+
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+# in master node
+```
+ifconfig eth0
+
+kubeadm init --apiserver-cert-extra-sans=controlplane --apiserver-advertise-address  192.168.129.135 --pod-network-cidr=10.244.0.0/16
+```
+
+### control plane 
+
 ```
 #!/bin/bash
 
