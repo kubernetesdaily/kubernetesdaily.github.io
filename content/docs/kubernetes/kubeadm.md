@@ -5,7 +5,7 @@ slug: "kubeadm"
 weight: 3
 ---
 
-````
+```
 #!/bin/bash
 
 # Step 04 ) Cluster Creation : https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/
@@ -76,7 +76,8 @@ sudo kubeadm join 192.168.56.11:6443 --token rfmw9v.exud3pc7riu0vnb4 \
 
 
 
-> NOTE 
+### NOTE
+
 ```
 #!/bin/bash
 
@@ -121,7 +122,7 @@ sangam@sangam:~$ kubectl get nodes -o wide
 
 ```
 
-> if your using containerd install
+## if your using containerd install
 
 ```
 # Configure persistent loading of modules
