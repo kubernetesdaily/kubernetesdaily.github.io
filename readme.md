@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <td colspan="4" align="center">
-        <a href="https://github.com/sponsors/coreybutler"><img src="https://img.shields.io/github/sponsors/sangam14?label=Individual%20Sponsors&logo=github&style=social"/></a>
+        <a href="https://github.com/sponsors/sangam14"><img src="https://img.shields.io/github/sponsors/sangam14?label=Individual%20Sponsors&logo=github&style=social"/></a>
         &nbsp;<a href="https://github.com/sponsors/sangam14"><img src="https://img.shields.io/badge/-Become%20a%20Sponsor-yellow"/></a>
       </td>
     </tr>
