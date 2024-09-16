@@ -1,35 +1,7 @@
 ![](/assets/images/logos/logo.png) 
 <p> <center> <strong> Demystifying Container and Orchestration Ecosystem </strong> </center> </p>
 <div style="text-align: center;">
-<center> <strong> <a href="https://discord.gg/vs7GfMzJQq" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius: 5px;">Join CloudNativeFolks Community</a> </strong></center>
-</div>
-
-
-<h5 align="center">Sponsors</h5>
-
-<div align="center">
-  <table cellpadding="5" cellspacing="0" border="0" align="center">
-    <tr>
-      <td>Available Slots 1 </td>
-      <td>Available Slots 2  </a></td>
-      <td> Available Slots 3  </a></td>
-      <td width="25%" align="center"> Available Slots 4 </a></td>
-    </tr>
-    <tr>
-      <td colspan="4" align="center">
-        <a href="https://github.com/sponsors/sangam14"><img src="https://img.shields.io/github/sponsors/sangam14?label=Individual%20Sponsors&logo=github&style=social"/></a>
-        &nbsp;<a href="https://github.com/sponsors/sangam14"><img src="https://img.shields.io/badge/-Become%20a%20Sponsor-yellow"/></a>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="4" align="center">
-        <img src="https://github.blog/wp-content/uploads/2020/09/github-stars-logo_Color.png" width="50"/><br/>
-        <b>Can't sponsor?</b><br/>Consider <a href="https://stars.github.com/nominate/" target="_blank">nominating @sangam14 for a Github star</a>.
-      </td>
-    </tr>
-  </table>
-</div>
-<br/>
+<center> <strong> <a href="https://discord.gg/vs7GfMzJQq" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; border-radius
 
 
 ### The Ultimate ContainerD Workshop 
