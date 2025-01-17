@@ -221,3 +221,45 @@ sangam@sangam:~$ sudo ctr run --cni --runtime io.containerd.run.kata.v2 -t --rm 
 
 ```
 
+
+
+### Configure with Docker 
+```
+sam@sam:~$ cat <<EOF | sudo tee "/usr/bin/containerd-shim-kata_$(echo "$VERSION" | sed 's/\./_/g')-v2" > /dev/null
+#!/bin/sh
+export KATA_CONF_FILE="$DIR/share/defaults/kata-containers/configuration.toml"
+export PATH="$DIR/bin:\$PATH"
+exec $DIR/bin/containerd-shim-kata-v2 "\$@"
+EOF
+
+sudo chmod +x "/usr/bin/containerd-shim-kata_$(echo "$VERSION" | sed 's/\./_/g')-v2"
+[sudo] password for sam: 
+sam@sam:~$ cat <<EOF | sudo tee "/usr/bin/kata-runtime-$VERSION" > /dev/null
+#!/bin/sh
+export KATA_CONF_FILE="$DIR/share/defaults/kata-containers/configuration.toml"
+export PATH="$DIR/bin:\$PATH"
+exec $DIR/bin/kata-runtime "\$@"
+EOF
+
+sudo chmod +x "/usr/bin/kata-runtime-$VERSION"
+sam@sam:~$ echo "io.containerd.run.kata_$(echo "$VERSION" | sed 's/\./_/g').v2"
+io.containerd.run.kata_.v2
+sam@sam:~$ sudo docker run -d --name nginx nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+7ce705000c39: Pull complete 
+b3e9225c8fca: Pull complete 
+2b39a3d0829e: Pull complete 
+6d24e34787c7: Pull complete 
+066d623ff8e6: Pull complete 
+49486a4a61a6: Pull complete 
+34d83bb3522a: Pull complete 
+Digest: sha256:0a399eb16751829e1af26fea27b20c3ec28d7ab1fb72182879dcae1cca21206a
+Status: Downloaded newer image for nginx:latest
+421ac9fbcf95ed8360f4b76fe230effd619ce993c64d9f3d7e5dfd248f655689
+
+```
+
+
+
+
