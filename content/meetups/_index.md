@@ -1,5 +1,5 @@
 ---
 title: "Meetups"
 url: "Meetups/"
-Date:  "January 2, 2006" 
+date: "2025-03-27T00:00:00Z"
 ---

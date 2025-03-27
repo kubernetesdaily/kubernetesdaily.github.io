@@ -311,18 +311,18 @@ tocBtn.addEventListener('hidden.bs.dropdown', event => {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
 
-  // ns-params:@params
-  var params_default;
-  var init_params = __esm({
-    "ns-params:@params"() {
-      params_default = { langPath: "//localhost:1313/docs/js/components/" };
+  // ns-hugo-params:<stdin>
+  var stdin_default;
+  var init_stdin = __esm({
+    "ns-hugo-params:<stdin>"() {
+      stdin_default = { langPath: "//localhost:1313/docs/js/components/" };
     }
   });
 
   // <stdin>
   var require_stdin = __commonJS({
     "<stdin>"(exports, module) {
-      init_params();
+      init_stdin();
       var _self = typeof window !== "undefined" ? window : typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope ? self : {};
       var Prism = function(_self2) {
         var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
@@ -2491,7 +2491,7 @@ tocBtn.addEventListener('hidden.bs.dropdown', event => {
         );
         var lang_data = {};
         var ignored_language = "none";
-        var languages_path = params_default.langPath;
+        var languages_path = stdin_default.langPath;
         var script = Prism.util.currentScript();
         if (script) {
           var autoloaderFile = /\bplugins\/autoloader\/prism-autoloader\.(?:min\.)?js(?:\?[^\r\n/]*)?$/i;
