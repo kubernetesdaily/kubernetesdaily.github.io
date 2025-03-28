@@ -1588,8 +1588,8 @@ z"/>
     
 </nav>
 
-                    <main class="page-content bg-transparent">
-                        
+                <main class="page-content bg-transparent">
+                    
 <div id="top-header" class="top-header d-print-none">
     <div class="header-bar d-flex justify-content-between">
         <div class="d-flex align-items-center">
@@ -3395,10 +3395,10 @@ z"/>
     
 </div>
 
-                            <div class="container-fluid">
-                                <div class="layout-spacing">
-                                    
-                                        <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
+                    <div class="container-fluid">
+                        <div class="layout-spacing">
+                            
+                            <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
     <ul id="breadcrumbs" class="breadcrumb bg-transparent mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
         
             
@@ -3425,10 +3425,10 @@ z"/>
         
     </ul>
 </nav></div>
-                                    
-                                    <div class="row flex-xl-nowrap">
-                                        
-                                        <div class="docs-toc col-xl-3    d-xl-block"><toc>
+                            
+                            <div class="row flex-xl-nowrap">
+                                
+                                <div class="docs-toc col-xl-3 d-xl-block"><toc>
     <div class="fw-bold text-uppercase mb-2">On this page</div>
     <nav id="toc">
   <ul>
@@ -3448,12 +3448,13 @@ z"/>
   </ul>
 </nav>
     </toc></div>
-                                        
-                                        
-                                        <div class="docs-toc-mobile    d-print-none d-xl-none">
-                                            <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
-                                                Table of Contents
-                                            </button>
+                                
+
+                                
+                                <div class="docs-toc-mobile d-print-none d-xl-none">
+                                    <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                                        Table of Contents
+                                    </button>
 <nav id="toc-mobile">
   <ul class="dropdown-menu">
     <li>
@@ -3471,23 +3472,25 @@ z"/>
     </li>
   </ul>
 </nav></div>
-                                        <div class="docs-content col-12 col-xl-9 mt-0">
-                                            <div class="mb-0 d-flex">
-                                                
-                                                <i class="material-icons title-icon me-2">article</i>
-                                                
-                                                <h1 class="content-title mb-0">
-                                                    Docker host security configurations
-                                                    
-                                                </h1>
-                                            </div>
+                                
+
+                                <div class="docs-content col-12 col-xl-9 mt-0">
+                                    <div class="mb-0 d-flex">
+                                        
+                                        <i class="material-icons title-icon me-2">article</i>
+                                        
+                                        <h1 class="content-title mb-0">
+                                            Docker host security configurations
                                             
-                                                <p class="lead mb-3"></p>
-                                            
-                                            <div id="content" class="main-content" data-bs-spy="scroll" data-bs-root-margin="0px 0px -65%" data-bs-target="#toc-mobile">
-                                                
+                                        </h1>
+                                    </div>
+                                    
+                                    <p class="lead mb-3"></p>
+                                    
+                                    <div id="content" class="main-content" data-bs-spy="scroll" data-bs-root-margin="0px 0px -65%" data-bs-target="#toc-mobile">
+                                        
     
-    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+    <div class="main-content-area" data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
         <h2 id="seccomp-and-apparmor">SecComp and AppArmor <a href="#seccomp-and-apparmor" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h2><p>Docker works with major Linux MAC technologies such as AppArmor and SELinux.</p>
 <p>Depending on your Linux distribution, Docker applies a default AppArmor profile to all new containers. According to the Docker documentation, this default profile is “moderately protective while providing wide application compatibility”.</p>
 <p>Docker also lets you start containers without a policy applied, as well as giving you the ability to customize policies to meet specific requirements. This is also very powerful, but can also be prohibitively complex.</p>
@@ -4681,8 +4684,8 @@ apparmor profile will be remain loaded .</p>
     
 
     
-                                            </div>
-                                            <div><hr class="doc-hr">
+                                    </div>
+                                    <div><hr class="doc-hr">
 <div id="doc-nav" class="d-print-none">
 
 	<div class="row flex-xl-nowrap ">
@@ -4710,10 +4713,10 @@ apparmor profile will be remain loaded .</p>
         </div>
 	</div>
 </div></div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 <footer class="shadow py-3 d-print-none">
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -4738,13 +4741,15 @@ apparmor profile will be remain loaded .</p>
 
         
         
-        <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24"><path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff"/></svg></button>
+        <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24">
+                <path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff" />
+            </svg></button>
         
         
 
         
         
-            <script>(()=>{var e=document.getElementById("mode");e!==null&&(window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",e=>{e.matches?(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")):(localStorage.setItem("theme","light"),document.documentElement.removeAttribute("data-dark-mode"))}),e.addEventListener("click",()=>{document.documentElement.toggleAttribute("data-dark-mode"),localStorage.setItem("theme",document.documentElement.hasAttribute("data-dark-mode")?"dark":"light")}),localStorage.getItem("theme")==="dark"?document.documentElement.setAttribute("data-dark-mode",""):document.documentElement.removeAttribute("data-dark-mode"))})()</script>
+        <script>(()=>{var e=document.getElementById("mode");e!==null&&(window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",e=>{e.matches?(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")):(localStorage.setItem("theme","light"),document.documentElement.removeAttribute("data-dark-mode"))}),e.addEventListener("click",()=>{document.documentElement.toggleAttribute("data-dark-mode"),localStorage.setItem("theme",document.documentElement.hasAttribute("data-dark-mode")?"dark":"light")}),localStorage.getItem("theme")==="dark"?document.documentElement.setAttribute("data-dark-mode",""):document.documentElement.removeAttribute("data-dark-mode"))})()</script>
         
 
 

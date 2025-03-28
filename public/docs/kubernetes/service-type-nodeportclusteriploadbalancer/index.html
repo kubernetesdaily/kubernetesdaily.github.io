@@ -1585,8 +1585,8 @@ z"/>
     
 </nav>
 
-                    <main class="page-content bg-transparent">
-                        
+                <main class="page-content bg-transparent">
+                    
 <div id="top-header" class="top-header d-print-none">
     <div class="header-bar d-flex justify-content-between">
         <div class="d-flex align-items-center">
@@ -3392,10 +3392,10 @@ z"/>
     
 </div>
 
-                            <div class="container-fluid">
-                                <div class="layout-spacing">
-                                    
-                                        <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
+                    <div class="container-fluid">
+                        <div class="layout-spacing">
+                            
+                            <div class="d-md-flex justify-content-between align-items-center"><nav aria-label="breadcrumb" class="d-inline-block pb-2 mt-1 mt-sm-0">
     <ul id="breadcrumbs" class="breadcrumb bg-transparent mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
         
             
@@ -3422,10 +3422,10 @@ z"/>
         
     </ul>
 </nav></div>
-                                    
-                                    <div class="row flex-xl-nowrap">
-                                        
-                                        <div class="docs-toc col-xl-3    d-xl-block"><toc>
+                            
+                            <div class="row flex-xl-nowrap">
+                                
+                                <div class="docs-toc col-xl-3 d-xl-block"><toc>
     <div class="fw-bold text-uppercase mb-2">On this page</div>
     <nav id="toc">
   <ul>
@@ -3444,12 +3444,13 @@ z"/>
   </ul>
 </nav>
     </toc></div>
-                                        
-                                        
-                                        <div class="docs-toc-mobile    d-print-none d-xl-none">
-                                            <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
-                                                Table of Contents
-                                            </button>
+                                
+
+                                
+                                <div class="docs-toc-mobile d-print-none d-xl-none">
+                                    <button id="toc-dropdown-btn" class="btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-offset="0,0" aria-expanded="false">
+                                        Table of Contents
+                                    </button>
 <nav id="toc-mobile">
   <ul class="dropdown-menu">
     <li>
@@ -3466,23 +3467,25 @@ z"/>
     </li>
   </ul>
 </nav></div>
-                                        <div class="docs-content col-12 col-xl-9 mt-0">
-                                            <div class="mb-0 d-flex">
-                                                
-                                                <i class="material-icons title-icon me-2">article</i>
-                                                
-                                                <h1 class="content-title mb-0">
-                                                    Service Type - NodePort,ClusterIP,LoadBalancer 
-                                                    
-                                                </h1>
-                                            </div>
+                                
+
+                                <div class="docs-content col-12 col-xl-9 mt-0">
+                                    <div class="mb-0 d-flex">
+                                        
+                                        <i class="material-icons title-icon me-2">article</i>
+                                        
+                                        <h1 class="content-title mb-0">
+                                            Service Type - NodePort,ClusterIP,LoadBalancer 
                                             
-                                                <p class="lead mb-3">kubernetes Service</p>
-                                            
-                                            <div id="content" class="main-content" data-bs-spy="scroll" data-bs-root-margin="0px 0px -65%" data-bs-target="#toc-mobile">
-                                                
+                                        </h1>
+                                    </div>
+                                    
+                                    <p class="lead mb-3">kubernetes Service</p>
+                                    
+                                    <div id="content" class="main-content" data-bs-spy="scroll" data-bs-root-margin="0px 0px -65%" data-bs-target="#toc-mobile">
+                                        
     
-    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+    <div class="main-content-area" data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
         <h4 id="service-type1-nodeport">Service Type1: NodePort <a href="#service-type1-nodeport" class="anchor" aria-hidden="true"><i class="material-icons align-middle">link</i></a></h4><p>NodePort service helps expose the Service on each Node’s IP at a static port (the NodePort). NodePort The port is available to all the workers in the cluster. A ClusterIP Service, to which the NodePort Service routes are automatically created. One would be able to contact the NodePort Service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
 The port on the POD is called the targetPort and the one connecting the NodePort service to the POD is called port.
 All this means if any request coming into port 30080 to the cluster on any worker node will be forwarded to the “Node Port Service,” which in turn will forward the request to the underlying Pod at port 80.</p>
@@ -4201,8 +4204,8 @@ service/nginx-svc    LoadBalancer   10.104.216.130   192.168.49.100   80:31150/T
     
 
     
-                                            </div>
-                                            <div><hr class="doc-hr">
+                                    </div>
+                                    <div><hr class="doc-hr">
 <div id="doc-nav" class="d-print-none">
 
 	<div class="row flex-xl-nowrap ">
@@ -4230,10 +4233,10 @@ service/nginx-svc    LoadBalancer   10.104.216.130   192.168.49.100   80:31150/T
         </div>
 	</div>
 </div></div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 <footer class="shadow py-3 d-print-none">
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -4258,13 +4261,15 @@ service/nginx-svc    LoadBalancer   10.104.216.130   192.168.49.100   80:31150/T
 
         
         
-        <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24"><path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff"/></svg></button>
+        <button onclick="topFunction()" id="back-to-top" aria-label="Back to Top Button" class="back-to-top fs-5"><svg width="24" height="24">
+                <path d="M12,10.224l-6.3,6.3L4.32,15.152,12,7.472l7.68,7.68L18.3,16.528Z" style="fill:#fff" />
+            </svg></button>
         
         
 
         
         
-            <script>(()=>{var e=document.getElementById("mode");e!==null&&(window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",e=>{e.matches?(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")):(localStorage.setItem("theme","light"),document.documentElement.removeAttribute("data-dark-mode"))}),e.addEventListener("click",()=>{document.documentElement.toggleAttribute("data-dark-mode"),localStorage.setItem("theme",document.documentElement.hasAttribute("data-dark-mode")?"dark":"light")}),localStorage.getItem("theme")==="dark"?document.documentElement.setAttribute("data-dark-mode",""):document.documentElement.removeAttribute("data-dark-mode"))})()</script>
+        <script>(()=>{var e=document.getElementById("mode");e!==null&&(window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",e=>{e.matches?(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")):(localStorage.setItem("theme","light"),document.documentElement.removeAttribute("data-dark-mode"))}),e.addEventListener("click",()=>{document.documentElement.toggleAttribute("data-dark-mode"),localStorage.setItem("theme",document.documentElement.hasAttribute("data-dark-mode")?"dark":"light")}),localStorage.getItem("theme")==="dark"?document.documentElement.setAttribute("data-dark-mode",""):document.documentElement.removeAttribute("data-dark-mode"))})()</script>
         
 
 
