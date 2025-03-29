@@ -1,7 +1,7 @@
 {{ define "main" }}
-    <!-- Override Prism's default copy messages to 'empty'. Required by CSS styling.
-         See: https://prismjs.com/plugins/copy-to-clipboard/#styling -->
-    <div class="main-content-area" data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
+    <!-- override Prism's default copy messages to 'empty'. Required by CSS styling.
+         see: https://prismjs.com/plugins/copy-to-clipboard/#styling -->
+    <div data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-error="">
         {{ .Content }}
     </div>
 
@@ -10,16 +10,24 @@
     {{ end -}}
 
     {{ if .Page.Store.Get "hasMermaid" }}
-        {{ $mermaid := resources.Get (printf "%s/%s" ($.Scratch.Get "pathName") "js/mermaid.min.js") }}
-        {{ if hugo.IsProduction }}
-            {{ $mermaid = $mermaid | fingerprint "sha384" }}
-        {{ end }}
-        <script src="{{ $mermaid.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $mermaid.Data.Integrity }}"{{ end }}></script>
-        <script src="/js/mermaid-init.js"></script>
+    {{ $mermaid := resources.Get (printf "%s/%s" ($.Scratch.Get "pathName") "js/mermaid.min.js") }}
+    {{ if hugo.IsProduction }}
+        {{ $mermaid = $mermaid | fingerprint "sha384" }}
+    {{ end }}
+    <script src="{{ $mermaid.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $mermaid.Data.Integrity }}"{{ end }}></script>
+    <script>
+        const config = {
+            startOnLoad:true,
+            logLevel: "error",
+            align: "center",
+            theme:"null"
+        };
+        mermaid.initialize(config);
+    </script>
     {{ end }}
 
     {{ if .Site.Params.feedback.enabled | default false -}}
-        {{ if or (.Site.Params.plausible.dataDomain) (.Site.GoogleAnalytics) }}
+        {{ if or (.Site.Params.plausible.dataDomain) (.Site.Config.Services.GoogleAnalytics.ID) }}
             {{- partial (printf "%s/%s" ($.Scratch.Get "pathName") "footer/feedback.html") . -}}
         {{ else }}
             {{ errorf "Either Google Analytics or Plausible Analytics must be configured before enabling the Feedback Widget." }}
