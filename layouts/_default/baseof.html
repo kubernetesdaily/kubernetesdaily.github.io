@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {{ $.Scratch.Delete "social_list" }}
 <!-- social_list -->
-{{ $social_params := slice "github" "twitter" "instagram" "rss" }}
+{{ $social_params := slice "github" "twitter" "bluesky" "instagram" "rss" }}
 {{ range $social_params }}
     {{ if isset site.Params.social . }}
         {{ $.Scratch.Add "social_list" (slice .) }}
@@ -45,7 +45,7 @@ If so, collect and consolidate the items config from each enabled instance
             <script type="text/javascript" src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
         {{- else }}
             {{- $js := (slice $app) | resources.Concat "/js/bundle.js" }}
-            <script type="text/javascript" src="{{ $js.Permalink }}"></script>
+            <script type="text/javascript" src="{{ $js.Permalink }}" {{ if hugo.IsProduction }}integrity="{{ $js.Data.Integrity }}"{{ end }}></script>
         {{- end }}
 
         <!-- Image Compare Viewer Config -->
@@ -56,15 +56,7 @@ If so, collect and consolidate the items config from each enabled instance
                 {{ (delimit ($ic.Get `config`) `,`) | safeJS }}
             ];
             viewers.forEach((element, i) => {
-                if (configs[i]) {
-                    try {
-                        let view = new ImageCompare(element, configs[i]).mount();
-                    } catch (error) {
-                        console.error(`Error mounting ImageCompare for element ${i}:`, error);
-                    }
-                } else {
-                    console.warn(`No configuration found for ImageCompare element at index ${i}.`);
-                }
+                let view = new ImageCompare(element, configs[i]).mount();
             });
         </script>
         {{ end }}
