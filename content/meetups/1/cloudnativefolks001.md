@@ -1,15 +1,14 @@
 ---
-title: "CloudNativeFolks Meetup 001 : ContainerD"
+Date: 2024-04-06T00:00:00Z
+title: 'CloudNativeFolks Meetup 001 : ContainerD'
 weight: 1
-Date : 2024-04-06
 ---
 
 ## Event Details
 
 - **When**: April 6, 2024
 - **Where**: GeekyAnts India Pvt Ltd
-Bannerghatta Main Road, BTM Layout, 2nd Stage, 2nd Main Road, , No 18 First floor · Bengaluru
-
+   Bannerghatta Main Road, BTM Layout, 2nd Stage, 2nd Main Road, , No 18 First floor · Bengaluru
 
 ## Schedule
 
@@ -46,4 +45,4 @@ Learn about ContainerD in Depth
   </tr>
 </table>
 
-Join Community 
+Join Community

@@ -1,40 +1,281 @@
 {{ define "main" }}
-    <div class="row">
-        {{ range .Pages }}
-            <!-- Use Bootstrap's responsive grid system -->
-
-            <div class="col-lg-4 col-md-6 mb-30px card-group">
-                <div class="card h-100">
-                    <div class="maxthumb">
-                    
-                      {{ if isset .Params "thumbnail" }}
-                        <a href="{{ .RelPermalink }}"><img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL  }}" alt="{{ .Title }}"></a>
-                      {{ end }}
- 
-
-                    </div>
-                    <div class="card-body">
-                        <h2 class="card-title"><a class="text-dark" href="{{ .RelPermalink  }}">{{ .Title }}</a></h2>
-                             
-                    </div>
-                    <div class="card-footer bg-white">
-                        <div class="wrapfooter">
-                            {{if isset .Site.Params "author"}}
-                            {{if isset .Site.Params "author_thumb"}}
-                                <span class="meta-footer-thumb">
-                                <img class="author-thumb" src="{{ .Site.Params.author_thumb | urlize | relURL  }}" alt="{{ .Site.Params.author }}">
-                                </span>                
-                                <span class="author-meta">
-                                <span class="post-name">{{ .Site.Params.author }}</a></span><br/>
-                            {{end}}
-                            {{end}}
-                            <span class="post-date">{{ dateFormat "Jan 2, 2006" .PublishDate }} - {{ .ReadingTime }} min read </span>
-                            <span class="post-read-more"><a href="{{ .Permalink }}" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path></svg></a></span>
-                            <div class="clearfix"></div>
+<div class="container py-5">
+    <!-- Featured Posts Section -->
+    {{ $featuredPosts := where .Pages "Params.featured" true }}
+    {{ if $featuredPosts }}
+    <div class="row g-4 mb-5">
+        {{ range first 3 $featuredPosts }}
+        <div class="col-lg-4">
+            <div class="card featured-card h-100 shadow-sm hover-shadow border-0">
+                <div class="card-img-wrapper">
+                    {{ if isset .Params "thumbnail" }}
+                        <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" 
+                             alt="{{ .Title }}" style="height: 240px; object-fit: cover;">
+                    {{ else }}
+                        <div class="bg-primary bg-gradient text-white text-center py-5" style="height: 240px;">
+                            <i class="material-icons featured-icon">featured_play_list</i>
+                        </div>
+                    {{ end }}
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);">
+                        <h3 class="card-title text-white mb-2">{{ .Title }}</h3>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary me-2">Featured</span>
+                            {{ if isset .Params "category" }}
+                                <span class="badge bg-light text-dark">{{ .Params.category }}</span>
+                            {{ end }}
                         </div>
                     </div>
                 </div>
+                
+                <div class="card-body">
+                    {{ if .Summary }}
+                        <p class="card-text">{{ .Summary | truncate 120 }}</p>
+                    {{ end }}
+                    
+                    <div class="d-flex align-items-center text-muted mt-3">
+                        <div class="me-3">
+                            <i class="material-icons me-1">schedule</i>
+                            <span>{{ dateFormat "Jan 2, 2006" .PublishDate }}</span>
+                        </div>
+                        <div>
+                            <i class="material-icons me-1">timer</i>
+                            <span>{{ .ReadingTime }} min read</span>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+                </div>
             </div>
+        </div>
         {{ end }}
     </div>
+    {{ end }}
+
+    <!-- Main Content -->
+    <div class="row g-4">
+        {{ range .Pages }}
+        <div class="col-lg-4 col-md-6 article-card">
+            <div class="card h-100 shadow-sm hover-shadow border-0">
+                <div class="card-img-wrapper">
+                    {{ if isset .Params "thumbnail" }}
+                        <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" 
+                             alt="{{ .Title }}" style="height: 200px; object-fit: cover;">
+                    {{ else }}
+                        <div class="bg-light text-center py-5" style="height: 200px;">
+                            {{ $icon := "article" }}
+                            {{ if eq .Params.category "Kubernetes" }}{{ $icon = "cloud_queue" }}
+                            {{ else if eq .Params.category "Cloud Native" }}{{ $icon = "cloud_done" }}
+                            {{ else if eq .Params.category "DevOps" }}{{ $icon = "settings_suggest" }}
+                            {{ else if eq .Params.category "Tutorials" }}{{ $icon = "school" }}
+                            {{ end }}
+                            <i class="material-icons category-icon">{{ $icon }}</i>
+                        </div>
+                    {{ end }}
+                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
+                        <h3 class="card-title text-white mb-2">{{ .Title }}</h3>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                        {{ if isset .Params "category" }}
+                            <span class="badge bg-secondary">{{ .Params.category }}</span>
+                        {{ end }}
+                        {{ if isset .Params "tags" }}
+                            {{ range .Params.tags }}
+                                <span class="badge bg-light text-dark">{{ . }}</span>
+                            {{ end }}
+                        {{ end }}
+                    </div>
+
+                    {{ if .Summary }}
+                        <p class="card-text">{{ .Summary | truncate 120 }}</p>
+                    {{ end }}
+                    
+                    <div class="d-flex align-items-center text-muted mt-3">
+                        <div class="me-3">
+                            <i class="material-icons me-1">schedule</i>
+                            <span>{{ dateFormat "Jan 2, 2006" .PublishDate }}</span>
+                        </div>
+                        <div>
+                            <i class="material-icons me-1">timer</i>
+                            <span>{{ .ReadingTime }} min read</span>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+/* Card Styles */
+.card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ffffff;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hover-shadow {
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hover-shadow:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-img-overlay {
+    padding: 1.5rem;
+    pointer-events: none;
+}
+
+/* Typography */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Featured Card */
+.featured-card .card-img-top,
+.featured-card .bg-gradient {
+    height: 240px !important;
+}
+
+.featured-icon {
+    font-size: 64px !important;
+    margin-top: 2rem;
+}
+
+.category-icon {
+    font-size: 48px;
+    margin-top: 2rem;
+    color: #4a5568;
+}
+
+/* Badges and Tags */
+.badge {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+}
+
+.badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #1a202c !important;
+    backdrop-filter: blur(4px);
+}
+
+.badge.bg-primary {
+    background: linear-gradient(45deg, #3182ce, #2c5282) !important;
+}
+
+.badge.bg-secondary {
+    background: linear-gradient(45deg, #4a5568, #2d3748) !important;
+}
+
+/* Icons and Metadata */
+.material-icons {
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.text-muted {
+    color: #718096 !important;
+    font-size: 0.875rem;
+}
+
+/* Background Colors */
+.bg-light {
+    background-color: #f7fafc !important;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #3182ce, #2c5282) !important;
+}
+
+/* Container Spacing */
+.container {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+.article-card {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.article-card:nth-child(1) { animation-delay: 0.1s; }
+.article-card:nth-child(2) { animation-delay: 0.2s; }
+.article-card:nth-child(3) { animation-delay: 0.3s; }
+.article-card:nth-child(4) { animation-delay: 0.4s; }
+.article-card:nth-child(5) { animation-delay: 0.5s; }
+.article-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    .badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .container {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+</style>
 {{ end }}

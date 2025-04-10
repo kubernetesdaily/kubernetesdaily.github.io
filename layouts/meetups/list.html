@@ -1,40 +1,65 @@
 {{ define "main" }}
-    <div class="row">
+<div class="container py-5">
+    <h1 class="text-center mb-5">Meetups and Events</h1>
+    <div class="row g-4">
         {{ range .Pages }}
-            <!-- Use Bootstrap's responsive grid system -->
-
-            <div class="col-lg-4 col-md-6 mb-30px card-group">
-                <div class="card h-100">
-                    <div class="maxthumb">
-                    
-                      {{ if isset .Params "thumbnail" }}
-                        <a href="{{ .RelPermalink }}"><img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL  }}" alt="{{ .Title }}"></a>
-                      {{ end }}
- 
-
-                    </div>
-                    <div class="card-body">
-                        <h2 class="card-title"><a class="text-dark" href="{{ .RelPermalink  }}">{{ .Title }}</a></h2>
-                             
-                    </div>
-                    <div class="card-footer bg-white">
-                        <div class="wrapfooter">
-                            {{if isset .Site.Params "author"}}
-                            {{if isset .Site.Params "author_thumb"}}
-                                <span class="meta-footer-thumb">
-                                <img class="author-thumb" src="{{ .Site.Params.author_thumb | urlize | relURL  }}" alt="{{ .Site.Params.author }}">
-                                </span>                
-                                <span class="author-meta">
-                                <span class="post-name">{{ .Site.Params.author }}</a></span><br/>
-                            {{end}}
-                            {{end}}
-                            <span class="post-date">{{ dateFormat "Jan 2, 2006" .PublishDate }} - {{ .ReadingTime }} min read </span>
-                            <span class="post-read-more"><a href="{{ .Permalink }}" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path></svg></a></span>
-                            <div class="clearfix"></div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm hover-shadow">
+                    {{ if isset .Params "thumbnail" }}
+                        <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" alt="{{ .Title }}" style="height: 200px; object-fit: cover;">
+                    {{ else }}
+                        <div class="bg-light text-center py-5">
+                            <i class="material-icons" style="font-size: 48px;">event</i>
                         </div>
+                    {{ end }}
+                    
+                    <div class="card-body">
+                        <h3 class="card-title h5">
+                            <a href="{{ .RelPermalink }}" class="text-decoration-none text-dark stretched-link">{{ .Title }}</a>
+                        </h3>
+                        
+                        {{ if isset .Params "date" }}
+                            <p class="text-muted mb-2">
+                                <i class="material-icons align-middle" style="font-size: 16px;">calendar_today</i>
+                                {{ .Date.Format "January 2, 2006" }}
+                            </p>
+                        {{ end }}
+                        
+                        {{ if isset .Params "location" }}
+                            <p class="text-muted mb-2">
+                                <i class="material-icons align-middle" style="font-size: 16px;">location_on</i>
+                                {{ .Params.location }}
+                            </p>
+                        {{ end }}
+                        
+                        <div class="mt-3">
+                            {{ if isset .Params "tags" }}
+                                {{ range .Params.tags }}
+                                    <span class="badge bg-primary me-1">{{ . }}</span>
+                                {{ end }}
+                            {{ end }}
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="{{ .RelPermalink }}" class="btn btn-outline-primary btn-sm">Learn More</a>
                     </div>
                 </div>
             </div>
         {{ end }}
     </div>
+</div>
+
+<style>
+.hover-shadow {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.hover-shadow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.card-title {
+    line-height: 1.4;
+}
+</style>
 {{ end }}
