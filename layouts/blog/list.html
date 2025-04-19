@@ -1,133 +1,382 @@
 {{ define "main" }}
-<div class="container py-5">
-    <!-- Featured Posts Section -->
-    {{ $featuredPosts := where .Pages "Params.featured" true }}
-    {{ if $featuredPosts }}
-    <div class="row g-4 mb-5">
-        {{ range first 3 $featuredPosts }}
-        <div class="col-lg-4">
-            <div class="card featured-card h-100 shadow-sm hover-shadow border-0">
-                <div class="card-img-wrapper">
-                    {{ if isset .Params "thumbnail" }}
-                        <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" 
-                             alt="{{ .Title }}" style="height: 240px; object-fit: cover;">
-                    {{ else }}
-                        <div class="bg-primary bg-gradient text-white text-center py-5" style="height: 240px;">
-                            <i class="material-icons featured-icon">featured_play_list</i>
-                        </div>
-                    {{ end }}
-                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);">
-                        <h3 class="card-title text-white mb-2">{{ .Title }}</h3>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-primary me-2">Featured</span>
-                            {{ if isset .Params "category" }}
-                                <span class="badge bg-light text-dark">{{ .Params.category }}</span>
-                            {{ end }}
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-body">
-                    {{ if .Summary }}
-                        <p class="card-text">{{ .Summary | truncate 120 }}</p>
-                    {{ end }}
-                    
-                    <div class="d-flex align-items-center text-muted mt-3">
-                        <div class="me-3">
-                            <i class="material-icons me-1">schedule</i>
-                            <span>{{ dateFormat "Jan 2, 2006" .PublishDate }}</span>
-                        </div>
-                        <div>
-                            <i class="material-icons me-1">timer</i>
-                            <span>{{ .ReadingTime }} min read</span>
-                        </div>
-                    </div>
-                    
-                    <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+<div class="blog-header py-5 mb-3">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="blog-title mb-2">Kubernetes Daily Blog</h1>
+                <p class="blog-subtitle mb-0">Insights, tutorials, and news about Kubernetes and cloud-native technologies</p>
+            </div>
+            <div class="col-lg-4 text-lg-end d-none d-lg-block">
+                <div class="header-icon">
+                    <i class="material-icons">article</i>
                 </div>
             </div>
         </div>
-        {{ end }}
-    </div>
-    {{ end }}
-
-    <!-- Main Content -->
-    <div class="row g-4">
-        {{ range .Pages }}
-        <div class="col-lg-4 col-md-6 article-card">
-            <div class="card h-100 shadow-sm hover-shadow border-0">
-                <div class="card-img-wrapper">
-                    {{ if isset .Params "thumbnail" }}
-                        <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" 
-                             alt="{{ .Title }}" style="height: 200px; object-fit: cover;">
-                    {{ else }}
-                        <div class="bg-light text-center py-5" style="height: 200px;">
-                            {{ $icon := "article" }}
-                            {{ if eq .Params.category "Kubernetes" }}{{ $icon = "cloud_queue" }}
-                            {{ else if eq .Params.category "Cloud Native" }}{{ $icon = "cloud_done" }}
-                            {{ else if eq .Params.category "DevOps" }}{{ $icon = "settings_suggest" }}
-                            {{ else if eq .Params.category "Tutorials" }}{{ $icon = "school" }}
-                            {{ end }}
-                            <i class="material-icons category-icon">{{ $icon }}</i>
-                        </div>
-                    {{ end }}
-                    <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);">
-                        <h3 class="card-title text-white mb-2">{{ .Title }}</h3>
-                    </div>
-                </div>
-                
-                <div class="card-body">
-                    <div class="d-flex flex-wrap gap-2 mb-3">
-                        {{ if isset .Params "category" }}
-                            <span class="badge bg-secondary">{{ .Params.category }}</span>
-                        {{ end }}
-                        {{ if isset .Params "tags" }}
-                            {{ range .Params.tags }}
-                                <span class="badge bg-light text-dark">{{ . }}</span>
-                            {{ end }}
-                        {{ end }}
-                    </div>
-
-                    {{ if .Summary }}
-                        <p class="card-text">{{ .Summary | truncate 120 }}</p>
-                    {{ end }}
-                    
-                    <div class="d-flex align-items-center text-muted mt-3">
-                        <div class="me-3">
-                            <i class="material-icons me-1">schedule</i>
-                            <span>{{ dateFormat "Jan 2, 2006" .PublishDate }}</span>
-                        </div>
-                        <div>
-                            <i class="material-icons me-1">timer</i>
-                            <span>{{ .ReadingTime }} min read</span>
-                        </div>
-                    </div>
-                    
-                    <a href="{{ .RelPermalink }}" class="stretched-link"></a>
-                </div>
-            </div>
-        </div>
-        {{ end }}
     </div>
 </div>
 
+<div class="container py-4">
+    <!-- Featured Posts Hero Section -->
+    {{ $featuredPosts := where .Pages "Params.featured" true }}
+    {{ if $featuredPosts }}
+    {{ $firstFeatured := index $featuredPosts 0 }}
+    <div class="featured-hero mb-5">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card featured-card main-featured h-100 shadow-sm hover-shadow border-0">
+                    <div class="card-img-wrapper">
+                        {{ if isset $firstFeatured.Params "thumbnail" }}
+                            <img class="card-img-top" src="{{ $firstFeatured.Params.thumbnail | urlize | relURL }}" 
+                                alt="{{ $firstFeatured.Title }}" style="height: 380px; object-fit: cover;">
+                        {{ else }}
+                            <div class="bg-primary bg-gradient text-white text-center d-flex flex-column justify-content-center align-items-center" style="height: 380px;">
+                                <i class="material-icons hero-icon mb-3">featured_play_list</i>
+                                <h4 class="px-4">{{ $firstFeatured.Title }}</h4>
+                            </div>
+                        {{ end }}
+                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);">
+                            <span class="badge bg-accent mb-2">Featured</span>
+                            <h2 class="hero-title text-white mb-3">{{ $firstFeatured.Title }}</h2>
+                            
+                            {{ if $firstFeatured.Summary }}
+                                <p class="card-text text-white-75 d-none d-md-block">{{ $firstFeatured.Summary | truncate 150 }}</p>
+                            {{ end }}
+                            
+                            <div class="d-flex align-items-center text-white-75 mt-2">
+                                <div class="d-flex align-items-center me-3">
+                                    <i class="material-icons me-1">schedule</i>
+                                    <span>{{ dateFormat "Jan 2, 2006" $firstFeatured.PublishDate }}</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="material-icons me-1">timer</i>
+                                    <span>{{ $firstFeatured.ReadingTime }} min read</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ $firstFeatured.RelPermalink }}" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="row g-4 h-100">
+                    {{ range first 2 (after 1 $featuredPosts) }}
+                    <div class="col-12">
+                        <div class="card featured-card side-featured h-100 shadow-sm hover-shadow border-0">
+                            <div class="card-img-wrapper">
+                                {{ if isset .Params "thumbnail" }}
+                                    <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" 
+                                        alt="{{ .Title }}" style="height: 180px; object-fit: cover;">
+                                {{ else }}
+                                    <div class="bg-primary bg-gradient text-white text-center py-4" style="height: 180px;">
+                                        <i class="material-icons featured-icon">featured_play_list</i>
+                                    </div>
+                                {{ end }}
+                                <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);">
+                                    <h3 class="card-title text-white mb-2">{{ .Title }}</h3>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-accent me-2">Featured</span>
+                                        {{ if isset .Params "category" }}
+                                            <span class="badge bg-glass">{{ .Params.category }}</span>
+                                        {{ end }}
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+    <!-- Category Tabs/Navigation -->
+    {{ $categories := slice "Kubernetes" "Cloud Native" "DevOps" "Tutorials" }}
+    <div class="category-nav mb-4">
+        <ul class="nav nav-pills category-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="#all-posts">All Posts</a>
+            </li>
+            {{ range $categories }}
+                {{ $category := . }}
+                {{ $posts := where $.Pages "Params.category" $category }}
+                {{ if $posts }}
+                <li class="nav-item">
+                    <a class="nav-link" href="#{{ $category | urlize }}">{{ $category }}</a>
+                </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div id="all-posts" class="category-section active">
+        <div class="row g-4 mb-5">
+            {{ range .Pages }}
+            <div class="col-lg-4 col-md-6 article-card">
+                <div class="card h-100 shadow-sm hover-shadow border-0">
+                    <div class="card-img-wrapper">
+                        {{ if isset .Params "thumbnail" }}
+                            <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" 
+                                alt="{{ .Title }}" style="height: 200px; object-fit: cover;">
+                        {{ else }}
+                            <div class="bg-light text-center py-5" style="height: 200px;">
+                                {{ $icon := "article" }}
+                                {{ if eq .Params.category "Kubernetes" }}{{ $icon = "cloud_queue" }}
+                                {{ else if eq .Params.category "Cloud Native" }}{{ $icon = "cloud_done" }}
+                                {{ else if eq .Params.category "DevOps" }}{{ $icon = "settings_suggest" }}
+                                {{ else if eq .Params.category "Tutorials" }}{{ $icon = "school" }}
+                                {{ end }}
+                                <i class="material-icons category-icon">{{ $icon }}</i>
+                            </div>
+                        {{ end }}
+                        <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);">
+                            <h3 class="card-title text-white mb-2">{{ .Title }}</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            {{ if isset .Params "category" }}
+                                <span class="badge bg-secondary">{{ .Params.category }}</span>
+                            {{ end }}
+                            {{ if isset .Params "tags" }}
+                                {{ range .Params.tags }}
+                                    <span class="badge bg-light text-dark">{{ . }}</span>
+                                {{ end }}
+                            {{ end }}
+                        </div>
+
+                        {{ if .Summary }}
+                            <p class="card-text">{{ .Summary | truncate 130 }}</p>
+                        {{ end }}
+                        
+                        <div class="d-flex align-items-center text-muted mt-3">
+                            <div class="d-flex align-items-center me-3">
+                                <i class="material-icons me-1">schedule</i>
+                                <span>{{ dateFormat "Jan 2, 2006" .PublishDate }}</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="material-icons me-1">timer</i>
+                                <span>{{ .ReadingTime }} min read</span>
+                            </div>
+                        </div>
+                        
+                        <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Category Sections -->
+    {{ range $categories }}
+        {{ $category := . }}
+        {{ $posts := where $.Pages "Params.category" $category }}
+        {{ if $posts }}
+        <div id="{{ $category | urlize }}" class="category-section">
+            <div class="row g-4 mb-5">
+                {{ range $posts }}
+                <div class="col-lg-4 col-md-6 article-card">
+                    <div class="card h-100 shadow-sm hover-shadow border-0">
+                        <div class="card-img-wrapper">
+                            {{ if isset .Params "thumbnail" }}
+                                <img class="card-img-top" src="{{ .Params.thumbnail | urlize | relURL }}" 
+                                    alt="{{ .Title }}" style="height: 200px; object-fit: cover;">
+                            {{ else }}
+                                <div class="bg-light text-center py-5" style="height: 200px;">
+                                    {{ $icon := "article" }}
+                                    {{ if eq .Params.category "Kubernetes" }}{{ $icon = "cloud_queue" }}
+                                    {{ else if eq .Params.category "Cloud Native" }}{{ $icon = "cloud_done" }}
+                                    {{ else if eq .Params.category "DevOps" }}{{ $icon = "settings_suggest" }}
+                                    {{ else if eq .Params.category "Tutorials" }}{{ $icon = "school" }}
+                                    {{ end }}
+                                    <i class="material-icons category-icon">{{ $icon }}</i>
+                                </div>
+                            {{ end }}
+                            <div class="card-img-overlay d-flex flex-column justify-content-end" style="background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);">
+                                <h3 class="card-title text-white mb-2">{{ .Title }}</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                {{ if isset .Params "category" }}
+                                    <span class="badge bg-secondary">{{ .Params.category }}</span>
+                                {{ end }}
+                                {{ if isset .Params "tags" }}
+                                    {{ range .Params.tags }}
+                                        <span class="badge bg-light text-dark">{{ . }}</span>
+                                    {{ end }}
+                                {{ end }}
+                            </div>
+
+                            {{ if .Summary }}
+                                <p class="card-text">{{ .Summary | truncate 130 }}</p>
+                            {{ end }}
+                            
+                            <div class="d-flex align-items-center text-muted mt-3">
+                                <div class="d-flex align-items-center me-3">
+                                    <i class="material-icons me-1">schedule</i>
+                                    <span>{{ dateFormat "Jan 2, 2006" .PublishDate }}</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="material-icons me-1">timer</i>
+                                    <span>{{ .ReadingTime }} min read</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ .RelPermalink }}" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    {{ end }}
+</div>
+
 <style>
+:root {
+    --primary-color: #2b6cb0;
+    --primary-dark: #2c5282;
+    --secondary-color: #4a5568;
+    --accent-color: #ed8936;
+    --light-bg: #f7fafc;
+    --dark-text: #1a202c;
+    --muted-text: #718096;
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --hover-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --card-radius: 16px;
+    --transition-bezier: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Blog Header */
+.blog-header {
+    background-color: var(--light-bg);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.blog-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    letter-spacing: -0.5px;
+}
+
+.blog-subtitle {
+    font-size: 1.25rem;
+    color: var(--muted-text);
+    font-weight: 400;
+}
+
+.header-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+}
+
+.header-icon .material-icons {
+    font-size: 6rem;
+}
+
+/* Hero Featured Section */
+.featured-hero .main-featured {
+    border-radius: var(--card-radius);
+}
+
+.hero-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-icon {
+    font-size: 80px !important;
+    opacity: 0.8;
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Category Navigation */
+.category-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-left: -12px;
+    margin-right: -12px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.category-pills {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+    display: flex;
+}
+
+.category-pills .nav-item {
+    margin-right: 0.5rem;
+}
+
+.category-pills .nav-link {
+    color: var(--secondary-color);
+    background-color: transparent;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.category-pills .nav-link:hover {
+    background-color: var(--light-bg);
+}
+
+.category-pills .nav-link.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Category Sections */
+.category-section {
+    display: none;
+}
+
+.category-section.active {
+    display: block;
+}
+
 /* Card Styles */
 .card {
-    border-radius: 16px;
+    border-radius: var(--card-radius);
     overflow: hidden;
     background: #ffffff;
     border: none;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.3s var(--transition-bezier);
+    will-change: transform, box-shadow;
 }
 
 .hover-shadow {
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.3s var(--transition-bezier);
 }
 
 .hover-shadow:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--hover-shadow);
 }
 
 .card-img-wrapper {
@@ -140,24 +389,34 @@
 }
 
 .card-img-top {
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.6s var(--transition-bezier);
     height: 200px;
     object-fit: cover;
     width: 100%;
 }
 
 .card-img-overlay {
-    padding: 1.5rem;
+    padding: 1.75rem;
     pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-img-overlay {
+    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.1) 100%) !important;
 }
 
 /* Typography */
 .card-title {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.4;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-title {
+    transform: translateY(-3px);
 }
 
 .card-text {
@@ -165,7 +424,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: #4a5568;
+    color: var(--muted-text);
     line-height: 1.6;
     font-size: 0.95rem;
     margin-bottom: 0;
@@ -177,15 +436,27 @@
     height: 240px !important;
 }
 
+.main-featured .card-img-top,
+.main-featured .bg-gradient {
+    height: 380px !important;
+}
+
+.side-featured .card-img-top,
+.side-featured .bg-gradient {
+    height: 180px !important;
+}
+
 .featured-icon {
     font-size: 64px !important;
     margin-top: 2rem;
+    opacity: 0.9;
 }
 
 .category-icon {
     font-size: 48px;
     margin-top: 2rem;
-    color: #4a5568;
+    color: var(--secondary-color);
+    opacity: 0.8;
 }
 
 /* Badges and Tags */
@@ -195,45 +466,62 @@
     letter-spacing: 0.3px;
     border-radius: 50px;
     font-size: 0.85rem;
+    transition: all 0.2s ease;
 }
 
 .badge.bg-light {
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    color: #1a202c !important;
-    backdrop-filter: blur(4px);
+    background-color: var(--light-bg) !important;
+    color: var(--dark-text) !important;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.badge.bg-primary {
-    background: linear-gradient(45deg, #3182ce, #2c5282) !important;
+.badge.bg-glass {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    color: white !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badge.bg-accent {
+    background: linear-gradient(45deg, var(--accent-color), #dd6b20) !important;
+    color: white;
 }
 
 .badge.bg-secondary {
-    background: linear-gradient(45deg, #4a5568, #2d3748) !important;
+    background: linear-gradient(45deg, var(--secondary-color), #2d3748) !important;
+    color: white;
+}
+
+/* Badge hover effects */
+.badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 /* Icons and Metadata */
 .material-icons {
     font-size: 16px;
-    vertical-align: middle;
+    vertical-align: text-bottom;
+    opacity: 0.75;
 }
 
 .text-muted {
-    color: #718096 !important;
+    color: var(--muted-text) !important;
     font-size: 0.875rem;
 }
 
 /* Background Colors */
 .bg-light {
-    background-color: #f7fafc !important;
+    background-color: var(--light-bg) !important;
 }
 
 .bg-gradient {
-    background: linear-gradient(135deg, #3182ce, #2c5282) !important;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
 }
 
 /* Container Spacing */
 .container {
-    padding-top: 3rem !important;
+    padding-top: 1.5rem !important;
     padding-bottom: 3rem !important;
 }
 
@@ -241,7 +529,7 @@
 @keyframes fadeIn {
     from { 
         opacity: 0; 
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to { 
         opacity: 1; 
@@ -250,16 +538,44 @@
 }
 
 .article-card {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.7s var(--transition-bezier) forwards;
     opacity: 0;
 }
 
 .article-card:nth-child(1) { animation-delay: 0.1s; }
-.article-card:nth-child(2) { animation-delay: 0.2s; }
-.article-card:nth-child(3) { animation-delay: 0.3s; }
-.article-card:nth-child(4) { animation-delay: 0.4s; }
-.article-card:nth-child(5) { animation-delay: 0.5s; }
-.article-card:nth-child(6) { animation-delay: 0.6s; }
+.article-card:nth-child(2) { animation-delay: 0.15s; }
+.article-card:nth-child(3) { animation-delay: 0.2s; }
+.article-card:nth-child(4) { animation-delay: 0.25s; }
+.article-card:nth-child(5) { animation-delay: 0.3s; }
+.article-card:nth-child(6) { animation-delay: 0.35s; }
+.article-card:nth-child(7) { animation-delay: 0.4s; }
+.article-card:nth-child(8) { animation-delay: 0.45s; }
+.article-card:nth-child(9) { animation-delay: 0.5s; }
+
+/* Loading effect */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -273,9 +589,60 @@
     }
     
     .container {
-        padding-top: 2rem !important;
+        padding-top: 1.5rem !important;
         padding-bottom: 2rem !important;
+    }
+    
+    .card-img-overlay {
+        padding: 1.25rem;
+    }
+    
+    .blog-title {
+        font-size: 1.75rem;
+    }
+    
+    .blog-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem;
     }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Category tabs functionality
+    const categoryLinks = document.querySelectorAll('.category-pills .nav-link');
+    const categorySections = document.querySelectorAll('.category-section');
+    
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all links and sections
+            categoryLinks.forEach(l => l.classList.remove('active'));
+            categorySections.forEach(s => s.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Show corresponding section
+            const targetId = this.getAttribute('href').substring(1);
+            document.getElementById(targetId).classList.add('active');
+            
+            // Animate cards in the newly active section
+            const cards = document.querySelectorAll(`#${targetId} .article-card`);
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = `fadeIn 0.7s var(--transition-bezier) ${index * 0.05}s forwards`;
+                }, 50);
+            });
+        });
+    });
+});
+</script>
 {{ end }}

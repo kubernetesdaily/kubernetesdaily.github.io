@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/meetups/1/cloudnativefolks001/</loc>
-    <lastmod>2025-01-25T20:54:32+05:30</lastmod>
+    <lastmod>2025-04-10T10:31:57+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/docs/helm/install-helm/</loc>
     <lastmod>2024-03-26T07:24:31+05:30</lastmod>
@@ -369,18 +369,30 @@
     <lastmod>2025-03-28T00:03:20+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2025-03-28T00:03:20+05:30</lastmod>
+    <lastmod>2025-04-10T10:31:57+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/Meetups/</loc>
     <lastmod>2025-03-28T00:03:20+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/cloud-native/</loc>
+    <lastmod>2025-04-10T10:31:57+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/containerd/</loc>
+    <lastmod>2025-04-10T10:31:57+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2025-04-10T10:31:57+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/webassembly/</loc>
+    <lastmod>2025-04-10T10:31:57+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/workshop/</loc>
+    <lastmod>2025-04-10T10:31:57+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/beginners/</loc>
     <lastmod>2024-01-25T04:33:12+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/guide/</loc>
-    <lastmod>2024-01-25T04:33:12+05:30</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/</loc>
     <lastmod>2024-01-25T04:33:12+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/categories/</loc>

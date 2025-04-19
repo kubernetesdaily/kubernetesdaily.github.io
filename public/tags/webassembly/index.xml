@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Meetups on KubeDaily</title>
-    <link>//localhost:1313/Meetups/</link>
-    <description>Recent content in Meetups on KubeDaily</description>
+    <title>WebAssembly on KubeDaily</title>
+    <link>//localhost:1313/tags/webassembly/</link>
+    <description>Recent content in WebAssembly on KubeDaily</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 10 Apr 2025 10:31:57 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/Meetups/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/webassembly/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CloudNativeFolks Meetup 001 : ContainerD</title>
       <link>//localhost:1313/meetups/1/cloudnativefolks001/</link>

@@ -6,8 +6,36 @@
     <description>Recent content in Tags on KubeDaily</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 25 Jan 2024 04:33:12 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 10 Apr 2025 10:31:57 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloud Native</title>
+      <link>//localhost:1313/tags/cloud-native/</link>
+      <pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/cloud-native/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ContainerD</title>
+      <link>//localhost:1313/tags/containerd/</link>
+      <pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/containerd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WebAssembly</title>
+      <link>//localhost:1313/tags/webassembly/</link>
+      <pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/webassembly/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workshop</title>
+      <link>//localhost:1313/tags/workshop/</link>
+      <pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/workshop/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Beginners</title>
       <link>//localhost:1313/tags/beginners/</link>
