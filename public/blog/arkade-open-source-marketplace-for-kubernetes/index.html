@@ -825,15 +825,6 @@ t.Errorf(&#34;want: %s, got: %s&#34;, tc.url, got) }
         <div class="col-lg-4 sidebar-container">
             <div class="sticky-top" style="top: 80px;">
                 
-                <div id="tableOfContents" class="toc-container mb-5">
-                    <h4 class="toc-title">
-                        <i class="material-icons align-middle me-2">format_list_bulleted</i>
-                        Contents
-                    </h4>
-                    <div id="tocList" class="toc-list"></div>
-                </div>
-                
-                
                 <div class="share-container mb-5">
                     <h4 class="share-title mb-3">
                         <i class="material-icons align-middle me-2">share</i>
@@ -989,50 +980,6 @@ t.Errorf(&#34;want: %s, got: %s&#34;, tc.url, got) }
         max-width: 1200px;
         margin: 60px auto;
         padding: 0 1rem;
-    }
-
-     
-    .toc-container {
-        background-color: var(--light-bg);
-        border-radius: 0.5rem;
-        padding: 1.25rem;
-        position: sticky;
-        top: 80px;
-    }
-
-    .toc-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: var(--dark-text);
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .toc-list ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .toc-list li {
-        margin-bottom: 0.5rem;
-    }
-
-    .toc-list a {
-        display: block;
-        padding: 0.5rem;
-        color: var(--secondary-color);
-        text-decoration: none;
-        border-radius: 0.25rem;
-        transition: all 0.2s ease;
-        font-size: 0.9rem;
-    }
-
-    .toc-list a:hover, .toc-list a.active {
-        background-color: rgba(59, 130, 246, 0.1);
-        color: var(--primary-color);
-        transform: translateX(5px);
     }
 
      
@@ -1351,6 +1298,7 @@ t.Errorf(&#34;want: %s, got: %s&#34;, tc.url, got) }
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
+        line-clamp: 2;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
@@ -1463,63 +1411,6 @@ document.addEventListener('DOMContentLoaded', function() {
             progressBar.style.width = '0%';
         }
     });
-    
-    
-    const tocList = document.getElementById('tocList');
-    const headings = content.querySelectorAll('h2, h3');
-    
-    if (headings.length > 0) {
-        const ul = document.createElement('ul');
-        
-        headings.forEach((heading, index) => {
-            const id = `heading-${index}`;
-            heading.id = id;
-            
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = `#${id}`;
-            a.textContent = heading.textContent;
-            
-            if (heading.tagName === 'H3') {
-                a.style.paddingLeft = '1.5rem';
-                a.style.fontSize = '0.85rem';
-            }
-            
-            a.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: heading.offsetTop - 60,
-                    behavior: 'smooth'
-                });
-            });
-            
-            li.appendChild(a);
-            ul.appendChild(li);
-        });
-        
-        tocList.appendChild(ul);
-        
-        
-        const tocLinks = tocList.querySelectorAll('a');
-        
-        window.addEventListener('scroll', function() {
-            let currentId = '';
-            headings.forEach((heading) => {
-                if (window.scrollY >= heading.offsetTop - 100) {
-                    currentId = heading.id;
-                }
-            });
-            
-            tocLinks.forEach((link) => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === currentId) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    } else {
-        document.getElementById('tableOfContents').style.display = 'none';
-    }
 });
 </script>
 
