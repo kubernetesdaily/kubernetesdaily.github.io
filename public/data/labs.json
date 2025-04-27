@@ -1,0 +1,34 @@
+{
+  "labs": [
+    {
+      "id": "Learn-Containerd",
+      "title": "Learn ContainerD",
+      "description": "A comprehensive guide to ContainerD, covering its history, architecture, and practical usage in container orchestration.",
+      "category": "Containers",
+      "path": "/labs/Learn-Containerd.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["ContainerD", "Kubernetes", "Containers", "Docker", "runc"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-Docker",
+      "title": "Learn Docker",
+      "description": "A comprehensive guide to Docker, covering its history, architecture, and practical usage in container orchestration.",
+      "category": "Containers",
+      "path": "/labs/Learn-Docker.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Docker", "Containers", "Docker", "runc"],
+      "image": "/images/kubedaily_logo.webp"
+    }, 
+    {
+      "id": "Learn-Helm",
+      "title": "Learn Helm",
+      "description": "A comprehensive guide to Helm, covering its history, architecture, and practical usage in container orchestration.",
+      "category": "Containers",
+      "path": "/labs/Learn-Helm.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Helm", "Containers", "Docker", "runc"],
+      "image": "/images/kubedaily_logo.webp"
+    }
+  ]
+} 

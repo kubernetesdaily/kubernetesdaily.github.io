@@ -1,0 +1,40 @@
+{
+  "labs": [
+    {
+      "id": "data-quality-metrics",
+      "title": "Data Quality Metrics for Large Language Models",
+      "description": "A comprehensive framework for assessing and improving the quality of training data for large language models.",
+      "category": "Data Quality",
+      "path": "/labs/data-quality-metrics.md",
+      "contributors": ["alex.chen", "maria.rodriguez"],
+      "tags": ["data quality", "metrics", "LLM", "assessment"]
+    },
+    {
+      "id": "ethical-synthetic-data",
+      "title": "Ethical Considerations in Synthetic Data Generation",
+      "description": "Addressing privacy, bias, and fairness concerns in the creation and use of synthetic datasets for AI training.",
+      "category": "Ethics",
+      "path": "/labs/ethical-synthetic-data.md",
+      "contributors": ["james.wilson", "aisha.patel"],
+      "tags": ["ethics", "synthetic data", "privacy", "bias", "fairness"]
+    },
+    {
+      "id": "llm-evaluation",
+      "title": "LLM Evaluation Framework",
+      "description": "Open source methodology for evaluating large language models across multiple dimensions.",
+      "category": "Evaluation",
+      "path": "/labs/llm-evaluation.md",
+      "contributors": ["robin.zhang"],
+      "tags": ["evaluation", "LLM", "benchmarks", "methodology"]
+    },
+    {
+      "id": "reinforcement-learning",
+      "title": "Reinforcement Learning Lab",
+      "description": "Developing intelligent agents that learn optimal decision-making strategies through interaction with their environment.",
+      "category": "Reinforcement Learning",
+      "path": "/labs/reinforcement-learning.md",
+      "contributors": ["alex-kumar", "olivia-chen"],
+      "tags": ["reinforcement learning", "RL", "agents", "decision-making"]
+    }
+  ]
+} 

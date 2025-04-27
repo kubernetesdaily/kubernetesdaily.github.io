@@ -1,0 +1,74 @@
+{
+  "blogs": [
+    {
+      "id": "werf",
+      "title": "Werf: A solution for implementing efficient and consistent software",
+      "date": "May 10, 2023",
+      "excerpt": "Werf is an Open Source GitOps tool that helps to implement effective and consistent delivery pipelines with Kubernetes.",
+      "author": "Sangam Biradar",
+      "file": "/blog/werf.md",
+      "category": "CI/CD",
+      "tags": ["kubernetes", "gitops", "CI/CD", "DevOps", "containers"]
+    },
+    {
+      "id": "Okteto",
+      "title": "Okteto: Develop applications directly in your Kubernetes Cluster",
+      "date": "June 5, 2023",
+      "excerpt": "Okteto accelerates Kubernetes development by allowing you to develop applications directly in your Kubernetes cluster with fast feedback loops.",
+      "author": "Sangam Biradar",
+      "file": "/blog/Okteto.md",
+      "category": "Kubernetes",
+      "tags": ["kubernetes", "development", "cloud native", "containers", "docker-compose"]
+    },
+    {
+      "id": "k8sgpt",
+      "title": "K8sGPT: ChatGPT-based SRE for Kubernetes",
+      "date": "July 12, 2023",
+      "excerpt": "K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English using AI.",
+      "author": "Sangam Biradar",
+      "file": "/blog/k8sgpt.md",
+      "category": "Kubernetes",
+      "tags": ["kubernetes", "ChatGPT", "AI", "SRE", "troubleshooting"]
+    },
+    {
+      "id": "Flannel",
+      "title": "Flannel: A Network Fabric for Containers",
+      "date": "August 8, 2023",
+      "excerpt": "Flannel is a simple and easy way to configure a layer 3 network fabric designed for Kubernetes.",
+      "author": "Sangam Biradar",
+      "file": "/blog/Flannel.md",
+      "category": "Networking",
+      "tags": ["kubernetes", "networking", "containers", "CNI", "overlay network"]
+    },
+    {
+      "id": "cloudflared-tunnel",
+      "title": "Cloudflared Tunnel for Kubernetes",
+      "date": "September 15, 2023",
+      "excerpt": "Learn how to set up and use Cloudflare Tunnels to secure and expose your Kubernetes services to the internet.",
+      "author": "Sangam Biradar",
+      "file": "/blog/cloudflared-tunnel.md",
+      "category": "Networking",
+      "tags": ["kubernetes", "cloudflare", "tunnels", "security", "networking"]
+    },
+    {
+      "id": "CertManager",
+      "title": "Cert-Manager: Certificate Management for Kubernetes",
+      "date": "October 10, 2023",
+      "excerpt": "Cert-Manager automates the management and issuance of TLS certificates from various issuing sources in Kubernetes clusters.",
+      "author": "Sangam Biradar",
+      "file": "/blog/CertManager.md",
+      "category": "Security",
+      "tags": ["kubernetes", "certificates", "TLS", "security", "automation"]
+    },
+    {
+      "id": "arkade",
+      "title": "Arkade: The Open Source Kubernetes Marketplace",
+      "date": "November 5, 2023",
+      "excerpt": "Arkade provides a simple way to install Kubernetes apps and CLIs with a single command.",
+      "author": "Sangam Biradar",
+      "file": "/blog/arkade.md",
+      "category": "Tools",
+      "tags": ["kubernetes", "tools", "marketplace", "cli", "installation"]
+    }
+  ]
+} 
