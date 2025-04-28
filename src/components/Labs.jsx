@@ -33,10 +33,20 @@ const fallbackLabsData = [
     image: "/images/kubedaily_logo.webp"
   }, 
   {
+    id: "Learn-Kubernetes",
+    title: "Learn Kubernetes",
+    description : "A comprehensive guide to Kubernetes, covering its history, architecture, and practical usage in container orchestration.",
+    category: "Kubernetes",
+    path: "/labs/Learn-k8s.md",
+    contributors: ["Sangam Biradar"],
+    tags: ["Kubernetes", "Containers", "Docker", "runc"],
+    image: "/images/kubedaily_logo.webp"
+  },
+  {
     id: "Learn-Helm",
     title: "Learn Helm",
     description: "A comprehensive guide to Helm, covering its history, architecture, and practical usage in container orchestration.",
-    category : "Containers",
+    category : "Kubernetes",
     path: "/labs/Learn-Helm.md",
     contributors: ["Sangam Biradar"],
     tags: ["Helm", "Containers", "Docker", "runc"],

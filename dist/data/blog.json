@@ -23,12 +23,42 @@
     {
       "id": "k8sgpt",
       "title": "K8sGPT: ChatGPT-based SRE for Kubernetes",
-      "date": "July 12, 2023",
+      "date": "August 15, 2023",
       "excerpt": "K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English using AI.",
       "author": "Sangam Biradar",
       "file": "/blog/k8sgpt.md",
       "category": "Kubernetes",
       "tags": ["kubernetes", "ChatGPT", "AI", "SRE", "troubleshooting"]
+    },
+    {
+      "id": "kubernetes-tools-guide",
+      "title": "Essential Kubernetes Tools for DevOps Engineers",
+      "date": "July 20, 2023",
+      "excerpt": "A comprehensive guide to the most useful Kubernetes tools that every DevOps engineer should know about.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kubernetes-tools-guide.md",
+      "category": "Tools",
+      "tags": ["kubernetes", "devops", "tools", "cloud native"]
+    },
+    {
+      "id": "cloud-native-learning-path",
+      "title": "Cloud Native Learning Path for Beginners",
+      "date": "2023-07-15",
+      "excerpt": "A comprehensive guide to learning cloud native technologies from the ground up, covering containers, Kubernetes, DevOps practices, observability, service mesh, security, and more.",
+      "author": "Sangam Biradar",
+      "file": "/blog/cloud-native-learning-path.md",
+      "category": "Kubernetes",
+      "tags": ["cloud-native", "kubernetes", "learning", "beginners", "CNCF"]
+    },
+    {
+      "id": "kubectl-productivity-tips",
+      "title": "10 kubectl Productivity Tips and Tricks",
+      "date": "May 5, 2023",
+      "excerpt": "Boost your Kubernetes workflow with these essential kubectl productivity tips and tricks.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kubectl-productivity-tips.md",
+      "category": "Tips",
+      "tags": ["kubernetes", "kubectl", "productivity", "tips"]
     },
     {
       "id": "Flannel",
@@ -71,4 +101,4 @@
       "tags": ["kubernetes", "tools", "marketplace", "cli", "installation"]
     }
   ]
-} 
+}
