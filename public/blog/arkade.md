@@ -1,8 +1,5 @@
 
-{{< rawhtml >}}
-<a href="https://github.com/alexellis/arkade"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/alexellis/arkade.png" width="460px"></a> 
-
-{{< /rawhtml >}}
+[![alexellis/arkade](https://github-link-card.s3.ap-northeast-1.amazonaws.com/alexellis/arkade.png)](https://github.com/alexellis/arkade)
 
 ### Getting started with Arkade CLI 
 

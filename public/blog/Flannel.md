@@ -1,13 +1,8 @@
-
 title : Flannel is a network fabric for containers, designed for Kubernetes. 
 
 description : Flannel is a simple and easy way to configure a layer 3 network fabric designed for Kubernetes 
 
-
-{{< rawhtml >}}
-<center>
-<a href="https://github.com/flannel-io/flannel"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/flannel-io/flannel.png" width="460px"></a></center>
-{{< /rawhtml >}}
+[![flannel-io/flannel](https://github-link-card.s3.ap-northeast-1.amazonaws.com/flannel-io/flannel.png)](https://github.com/flannel-io/flannel)
 
 ### kubenetes networking 
 
@@ -43,7 +38,7 @@ description : Flannel is a simple and easy way to configure a layer 3 network fa
 
 ### Flannel Overlay Network 
 
-To achieve kubernetes' network requirements, flannel’s idea is simple: create another flat network which runs above the host network, this is the so-called overlay network. All containers(Pod) will be assigned one ip address in this overlay network, they communicate with each other by calling each other’s ip address directly.
+To achieve kubernetes' network requirements, flannel's idea is simple: create another flat network which runs above the host network, this is the so-called overlay network. All containers(Pod) will be assigned one ip address in this overlay network, they communicate with each other by calling each other's ip address directly.
 
 ![](./k8s-CNI-2.png)
 
