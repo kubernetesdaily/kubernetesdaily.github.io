@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-sitemap && npm run generate-rss && next build",
+    "build": "npm run generate-sitemap && npm run generate-rss && vite build",
     "preview": "vite preview",
     "generate-sitemap": "node scripts/generate-sitemap.cjs",
     "generate-rss": "node scripts/generate-rss.cjs"
