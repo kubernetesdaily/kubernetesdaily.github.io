@@ -3,4 +3,19 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://aidatafoundation.github.io/sitemap.xml 
+Sitemap: https://kubernetesdaily.github.io/sitemap.xml
+
+# Optimize crawling
+Crawl-delay: 10
+
+# Allow important directories
+Allow: /blog/
+Allow: /labs/
+Allow: /images/
+Allow: /assets/
+
+# Prevent duplicate content
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /*? 
