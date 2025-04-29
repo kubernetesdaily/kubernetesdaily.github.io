@@ -29,6 +29,16 @@ function Nav() {
     return location.pathname === path;
   };
 
+  // Add Docker Images tab to menu items
+  const menuItems = [
+    { path: "/docker-images", label: "Docker Images", isTop: true },
+    { path: "/", label: "Home" },
+    { path: "/tools", label: "Tools" },
+    { path: "/labs", label: "Labs" },
+    { path: "/blog", label: "Blog" },
+    { path: "/about", label: "About" }
+  ];
+
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -66,23 +76,26 @@ function Nav() {
         
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-1">
-          {[
-            { path: "/", label: "Home" },
-            { path: "/tools", label: "Tools" },
-            { path: "/labs", label: "Labs" },
-            { path: "/blog", label: "Blog" },
-            { path: "/about", label: "About" }
-          ].map((item) => (
+          {menuItems.map((item) => (
             <Link 
               key={item.path}
               to={item.path} 
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive(item.path) 
-                  ? "bg-gray-700/50 text-primary" 
-                  : "text-gray-300 hover:bg-gray-700/30 hover:text-primary"
-              }`}
+              className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors group
+                ${isActive(item.path) 
+                  ? item.isTop
+                    ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white shadow-lg scale-105"
+                    : "bg-gray-700/50 text-primary"
+                  : item.isTop
+                    ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white hover:scale-105 hover:shadow-xl"
+                    : "text-gray-300 hover:bg-gray-700/30 hover:text-primary"
+                }`}
             >
               {item.label}
+              {item.isTop && (
+                <span className="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md animate-bounce">
+                  NEW
+                </span>
+              )}
             </Link>
           ))}
           <a 
@@ -106,23 +119,26 @@ function Nav() {
         }`}
       >
         <div className="bg-bgGray/90 backdrop-blur-md px-4 py-2 space-y-1 shadow-lg">
-          {[
-            { path: "/", label: "Home" },
-            { path: "/tools", label: "Tools" },
-            { path: "/labs", label: "Labs" },
-            { path: "/blog", label: "Blog" },
-            { path: "/about", label: "About" }
-          ].map((item) => (
+          {menuItems.map((item) => (
             <Link 
               key={item.path}
               to={item.path} 
-              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                isActive(item.path) 
-                  ? "bg-gray-700/50 text-primary" 
-                  : "text-gray-300 hover:bg-gray-700/30 hover:text-primary"
-              }`}
+              className={`relative block px-3 py-2 rounded-md text-base font-medium transition-colors group
+                ${isActive(item.path) 
+                  ? item.isTop
+                    ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white shadow-lg scale-105"
+                    : "bg-gray-700/50 text-primary"
+                  : item.isTop
+                    ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white hover:scale-105 hover:shadow-xl"
+                    : "text-gray-300 hover:bg-gray-700/30 hover:text-primary"
+                }`}
             >
               {item.label}
+              {item.isTop && (
+                <span className="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md animate-bounce">
+                  NEW
+                </span>
+              )}
             </Link>
           ))}
           <a 

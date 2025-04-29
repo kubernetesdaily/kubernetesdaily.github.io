@@ -486,3 +486,11 @@
     font-size: 0.85rem;
   }
 }
+
+:root {
+  --primary-color: #2563eb;
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}

@@ -5,7 +5,8 @@ import {
   BookOutlined,
   ExperimentOutlined,
   GithubOutlined,
-  UserOutlined
+  UserOutlined,
+  StarOutlined
 } from '@ant-design/icons';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -21,7 +22,7 @@ const userMenu = (
 
 const AppLayout = ({ children }) => {
   const location = useLocation();
-  const selectedKey = location.pathname.split('/')[1] || 'home';
+  const selectedKey = location.pathname === '/top' ? 'top' : (location.pathname.split('/')[1] || 'home');
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -47,6 +48,9 @@ const AppLayout = ({ children }) => {
           style={{ height: '100%', borderRight: 0, background: 'transparent', color: '#fff' }}
           theme="dark"
         >
+          <Menu.Item key="top" icon={<StarOutlined />}>
+            <Link to="/top">TOP</Link>
+          </Menu.Item>
           <Menu.Item key="home" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>

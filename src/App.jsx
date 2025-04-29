@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Labs from "./components/Labs";
 import OpenGraph from "./components/OpenGraph";
 import DiscordPopup from "./components/DiscordPopup";
+import DockerImages from "./components/DockerImages";
 
 function App() {
   return (
@@ -35,6 +36,17 @@ function App() {
                 />
                 <h1 className="text-3xl font-bold mb-8 text-center">Kubernetes Tools Collection</h1>
                 <ToolsSection />
+              </div>
+            } />
+            <Route path="/docker-images" element={
+              <div className="text-primary max-w-[1280px] mx-auto px-4 py-8">
+                <OpenGraph 
+                  title="Popular Docker Images | KubeDaily"
+                  description="Explore popular Docker images with detailed information about their pull counts, stars, and official status."
+                  tags={["Docker Images", "Container Images", "Docker Hub", "Container Registry"]}
+                />
+                <h1 className="text-3xl font-bold mb-8 text-center">Popular Docker Images</h1>
+                <DockerImages />
               </div>
             } />
             <Route path="/labs" element={
