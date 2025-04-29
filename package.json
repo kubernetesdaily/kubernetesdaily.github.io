@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "npm run generate-sitemap && npm run generate-rss && next build",
     "preview": "vite preview",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
-    "generate-rss": "node scripts/generate-rss.js"
+    "generate-sitemap": "node scripts/generate-sitemap.cjs",
+    "generate-rss": "node scripts/generate-rss.cjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
