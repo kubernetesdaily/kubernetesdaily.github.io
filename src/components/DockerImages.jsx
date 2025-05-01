@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Line, Pie, Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
-  ArcElement,
+  BarElement,
   Title,
   Tooltip,
-  Legend,
-  BarElement
+  Legend
 } from 'chart.js';
 
 // Register ChartJS components
@@ -19,7 +18,6 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  ArcElement,
   BarElement,
   Title,
   Tooltip,
@@ -33,7 +31,6 @@ const DockerImages = () => {
   const [copiedCommand, setCopiedCommand] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const [expandedImages, setExpandedImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const imagesPerPage = 30;
 
@@ -86,22 +83,6 @@ const DockerImages = () => {
 
             const pullCommand = `docker pull ${name}`;
 
-            // Mock SBOM data
-            const sbomData = {
-              syft: {
-                packageCount: Math.floor(Math.random() * 300) + 50,
-                licenseCount: Math.floor(Math.random() * 20) + 5,
-                vulnerabilityCount: Math.floor(Math.random() * 50),
-                hasData: Math.random() > 0.2 // 80% chance of having data
-              },
-              trivy: {
-                packageCount: Math.floor(Math.random() * 300) + 50,
-                licenseCount: Math.floor(Math.random() * 20) + 5,
-                vulnerabilityCount: Math.floor(Math.random() * 50),
-                hasData: Math.random() > 0.3 // 70% chance of having data
-              }
-            };
-
             return {
               name,
               displayName: imageName,
@@ -111,15 +92,12 @@ const DockerImages = () => {
               category,
               official: !organization || organization === imageName,
               description: `${organization ? `${organization}'s ` : 'Official '}Docker image for ${imageName}`,
-              pullCommand,
-              sbomData
+              pullCommand
             };
           })
           .sort((a, b) => b.pullCount - a.pullCount);
 
         setImages(parsedImages);
-        // Set all images as expanded initially
-        setExpandedImages(parsedImages.map(img => img.name));
         setLoading(false);
       } catch (err) {
         console.error('Error fetching docker images:', err);
@@ -137,14 +115,6 @@ const DockerImages = () => {
     setTimeout(() => setCopiedCommand(null), 2000);
   };
 
-  const toggleImageExpand = (image) => {
-    if (expandedImages.includes(image.name)) {
-      setExpandedImages(expandedImages.filter(name => name !== image.name));
-    } else {
-      setExpandedImages([...expandedImages, image.name]);
-    }
-  };
-
   // Filter images based on search term and category
   const filteredImages = images
     .filter(img => 
@@ -157,34 +127,6 @@ const DockerImages = () => {
   const indexOfLastImage = currentPage * imagesPerPage;
   const indexOfFirstImage = indexOfLastImage - imagesPerPage;
   const currentImages = filteredImages.slice(indexOfFirstImage, indexOfLastImage);
-
-  // Chart data for tool coverage
-  const toolCoverageData = {
-    labels: ['Syft', 'Trivy', 'Both', 'None'],
-    datasets: [
-      {
-        data: [
-          images.filter(item => item.sbomData.syft.hasData && !item.sbomData.trivy.hasData).length,
-          images.filter(item => !item.sbomData.syft.hasData && item.sbomData.trivy.hasData).length,
-          images.filter(item => item.sbomData.syft.hasData && item.sbomData.trivy.hasData).length,
-          images.filter(item => !item.sbomData.syft.hasData && !item.sbomData.trivy.hasData).length,
-        ],
-        backgroundColor: [
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(201, 203, 207, 0.6)',
-        ],
-        borderColor: [
-          'rgb(54, 162, 235)',
-          'rgb(255, 99, 132)',
-          'rgb(75, 192, 192)',
-          'rgb(201, 203, 207)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
 
   // Prepare data for popular Docker images chart
   const popularImagesData = {
@@ -217,6 +159,7 @@ const DockerImages = () => {
     
     // For each category, find the top 5 images
     categories.forEach(category => {
+      if (category === 'all') return;
       const categoryImages = images
         .filter(img => img.category === category)
         .sort((a, b) => b.pullCount - a.pullCount)
@@ -230,7 +173,7 @@ const DockerImages = () => {
     for (let i = 0; i < 5; i++) { // For each position (up to 5)
       const dataset = {
         label: `#${i+1} Most Popular`,
-        data: categories.map(category => {
+        data: categories.filter(cat => cat !== 'all').map(category => {
           const images = topImagesByCategory[category];
           return images[i] ? images[i].pullCount / 1000000 : 0;
         }),
@@ -242,7 +185,7 @@ const DockerImages = () => {
     }
     
     return {
-      labels: categories,
+      labels: categories.filter(cat => cat !== 'all'),
       datasets: datasets,
     };
   };
@@ -277,59 +220,9 @@ const DockerImages = () => {
       <div className="mb-8 text-center">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">Explore Docker Images</h2>
         <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Browse and search popular Docker images with detailed information about their pull counts, 
-          SBOM data, and more.
+          Browse and search popular Docker images with detailed information about their pull counts 
+          and usage.
         </p>
-      </div>
-
-      {/* Chart Section */}
-      <div className="mb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 transition-all duration-300 hover:shadow-xl">
-            <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Tool Coverage</h3>
-            <div className="h-64">
-              <Pie data={toolCoverageData} options={{ maintainAspectRatio: false }} />
-            </div>
-          </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 transition-all duration-300 hover:shadow-xl">
-            <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Dataset Overview</h3>
-            <div className="space-y-2">
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Total Images:</span> {images.length}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Images with Syft SBOMs:</span> {images.filter(item => item.sbomData.syft.hasData).length}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Images with Trivy SBOMs:</span> {images.filter(item => item.sbomData.trivy.hasData).length}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Average Packages per Image:</span> {
-                  Math.round(
-                    images.reduce((acc, item) => acc + item.sbomData.syft.packageCount, 0) / 
-                    images.filter(item => item.sbomData.syft.hasData).length
-                  )
-                }
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Average Licenses per Image:</span> {
-                  Math.round(
-                    images.reduce((acc, item) => acc + item.sbomData.syft.licenseCount, 0) / 
-                    images.filter(item => item.sbomData.syft.hasData).length
-                  )
-                }
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Average Vulnerabilities per Image:</span> {
-                  Math.round(
-                    images.reduce((acc, item) => acc + item.sbomData.syft.vulnerabilityCount, 0) / 
-                    images.filter(item => item.sbomData.syft.hasData).length
-                  )
-                }
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Popular Docker Images Chart */}
@@ -500,182 +393,80 @@ const DockerImages = () => {
 
       {/* Images Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentImages.map((image, index) => {
-          const isExpanded = expandedImages.includes(image.name);
-          return (
-            <div 
-              key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col transform transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px]"
-            >
-              <div 
-                className="p-5 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 flex flex-col flex-grow"
-              >
-                <div className="flex justify-between items-start mb-3">
-                  <div className="max-w-[75%]">
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white truncate">
-                      {image.name}
-                    </h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 flex items-center">
-                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
-                      {image.pulls} pulls
-                    </p>
-                  </div>
-                  <div className="flex gap-1 flex-wrap justify-end">
-                    {image.official && (
-                      <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 rounded-full flex items-center">
-                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        Official
-                      </span>
-                    )}
-                    {image.sbomData.syft.hasData && (
-                      <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 rounded-full">
-                        Syft
-                      </span>
-                    )}
-                    {image.sbomData.trivy.hasData && (
-                      <span className="px-2 py-1 text-xs bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-100 rounded-full">
-                        Trivy
-                      </span>
-                    )}
-                  </div>
-                </div>
-                
-                <p className="text-gray-600 dark:text-gray-300 text-sm mt-2 mb-4 flex-grow">
-                  {image.description}
-                </p>
-
-                <div className="mt-auto">
-                  <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-3 mb-4 group relative">
-                    <code className="text-sm font-mono text-gray-800 dark:text-gray-200">
-                      {image.pullCommand}
-                    </code>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleCopyCommand(image.pullCommand, index);
-                      }}
-                      className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      {copiedCommand === index ? (
-                        <span className="text-green-500 text-sm flex items-center">
-                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          Copied
-                        </span>
-                      ) : (
-                        <svg
-                          className="w-5 h-5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                          />
-                        </svg>
-                      )}
-                    </button>
-                  </div>
-                  
-                  <button
-                    onClick={() => toggleImageExpand(image)}
-                    className="w-full flex justify-center items-center text-primary hover:text-primary-dark py-2 transition-colors duration-300"
-                    aria-label={isExpanded ? "Show less" : "Show more"}
-                  >
-                    <span className="mr-1">{isExpanded ? "Hide SBOM Data" : "Show SBOM Data"}</span>
-                    <svg 
-                      className={`w-4 h-4 transform transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        {currentImages.map((image, index) => (
+          <div 
+            key={index}
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col transform transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px]"
+          >
+            <div className="p-5 flex flex-col flex-grow">
+              <div className="flex justify-between items-start mb-3">
+                <div className="max-w-[75%]">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white truncate">
+                    {image.name}
+                  </h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 flex items-center">
+                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
+                    {image.pulls} pulls
+                  </p>
+                </div>
+                <div className="flex gap-1 flex-wrap justify-end">
+                  {image.official && (
+                    <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 rounded-full flex items-center">
+                      <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Official
+                    </span>
+                  )}
+                </div>
+              </div>
+              
+              <p className="text-gray-600 dark:text-gray-300 text-sm mt-2 mb-4 flex-grow">
+                {image.description}
+              </p>
+
+              <div className="mt-auto">
+                <div className="bg-gray-100 dark:bg-gray-900 rounded-lg p-3 mb-4 group relative">
+                  <code className="text-sm font-mono text-gray-800 dark:text-gray-200">
+                    {image.pullCommand}
+                  </code>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleCopyCommand(image.pullCommand, index);
+                    }}
+                    className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    {copiedCommand === index ? (
+                      <span className="text-green-500 text-sm flex items-center">
+                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        Copied
+                      </span>
+                    ) : (
+                      <svg
+                        className="w-5 h-5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                        />
+                      </svg>
+                    )}
                   </button>
                 </div>
               </div>
-
-              {isExpanded && (
-                <div className="p-5 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
-                  <h4 className="text-md font-medium text-gray-800 dark:text-gray-200 mb-3">Software Bill of Materials</h4>
-
-                  {/* SBOM Data Display */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {image.sbomData.syft.hasData && (
-                      <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800">
-                        <h4 className="font-medium text-blue-600 dark:text-blue-400 mb-2 flex items-center">
-                          <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                          </svg>
-                          Syft SBOM
-                        </h4>
-                        <ul className="space-y-2">
-                          <li className="text-gray-600 dark:text-gray-300 flex justify-between">
-                            <span className="font-medium">Packages:</span> 
-                            <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded-full text-xs font-medium">
-                              {image.sbomData.syft.packageCount}
-                            </span>
-                          </li>
-                          <li className="text-gray-600 dark:text-gray-300 flex justify-between">
-                            <span className="font-medium">Licenses:</span> 
-                            <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full text-xs font-medium">
-                              {image.sbomData.syft.licenseCount}
-                            </span>
-                          </li>
-                          <li className="text-gray-600 dark:text-gray-300 flex justify-between">
-                            <span className="font-medium">Vulnerabilities:</span> 
-                            <span className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-0.5 rounded-full text-xs font-medium">
-                              {image.sbomData.syft.vulnerabilityCount}
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                    
-                    {image.sbomData.trivy.hasData && (
-                      <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800">
-                        <h4 className="font-medium text-pink-600 dark:text-pink-400 mb-2 flex items-center">
-                          <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          Trivy SBOM
-                        </h4>
-                        <ul className="space-y-2">
-                          <li className="text-gray-600 dark:text-gray-300 flex justify-between">
-                            <span className="font-medium">Packages:</span> 
-                            <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded-full text-xs font-medium">
-                              {image.sbomData.trivy.packageCount}
-                            </span>
-                          </li>
-                          <li className="text-gray-600 dark:text-gray-300 flex justify-between">
-                            <span className="font-medium">Licenses:</span> 
-                            <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full text-xs font-medium">
-                              {image.sbomData.trivy.licenseCount}
-                            </span>
-                          </li>
-                          <li className="text-gray-600 dark:text-gray-300 flex justify-between">
-                            <span className="font-medium">Vulnerabilities:</span> 
-                            <span className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-2 py-0.5 rounded-full text-xs font-medium">
-                              {image.sbomData.trivy.vulnerabilityCount}
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
 
       {/* Pagination */}
