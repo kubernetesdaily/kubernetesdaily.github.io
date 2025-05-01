@@ -1,0 +1,63 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "adorsys/java@sha256:2ddd3ec8a302cfe70cfbd75164ab1ccf09a3550a6aa7542ed239c909608d1434",
+  "documentNamespace": "http://trivy.dev/container_image/adorsys/java@sha256:2ddd3ec8a302cfe70cfbd75164ab1ccf09a3550a6aa7542ed239c909608d1434-f3d5c8e1-b894-417d-9c25-523e1b1d5589",
+  "creationInfo": {
+    "creators": [
+      "Organization: aquasecurity",
+      "Tool: trivy-0.61.1"
+    ],
+    "created": "2025-05-01T06:09:08Z"
+  },
+  "packages": [
+    {
+      "name": "adorsys/java@sha256:2ddd3ec8a302cfe70cfbd75164ab1ccf09a3550a6aa7542ed239c909608d1434",
+      "SPDXID": "SPDXRef-ContainerImage-f55a65b912459d34",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:oci/java@sha256%3A2ddd3ec8a302cfe70cfbd75164ab1ccf09a3550a6aa7542ed239c909608d1434?arch=amd64\u0026repository_url=index.docker.io%2Fadorsys%2Fjava"
+        }
+      ],
+      "primaryPackagePurpose": "CONTAINER",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T06:09:08Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:21242a1becbbbe8454bb82488bff4c73ade6b84639a36c48d260e01eb63bfc08"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T06:09:08Z",
+          "annotationType": "OTHER",
+          "comment": "ImageID: sha256:d527dfea63b0fa0cb0f7a7a4cafb827cb2bfcc054c97fc5e2479ccd7139f70d2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T06:09:08Z",
+          "annotationType": "OTHER",
+          "comment": "RepoDigest: adorsys/java@sha256:2ddd3ec8a302cfe70cfbd75164ab1ccf09a3550a6aa7542ed239c909608d1434"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T06:09:08Z",
+          "annotationType": "OTHER",
+          "comment": "SchemaVersion: 2"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-ContainerImage-f55a65b912459d34",
+      "relationshipType": "DESCRIBES"
+    }
+  ]
+}
