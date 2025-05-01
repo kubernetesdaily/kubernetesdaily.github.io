@@ -31,7 +31,7 @@ function Nav() {
 
   // Add Docker Images tab to menu items
   const menuItems = [
-    { path: "/docker-images", label: "Docker Images", isTop: true },
+    { path: "/docker-images", label: "Docker Images" },
     { path: "/", label: "Home" },
     { path: "/tools", label: "Tools" },
     { path: "/labs", label: "Labs" },
@@ -82,16 +82,16 @@ function Nav() {
               to={item.path} 
               className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors group
                 ${isActive(item.path) 
-                  ? item.isTop
+                  ? item.isNew
                     ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white shadow-lg scale-105"
                     : "bg-gray-700/50 text-primary"
-                  : item.isTop
+                  : item.isNew
                     ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white hover:scale-105 hover:shadow-xl"
                     : "text-gray-300 hover:bg-gray-700/30 hover:text-primary"
                 }`}
             >
               {item.label}
-              {item.isTop && (
+              {item.isNew && (
                 <span className="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md animate-bounce">
                   NEW
                 </span>
@@ -125,16 +125,16 @@ function Nav() {
               to={item.path} 
               className={`relative block px-3 py-2 rounded-md text-base font-medium transition-colors group
                 ${isActive(item.path) 
-                  ? item.isTop
+                  ? item.isNew
                     ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white shadow-lg scale-105"
                     : "bg-gray-700/50 text-primary"
-                  : item.isTop
+                  : item.isNew
                     ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white hover:scale-105 hover:shadow-xl"
                     : "text-gray-300 hover:bg-gray-700/30 hover:text-primary"
                 }`}
             >
               {item.label}
-              {item.isTop && (
+              {item.isNew && (
                 <span className="absolute -top-2 -right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md animate-bounce">
                   NEW
                 </span>

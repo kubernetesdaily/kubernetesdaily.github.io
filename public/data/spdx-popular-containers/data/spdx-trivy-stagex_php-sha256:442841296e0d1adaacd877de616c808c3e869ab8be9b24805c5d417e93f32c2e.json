@@ -1,0 +1,87 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "stagex/php@sha256:442841296e0d1adaacd877de616c808c3e869ab8be9b24805c5d417e93f32c2e",
+  "documentNamespace": "http://trivy.dev/container_image/stagex/php@sha256:442841296e0d1adaacd877de616c808c3e869ab8be9b24805c5d417e93f32c2e-bb15c562-53dc-42b5-9fd0-5ac7b0e6b143",
+  "creationInfo": {
+    "creators": [
+      "Organization: aquasecurity",
+      "Tool: trivy-0.61.1"
+    ],
+    "created": "2025-05-01T01:41:22Z"
+  },
+  "packages": [
+    {
+      "name": "stagex/php@sha256:442841296e0d1adaacd877de616c808c3e869ab8be9b24805c5d417e93f32c2e",
+      "SPDXID": "SPDXRef-ContainerImage-38a690b8a938930a",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:oci/php@sha256%3A442841296e0d1adaacd877de616c808c3e869ab8be9b24805c5d417e93f32c2e?arch=amd64\u0026repository_url=index.docker.io%2Fstagex%2Fphp"
+        }
+      ],
+      "primaryPackagePurpose": "CONTAINER",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:32efe576d568ac56ef52d2845f360fc8710dad4513376ec6e7e597f778e251e8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:62dcf5452ea5243894c4559f455c0dbe564a35116422c0784a700c719aeb018b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:afadf2d97e6e2c9cd24388ae86930d90ffb319bb0f1e6fa28ef3a581f647c795"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:bec0116a292d32bd8e622f5ec1c34ecc901c1f274379274177bf42379a8dd1e9"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:f2ad3b57086bbacb545f8358fe34b5d9104622f7c7276f58b05765f822ad27ef"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "ImageID: sha256:310a1a98bbdca2f96cbcfad20b1b4f989ddeed843657961b9da7e6802d92fccc"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "RepoDigest: stagex/php@sha256:442841296e0d1adaacd877de616c808c3e869ab8be9b24805c5d417e93f32c2e"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T01:41:22Z",
+          "annotationType": "OTHER",
+          "comment": "SchemaVersion: 2"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-ContainerImage-38a690b8a938930a",
+      "relationshipType": "DESCRIBES"
+    }
+  ]
+}

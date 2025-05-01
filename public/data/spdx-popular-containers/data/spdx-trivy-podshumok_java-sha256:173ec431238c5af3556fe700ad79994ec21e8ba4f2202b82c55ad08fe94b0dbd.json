@@ -1,0 +1,81 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "podshumok/java@sha256:173ec431238c5af3556fe700ad79994ec21e8ba4f2202b82c55ad08fe94b0dbd",
+  "documentNamespace": "http://trivy.dev/container_image/podshumok/java@sha256:173ec431238c5af3556fe700ad79994ec21e8ba4f2202b82c55ad08fe94b0dbd-9adac873-68ad-4707-b305-a327a4d8bc41",
+  "creationInfo": {
+    "creators": [
+      "Organization: aquasecurity",
+      "Tool: trivy-0.61.1"
+    ],
+    "created": "2025-05-01T03:15:18Z"
+  },
+  "packages": [
+    {
+      "name": "podshumok/java@sha256:173ec431238c5af3556fe700ad79994ec21e8ba4f2202b82c55ad08fe94b0dbd",
+      "SPDXID": "SPDXRef-ContainerImage-5b272f1e226c4697",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:oci/java@sha256%3A173ec431238c5af3556fe700ad79994ec21e8ba4f2202b82c55ad08fe94b0dbd?arch=amd64\u0026repository_url=index.docker.io%2Fpodshumok%2Fjava"
+        }
+      ],
+      "primaryPackagePurpose": "CONTAINER",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T03:15:18Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:69f3e89393bf64c16f010497f2ad9f726db8d0aca736a7996adaaef592ca88c4"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T03:15:18Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:c29d825b915c2d55cb4402d8aeb6696d7359f3e346b440cfde07de0190a383df"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T03:15:18Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:e218ebeb8509d6cd3c48db0c319a1ef01cb3a93ef5bf563eec74f78f44edfe1d"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T03:15:18Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:eb938bea7da7d55c138cd0f698052935e996826c5dd928e4452d7733fe81748c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T03:15:18Z",
+          "annotationType": "OTHER",
+          "comment": "ImageID: sha256:fe8cfc5ec58f4b8de94ff05b16f7d5b67c1f3dbf3d025e6da298c4d1942f8a75"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T03:15:18Z",
+          "annotationType": "OTHER",
+          "comment": "RepoDigest: podshumok/java@sha256:173ec431238c5af3556fe700ad79994ec21e8ba4f2202b82c55ad08fe94b0dbd"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-05-01T03:15:18Z",
+          "annotationType": "OTHER",
+          "comment": "SchemaVersion: 2"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-ContainerImage-5b272f1e226c4697",
+      "relationshipType": "DESCRIBES"
+    }
+  ]
+}
