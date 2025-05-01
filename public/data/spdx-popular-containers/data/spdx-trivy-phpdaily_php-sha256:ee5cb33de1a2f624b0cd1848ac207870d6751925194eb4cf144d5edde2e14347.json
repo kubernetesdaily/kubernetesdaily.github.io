@@ -1,0 +1,2462 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "phpdaily/php@sha256:ee5cb33de1a2f624b0cd1848ac207870d6751925194eb4cf144d5edde2e14347",
+  "documentNamespace": "http://trivy.dev/container_image/phpdaily/php@sha256:ee5cb33de1a2f624b0cd1848ac207870d6751925194eb4cf144d5edde2e14347-5b6c6886-00ea-4a50-bd5f-d0056a1a5570",
+  "creationInfo": {
+    "creators": [
+      "Organization: aquasecurity",
+      "Tool: trivy-0.61.1"
+    ],
+    "created": "2025-04-30T22:36:43Z"
+  },
+  "packages": [
+    {
+      "name": "phpdaily/php@sha256:ee5cb33de1a2f624b0cd1848ac207870d6751925194eb4cf144d5edde2e14347",
+      "SPDXID": "SPDXRef-ContainerImage-e9f0d4b04ba1232c",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:oci/php@sha256%3Aee5cb33de1a2f624b0cd1848ac207870d6751925194eb4cf144d5edde2e14347?arch=amd64\u0026repository_url=index.docker.io%2Fphpdaily%2Fphp"
+        }
+      ],
+      "primaryPackagePurpose": "CONTAINER",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:32eeb3491e0c36843cf02df4feb8d6507c06e55fb9e69a4948499acb89e77f45"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:4dc5e36112b046d876da23e4fe69733ef7d223cfd0b211aee8777dc44c0ed493"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:b5f0ebdad407b1a0a03f07f656c53506f0564415d91a4f30957f2814435f5cc8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:ccc0b7ba9bc026292e649f0a59b012919a3dfed7e4087e8e4182c39ffeb5ffb0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:ea7095e7a75f64558c36e1e27f0ab10da1e2848e30a2d898570497ecd1f856de"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:eade466dedd382ed7ba2a21debc1cddcbcda50be020f8d67647f70013b94a218"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "ImageID: sha256:58a61f060848e56e41a1b63b67d6f4d70921cdb4f114b822a7a82b3ef6af24b6"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "RepoDigest: phpdaily/php@sha256:ee5cb33de1a2f624b0cd1848ac207870d6751925194eb4cf144d5edde2e14347"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "SchemaVersion: 2"
+        }
+      ]
+    },
+    {
+      "name": "alpine-baselayout",
+      "SPDXID": "SPDXRef-Package-4b91248f2015c689",
+      "versionInfo": "3.2.0-r18",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "132992eab020986b3b5d886a77212889680467a0"
+        }
+      ],
+      "sourceInfo": "built package from: alpine-baselayout 3.2.0-r18",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/alpine-baselayout@3.2.0-r18?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: alpine-baselayout@3.2.0-r18"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "alpine-keys",
+      "SPDXID": "SPDXRef-Package-7c5e2c7588ae4330",
+      "versionInfo": "2.4-r1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "903176b2d2a8ddefd1ba6940f19ad17c2c1d4aff"
+        }
+      ],
+      "sourceInfo": "built package from: alpine-keys 2.4-r1",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/alpine-keys@2.4-r1?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: alpine-keys@2.4-r1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "apk-tools",
+      "SPDXID": "SPDXRef-Package-fb4deea7b2427c63",
+      "versionInfo": "2.12.7-r3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "ddf3ddf8545768bc323649559feaae1560f29273"
+        }
+      ],
+      "sourceInfo": "built package from: apk-tools 2.12.7-r3",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/apk-tools@2.12.7-r3?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: apk-tools@2.12.7-r3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "argon2-libs",
+      "SPDXID": "SPDXRef-Package-bd3316b5f2b9f217",
+      "versionInfo": "20190702-r1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "4467d9bf3598040b4db1b923737b9ff1268fdf52"
+        }
+      ],
+      "sourceInfo": "built package from: argon2 20190702-r1",
+      "licenseConcluded": "Apache-2.0 AND CC0-1.0",
+      "licenseDeclared": "Apache-2.0 AND CC0-1.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/argon2-libs@20190702-r1?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: argon2-libs@20190702-r1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "brotli-libs",
+      "SPDXID": "SPDXRef-Package-5d793c02e3ea3ac",
+      "versionInfo": "1.0.9-r5",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "6a4b5cfdb05e39daf896d4a81c336b0b0ecdf1fb"
+        }
+      ],
+      "sourceInfo": "built package from: brotli 1.0.9-r5",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/brotli-libs@1.0.9-r5?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: brotli-libs@1.0.9-r5"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "busybox",
+      "SPDXID": "SPDXRef-Package-4015bea512bd27a3",
+      "versionInfo": "1.34.1-r5",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "2d4c8f2882b350aeafa497018fe3b8d3879f6b08"
+        }
+      ],
+      "sourceInfo": "built package from: busybox 1.34.1-r5",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/busybox@1.34.1-r5?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: busybox@1.34.1-r5"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "ca-certificates",
+      "SPDXID": "SPDXRef-Package-e646cc48b3ef9239",
+      "versionInfo": "20211220-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e6ec8a24bbbdebc072e623cea6e3cb0600e17c9d"
+        }
+      ],
+      "sourceInfo": "built package from: ca-certificates 20211220-r0",
+      "licenseConcluded": "MPL-2.0 AND MIT",
+      "licenseDeclared": "MPL-2.0 AND MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/ca-certificates@20211220-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: ca-certificates@20211220-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "ca-certificates-bundle",
+      "SPDXID": "SPDXRef-Package-9bdfaee750a7013f",
+      "versionInfo": "20211220-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "495016b961dd3c7bdb0612d390067ad3fd56b262"
+        }
+      ],
+      "sourceInfo": "built package from: ca-certificates 20211220-r0",
+      "licenseConcluded": "MPL-2.0 AND MIT",
+      "licenseDeclared": "MPL-2.0 AND MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/ca-certificates-bundle@20211220-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: ca-certificates-bundle@20211220-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "curl",
+      "SPDXID": "SPDXRef-Package-4b9213e9929d2c8d",
+      "versionInfo": "7.80.0-r2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f372c819271f5a32a01d4e75a8c43fbaf66d1ab0"
+        }
+      ],
+      "sourceInfo": "built package from: curl 7.80.0-r2",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/curl@7.80.0-r2?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: curl@7.80.0-r2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "expat",
+      "SPDXID": "SPDXRef-Package-c9c43bd59286ee7c",
+      "versionInfo": "2.4.7-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "1c407c3fb71ddb7999e866bb5433eaf3c58890f7"
+        }
+      ],
+      "sourceInfo": "built package from: expat 2.4.7-r0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/expat@2.4.7-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: expat@2.4.7-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "git",
+      "SPDXID": "SPDXRef-Package-35d785059f29048b",
+      "versionInfo": "2.34.2-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "b8b9d8e5598d649c79d52bd0f1df98569a7cb13a"
+        }
+      ],
+      "sourceInfo": "built package from: git 2.34.2-r0",
+      "licenseConcluded": "GPL-2.0-or-later",
+      "licenseDeclared": "GPL-2.0-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/git@2.34.2-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: git@2.34.2-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "gnu-libiconv",
+      "SPDXID": "SPDXRef-Package-2284df5343eb0c3b",
+      "versionInfo": "1.16-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "341b894542ba6496c3609432724f9b6112772603"
+        }
+      ],
+      "sourceInfo": "built package from: gnu-libiconv 1.16-r0",
+      "licenseConcluded": "LGPL-2.1-or-later",
+      "licenseDeclared": "LGPL-2.1-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/gnu-libiconv@1.16-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: gnu-libiconv@1.16-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libacl",
+      "SPDXID": "SPDXRef-Package-2c2b9a4c8ed625ee",
+      "versionInfo": "2.2.53-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "a1aad8a4d18d6435fe178d0fb78ec64ec3839024"
+        }
+      ],
+      "sourceInfo": "built package from: acl 2.2.53-r0",
+      "licenseConcluded": "LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "licenseDeclared": "LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libacl@2.2.53-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libacl@2.2.53-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libc-utils",
+      "SPDXID": "SPDXRef-Package-89a151aad5b10354",
+      "versionInfo": "0.7.2-r3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "798de3ebb57f3e28f408080746935f213a099722"
+        }
+      ],
+      "sourceInfo": "built package from: libc-dev 0.7.2-r3",
+      "licenseConcluded": "BSD-2-Clause AND BSD-3-Clause",
+      "licenseDeclared": "BSD-2-Clause AND BSD-3-Clause",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libc-utils@0.7.2-r3?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libc-utils@0.7.2-r3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libcrypto1.1",
+      "SPDXID": "SPDXRef-Package-d215a29363f98ba5",
+      "versionInfo": "1.1.1p-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "20e2e7833424793e162b21b543a48292db2bd5c5"
+        }
+      ],
+      "sourceInfo": "built package from: openssl 1.1.1p-r0",
+      "licenseConcluded": "OpenSSL",
+      "licenseDeclared": "OpenSSL",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libcrypto1.1@1.1.1p-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libcrypto1.1@1.1.1p-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libcurl",
+      "SPDXID": "SPDXRef-Package-823f65eeca842e3f",
+      "versionInfo": "7.80.0-r2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "977abe64b19c612a0a502ee30179f649f2d93b03"
+        }
+      ],
+      "sourceInfo": "built package from: curl 7.80.0-r2",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libcurl@7.80.0-r2?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libcurl@7.80.0-r2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libgcc",
+      "SPDXID": "SPDXRef-Package-bf5644c8a5c4f854",
+      "versionInfo": "10.3.1_git20211027-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "7515cf3f9ee590c8b0a3d82bb4b58f920a515bc8"
+        }
+      ],
+      "sourceInfo": "built package from: gcc 10.3.1_git20211027-r0",
+      "licenseConcluded": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "licenseDeclared": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libgcc@10.3.1_git20211027-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libgcc@10.3.1_git20211027-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libretls",
+      "SPDXID": "SPDXRef-Package-f2a79bd3a8a2dd50",
+      "versionInfo": "3.3.4-r3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "67dfefe5456c45192b60d76ade98c501b0ae814f"
+        }
+      ],
+      "sourceInfo": "built package from: libretls 3.3.4-r3",
+      "licenseConcluded": "ISC AND BSD-3-Clause AND MIT",
+      "licenseDeclared": "ISC AND BSD-3-Clause AND MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libretls@3.3.4-r3?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libretls@3.3.4-r3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libsodium",
+      "SPDXID": "SPDXRef-Package-62e98045fe1d02c6",
+      "versionInfo": "1.0.18-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "9a3fa2baafd99d376a564377af27707d4a441ddd"
+        }
+      ],
+      "sourceInfo": "built package from: libsodium 1.0.18-r0",
+      "licenseConcluded": "ISC",
+      "licenseDeclared": "ISC",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libsodium@1.0.18-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libsodium@1.0.18-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libssl1.1",
+      "SPDXID": "SPDXRef-Package-837e38f39b8d159",
+      "versionInfo": "1.1.1p-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "cf16997d9081c0145a92e85179bb3f8126c176d3"
+        }
+      ],
+      "sourceInfo": "built package from: openssl 1.1.1p-r0",
+      "licenseConcluded": "OpenSSL",
+      "licenseDeclared": "OpenSSL",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libssl1.1@1.1.1p-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libssl1.1@1.1.1p-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libxml2",
+      "SPDXID": "SPDXRef-Package-9156d3cff5c37022",
+      "versionInfo": "2.9.14-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "ec0cb1ea2fe5c3d97287df527d083d0160abb9ce"
+        }
+      ],
+      "sourceInfo": "built package from: libxml2 2.9.14-r0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libxml2@2.9.14-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libxml2@2.9.14-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "musl",
+      "SPDXID": "SPDXRef-Package-36258869f1b2e4e1",
+      "versionInfo": "1.2.2-r7",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0de6f48cdcad92b8cf5b837f78a2d9e370703a5c"
+        }
+      ],
+      "sourceInfo": "built package from: musl 1.2.2-r7",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/musl@1.2.2-r7?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: musl@1.2.2-r7"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "musl-utils",
+      "SPDXID": "SPDXRef-Package-1763a2eef4f016c",
+      "versionInfo": "1.2.2-r7",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "3f9d1c7c9892b07a2ab18453c8e10e94988b9f7a"
+        }
+      ],
+      "sourceInfo": "built package from: musl 1.2.2-r7",
+      "licenseConcluded": "MIT AND BSD-3-Clause AND GPL-2.0-or-later",
+      "licenseDeclared": "MIT AND BSD-3-Clause AND GPL-2.0-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/musl-utils@1.2.2-r7?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: musl-utils@1.2.2-r7"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "ncurses-libs",
+      "SPDXID": "SPDXRef-Package-4eddc63f88a27474",
+      "versionInfo": "6.3_p20211120-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "7a5dba83c864660024aa2f19504b09a8c9e85e52"
+        }
+      ],
+      "sourceInfo": "built package from: ncurses 6.3_p20211120-r0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/ncurses-libs@6.3_p20211120-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: ncurses-libs@6.3_p20211120-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "ncurses-terminfo-base",
+      "SPDXID": "SPDXRef-Package-e66d6a59a957ff5a",
+      "versionInfo": "6.3_p20211120-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "38a261442893d3900fd47f730395fbb0f6ba497c"
+        }
+      ],
+      "sourceInfo": "built package from: ncurses 6.3_p20211120-r0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/ncurses-terminfo-base@6.3_p20211120-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: ncurses-terminfo-base@6.3_p20211120-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "nghttp2-libs",
+      "SPDXID": "SPDXRef-Package-7a6eda4523528570",
+      "versionInfo": "1.46.0-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "32b3a8545ed120ef2be31dcb83c5531908dbacd9"
+        }
+      ],
+      "sourceInfo": "built package from: nghttp2 1.46.0-r0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/nghttp2-libs@1.46.0-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: nghttp2-libs@1.46.0-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "oniguruma",
+      "SPDXID": "SPDXRef-Package-5759c8ad596e07a9",
+      "versionInfo": "6.9.7.1-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "09157142eb5f627334de42a5b62b269f178d7cca"
+        }
+      ],
+      "sourceInfo": "built package from: oniguruma 6.9.7.1-r0",
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/oniguruma@6.9.7.1-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: oniguruma@6.9.7.1-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "openssl",
+      "SPDXID": "SPDXRef-Package-aa3237c9be84b001",
+      "versionInfo": "1.1.1p-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "a4c0e6801d7b46c845f77f797c2edcd46cb5f53d"
+        }
+      ],
+      "sourceInfo": "built package from: openssl 1.1.1p-r0",
+      "licenseConcluded": "OpenSSL",
+      "licenseDeclared": "OpenSSL",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/openssl@1.1.1p-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: openssl@1.1.1p-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "pcre2",
+      "SPDXID": "SPDXRef-Package-47b39f913ef35866",
+      "versionInfo": "10.40-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f3bd048e77dba298aeb9fbfe8b9c3eef93a883a5"
+        }
+      ],
+      "sourceInfo": "built package from: pcre2 10.40-r0",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/pcre2@10.40-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: pcre2@10.40-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "readline",
+      "SPDXID": "SPDXRef-Package-df39b9f1e9411afb",
+      "versionInfo": "8.1.1-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f453f9f72489b8114b5240d497bdc9736176bf79"
+        }
+      ],
+      "sourceInfo": "built package from: readline 8.1.1-r0",
+      "licenseConcluded": "GPL-2.0-or-later",
+      "licenseDeclared": "GPL-2.0-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/readline@8.1.1-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: readline@8.1.1-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "scanelf",
+      "SPDXID": "SPDXRef-Package-bfedd03f05615c7d",
+      "versionInfo": "1.3.3-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "d7f7590e450870a4f79671c2369b31b5bb07349a"
+        }
+      ],
+      "sourceInfo": "built package from: pax-utils 1.3.3-r0",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/scanelf@1.3.3-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: scanelf@1.3.3-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "sqlite-libs",
+      "SPDXID": "SPDXRef-Package-f1e17a552cd79555",
+      "versionInfo": "3.36.0-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e032b81db92be5dd0705ac785ba7cf770b196078"
+        }
+      ],
+      "sourceInfo": "built package from: sqlite 3.36.0-r0",
+      "licenseConcluded": "LicenseRef-52077475d699932",
+      "licenseDeclared": "LicenseRef-52077475d699932",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/sqlite-libs@3.36.0-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: sqlite-libs@3.36.0-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "ssl_client",
+      "SPDXID": "SPDXRef-Package-bfad9f91c9aa960d",
+      "versionInfo": "1.34.1-r5",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "2d0a5a4d8653cd1fe480abd1c0bb98f1d10560fe"
+        }
+      ],
+      "sourceInfo": "built package from: busybox 1.34.1-r5",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/ssl_client@1.34.1-r5?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:4fc242d58285699eca05db3cc7c7122a2b8e014d9481f323bd9277baacfa0628"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:df9b9388f04ad6279a7410b85cedfdcb2208c0a003da7ab5613af71079148139"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: ssl_client@1.34.1-r5"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "tar",
+      "SPDXID": "SPDXRef-Package-1f382e0b72f2a3ba",
+      "versionInfo": "1.34-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "538f191723b418df9fa94377460115e138b6984e"
+        }
+      ],
+      "sourceInfo": "built package from: tar 1.34-r0",
+      "licenseConcluded": "GPL-3.0-or-later",
+      "licenseDeclared": "GPL-3.0-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/tar@1.34-r0?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: tar@1.34-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "xz",
+      "SPDXID": "SPDXRef-Package-6a5fea2e257825b0",
+      "versionInfo": "5.2.5-r1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "27aedd82762c3ce28dd96ee3b8d1bcfbcaba3ce9"
+        }
+      ],
+      "sourceInfo": "built package from: xz 5.2.5-r1",
+      "licenseConcluded": "GPL-2.0-or-later AND LicenseRef-1ccb5c3ceeb27ca8 AND LGPL-2.1-or-later",
+      "licenseDeclared": "GPL-2.0-or-later AND LicenseRef-1ccb5c3ceeb27ca8 AND LGPL-2.1-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/xz@5.2.5-r1?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: xz@5.2.5-r1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "xz-libs",
+      "SPDXID": "SPDXRef-Package-89078c1c98406d80",
+      "versionInfo": "5.2.5-r1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "6654e4df4bc662badcb2ca5d7cbc1850cb422af1"
+        }
+      ],
+      "sourceInfo": "built package from: xz 5.2.5-r1",
+      "licenseConcluded": "GPL-2.0-or-later AND LicenseRef-1ccb5c3ceeb27ca8 AND LGPL-2.1-or-later",
+      "licenseDeclared": "GPL-2.0-or-later AND LicenseRef-1ccb5c3ceeb27ca8 AND LGPL-2.1-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/xz-libs@5.2.5-r1?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:274027341f1dfa3b3030598bcba75f4932d383877ea9aaf5f0a8ceabd081aacb"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:b11ed1e7f332e6b5c76aa0e6a5efcafe997ebd9a94e5a3723569a02522aa6c6b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: xz-libs@5.2.5-r1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "zlib",
+      "SPDXID": "SPDXRef-Package-dbb611fbde4ed62c",
+      "versionInfo": "1.2.12-r1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "481364134b5e6ac44a86658dfc94d9fe6264aa85"
+        }
+      ],
+      "sourceInfo": "built package from: zlib 1.2.12-r1",
+      "licenseConcluded": "Zlib",
+      "licenseDeclared": "Zlib",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/zlib@1.2.12-r1?arch=x86_64\u0026distro=3.15.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:d5ce713f31b03909ffa921429a21a2f8661560006dfd7dd91a124627fcc78827"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:63f0b792440fb165c33b6d66d32b5d29fe34777639fad3a870679bf6d33a9783"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: zlib@1.2.12-r1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "alpine",
+      "SPDXID": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "versionInfo": "3.15.4",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "primaryPackagePurpose": "OPERATING-SYSTEM",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "Class: os-pkgs"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T22:36:43Z",
+          "annotationType": "OTHER",
+          "comment": "Type: alpine"
+        }
+      ]
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-1ccb5c3ceeb27ca8",
+      "extractedText": "This component is licensed under \"Public-Domain\"",
+      "name": "Public-Domain"
+    },
+    {
+      "licenseId": "LicenseRef-52077475d699932",
+      "extractedText": "This component is licensed under \"blessing\"",
+      "name": "blessing"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-ContainerImage-e9f0d4b04ba1232c",
+      "relatedSpdxElement": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-ContainerImage-e9f0d4b04ba1232c",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-1f382e0b72f2a3ba",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-2284df5343eb0c3b",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-35d785059f29048b",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-4b91248f2015c689",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-4b9213e9929d2c8d",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-5759c8ad596e07a9",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-62e98045fe1d02c6",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-6a5fea2e257825b0",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-7c5e2c7588ae4330",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-89a151aad5b10354",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-9156d3cff5c37022",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-aa3237c9be84b001",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-bd3316b5f2b9f217",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-bf5644c8a5c4f854",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-bfad9f91c9aa960d",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-df39b9f1e9411afb",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-f1e17a552cd79555",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-281278c3df07aea8",
+      "relatedSpdxElement": "SPDXRef-Package-fb4deea7b2427c63",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-1763a2eef4f016c",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-1763a2eef4f016c",
+      "relatedSpdxElement": "SPDXRef-Package-bfedd03f05615c7d",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-1f382e0b72f2a3ba",
+      "relatedSpdxElement": "SPDXRef-Package-2c2b9a4c8ed625ee",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-1f382e0b72f2a3ba",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2284df5343eb0c3b",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2c2b9a4c8ed625ee",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-35d785059f29048b",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-35d785059f29048b",
+      "relatedSpdxElement": "SPDXRef-Package-47b39f913ef35866",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-35d785059f29048b",
+      "relatedSpdxElement": "SPDXRef-Package-823f65eeca842e3f",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-35d785059f29048b",
+      "relatedSpdxElement": "SPDXRef-Package-c9c43bd59286ee7c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-35d785059f29048b",
+      "relatedSpdxElement": "SPDXRef-Package-dbb611fbde4ed62c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4015bea512bd27a3",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-47b39f913ef35866",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4b91248f2015c689",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4b91248f2015c689",
+      "relatedSpdxElement": "SPDXRef-Package-4015bea512bd27a3",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4b9213e9929d2c8d",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4b9213e9929d2c8d",
+      "relatedSpdxElement": "SPDXRef-Package-823f65eeca842e3f",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4b9213e9929d2c8d",
+      "relatedSpdxElement": "SPDXRef-Package-dbb611fbde4ed62c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4b9213e9929d2c8d",
+      "relatedSpdxElement": "SPDXRef-Package-e646cc48b3ef9239",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4eddc63f88a27474",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-4eddc63f88a27474",
+      "relatedSpdxElement": "SPDXRef-Package-e66d6a59a957ff5a",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-5759c8ad596e07a9",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-5d793c02e3ea3ac",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-62e98045fe1d02c6",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-6a5fea2e257825b0",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-6a5fea2e257825b0",
+      "relatedSpdxElement": "SPDXRef-Package-89078c1c98406d80",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-7a6eda4523528570",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-823f65eeca842e3f",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-823f65eeca842e3f",
+      "relatedSpdxElement": "SPDXRef-Package-5d793c02e3ea3ac",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-823f65eeca842e3f",
+      "relatedSpdxElement": "SPDXRef-Package-7a6eda4523528570",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-823f65eeca842e3f",
+      "relatedSpdxElement": "SPDXRef-Package-837e38f39b8d159",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-823f65eeca842e3f",
+      "relatedSpdxElement": "SPDXRef-Package-d215a29363f98ba5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-823f65eeca842e3f",
+      "relatedSpdxElement": "SPDXRef-Package-dbb611fbde4ed62c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-823f65eeca842e3f",
+      "relatedSpdxElement": "SPDXRef-Package-e646cc48b3ef9239",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-837e38f39b8d159",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-837e38f39b8d159",
+      "relatedSpdxElement": "SPDXRef-Package-d215a29363f98ba5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-89078c1c98406d80",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-89a151aad5b10354",
+      "relatedSpdxElement": "SPDXRef-Package-1763a2eef4f016c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-9156d3cff5c37022",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-9156d3cff5c37022",
+      "relatedSpdxElement": "SPDXRef-Package-89078c1c98406d80",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-9156d3cff5c37022",
+      "relatedSpdxElement": "SPDXRef-Package-dbb611fbde4ed62c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-aa3237c9be84b001",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-aa3237c9be84b001",
+      "relatedSpdxElement": "SPDXRef-Package-837e38f39b8d159",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-aa3237c9be84b001",
+      "relatedSpdxElement": "SPDXRef-Package-d215a29363f98ba5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bd3316b5f2b9f217",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bf5644c8a5c4f854",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bfad9f91c9aa960d",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bfad9f91c9aa960d",
+      "relatedSpdxElement": "SPDXRef-Package-f2a79bd3a8a2dd50",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bfedd03f05615c7d",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-c9c43bd59286ee7c",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-d215a29363f98ba5",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-dbb611fbde4ed62c",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-df39b9f1e9411afb",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-df39b9f1e9411afb",
+      "relatedSpdxElement": "SPDXRef-Package-4eddc63f88a27474",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-e646cc48b3ef9239",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-e646cc48b3ef9239",
+      "relatedSpdxElement": "SPDXRef-Package-4015bea512bd27a3",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-e646cc48b3ef9239",
+      "relatedSpdxElement": "SPDXRef-Package-d215a29363f98ba5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-f1e17a552cd79555",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-f2a79bd3a8a2dd50",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-f2a79bd3a8a2dd50",
+      "relatedSpdxElement": "SPDXRef-Package-837e38f39b8d159",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-f2a79bd3a8a2dd50",
+      "relatedSpdxElement": "SPDXRef-Package-9bdfaee750a7013f",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-f2a79bd3a8a2dd50",
+      "relatedSpdxElement": "SPDXRef-Package-d215a29363f98ba5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-fb4deea7b2427c63",
+      "relatedSpdxElement": "SPDXRef-Package-36258869f1b2e4e1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-fb4deea7b2427c63",
+      "relatedSpdxElement": "SPDXRef-Package-837e38f39b8d159",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-fb4deea7b2427c63",
+      "relatedSpdxElement": "SPDXRef-Package-9bdfaee750a7013f",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-fb4deea7b2427c63",
+      "relatedSpdxElement": "SPDXRef-Package-d215a29363f98ba5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-fb4deea7b2427c63",
+      "relatedSpdxElement": "SPDXRef-Package-dbb611fbde4ed62c",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ]
+}

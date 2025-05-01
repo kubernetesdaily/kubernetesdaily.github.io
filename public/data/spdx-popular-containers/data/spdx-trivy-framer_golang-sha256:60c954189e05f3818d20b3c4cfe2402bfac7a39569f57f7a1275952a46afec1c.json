@@ -1,0 +1,3701 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "framer/golang@sha256:60c954189e05f3818d20b3c4cfe2402bfac7a39569f57f7a1275952a46afec1c",
+  "documentNamespace": "http://trivy.dev/container_image/framer/golang@sha256:60c954189e05f3818d20b3c4cfe2402bfac7a39569f57f7a1275952a46afec1c-8851d788-1e72-4bb8-b293-92be2fe6fff3",
+  "creationInfo": {
+    "creators": [
+      "Organization: aquasecurity",
+      "Tool: trivy-0.61.1"
+    ],
+    "created": "2025-04-30T09:58:02Z"
+  },
+  "packages": [
+    {
+      "name": "usr/local/bin/migrate",
+      "SPDXID": "SPDXRef-Application-15a076eeb44c30e9",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "primaryPackagePurpose": "APPLICATION",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "Class: lang-pkgs"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "Type: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "framer/golang@sha256:60c954189e05f3818d20b3c4cfe2402bfac7a39569f57f7a1275952a46afec1c",
+      "SPDXID": "SPDXRef-ContainerImage-6f67c1fdf8e3d3b8",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:oci/golang@sha256%3A60c954189e05f3818d20b3c4cfe2402bfac7a39569f57f7a1275952a46afec1c?arch=amd64\u0026repository_url=index.docker.io%2Fframer%2Fgolang"
+        }
+      ],
+      "primaryPackagePurpose": "CONTAINER",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:0e551e5199f7d39dc1532cfb766df9b25454a88e0b6a7f2348ea1e167a4247b9"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:1763513696ca6af45584a919597211953348a87081bbe6ea24190d79cd68430f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:511cccb23b8405015bd78ff35aee6cd8b75aa46ccf31908b5bdbc182010eebec"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:8d2072cf86216bf6fec4a29a7cd930e5f3049495bb5b9c588d9be0ca76b68095"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:af63797e187416387729a13e4e3f0958a9697fd2711218d91e075dbd00963f36"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:b43c018404cc16ea0d5c353f5abf7b15cff6caa7a66244411d6c8d65443ccb1f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "ImageID: sha256:c165532c535bfb75b587667beef6db8a13bb94b3529d687474ce1c491ea4a2d1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "RepoDigest: framer/golang@sha256:60c954189e05f3818d20b3c4cfe2402bfac7a39569f57f7a1275952a46afec1c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "SchemaVersion: 2"
+        }
+      ]
+    },
+    {
+      "name": "alpine-baselayout",
+      "SPDXID": "SPDXRef-Package-6ac860bd44992f4",
+      "versionInfo": "3.2.0-r7",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "586a54e5d97853df4ebdc4362882e56fe77a0c09"
+        }
+      ],
+      "sourceInfo": "built package from: alpine-baselayout 3.2.0-r7",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/alpine-baselayout@3.2.0-r7?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: alpine-baselayout@3.2.0-r7"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "alpine-keys",
+      "SPDXID": "SPDXRef-Package-b476064a68592067",
+      "versionInfo": "2.2-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "dc54000f065e1842566411b8129d84eb0d1f9b6b"
+        }
+      ],
+      "sourceInfo": "built package from: alpine-keys 2.2-r0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/alpine-keys@2.2-r0?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: alpine-keys@2.2-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "apk-tools",
+      "SPDXID": "SPDXRef-Package-2be420db7912eb49",
+      "versionInfo": "2.10.5-r1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "747cfd72085f70e0fcf837e53b9080ab42ba0e48"
+        }
+      ],
+      "sourceInfo": "built package from: apk-tools 2.10.5-r1",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/apk-tools@2.10.5-r1?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: apk-tools@2.10.5-r1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "busybox",
+      "SPDXID": "SPDXRef-Package-2de19bc293d21513",
+      "versionInfo": "1.31.1-r19",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "948187722ac9248b0e27eb0cf51047e9ea059593"
+        }
+      ],
+      "sourceInfo": "built package from: busybox 1.31.1-r19",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/busybox@1.31.1-r19?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: busybox@1.31.1-r19"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "ca-certificates-bundle",
+      "SPDXID": "SPDXRef-Package-51a9509937c4fccf",
+      "versionInfo": "20191127-r4",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "503942d523c06a604d1ea12a038d17c02a8764a4"
+        }
+      ],
+      "sourceInfo": "built package from: ca-certificates 20191127-r4",
+      "licenseConcluded": "MPL-2.0 AND GPL-2.0-or-later",
+      "licenseDeclared": "MPL-2.0 AND GPL-2.0-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/ca-certificates-bundle@20191127-r4?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: ca-certificates-bundle@20191127-r4"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "cloud.google.com/go",
+      "SPDXID": "SPDXRef-Package-789178cb32d42331",
+      "versionInfo": "v0.61.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/cloud.google.com/go@v0.61.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: cloud.google.com/go@v0.61.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "cloud.google.com/go/spanner",
+      "SPDXID": "SPDXRef-Package-70c9820fc9b4cd49",
+      "versionInfo": "v1.8.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/cloud.google.com/go/spanner@v1.8.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: cloud.google.com/go/spanner@v1.8.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "cloud.google.com/go/storage",
+      "SPDXID": "SPDXRef-Package-46af97c88d62b7a0",
+      "versionInfo": "v1.10.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/cloud.google.com/go/storage@v1.10.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: cloud.google.com/go/storage@v1.10.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/ClickHouse/clickhouse-go",
+      "SPDXID": "SPDXRef-Package-1c515a5ffa6ed02c",
+      "versionInfo": "v1.3.12",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/clickhouse/clickhouse-go@v1.3.12"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/ClickHouse/clickhouse-go@v1.3.12"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/aws/aws-sdk-go",
+      "SPDXID": "SPDXRef-Package-59b4b808ce3e1bae",
+      "versionInfo": "v1.17.7",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/aws/aws-sdk-go@v1.17.7"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/aws/aws-sdk-go@v1.17.7"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/cockroachdb/cockroach-go",
+      "SPDXID": "SPDXRef-Package-c4bffaaf8e080787",
+      "versionInfo": "v0.0.0-20190925194419-606b3d062051",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/cockroachdb/cockroach-go@v0.0.0-20190925194419-606b3d062051"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/cockroachdb/cockroach-go@v0.0.0-20190925194419-606b3d062051"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/cznic/mathutil",
+      "SPDXID": "SPDXRef-Package-4334303753dbd481",
+      "versionInfo": "v0.0.0-20180504122225-ca4c9f2c1369",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/cznic/mathutil@v0.0.0-20180504122225-ca4c9f2c1369"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/cznic/mathutil@v0.0.0-20180504122225-ca4c9f2c1369"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/denisenkom/go-mssqldb",
+      "SPDXID": "SPDXRef-Package-4fc10e4ad17bcaef",
+      "versionInfo": "v0.0.0-20200620013148-b91950f658ec",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/denisenkom/go-mssqldb@v0.0.0-20200620013148-b91950f658ec"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/denisenkom/go-mssqldb@v0.0.0-20200620013148-b91950f658ec"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/go-sql-driver/mysql",
+      "SPDXID": "SPDXRef-Package-5abac2178ee26595",
+      "versionInfo": "v1.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/go-sql-driver/mysql@v1.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/go-sql-driver/mysql@v1.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/go-stack/stack",
+      "SPDXID": "SPDXRef-Package-1307964a23d81061",
+      "versionInfo": "v1.8.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/go-stack/stack@v1.8.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/go-stack/stack@v1.8.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/gocql/gocql",
+      "SPDXID": "SPDXRef-Package-b213a8f88b0163b6",
+      "versionInfo": "v0.0.0-20190301043612-f6df8288f9b4",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/gocql/gocql@v0.0.0-20190301043612-f6df8288f9b4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/gocql/gocql@v0.0.0-20190301043612-f6df8288f9b4"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/golang-migrate/migrate/v4",
+      "SPDXID": "SPDXRef-Package-eb94b5c66da79dc2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/golang-migrate/migrate/v4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/golang-migrate/migrate/v4"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/golang-sql/civil",
+      "SPDXID": "SPDXRef-Package-6a1e696ca3227969",
+      "versionInfo": "v0.0.0-20190719163853-cb61b32ac6fe",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/golang-sql/civil@v0.0.0-20190719163853-cb61b32ac6fe"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/golang-sql/civil@v0.0.0-20190719163853-cb61b32ac6fe"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/golang/groupcache",
+      "SPDXID": "SPDXRef-Package-6c736ae71f19ad78",
+      "versionInfo": "v0.0.0-20200121045136-8c9f03a8e57e",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/golang/groupcache@v0.0.0-20200121045136-8c9f03a8e57e"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/golang/groupcache@v0.0.0-20200121045136-8c9f03a8e57e"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/golang/protobuf",
+      "SPDXID": "SPDXRef-Package-d8e25d1e74b7a170",
+      "versionInfo": "v1.4.2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/golang/protobuf@v1.4.2"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/golang/protobuf@v1.4.2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/golang/snappy",
+      "SPDXID": "SPDXRef-Package-fd17e6bfaa3a5fb3",
+      "versionInfo": "v0.0.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/golang/snappy@v0.0.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/golang/snappy@v0.0.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/google/go-cmp",
+      "SPDXID": "SPDXRef-Package-45ae5d8e3bb67f8f",
+      "versionInfo": "v0.5.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/google/go-cmp@v0.5.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/google/go-cmp@v0.5.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/google/go-github",
+      "SPDXID": "SPDXRef-Package-9542bdcb8510ec58",
+      "versionInfo": "v17.0.0+incompatible",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/google/go-github@v17.0.0%2Bincompatible"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/google/go-github@v17.0.0+incompatible"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/google/go-querystring",
+      "SPDXID": "SPDXRef-Package-2d8867ed1ed5b46",
+      "versionInfo": "v1.0.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/google/go-querystring@v1.0.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/google/go-querystring@v1.0.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/googleapis/gax-go/v2",
+      "SPDXID": "SPDXRef-Package-bd1e9a5642f3460b",
+      "versionInfo": "v2.0.5",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/googleapis/gax-go/v2@v2.0.5"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/googleapis/gax-go/v2@v2.0.5"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/hailocab/go-hostpool",
+      "SPDXID": "SPDXRef-Package-57c93bc9cd903e44",
+      "versionInfo": "v0.0.0-20160125115350-e80d13ce29ed",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/hailocab/go-hostpool@v0.0.0-20160125115350-e80d13ce29ed"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/hailocab/go-hostpool@v0.0.0-20160125115350-e80d13ce29ed"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/hashicorp/errwrap",
+      "SPDXID": "SPDXRef-Package-c1a299616bf7f7ab",
+      "versionInfo": "v1.0.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/hashicorp/errwrap@v1.0.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/hashicorp/errwrap@v1.0.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/hashicorp/go-multierror",
+      "SPDXID": "SPDXRef-Package-eff26dacb85dff74",
+      "versionInfo": "v1.1.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/hashicorp/go-multierror@v1.1.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/hashicorp/go-multierror@v1.1.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/jackc/chunkreader/v2",
+      "SPDXID": "SPDXRef-Package-6b1093507605e567",
+      "versionInfo": "v2.0.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/jackc/chunkreader/v2@v2.0.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/jackc/chunkreader/v2@v2.0.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/jackc/pgconn",
+      "SPDXID": "SPDXRef-Package-39fcf003abbc9a49",
+      "versionInfo": "v1.3.2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/jackc/pgconn@v1.3.2"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/jackc/pgconn@v1.3.2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/jackc/pgio",
+      "SPDXID": "SPDXRef-Package-6a9ed54e9edafb08",
+      "versionInfo": "v1.0.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/jackc/pgio@v1.0.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/jackc/pgio@v1.0.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/jackc/pgpassfile",
+      "SPDXID": "SPDXRef-Package-690b550863f2bc45",
+      "versionInfo": "v1.0.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/jackc/pgpassfile@v1.0.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/jackc/pgpassfile@v1.0.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/jackc/pgproto3/v2",
+      "SPDXID": "SPDXRef-Package-9c7dc70c06e4dc1d",
+      "versionInfo": "v2.0.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/jackc/pgproto3/v2@v2.0.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/jackc/pgproto3/v2@v2.0.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/jmespath/go-jmespath",
+      "SPDXID": "SPDXRef-Package-13c8cecb0d8b8650",
+      "versionInfo": "v0.0.0-20180206201540-c2b33e8439af",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/jmespath/go-jmespath@v0.0.0-20180206201540-c2b33e8439af"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/jmespath/go-jmespath@v0.0.0-20180206201540-c2b33e8439af"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/kardianos/osext",
+      "SPDXID": "SPDXRef-Package-6d4519c9a2e98a83",
+      "versionInfo": "v0.0.0-20190222173326-2bc1f35cddc0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/kardianos/osext@v0.0.0-20190222173326-2bc1f35cddc0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/kardianos/osext@v0.0.0-20190222173326-2bc1f35cddc0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/lib/pq",
+      "SPDXID": "SPDXRef-Package-bdd17deca478f609",
+      "versionInfo": "v1.3.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/lib/pq@v1.3.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/lib/pq@v1.3.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/nakagami/firebirdsql",
+      "SPDXID": "SPDXRef-Package-bf7e5d51ac1c1ce0",
+      "versionInfo": "v0.0.0-20190310045651-3c02a58cfed8",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/nakagami/firebirdsql@v0.0.0-20190310045651-3c02a58cfed8"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/nakagami/firebirdsql@v0.0.0-20190310045651-3c02a58cfed8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/neo4j/neo4j-go-driver",
+      "SPDXID": "SPDXRef-Package-cb3bae715ed69784",
+      "versionInfo": "v1.8.1-0.20200803113522-b626aa943eba",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/neo4j/neo4j-go-driver@v1.8.1-0.20200803113522-b626aa943eba"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/neo4j/neo4j-go-driver@v1.8.1-0.20200803113522-b626aa943eba"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/shopspring/decimal",
+      "SPDXID": "SPDXRef-Package-90986bf934c50bd6",
+      "versionInfo": "v0.0.0-20180709203117-cd690d0c9e24",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/shopspring/decimal@v0.0.0-20180709203117-cd690d0c9e24"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/shopspring/decimal@v0.0.0-20180709203117-cd690d0c9e24"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/xanzy/go-gitlab",
+      "SPDXID": "SPDXRef-Package-6e6d1188a9a97ab2",
+      "versionInfo": "v0.15.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/xanzy/go-gitlab@v0.15.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/xanzy/go-gitlab@v0.15.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/xdg/scram",
+      "SPDXID": "SPDXRef-Package-c80a17f42be36b56",
+      "versionInfo": "v0.0.0-20180814205039-7eeb5667e42c",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/xdg/scram@v0.0.0-20180814205039-7eeb5667e42c"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/xdg/scram@v0.0.0-20180814205039-7eeb5667e42c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "github.com/xdg/stringprep",
+      "SPDXID": "SPDXRef-Package-46a1038189bc60cc",
+      "versionInfo": "v1.0.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/github.com/xdg/stringprep@v1.0.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: github.com/xdg/stringprep@v1.0.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "gitlab.com/nyarla/go-crypt",
+      "SPDXID": "SPDXRef-Package-99a4190cf23bebcc",
+      "versionInfo": "v0.0.0-20160106005555-d9a5dc2b789b",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/gitlab.com/nyarla/go-crypt@v0.0.0-20160106005555-d9a5dc2b789b"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: gitlab.com/nyarla/go-crypt@v0.0.0-20160106005555-d9a5dc2b789b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "go.mongodb.org/mongo-driver",
+      "SPDXID": "SPDXRef-Package-8ce85ee019327926",
+      "versionInfo": "v1.1.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/go.mongodb.org/mongo-driver@v1.1.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: go.mongodb.org/mongo-driver@v1.1.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "go.opencensus.io",
+      "SPDXID": "SPDXRef-Package-25519d280885df13",
+      "versionInfo": "v0.22.4",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/go.opencensus.io@v0.22.4"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: go.opencensus.io@v0.22.4"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/crypto",
+      "SPDXID": "SPDXRef-Package-ec680a76129903b9",
+      "versionInfo": "v0.0.0-20200709230013-948cd5f35899",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/crypto@v0.0.0-20200709230013-948cd5f35899"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/crypto@v0.0.0-20200709230013-948cd5f35899"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/net",
+      "SPDXID": "SPDXRef-Package-26e1325ae3050b0",
+      "versionInfo": "v0.0.0-20200707034311-ab3426394381",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/net@v0.0.0-20200707034311-ab3426394381"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/net@v0.0.0-20200707034311-ab3426394381"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/oauth2",
+      "SPDXID": "SPDXRef-Package-34ca9ff616bda3b6",
+      "versionInfo": "v0.0.0-20200107190931-bf48bf16ab8d",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/oauth2@v0.0.0-20200107190931-bf48bf16ab8d"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/oauth2@v0.0.0-20200107190931-bf48bf16ab8d"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/sync",
+      "SPDXID": "SPDXRef-Package-9e78231daab13db5",
+      "versionInfo": "v0.0.0-20200625203802-6e8e738ad208",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/sync@v0.0.0-20200625203802-6e8e738ad208"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/sync@v0.0.0-20200625203802-6e8e738ad208"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/sys",
+      "SPDXID": "SPDXRef-Package-7e2bb7bd678a0401",
+      "versionInfo": "v0.0.0-20200724161237-0e2f3a69832c",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/sys@v0.0.0-20200724161237-0e2f3a69832c"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/sys@v0.0.0-20200724161237-0e2f3a69832c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/text",
+      "SPDXID": "SPDXRef-Package-eb2c3c1be2ab7414",
+      "versionInfo": "v0.3.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/text@v0.3.3"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/text@v0.3.3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/tools",
+      "SPDXID": "SPDXRef-Package-8707a90b009f0867",
+      "versionInfo": "v0.0.0-20200725200936-102e7d357031",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/tools@v0.0.0-20200725200936-102e7d357031"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/tools@v0.0.0-20200725200936-102e7d357031"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "golang.org/x/xerrors",
+      "SPDXID": "SPDXRef-Package-4033d5883851d0af",
+      "versionInfo": "v0.0.0-20191204190536-9bdfabe68543",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/golang.org/x/xerrors@v0.0.0-20191204190536-9bdfabe68543"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: golang.org/x/xerrors@v0.0.0-20191204190536-9bdfabe68543"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "google.golang.org/api",
+      "SPDXID": "SPDXRef-Package-7c7cffdd782c2e74",
+      "versionInfo": "v0.29.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/google.golang.org/api@v0.29.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: google.golang.org/api@v0.29.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "google.golang.org/genproto",
+      "SPDXID": "SPDXRef-Package-a5bc8ed8b3bf2fef",
+      "versionInfo": "v0.0.0-20200726014623-da3ae01ef02d",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/google.golang.org/genproto@v0.0.0-20200726014623-da3ae01ef02d"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: google.golang.org/genproto@v0.0.0-20200726014623-da3ae01ef02d"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "google.golang.org/grpc",
+      "SPDXID": "SPDXRef-Package-91b23f5d80585864",
+      "versionInfo": "v1.30.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/google.golang.org/grpc@v1.30.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: google.golang.org/grpc@v1.30.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "google.golang.org/protobuf",
+      "SPDXID": "SPDXRef-Package-e9bb8f51e9041fd0",
+      "versionInfo": "v1.25.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/google.golang.org/protobuf@v1.25.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: google.golang.org/protobuf@v1.25.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "gopkg.in/inf.v0",
+      "SPDXID": "SPDXRef-Package-956bba3f8963769c",
+      "versionInfo": "v0.9.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/gopkg.in/inf.v0@v0.9.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: gopkg.in/inf.v0@v0.9.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "libc-utils",
+      "SPDXID": "SPDXRef-Package-269937995b3952e5",
+      "versionInfo": "0.7.2-r3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "eb13f5c917a2ee0b1f1451764a8f7a48f669c347"
+        }
+      ],
+      "sourceInfo": "built package from: libc-dev 0.7.2-r3",
+      "licenseConcluded": "BSD-2-Clause AND BSD-3-Clause",
+      "licenseDeclared": "BSD-2-Clause AND BSD-3-Clause",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libc-utils@0.7.2-r3?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libc-utils@0.7.2-r3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libcrypto1.1",
+      "SPDXID": "SPDXRef-Package-5b64c6e3ba0c86d9",
+      "versionInfo": "1.1.1g-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "883e59005203fb435fe723d2a24044648bd2d16a"
+        }
+      ],
+      "sourceInfo": "built package from: openssl 1.1.1g-r0",
+      "licenseConcluded": "OpenSSL",
+      "licenseDeclared": "OpenSSL",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libcrypto1.1@1.1.1g-r0?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libcrypto1.1@1.1.1g-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libssl1.1",
+      "SPDXID": "SPDXRef-Package-2932e67c06a4f2c6",
+      "versionInfo": "1.1.1g-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "1f4a8110f2f5feef712d546f8d09b1b6e32c2553"
+        }
+      ],
+      "sourceInfo": "built package from: openssl 1.1.1g-r0",
+      "licenseConcluded": "OpenSSL",
+      "licenseDeclared": "OpenSSL",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libssl1.1@1.1.1g-r0?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libssl1.1@1.1.1g-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "libtls-standalone",
+      "SPDXID": "SPDXRef-Package-741e4f1c80c2a98e",
+      "versionInfo": "2.9.1-r1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e01cea4ac27dc1161e8ca08153efb723656fcd2b"
+        }
+      ],
+      "sourceInfo": "built package from: libtls-standalone 2.9.1-r1",
+      "licenseConcluded": "ISC",
+      "licenseDeclared": "ISC",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/libtls-standalone@2.9.1-r1?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: libtls-standalone@2.9.1-r1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "musl",
+      "SPDXID": "SPDXRef-Package-4f723b258a0884a6",
+      "versionInfo": "1.1.24-r9",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "48951c666b46ea8dc5d5bbb53dfa3b1ee06c1b06"
+        }
+      ],
+      "sourceInfo": "built package from: musl 1.1.24-r9",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/musl@1.1.24-r9?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: musl@1.1.24-r9"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "musl-utils",
+      "SPDXID": "SPDXRef-Package-bb71683dd830a9b1",
+      "versionInfo": "1.1.24-r9",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "fb578287dba7b9a1837c5ea677282e646f160017"
+        }
+      ],
+      "sourceInfo": "built package from: musl 1.1.24-r9",
+      "licenseConcluded": "MIT AND BSD-3-Clause AND GPL-2.0-or-later",
+      "licenseDeclared": "MIT AND BSD-3-Clause AND GPL-2.0-or-later",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/musl-utils@1.1.24-r9?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: musl-utils@1.1.24-r9"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "scanelf",
+      "SPDXID": "SPDXRef-Package-d015b252fc49dfad",
+      "versionInfo": "1.2.6-r0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "8ef61abd1bfdf527624f73372afe60be98bc2d76"
+        }
+      ],
+      "sourceInfo": "built package from: pax-utils 1.2.6-r0",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/scanelf@1.2.6-r0?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: scanelf@1.2.6-r0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "ssl_client",
+      "SPDXID": "SPDXRef-Package-91864ac19484b502",
+      "versionInfo": "1.31.1-r19",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "42349a9963e2581182ab671bc9ce538c0ba98315"
+        }
+      ],
+      "sourceInfo": "built package from: busybox 1.31.1-r19",
+      "licenseConcluded": "GPL-2.0-only",
+      "licenseDeclared": "GPL-2.0-only",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/ssl_client@1.31.1-r19?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: ssl_client@1.31.1-r19"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "stdlib",
+      "SPDXID": "SPDXRef-Package-815b6034ee955109",
+      "versionInfo": "v1.14.6",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: usr/local/bin/migrate",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/stdlib@v1.14.6"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:22516dc6621b647bc8053ecab83f6dfa9b81f91f30e757075e98a12875a5d667"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:1690a30dced5a11f8cad05f4c7dd55c76a1f3079cb45c8a765c9e6a40c4ed778"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: stdlib@v1.14.6"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "zlib",
+      "SPDXID": "SPDXRef-Package-e28c2d45c4c4f0a0",
+      "versionInfo": "1.2.11-r3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "546ddc3b175f47acd983b099383e92482de53bab"
+        }
+      ],
+      "sourceInfo": "built package from: zlib 1.2.11-r3",
+      "licenseConcluded": "Zlib",
+      "licenseDeclared": "Zlib",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:apk/alpine/zlib@1.2.11-r3?arch=x86_64\u0026distro=3.12.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ace0eda3e3be35a979cec764a3321b4c7d0b9e4bb3094d20d3ff6782961a8d54"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:188c0c94c7c576fff0792aca7ec73d67a2f7f4cb3a6e53a84559337260b36964"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: zlib@1.2.11-r3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: alpine"
+        }
+      ]
+    },
+    {
+      "name": "alpine",
+      "SPDXID": "SPDXRef-OperatingSystem-27eb238e9559f27f",
+      "versionInfo": "3.12.1",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "primaryPackagePurpose": "OPERATING-SYSTEM",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "Class: os-pkgs"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T09:58:02Z",
+          "annotationType": "OTHER",
+          "comment": "Type: alpine"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-Application-15a076eeb44c30e9",
+      "relatedSpdxElement": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-ContainerImage-6f67c1fdf8e3d3b8",
+      "relatedSpdxElement": "SPDXRef-Application-15a076eeb44c30e9",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-ContainerImage-6f67c1fdf8e3d3b8",
+      "relatedSpdxElement": "SPDXRef-OperatingSystem-27eb238e9559f27f",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-ContainerImage-6f67c1fdf8e3d3b8",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-27eb238e9559f27f",
+      "relatedSpdxElement": "SPDXRef-Package-269937995b3952e5",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-27eb238e9559f27f",
+      "relatedSpdxElement": "SPDXRef-Package-2be420db7912eb49",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-27eb238e9559f27f",
+      "relatedSpdxElement": "SPDXRef-Package-6ac860bd44992f4",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-27eb238e9559f27f",
+      "relatedSpdxElement": "SPDXRef-Package-91864ac19484b502",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-OperatingSystem-27eb238e9559f27f",
+      "relatedSpdxElement": "SPDXRef-Package-b476064a68592067",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-269937995b3952e5",
+      "relatedSpdxElement": "SPDXRef-Package-bb71683dd830a9b1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2932e67c06a4f2c6",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2932e67c06a4f2c6",
+      "relatedSpdxElement": "SPDXRef-Package-5b64c6e3ba0c86d9",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2be420db7912eb49",
+      "relatedSpdxElement": "SPDXRef-Package-2932e67c06a4f2c6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2be420db7912eb49",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2be420db7912eb49",
+      "relatedSpdxElement": "SPDXRef-Package-5b64c6e3ba0c86d9",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2be420db7912eb49",
+      "relatedSpdxElement": "SPDXRef-Package-e28c2d45c4c4f0a0",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2de19bc293d21513",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-5b64c6e3ba0c86d9",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-6ac860bd44992f4",
+      "relatedSpdxElement": "SPDXRef-Package-2de19bc293d21513",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-6ac860bd44992f4",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-741e4f1c80c2a98e",
+      "relatedSpdxElement": "SPDXRef-Package-2932e67c06a4f2c6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-741e4f1c80c2a98e",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-741e4f1c80c2a98e",
+      "relatedSpdxElement": "SPDXRef-Package-51a9509937c4fccf",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-741e4f1c80c2a98e",
+      "relatedSpdxElement": "SPDXRef-Package-5b64c6e3ba0c86d9",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-91864ac19484b502",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-91864ac19484b502",
+      "relatedSpdxElement": "SPDXRef-Package-741e4f1c80c2a98e",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bb71683dd830a9b1",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-bb71683dd830a9b1",
+      "relatedSpdxElement": "SPDXRef-Package-d015b252fc49dfad",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-d015b252fc49dfad",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-e28c2d45c4c4f0a0",
+      "relatedSpdxElement": "SPDXRef-Package-4f723b258a0884a6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-1307964a23d81061",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-13c8cecb0d8b8650",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-1c515a5ffa6ed02c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-25519d280885df13",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-26e1325ae3050b0",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-2d8867ed1ed5b46",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-34ca9ff616bda3b6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-39fcf003abbc9a49",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-4033d5883851d0af",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-4334303753dbd481",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-45ae5d8e3bb67f8f",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-46a1038189bc60cc",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-46af97c88d62b7a0",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-4fc10e4ad17bcaef",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-57c93bc9cd903e44",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-59b4b808ce3e1bae",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-5abac2178ee26595",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-690b550863f2bc45",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-6a1e696ca3227969",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-6a9ed54e9edafb08",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-6b1093507605e567",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-6c736ae71f19ad78",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-6d4519c9a2e98a83",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-6e6d1188a9a97ab2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-70c9820fc9b4cd49",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-789178cb32d42331",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-7c7cffdd782c2e74",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-7e2bb7bd678a0401",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-815b6034ee955109",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-8707a90b009f0867",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-8ce85ee019327926",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-90986bf934c50bd6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-91b23f5d80585864",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-9542bdcb8510ec58",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-956bba3f8963769c",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-99a4190cf23bebcc",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-9c7dc70c06e4dc1d",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-9e78231daab13db5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-a5bc8ed8b3bf2fef",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-b213a8f88b0163b6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-bd1e9a5642f3460b",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-bdd17deca478f609",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-bf7e5d51ac1c1ce0",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-c1a299616bf7f7ab",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-c4bffaaf8e080787",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-c80a17f42be36b56",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-cb3bae715ed69784",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-d8e25d1e74b7a170",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-e9bb8f51e9041fd0",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-eb2c3c1be2ab7414",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-ec680a76129903b9",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-eff26dacb85dff74",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-eb94b5c66da79dc2",
+      "relatedSpdxElement": "SPDXRef-Package-fd17e6bfaa3a5fb3",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ]
+}

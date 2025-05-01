@@ -1,0 +1,69 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "stagex/redis@sha256:8a63f50973ecb707a55a558f9fe315bc19e1ecf98095cbaf52ae57086523272c",
+  "documentNamespace": "http://trivy.dev/container_image/stagex/redis@sha256:8a63f50973ecb707a55a558f9fe315bc19e1ecf98095cbaf52ae57086523272c-0c4f3464-3abc-483a-bf3a-70db30eac119",
+  "creationInfo": {
+    "creators": [
+      "Organization: aquasecurity",
+      "Tool: trivy-0.61.1"
+    ],
+    "created": "2025-04-30T00:17:32Z"
+  },
+  "packages": [
+    {
+      "name": "stagex/redis@sha256:8a63f50973ecb707a55a558f9fe315bc19e1ecf98095cbaf52ae57086523272c",
+      "SPDXID": "SPDXRef-ContainerImage-ab3dd6736e4e3898",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:oci/redis@sha256%3A8a63f50973ecb707a55a558f9fe315bc19e1ecf98095cbaf52ae57086523272c?arch=amd64\u0026repository_url=index.docker.io%2Fstagex%2Fredis"
+        }
+      ],
+      "primaryPackagePurpose": "CONTAINER",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T00:17:32Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:62dcf5452ea5243894c4559f455c0dbe564a35116422c0784a700c719aeb018b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T00:17:32Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:6786fa2623437a85a9ed2f614c207cd0d8471e368f0a75f59e9e167b06d6551b"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T00:17:32Z",
+          "annotationType": "OTHER",
+          "comment": "ImageID: sha256:8bc02619026ce92926a89f904cecfff99f3c618bcc24bc0bd18a083580efa216"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T00:17:32Z",
+          "annotationType": "OTHER",
+          "comment": "RepoDigest: stagex/redis@sha256:8a63f50973ecb707a55a558f9fe315bc19e1ecf98095cbaf52ae57086523272c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-30T00:17:32Z",
+          "annotationType": "OTHER",
+          "comment": "SchemaVersion: 2"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-ContainerImage-ab3dd6736e4e3898",
+      "relationshipType": "DESCRIBES"
+    }
+  ]
+}

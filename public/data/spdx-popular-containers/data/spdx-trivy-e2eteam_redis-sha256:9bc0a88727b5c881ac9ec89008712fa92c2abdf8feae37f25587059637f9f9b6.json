@@ -1,0 +1,2766 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "e2eteam/redis@sha256:9bc0a88727b5c881ac9ec89008712fa92c2abdf8feae37f25587059637f9f9b6",
+  "documentNamespace": "http://trivy.dev/container_image/e2eteam/redis@sha256:9bc0a88727b5c881ac9ec89008712fa92c2abdf8feae37f25587059637f9f9b6-d2c869ed-50fe-4b12-9040-23bc75154701",
+  "creationInfo": {
+    "creators": [
+      "Organization: aquasecurity",
+      "Tool: trivy-0.61.1"
+    ],
+    "created": "2025-04-29T23:23:43Z"
+  },
+  "packages": [
+    {
+      "name": "Files/Program Files/PowerShell/pwsh.deps.json",
+      "SPDXID": "SPDXRef-Application-4489854617859838",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "primaryPackagePurpose": "APPLICATION",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "Class: lang-pkgs"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "Type: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Files/bin/hostname.exe",
+      "SPDXID": "SPDXRef-Application-e5cd5eb4d9b334c2",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "primaryPackagePurpose": "APPLICATION",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "Class: lang-pkgs"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "Type: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "e2eteam/redis@sha256:9bc0a88727b5c881ac9ec89008712fa92c2abdf8feae37f25587059637f9f9b6",
+      "SPDXID": "SPDXRef-ContainerImage-fb6fd5c9437a9d95",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:oci/redis@sha256%3A9bc0a88727b5c881ac9ec89008712fa92c2abdf8feae37f25587059637f9f9b6?arch=amd64\u0026repository_url=index.docker.io%2Fe2eteam%2Fredis"
+        }
+      ],
+      "primaryPackagePurpose": "CONTAINER",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:00e4c86ba44324c90cfbd5856a15983a84bb7fb5e9cd7098aae9c71a2c8bfc6f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:0d655ca73d751cbd798661551654b4d31da68064caadc5a6dfa4874524f24c26"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:0e69009aebdf98b57a1e1efdec12cf521881f6b9740750aa4e971e1a4fea22aa"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:19f5929648ca1ef3fb882016d7aeec510bbffc4f4a24f5ff8775696fafeeda77"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:3b64313c9b46c4ea8509563b0a890c36175c41f18ca346a4664dd00c6e70ca44"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:465bd5c8933b1e57ee81957f02a01132f49aa1126d13909adcd6735903f799d7"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:546539b8901dc2837f9fd102fc731d3c0ecf814a8167d06cbd5aa2b5b56ac25a"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:710225899af0c3dd49221769fab8af90698d0d64471a754869d162ca3e5b5e94"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:7113b94104ee5527b57b856ed6fb73f01647ae121bcb646f80d68b6480e27b8c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:77dd352c89698b6426a71c488900c94aa54302ac7e5378246a2c354d77f2fdf9"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:7e83a76e4a54a977e0ded5b051d2278d510cc20057469e65c89e0f9c74c92fad"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:940ff63e72d7474f17a53c71b4ee48089d1babd973514edc53d6dfc94febcb87"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:9a40c498246ff7219b32a255aa4fcae1a34eeb2025de27325697b0749c2c3b8e"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:ace5d81f13ff5b4edfc6cab10774c57e3659b4d9db8b3f6776d7c3bd75e71214"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:c2a8b6ff12167a5166339173e0dd4d8b3e8cf561d5e15e0e2e265c29848e19ea"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:d8b8be22ab09b01040865384a8be3769c0de1d4d2faf4c5dcc49658f492ea454"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "DiffID: sha256:f8cc81f92aa8aabce787855c15530f0617790dddef02ce4d520cc3fa063eaf02"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "ImageID: sha256:c426c55d150ba34f341ef8019ccf22914986fa25d465ba4eb7d3f3d2c29b40b3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "RepoDigest: e2eteam/redis@sha256:9bc0a88727b5c881ac9ec89008712fa92c2abdf8feae37f25587059637f9f9b6"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "SchemaVersion: 2"
+        }
+      ]
+    },
+    {
+      "name": "Markdig.Signed",
+      "SPDXID": "SPDXRef-Package-629aca78f8555845",
+      "versionInfo": "0.16.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Markdig.Signed@0.16.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Markdig.Signed/0.16.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft.ApplicationInsights",
+      "SPDXID": "SPDXRef-Package-d10a434473a7df3c",
+      "versionInfo": "2.9.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.ApplicationInsights@2.9.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Microsoft.ApplicationInsights/2.9.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.CSharp",
+      "SPDXID": "SPDXRef-Package-b5e38de5bd61e15b",
+      "versionInfo": "2.10.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.CodeAnalysis.CSharp@2.10.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Microsoft.CodeAnalysis.CSharp/2.10.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft.CodeAnalysis.Common",
+      "SPDXID": "SPDXRef-Package-11457fa525efb07d",
+      "versionInfo": "2.10.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.CodeAnalysis.Common@2.10.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Microsoft.CodeAnalysis.Common/2.10.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft.Management.Infrastructure",
+      "SPDXID": "SPDXRef-Package-6460c66d3685bfe7",
+      "versionInfo": "1.0.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Management.Infrastructure@1.0.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Microsoft.Management.Infrastructure/1.0.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft.PowerShell.Native",
+      "SPDXID": "SPDXRef-Package-3b7e98b1f69c4bde",
+      "versionInfo": "6.2.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.PowerShell.Native@6.2.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Microsoft.PowerShell.Native/6.2.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft.Win32.Registry.AccessControl",
+      "SPDXID": "SPDXRef-Package-fb664780e5d9a675",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Win32.Registry.AccessControl@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Microsoft.Win32.Registry.AccessControl/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft.Win32.SystemEvents",
+      "SPDXID": "SPDXRef-Package-4cb35bb44e04b193",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Microsoft.Win32.SystemEvents@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Microsoft.Win32.SystemEvents/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "NJsonSchema",
+      "SPDXID": "SPDXRef-Package-42ef25f418471150",
+      "versionInfo": "9.13.27",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/NJsonSchema@9.13.27"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: NJsonSchema/9.13.27"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "Newtonsoft.Json",
+      "SPDXID": "SPDXRef-Package-17e48984483844c9",
+      "versionInfo": "12.0.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/Newtonsoft.Json@12.0.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: Newtonsoft.Json/12.0.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.CodeDom",
+      "SPDXID": "SPDXRef-Package-e887288ce896f2fb",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.CodeDom@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.CodeDom/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ComponentModel.Composition",
+      "SPDXID": "SPDXRef-Package-f43d80f1714a406d",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ComponentModel.Composition@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ComponentModel.Composition/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Configuration.ConfigurationManager",
+      "SPDXID": "SPDXRef-Package-5b6c2c51037bd651",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Configuration.ConfigurationManager@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Configuration.ConfigurationManager/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Data.DataSetExtensions",
+      "SPDXID": "SPDXRef-Package-82953b21d816b71e",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Data.DataSetExtensions@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Data.DataSetExtensions/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Data.Odbc",
+      "SPDXID": "SPDXRef-Package-3a97c3e2f4a580ad",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Data.Odbc@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Data.Odbc/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Data.SqlClient",
+      "SPDXID": "SPDXRef-Package-22cce2f3b56e69c0",
+      "versionInfo": "4.6.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Data.SqlClient@4.6.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Data.SqlClient/4.6.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Diagnostics.EventLog",
+      "SPDXID": "SPDXRef-Package-85562e1f127faaeb",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Diagnostics.EventLog@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Diagnostics.EventLog/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Diagnostics.PerformanceCounter",
+      "SPDXID": "SPDXRef-Package-be9365842614ea4a",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Diagnostics.PerformanceCounter@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Diagnostics.PerformanceCounter/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.DirectoryServices",
+      "SPDXID": "SPDXRef-Package-6ddd2f75c3489d2c",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.DirectoryServices@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.DirectoryServices/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.DirectoryServices.AccountManagement",
+      "SPDXID": "SPDXRef-Package-6d0ca4fcbe3786e2",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.DirectoryServices.AccountManagement@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.DirectoryServices.AccountManagement/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.DirectoryServices.Protocols",
+      "SPDXID": "SPDXRef-Package-35a55c1fe97858e6",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.DirectoryServices.Protocols@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.DirectoryServices.Protocols/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Drawing.Common",
+      "SPDXID": "SPDXRef-Package-eb62c213a7d7ab34",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Drawing.Common@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Drawing.Common/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.IO.Packaging",
+      "SPDXID": "SPDXRef-Package-a47a50e8a03b10b1",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.IO.Packaging@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.IO.Packaging/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.IO.Ports",
+      "SPDXID": "SPDXRef-Package-69fa8c62ec934c20",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.IO.Ports@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.IO.Ports/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Management",
+      "SPDXID": "SPDXRef-Package-dd6b1247dbb71a58",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Management@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Management/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Net.Http.WinHttpHandler",
+      "SPDXID": "SPDXRef-Package-2575ae7d0dadd6c1",
+      "versionInfo": "4.5.2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Net.Http.WinHttpHandler@4.5.2"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Net.Http.WinHttpHandler/4.5.2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Private.ServiceModel",
+      "SPDXID": "SPDXRef-Package-370a8f18063fba65",
+      "versionInfo": "4.5.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Private.ServiceModel@4.5.3"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Private.ServiceModel/4.5.3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Runtime.Caching",
+      "SPDXID": "SPDXRef-Package-2ea51f2e52907e05",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Runtime.Caching@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Runtime.Caching/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Runtime.CompilerServices.Unsafe",
+      "SPDXID": "SPDXRef-Package-24730889796854f0",
+      "versionInfo": "4.5.2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Runtime.CompilerServices.Unsafe@4.5.2"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Runtime.CompilerServices.Unsafe/4.5.2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Security.Cryptography.Pkcs",
+      "SPDXID": "SPDXRef-Package-908e40b5719e9565",
+      "versionInfo": "4.5.2",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Security.Cryptography.Pkcs@4.5.2"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Security.Cryptography.Pkcs/4.5.2"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Security.Cryptography.ProtectedData",
+      "SPDXID": "SPDXRef-Package-6df97baef2a6d907",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Security.Cryptography.ProtectedData@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Security.Cryptography.ProtectedData/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Security.Cryptography.Xml",
+      "SPDXID": "SPDXRef-Package-db006a4788e01e19",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Security.Cryptography.Xml@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Security.Cryptography.Xml/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Security.Permissions",
+      "SPDXID": "SPDXRef-Package-e2d92eba9dd9aae",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Security.Permissions@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Security.Permissions/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceModel.Duplex",
+      "SPDXID": "SPDXRef-Package-76f4f4e1d3e33bda",
+      "versionInfo": "4.5.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ServiceModel.Duplex@4.5.3"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ServiceModel.Duplex/4.5.3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceModel.Http",
+      "SPDXID": "SPDXRef-Package-b3449197d6ef0f5b",
+      "versionInfo": "4.5.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ServiceModel.Http@4.5.3"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ServiceModel.Http/4.5.3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceModel.NetTcp",
+      "SPDXID": "SPDXRef-Package-8610df529584b833",
+      "versionInfo": "4.5.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ServiceModel.NetTcp@4.5.3"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ServiceModel.NetTcp/4.5.3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceModel.Primitives",
+      "SPDXID": "SPDXRef-Package-3874067fe5e548d7",
+      "versionInfo": "4.5.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ServiceModel.Primitives@4.5.3"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ServiceModel.Primitives/4.5.3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceModel.Security",
+      "SPDXID": "SPDXRef-Package-10fdcc06a8982c70",
+      "versionInfo": "4.5.3",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ServiceModel.Security@4.5.3"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ServiceModel.Security/4.5.3"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceModel.Syndication",
+      "SPDXID": "SPDXRef-Package-10e2c37753478bdc",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ServiceModel.Syndication@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ServiceModel.Syndication/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceProcess.ServiceController",
+      "SPDXID": "SPDXRef-Package-5e4044e653c73e16",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.ServiceProcess.ServiceController@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.ServiceProcess.ServiceController/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Text.Encoding.CodePages",
+      "SPDXID": "SPDXRef-Package-efdf6e3c8cd2677e",
+      "versionInfo": "4.5.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Text.Encoding.CodePages@4.5.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Text.Encoding.CodePages/4.5.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Text.Encodings.Web",
+      "SPDXID": "SPDXRef-Package-85297216dc2fe672",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Text.Encodings.Web@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Text.Encodings.Web/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "System.Threading.AccessControl",
+      "SPDXID": "SPDXRef-Package-14d015910a5aa0cf",
+      "versionInfo": "4.5.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/System.Threading.AccessControl@4.5.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: System.Threading.AccessControl/4.5.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "k8s.io/kubernetes",
+      "SPDXID": "SPDXRef-Package-2efe0ddf0b56134",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/bin/hostname.exe",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/k8s.io/kubernetes"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:9a40c498246ff7219b32a255aa4fcae1a34eeb2025de27325697b0749c2c3b8e"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:261f69f55ed16f69885998bacb2f4fffb78f7432c6549485563b4a2ff50d9a83"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: k8s.io/kubernetes"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    },
+    {
+      "name": "runtime.win-x64.Microsoft.NETCore.App",
+      "SPDXID": "SPDXRef-Package-6c3904f443086b2f",
+      "versionInfo": "2.1.8",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/runtime.win-x64.Microsoft.NETCore.App@2.1.8"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: runtime.win-x64.Microsoft.NETCore.App/2.1.8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "runtime.win-x64.Microsoft.NETCore.DotNetAppHost",
+      "SPDXID": "SPDXRef-Package-893e189bf4294f0a",
+      "versionInfo": "2.1.8",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/runtime.win-x64.Microsoft.NETCore.DotNetAppHost@2.1.8"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: runtime.win-x64.Microsoft.NETCore.DotNetAppHost/2.1.8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "runtime.win-x64.Microsoft.NETCore.DotNetHostPolicy",
+      "SPDXID": "SPDXRef-Package-98250c62b054144d",
+      "versionInfo": "2.1.8",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/runtime.win-x64.Microsoft.NETCore.DotNetHostPolicy@2.1.8"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: runtime.win-x64.Microsoft.NETCore.DotNetHostPolicy/2.1.8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "runtime.win-x64.Microsoft.NETCore.DotNetHostResolver",
+      "SPDXID": "SPDXRef-Package-89a2e9233a221a87",
+      "versionInfo": "2.1.8",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/runtime.win-x64.Microsoft.NETCore.DotNetHostResolver@2.1.8"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: runtime.win-x64.Microsoft.NETCore.DotNetHostResolver/2.1.8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "runtime.win-x64.runtime.native.System.Data.SqlClient.sni",
+      "SPDXID": "SPDXRef-Package-b39cb0bf5f8de7ba",
+      "versionInfo": "4.4.0",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/runtime.win-x64.runtime.native.System.Data.SqlClient.sni@4.4.0"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "runtime.win7-x64.Microsoft.NETCore.Windows.ApiSets",
+      "SPDXID": "SPDXRef-Package-91f2a004236c3abc",
+      "versionInfo": "1.0.1",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/Program Files/PowerShell/pwsh.deps.json",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:nuget/runtime.win7-x64.Microsoft.NETCore.Windows.ApiSets@1.0.1"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:ef87397e105fd624c8d50fceca76eb7445bb9c1f15618ab05a33cde4b87b625c"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:4c4ca95e034662be44407cf256551dd67932aa8dcc8e15babacdd0107689dd2f"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: runtime.win7-x64.Microsoft.NETCore.Windows.ApiSets/1.0.1"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: dotnet-core"
+        }
+      ]
+    },
+    {
+      "name": "stdlib",
+      "SPDXID": "SPDXRef-Package-84d529244850294f",
+      "versionInfo": "v1.13.8",
+      "supplier": "NOASSERTION",
+      "downloadLocation": "NONE",
+      "filesAnalyzed": false,
+      "sourceInfo": "package found in: Files/bin/hostname.exe",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:golang/stdlib@v1.13.8"
+        }
+      ],
+      "primaryPackagePurpose": "LIBRARY",
+      "annotations": [
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDiffID: sha256:9a40c498246ff7219b32a255aa4fcae1a34eeb2025de27325697b0749c2c3b8e"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "LayerDigest: sha256:261f69f55ed16f69885998bacb2f4fffb78f7432c6549485563b4a2ff50d9a83"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgID: stdlib@v1.13.8"
+        },
+        {
+          "annotator": "Tool: trivy-0.61.1",
+          "annotationDate": "2025-04-29T23:23:43Z",
+          "annotationType": "OTHER",
+          "comment": "PkgType: gobinary"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-10e2c37753478bdc",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-10fdcc06a8982c70",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-11457fa525efb07d",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-14d015910a5aa0cf",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-17e48984483844c9",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-22cce2f3b56e69c0",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-24730889796854f0",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-2575ae7d0dadd6c1",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-2ea51f2e52907e05",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-35a55c1fe97858e6",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-370a8f18063fba65",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-3874067fe5e548d7",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-3a97c3e2f4a580ad",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-3b7e98b1f69c4bde",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-42ef25f418471150",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-4cb35bb44e04b193",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-5b6c2c51037bd651",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-5e4044e653c73e16",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-629aca78f8555845",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-6460c66d3685bfe7",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-69fa8c62ec934c20",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-6c3904f443086b2f",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-6d0ca4fcbe3786e2",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-6ddd2f75c3489d2c",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-6df97baef2a6d907",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-76f4f4e1d3e33bda",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-82953b21d816b71e",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-85297216dc2fe672",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-85562e1f127faaeb",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-8610df529584b833",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-893e189bf4294f0a",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-89a2e9233a221a87",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-908e40b5719e9565",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-91f2a004236c3abc",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-98250c62b054144d",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-a47a50e8a03b10b1",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-b3449197d6ef0f5b",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-b39cb0bf5f8de7ba",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-b5e38de5bd61e15b",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-be9365842614ea4a",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-d10a434473a7df3c",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-db006a4788e01e19",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-dd6b1247dbb71a58",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-e2d92eba9dd9aae",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-e887288ce896f2fb",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-eb62c213a7d7ab34",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-efdf6e3c8cd2677e",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-f43d80f1714a406d",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-4489854617859838",
+      "relatedSpdxElement": "SPDXRef-Package-fb664780e5d9a675",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-Application-e5cd5eb4d9b334c2",
+      "relatedSpdxElement": "SPDXRef-Package-2efe0ddf0b56134",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-ContainerImage-fb6fd5c9437a9d95",
+      "relatedSpdxElement": "SPDXRef-Application-4489854617859838",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-ContainerImage-fb6fd5c9437a9d95",
+      "relatedSpdxElement": "SPDXRef-Application-e5cd5eb4d9b334c2",
+      "relationshipType": "CONTAINS"
+    },
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-ContainerImage-fb6fd5c9437a9d95",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-2efe0ddf0b56134",
+      "relatedSpdxElement": "SPDXRef-Package-84d529244850294f",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ]
+}
