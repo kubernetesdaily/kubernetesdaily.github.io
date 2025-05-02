@@ -231,7 +231,7 @@ export const entries = [
       github: "argoproj",
       tag: "CI/CD Tools"},
     {title: "Flux",
-      link: "https://github.com/fluxcd/flux",
+      link: "https://github.com/fluxcd/flux2",
       description: "GitOps Kubernetes operator",
       github: "fluxcd",
       tag: "CI/CD Tools"},
