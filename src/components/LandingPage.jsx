@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import ModelLeaderboard from "./ModelLeaderboard";
+import Testimonial from "./Testimonial";
 
 function LandingPage() {
   // Sample featured tools
@@ -185,7 +186,7 @@ function LandingPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </Link>
-          </div>
+            </div>
             <div className="w-full md:w-1/2 order-1 md:order-2 mb-10 md:mb-0">
               <div className="relative">
                 <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 dark:from-blue-500/10 dark:to-cyan-500/10 opacity-70 blur-xl"></div>
@@ -203,7 +204,10 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      
+
+      {/* Testimonial Section */}
+      <Testimonial />
+
       {/* Featured Tools Section - Modern cards with refined design */}
       <div className="bg-white dark:bg-slate-900 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
