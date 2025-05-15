@@ -211,13 +211,13 @@ const ImageGallery = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+    <section className="py-12 bg-white">
+      <div className="max-w-[95%] mx-auto">
+        <div className="text-center mb-8">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
             Learn Together. Grow Together.
           </h2>
-          <p className="mt-4 text-xl text-gray-600">
+          <p className="mt-3 text-xl text-gray-600">
             A Journey Through Our Global Tech Community Events
           </p>
         </div>
@@ -225,7 +225,7 @@ const ImageGallery = () => {
         {/* Scroll Container */}
         <div 
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-8 cursor-grab active:cursor-grabbing scroll-smooth hide-scrollbar"
+          className="flex gap-4 overflow-x-auto pb-6 cursor-grab active:cursor-grabbing scroll-smooth hide-scrollbar -mx-2 px-2"
           style={{
             WebkitOverflowScrolling: 'touch',
             scrollSnapType: 'x mandatory',
@@ -236,18 +236,19 @@ const ImageGallery = () => {
           {images.map((image, index) => (
             <div 
               key={index}
-              className="flex-none w-[300px] group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl scroll-snap-align-start"
+              className="flex-none w-[280px] md:w-[320px] group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl scroll-snap-align-start"
             >
-              <div className="aspect-w-16 aspect-h-9">
+              <div className="relative pt-[66.67%]">
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-white text-lg font-semibold">
+                  <p className="text-white text-base font-semibold line-clamp-2">
                     {image.caption}
                   </p>
                 </div>
@@ -257,9 +258,15 @@ const ImageGallery = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="mt-8 flex justify-center">
-          <div className="text-sm text-gray-500">
-            ← Scroll or drag to see more photos →
+        <div className="mt-6 flex justify-center">
+          <div className="text-sm text-gray-500 flex items-center gap-2">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Scroll or drag to explore more</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </div>
         </div>
       </div>
@@ -270,6 +277,12 @@ const ImageGallery = () => {
         }
         .scroll-snap-align-start {
           scroll-snap-align: start;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
     </section>
