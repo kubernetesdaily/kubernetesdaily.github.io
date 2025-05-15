@@ -1,16 +1,21 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const Testimonial = () => {
   const scrollRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     let isDown = false;
     let startX;
     let scrollLeft;
+    let autoScrollInterval;
+    let pauseTimeout;
 
     const handleMouseDown = (e) => {
       isDown = true;
+      setIsPaused(true);
       scrollContainer.classList.add('active');
       startX = e.pageX - scrollContainer.offsetLeft;
       scrollLeft = scrollContainer.scrollLeft;
@@ -19,11 +24,17 @@ const Testimonial = () => {
     const handleMouseLeave = () => {
       isDown = false;
       scrollContainer.classList.remove('active');
+      // Resume auto-scroll after 2 seconds of no interaction
+      clearTimeout(pauseTimeout);
+      pauseTimeout = setTimeout(() => setIsPaused(false), 2000);
     };
 
     const handleMouseUp = () => {
       isDown = false;
       scrollContainer.classList.remove('active');
+      // Resume auto-scroll after 2 seconds of no interaction
+      clearTimeout(pauseTimeout);
+      pauseTimeout = setTimeout(() => setIsPaused(false), 2000);
     };
 
     const handleMouseMove = (e) => {
@@ -34,11 +45,43 @@ const Testimonial = () => {
       scrollContainer.scrollLeft = scrollLeft - walk;
     };
 
+    const handleScroll = () => {
+      if (!scrollContainer) return;
+      setIsPaused(true);
+      clearTimeout(pauseTimeout);
+      pauseTimeout = setTimeout(() => setIsPaused(false), 2000);
+    };
+
+    const autoScroll = () => {
+      if (!scrollContainer || isPaused) return;
+
+      const cardWidth = 400; // Width of each testimonial card
+      const gap = 32; // Gap between cards (8 * 4 = 32px from gap-8)
+      const totalWidth = scrollContainer.scrollWidth;
+      
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % 4; // 4 is the number of testimonials
+        const scrollPosition = (cardWidth + gap) * nextIndex;
+        
+        scrollContainer.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+        
+        return nextIndex;
+      });
+    };
+
+    // Set up event listeners
     if (scrollContainer) {
       scrollContainer.addEventListener('mousedown', handleMouseDown);
       scrollContainer.addEventListener('mouseleave', handleMouseLeave);
       scrollContainer.addEventListener('mouseup', handleMouseUp);
       scrollContainer.addEventListener('mousemove', handleMouseMove);
+      scrollContainer.addEventListener('scroll', handleScroll);
+      
+      // Start auto-scrolling
+      autoScrollInterval = setInterval(autoScroll, 5000); // Scroll every 5 seconds
     }
 
     return () => {
@@ -47,9 +90,12 @@ const Testimonial = () => {
         scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
         scrollContainer.removeEventListener('mouseup', handleMouseUp);
         scrollContainer.removeEventListener('mousemove', handleMouseMove);
+        scrollContainer.removeEventListener('scroll', handleScroll);
       }
+      clearInterval(autoScrollInterval);
+      clearTimeout(pauseTimeout);
     };
-  }, []);
+  }, [isPaused]);
 
   return (
     <section className="py-16 bg-gradient-to-r from-gray-50 to-gray-100 overflow-hidden">
@@ -167,10 +213,30 @@ const Testimonial = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="mt-8 flex justify-center">
+        {/* Scroll Indicator and Navigation Dots */}
+        <div className="mt-8 flex flex-col items-center gap-4">
           <div className="text-sm text-gray-500">
             ← Scroll or drag to see more testimonials →
+          </div>
+          <div className="flex gap-2">
+            {[0, 1, 2, 3].map((index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  currentIndex === index ? 'bg-gray-800 w-4' : 'bg-gray-300'
+                }`}
+                onClick={() => {
+                  setIsPaused(true);
+                  setCurrentIndex(index);
+                  scrollRef.current?.scrollTo({
+                    left: index * (400 + 32),
+                    behavior: 'smooth'
+                  });
+                  setTimeout(() => setIsPaused(false), 2000);
+                }}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
