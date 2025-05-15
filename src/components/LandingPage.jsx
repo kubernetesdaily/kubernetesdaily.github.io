@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "./ui/badge";
 import ModelLeaderboard from "./ModelLeaderboard";
 import Testimonial from "./Testimonial";
+import ImageGallery from "./ImageGallery";
 
 function LandingPage() {
   // Sample featured tools
@@ -186,7 +187,7 @@ function LandingPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </Link>
-            </div>
+          </div>
             <div className="w-full md:w-1/2 order-1 md:order-2 mb-10 md:mb-0">
               <div className="relative">
                 <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 dark:from-blue-500/10 dark:to-cyan-500/10 opacity-70 blur-xl"></div>
@@ -208,6 +209,9 @@ function LandingPage() {
       {/* Testimonial Section */}
       <Testimonial />
 
+      {/* Image Gallery Section */}
+      <ImageGallery />
+      
       {/* Featured Tools Section - Modern cards with refined design */}
       <div className="bg-white dark:bg-slate-900 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -412,20 +416,6 @@ function LandingPage() {
                 </Link>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </div>
-
-      {/* Update the hero section call-to-action buttons to include Labs */}
-      <div className="bg-white dark:bg-slate-950 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block text-blue-600 dark:text-blue-400 font-semibold tracking-wider text-sm uppercase mb-3">Container Ecosystem</span>
-            <h2 className="text-slate-900 dark:text-white text-3xl lg:text-4xl font-bold mb-6">Essential Kubernetes & Container Tools</h2>
-            <p className="text-slate-600 dark:text-slate-300 text-lg max-w-3xl mx-auto">
-              Explore our curated collection of the most valuable tools and resources for container orchestration,
-              infrastructure management, and cloud-native development.
-            </p>
           </div>
         </div>
       </div>
