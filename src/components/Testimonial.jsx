@@ -155,7 +155,6 @@ const Testimonial = () => {
                 <div className="ml-6">
                   <div className="text-xl font-medium text-gray-900">Ramiro Berrelleza</div>
                   <div className="text-base text-gray-600">Founder and CEO at Okteto</div>
-                  <div className="text-sm text-gray-500">Cloud Native Computing Foundation • Ambassador</div>
                 </div>
               </div>
               <blockquote className="mt-8">
