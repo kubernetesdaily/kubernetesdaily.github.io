@@ -1,11 +1,7 @@
-
 title : Werf A solution for implementing efficient and consistent software
 
+[![werf/werf](https://github-link-card.s3.ap-northeast-1.amazonaws.com/werf/werf.png)](https://github.com/werf/werf)
 
-{{< rawhtml >}}
-<center>
- <a href="https://github.com/werf/werf"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/werf/werf.png" width="460px"></a> </center>
-{{< /rawhtml >}}
 #### Install Werf 
 
 

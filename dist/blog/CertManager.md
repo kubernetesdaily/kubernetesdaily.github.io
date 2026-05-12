@@ -1,10 +1,6 @@
 ### CertManager - Automatically provision and manage TLS certificates in Kubernetes
 
-
-{{< rawhtml >}}
-
-<center> <a href="https://github.com/cert-manager/cert-manager"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/cert-manager/cert-manager.png" width="460px"></a> </center>
-{{< /rawhtml >}}
+[![cert-manager/cert-manager](https://github-link-card.s3.ap-northeast-1.amazonaws.com/cert-manager/cert-manager.png)](https://github.com/cert-manager/cert-manager)
 
 ### Start Minikube
 ```
@@ -150,7 +146,7 @@ Excellent! This secret contains the ca.crt, tls.crt, and tls.key that belong to 
 
 ### create ca issuer 
 
-Now it’s time to create our CA issuer. Create a file called cert-manager-ca-issuer.yaml with the following:
+Now it's time to create our CA issuer. Create a file called cert-manager-ca-issuer.yaml with the following:
 
 ```
 apiVersion: cert-manager.io/v1
@@ -165,8 +161,7 @@ spec:
 
 ### apply ca issuer 
 ```
-➜  minikube-certmanager git:(main) ✗ kubectl create -f cer
-t-manager-ca-issuer.yaml 
+➜  minikube-certmanager git:(main) ✗ kubectl create -f cert-manager-ca-issuer.yaml 
 issuer.cert-manager.io/test-ca-issuer created
 ```
 ### test ca cert 

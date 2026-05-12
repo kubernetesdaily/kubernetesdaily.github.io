@@ -39,47 +39,49 @@ const DockerImages = () => {
       try {
         const response = await fetch('/data/most-popular-dockerhub-images.csv');
         const csvText = await response.text();
-        
+
         // Parse CSV (skip header row)
+        // Expected columns: image_name, pull_count, star_count, categories
         const rows = csvText.split('\n').slice(1);
+
+        const parsePullCount = (s) => {
+          if (!s) return 0;
+          const m = s.trim().match(/^([0-9.]+)\s*([bmk])?\+?$/i);
+          if (!m) return parseFloat(s) || 0;
+          const num = parseFloat(m[1]);
+          const suffix = (m[2] || '').toLowerCase();
+          if (suffix === 'b') return num * 1e9;
+          if (suffix === 'm') return num * 1e6;
+          if (suffix === 'k') return num * 1e3;
+          return num;
+        };
+
+        const formatCategory = (slug) =>
+          slug
+            .split('-')
+            .map(w => (w === 'and' || w === 'of' ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+            .join(' ');
+
         const parsedImages = rows
           .filter(row => row.trim()) // Filter out empty rows
           .map(row => {
-            const [name, pullCount] = row.split(',');
-            
+            const [name, pullCountStr, starCountStr, categoriesStr] = row.split(',');
+
             // Extract organization and image name
             const nameParts = name.split('/');
             const imageName = nameParts[nameParts.length - 1];
             const organization = nameParts.length > 1 ? nameParts[0] : null;
 
-            // Categorize images based on their names
-            let category = 'Other';
-            if (imageName.match(/nginx|httpd|apache|traefik/i)) {
-              category = 'Web Servers';
-            } else if (imageName.match(/mysql|postgres|mongo|redis|mariadb|database/i)) {
-              category = 'Databases';
-            } else if (imageName.match(/node|python|java|ruby|golang|php/i)) {
-              category = 'Programming Languages';
-            } else if (imageName.match(/ubuntu|alpine|debian|centos|fedora/i)) {
-              category = 'Operating Systems';
-            } else if (imageName.match(/prometheus|grafana|telegraf|monitoring/i)) {
-              category = 'Monitoring';
-            } else if (imageName.match(/kafka|rabbitmq|zookeeper|queue/i)) {
-              category = 'Message Queues';
-            }
+            // Categories come as semicolon-separated slugs from the dataset
+            const categories = (categoriesStr || '')
+              .split(';')
+              .map(c => c.trim())
+              .filter(Boolean)
+              .map(formatCategory);
+            const category = categories[0] || 'Other';
 
-            // Format pull count
-            const count = parseInt(pullCount);
-            let formattedPulls;
-            if (count >= 1e9) {
-              formattedPulls = `${(count / 1e9).toFixed(1)}B+`;
-            } else if (count >= 1e6) {
-              formattedPulls = `${(count / 1e6).toFixed(1)}M+`;
-            } else if (count >= 1e3) {
-              formattedPulls = `${(count / 1e3).toFixed(1)}K+`;
-            } else {
-              formattedPulls = count.toString();
-            }
+            const pullCount = parsePullCount(pullCountStr);
+            const starCount = parseInt(starCountStr, 10) || 0;
 
             const pullCommand = `docker pull ${name}`;
 
@@ -87,9 +89,11 @@ const DockerImages = () => {
               name,
               displayName: imageName,
               organization,
-              pulls: formattedPulls,
-              pullCount: count,
+              pulls: (pullCountStr || '').trim(),
+              pullCount,
+              starCount,
               category,
+              categories,
               official: !organization || organization === imageName,
               description: `${organization ? `${organization}'s ` : 'Official '}Docker image for ${imageName}`,
               pullCommand
@@ -117,9 +121,9 @@ const DockerImages = () => {
 
   // Filter images based on search term and category
   const filteredImages = images
-    .filter(img => 
+    .filter(img =>
       img.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedCategory === 'all' || img.category === selectedCategory)
+      (selectedCategory === 'all' || (img.categories || []).includes(selectedCategory))
     );
 
   // Pagination
@@ -144,9 +148,9 @@ const DockerImages = () => {
 
   // Prepare data for popular Docker images by category
   const categoryData = () => {
-    // Get unique categories and sort them
-    const categories = ['all', ...new Set(images.map(img => img.category))].sort();
-    
+    // Get unique categories (across each image's full category list) and sort them
+    const categories = ['all', ...new Set(images.flatMap(img => img.categories || []))].sort();
+
     // Create a dataset for each top image in a category (instead of one dataset per category)
     const topImagesByCategory = {};
     const colors = [
@@ -156,23 +160,23 @@ const DockerImages = () => {
       'rgba(255, 206, 86, 0.6)', // yellow
       'rgba(153, 102, 255, 0.6)', // purple
     ];
-    
+
     // For each category, find the top 5 images
     categories.forEach(category => {
       if (category === 'all') return;
       const categoryImages = images
-        .filter(img => img.category === category)
+        .filter(img => (img.categories || []).includes(category))
         .sort((a, b) => b.pullCount - a.pullCount)
         .slice(0, 5); // Show top 5 images per category
-      
+
       topImagesByCategory[category] = categoryImages;
     });
-    
+
     // Create datasets - one for each position (1st most popular, 2nd most popular, etc.)
     const datasets = [];
     for (let i = 0; i < 5; i++) { // For each position (up to 5)
       const dataset = {
-        label: `#${i+1} Most Popular`,
+        label: `#${i + 1} Most Popular`,
         data: categories.filter(cat => cat !== 'all').map(category => {
           const images = topImagesByCategory[category];
           return images[i] ? images[i].pullCount / 1000000 : 0;
@@ -183,7 +187,7 @@ const DockerImages = () => {
       };
       datasets.push(dataset);
     }
-    
+
     return {
       labels: categories.filter(cat => cat !== 'all'),
       datasets: datasets,
@@ -196,7 +200,7 @@ const DockerImages = () => {
   };
 
   // Get unique categories for filter
-  const categories = ['all', ...new Set(images.map(img => img.category))].sort();
+  const categories = ['all', ...new Set(images.flatMap(img => img.categories || []))].sort();
 
   if (loading) {
     return (
@@ -220,7 +224,7 @@ const DockerImages = () => {
       <div className="mb-8 text-center">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">Explore Docker Images</h2>
         <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Browse and search popular Docker images with detailed information about their pull counts 
+          Browse and search popular Docker images with detailed information about their pull counts
           and usage.
         </p>
       </div>
@@ -230,8 +234,8 @@ const DockerImages = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl">
           <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Most Popular Docker Images</h3>
           <div className="h-80">
-            <Bar 
-              data={popularImagesData} 
+            <Bar
+              data={popularImagesData}
               options={{
                 maintainAspectRatio: false,
                 indexAxis: 'y',
@@ -249,13 +253,13 @@ const DockerImages = () => {
                   },
                   tooltip: {
                     callbacks: {
-                      label: function(context) {
+                      label: function (context) {
                         return `Pulls: ${(context.raw * 1000000).toLocaleString()}`;
                       }
                     }
                   }
                 }
-              }} 
+              }}
             />
           </div>
         </div>
@@ -266,8 +270,8 @@ const DockerImages = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl">
           <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Most Popular Docker Images by Category</h3>
           <div className="h-96">
-            <Bar 
-              data={categoryData()} 
+            <Bar
+              data={categoryData()}
               options={{
                 maintainAspectRatio: false,
                 scales: {
@@ -289,15 +293,15 @@ const DockerImages = () => {
                 plugins: {
                   tooltip: {
                     callbacks: {
-                      label: function(context) {
+                      label: function (context) {
                         const categoryName = context.label;
                         const position = context.datasetIndex;
-                        
+
                         const categoryImages = images
-                          .filter(img => img.category === categoryName)
+                          .filter(img => (img.categories || []).includes(categoryName))
                           .sort((a, b) => b.pullCount - a.pullCount)
                           .slice(0, 5);
-                        
+
                         if (position < categoryImages.length) {
                           const image = categoryImages[position];
                           return `${image.name}: ${(image.pullCount).toLocaleString()} pulls`;
@@ -314,7 +318,7 @@ const DockerImages = () => {
                     }
                   }
                 }
-              }} 
+              }}
             />
           </div>
         </div>
@@ -341,7 +345,7 @@ const DockerImages = () => {
                 </svg>
               </div>
               {searchTerm && (
-                <button 
+                <button
                   onClick={() => setSearchTerm('')}
                   className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
                 >
@@ -394,7 +398,7 @@ const DockerImages = () => {
       {/* Images Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentImages.map((image, index) => (
-          <div 
+          <div
             key={index}
             className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full flex flex-col transform transition-all duration-300 hover:shadow-xl hover:translate-y-[-4px]"
           >
@@ -422,7 +426,7 @@ const DockerImages = () => {
                   )}
                 </div>
               </div>
-              
+
               <p className="text-gray-600 dark:text-gray-300 text-sm mt-2 mb-4 flex-grow">
                 {image.description}
               </p>
@@ -475,11 +479,10 @@ const DockerImages = () => {
           <button
             onClick={() => paginate(1)}
             disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-lg flex items-center ${
-              currentPage === 1
-                ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
-                : 'bg-primary text-white hover:bg-primary/90 transition-colors'
-            }`}
+            className={`px-4 py-2 rounded-lg flex items-center ${currentPage === 1
+              ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
+              : 'bg-primary text-white hover:bg-primary/90 transition-colors'
+              }`}
           >
             <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
@@ -489,11 +492,10 @@ const DockerImages = () => {
           <button
             onClick={() => paginate(currentPage - 1)}
             disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-lg flex items-center ${
-              currentPage === 1
-                ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
-                : 'bg-primary text-white hover:bg-primary/90 transition-colors'
-            }`}
+            className={`px-4 py-2 rounded-lg flex items-center ${currentPage === 1
+              ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
+              : 'bg-primary text-white hover:bg-primary/90 transition-colors'
+              }`}
           >
             <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -508,11 +510,10 @@ const DockerImages = () => {
           <button
             onClick={() => paginate(currentPage + 1)}
             disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-lg flex items-center ${
-              currentPage === totalPages
-                ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
-                : 'bg-primary text-white hover:bg-primary/90 transition-colors'
-            }`}
+            className={`px-4 py-2 rounded-lg flex items-center ${currentPage === totalPages
+              ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
+              : 'bg-primary text-white hover:bg-primary/90 transition-colors'
+              }`}
           >
             Next
             <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -522,11 +523,10 @@ const DockerImages = () => {
           <button
             onClick={() => paginate(totalPages)}
             disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-lg flex items-center ${
-              currentPage === totalPages
-                ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
-                : 'bg-primary text-white hover:bg-primary/90 transition-colors'
-            }`}
+            className={`px-4 py-2 rounded-lg flex items-center ${currentPage === totalPages
+              ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed text-gray-500 dark:text-gray-400'
+              : 'bg-primary text-white hover:bg-primary/90 transition-colors'
+              }`}
           >
             Last
             <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

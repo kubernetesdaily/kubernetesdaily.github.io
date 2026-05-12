@@ -1,9 +1,6 @@
  Okteto Develop your applications directly in your Kubernetes Cluster
 
-
-{{< rawhtml >}}
-<center> <a href="https://github.com/okteto/okteto"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/okteto/okteto.png" width="460px"> </a> </center>
-{{< /rawhtml >}}
+[![okteto/okteto](https://github-link-card.s3.ap-northeast-1.amazonaws.com/okteto/okteto.png)](https://github.com/okteto/okteto)
 
 ### Getting started with Oketo CLI  
 

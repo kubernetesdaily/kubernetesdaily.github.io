@@ -1,51 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main pages -->
   <url>
-    <loc>https://aidatafoundation.github.io/</loc>
-    <lastmod>2023-08-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://kubernetesdaily.github.io</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://aidatafoundation.github.io/tools</loc>
-    <lastmod>2023-08-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://kubernetesdaily.github.io/blog</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://aidatafoundation.github.io/labs</loc>
-    <lastmod>2023-08-01</lastmod>
+    <loc>https://kubernetesdaily.github.io/labs</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://kubernetesdaily.github.io/blog/werf</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aidatafoundation.github.io/blog</loc>
-    <lastmod>2023-08-01</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://kubernetesdaily.github.io/blog/qwen-coder-models</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aidatafoundation.github.io/blog/1</loc>
-    <lastmod>2023-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://kubernetesdaily.github.io/blog/kubernetes-tools-guide</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aidatafoundation.github.io/blog/2</loc>
-    <lastmod>2023-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://kubernetesdaily.github.io/blog/k8sgpt</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aidatafoundation.github.io/blog/3</loc>
-    <lastmod>2023-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://kubernetesdaily.github.io/blog/cloudflared-tunnel</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://aidatafoundation.github.io/about</loc>
-    <lastmod>2023-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://kubernetesdaily.github.io/blog/cloud-native-learning-path</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-</urlset> 
+  <url>
+    <loc>https://kubernetesdaily.github.io/blog/arkade</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/blog/Okteto</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/blog/Flannel</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/blog/CertManager</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/labs/Learn-k8s</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/labs/Learn-Helm</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/labs/Learn-Docker</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/labs/Learn-Containerd</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kubernetesdaily.github.io/labs/CONTRIBUTING</loc>
+    <lastmod>2025-04-29T06:45:07.373Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
