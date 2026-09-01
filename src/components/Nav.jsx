@@ -31,16 +31,16 @@ function Nav() {
 
   // Add Docker Images tab to menu items
   const menuItems = [
-    { path: "/docker-images", label: "Docker Images" },
     { path: "/", label: "Home" },
     { path: "/tools", label: "Tools" },
+    { path: "/docker-images", label: "Docker Images" },
     { path: "/labs", label: "Labs" },
     { path: "/blog", label: "Blog" },
     { path: "/about", label: "About" }
   ];
 
   return (
-    <nav 
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "bg-bgGray/80 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
@@ -49,16 +49,16 @@ function Nav() {
         <div className="flex items-center">
           <Link to="/" className="flex items-center gap-2">
             {/* PNG Logo */}
-            <img 
-              src="/logos/KubeDaily-3.png" 
-              alt="KubeDaily Logo" 
-              className="h-10 w-auto"
+            <img
+              src="/logos/KubeDaily-3.png"
+              alt="KubeDaily Logo"
+              className="h-14 w-auto drop-shadow-[0_4px_12px_rgba(56,189,248,0.25)]"
             />
           </Link>
         </div>
-        
+
         {/* Mobile menu button */}
-        <button 
+        <button
           className="md:hidden text-primary p-1 rounded-md hover:bg-gray-700/50 transition-colors"
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -73,15 +73,15 @@ function Nav() {
             </svg>
           )}
         </button>
-        
+
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-1">
           {menuItems.map((item) => (
-            <Link 
+            <Link
               key={item.path}
-              to={item.path} 
+              to={item.path}
               className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors group
-                ${isActive(item.path) 
+                ${isActive(item.path)
                   ? item.isNew
                     ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white shadow-lg scale-105"
                     : "bg-gray-700/50 text-primary"
@@ -98,10 +98,10 @@ function Nav() {
               )}
             </Link>
           ))}
-          <a 
-            href="https://github.com/kubernetesdaily" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://github.com/kubernetesdaily"
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-2 p-2 text-gray-300 hover:text-primary transition-colors"
             aria-label="GitHub"
           >
@@ -111,20 +111,20 @@ function Nav() {
           </a>
         </div>
       </div>
-      
+
       {/* Mobile menu */}
-      <div 
+      <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isMenuOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="bg-bgGray/90 backdrop-blur-md px-4 py-2 space-y-1 shadow-lg">
           {menuItems.map((item) => (
-            <Link 
+            <Link
               key={item.path}
-              to={item.path} 
+              to={item.path}
               className={`relative block px-3 py-2 rounded-md text-base font-medium transition-colors group
-                ${isActive(item.path) 
+                ${isActive(item.path)
                   ? item.isNew
                     ? "bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white shadow-lg scale-105"
                     : "bg-gray-700/50 text-primary"
@@ -141,10 +141,10 @@ function Nav() {
               )}
             </Link>
           ))}
-          <a 
-            href="https://github.com/kubernetesdaily" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://github.com/kubernetesdaily"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700/30 hover:text-primary transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -158,4 +158,4 @@ function Nav() {
   );
 }
 
-export default Nav; 
+export default Nav;

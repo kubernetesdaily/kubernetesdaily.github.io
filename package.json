@@ -5,10 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-sitemap && npm run generate-rss && vite build",
-    "preview": "vite preview",
-    "generate-sitemap": "node scripts/generate-sitemap.cjs",
-    "generate-rss": "node scripts/generate-rss.cjs"
+    "build": "vite build && node scripts/generate-static-pages.cjs",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
@@ -18,8 +16,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "d3": "^7.9.0",
-    "glob": "^10.4.5",
-    "gray-matter": "^4.0.3",
     "prismjs": "^1.30.0",
     "react": "^19.1.0",
     "react-chartjs-2": "^5.3.0",
@@ -27,7 +23,7 @@
     "react-github-btn": "^1.4.0",
     "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.7",
-    "react-router-dom": "^6.10.0",
+    "react-router-dom": "^7.18.3",
     "react-slick": "^0.30.3",
     "react-syntax-highlighter": "^15.6.1",
     "rehype-raw": "^7.0.0",

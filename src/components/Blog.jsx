@@ -27,10 +27,10 @@ function Blog() {
         '/data/blog.json',
         './data/blog.json',
       ];
-      
+
       let data = null;
       let fetchError = null;
-      
+
       // Try each path until one works
       for (const path of possiblePaths) {
         try {
@@ -42,7 +42,7 @@ function Blog() {
             },
             cache: 'no-store'
           });
-          
+
           if (response.ok) {
             const jsonData = await response.json();
             // Handle both formats: direct array or { blogs: [...] }
@@ -55,7 +55,7 @@ function Blog() {
           fetchError = err;
         }
       }
-      
+
       if (data) {
         setBlogPosts(data);
         setLoading(false);
@@ -63,7 +63,7 @@ function Blog() {
         console.error('All fetch attempts failed:', fetchError);
         setError('Failed to load blog posts. Please try again later.');
         setLoading(false);
-        
+
         // Fallback to hardcoded data if all fetch attempts fail
         const fallbackData = [
           {
@@ -77,7 +77,7 @@ function Blog() {
               "tags": ["kubernetes", "ChatGPT", "AI", "SRE", "troubleshooting"]
           }
         ]
-        
+
         console.log('Using fallback blog data');
         setBlogPosts(fallbackData);
         // Clear the error state after setting fallback data
@@ -96,14 +96,14 @@ function Blog() {
       "@context": "https://schema.org",
       "@type": "Blog",
       "name": "Kubernetes Daily Blog",
-      "url": "https://kubernetesdaily.github.io/blog",
+      "url": "https://kubedaily.com/blog",
       "description": "Stay updated with the latest Kubernetes tools, best practices, and community insights.",
       "publisher": {
         "@type": "Organization",
         "name": "Kubernetes Daily",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://kubernetesdaily.github.io/logos/kubedaily.svg"
+          "url": "https://kubedaily.com/logos/KubeDaily-3.png"
         }
       },
       "blogPost": blogPosts.map(post => ({
@@ -115,7 +115,7 @@ function Blog() {
           "@type": "Person",
           "name": post.author || "Kubernetes Daily"
         },
-        "url": `https://kubernetesdaily.github.io/blog/${post.id}`
+        "url": `https://kubedaily.com/blog/${post.id}`
       }))
     };
 
@@ -139,7 +139,7 @@ function Blog() {
       "@type": "BlogPosting",
       "headline": currentPost.title,
       "description": currentPost.excerpt,
-      "image": "https://kubernetesdaily.github.io/og-image.png",
+      "image": "https://kubedaily.com/logos/KubeDaily-3.png",
       "datePublished": new Date(currentPost.date).toISOString(),
       "dateModified": new Date(currentPost.date).toISOString(),
       "author": {
@@ -151,12 +151,12 @@ function Blog() {
         "name": "Kubernetes Daily",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://kubernetesdaily.github.io/logos/kubedaily.svg"
+          "url": "https://kubedaily.com/logos/KubeDaily-3.png"
         }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://kubernetesdaily.github.io/blog/${currentPost.id}`
+        "@id": `https://kubedaily.com/blog/${currentPost.id}`
       },
       "keywords": "Kubernetes, cloud native, containers, Docker, DevOps, GitOps, cloud computing"
     };
@@ -179,7 +179,7 @@ function Blog() {
     const fetchBlogPost = async () => {
       setLoading(true);
       const post = blogPosts.find(p => p.id === postId);
-      
+
       if (!post) {
         setError('Blog post not found');
         setLoading(false);
@@ -189,7 +189,7 @@ function Blog() {
 
       // Get the file path from post (may be in "file" or "path" field)
       const postPath = post.path || post.file;
-      
+
       if (!postPath) {
         console.error('Post has no file or path:', post);
         setError('Post has invalid configuration');
@@ -205,12 +205,12 @@ function Blog() {
         `./public${postPath}`,
         `.${postPath}`,
       ];
-      
+
       console.log('Trying paths:', possiblePaths);
-      
+
       let content = null;
       let fetchError = null;
-      
+
       // Try each path until one works
       for (const path of possiblePaths) {
         try {
@@ -221,7 +221,7 @@ function Blog() {
             },
             cache: 'no-store'
           });
-          
+
           if (response.ok) {
             content = await response.text();
             console.log('Blog post content loaded successfully from:', path);
@@ -232,14 +232,14 @@ function Blog() {
           fetchError = err;
         }
       }
-      
+
       if (content) {
         // Extract frontmatter and content
         const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
         if (frontmatterMatch) {
           const frontmatterText = frontmatterMatch[1];
           const markdown = frontmatterMatch[2];
-          
+
           // Parse frontmatter into object (simple version)
           const frontmatter = {};
           frontmatterText.split('\n').forEach(line => {
@@ -249,7 +249,7 @@ function Blog() {
               frontmatter[key.trim()] = value.replace(/^"(.*)"$/, '$1');
             }
           });
-          
+
           setCurrentPost({
             ...post,
             content: markdown
@@ -263,17 +263,17 @@ function Blog() {
       } else {
         console.error('All fetch attempts failed:', fetchError);
         setError('Failed to load blog post content. Using fallback display.');
-        
+
         // Fallback content for demonstration if all fetch attempts fail
         setCurrentPost({
           ...post,
           content: `# ${post.title}\n\n${post.excerpt}\n\nThis content is being displayed as a fallback.`
         });
-        
+
         // Clear the error state after setting fallback content
         setTimeout(() => setError(null), 100);
       }
-      
+
       setLoading(false);
     };
 
@@ -296,7 +296,7 @@ function Blog() {
         <div className="bg-red-500/10 text-red-500 p-4 rounded-xl mb-4">
           <p>{error}</p>
         </div>
-        <Button 
+        <Button
           onClick={() => navigate("/blog")}
           className="mt-4"
         >
@@ -323,10 +323,10 @@ function Blog() {
         <p className="text-grayFill text-center max-w-[800px] mx-auto">
           Stay updated with the latest Kubernetes tools, best practices, and community insights.
         </p>
-        
+
         {/* Debug toggle button */}
         <div className="flex justify-center mt-2">
-          <button 
+          <button
             onClick={() => setShowDebug(!showDebug)}
             className="text-xs text-gray-500 hover:text-gray-400 px-2 py-1 rounded"
           >
@@ -334,12 +334,12 @@ function Blog() {
           </button>
         </div>
       </div>
-      
+
       <div className="mb-12">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-primary">Latest Posts</h2>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={() => window.open('https://github.com/kubernetesdaily/kubernetesdaily.github.io/tree/main/public/blog', '_blank')}
             className="text-sm"
           >
@@ -349,13 +349,13 @@ function Blog() {
             Contribute a Post
           </Button>
         </div>
-        
+
         <BlogList blogPosts={blogPosts} />
       </div>
-      
+
       {/* Debug information panel */}
       <DebugInfo show={showDebug} />
-      
+
       <div className="bg-bgGray rounded-xl p-8 border border-gray-800">
         <h2 className="text-xl font-semibold text-primary mb-4">Want to Contribute?</h2>
         <p className="text-grayFill mb-6">
@@ -391,7 +391,7 @@ function Blog() {
             </div>
           </div>
         </div>
-        <Button 
+        <Button
           onClick={() => window.open('https://github.com/kubernetesdaily/kubernetesdaily.github.io', '_blank')}
           className="mt-6"
         >
@@ -405,10 +405,10 @@ function Blog() {
 // Blog post detail component
 function BlogPostDetail({ post }) {
   const navigate = useNavigate();
-  
+
   // If post has no content, show a message
   const hasContent = post.content && post.content.trim().length > 0;
-  
+
   return (
     <div className="bg-slate-50/50 dark:bg-slate-900 p-8 rounded-xl shadow-md w-full">
       <OpenGraph
@@ -419,9 +419,9 @@ function BlogPostDetail({ post }) {
         type="article"
         tags={post.tags || []}
       />
-      
-      <Button 
-        variant="ghost" 
+
+      <Button
+        variant="ghost"
         className="mb-6"
         onClick={() => navigate("/blog")}
       >
@@ -430,7 +430,7 @@ function BlogPostDetail({ post }) {
         </svg>
         Back to All Posts
       </Button>
-    
+
       <div className="mb-4 flex items-center justify-between">
         <span className="text-sm text-indigo-500">{post.date}</span>
         {post.author && (
@@ -438,7 +438,7 @@ function BlogPostDetail({ post }) {
         )}
       </div>
       <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{post.title}</h2>
-      
+
       <div className="w-full">
         {hasContent ? (
           <MarkdownRenderer className="w-full">
@@ -454,7 +454,7 @@ function BlogPostDetail({ post }) {
           </div>
         )}
       </div>
-      
+
       <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -475,9 +475,9 @@ function BlogPostDetail({ post }) {
               </svg>
             </button>
           </div>
-          <a 
-            href={`https://github.com/kubernetesdaily/kubernetesdaily.github.io/edit/main/public${(post.path || post.file)}`} 
-            target="_blank" 
+          <a
+            href={`https://github.com/kubernetesdaily/kubernetesdaily.github.io/edit/main/public${(post.path || post.file)}`}
+            target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-indigo-500 hover:underline flex items-center"
           >
@@ -497,20 +497,20 @@ function BlogList({ blogPosts }) {
   const navigate = useNavigate();
   const [jsonView, setJsonView] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
-  
+
   // Sort posts by date (newest first)
   const sortedPosts = [...blogPosts].sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
   });
-  
+
   // Get unique categories
   const categories = ['All', ...new Set(blogPosts.map(post => post.category).filter(Boolean))];
-  
+
   // Filter posts by active category
-  const filteredPosts = activeCategory === 'All' 
-    ? sortedPosts 
+  const filteredPosts = activeCategory === 'All'
+    ? sortedPosts
     : sortedPosts.filter(post => post.category === activeCategory);
-  
+
   return (
     <div>
       {/* Category filter and JSON view toggle */}
@@ -530,14 +530,14 @@ function BlogList({ blogPosts }) {
             </button>
           ))}
         </div>
-        <button 
+        <button
           onClick={() => setJsonView(!jsonView)}
           className="text-xs text-indigo-500 hover:text-indigo-400 px-2 py-1 rounded border border-indigo-500/20"
         >
           {jsonView ? 'Card View' : 'JSON View'}
         </button>
       </div>
-      
+
       {jsonView ? (
         <div className="bg-slate-900 p-4 rounded-lg shadow-inner">
           <pre className="text-xs text-slate-300 overflow-auto max-h-[500px]">
@@ -547,8 +547,8 @@ function BlogList({ blogPosts }) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map(post => (
-            <div 
-              key={post.id} 
+            <div
+              key={post.id}
               className="bg-slate-50/50 dark:bg-slate-900 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:border-indigo-500/30 hover:translate-y-[-2px] flex flex-col h-full border border-slate-200 dark:border-slate-800"
             >
               <div className="p-6 flex-grow">
@@ -562,12 +562,12 @@ function BlogList({ blogPosts }) {
                 </div>
                 <h2 className="text-xl font-bold mb-3 text-slate-900 dark:text-white leading-tight">{post.title}</h2>
                 <p className="text-slate-500 dark:text-slate-400 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-                
+
                 {post.tags && post.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1 mt-3">
                     {post.tags.slice(0, 3).map(tag => (
-                      <span 
-                        key={tag} 
+                      <span
+                        key={tag}
                         className="text-[10px] text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 px-2 py-0.5 rounded"
                       >
                         #{tag}
@@ -581,14 +581,14 @@ function BlogList({ blogPosts }) {
                   </div>
                 )}
               </div>
-              
+
               <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-800/50 mt-auto">
                 <div className="flex items-center justify-between">
                   <div className="text-sm text-slate-500 dark:text-slate-400">
                     {post.author && `By ${post.author}`}
                   </div>
-                  <button 
-                    onClick={() => navigate(`/blog/${post.id}`)} 
+                  <button
+                    onClick={() => navigate(`/blog/${post.id}`)}
                     className="text-indigo-500 text-sm font-medium hover:text-indigo-400 transition-colors flex items-center"
                   >
                     Read More
@@ -602,7 +602,7 @@ function BlogList({ blogPosts }) {
           ))}
         </div>
       )}
-      
+
       {filteredPosts.length === 0 && (
         <div className="bg-slate-100/50 dark:bg-slate-800/50 rounded-lg p-8 text-center">
           <p className="text-slate-500 dark:text-slate-400">No blog posts found in this category.</p>
@@ -612,4 +612,4 @@ function BlogList({ blogPosts }) {
   );
 }
 
-export default Blog; 
+export default Blog;

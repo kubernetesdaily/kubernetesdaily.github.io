@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/webp" href="https://kubedaily.com/images/kubedaily_logo.webp" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <title>K8sGPT: ChatGPT-based SRE for Kubernetes | KubeDaily</title>
+  <meta name="title" content="K8sGPT: ChatGPT-based SRE for Kubernetes | KubeDaily">
+  <meta name="description" content="K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English using AI.">
+  <meta name="keywords" content="Kubernetes, Docker, containers, cloud native, DevOps, orchestration, Helm, CNCF">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://kubedaily.com/blog/k8sgpt">
+  <meta property="og:site_name" content="KubeDaily">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kubedaily.com/blog/k8sgpt">
+  <meta property="og:title" content="K8sGPT: ChatGPT-based SRE for Kubernetes | KubeDaily">
+  <meta property="og:description" content="K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English using AI.">
+  <meta property="og:image" content="https://kubedaily.com/logos/KubeDaily-3.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="K8sGPT: ChatGPT-based SRE for Kubernetes | KubeDaily">
+  <meta name="twitter:description" content="K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English using AI.">
+  <meta name="twitter:image" content="https://kubedaily.com/logos/KubeDaily-3.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"K8sGPT: ChatGPT-based SRE for Kubernetes","description":"K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English using AI.","url":"https://kubedaily.com/blog/k8sgpt","author":{"@type":"Person","name":"Sangam Biradar"},"publisher":{"@type":"Organization","name":"KubeDaily","url":"https://kubedaily.com","logo":"https://kubedaily.com/logos/KubeDaily-3.png"},"articleSection":"Kubernetes","keywords":"kubernetes, ChatGPT, AI, SRE, troubleshooting"}</script>
+  <meta name="author" content="KubeDaily">
+  <link rel="alternate" type="application/rss+xml" title="KubeDaily RSS" href="https://kubedaily.com/rss.xml">
+
+  <!-- Handle GitHub Pages SPA redirects -->
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+  <script type="module" crossorigin src="https://kubedaily.com/assets/index-B2aLH50Q.js"></script>
+  <link rel="stylesheet" crossorigin href="https://kubedaily.com/assets/index-XFHdsQWj.css">
+</head>
+
+<body>
+  <div id="root">
+  <main style="max-width:1120px;margin:0 auto;padding:7rem 1.5rem 4rem;color:#e5e7eb;font-family:system-ui,sans-serif">
+    <p style="color:#38bdf8;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Kubernetes</p>
+    <h1 style="font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;margin:.5rem 0 1rem;color:#fff">K8sGPT: ChatGPT-based SRE for Kubernetes</h1>
+    <p style="max-width:760px;font-size:1.25rem;line-height:1.7;color:#cbd5e1">K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English using AI.</p>
+    <article style="margin-top:3rem;line-height:1.8;color:#cbd5e1"><p>K8sgpt - Chatgpt base SRE k8sgpt chat gpt for trubleshooting Install k8sgpt ai K8s filters list How K8sGPT works ? K8sGPT uses analyzers to triage and diagnose issues in your cluster. It has a set of analyzers that are built in, but you will be able to write your own analyzers. Built in analyzers Enabled by default podAnalyzer https://github.com/k8sgpt-ai/k8sgpt/blob/main/pkg/analyzer/pod.go - search all namespaces for pods that are not running - Check through container status to check for crashes or unready - a container that is still being created or blocked due to conditions such as OOMKilled - when pod is Running but its ReadinessProbe fails pvcAnalyzer - PersistentVolumeClaim.ObjectMeta - Error: value.FailureDetails rsAnalyzer - Status of replicaset - type of event - reason of failure serviceAnalyzer - Service existed or not - Service has not ready endpoints eventAnalyzer - the function loops through the list of events to find the most recent one. It initializes a pointer to the latest event as nil, and then compares each event&#39;s LastTimestamp field to the current latest event&#39;s LastTimestamp. If the current event has a later LastTimestamp, the function updates the latestEvent pointer to point to that event instead. - Finally, the function returns a pointer to the latest event found, or an error if there was a problem fetching the events from the Kubernetes API. - Overall, this function is useful for retrieving the most recent event associated with a Kubernetes object, which can be helpful in monitoring and troubleshooting the state of Kubernetes resources. ingressAnalyzer - checks if the Ingress is using TLS encryption and extracts the list of hostnames associated with the Ingress. - implementation is specifically responsible for extracting and organizing relevant information from Kubernetes Ingress resources to generate descriptions about them. statefulSetAnalyzer - check StatefulSet uses the service namespace and servicename which does not exist - The volumeClaimTemplates will provide stable storage using PersistentVolumes provisioned by a PersistentVolume Provisioner. deploymentAnalyzer - DeploymentAnalyzer is an analyzer that checks for misconfigured Deployments from all namespaces cronJobAnalyzer - Check CRON schedule format networkPolicyAnalyzer - Check if policy allows traffic to all pods in the namespace - Check if policy is not applied to any pods nodeAnalyzer Conditions The conditions field describes the status of all Running nodes. Examples of conditions include: Node Condition Description ----------------------------- Ready True if the node is healthy and ready to accept pods, False if the node is not healthy and is not accepting pods, and Unknown if the node controller has not heard from the node in the last node-monitor-grace-period (default is 40 seconds) DiskPressure True if pressure exists on the disk size—that is, if the disk capacity is low; otherwise False MemoryPressure True if pressure exists on the node memory—that is, if the node memory is low; otherwise False PIDPressure True if pressure exists on the processes—that is, if there are too many processes on the node; otherwise False NetworkUnavailable True if the network for the node is not correctly configured, otherwise False - In the Kubernetes API, a node&#39;s condition is represented as part of the .status of the Node resource. For example, the following JSON structure describes a healthy node: start minikube deploy simple guestbook app K8sGPT is a tool for scanning your Kubernetes clusters, diagnosing and triaging issues in simple English. It has SRE experience codified into it&#39;s analyzers and helps to pull out the most relevant information to enrich it with AI. Here are some of the features of K8sGPT: Scans your Kubernetes clusters for common problems and issues. Diagnoses and triages issues in simple English. Helps to pull out the most relevant information to enrich it with AI. Is constantly being updated to keep up with the latest Kubernetes releases. K8sGPT is a valuable tool for any Kubernetes administrator or developer. It can help you to identify and resolve issues quickly and easily, and it can help you to improve the performance and reliability of your Kubernetes clusters. Here are some of the benefits of using K8sGPT: Increased uptime and reliability: K8sGPT can help you to identify and resolve issues quickly and easily, which can help to increase the uptime and reliability of your Kubernetes clusters. Improved performance: K8sGPT can help you to identify and optimize performance bottlenecks, which can help to improve the performance of your Kubernetes clusters. Reduced costs: K8sGPT can help you to reduce the cost of operating your Kubernetes clusters by identifying and eliminating unnecessary resources. If you are a Kubernetes administrator or developer, I encourage you to try K8sGPT. It is a valuable tool that can help you to improve the performance, reliability, and security of your Kubernetes clusters.</p></article>
+  </main></div>
+</body>
+
+</html>

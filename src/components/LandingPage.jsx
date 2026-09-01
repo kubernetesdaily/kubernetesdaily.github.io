@@ -40,20 +40,20 @@ function LandingPage() {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "KubeDaily",
-      "url": "https://kubernetesdaily.github.io/",
-      "logo": "https://kubernetesdaily.github.io/images/kubedaily_logo.webp",
+      "url": "https://kubedaily.com/",
+      "logo": "https://kubedaily.com/logos/KubeDaily-3.png",
       "description": "KubeDaily is dedicated to demystifying the container and orchestration ecosystem through high-quality resources and educational content.",
       "sameAs": [
         "https://github.com/kubernetesdaily"
       ],
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://kubernetesdaily.github.io/"
+        "@id": "https://kubedaily.com/"
       },
       "keywords": "kubernetes, containers, docker, orchestration, cloud-native, k8s, devops, microservices, helm, istio, service mesh",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://kubernetesdaily.github.io/tools?q={search_term_string}",
+        "target": "https://kubedaily.com/tools?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     };
@@ -76,48 +76,48 @@ function LandingPage() {
       <div className="relative overflow-hidden bg-white dark:bg-slate-950">
         {/* Background image */}
         <div className="absolute inset-0 opacity-10 dark:opacity-5">
-          <div 
+          <div
             className="w-full h-full bg-no-repeat bg-center bg-contain"
             style={{ backgroundImage: "url('/images/kubedaily_logo.webp')" }}
           ></div>
         </div>
-        
+
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 to-slate-100/90 dark:from-slate-900/80 dark:via-blue-950/80 dark:to-slate-950/80"></div>
-        
+
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 bg-[url('/patterns/grid.svg')] bg-repeat opacity-[0.03] dark:opacity-[0.02]"></div>
-        
+
         {/* Animated accent elements - more subtle and professional */}
         <div className="absolute top-40 left-20 w-96 h-96 bg-blue-400/10 dark:bg-blue-500/5 rounded-full filter blur-3xl animate-pulse-slow"></div>
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-cyan-400/10 dark:bg-cyan-500/5 rounded-full filter blur-3xl animate-pulse-slow animation-delay-2000"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 relative z-10">
           <div className="flex flex-col items-center gap-8 text-center">
             <Badge variant="outline" className="bg-blue-50/80 dark:bg-blue-900/10 backdrop-blur-sm px-5 py-2 rounded-full border-blue-100 dark:border-blue-800/30">
               <span className="text-blue-700 dark:text-blue-400 text-sm font-medium">Navigating the Container Ecosystem</span>
             </Badge>
-            
+
             <h1 className="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight tracking-tight">
               Demystifying <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-400">Container and Orchestration</span> Ecosystem
             </h1>
-            
+
             <p className="text-slate-600 dark:text-slate-300 text-xl max-w-3xl">
-              KubeDaily is dedicated to simplifying Kubernetes, containers, and orchestration technologies 
+              KubeDaily is dedicated to simplifying Kubernetes, containers, and orchestration technologies
               through high-quality resources, tutorials, and practical guides.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row justify-center gap-5 mt-6">
-              <Button 
-                text={"Explore Tools"} 
-                link={"/tools"} 
+              <Button
+                text={"Explore Tools"}
+                link={"/tools"}
               />
-              <Button 
-                text={"Hands-on Labs"} 
-                link={"/labs"} 
+              <Button
+                text={"Hands-on Labs"}
+                link={"/labs"}
                 variant={"outline"}
               />
-              <Link 
+              <Link
                 to="#community"
                 className="px-6 py-3 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-md hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-200 flex items-center justify-center group"
               >
@@ -127,7 +127,7 @@ function LandingPage() {
                 </svg>
               </Link>
             </div>
-            
+
             {/* Stats section - refined cards with professional shadow */}
             <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 w-full max-w-5xl">
               <Card className="border border-slate-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300">
@@ -157,7 +157,7 @@ function LandingPage() {
             </div>
           </div>
         </div>
-        
+
         {/* Decorative element - refined wave with subtle gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-slate-50 dark:to-slate-950">
           <svg className="absolute bottom-0 w-full h-12 text-slate-50 dark:text-slate-950" preserveAspectRatio="none" viewBox="0 0 1440 74" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -174,11 +174,11 @@ function LandingPage() {
               <span className="inline-block text-blue-600 dark:text-blue-400 font-semibold tracking-wider text-sm uppercase mb-3">Our Mission</span>
               <h2 className="text-slate-900 dark:text-white text-3xl lg:text-4xl font-bold mb-6 leading-tight">Simplifying Container Orchestration</h2>
               <p className="text-slate-600 dark:text-slate-300 text-lg mb-6 leading-relaxed">
-              We believe that access to high-quality knowledge and resources is essential for successful container adoption. 
+              We believe that access to high-quality knowledge and resources is essential for successful container adoption.
               Our mission is to demystify Kubernetes and the container ecosystem while promoting best practices in cloud-native deployments.
             </p>
               <p className="text-slate-600 dark:text-slate-300 text-lg mb-8 leading-relaxed">
-              Through collaboration with cloud-native experts, DevOps professionals, and community contributors, we're building 
+              Through collaboration with cloud-native experts, DevOps professionals, and community contributors, we're building
               a more accessible container ecosystem for everyone from beginners to seasoned practitioners.
             </p>
               <Link to="/about" className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 flex items-center group transition-colors">
@@ -193,9 +193,9 @@ function LandingPage() {
                 <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 dark:from-blue-500/10 dark:to-cyan-500/10 opacity-70 blur-xl"></div>
                 <div className="relative bg-white dark:bg-slate-900 p-6 sm:p-10 rounded-xl shadow-xl">
                   <div className="aspect-w-16 aspect-h-9 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 dark:from-blue-500/10 dark:to-cyan-500/10 rounded-lg overflow-hidden">
-                    <img 
-                      src="/images/kubedaily_logo.webp" 
-                      alt="KubeDaily Mission" 
+                    <img
+                      src="/images/kubedaily_logo.webp"
+                      alt="KubeDaily Mission"
                       className="w-full h-full object-contain p-6"
                     />
                   </div>
@@ -211,7 +211,7 @@ function LandingPage() {
 
       {/* Image Gallery Section */}
       <ImageGallery />
-      
+
       {/* Featured Tools Section - Modern cards with refined design */}
       <div className="bg-white dark:bg-slate-900 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +223,7 @@ function LandingPage() {
               infrastructure management, and cloud-native development.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {featuredTools.map((tool) => (
               <Card key={tool.id} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
@@ -254,7 +254,7 @@ function LandingPage() {
               </Card>
             ))}
           </div>
-          
+
           <div className="mt-12 text-center">
             <Link to="/tools" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
               View All Container Tools
@@ -277,11 +277,11 @@ function LandingPage() {
               step-by-step tutorials and real-world examples.
             </p>
           </div>
-          
+
           <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-xl mb-12">
             <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-400/10 dark:bg-blue-500/10 rounded-full filter blur-3xl"></div>
             <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-cyan-400/10 dark:bg-cyan-500/10 rounded-full filter blur-3xl"></div>
-            
+
             <div className="grid md:grid-cols-2 gap-0">
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <Badge variant="outline" className="w-fit mb-4 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border-blue-100 dark:border-blue-800/30">
@@ -298,7 +298,7 @@ function LandingPage() {
                     </Badge>
                   ))}
                 </div>
-                <Link 
+                <Link
                   to="/labs/Learn-Kubernetes"
                   className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 w-fit"
                 >
@@ -309,15 +309,15 @@ function LandingPage() {
                 </Link>
               </div>
               <div className="bg-slate-100 dark:bg-slate-900 p-12 flex items-center justify-center">
-                <img 
-                  src="/images/kubedaily_logo.webp" 
-                  alt="Kubernetes Lab" 
+                <img
+                  src="/images/kubedaily_logo.webp"
+                  alt="Kubernetes Lab"
                   className="max-h-64 object-contain"
                 />
               </div>
             </div>
           </div>
-          
+
           <div className="grid md:grid-cols-4 gap-8">
             <Card className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
               <CardHeader className="pb-2">
@@ -332,7 +332,7 @@ function LandingPage() {
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
                   A comprehensive guide to Docker, covering its history, architecture, and practical usage in container orchestration.
                 </p>
-                <Link 
+                <Link
                   to="/labs/Learn-Docker"
                   className="text-blue-600 dark:text-blue-400 text-sm font-medium hover:text-blue-700 dark:hover:text-blue-300 flex items-center group transition-colors"
                 >
@@ -343,7 +343,7 @@ function LandingPage() {
                 </Link>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-start">
@@ -357,7 +357,7 @@ function LandingPage() {
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
                   A comprehensive guide to ContainerD, covering its history, architecture, and practical usage in container orchestration.
                 </p>
-                <Link 
+                <Link
                   to="/labs/Learn-Containerd"
                   className="text-blue-600 dark:text-blue-400 text-sm font-medium hover:text-blue-700 dark:hover:text-blue-300 flex items-center group transition-colors"
                 >
@@ -368,7 +368,7 @@ function LandingPage() {
                 </Link>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-start">
@@ -382,7 +382,7 @@ function LandingPage() {
                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
                   A comprehensive guide to Helm, covering its history, architecture, and practical usage in container orchestration.
                 </p>
-                <Link 
+                <Link
                   to="/labs/Learn-Helm"
                   className="text-blue-600 dark:text-blue-400 text-sm font-medium hover:text-blue-700 dark:hover:text-blue-300 flex items-center group transition-colors"
                 >
@@ -393,7 +393,7 @@ function LandingPage() {
                 </Link>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-gradient-to-br from-blue-600 to-cyan-600 text-white shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
               <CardContent className="p-6 flex flex-col items-center justify-center h-full text-center">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4">
@@ -405,7 +405,7 @@ function LandingPage() {
                 <p className="mb-6 opacity-90">
                   Discover our full collection of hands-on Kubernetes and container tutorials.
                 </p>
-                <Link 
+                <Link
                   to="/labs"
                   className="inline-flex items-center justify-center px-5 py-2 border border-white/30 rounded-md font-medium hover:bg-white/10 transition-colors"
                 >
@@ -428,10 +428,10 @@ function LandingPage() {
               <span className="inline-block text-blue-300 font-semibold tracking-wider text-sm uppercase mb-3">Join Our Community</span>
               <h2 className="text-4xl font-bold mb-6 leading-tight">Learn Together. Grow Together.</h2>
               <p className="text-lg mb-6 text-blue-100">
-                Connect with fellow Kubernetes enthusiasts, container experts, and cloud-native practitioners. 
+                Connect with fellow Kubernetes enthusiasts, container experts, and cloud-native practitioners.
                 Share your knowledge, ask questions, and collaborate on projects.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
                   <div className="w-12 h-12 bg-blue-600/30 rounded-full flex items-center justify-center mb-4">
@@ -441,9 +441,9 @@ function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Discord Community</h3>
                   <p className="text-blue-200 mb-4">Join our active Discord server to chat, collaborate, and get real-time support.</p>
-                  <a 
-                    href="https://discord.gg/kubernetesdaily" 
-                    target="_blank" 
+                  <a
+                    href="https://discord.gg/kubernetesdaily"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-300 flex items-center group hover:text-blue-100 transition-colors"
                   >
@@ -453,7 +453,7 @@ function LandingPage() {
                     </svg>
                   </a>
                 </div>
-                
+
                 <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
                   <div className="w-12 h-12 bg-blue-600/30 rounded-full flex items-center justify-center mb-4">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -462,9 +462,9 @@ function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">GitHub Collaboration</h3>
                   <p className="text-blue-200 mb-4">Contribute to our open-source projects and hands-on labs on GitHub.</p>
-                  <a 
-                    href="https://github.com/kubernetesdaily" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/kubernetesdaily"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-300 flex items-center group hover:text-blue-100 transition-colors"
                   >
@@ -475,7 +475,7 @@ function LandingPage() {
                   </a>
                 </div>
               </div>
-              
+
               <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 rounded-lg">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 mr-4">
@@ -486,7 +486,7 @@ function LandingPage() {
                   <div>
                     <h3 className="text-xl font-bold mb-1">Try Our Hands-on Labs</h3>
                     <p className="mb-3">Learn Kubernetes, Docker, ContainerD and more with our step-by-step labs</p>
-                    <Link 
+                    <Link
                       to="/labs"
                       className="inline-flex items-center px-4 py-2 bg-white/20 hover:bg-white/30 rounded-md transition text-sm font-medium"
                     >
@@ -499,7 +499,7 @@ function LandingPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
               <div className="grid grid-cols-2 gap-6">
                 <div className="flex flex-col items-center gap-1 bg-white/5 p-6 rounded-lg text-center">
@@ -527,4 +527,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage; 
+export default LandingPage;

@@ -11,7 +11,7 @@ import OpenGraph from "./OpenGraph";
 
 // Fallback data in case the fetch fails
 const fallbackLabsData = [
- 
+
   {
     id: "Learn-Containerd",
     title: "Learn ContainerD",
@@ -31,7 +31,7 @@ const fallbackLabsData = [
     contributors: ["Sangam Biradar"],
     tags: ["Docker", "Containers", "Docker", "runc"],
     image: "/images/kubedaily_logo.webp"
-  }, 
+  },
   {
     id: "Learn-Kubernetes",
     title: "Learn Kubernetes",
@@ -61,13 +61,13 @@ function LabsList() {
   const [labsData, setLabsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     // Fetch labs data from the JSON file
     const fetchLabsData = async () => {
       try {
         setLoading(true);
-        
+
         // Try multiple potential locations for the data
         const potentialUrls = [
           '/data/labs.json',
@@ -75,9 +75,9 @@ function LabsList() {
           `${window.location.origin}/data/labs.json`,
           `${window.location.origin}/labs/index.json`
         ];
-        
+
         let fetchSuccess = false;
-        
+
         // Try each URL in sequence
         for (const url of potentialUrls) {
           try {
@@ -93,7 +93,7 @@ function LabsList() {
             // Continue to next URL
           }
         }
-        
+
         // If all fetches fail, use the fallback data
         if (!fetchSuccess) {
           console.warn("All fetch attempts failed, using fallback data");
@@ -106,23 +106,23 @@ function LabsList() {
         setLoading(false);
       }
     };
-    
+
     fetchLabsData();
   }, []);
-  
+
   // Get all unique categories
   const categories = ["all", ...new Set(labsData.map(lab => lab.category))];
 
   // Filter labs based on search query and active category
   const filteredLabs = labsData.filter(lab => {
-    const matchesSearch = 
-      searchQuery === "" || 
+    const matchesSearch =
+      searchQuery === "" ||
       lab.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       lab.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (lab.tags && lab.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
-    
+
     const matchesCategory = activeCategory === "all" || lab.category === activeCategory;
-    
+
     return matchesSearch && matchesCategory;
   });
 
@@ -147,7 +147,7 @@ function LabsList() {
               ))}
             </TabsList>
           </Tabs>
-          
+
           <div className="w-full md:w-64">
             <Input
               type="text"
@@ -169,8 +169,8 @@ function LabsList() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
               </svg>
               <p className="text-slate-500 dark:text-slate-400 text-lg">No labs found matching your criteria</p>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="mt-4"
                 onClick={() => {
                   setSearchQuery("");
@@ -182,8 +182,8 @@ function LabsList() {
             </div>
           ) : (
             filteredLabs.map((lab) => (
-              <Card 
-                key={lab.id} 
+              <Card
+                key={lab.id}
                 className="hover:shadow-lg transition duration-300 hover:border-indigo-500/30 cursor-pointer overflow-hidden flex flex-col"
                 onClick={() => navigate(`/labs/${lab.id}`)}
               >
@@ -195,9 +195,9 @@ function LabsList() {
                   </div>
                   {lab.image && (
                     <div className="mb-4 -mx-6 -mt-6">
-                      <img 
-                        src={lab.image} 
-                        alt={`${lab.title} preview`} 
+                      <img
+                        src={lab.image}
+                        alt={`${lab.title} preview`}
                         className="w-full h-40 object-contain bg-white p-4 rounded-t-lg"
                       />
                     </div>
@@ -206,7 +206,7 @@ function LabsList() {
                 </CardHeader>
                 <CardContent className="py-2 flex-grow">
                   <CardDescription className="mb-4 text-sm line-clamp-3">{lab.description}</CardDescription>
-                  
+
                   <div className="flex flex-wrap gap-1 mb-3">
                     {lab.tags && lab.tags.map((tag, index) => (
                       <Badge key={index} variant="outline" className="text-xs bg-slate-900/30">
@@ -252,9 +252,9 @@ function LabsList() {
             </p>
           </div>
           <div>
-            <a 
-              href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/issues/new?labels=new-lab&template=new-lab-proposal.md&title=Lab Proposal: [Your Lab Title]" 
-              target="_blank" 
+            <a
+              href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/issues/new?labels=new-lab&template=new-lab-proposal.md&title=Lab Proposal: [Your Lab Title]"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md transition"
             >
@@ -281,7 +281,7 @@ function LabsList() {
               </p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-slate-900/50">
             <CardContent className="p-6">
               <div className="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center mb-4">
@@ -293,7 +293,7 @@ function LabsList() {
               </p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-slate-900/50">
             <CardContent className="p-6">
               <div className="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center mb-4">
@@ -306,7 +306,7 @@ function LabsList() {
             </CardContent>
           </Card>
         </div>
-        
+
         <div className="mt-8 p-6 border border-indigo-500/30 rounded-lg bg-indigo-500/10">
           <h3 className="text-lg font-semibold mb-2 flex items-center">
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -342,10 +342,10 @@ Common issues and solutions...
 Links to official documentation...`
             }</code>
           </pre>
-          
+
           <div className="mt-6">
-            <a 
-              href="/labs/CONTRIBUTING.md" 
+            <a
+              href="/labs/CONTRIBUTING.md"
               target="_blank"
               className="text-indigo-400 hover:text-indigo-300 flex items-center"
             >
@@ -374,11 +374,11 @@ function LabDetail() {
     const fetchLabData = async () => {
       try {
         setLoading(true);
-        
+
         // Try to get lab data from either the JSON file or use fallback
         let labsData = [];
         let fetchSuccess = false;
-        
+
         // Try multiple potential locations for the data
         const potentialUrls = [
           '/data/labs.json',
@@ -386,7 +386,7 @@ function LabDetail() {
           `${window.location.origin}/data/labs.json`,
           `${window.location.origin}/labs/index.json`
         ];
-        
+
         // Try each URL in sequence
         for (const url of potentialUrls) {
           try {
@@ -402,33 +402,33 @@ function LabDetail() {
             // Continue to next URL
           }
         }
-        
+
         // If all fetches fail, use the fallback data
         if (!fetchSuccess) {
           console.warn("All fetch attempts failed, using fallback data");
           labsData = fallbackLabsData;
         }
-        
+
         const selectedLab = labsData.find(lab => lab.id === labId);
-        
+
         if (!selectedLab) {
           navigate("/labs");
           return;
         }
-        
+
         setLab(selectedLab);
-        
+
         // Fetch the markdown content
         try {
           const markdownResponse = await fetch(selectedLab.path);
-          
+
           if (markdownResponse.ok) {
             const text = await markdownResponse.text();
             setContent(text);
           } else {
             // If the file doesn't exist yet, show a placeholder
             setContent(`# ${selectedLab.title}
-            
+
 ## Overview
 
 ${selectedLab.description}
@@ -452,7 +452,7 @@ ${selectedLab.contributors.join(', ')}
           console.error("Error fetching markdown:", markdownError);
           // Use placeholder content
           setContent(`# ${selectedLab.title}
-          
+
 ## Overview
 
 ${selectedLab.description}
@@ -479,7 +479,7 @@ ${selectedLab.contributors.join(', ')}
         setLoading(false);
       }
     };
-    
+
     fetchLabData();
   }, [labId, navigate]);
 
@@ -495,7 +495,7 @@ ${selectedLab.contributors.join(', ')}
     return <div>Loading...</div>;
   }
 
-  const siteUrl = "https://kubernetesdaily.github.io";
+  const siteUrl = "https://kubedaily.com";
   const imageUrl = lab.image ? `${siteUrl}${lab.image}` : `${siteUrl}/images/kubedaily_logo.webp`;
 
   return (
@@ -508,9 +508,9 @@ ${selectedLab.contributors.join(', ')}
         type="article"
         tags={lab.tags || []}
       />
-      
-      <Button 
-        variant="ghost" 
+
+      <Button
+        variant="ghost"
         className="mb-6"
         onClick={() => navigate("/labs")}
       >
@@ -519,7 +519,7 @@ ${selectedLab.contributors.join(', ')}
         </svg>
         Back to All Labs
       </Button>
-      
+
       <div className="mb-6 flex flex-wrap items-center gap-2">
         <Badge variant={getCategoryVariant(lab.category)} className="text-sm">
           {lab.category}
@@ -535,13 +535,13 @@ ${selectedLab.contributors.join(', ')}
           )}
         </div>
       </div>
-      
+
       <div className="w-full">
         {lab.image && (
           <div className="mb-6">
-            <img 
-              src={lab.image} 
-              alt={`${lab.title} cover image`} 
+            <img
+              src={lab.image}
+              alt={`${lab.title} cover image`}
               className="w-full max-h-[400px] object-contain bg-white p-6 rounded-lg"
             />
           </div>
@@ -554,7 +554,7 @@ ${selectedLab.contributors.join(', ')}
       <div className="mt-10 pt-6 border-t border-slate-700">
         <h3 className="text-xl font-semibold mb-4">Want to contribute to this lab?</h3>
         <div className="flex flex-wrap gap-4">
-          <a 
+          <a
             href={`https://github.com/kubernetesdaily/kubernetesdaily.github.io/edit/main${lab.path}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -565,7 +565,7 @@ ${selectedLab.contributors.join(', ')}
             </svg>
             Edit this page
           </a>
-          <a 
+          <a
             href={`https://github.com/kubernetesdaily/kubernetesdaily.github.io/issues/new?title=Feedback on lab: ${lab.title}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -576,7 +576,7 @@ ${selectedLab.contributors.join(', ')}
             </svg>
             Provide Feedback
           </a>
-          <a 
+          <a
             href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/CONTRIBUTING.md"
             target="_blank"
             rel="noopener noreferrer"
@@ -607,14 +607,14 @@ const getCategoryVariant = (category) => {
     "Monitoring": "monitoring",
     "CI/CD": "cicd",
   };
-  
+
   return categoryMap[category] || "default";
 };
 
 // Main Labs component
 function Labs() {
   const { labId } = useParams();
-  const siteUrl = "https://kubernetesdaily.github.io";
+  const siteUrl = "https://kubedaily.com";
 
   return (
     <div className="text-white w-full mx-auto px-4 py-8 lab-content-container">
@@ -622,14 +622,14 @@ function Labs() {
         <Helmet>
           <title>Kubernetes Labs | KubeDaily</title>
           <meta name="description" content="Interactive Kubernetes labs and hands-on tutorials showcasing container orchestration techniques and best practices." />
-          
+
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content={`${siteUrl}/labs`} />
           <meta property="og:title" content="Kubernetes Labs | KubeDaily" />
           <meta property="og:description" content="Interactive Kubernetes labs and hands-on tutorials showcasing container orchestration techniques and best practices." />
           <meta property="og:image" content={`${siteUrl}/images/kubedaily_logo.webp`} />
-          
+
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content={`${siteUrl}/labs`} />
@@ -644,11 +644,11 @@ function Labs() {
         Interactive hands-on labs and tutorials for learning Kubernetes and container technologies.
         Master container orchestration through practical exercises.
       </p>
-      
+
       <div className="mb-8 text-center">
-        <a 
-          href="https://github.com/kubernetesdaily/kubernetesdaily.github.io" 
-          target="_blank" 
+        <a
+          href="https://github.com/kubernetesdaily/kubernetesdaily.github.io"
+          target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition"
         >
@@ -658,11 +658,11 @@ function Labs() {
           Contribute on GitHub
         </a>
       </div>
-      
+
       {/* Check if we have a labId parameter to determine which component to render */}
       {!labId ? <LabsList /> : <LabDetail />}
     </div>
   );
 }
 
-export default Labs; 
+export default Labs;

@@ -10,15 +10,15 @@ const SEO = ({
   keywords = [],
   author = 'Kubernetes Daily',
 }) => {
-  const siteUrl = 'https://kubernetesdaily.github.io'; // Update with your actual domain
-  const defaultTitle = 'Kubernetes Daily - Cloud Native Learning Platform';
+  const siteUrl = 'https://kubedaily.com';
+  const defaultTitle = 'KubeDaily - Cloud Native Learning Platform';
   const defaultDescription = 'Learn Kubernetes, Cloud Native, DevOps, and Container technologies with hands-on tutorials, guides, and best practices.';
-  const defaultImage = `${siteUrl}/images/kubernetes-daily-banner.png`; // Add your default banner image
-  
+  const defaultImage = `${siteUrl}/logos/KubeDaily-3.png`;
+
   const seo = {
     title: title ? `${title} | ${defaultTitle}` : defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : defaultImage,
     url: `${siteUrl}${pathname || ''}`,
     keywords: [
       'kubernetes',
@@ -46,10 +46,10 @@ const SEO = ({
     description: defaultDescription,
     publisher: {
       '@type': 'Organization',
-      name: 'Kubernetes Daily',
+      name: 'KubeDaily',
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/images/logo.png`, // Add your logo path
+        url: defaultImage,
       },
     },
   };
@@ -111,14 +111,14 @@ const SEO = ({
       <meta name="google" content="notranslate" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="theme-color" content="#326CE5" /> {/* Kubernetes blue */}
-      
+
       {/* Mobile viewport optimization */}
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      
+
       {/* RSS Feed */}
-      <link 
-        rel="alternate" 
-        type="application/rss+xml" 
+      <link
+        rel="alternate"
+        type="application/rss+xml"
         title={`${defaultTitle} RSS Feed`}
         href={`${siteUrl}/rss.xml`}
       />
@@ -126,4 +126,4 @@ const SEO = ({
   );
 };
 
-export default SEO; 
+export default SEO;
