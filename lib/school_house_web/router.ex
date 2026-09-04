@@ -25,6 +25,7 @@ defmodule SchoolHouseWeb.Router do
     get "/docker-images", KubeDailyController, :docker_images
     get "/labs", KubeDailyController, :labs
     get "/labs/:id", KubeDailyController, :lab
+    get "/roadmap", KubeDailyController, :roadmap
     get "/blog", KubeDailyController, :blog
     get "/blog/:id", KubeDailyController, :post
     get "/about", KubeDailyController, :about

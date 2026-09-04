@@ -1,0 +1,48 @@
+<section class="kube-roadmap-hero">
+  <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
+    <div class="kube-roadmap-hero-copy">
+      <p class="kube-label">The KubeDaily editorial plan</p>
+      <h1>1,000 practical titles for the <span>container ecosystem.</span></h1>
+      <p>A focused public roadmap for the concepts, workflows, and operational skills that container practitioners need most.</p>
+      <div class="kube-roadmap-stats" aria-label="Roadmap summary">
+        <div><strong><%= @blog_count %></strong><span>planned blogs</span></div>
+        <div><strong><%= @lab_count %></strong><span>hands-on labs</span></div>
+        <div><strong><%= length(@roadmap) %></strong><span>learning tracks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+  <div class="kube-roadmap-intro">
+    <div><p class="kube-label">What this means</p><h2>One ecosystem. Clear learning paths.</h2></div>
+    <p>Every planned item stays within containers and cloud-native operations. Open a track to browse its complete blog and lab titles.</p>
+  </div>
+
+  <div class="kube-roadmap-tracks">
+    <%= for {track, index} <- Enum.with_index(@roadmap, 1) do %>
+      <details class="kube-roadmap-track" open={index == 1}>
+        <summary>
+          <span class="kube-roadmap-track-number">0<%= index %></span>
+          <span class="kube-roadmap-track-copy"><strong><%= track.title %></strong><small><%= track.description %></small></span>
+          <span class="kube-roadmap-track-count"><b><%= track.blogs %></b> blogs · <b><%= track.labs %></b> labs</span>
+          <span class="kube-roadmap-track-toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="kube-roadmap-track-body">
+          <section>
+            <p class="kube-label"><%= track.blogs %> planned blogs</p>
+            <ol class="kube-roadmap-title-list">
+              <%= for title <- track.blog_titles do %><li><%= title %></li><% end %>
+            </ol>
+          </section>
+          <section>
+            <p class="kube-label"><%= track.labs %> planned labs</p>
+            <ol class="kube-roadmap-title-list kube-roadmap-lab-list">
+              <%= for title <- track.lab_titles do %><li><%= title %></li><% end %>
+            </ol>
+          </section>
+        </div>
+      </details>
+    <% end %>
+  </div>
+</section>

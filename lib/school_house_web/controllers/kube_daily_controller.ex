@@ -28,6 +28,20 @@ defmodule SchoolHouseWeb.KubeDailyController do
         seo: %{description: "Learn Kubernetes, Docker, Containerd, and Helm with hands-on KubeDaily labs."}
       )
 
+  def roadmap(conn, _params) do
+    roadmap = KubeDaily.content_roadmap()
+
+    render(conn, "roadmap.html",
+      page_title: "Container Ecosystem Content Roadmap",
+      roadmap: roadmap,
+      blog_count: roadmap |> Enum.map(& &1.blogs) |> Enum.sum(),
+      lab_count: roadmap |> Enum.map(& &1.labs) |> Enum.sum(),
+      seo: %{
+        description: "Explore KubeDaily's 1,000-item roadmap for practical container ecosystem blogs and hands-on labs."
+      }
+    )
+  end
+
   def blog(conn, _params),
     do:
       render(conn, "blog.html",

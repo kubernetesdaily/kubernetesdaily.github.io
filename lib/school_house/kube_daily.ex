@@ -1,8 +1,196 @@
 defmodule SchoolHouse.KubeDaily do
   @moduledoc "KubeDaily content loaded from the preserved upstream static files."
 
+  @article_formats [
+    "architecture and terminology guide",
+    "beginner’s guide",
+    "production checklist",
+    "troubleshooting guide",
+    "security guide",
+    "performance tuning guide",
+    "cost and efficiency guide",
+    "migration playbook",
+    "operations runbook"
+  ]
+
+  @lab_formats [
+    "install, configure, and validate",
+    "build an end-to-end workflow",
+    "troubleshoot a realistic failure",
+    "secure a production-ready setup",
+    "observe and operate in practice",
+    "automate a repeatable workflow",
+    "test resilience and recovery",
+    "ship with a CI/CD pipeline"
+  ]
+
+  @roadmap_tracks [
+    %{
+      id: "runtimes",
+      title: "Container fundamentals and runtimes",
+      description: "Build a clear mental model of containers from OCI images through the runtime lifecycle.",
+      blogs: 90,
+      labs: 60,
+      topics: [
+        "OCI image specification",
+        "Container lifecycle",
+        "Docker",
+        "containerd",
+        "runc",
+        "CRI",
+        "BuildKit",
+        "Rootless containers",
+        "Namespaces and cgroups",
+        "Linux container debugging"
+      ]
+    },
+    %{
+      id: "supply-chain",
+      title: "Images, registries, and software supply chain",
+      description: "Create, distribute, verify, and maintain trusted container images.",
+      blogs: 90,
+      labs: 60,
+      topics: [
+        "Dockerfile design",
+        "Multi-stage builds",
+        "Image layers",
+        "Registry operations",
+        "Image scanning",
+        "SBOMs",
+        "Image signing",
+        "Provenance",
+        "Distroless images",
+        "Image lifecycle management"
+      ]
+    },
+    %{
+      id: "orchestration",
+      title: "Kubernetes workloads and orchestration",
+      description: "Deploy, scale, upgrade, and troubleshoot containerized workloads on Kubernetes.",
+      blogs: 90,
+      labs: 80,
+      topics: [
+        "Kubernetes architecture",
+        "Pods and Deployments",
+        "StatefulSets",
+        "Jobs and CronJobs",
+        "Autoscaling",
+        "Resource requests and limits",
+        "Helm",
+        "Kustomize",
+        "Cluster upgrades",
+        "Workload troubleshooting"
+      ]
+    },
+    %{
+      id: "networking",
+      title: "Container networking and service connectivity",
+      description: "Connect workloads securely from local containers through multi-cluster Kubernetes platforms.",
+      blogs: 60,
+      labs: 40,
+      topics: [
+        "Container networking",
+        "Kubernetes Services",
+        "CoreDNS",
+        "Ingress",
+        "Gateway API",
+        "CNI",
+        "NetworkPolicy",
+        "Service mesh",
+        "Multi-cluster networking",
+        "Traffic troubleshooting"
+      ]
+    },
+    %{
+      id: "security",
+      title: "Container security, policy, and compliance",
+      description: "Reduce runtime risk with secure defaults, policy controls, and auditable delivery practices.",
+      blogs: 80,
+      labs: 50,
+      topics: [
+        "Container threat modeling",
+        "Kubernetes RBAC",
+        "Pod Security Standards",
+        "Secrets management",
+        "Admission control",
+        "OPA Gatekeeper",
+        "Kyverno",
+        "Runtime security",
+        "Vulnerability remediation",
+        "Compliance evidence"
+      ]
+    },
+    %{
+      id: "delivery",
+      title: "CI/CD, GitOps, and platform delivery",
+      description: "Move container changes safely from source control to production environments.",
+      blogs: 70,
+      labs: 50,
+      topics: [
+        "GitHub Actions",
+        "Container build pipelines",
+        "Argo CD",
+        "Flux",
+        "Tekton",
+        "Progressive delivery",
+        "Canary releases",
+        "Blue-green releases",
+        "Environment promotion",
+        "GitOps troubleshooting"
+      ]
+    },
+    %{
+      id: "operations",
+      title: "Observability, reliability, and cost",
+      description:
+        "Operate container platforms confidently with useful signals, recovery plans, and efficient capacity.",
+      blogs: 60,
+      labs: 40,
+      topics: [
+        "Prometheus",
+        "Grafana",
+        "Container logs",
+        "Distributed tracing",
+        "Kubernetes events",
+        "SLOs",
+        "Capacity planning",
+        "Kubernetes cost optimization",
+        "Backup and recovery",
+        "Incident response"
+      ]
+    },
+    %{
+      id: "platforms",
+      title: "Storage, platforms, and ecosystem tools",
+      description: "Choose and operate the supporting components that make a container platform useful in practice.",
+      blogs: 50,
+      labs: 30,
+      topics: [
+        "Container storage",
+        "Kubernetes persistent volumes",
+        "CSI drivers",
+        "Operator pattern",
+        "Crossplane",
+        "Kubernetes distributions",
+        "Local Kubernetes",
+        "Developer environments",
+        "Platform APIs",
+        "Ecosystem evaluation"
+      ]
+    }
+  ]
+
   def labs, do: json_collection("labs.json", "labs")
   def posts, do: json_collection("blog.json", "blogs")
+
+  def content_roadmap do
+    Enum.map(@roadmap_tracks, fn track ->
+      Map.merge(track, %{
+        blog_titles: plan_titles(track.topics, @article_formats, track.blogs),
+        lab_titles: plan_titles(track.topics, @lab_formats, track.labs)
+      })
+    end)
+  end
 
   def lab(id), do: Enum.find(labs(), &(&1["id"] == id))
   def post(id), do: Enum.find(posts(), &(&1["id"] == id))
@@ -60,6 +248,11 @@ defmodule SchoolHouse.KubeDaily do
     |> File.read!()
     |> Jason.decode!()
     |> Map.fetch!(key)
+  end
+
+  defp plan_titles(topics, formats, count) do
+    titles = for topic <- topics, format <- formats, do: "#{topic}: #{format}"
+    Enum.take(titles, count)
   end
 
   defp markdown_html("/" <> path, fallback) do
