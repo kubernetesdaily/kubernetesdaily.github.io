@@ -580,13 +580,12 @@ body, body * {
 [x-cloak] { display: none !important; }
 
 /* KubeDaily content pages, implemented by Phoenix templates. */
-.kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-200 bg-white shadow-sm dark:border-brand-gray-700 dark:bg-brand-gray-900; }
+.kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-200 bg-white shadow-sm; }
 .kube-brand { @apply self-start lg:self-auto; }
-.kube-brand-mark { @apply relative block h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white; }
-.kube-brand-mark img { @apply h-11 max-w-none; width: auto; }
+.kube-brand img { @apply block h-auto w-40 sm:w-48; }
 .kube-nav-menu { @apply -mx-1 flex max-w-full items-center gap-1 overflow-x-auto px-1 lg:mx-0 lg:px-0; }
-.kube-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-primary transition hover:bg-brand-purple-800 hover:text-white dark:text-brand-gray-200; }
-.kube-header-github { @apply hidden whitespace-nowrap rounded-md border border-brand-gray-300 px-3 py-2 text-sm font-bold text-heavy transition hover:border-brand-purple-800 hover:bg-brand-purple-800 hover:text-white dark:border-brand-gray-650 dark:text-white lg:inline-flex; }
+.kube-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-primary transition hover:bg-brand-purple-800 hover:text-white; }
+.kube-header-github { @apply hidden whitespace-nowrap rounded-md border border-brand-gray-300 px-3 py-2 text-sm font-bold text-heavy transition hover:border-brand-purple-800 hover:bg-brand-purple-800 hover:text-white lg:inline-flex; }
 .kube-hero { @apply relative overflow-hidden bg-gradient-to-br from-brand-gray-300 via-white to-purple-100; }
 .kube-hero h1 { @apply mx-auto mt-5 max-w-5xl text-4xl font-extrabold leading-tight tracking-tight text-heavy sm:text-6xl; }
 .kube-hero h1 span { @apply text-purple; }
@@ -687,3 +686,12 @@ body, body * {
 .kube-home-path-featured > p:not(.kube-label) { @apply text-brand-gray-300; }
 .kube-home-path-featured .kube-label { @apply text-brand-purple-100; }
 .kube-home-path-featured a { @apply text-brand-purple-100; }
+.kube-events { @apply bg-brand-gray-100 dark:bg-brand-gray-900; }
+.kube-events-heading { @apply flex flex-col justify-between gap-5 md:flex-row md:items-end; }
+.kube-events-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-white; }
+.kube-events-heading > p { @apply max-w-xl leading-relaxed text-light dark:text-brand-gray-300; }
+.kube-events-gallery { @apply mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-4; }
+.kube-events-gallery figure { @apply relative h-64 overflow-hidden rounded-xl bg-brand-gray-800 shadow-md; }
+.kube-events-gallery img { @apply absolute inset-0 h-full w-full object-cover transition duration-500 hover:scale-105; }
+.kube-events-gallery figcaption { @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-gray-900 to-transparent px-5 pb-4 pt-12 text-sm font-bold text-white; }
+.kube-events-gallery .kube-event-featured { @apply md:col-span-2 md:h-80 lg:col-span-2; }
