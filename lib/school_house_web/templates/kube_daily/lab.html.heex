@@ -1,19 +1,36 @@
-<section class="kube-lab-hero">
-  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
-    <a class="kube-lab-back" href="/labs/">← All labs</a>
-    <p class="kube-label"><%= @lab["category"] %> lab</p>
+<header class="kube-lab-reader-header">
+  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
+    <nav class="kube-lab-breadcrumb" aria-label="Breadcrumb"><a href="/labs/">Labs</a><span aria-hidden="true">/</span><span><%= @lab["category"] %></span></nav>
+    <p class="kube-label">Self-paced lab</p>
     <h1><%= @lab["title"] %></h1>
-    <p class="kube-dek"><%= @lab["description"] %></p>
-    <div class="kube-lab-byline"><span>Hands-on learning path</span><span aria-hidden="true">•</span><span>Free and self-paced</span></div>
+    <p><%= @lab["description"] %></p>
+    <div class="kube-lab-reader-tags" aria-label="Lab topics"><%= for tag <- @lab["tags"] do %><span><%= tag %></span><% end %></div>
+  </div>
+</header>
+
+<section class="kube-lab-steps" aria-label="How to use this lab">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-10">
+    <ol>
+      <li><span>1</span><div><strong>Read the concept</strong><small>Build the mental model first.</small></div></li>
+      <li><span>2</span><div><strong>Try the commands</strong><small>Use a disposable environment.</small></div></li>
+      <li><span>3</span><div><strong>Keep the notes</strong><small>Return when you need a refresher.</small></div></li>
+    </ol>
   </div>
 </section>
 
-<article class="kube-lab-shell">
-  <aside class="kube-lab-aside">
-    <p class="kube-label">In this lab</p>
-    <p>Work through the guide at your own pace. Commands are examples—review them before running them in your environment.</p>
-    <div class="kube-lab-tags"><%= for tag <- @lab["tags"] do %><span><%= tag %></span><% end %></div>
-    <a href="/labs/">Browse all labs →</a>
+<article class="kube-lab-reader-shell">
+  <aside class="kube-lab-outline" aria-label="Lesson contents">
+    <p class="kube-label">On this page</p>
+    <nav>
+      <%= for item <- Enum.take(@outline, 14) do %>
+        <a class={if item.level == 3, do: "kube-lab-outline-nested"} href={"##{item.id}"}><%= item.title %></a>
+      <% end %>
+    </nav>
+    <a class="kube-lab-outline-all" href="/labs/">← All labs</a>
   </aside>
-  <div class="kube-reading kube-markdown"><%= raw(@content) %></div>
+
+  <div class="kube-lab-reading">
+    <div class="kube-lab-reading-note"><strong>Before you start:</strong> Read commands before running them, and avoid using a production cluster for experimentation.</div>
+    <div class="kube-markdown"><%= raw(@content) %></div>
+  </div>
 </article>

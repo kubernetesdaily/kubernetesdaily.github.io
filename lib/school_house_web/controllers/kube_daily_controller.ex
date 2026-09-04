@@ -49,10 +49,13 @@ defmodule SchoolHouseWeb.KubeDailyController do
         send_resp(conn, 404, "Lab not found")
 
       lab ->
+        content = KubeDaily.lab_content(lab)
+
         render(conn, "lab.html",
           page_title: lab["title"],
           lab: lab,
-          content: KubeDaily.lab_html(lab),
+          content: content.html,
+          outline: content.outline,
           seo: %{
             description: lab["description"],
             schema_type: "LearningResource",

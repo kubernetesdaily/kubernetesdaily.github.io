@@ -750,7 +750,7 @@ body, body * {
 .kube-labs-hero-copy h1 { @apply mt-4 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl; }
 .kube-labs-hero-copy h1 span { @apply text-brand-purple-100; }
 .kube-labs-hero-copy > p:not(.kube-label) { @apply mt-5 max-w-2xl text-lg leading-relaxed text-brand-gray-300 sm:text-xl; }
-.kube-labs-hero-copy .kube-label, .kube-lab-hero .kube-label { @apply text-brand-purple-100; }
+.kube-labs-hero-copy .kube-label { @apply text-brand-purple-100; }
 .kube-labs-hero-meta { @apply mt-8 flex flex-wrap gap-2; }
 .kube-labs-hero-meta span { @apply rounded-full border border-brand-gray-650 bg-brand-gray-800/70 px-3 py-1.5 text-sm font-semibold text-brand-gray-200; }
 .kube-labs-hero-meta strong { @apply text-brand-purple-100; }
@@ -771,17 +771,35 @@ body, body * {
 .kube-labs-note > div { @apply grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-end; }
 .kube-labs-note h2 { @apply mt-2 text-2xl font-extrabold text-heavy dark:text-heavy-dark; }
 .kube-labs-note > div > p { @apply leading-relaxed text-light dark:text-light-dark; }
-.kube-lab-hero { @apply border-b border-brand-gray-700 bg-brand-gray-900; }
-.kube-lab-back { @apply inline-flex items-center gap-2 text-sm font-bold text-brand-purple-100 transition hover:text-white; }
-.kube-lab-hero .kube-label { @apply mt-8; }
-.kube-lab-hero h1 { @apply mt-4 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl; }
-.kube-lab-hero .kube-dek { @apply max-w-3xl text-brand-gray-300 sm:text-xl; }
-.kube-lab-byline { @apply mt-7 flex flex-wrap gap-2 text-sm text-brand-gray-400; }
-.kube-lab-shell { @apply mx-auto grid max-w-screen-xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-10 lg:py-16; }
-.kube-lab-aside { @apply h-fit rounded-xl border border-gray-200 bg-brand-gray-100 p-5 text-sm leading-relaxed text-light dark:border-brand-gray-700 dark:bg-brand-gray-800 dark:text-light-dark lg:sticky lg:top-24; }
-.kube-lab-aside > p:not(.kube-label) { @apply mt-3; }
-.kube-lab-aside a { @apply mt-6 inline-block font-bold text-purple underline underline-offset-4; }
-.kube-lab-shell .kube-reading { @apply min-w-0 w-full max-w-none; }
+.kube-lab-reader-header { @apply border-b border-gray-200 bg-white dark:border-brand-gray-700 dark:bg-brand-gray-900; }
+.kube-lab-breadcrumb { @apply flex items-center gap-2 text-sm font-semibold text-lighter; }
+.kube-lab-breadcrumb a { @apply text-purple underline underline-offset-4; }
+.kube-lab-reader-header .kube-label { @apply mt-8; }
+.kube-lab-reader-header h1 { @apply mt-3 text-4xl font-extrabold tracking-tight text-heavy dark:text-white sm:text-5xl; }
+.kube-lab-reader-header > div > p:not(.kube-label) { @apply mt-4 max-w-3xl text-lg leading-relaxed text-light dark:text-brand-gray-300; }
+.kube-lab-reader-tags { @apply mt-7 flex flex-wrap gap-2; }
+.kube-lab-reader-tags span { @apply rounded-full border border-brand-purple-300 bg-brand-purple-100/40 px-3 py-1 text-xs font-semibold text-purple dark:border-brand-gray-600 dark:bg-brand-gray-800 dark:text-brand-purple-100; }
+.kube-lab-steps { @apply border-b border-brand-gray-200 bg-brand-gray-100 dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-lab-steps ol { @apply grid divide-y divide-brand-gray-200 md:grid-cols-3 md:divide-x md:divide-y-0 dark:divide-brand-gray-700; }
+.kube-lab-steps li { @apply flex items-center gap-3 py-4 md:px-6 md:first:pl-0 md:last:pr-0; }
+.kube-lab-steps li > span { @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-sm font-extrabold text-purple shadow-sm dark:bg-brand-gray-900; }
+.kube-lab-steps strong, .kube-lab-steps small { @apply block; }
+.kube-lab-steps strong { @apply text-sm text-heavy dark:text-heavy-dark; }
+.kube-lab-steps small { @apply mt-0.5 text-xs text-light dark:text-light-dark; }
+.kube-lab-reader-shell { @apply mx-auto grid max-w-screen-xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:px-10 lg:py-14; }
+.kube-lab-outline { @apply h-fit border-b border-brand-gray-200 pb-6 dark:border-brand-gray-700 lg:sticky lg:top-24 lg:border-b-0 lg:border-r lg:pr-6; }
+.kube-lab-outline nav { @apply mt-4 flex max-h-80 flex-col gap-2 overflow-y-auto pr-3; }
+.kube-lab-outline nav a { @apply text-sm leading-snug text-light transition hover:text-purple dark:text-light-dark; }
+.kube-lab-outline nav .kube-lab-outline-nested { @apply pl-3 text-xs; }
+.kube-lab-outline-all { @apply mt-6 inline-block text-sm font-bold text-purple underline underline-offset-4; }
+.kube-lab-reading { @apply min-w-0 max-w-3xl; }
+.kube-lab-reading-note { @apply rounded-lg border border-brand-purple-200 bg-brand-purple-100/50 px-5 py-4 text-sm leading-relaxed text-light dark:border-brand-gray-600 dark:bg-brand-gray-800 dark:text-brand-gray-300; }
+.kube-lab-reading-note strong { @apply text-heavy dark:text-white; }
+.kube-lab-reading .kube-markdown { @apply mt-10 text-[1.0625rem] leading-8; }
+.kube-lab-reading .kube-markdown h2 { @apply mt-16 text-3xl; }
+.kube-lab-reading .kube-markdown h3 { @apply mt-10 text-xl; }
+.kube-lab-reading .kube-markdown p, .kube-lab-reading .kube-markdown ul, .kube-lab-reading .kube-markdown ol { @apply max-w-3xl; }
+.kube-lab-reading .kube-markdown li + li { @apply mt-2; }
 .kube-footer { @apply bg-brand-gray-900 text-brand-gray-300; }
 .kube-footer-main { @apply mx-auto grid max-w-screen-2xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10 lg:py-16; }
 .kube-footer-intro { @apply max-w-sm; }
