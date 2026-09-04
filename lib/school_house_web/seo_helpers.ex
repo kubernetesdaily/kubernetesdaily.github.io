@@ -17,7 +17,7 @@ defmodule SchoolHouseWeb.SeoHelpers do
 
   def seo_type(assigns) do
     get_in(assigns, [:seo, :type]) ||
-      if(get_in(assigns, [:seo, :schema_type]) == "Article", do: "article", else: "website")
+      (if(get_in(assigns, [:seo, :schema_type]) == "Article", do: "article", else: "website"))
   end
 
   def seo_keywords(assigns) do
