@@ -7,8 +7,8 @@ defmodule SchoolHouse.KubeDaily do
   def lab(id), do: Enum.find(labs(), &(&1["id"] == id))
   def post(id), do: Enum.find(posts(), &(&1["id"] == id))
 
-  def lab_html(%{"path" => path}), do: markdown_html(path)
-  def post_html(%{"file" => path}), do: markdown_html(path)
+  def lab_html(%{"path" => path, "description" => description}), do: markdown_html(path, description)
+  def post_html(%{"file" => path, "excerpt" => excerpt}), do: markdown_html(path, excerpt)
 
   def docker_images do
     root()
@@ -26,11 +26,14 @@ defmodule SchoolHouse.KubeDaily do
     |> Map.fetch!(key)
   end
 
-  defp markdown_html("/" <> path) do
-    root()
-    |> Path.join(path)
-    |> File.read!()
-    |> Earmark.as_html!()
+  defp markdown_html("/" <> path, fallback) do
+    path = Path.join(root(), path)
+
+    case File.read(path) do
+      {:ok, markdown} -> Earmark.as_html!(markdown)
+      {:error, :enoent} -> Earmark.as_html!(fallback)
+      {:error, reason} -> raise File.Error, reason: reason, action: "read file", path: path
+    end
   end
 
   defp root, do: Application.app_dir(:school_house, "priv/static/kubedaily")

@@ -1,0 +1,57 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: erlef/setup-beam@v1
+        with:
+          elixir-version: '1.18.4'
+          otp-version: '27.3.4.1'
+
+      - uses: actions/cache@v5
+        with:
+          path: |
+            _build
+            deps
+            assets/node_modules
+          key: pages-v1-${{ runner.os }}-${{ hashFiles('mix.lock', 'assets/package-lock.json') }}
+
+      - run: mix deps.get
+      - run: mix deps.compile
+      - run: npm ci --prefix assets
+      - run: mix assets.deploy
+      - run: mix kubedaily.export --output _site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
