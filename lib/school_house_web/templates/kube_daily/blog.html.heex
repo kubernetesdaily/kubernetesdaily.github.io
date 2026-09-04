@@ -1,0 +1,8 @@
+<section class="container mx-auto px-5 py-16">
+  <div class="kube-page-heading"><span>Container Ecosystem</span><h1>KubeDaily Blog</h1><p>Practical guides, technologies, and community insights from KubeDaily.</p></div>
+  <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <%= for post <- @posts do %>
+      <article class="kube-card"><p class="kube-label"><%= post["category"] %> · <%= post["date"] %></p><h2><%= post["title"] %></h2><p><%= post["excerpt"] %></p><a href={"/blog/#{post["id"]}"}>Read article →</a></article>
+    <% end %>
+  </div>
+</section>

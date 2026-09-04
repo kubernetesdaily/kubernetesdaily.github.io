@@ -1,0 +1,5 @@
+<section class="container mx-auto px-5 py-16">
+  <div class="kube-page-heading"><span>Container Images</span><h1>Popular Docker Images</h1><p>The preserved KubeDaily Docker Hub data set.</p></div>
+  <div class="mt-10 overflow-x-auto rounded-lg border border-gray-200"><table class="kube-table"><%= for {row, index} <- Enum.with_index(@rows) do %><tr><%= for cell <- row do %><%= if index == 0 do %><th><%= cell %></th><% else %><td><%= cell %></td><% end %><% end %></tr><% end %></table></div>
+  <p class="mt-5 text-sm text-lighter">The complete CSV is available at <a href="/kubedaily/data/most-popular-dockerhub-images.csv">/kubedaily/data/most-popular-dockerhub-images.csv</a>.</p>
+</section>
