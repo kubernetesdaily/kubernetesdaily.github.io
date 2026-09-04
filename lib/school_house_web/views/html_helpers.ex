@@ -33,7 +33,7 @@ defmodule SchoolHouseWeb.HtmlHelpers do
         section,
         name,
         class \\ "block hover:bg-purple hover:dark:bg-purple text-primary dark:text-primary-dark hover:text-white hover:dark:text-light-dark",
-        do: contents
+        do: (contents)
       ) do
     {destination, additional_classes} =
       if Lessons.exists?(section, name, current_locale()) do
