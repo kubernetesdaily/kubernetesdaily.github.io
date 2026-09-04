@@ -582,7 +582,7 @@ body, body * {
 /* KubeDaily content pages, implemented by Phoenix templates. */
 .kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-200 bg-white shadow-sm; }
 .kube-brand { @apply self-start lg:self-auto; }
-.kube-brand img { @apply block h-auto w-40 sm:w-48; }
+.kube-brand img { @apply block h-auto w-32 sm:w-36; }
 .kube-nav-menu { @apply -mx-1 flex max-w-full items-center gap-1 overflow-x-auto px-1 lg:mx-0 lg:px-0; }
 .kube-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-primary transition hover:bg-brand-purple-800 hover:text-white; }
 .kube-header-github { @apply hidden whitespace-nowrap rounded-md border border-brand-gray-300 px-3 py-2 text-sm font-bold text-heavy transition hover:border-brand-purple-800 hover:bg-brand-purple-800 hover:text-white lg:inline-flex; }
@@ -618,10 +618,17 @@ body, body * {
 .kube-markdown ol { @apply list-decimal; }
 .kube-markdown pre { @apply mt-5 overflow-x-auto rounded-lg bg-brand-gray-900 p-5 text-sm text-white; }
 .kube-markdown img { @apply my-6 h-auto max-w-full rounded-lg border border-gray-200; }
-.kube-tool-controls { @apply flex flex-col gap-4 md:flex-row; }
-.kube-tool-controls input, .kube-tool-controls select { @apply w-full rounded-md border border-gray-300 bg-white p-3 text-primary shadow-sm focus:border-brand-purple-800 focus:outline-none dark:bg-brand-gray-800 dark:border-brand-gray-700 dark:text-primary-dark; }
-.kube-tool-count { @apply mt-5 text-sm text-lighter; }
-.kube-tool-grid { @apply mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3; }
+.kube-tool-controls { @apply grid gap-4 md:grid-cols-[minmax(0,1fr)_15rem]; }
+.kube-tool-controls label { @apply text-xs font-bold uppercase tracking-wider text-lighter; }
+.kube-tool-controls input, .kube-tool-controls select { @apply mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-base font-normal normal-case tracking-normal text-primary shadow-sm focus:border-brand-purple-800 focus:outline-none dark:border-brand-gray-700 dark:bg-brand-gray-800 dark:text-primary-dark; }
+.kube-tool-count { @apply mt-7 text-sm text-lighter; }
+.kube-tool-count strong { @apply text-heavy dark:text-heavy-dark; }
+.kube-tool-grid { @apply mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3; }
+.kube-tool-card { @apply flex min-h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-purple-300 hover:shadow-lg dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-tool-card h2 { @apply mt-4 text-2xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-tool-card > p:not(.kube-label) { @apply mt-3 leading-relaxed text-light dark:text-light-dark; }
+.kube-tool-card a { @apply mt-auto pt-7 font-bold text-purple underline decoration-brand-purple-300 underline-offset-4 transition hover:text-brand-purple-800; }
+.kube-tool-empty { @apply rounded-xl border border-dashed border-gray-300 p-8 text-light dark:border-brand-gray-700 dark:text-light-dark; }
 .kube-table { @apply min-w-full divide-y divide-gray-200 text-left text-sm; }
 .kube-table th { @apply bg-brand-gray-200 px-4 py-3 font-bold text-heavy; }
 .kube-table td { @apply px-4 py-3 text-light; }
@@ -832,11 +839,27 @@ body, body * {
 .kube-roadmap-track-body { @apply grid gap-8 border-t border-gray-200 p-5 md:grid-cols-2 md:p-6 dark:border-brand-gray-700; }
 .kube-roadmap-title-list { @apply mt-4 grid gap-2 pl-5 text-sm leading-relaxed text-light marker:font-bold marker:text-purple dark:text-light-dark; }
 .kube-roadmap-lab-list { @apply marker:text-brand-purple-800; }
+
+/* KubeDaily tool directory */
+.kube-tools-hero { @apply relative overflow-hidden border-b border-brand-gray-700 bg-brand-gray-900; }
+.kube-tools-hero:before { content: ""; @apply absolute inset-0 opacity-60; background-image: radial-gradient(circle at 82% 18%, rgba(168, 85, 247, .4), transparent 29%), linear-gradient(rgba(202, 162, 245, .10) 1px, transparent 1px), linear-gradient(90deg, rgba(202, 162, 245, .10) 1px, transparent 1px); background-size: auto, 48px 48px, 48px 48px; }
+.kube-tools-hero-copy { @apply relative max-w-4xl; }
+.kube-tools-hero-copy .kube-label { @apply text-brand-purple-100; }
+.kube-tools-hero-copy h1 { @apply mt-4 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl; }
+.kube-tools-hero-copy h1 span { @apply text-brand-purple-100; }
+.kube-tools-hero-copy > p:not(.kube-label) { @apply mt-5 max-w-3xl text-lg leading-relaxed text-brand-gray-300 sm:text-xl; }
+.kube-tools-star { @apply mt-8 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-brand-gray-650 bg-brand-gray-800/80 px-4 py-3 no-underline transition hover:border-brand-purple-300 hover:bg-brand-gray-800; }
+.kube-tools-star > span { @apply text-lg text-brand-purple-100; }
+.kube-tools-star strong { @apply text-sm text-white; }
+.kube-tools-star small { @apply text-xs text-brand-gray-400; }
+.kube-tools-directory-heading { @apply flex flex-col justify-between gap-5 md:flex-row md:items-end; }
+.kube-tools-directory-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-tools-directory-heading > p { @apply max-w-xl leading-relaxed text-light dark:text-light-dark; }
 .kube-footer { @apply bg-brand-gray-900 text-brand-gray-300; }
 .kube-footer-main { @apply mx-auto grid max-w-screen-2xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10 lg:py-16; }
 .kube-footer-intro { @apply max-w-sm; }
 .kube-footer-wordmark { @apply inline-block rounded-lg bg-white p-2 shadow-sm; }
-.kube-footer-wordmark img { @apply block w-40; }
+.kube-footer-wordmark img { @apply block w-28; }
 .kube-footer-intro > p { @apply mt-5 leading-relaxed text-brand-gray-400; }
 .kube-footer-github { @apply mt-5 inline-flex items-center gap-2 font-bold text-brand-purple-100 transition hover:text-white; }
 .kube-footer nav { @apply flex flex-col items-start gap-3 text-sm; }
