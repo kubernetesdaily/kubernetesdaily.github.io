@@ -1,0 +1,14 @@
+<section class="container items-center w-3/4 mb-6 prose dark:prose-dark">
+  <%= render("_#{@section}.html") %>
+
+  <%= for lesson <- @lessons do %>
+    <div class="m-2 overflow-hidden bg-body dark:bg-body-dark">
+      <div class="px-4 py-2 sm:px-6">
+        <%= lesson_link(@conn, lesson.section, lesson.name, "text-lg font-medium leading-6 text-purple dark:text-purple-dark") do %>
+          <%= lesson.title %>
+        <% end %>
+          <%= raw lesson.excerpt %>
+      </div>
+    </div>
+  <% end %>
+</section>

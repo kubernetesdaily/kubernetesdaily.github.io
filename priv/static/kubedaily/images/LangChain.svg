@@ -1,0 +1,67 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a202c" />
+      <stop offset="100%" stop-color="#2d3748" />
+    </linearGradient>
+    <linearGradient id="title-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38b2ac" />
+      <stop offset="100%" stop-color="#4fd1c5" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="800" height="400" fill="url(#bg-gradient)" rx="10" ry="10" />
+  
+  <!-- Abstract chain visualization -->
+  <g transform="translate(400, 200) scale(0.8)">
+    <!-- Chain links -->
+    <g stroke-width="6" stroke-linecap="round">
+      <!-- Link 1 -->
+      <path d="M-200,-50 C-160,-90 -120,-90 -80,-50 C-40,-10 0,-10 40,-50" stroke="#4299e1" fill="none" />
+      <!-- Link 2 -->
+      <path d="M40,-50 C80,-90 120,-90 160,-50 C200,-10 240,-10 280,-50" stroke="#38b2ac" fill="none" />
+      <!-- Link 3 -->
+      <path d="M-200,50 C-160,10 -120,10 -80,50 C-40,90 0,90 40,50" stroke="#48bb78" fill="none" />
+      <!-- Link 4 -->
+      <path d="M40,50 C80,10 120,10 160,50 C200,90 240,90 280,50" stroke="#ecc94b" fill="none" />
+    </g>
+    
+    <!-- Nodes representing LLMs and tools -->
+    <circle cx="-200" cy="-50" r="15" fill="#4299e1" />
+    <circle cx="40" cy="-50" r="15" fill="#38b2ac" />
+    <circle cx="280" cy="-50" r="15" fill="#38b2ac" />
+    <circle cx="-200" cy="50" r="15" fill="#48bb78" />
+    <circle cx="40" cy="50" r="15" fill="#ecc94b" />
+    <circle cx="280" cy="50" r="15" fill="#ecc94b" />
+    
+    <!-- Connecting lines -->
+    <line x1="-120" y1="-50" x2="-120" y2="50" stroke="#a0aec0" stroke-width="3" stroke-dasharray="5,5" />
+    <line x1="160" y1="-50" x2="160" y2="50" stroke="#a0aec0" stroke-width="3" stroke-dasharray="5,5" />
+  </g>
+  
+  <!-- Code snippet in background (stylized) -->
+  <text x="60" y="120" font-family="monospace" font-size="10" fill="#718096" opacity="0.4">
+    <tspan x="60" dy="0">from langchain_core.prompts import PromptTemplate</tspan>
+    <tspan x="60" dy="15">from langchain_groq import ChatGroq</tspan>
+    <tspan x="60" dy="15">from langchain_core.output_parsers import StrOutputParser</tspan>
+    <tspan x="60" dy="15"></tspan>
+    <tspan x="60" dy="15">llm = ChatGroq(model="llama3-8b-8192")</tspan>
+    <tspan x="60" dy="15">template = PromptTemplate.from_template("{input}")</tspan>
+    <tspan x="60" dy="15">chain = template | llm | StrOutputParser()</tspan>
+  </text>
+  
+  <!-- Main title -->
+  <text x="400" y="330" font-family="Arial, sans-serif" font-size="44" font-weight="bold" text-anchor="middle" fill="url(#title-gradient)">LangChain Practical Labs</text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="365" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#e2e8f0">Hands-on exercises for building LLM applications</text>
+  
+  <!-- Logo/Icon representation -->
+  <g transform="translate(400, 130) scale(0.6)">
+    <circle cx="0" cy="0" r="80" fill="#2d3748" stroke="#38b2ac" stroke-width="6" />
+    <path d="M-30,-30 L30,30 M-30,30 L30,-30" stroke="#4fd1c5" stroke-width="12" stroke-linecap="round" />
+    <circle cx="0" cy="0" r="20" fill="#38b2ac" />
+  </g>
+</svg>

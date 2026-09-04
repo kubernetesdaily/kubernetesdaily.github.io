@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /kubedaily/
+
+Sitemap: https://kubedaily.com/sitemap.xml
