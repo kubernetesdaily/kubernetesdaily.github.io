@@ -57,7 +57,15 @@ defmodule Mix.Tasks.Kubedaily.Export do
       end
 
     destination |> Path.dirname() |> File.mkdir_p!()
-    File.write!(destination, response.resp_body)
+    File.write!(destination, static_html(response.resp_body))
+  end
+
+  defp static_html(html) do
+    String.replace(
+      html,
+      ~r/\s*<script defer phx-track-static src="[^"]*\/assets\/app\.js"><\/script>/,
+      ""
+    )
   end
 
   defp robots_txt do

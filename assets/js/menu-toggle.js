@@ -1,6 +1,8 @@
 const menuToggleButton = document.getElementById("menu-toggle-button");
 
-menuToggleButton.addEventListener('click', function(ev) {
-    const nav = document.getElementById('nav');
-    nav.classList.toggle('-ml-64');
-})
+if (menuToggleButton) {
+    menuToggleButton.addEventListener('click', function() {
+        const nav = document.getElementById('nav');
+        if (nav) nav.classList.toggle('-ml-64');
+    })
+}

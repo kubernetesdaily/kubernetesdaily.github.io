@@ -690,8 +690,22 @@ body, body * {
 .kube-events-heading { @apply flex flex-col justify-between gap-5 md:flex-row md:items-end; }
 .kube-events-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-white; }
 .kube-events-heading > p { @apply max-w-xl leading-relaxed text-light dark:text-brand-gray-300; }
-.kube-events-gallery { @apply mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-4; }
-.kube-events-gallery figure { @apply relative h-64 overflow-hidden rounded-xl bg-brand-gray-800 shadow-md; }
-.kube-events-gallery img { @apply absolute inset-0 h-full w-full object-cover transition duration-500 hover:scale-105; }
-.kube-events-gallery figcaption { @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-gray-900 to-transparent px-5 pb-4 pt-12 text-sm font-bold text-white; }
-.kube-events-gallery .kube-event-featured { @apply md:col-span-2 md:h-80 lg:col-span-2; }
+.kube-events-gallery { @apply mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-12; }
+.kube-events-gallery figure { @apply relative h-64 overflow-hidden rounded-xl bg-brand-gray-800 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl md:h-72 lg:col-span-3; }
+.kube-events-gallery img { @apply absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105; }
+.kube-events-gallery figcaption { @apply absolute bottom-0 left-0 right-0 flex flex-col gap-1 bg-gradient-to-t from-brand-gray-900 via-brand-gray-900/70 to-transparent px-5 pb-5 pt-16 text-white; }
+.kube-events-gallery figcaption span { @apply text-xs font-bold uppercase tracking-widest text-brand-purple-100; }
+.kube-events-gallery figcaption strong { @apply text-base font-extrabold; }
+.kube-events-gallery .kube-event-featured { @apply md:col-span-2 md:h-96 lg:col-span-6; }
+.kube-events-gallery .kube-event-wide { @apply md:col-span-2 md:h-80 lg:col-span-6; }
+.kube-footer { @apply bg-brand-gray-900 text-brand-gray-300; }
+.kube-footer-main { @apply mx-auto grid max-w-screen-2xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10 lg:py-16; }
+.kube-footer-intro { @apply max-w-sm; }
+.kube-footer-wordmark { @apply inline-block rounded-lg bg-white p-2 shadow-sm; }
+.kube-footer-wordmark img { @apply block w-40; }
+.kube-footer-intro > p { @apply mt-5 leading-relaxed text-brand-gray-400; }
+.kube-footer-github { @apply mt-5 inline-flex items-center gap-2 font-bold text-brand-purple-100 transition hover:text-white; }
+.kube-footer nav { @apply flex flex-col items-start gap-3 text-sm; }
+.kube-footer nav a { @apply text-brand-gray-400 transition hover:text-white; }
+.kube-footer-heading { @apply mb-1 text-xs font-extrabold uppercase tracking-widest text-white; }
+.kube-footer-bottom { @apply mx-auto flex max-w-screen-2xl flex-col gap-2 border-t border-brand-gray-700 px-4 py-6 text-xs text-brand-gray-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-10; }

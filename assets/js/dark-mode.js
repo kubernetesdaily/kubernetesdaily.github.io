@@ -5,16 +5,19 @@ const darkModeToggleInput = document.getElementById('dark-mode-toggle')
 
 // set up dark mode toggle
 function setDarkMode(on) {
+    const sunIcon = document.getElementById('sun-icon')
+    const moonIcon = document.getElementById('moon-icon')
+
     if (on) {
-        darkModeToggleInput.checked = true
+        if (darkModeToggleInput) darkModeToggleInput.checked = true
         document.documentElement.classList.add('dark')
-        document.getElementById('sun-icon').classList.add('hidden')
-        document.getElementById('moon-icon').classList.remove('hidden')
+        if (sunIcon) sunIcon.classList.add('hidden')
+        if (moonIcon) moonIcon.classList.remove('hidden')
     } else {
-        darkModeToggleInput.checked = false
+        if (darkModeToggleInput) darkModeToggleInput.checked = false
         document.documentElement.classList.remove('dark')
-        document.getElementById('moon-icon').classList.add('hidden')
-        document.getElementById('sun-icon').classList.remove('hidden')
+        if (moonIcon) moonIcon.classList.add('hidden')
+        if (sunIcon) sunIcon.classList.remove('hidden')
     }
 }
 
@@ -36,15 +39,17 @@ if (localStorage.theme) {
     setDarkMode(false)
 }
 
-darkModeToggleContainer.addEventListener('click', function () {
-    if (darkModeToggleInput.checked) {
-        localStorage.theme = 'light'
-        setDarkMode(false)
-    } else {
-        localStorage.theme = 'dark'
-        setDarkMode(true)
-    }
-})
+if (darkModeToggleContainer && darkModeToggleInput) {
+    darkModeToggleContainer.addEventListener('click', function () {
+        if (darkModeToggleInput.checked) {
+            localStorage.theme = 'light'
+            setDarkMode(false)
+        } else {
+            localStorage.theme = 'dark'
+            setDarkMode(true)
+        }
+    })
+}
 
 // remove preload class after the page laods so the styles
 // will transition smoothly when switching between dark and
