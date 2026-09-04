@@ -1,0 +1,4 @@
+<article class="container kube-reading mx-auto px-5 py-16">
+  <p class="kube-label"><%= @post["category"] %> · <%= @post["date"] %></p><h1><%= @post["title"] %></h1><p class="kube-dek"><%= @post["excerpt"] %></p><p class="text-lighter">By <%= @post["author"] %></p>
+  <div class="kube-markdown"><%= raw(@content) %></div>
+</article>

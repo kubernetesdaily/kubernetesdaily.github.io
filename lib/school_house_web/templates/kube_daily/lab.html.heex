@@ -1,0 +1,5 @@
+<article class="container kube-reading mx-auto px-5 py-16">
+  <p class="kube-label"><%= @lab["category"] %></p><h1><%= @lab["title"] %></h1><p class="kube-dek"><%= @lab["description"] %></p>
+  <div class="kube-tags"><%= for tag <- @lab["tags"] do %><span><%= tag %></span><% end %></div>
+  <div class="kube-markdown"><%= raw(@content) %></div>
+</article>

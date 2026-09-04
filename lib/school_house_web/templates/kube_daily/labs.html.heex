@@ -1,0 +1,12 @@
+<section class="container mx-auto px-5 py-16">
+  <div class="kube-page-heading"><span>Learn by doing</span><h1>Hands-on Kubernetes Labs</h1><p>Original KubeDaily lab material, served from this Phoenix application.</p></div>
+  <div class="mt-10 grid gap-6 md:grid-cols-2">
+    <%= for lab <- @labs do %>
+      <article class="kube-card">
+        <p class="kube-label"><%= lab["category"] %></p><h2><%= lab["title"] %></h2><p><%= lab["description"] %></p>
+        <div class="kube-tags"><%= for tag <- lab["tags"] do %><span><%= tag %></span><% end %></div>
+        <a href={"/labs/#{lab["id"]}"}>Start this lab →</a>
+      </article>
+    <% end %>
+  </div>
+</section>
