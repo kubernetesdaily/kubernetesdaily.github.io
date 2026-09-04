@@ -1,23 +1,66 @@
-# School House
+# KubeDaily
 
-[![Continuous Integration](https://github.com/elixirschool/school_house/actions/workflows/ci.yml/badge.svg)](https://github.com/elixirschool/school_house/actions/workflows/ci.yml) [![Deploy](https://github.com/elixirschool/school_house/actions/workflows/deploy.yml/badge.svg)](https://github.com/elixirschool/school_house/actions/workflows/deploy.yml)
+[![Continuous Integration](https://github.com/kubernetesdaily/kubernetesdaily.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/kubernetesdaily/kubernetesdaily.github.io/actions/workflows/ci.yml)
+[![GitHub Pages](https://github.com/kubernetesdaily/kubernetesdaily.github.io/actions/workflows/pages.yml/badge.svg)](https://github.com/kubernetesdaily/kubernetesdaily.github.io/actions/workflows/pages.yml)
 
-School House is the new era of [elixirschool.com](https://elixirschool.com) now powered by Elixir and Phoenix :tada:
+Practical, community-led learning for the **container and cloud-native ecosystem**.
 
-By leveraging Dashbit's [NimblePublisher](https://github.com/dashbitco/nimble_publisher) and some restructing of the existing lessons we're able to use the lessons so many have contributed to while delivering them in an improved experience!
+🌐 [kubedaily.com](https://kubedaily.com) · 🧰 [Tool directory](https://kubedaily.com/tools/) · 🧪 [Hands-on labs](https://kubedaily.com/labs/) · 🗺️ [Content roadmap](https://kubedaily.com/roadmap/)
 
-## Development
+## What you’ll find
 
-To get up and running all we need is a single command:
+| Area | What it covers |
+| --- | --- |
+| Labs | Docker, containerd, Helm, Kubernetes, and practical operating workflows. |
+| Blog | Field guides for containers, delivery, security, platform engineering, and operations. |
+| Tools | A searchable directory of container and cloud-native projects, including GitHub star badges where available. |
+| Roadmap | 1,000 planned container-ecosystem blog and lab titles across eight focused tracks. |
 
-```shell
-$ make setup
+## Run locally
+
+Requirements: Elixir/Erlang, Node.js, and npm.
+
+```sh
+mix setup
+mix phx.server
 ```
 
-This will fetch dependencies, download lessons and blog posts from the [external repository](https://github.com/elixirschool/elixirschool), and compile the project.
+Open [http://localhost:4000](http://localhost:4000).
 
-Then start the phoenix server with:
+## Build the GitHub Pages site
 
-```shell
-$ mix phx.server
+The live site is exported as static HTML for GitHub Pages.
+
+```sh
+mix assets.deploy
+mix kubedaily.export --output _site
+python3 -m http.server 4173 --directory _site
 ```
+
+Then visit `http://localhost:4173`.
+
+## Content map
+
+| Content | Location |
+| --- | --- |
+| Blog posts | `priv/static/kubedaily/blog/` |
+| Blog metadata | `priv/static/kubedaily/data/blog.json` |
+| Labs | `priv/static/kubedaily/labs/` |
+| Lab metadata | `priv/static/kubedaily/data/labs.json` |
+| Tool directory | `priv/static/kubedaily/entries.js` |
+| Public roadmap | `lib/school_house/kube_daily.ex` |
+
+## Contribute
+
+Contributions are welcome—from a corrected command to a complete lab or field guide. Start with [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request with a focused, reproducible change.
+
+```sh
+mix format --check-formatted
+mix assets.deploy
+mix kubedaily.export --output _site
+mix test
+```
+
+## Deployment
+
+The GitHub Pages workflow builds the assets, exports `_site`, and deploys the result when changes reach `main`.
