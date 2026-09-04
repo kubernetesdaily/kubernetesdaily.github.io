@@ -580,13 +580,13 @@ body, body * {
 [x-cloak] { display: none !important; }
 
 /* KubeDaily content pages, implemented by Phoenix templates. */
-.kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-200 bg-white/95 shadow-sm backdrop-blur dark:bg-brand-gray-900/95; }
-.kube-brand { @apply relative self-start overflow-hidden rounded-lg border border-brand-gray-200 bg-white px-2 py-1 shadow-sm transition hover:border-brand-purple-300 hover:shadow-md dark:border-brand-gray-700 dark:bg-brand-gray-800 lg:self-auto; }
+.kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-700 bg-brand-gray-900/95 shadow-sm backdrop-blur; }
+.kube-brand { @apply relative self-start overflow-hidden rounded-lg border border-brand-gray-650 bg-brand-gray-800 px-2 py-1 shadow-sm transition hover:border-brand-purple-300 hover:bg-brand-gray-750 hover:shadow-md lg:self-auto; }
 .kube-brand:after { content: ""; @apply absolute bottom-0 left-2 right-2 h-0.5 bg-purple; }
-.kube-brand img { @apply block h-auto w-32 sm:w-36; }
+.kube-brand img { @apply block h-auto w-32 sm:w-36; filter: brightness(0) invert(1); }
 .kube-nav-menu { @apply -mx-1 flex max-w-full items-center gap-1 overflow-x-auto px-1 lg:mx-0 lg:px-0; }
-.kube-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-primary transition hover:bg-brand-purple-800 hover:text-white; }
-.kube-header-github { @apply hidden whitespace-nowrap rounded-md border border-brand-gray-300 px-3 py-2 text-sm font-bold text-heavy transition hover:border-brand-purple-800 hover:bg-brand-purple-800 hover:text-white lg:inline-flex; }
+.kube-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-brand-gray-300 transition hover:bg-brand-purple-800 hover:text-white; }
+.kube-header-github { @apply hidden whitespace-nowrap rounded-md border border-brand-gray-600 px-3 py-2 text-sm font-bold text-brand-gray-200 transition hover:border-brand-purple-300 hover:bg-brand-purple-800 hover:text-white lg:inline-flex; }
 .kube-hero { @apply relative overflow-hidden bg-gradient-to-br from-brand-gray-300 via-white to-purple-100; }
 .kube-hero h1 { @apply mx-auto mt-5 max-w-5xl text-4xl font-extrabold leading-tight tracking-tight text-heavy sm:text-6xl; }
 .kube-hero h1 span { @apply text-purple; }
@@ -871,8 +871,8 @@ body, body * {
 .kube-footer { @apply bg-brand-gray-900 text-brand-gray-300; }
 .kube-footer-main { @apply mx-auto grid max-w-screen-2xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10 lg:py-16; }
 .kube-footer-intro { @apply max-w-sm; }
-.kube-footer-wordmark { @apply inline-block rounded-lg bg-white p-2 shadow-sm; }
-.kube-footer-wordmark img { @apply block w-28; }
+.kube-footer-wordmark { @apply inline-block py-1; }
+.kube-footer-wordmark img { @apply block w-28; filter: brightness(0) invert(1); }
 .kube-footer-intro > p { @apply mt-5 leading-relaxed text-brand-gray-400; }
 .kube-footer-github { @apply mt-5 inline-flex items-center gap-2 font-bold text-brand-purple-100 transition hover:text-white; }
 .kube-footer nav { @apply flex flex-col items-start gap-3 text-sm; }
