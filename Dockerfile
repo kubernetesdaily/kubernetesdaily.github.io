@@ -68,10 +68,6 @@ RUN cd assets && npm ci
 # install content from remote repository
 RUN make content
 
-# generate rss and sitemap static files
-RUN mix school_house.gen.rss ${DEPLOY_DOMAIN}
-RUN mix school_house.gen.sitemap ${DEPLOY_DOMAIN}
-
 # compile assets
 RUN mix assets.deploy
 

@@ -2,7 +2,6 @@ import Config
 
 config :school_house,
   redirects: %{
-    ~r/^\/$/ => "/en",
     ~r/lessons\/basics\/pattern-matching\/?$/ => "lessons/basics/pattern_matching",
     ~r/lessons\/basics\/control-structures\/?$/ => "lessons/basics/control_structures",
     ~r/lessons\/basics\/pipe-operator\/?$/ => "lessons/basics/pipe_operator",

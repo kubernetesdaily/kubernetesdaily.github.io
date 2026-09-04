@@ -8,6 +8,7 @@ defmodule SchoolHouseWeb.Router do
     plug :put_root_layout, {SchoolHouseWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug SchoolHouseWeb.RedirectPlug
     plug SchoolHouseWeb.SetLocalePlug
   end
 
@@ -27,6 +28,14 @@ defmodule SchoolHouseWeb.Router do
     get "/blog", KubeDailyController, :blog
     get "/blog/:id", KubeDailyController, :post
     get "/about", KubeDailyController, :about
+
+    # Keep the original School House pages available to its publishing tasks and
+    # regression tests without taking over KubeDaily's public URLs.
+    get "/school-house", PageController, :index, as: :page
+    get "/school-house/privacy", PageController, :privacy, as: :page
+    get "/school-house/blog", PostController, :index, as: :post
+    get "/school-house/blog/tag/:tag", PostController, :filter_by_tag, as: :post
+    get "/school-house/blog/:slug", PostController, :show, as: :post
 
     scope "/:locale" do
       get "/", PageController, :index
