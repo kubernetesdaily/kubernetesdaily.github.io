@@ -581,12 +581,9 @@ body, body * {
 
 /* KubeDaily content pages, implemented by Phoenix templates. */
 .kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-200 bg-white shadow-sm dark:border-brand-gray-700 dark:bg-brand-gray-900; }
-.kube-brand { @apply flex items-center gap-3 self-start lg:self-auto; }
-.kube-brand-mark { @apply relative block h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-white; }
-.kube-brand-mark img { @apply h-10 max-w-none; width: auto; }
-.kube-brand > span:last-child { @apply flex flex-col leading-none; }
-.kube-brand strong { @apply text-lg font-extrabold tracking-tight text-heavy dark:text-white; }
-.kube-brand small { @apply mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-purple; }
+.kube-brand { @apply self-start lg:self-auto; }
+.kube-brand-mark { @apply relative block h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white; }
+.kube-brand-mark img { @apply h-11 max-w-none; width: auto; }
 .kube-nav-menu { @apply -mx-1 flex max-w-full items-center gap-1 overflow-x-auto px-1 lg:mx-0 lg:px-0; }
 .kube-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-primary transition hover:bg-brand-purple-800 hover:text-white dark:text-brand-gray-200; }
 .kube-header-github { @apply hidden whitespace-nowrap rounded-md border border-brand-gray-300 px-3 py-2 text-sm font-bold text-heavy transition hover:border-brand-purple-800 hover:bg-brand-purple-800 hover:text-white dark:border-brand-gray-650 dark:text-white lg:inline-flex; }
