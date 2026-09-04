@@ -6,7 +6,7 @@ defmodule SchoolHouseWeb.SeoController do
 
   def sitemap(conn, _params) do
     urls =
-      ["/", "/tools", "/docker-images", "/labs", "/blog", "/about"] ++
+      ["/", "/tools", "/docker-images", "/labs", "/roadmap", "/blog", "/about"] ++
         Enum.map(KubeDaily.labs(), &"/labs/#{&1["id"]}") ++
         Enum.map(KubeDaily.posts(), &"/blog/#{&1["id"]}")
 

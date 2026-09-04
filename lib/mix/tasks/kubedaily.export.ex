@@ -31,7 +31,7 @@ defmodule Mix.Tasks.Kubedaily.Export do
   end
 
   defp routes do
-    ["/", "/tools", "/docker-images", "/labs", "/blog", "/about", "/sitemap.xml"] ++
+    ["/", "/tools", "/docker-images", "/labs", "/roadmap", "/blog", "/about", "/sitemap.xml"] ++
       Enum.map(KubeDaily.labs(), &"/labs/#{&1["id"]}") ++
       Enum.map(KubeDaily.posts(), &"/blog/#{&1["id"]}")
   end
