@@ -4,7 +4,7 @@ defmodule SchoolHouseWeb.SeoHelpers do
   @default_description "KubeDaily helps developers learn Kubernetes, containers, cloud-native tools, Docker, Helm, and DevOps practices."
 
   def canonical_url(conn) do
-    path = if conn.request_path == "/", do: "", else: String.trim_trailing(conn.request_path, "/")
+    path = (if conn.request_path == "/", do: "", else: String.trim_trailing(conn.request_path, "/"))
     site_url() <> path
   end
 
@@ -12,7 +12,7 @@ defmodule SchoolHouseWeb.SeoHelpers do
 
   def seo_image(assigns) do
     image = get_in(assigns, [:seo, :image]) || "/kubedaily/logos/KubeDaily-3.png"
-    if String.starts_with?(image, "http"), do: image, else: site_url() <> image
+    (if String.starts_with?(image, "http"), do: image, else: site_url() <> image)
   end
 
   def seo_type(assigns) do
