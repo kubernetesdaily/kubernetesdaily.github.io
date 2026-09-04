@@ -23,8 +23,7 @@ defmodule Mix.Tasks.Kubedaily.Export do
     File.cp_r!(Application.app_dir(:school_house, "priv/static"), output)
     File.cp!(Path.join([output, "kubedaily", "404.html"]), Path.join(output, "404.html"))
 
-    routes()
-    |> Enum.each(&write_page(output, &1))
+    Enum.each(routes(), &write_page(output, &1))
 
     File.write!(Path.join(output, "robots.txt"), robots_txt())
     File.write!(Path.join(output, "CNAME"), "kubedaily.com\n")
