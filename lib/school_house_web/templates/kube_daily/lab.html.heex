@@ -1,5 +1,19 @@
-<article class="container kube-reading mx-auto px-5 py-16">
-  <p class="kube-label"><%= @lab["category"] %></p><h1><%= @lab["title"] %></h1><p class="kube-dek"><%= @lab["description"] %></p>
-  <div class="kube-tags"><%= for tag <- @lab["tags"] do %><span><%= tag %></span><% end %></div>
-  <div class="kube-markdown"><%= raw(@content) %></div>
+<section class="kube-lab-hero">
+  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+    <a class="kube-lab-back" href="/labs/">← All labs</a>
+    <p class="kube-label"><%= @lab["category"] %> lab</p>
+    <h1><%= @lab["title"] %></h1>
+    <p class="kube-dek"><%= @lab["description"] %></p>
+    <div class="kube-lab-byline"><span>Hands-on learning path</span><span aria-hidden="true">•</span><span>Free and self-paced</span></div>
+  </div>
+</section>
+
+<article class="kube-lab-shell">
+  <aside class="kube-lab-aside">
+    <p class="kube-label">In this lab</p>
+    <p>Work through the guide at your own pace. Commands are examples—review them before running them in your environment.</p>
+    <div class="kube-lab-tags"><%= for tag <- @lab["tags"] do %><span><%= tag %></span><% end %></div>
+    <a href="/labs/">Browse all labs →</a>
+  </aside>
+  <div class="kube-reading kube-markdown"><%= raw(@content) %></div>
 </article>

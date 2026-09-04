@@ -1,12 +1,51 @@
-<section class="container mx-auto px-5 py-16">
-  <div class="kube-page-heading"><span>Learn by doing</span><h1>Hands-on Kubernetes Labs</h1><p>Original KubeDaily lab material, served from this Phoenix application.</p></div>
-  <div class="mt-10 grid gap-6 md:grid-cols-2">
-    <%= for lab <- @labs do %>
-      <article class="kube-card">
-        <p class="kube-label"><%= lab["category"] %></p><h2><%= lab["title"] %></h2><p><%= lab["description"] %></p>
-        <div class="kube-tags"><%= for tag <- lab["tags"] do %><span><%= tag %></span><% end %></div>
-        <a href={"/labs/#{lab["id"]}"}>Start this lab →</a>
+<section class="kube-labs-hero">
+  <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
+    <div class="kube-labs-hero-copy">
+      <p class="kube-label">Learn by doing</p>
+      <h1>Build practical <span>cloud-native skills.</span></h1>
+      <p>Follow structured, self-paced labs that turn container and Kubernetes concepts into repeatable hands-on practice.</p>
+      <div class="kube-labs-hero-meta" aria-label="Lab collection details">
+        <span><strong><%= length(@labs) %></strong> guided labs</span>
+        <span>Beginner-friendly</span>
+        <span>Free to learn</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+  <div class="kube-labs-section-heading">
+    <div>
+      <p class="kube-label">Choose a path</p>
+      <h2>Start with the building blocks.</h2>
+    </div>
+    <p>Each lab combines essential concepts with commands and exercises you can revisit while working.</p>
+  </div>
+
+  <div class="kube-labs-grid">
+    <%= for {lab, index} <- Enum.with_index(@labs, 1) do %>
+      <article class="kube-lab-card">
+        <div class="kube-lab-card-top">
+          <span class="kube-lab-number">0<%= index %></span>
+          <p class="kube-label"><%= lab["category"] %></p>
+        </div>
+        <h2><a href={"/labs/#{lab["id"]}"}><%= lab["title"] %></a></h2>
+        <p><%= lab["description"] %></p>
+        <div class="kube-lab-card-tags" aria-label="Topics">
+          <%= for tag <- Enum.take(lab["tags"], 3) do %><span><%= tag %></span><% end %>
+        </div>
+        <a class="kube-lab-card-link" href={"/labs/#{lab["id"]}"}>Open lab <span aria-hidden="true">→</span></a>
       </article>
     <% end %>
+  </div>
+</section>
+
+<section class="kube-labs-note">
+  <div class="mx-auto max-w-screen-xl px-4 py-9 sm:px-6 lg:px-10">
+    <div>
+      <p class="kube-label">A good lab habit</p>
+      <h2>Practice in a disposable environment.</h2>
+    </div>
+    <p>Use a local cluster or non-production account, copy commands deliberately, and keep your own notes alongside the lab.</p>
   </div>
 </section>

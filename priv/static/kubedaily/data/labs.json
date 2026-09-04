@@ -2,43 +2,43 @@
   "labs": [
     {
       "id": "Learn-Containerd",
-      "title": "Learn ContainerD",
-      "description": "A comprehensive guide to ContainerD, covering its history, architecture, and practical usage in container orchestration.",
+      "title": "Learn containerd",
+      "description": "Understand containerd's role in the container stack, then explore its architecture and practical runtime workflow.",
       "category": "Containers",
       "path": "/labs/Learn-Containerd.md",
       "contributors": ["Sangam Biradar"],
-      "tags": ["ContainerD", "Kubernetes", "Containers", "Docker", "runc"],
+      "tags": ["containerd", "Kubernetes", "Containers", "Docker", "runc"],
       "image": "/images/kubedaily_logo.webp"
     },
     {
       "id": "Learn-Docker",
       "title": "Learn Docker",
-      "description": "A comprehensive guide to Docker, covering its history, architecture, and practical usage in container orchestration.",
+      "description": "Learn Docker fundamentals, from images and containers to the workflows that lead into Kubernetes.",
       "category": "Containers",
       "path": "/labs/Learn-Docker.md",
       "contributors": ["Sangam Biradar"],
-      "tags": ["Docker", "Containers", "Docker", "runc"],
+      "tags": ["Docker", "Containers", "Images", "runc"],
       "image": "/images/kubedaily_logo.webp"
     }, 
     {
       "id": "Learn-k8s",
       "title": "Learn Kubernetes",
-      "description": "A comprehensive guide to Kubernetes, covering its history, architecture, and practical usage in container orchestration.",
+      "description": "Explore Kubernetes architecture and the concepts you need to deploy and operate containerized applications.",
       "category": "Kubernetes",
       "path": "/labs/Learn-k8s.md",
       "contributors": ["Sangam Biradar"],
-      "tags": ["Kubernetes", "Containers", "Docker", "runc"],
+      "tags": ["Kubernetes", "Workloads", "Networking", "Containers"],
       "image": "/images/kubedaily_logo.webp"
     }, 
     {
       "id": "Learn-Helm",
       "title": "Learn Helm",
-      "description": "A comprehensive guide to Helm, covering its history, architecture, and practical usage in container orchestration.",
+      "description": "Package, configure, and release Kubernetes applications with Helm charts and practical deployment patterns.",
       "category": "Kubernetes",
       "path": "/labs/Learn-Helm.md",
       "contributors": ["Sangam Biradar"],
-      "tags": ["Helm", "Containers", "Docker", "runc"],
+      "tags": ["Helm", "Kubernetes", "Charts", "Deployments"],
       "image": "/images/kubedaily_logo.webp"
     }
   ]
-} 
+}
