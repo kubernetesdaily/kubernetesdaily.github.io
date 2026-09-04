@@ -43,7 +43,7 @@
     {
       "id": "cloud-native-learning-path",
       "title": "Cloud Native Learning Path for Beginners",
-      "date": "2023-07-15",
+      "date": "July 15, 2023",
       "excerpt": "A comprehensive guide to learning cloud native technologies from the ground up, covering containers, Kubernetes, DevOps practices, observability, service mesh, security, and more.",
       "author": "Sangam Biradar",
       "file": "/blog/cloud-native-learning-path.md",

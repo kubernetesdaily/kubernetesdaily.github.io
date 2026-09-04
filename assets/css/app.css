@@ -698,6 +698,50 @@ body, body * {
 .kube-events-gallery figcaption strong { @apply text-base font-extrabold; }
 .kube-events-gallery .kube-event-featured { @apply md:col-span-2 md:h-96 lg:col-span-6; }
 .kube-events-gallery .kube-event-wide { @apply md:col-span-2 md:h-80 lg:col-span-6; }
+.kube-blog-hero { @apply relative overflow-hidden bg-brand-gray-900; }
+.kube-blog-hero:before { content: ""; @apply absolute inset-0 opacity-60; background-image: radial-gradient(circle at 84% 20%, rgba(168, 85, 247, .38), transparent 28%), linear-gradient(rgba(202, 162, 245, .10) 1px, transparent 1px), linear-gradient(90deg, rgba(202, 162, 245, .10) 1px, transparent 1px); background-size: auto, 48px 48px, 48px 48px; }
+.kube-blog-hero-copy { @apply relative max-w-4xl; }
+.kube-blog-hero-copy h1 { @apply mt-4 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl; }
+.kube-blog-hero-copy h1 span { @apply text-brand-purple-100; }
+.kube-blog-hero-copy > p:not(.kube-label) { @apply mt-5 max-w-2xl text-lg leading-relaxed text-brand-gray-300 sm:text-xl; }
+.kube-blog-hero-copy .kube-label { @apply text-brand-purple-100; }
+.kube-blog-topics { @apply mt-8 flex flex-wrap gap-2; }
+.kube-blog-topics span { @apply rounded-full border border-brand-gray-650 bg-brand-gray-800/70 px-3 py-1.5 text-sm font-semibold text-brand-gray-200; }
+.kube-blog-section-heading { @apply flex flex-col justify-between gap-4 md:flex-row md:items-end; }
+.kube-blog-section-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-blog-section-heading > p { @apply text-sm font-semibold text-lighter; }
+.kube-blog-grid { @apply mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3; }
+.kube-blog-card { @apply flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand-purple-300 hover:shadow-lg dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-blog-card-top { @apply flex items-center justify-between gap-4; }
+.kube-blog-card-top time { @apply text-xs font-semibold text-lighter; }
+.kube-blog-card h2 { @apply mt-4 text-2xl font-extrabold leading-snug text-heavy dark:text-heavy-dark; }
+.kube-blog-card h2 a { @apply transition hover:text-purple; }
+.kube-blog-card > p { @apply mt-4 leading-relaxed text-light dark:text-light-dark; }
+.kube-blog-card-tags, .kube-article-tags { @apply mt-5 flex flex-wrap gap-2; }
+.kube-blog-card-tags span, .kube-article-tags span { @apply rounded-full bg-brand-gray-100 px-2.5 py-1 text-xs font-semibold text-light dark:bg-brand-gray-700 dark:text-brand-gray-200; }
+.kube-blog-card-link { @apply mt-auto pt-6 font-bold text-purple underline decoration-brand-purple-300 underline-offset-4 transition hover:text-brand-purple-800; }
+.kube-article-hero { @apply border-b border-brand-gray-700 bg-brand-gray-900; }
+.kube-article-back { @apply inline-flex items-center gap-2 text-sm font-bold text-brand-purple-100 transition hover:text-white; }
+.kube-article-hero .kube-label { @apply mt-8 text-brand-purple-100; }
+.kube-article-hero h1 { @apply mt-4 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl; }
+.kube-article-hero .kube-dek { @apply max-w-3xl text-brand-gray-300 sm:text-xl; }
+.kube-article-byline { @apply mt-7 flex flex-wrap gap-2 text-sm text-brand-gray-400; }
+.kube-article-byline strong { @apply text-brand-gray-200; }
+.kube-article-shell { @apply mx-auto grid max-w-screen-xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-10 lg:py-16; }
+.kube-article-aside { @apply h-fit rounded-xl border border-gray-200 bg-brand-gray-100 p-5 dark:border-brand-gray-700 dark:bg-brand-gray-800 lg:sticky lg:top-24; }
+.kube-article-aside dl { @apply mt-5 space-y-4; }
+.kube-article-aside dl div { @apply border-b border-gray-200 pb-4 last:border-0 last:pb-0 dark:border-brand-gray-700; }
+.kube-article-aside dt { @apply text-xs font-bold uppercase tracking-wider text-lighter; }
+.kube-article-aside dd { @apply mt-1 font-bold text-heavy dark:text-heavy-dark; }
+.kube-reading { @apply mx-auto max-w-3xl; }
+.kube-markdown { @apply mt-0 text-[1.05rem] leading-8; }
+.kube-markdown h1, .kube-markdown h2, .kube-markdown h3 { @apply scroll-mt-28; }
+.kube-markdown h2 { @apply mt-14 border-b border-gray-200 pb-3 dark:border-brand-gray-700; }
+.kube-markdown blockquote { @apply mt-6 border-l-4 border-brand-purple-300 bg-brand-purple-100/40 px-5 py-4 italic text-light dark:bg-brand-gray-800 dark:text-brand-gray-300; }
+.kube-markdown table { @apply mt-6 w-full border-collapse overflow-hidden rounded-lg text-left text-sm; }
+.kube-markdown th { @apply bg-brand-gray-200 px-4 py-3 font-bold text-heavy dark:bg-brand-gray-700 dark:text-heavy-dark; }
+.kube-markdown td { @apply border-b border-gray-200 px-4 py-3 align-top dark:border-brand-gray-700; }
+.kube-markdown code:not(pre code) { @apply rounded bg-brand-gray-100 px-1.5 py-0.5 text-sm text-purple dark:bg-brand-gray-800 dark:text-brand-purple-100; }
 .kube-footer { @apply bg-brand-gray-900 text-brand-gray-300; }
 .kube-footer-main { @apply mx-auto grid max-w-screen-2xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10 lg:py-16; }
 .kube-footer-intro { @apply max-w-sm; }

@@ -1,4 +1,18 @@
-<article class="container kube-reading mx-auto px-5 py-16">
-  <p class="kube-label"><%= @post["category"] %> · <%= @post["date"] %></p><h1><%= @post["title"] %></h1><p class="kube-dek"><%= @post["excerpt"] %></p><p class="text-lighter">By <%= @post["author"] %></p>
-  <div class="kube-markdown"><%= raw(@content) %></div>
-</article>
+<section class="kube-article-hero">
+  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+    <a class="kube-article-back" href="/blog"><span aria-hidden="true">←</span> Back to the blog</a>
+    <p class="kube-label"><%= @post["category"] %> · <%= @post["date"] %></p>
+    <h1><%= @post["title"] %></h1>
+    <p class="kube-dek"><%= @post["excerpt"] %></p>
+    <div class="kube-article-byline"><span>By <strong><%= @post["author"] %></strong></span><span aria-hidden="true">•</span><span>Practical field guide</span></div>
+  </div>
+</section>
+
+<div class="kube-article-shell">
+  <aside class="kube-article-aside" aria-label="Article details">
+    <p class="kube-label">Article details</p>
+    <dl><div><dt>Topic</dt><dd><%= @post["category"] %></dd></div><div><dt>Published</dt><dd><%= @post["date"] %></dd></div></dl>
+    <div class="kube-article-tags"><%= for tag <- @post["tags"] do %><span><%= tag %></span><% end %></div>
+  </aside>
+  <article class="kube-reading"><div class="kube-markdown"><%= raw(@content) %></div></article>
+</div>

@@ -1,8 +1,25 @@
-<section class="container mx-auto px-5 py-16">
-  <div class="kube-page-heading"><span>Container Ecosystem</span><h1>KubeDaily Blog</h1><p>Practical guides, technologies, and community insights from KubeDaily.</p></div>
-  <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+<section class="kube-blog-hero">
+  <div class="mx-auto max-w-screen-2xl px-4 py-14 sm:px-6 lg:px-10 lg:py-16">
+    <div class="kube-blog-hero-copy">
+      <p class="kube-label">The KubeDaily journal</p>
+      <h1>Practical notes for building <span>cloud-native systems.</span></h1>
+      <p>Focused guides for the tools, patterns, and operational decisions that matter when you work with containers and Kubernetes.</p>
+      <div class="kube-blog-topics" aria-label="Blog topics"><span>Kubernetes</span><span>Platform engineering</span><span>Security</span><span>Developer tools</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-screen-2xl px-4 py-14 sm:px-6 lg:px-10 lg:py-16">
+  <div class="kube-blog-section-heading"><div><p class="kube-label">Browse the library</p><h2>Guides for the work in front of you</h2></div><p><%= length(@posts) %> practical articles spanning the cloud-native stack.</p></div>
+  <div class="kube-blog-grid">
     <%= for post <- @posts do %>
-      <article class="kube-card"><p class="kube-label"><%= post["category"] %> · <%= post["date"] %></p><h2><%= post["title"] %></h2><p><%= post["excerpt"] %></p><a href={"/blog/#{post["id"]}"}>Read article →</a></article>
+      <article class="kube-blog-card">
+        <div class="kube-blog-card-top"><p class="kube-label"><%= post["category"] %></p><time><%= post["date"] %></time></div>
+        <h2><a href={"/blog/#{post["id"]}"}><%= post["title"] %></a></h2>
+        <p><%= post["excerpt"] %></p>
+        <div class="kube-blog-card-tags"><%= for tag <- Enum.take(post["tags"], 3) do %><span><%= tag %></span><% end %></div>
+        <a class="kube-blog-card-link" href={"/blog/#{post["id"]}"}>Read article <span aria-hidden="true">→</span></a>
+      </article>
     <% end %>
   </div>
 </section>
