@@ -84,9 +84,13 @@ defmodule SchoolHouseWeb.KubeDailyController do
   end
 
   def docker_images(conn, _params) do
+    catalog = KubeDaily.docker_image_catalog()
+
     render(conn, "docker_images.html",
       page_title: "Popular Docker Images",
-      rows: KubeDaily.docker_images(),
+      categories: catalog.categories,
+      groups: catalog.groups,
+      image_count: catalog.image_count,
       seo: %{description: "Explore KubeDaily's data on popular Docker Hub container images."}
     )
   end
