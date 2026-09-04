@@ -625,6 +625,9 @@ body, body * {
 .kube-tool-count strong { @apply text-heavy dark:text-heavy-dark; }
 .kube-tool-grid { @apply mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3; }
 .kube-tool-card { @apply flex min-h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-purple-300 hover:shadow-lg dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-tool-card-meta { @apply flex items-start justify-between gap-3; }
+.kube-tool-stars { @apply inline-flex shrink-0; }
+.kube-tool-stars img { @apply h-5; }
 .kube-tool-card h2 { @apply mt-4 text-2xl font-extrabold text-heavy dark:text-heavy-dark; }
 .kube-tool-card > p:not(.kube-label) { @apply mt-3 leading-relaxed text-light dark:text-light-dark; }
 .kube-tool-card a { @apply mt-auto pt-7 font-bold text-purple underline decoration-brand-purple-300 underline-offset-4 transition hover:text-brand-purple-800; }
