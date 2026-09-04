@@ -21,8 +21,6 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 
 FROM ${BUILDER_IMAGE} AS builder
 
-ARG DEPLOY_DOMAIN="https://elixirschool.com"
-
 # install build dependencies
 RUN rm -f /etc/apt/apt.conf.d/docker-clean
 
@@ -54,19 +52,21 @@ RUN mkdir config
 COPY config/config.exs config/lessons.exs config/redirects.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
-COPY priv priv
+# Install JavaScript dependencies before copying frequently changed source files.
+COPY assets/package.json assets/package-lock.json assets/
+RUN --mount=type=cache,target=/root/.npm \
+    cd assets && npm ci --cache /root/.npm
 
-COPY lib lib
-
-COPY assets assets
-
+# The School House content is fetched at build time.  Keep it in an independent
+# layer so changes to application code do not trigger a second repository clone.
+COPY assets/static assets/static
 COPY Makefile Makefile
-
-# install npm dependencies
-RUN cd assets && npm ci
-
-# install content from remote repository
 RUN make content
+
+# Copy source only after dependencies and generated content are cached.
+COPY priv priv
+COPY lib lib
+COPY assets assets
 
 # compile assets
 RUN mix assets.deploy

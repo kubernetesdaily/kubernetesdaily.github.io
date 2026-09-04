@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta content={get_csrf_token()} name="csrf-token">
 
-    <%= live_title_tag assigns[:page_title] || "KubeDaily", suffix: " · KubeDaily" %>
+    <title><%= (assigns[:page_title] || "KubeDaily") <> " · KubeDaily" %></title>
     <meta name="description" content={seo_description(assigns)} />
     <meta name="keywords" content={seo_keywords(assigns)} />
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
