@@ -580,7 +580,12 @@ body, body * {
 [x-cloak] { display: none !important; }
 
 /* KubeDaily content pages, implemented by Phoenix templates. */
-.kube-nav-link { @apply px-3 py-4 text-sm font-bold text-primary dark:text-primary-dark hover:bg-purple hover:text-white; }
+.kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-200 bg-white shadow-sm; }
+.kube-brand { @apply self-start lg:self-auto; }
+.kube-brand img { @apply block h-auto w-40 sm:w-48; }
+.kube-nav-menu { @apply -mx-1 flex max-w-full items-center gap-1 overflow-x-auto px-1 lg:mx-0 lg:px-0; }
+.kube-nav-link { @apply whitespace-nowrap rounded-md px-3 py-2 text-sm font-bold text-primary transition hover:bg-brand-purple-800 hover:text-white; }
+.kube-header-github { @apply hidden whitespace-nowrap rounded-md border border-brand-gray-300 px-3 py-2 text-sm font-bold text-heavy transition hover:border-brand-purple-800 hover:bg-brand-purple-800 hover:text-white lg:inline-flex; }
 .kube-hero { @apply relative overflow-hidden bg-gradient-to-br from-brand-gray-300 via-white to-purple-100; }
 .kube-hero h1 { @apply mx-auto mt-5 max-w-5xl text-4xl font-extrabold leading-tight tracking-tight text-heavy sm:text-6xl; }
 .kube-hero h1 span { @apply text-purple; }
@@ -620,3 +625,73 @@ body, body * {
 .kube-table { @apply min-w-full divide-y divide-gray-200 text-left text-sm; }
 .kube-table th { @apply bg-brand-gray-200 px-4 py-3 font-bold text-heavy; }
 .kube-table td { @apply px-4 py-3 text-light; }
+.kube-category-nav { @apply mx-auto mt-10 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4; }
+.kube-category-nav a { @apply flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-bold text-heavy shadow-sm transition hover:-translate-y-0.5 hover:border-brand-purple-800 hover:shadow-md dark:border-brand-gray-700 dark:bg-brand-gray-800 dark:text-heavy-dark; }
+.kube-category-nav strong { @apply rounded-full bg-purple px-2 py-0.5 text-xs text-white; }
+.kube-image-groups { @apply mx-auto mt-16 max-w-6xl space-y-14; }
+.kube-image-group { @apply scroll-mt-8; }
+.kube-image-group-heading { @apply flex flex-col justify-between gap-3 border-b border-gray-200 pb-5 sm:flex-row sm:items-end dark:border-brand-gray-700; }
+.kube-image-group-heading h2 { @apply mt-1 text-2xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-image-group-heading > span { @apply text-sm font-semibold text-lighter; }
+.kube-image-grid { @apply mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3; }
+.kube-image-card { @apply rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-image-card-top { @apply flex items-center justify-between gap-3 text-xs text-lighter; }
+.kube-image-card-top code { @apply truncate rounded bg-brand-gray-100 px-2 py-1 dark:bg-brand-gray-700; }
+.kube-image-card-top > span { @apply whitespace-nowrap font-semibold; }
+.kube-image-card h3 { @apply mt-5 break-all text-lg font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-image-card-meta { @apply mt-5 flex flex-col gap-3 text-sm text-light dark:text-light-dark; }
+.kube-image-card-meta > div { @apply flex flex-wrap gap-2; }
+.kube-category-tag { @apply rounded-full bg-brand-purple-100 px-2 py-1 text-xs font-semibold text-purple dark:bg-brand-gray-700; }
+.kube-home-hero { @apply relative overflow-hidden bg-brand-gray-900; }
+.kube-home-hero:before { content: ""; @apply absolute inset-0 opacity-50; background-image: linear-gradient(rgba(202,162,245,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(202,162,245,.12) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent); }
+.kube-home-copy { @apply relative z-10; }
+.kube-home-copy h1 { @apply mt-5 max-w-3xl text-5xl font-extrabold leading-none tracking-tight text-white sm:text-6xl; }
+.kube-home-copy h1 span { @apply text-brand-purple-100; }
+.kube-home-copy > p { @apply mt-6 max-w-2xl text-lg leading-relaxed text-brand-gray-300 sm:text-xl; }
+.kube-home-copy .kube-kicker { @apply text-brand-purple-100; }
+.kube-home-copy .kube-button-outline { @apply border-brand-gray-500 bg-transparent text-white hover:bg-white hover:text-heavy; }
+.kube-home-proof { @apply mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-brand-gray-700 pt-5; }
+.kube-home-proof div { @apply flex flex-col; }
+.kube-home-proof strong { @apply text-2xl font-extrabold text-white; }
+.kube-home-proof span { @apply mt-1 text-xs leading-relaxed text-brand-gray-400; }
+.kube-home-map { @apply relative isolate overflow-hidden rounded-2xl border border-brand-gray-650 bg-brand-gray-800 p-5 shadow-2xl sm:p-7; }
+.kube-home-map:after { content: ""; @apply absolute -right-24 -top-24 -z-10 h-64 w-64 rounded-full bg-brand-purple-800 opacity-60 blur-3xl; }
+.kube-home-map-top { @apply flex justify-between border-b border-brand-gray-650 pb-4 text-xs font-bold uppercase tracking-wider text-brand-gray-400; }
+.kube-home-map-orbit { @apply absolute -right-16 top-16 h-72 w-72 rounded-full border border-brand-gray-550; }
+.kube-home-map-orbit:before, .kube-home-map-orbit:after { content: ""; @apply absolute rounded-full border border-brand-gray-550; }
+.kube-home-map-orbit:before { @apply inset-9; }
+.kube-home-map-orbit:after { @apply inset-20; }
+.kube-home-map-orbit i { @apply absolute h-3 w-3 rounded-full bg-brand-purple-100; }
+.kube-home-map-orbit i:nth-child(1) { @apply left-8 top-10; }
+.kube-home-map-orbit i:nth-child(2) { @apply right-6 top-28; }
+.kube-home-map-orbit i:nth-child(3) { @apply bottom-12 left-20; }
+.kube-home-map-content { @apply relative mt-12; }
+.kube-home-map-content h2 { @apply mt-3 max-w-sm text-3xl font-extrabold leading-tight text-white; }
+.kube-home-map-content ol { @apply mt-8 space-y-3; }
+.kube-home-map-content li { @apply flex items-center gap-4 border-b border-brand-gray-650 pb-4; }
+.kube-home-map-content li span { @apply text-xs font-bold text-brand-purple-100; }
+.kube-home-map-content li a { @apply font-bold text-brand-gray-200 transition hover:text-white; }
+.kube-home-section-heading { @apply flex flex-col justify-between gap-5 md:flex-row md:items-end; }
+.kube-home-section-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-home-section-heading > p { @apply max-w-xl leading-relaxed text-light dark:text-light-dark; }
+.kube-home-paths { @apply mt-8 grid gap-4 lg:grid-cols-3; }
+.kube-home-path { @apply relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-home-path-featured { @apply border-brand-purple-300 bg-brand-gray-900; }
+.kube-home-path-number { @apply absolute right-6 top-5 text-5xl font-extrabold text-brand-gray-200 dark:text-brand-gray-700; }
+.kube-home-path-featured .kube-home-path-number { @apply text-brand-gray-700; }
+.kube-home-path h3 { @apply relative mt-3 text-2xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-home-path > p:not(.kube-label) { @apply relative mt-4 leading-relaxed text-light dark:text-light-dark; }
+.kube-home-path a { @apply relative mt-7 inline-flex font-bold text-purple underline underline-offset-4; }
+.kube-home-path-featured h3 { @apply text-white; }
+.kube-home-path-featured > p:not(.kube-label) { @apply text-brand-gray-300; }
+.kube-home-path-featured .kube-label { @apply text-brand-purple-100; }
+.kube-home-path-featured a { @apply text-brand-purple-100; }
+.kube-events { @apply bg-brand-gray-100 dark:bg-brand-gray-900; }
+.kube-events-heading { @apply flex flex-col justify-between gap-5 md:flex-row md:items-end; }
+.kube-events-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-white; }
+.kube-events-heading > p { @apply max-w-xl leading-relaxed text-light dark:text-brand-gray-300; }
+.kube-events-gallery { @apply mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-4; }
+.kube-events-gallery figure { @apply relative h-64 overflow-hidden rounded-xl bg-brand-gray-800 shadow-md; }
+.kube-events-gallery img { @apply absolute inset-0 h-full w-full object-cover transition duration-500 hover:scale-105; }
+.kube-events-gallery figcaption { @apply absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-gray-900 to-transparent px-5 pb-4 pt-12 text-sm font-bold text-white; }
+.kube-events-gallery .kube-event-featured { @apply md:col-span-2 md:h-80 lg:col-span-2; }

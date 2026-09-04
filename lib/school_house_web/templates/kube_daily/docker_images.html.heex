@@ -1,5 +1,52 @@
 <section class="container mx-auto px-5 py-16">
-  <div class="kube-page-heading"><span>Container Images</span><h1>Popular Docker Images</h1><p>The preserved KubeDaily Docker Hub data set.</p></div>
-  <div class="mt-10 overflow-x-auto rounded-lg border border-gray-200"><table class="kube-table"><%= for {row, index} <- Enum.with_index(@rows) do %><tr><%= for cell <- row do %><%= if index == 0 do %><th><%= cell %></th><% else %><td><%= cell %></td><% end %><% end %></tr><% end %></table></div>
-  <p class="mt-5 text-sm text-lighter">The complete CSV is available at <a href="/kubedaily/data/most-popular-dockerhub-images.csv">/kubedaily/data/most-popular-dockerhub-images.csv</a>.</p>
+  <div class="kube-page-heading">
+    <span>Container Images</span>
+    <h1>Find the right Docker image</h1>
+    <p>Explore <%= @image_count %> popular Docker Hub images, organized by the jobs they help you do.</p>
+  </div>
+
+  <nav class="kube-category-nav" aria-label="Docker image categories">
+    <%= for category <- @categories do %>
+      <a href={"##{category.id}"}>
+        <span><%= category.label %></span>
+        <strong><%= category.count %></strong>
+      </a>
+    <% end %>
+  </nav>
+
+  <div class="kube-image-groups">
+    <%= for group <- @groups do %>
+      <section id={group.id} class="kube-image-group" aria-labelledby={"#{group.id}-heading"}>
+        <div class="kube-image-group-heading">
+          <div>
+            <p class="kube-label">Category</p>
+            <h2 id={"#{group.id}-heading"}><%= group.label %></h2>
+          </div>
+          <span><%= group.count %> images in dataset</span>
+        </div>
+
+        <div class="kube-image-grid">
+          <%= for image <- group.images do %>
+            <article class="kube-image-card">
+              <div class="kube-image-card-top">
+                <code>docker pull <%= image.name %></code>
+                <span aria-label="Docker Hub pulls"><%= image.pulls %> pulls</span>
+              </div>
+              <h3><%= image.name %></h3>
+              <div class="kube-image-card-meta">
+                <span>★ <%= image.stars %> stars</span>
+                <div>
+                  <%= for category <- image.categories do %>
+                    <span class="kube-category-tag"><%= SchoolHouse.KubeDaily.category_label(category) %></span>
+                  <% end %>
+                </div>
+              </div>
+            </article>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  </div>
+
+  <p class="mt-10 text-center text-sm text-lighter">Need the full data set? <a class="font-bold text-purple underline" href="/kubedaily/data/most-popular-dockerhub-images.csv">Download the original CSV</a>.</p>
 </section>
