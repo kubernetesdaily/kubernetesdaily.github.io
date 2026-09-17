@@ -1,6 +1,66 @@
 {
   "blogs": [
     {
+      "id": "pods-deployments-checklist",
+      "title": "Pods and Deployments: A Production Checklist",
+      "date": "September 18, 2026",
+      "excerpt": "A cluster-verifiable pre-production checklist for Deployments: image pinning, resources, probes, disruption budgets, and the drift checks that keep them true.",
+      "author": "KubeDaily",
+      "file": "/blog/pods-deployments-checklist.md",
+      "category": "Kubernetes",
+      "tags": ["kubernetes", "deployments", "reliability", "checklist"]
+    },
+    {
+      "id": "image-scanning-security-guide",
+      "title": "Container Image Scanning: A Practical Security Guide",
+      "date": "September 18, 2026",
+      "excerpt": "What image scanners actually check, how to fail builds on new criticals without drowning in findings, and how to keep accepted risk explicit and expiring.",
+      "author": "KubeDaily",
+      "file": "/blog/image-scanning-security-guide.md",
+      "category": "Security",
+      "tags": ["security", "trivy", "supply chain", "vulnerabilities"]
+    },
+    {
+      "id": "github-actions-containers-guide",
+      "title": "GitHub Actions for Container Projects: A Beginner's Guide",
+      "date": "September 18, 2026",
+      "excerpt": "A minimal container CI workflow on GitHub Actions: build on every commit, scan before publishing, least-privilege tokens, and cache-accelerated builds.",
+      "author": "KubeDaily",
+      "file": "/blog/github-actions-containers-guide.md",
+      "category": "CI/CD",
+      "tags": ["github actions", "ci/cd", "containers", "automation"]
+    },
+    {
+      "id": "docker-image-build-guide",
+      "title": "Build Smaller, Safer Docker Images",
+      "date": "September 18, 2026",
+      "excerpt": "Build a multi-stage Docker image, run it as non-root, and learn practical caching, secret handling, and reproducible image maintenance.",
+      "author": "KubeDaily",
+      "file": "/blog/docker-image-build-guide.md",
+      "category": "Containers",
+      "tags": ["docker", "images", "multi-stage builds", "containers"]
+    },
+    {
+      "id": "kubernetes-requests-limits",
+      "title": "Kubernetes Requests and Limits: A Practical Guide",
+      "date": "September 17, 2026",
+      "excerpt": "What resource requests and limits actually control in Kubernetes, how QoS classes and OOMKills happen, and how to choose values from measurements instead of folklore.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kubernetes-requests-limits.md",
+      "category": "Kubernetes",
+      "tags": ["kubernetes", "resource management", "scheduling", "OOMKilled", "capacity planning"]
+    },
+    {
+      "id": "kubernetes-probes-guide",
+      "title": "Kubernetes Health Checks: Liveness, Readiness, and Startup Probes",
+      "date": "September 17, 2026",
+      "excerpt": "Design liveness, readiness, and startup probes that route traffic correctly and restart only what is stuck — with a review checklist for avoiding restart storms.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kubernetes-probes-guide.md",
+      "category": "Kubernetes",
+      "tags": ["kubernetes", "health checks", "liveness", "readiness", "reliability"]
+    },
+    {
       "id": "werf",
       "title": "Werf: A solution for implementing efficient and consistent software",
       "date": "May 10, 2023",

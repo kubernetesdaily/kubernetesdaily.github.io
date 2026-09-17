@@ -2,6 +2,9 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=elixir,vim,linux,osx,phoenix
 
 ### Elixir ###
+/_site
+/assets/test-results
+/assets/playwright-report
 /_build
 /cover
 /deps
@@ -15,7 +18,15 @@ erl_crash.dump
 /content
 /assets/static/images
 /assets/static/sitemap*
-/priv/static
+/priv/static/*
+!/priv/static/kubedaily/
+/priv/static/kubedaily/*
+!/priv/static/kubedaily/blog/
+!/priv/static/kubedaily/labs/
+!/priv/static/kubedaily/data/
+# Keep new Markdown/catalog sources visible without adding Phoenix digests.
+/priv/static/kubedaily/**/*-????????????????????????????????.*
+/priv/static/kubedaily/**/*.gz
 
 ### Elixir Patch ###
 
@@ -103,3 +114,6 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/elixir,vim,linux,osx,phoenix
+
+# macOS metadata
+.DS_Store

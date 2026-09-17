@@ -5,7 +5,7 @@
       <h1>Build confidence in the <span>container ecosystem.</span></h1>
       <p>Practical paths through Kubernetes, Docker, Helm, and the tools that power modern platforms—without the noise.</p>
       <div class="mt-8 flex flex-wrap gap-4">
-        <a class="kube-button" href="/labs">Start a hands-on lab <span aria-hidden="true">→</span></a>
+        <a class="kube-button" href="/labs/Learn-Docker/">Start with Docker <span aria-hidden="true">→</span></a>
         <a class="kube-button kube-button-outline" href="/tools">Browse the tool stack</a>
       </div>
       <div class="kube-home-proof" aria-label="KubeDaily resource summary">
@@ -16,7 +16,7 @@
     </div>
 
     <aside class="kube-home-map" aria-label="Explore KubeDaily">
-      <div class="kube-home-map-top"><span>Start here</span><span>01 / 03</span></div>
+      <div class="kube-home-map-top"><span>Start here</span><span>Learn · Practice · Explore</span></div>
       <div class="kube-home-map-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="kube-home-map-content">
         <p class="kube-label">Choose your path</p>
@@ -31,6 +31,26 @@
   </div>
 </section>
 
+<section class="kube-start-section" aria-labelledby="learning-path-title">
+  <div class="kube-section-container">
+    <div class="kube-home-section-heading">
+      <div><p class="kube-label">Less searching. More learning.</p><h2 id="learning-path-title">A clear path through cloud native.</h2></div>
+      <p>New to containers? Begin with Docker. Already comfortable? Jump into the topic you need. Every guide is free and self-paced.</p>
+    </div>
+    <div class="kube-learning-grid">
+      <a class="kube-learning-card" href="/labs/Learn-Docker/"><span class="kube-learning-step">01 · Start here</span><h3>Build with Docker</h3><p>Understand images and containers before moving to orchestration.</p><span class="kube-learning-action">Open Docker guide →</span></a>
+      <a class="kube-learning-card" href="/labs/Learn-k8s/"><span class="kube-learning-step">02 · Orchestrate</span><h3>Think in Kubernetes</h3><p>Connect cluster architecture, workloads, and networking concepts.</p><span class="kube-learning-action">Open Kubernetes guide →</span></a>
+      <a class="kube-learning-card" href="/labs/Learn-Helm/"><span class="kube-learning-step">03 · Package</span><h3>Ship with Helm</h3><p>Explore charts and configuration for repeatable application releases.</p><span class="kube-learning-action">Open Helm guide →</span></a>
+      <a class="kube-learning-card" href="/labs/Learn-Containerd/"><span class="kube-learning-step">04 · Go deeper</span><h3>Meet the runtime</h3><p>See where containerd fits beneath your container tooling.</p><span class="kube-learning-action">Open containerd guide →</span></a>
+    </div>
+    <form class="kube-home-search" action="/tools/" method="get" role="search" aria-label="Search the tool directory">
+      <label for="home-tool-search">Looking for a tool instead?</label>
+      <div><input id="home-tool-search" type="search" name="q" placeholder="Search GitOps, monitoring, containers…"/><button class="kube-button" type="submit">Find tools →</button></div>
+      <p>A curated directory, with filters you can bookmark and share.</p>
+    </form>
+  </div>
+</section>
+
 <section class="kube-events">
   <div class="px-4 py-14 sm:px-6 lg:px-10 lg:py-16">
     <div class="kube-events-heading">
@@ -40,7 +60,7 @@
 
     <div class="kube-events-gallery">
       <figure class="group kube-event-featured">
-        <img src="/kubedaily/gallery/IMG_7612.JPG" alt="KubeDaily at B-Sides Bangalore Cybersecurity Conference"/>
+        <img loading="lazy" decoding="async" src="/kubedaily/gallery/IMG_7612.JPG" alt="KubeDaily at B-Sides Bangalore Cybersecurity Conference"/>
         <figcaption><span>Community conference</span><strong>B-Sides Bangalore</strong></figcaption>
       </figure>
       <figure class="group kube-event-card">

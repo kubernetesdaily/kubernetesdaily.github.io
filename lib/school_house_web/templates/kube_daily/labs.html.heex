@@ -1,58 +1,37 @@
-<section class="kube-labs-hero">
-  <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
-    <div class="kube-labs-hero-copy">
-      <p class="kube-label">Learn by doing</p>
-      <h1>Build practical <span>cloud-native skills.</span></h1>
-      <p>Follow structured, self-paced labs that turn container and Kubernetes concepts into repeatable hands-on practice.</p>
-      <div class="kube-labs-hero-meta" aria-label="Lab collection details">
-        <span><strong><%= length(@labs) %></strong> guided labs</span>
-        <span>Beginner-friendly</span>
-        <span>Free to learn</span>
-      </div>
+<header class="kube-library-header">
+  <div class="kube-library-container">
+    <p class="kube-label">The KubeDaily workshop</p>
+    <h1>Less theory.<br /><span>More hands-on understanding.</span></h1>
+    <p class="kube-library-intro">Explore containers and Kubernetes at your own pace. Start with Docker, inspect a workload, and build up to packaging applications with Helm.</p>
+    <div class="kube-library-links"><a href="/labs/Learn-Docker/">Start with Docker →</a><a href="/blog/">Looking for an explanation? Read the guides →</a></div>
+  </div>
+</header>
+
+<section id="lab-library" class="kube-library-container kube-library-section" data-content-library>
+  <div class="kube-library-toolbar">
+    <div><p class="kube-label">Practice & explore</p><h2>Choose your next lab</h2></div>
+    <div class="kube-library-search" hidden data-library-controls>
+      <label for="lab-search">Find a lab</label>
+      <input id="lab-search" type="search" placeholder="Search Docker, kubectl, Helm…" data-library-search />
     </div>
   </div>
-</section>
-
-<section class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
-  <div class="kube-labs-section-heading">
-    <div>
-      <p class="kube-label">Choose a path</p>
-      <h2>Start with the building blocks.</h2>
-    </div>
-    <p>Each lab combines essential concepts with commands and exercises you can revisit while working.</p>
-  </div>
-
+  <p class="kube-library-count" role="status" data-library-count><%= length(@labs) %> labs to explore</p>
   <div class="kube-labs-grid">
-    <%= for {lab, index} <- Enum.with_index(@labs, 1) do %>
-      <article class="kube-lab-card">
-        <div class="kube-lab-card-top">
-          <span class="kube-lab-number">0<%= index %></span>
-          <p class="kube-label"><%= lab["category"] %></p>
-        </div>
-        <h2><a href={"/labs/#{lab["id"]}"}><%= lab["title"] %></a></h2>
+    <%= for lab <- @labs do %>
+      <article class="kube-lab-card" data-library-card>
+        <div class="kube-lab-card-top"><span class="kube-lab-number" aria-hidden="true">&gt;_</span><p class="kube-label"><%= lab["category"] %></p></div>
+        <h3><a href={"/labs/#{lab["id"]}/"}><%= lab["title"] %></a></h3>
         <p><%= lab["description"] %></p>
-        <div class="kube-lab-card-tags" aria-label="Topics">
-          <%= for tag <- Enum.take(lab["tags"], 3) do %><span><%= tag %></span><% end %>
-        </div>
-        <a class="kube-lab-card-link" href={"/labs/#{lab["id"]}"}>Open lab <span aria-hidden="true">→</span></a>
+        <div class="kube-lab-card-tags" aria-label="Topics"><%= for tag <- Enum.take(lab["tags"], 3) do %><span><%= tag %></span><% end %></div>
+        <a class="kube-lab-card-link" href={"/labs/#{lab["id"]}/"}>Open lab <span aria-hidden="true">→</span></a>
       </article>
     <% end %>
   </div>
+  <p class="kube-library-empty" hidden data-library-empty>No labs match that search. Try a tool name or clear the search to see everything.</p>
+  <div class="kube-library-practice"><strong>A good lab habit</strong><p>Use a disposable environment. Check your cluster context, read commands before running them, and clean up the resources you create.</p></div>
 </section>
 
-<section class="kube-labs-note">
-  <div class="mx-auto max-w-screen-xl px-4 py-9 sm:px-6 lg:px-10">
-    <div>
-      <p class="kube-label">A good lab habit</p>
-      <h2>Practice in a disposable environment.</h2>
-    </div>
-    <p>Use a local cluster or non-production account, copy commands deliberately, and keep your own notes alongside the lab.</p>
-  </div>
-</section>
-
-<section class="kube-contribute">
-  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-14">
-    <div class="kube-contribute-copy"><p class="kube-label">Contribute a lab</p><h2>Help make the next hands-on lesson better.</h2><p>Improve an existing guide, report a confusing step, or propose a container ecosystem lab your team wishes it had.</p></div>
-    <div class="kube-contribute-actions"><a class="kube-contribute-primary" href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer">Read the contribution guide ↗</a><a href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/issues/new/choose" target="_blank" rel="noreferrer">Suggest a lab ↗</a></div>
-  </div>
+<section class="kube-library-container kube-library-footer">
+  <div><p class="kube-label">Learn in the open</p><h2>Make the next step easier for someone.</h2><p>Report an outdated command, clarify a prerequisite, or contribute an exercise.</p></div>
+  <a href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/CONTRIBUTING.md">Improve a lab →</a>
 </section>

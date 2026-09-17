@@ -4,7 +4,7 @@ defmodule SchoolHouseWeb.SeoHelpers do
   @default_description "KubeDaily helps developers learn Kubernetes, containers, cloud-native tools, Docker, Helm, and DevOps practices."
 
   def canonical_url(conn) do
-    path = if conn.request_path == "/", do: "", else: String.trim_trailing(conn.request_path, "/")
+    path = if conn.request_path == "/", do: "/", else: String.trim_trailing(conn.request_path, "/") <> "/"
     site_url() <> path
   end
 
@@ -86,8 +86,8 @@ defmodule SchoolHouseWeb.SeoHelpers do
   def site_url, do: Application.get_env(:school_house, :site_url, "https://kubedaily.com")
 
   defp iso_date(date) when is_binary(date) do
-    case Date.from_iso8601(date) do
-      {:ok, _} -> date
+    case SchoolHouse.ContentDate.parse(date) do
+      {:ok, parsed} -> Date.to_iso8601(parsed)
       _ -> nil
     end
   end

@@ -3,6 +3,11 @@
 @import "tailwindcss/utilities";
 @import "flag-icons/css/flag-icons.min.css";
 
+.kube-contribute-link { display: block; margin-top: 1rem; text-decoration: underline; text-underline-offset: .2em; }
+.kube-markdown h2, .kube-markdown h3 { scroll-margin-top: 6rem; }
+.kube-markdown pre { overflow-x: auto; }
+.kube-markdown table { display: block; max-width: 100%; overflow-x: auto; }
+
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 Based on: https://codepen.io/nickelse/pen/YGPJQG
 Influenced by: https://sproutsocial.com/
@@ -579,6 +584,53 @@ body, body * {
 
 [x-cloak] { display: none !important; }
 
+/* Static-friendly discovery and accessibility. */
+.kube-skip-link { position: fixed; top: -100px; left: 1rem; z-index: 200; padding: .75rem 1rem; background: #fff; color: #431e70; border: 2px solid #7c3aed; border-radius: 8px; }
+.kube-skip-link:focus { top: 1rem; }
+:focus-visible { outline: 3px solid #8b5cf6; outline-offset: 4px; }
+#main-content:focus { outline: none; }
+html { scroll-padding-top: 160px; }
+.kube-section-container { max-width: 1280px; margin: 0 auto; padding: 4rem 2rem; }
+.kube-start-section { background: #f6f5fa; }
+.kube-learning-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1rem; margin-top: 2rem; }
+.kube-learning-card { display: flex; flex-direction: column; border: 1px solid #ded9e8; border-radius: 16px; background: #fff; padding: 1.6rem; color: #282034; transition: border-color .2s, box-shadow .2s; }
+.kube-learning-card:hover { border-color: #8b5cf6; box-shadow: 0 8px 32px #4c1d9510; }
+.kube-learning-step { font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #6d28d9; }
+.kube-learning-card h3 { font-size: 1.3rem; font-weight: 800; margin: 1.2rem 0 .75rem; }
+.kube-learning-card p { font-size: .9rem; line-height: 1.75; color: #615a6c; margin-bottom: 1.5rem; }
+.kube-learning-action { margin-top: auto; font-size: .85rem; font-weight: 700; color: #6d28d9; }
+.kube-home-search { margin-top: 2rem; padding: 1.5rem 2rem; border: 1px solid #ded9e8; border-radius: 16px; background: #fff; }
+.kube-home-search label { display: block; font-weight: 750; color: #282034; }
+.kube-home-search > div { display: flex; gap: .75rem; margin: 1rem 0 .75rem; }
+.kube-home-search input { flex: 1; min-width: 0; border: 1px solid #c9c1d6; border-radius: 8px; padding: .75rem; background: #fff; color: #282034; }
+.kube-home-search p { color: #615a6c; font-size: .8rem; }
+.kube-results-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.kube-results-toolbar .kube-tool-count { margin: 0; }
+.kube-filter-reset { border: 1px solid #b9a9d1; border-radius: 8px; padding: .55rem .9rem; font-size: .85rem; white-space: nowrap; }
+.kube-filter-reset:disabled { opacity: .45; cursor: default; }
+.kube-directory-more { display: flex; justify-content: center; margin-top: 2rem; }
+.kube-directory-more [hidden] { display: none; }
+.kube-stars-image { width: auto; max-width: 110px; height: 20px; }
+.kube-code-wrapper { position: relative; margin-top: 1.5rem; }
+.kube-code-wrapper pre { padding-top: 3.5rem; }
+.kube-copy-code { position: absolute; top: .65rem; right: .65rem; background: #392e48; color: #fff; border: 1px solid #827091; border-radius: 6px; padding: .3rem .65rem; font-size: .75rem; }
+.kube-copy-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.kube-nav-menu .kube-nav-link[aria-current="page"], .dark .kube-nav-menu .kube-nav-link[aria-current="page"] { background: #ede9fe; color: #5b21b6; }
+.dark .kube-start-section { background: #18131f; }
+.dark .kube-learning-card, .dark .kube-home-search { background: #241d2d; border-color: #44354f; color: #f3eefa; }
+.dark .kube-learning-card p, .dark .kube-home-search p { color: #c3b8ce; }
+.dark .kube-learning-step, .dark .kube-learning-action { color: #c4b5fd; }
+.dark .kube-home-search label { color: #f3eefa; }
+@media(max-width: 1000px) { .kube-learning-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media(max-width: 600px) {
+  .kube-section-container { padding: 2.5rem 1rem; }
+  .kube-learning-grid { grid-template-columns: 1fr; }
+  .kube-home-search { padding: 1.2rem; }
+  .kube-home-search > div { flex-direction: column; }
+  .kube-results-toolbar { align-items: flex-start; }
+}
+@media(prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+
 /* KubeDaily content pages, implemented by Phoenix templates. */
 .kube-site-header { @apply sticky top-0 z-50 border-b border-brand-gray-200 bg-white/95 shadow-sm backdrop-blur; }
 .kube-header-inner { @apply mx-auto flex flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10; }
@@ -619,7 +671,7 @@ body, body * {
 .kube-markdown ol { @apply list-decimal; }
 .kube-markdown pre { @apply mt-5 overflow-x-auto rounded-lg bg-brand-gray-900 p-5 text-sm text-white; }
 .kube-markdown img { @apply my-6 h-auto max-w-full rounded-lg border border-gray-200; }
-.kube-tool-controls { @apply grid gap-4 md:grid-cols-[minmax(0,1fr)_15rem]; }
+.kube-tool-controls { @apply grid gap-4 md:grid-cols-[minmax(0,1fr)_13rem_10rem]; }
 .kube-tool-controls label { @apply text-xs font-bold uppercase tracking-wider text-lighter; }
 .kube-tool-controls input, .kube-tool-controls select { @apply mt-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-base font-normal normal-case tracking-normal text-primary shadow-sm focus:border-brand-purple-800 focus:outline-none dark:border-brand-gray-700 dark:bg-brand-gray-800 dark:text-primary-dark; }
 .kube-tool-count { @apply mt-7 text-sm text-lighter; }
@@ -738,7 +790,17 @@ body, body * {
 .kube-article-hero .kube-dek { @apply max-w-3xl text-brand-gray-300 sm:text-xl; }
 .kube-article-byline { @apply mt-7 flex flex-wrap gap-2 text-sm text-brand-gray-400; }
 .kube-article-byline strong { @apply text-brand-gray-200; }
-.kube-article-shell { @apply mx-auto grid max-w-screen-xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-10 lg:py-16; }
+.kube-article-shell { @apply mx-auto grid max-w-screen-xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:px-10 lg:py-16; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1024px) { .kube-article-shell { grid-template-columns: 15rem minmax(0, 1fr); } }
+.kube-article-shell > * { min-width: 0; width: 100%; }
+/* On phones, put the reading first and metadata/outline after it. */
+@media (max-width: 1023px) {
+  .kube-article-shell > .kube-article-aside,
+  .kube-lab-reader-shell > aside { order: 2; margin-top: 3rem; }
+  .kube-article-shell > article,
+  .kube-lab-reader-shell > .kube-lab-reading { order: 1; }
+}
+.kube-article-aside .kube-lab-outline a { display: block; overflow-wrap: anywhere; }
 .kube-article-aside { @apply h-fit rounded-xl border border-gray-200 bg-brand-gray-100 p-5 dark:border-brand-gray-700 dark:bg-brand-gray-800 lg:sticky lg:top-24; }
 .kube-article-aside dl { @apply mt-5 space-y-4; }
 .kube-article-aside dl div { @apply border-b border-gray-200 pb-4 last:border-0 last:pb-0 dark:border-brand-gray-700; }
@@ -820,6 +882,87 @@ body, body * {
 .kube-lab-reading .kube-markdown h3 { @apply mt-10 text-xl; }
 .kube-lab-reading .kube-markdown p, .kube-lab-reading .kube-markdown ul, .kube-lab-reading .kube-markdown ol { @apply max-w-3xl; }
 .kube-lab-reading .kube-markdown li + li { @apply mt-2; }
+
+/* Library listing pages (blog + labs): shared layout, calmer presentation. */
+.kube-library-header { @apply border-b border-brand-gray-700 bg-brand-gray-900; }
+.kube-library-header:before { content: ""; @apply pointer-events-none absolute inset-0 opacity-40; background-image: radial-gradient(circle at 15% 12%, rgba(168, 85, 247, .5), transparent 34%); }
+.kube-library-header { position: relative; }
+.kube-library-container { @apply mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-10; }
+.kube-library-header .kube-library-container { @apply relative py-10 lg:py-20; }
+.kube-library-header h1 { @apply mt-4 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl; }
+.kube-library-header h1 span { @apply text-brand-purple-100; }
+.kube-library-intro { @apply mt-5 max-w-2xl text-lg leading-relaxed text-brand-gray-300; }
+.kube-library-links { @apply mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold; }
+.kube-library-links a { @apply text-brand-purple-100 underline underline-offset-4 transition hover:text-white; }
+.kube-library-section { @apply py-14 lg:py-16; }
+.kube-library-toolbar { @apply flex flex-col justify-between gap-4 md:flex-row md:items-end; }
+.kube-library-toolbar h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-library-search { @apply w-full md:w-72; }
+.kube-library-search label { @apply mb-1 block text-xs font-bold uppercase tracking-wider text-lighter; }
+.kube-library-search input { @apply w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-primary shadow-sm outline-none transition focus:border-brand-purple-300 focus:ring-2 focus:ring-brand-purple-100 dark:border-brand-gray-600 dark:bg-brand-gray-800 dark:text-white; }
+.kube-library-count { @apply mt-5 text-sm font-semibold text-lighter; }
+.kube-library-empty { @apply mt-8 rounded-lg border border-dashed border-gray-300 px-5 py-6 text-sm font-semibold text-light dark:border-brand-gray-600 dark:text-light-dark; }
+.kube-library-practice { @apply mt-12 rounded-xl border border-brand-purple-200 bg-brand-purple-100/40 px-6 py-5 dark:border-brand-gray-600 dark:bg-brand-gray-800; }
+.kube-library-practice strong { @apply text-heavy dark:text-white; }
+.kube-library-practice p { @apply mt-2 text-sm leading-relaxed text-light dark:text-brand-gray-300; }
+.kube-library-footer { @apply flex flex-col justify-between gap-6 border-t border-gray-200 py-12 md:flex-row md:items-center dark:border-brand-gray-700; }
+.kube-library-footer h2 { @apply mt-2 text-2xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-library-footer p { @apply mt-2 max-w-xl leading-relaxed text-light dark:text-light-dark; }
+.kube-library-footer a { @apply shrink-0 font-bold text-purple underline decoration-brand-purple-300 underline-offset-4 transition hover:text-brand-purple-800; }
+
+/* Reader: collapsible table of contents and end-of-article navigation. */
+.kube-reader-contents summary { @apply flex cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-wider text-lighter transition hover:text-purple; }
+.kube-reader-contents summary::-webkit-details-marker { display: none; }
+.kube-reader-contents summary span { @apply font-semibold normal-case tracking-normal text-lighter; }
+.kube-reader-contents[open] summary { @apply mb-3; }
+.kube-reader-contents nav { @apply flex flex-col gap-2; }
+.kube-reader-contents nav a { @apply text-sm leading-snug text-light transition hover:text-purple dark:text-light-dark; }
+.kube-reader-nested { @apply pl-3 text-xs; }
+.kube-reader-end { @apply mt-16 border-t border-gray-200 pt-8 dark:border-brand-gray-700; }
+.kube-reader-end p { @apply text-sm font-bold uppercase tracking-wider text-lighter; }
+.kube-reader-end a { @apply mt-3 block font-bold text-purple underline underline-offset-4; }
+
+/* Reading width control and full-screen content mode. */
+.kube-reading-toggle { @apply mt-4 inline-block text-sm font-bold text-purple underline underline-offset-4; }
+body.kube-wide-reading .kube-article-shell,
+body.kube-wide-reading .kube-lab-reader-shell { max-width: none; }
+body.kube-wide-reading .kube-reading,
+body.kube-wide-reading .kube-lab-reading { max-width: none; }
+body.kube-wide-reading .kube-reading .kube-markdown,
+body.kube-wide-reading .kube-lab-reading .kube-markdown { max-width: 88ch; }
+@media (min-width: 1024px) {
+  /* Let wide blocks use the column; prose keeps its measure. */
+  .kube-reading .kube-markdown pre,
+  .kube-lab-reading .kube-markdown pre,
+  .kube-reading .kube-markdown table,
+  .kube-lab-reading .kube-markdown table { margin-left: -1rem; margin-right: -2.5rem; }
+}
+
+/* Code copy controls. */
+.kube-code-wrapper { @apply relative; }
+.kube-copy-code { @apply absolute right-3 top-3 rounded-md border border-white/20 bg-white/10 px-2.5 py-1 text-xs font-bold text-white opacity-0 transition focus:opacity-100 hover:bg-white/20; }
+.kube-code-wrapper:hover .kube-copy-code, .kube-copy-code:focus-visible { @apply opacity-100; }
+.kube-copy-status { @apply mt-4 text-center text-sm text-lighter; }
+
+/* Shared reading typography for lab and blog bodies. */
+.kube-reading .kube-markdown,
+.kube-lab-reading .kube-markdown {
+  max-width: 72ch;
+  font-size: clamp(1rem, .95rem + .25vw, 1.125rem);
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+.kube-markdown p + p { margin-top: 1.25em; }
+.kube-markdown li + li { margin-top: .5em; }
+.kube-reading .kube-markdown a,
+.kube-lab-reading .kube-markdown a {
+  display: inline;
+  margin-top: 0;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.kube-markdown pre { overflow-wrap: normal; }
 
 /* Public container ecosystem roadmap */
 .kube-roadmap-hero { @apply relative overflow-hidden border-b border-brand-gray-700 bg-brand-gray-900; }
