@@ -39,6 +39,7 @@ jobs:
       - run: npm ci --prefix assets
       - run: mix assets.deploy
       - run: mix kubedaily.export --output _site
+      - run: python3 scripts/check-roadmap-guides.py
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

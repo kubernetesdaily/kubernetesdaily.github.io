@@ -1,6 +1,56 @@
 {
   "blogs": [
     {
+      "id": "kubernetes-architecture-guide",
+      "title": "Kubernetes architecture: beginner’s guide",
+      "date": "September 18, 2026",
+      "excerpt": "Trace a Deployment from the API server to a running container, and diagnose failures by the component responsible for each stage.",
+      "author": "KubeDaily",
+      "file": "/blog/kubernetes-architecture-guide.md",
+      "category": "Kubernetes",
+      "tags": ["kubernetes", "architecture", "controllers", "scheduling"]
+    },
+    {
+      "id": "statefulsets-guide",
+      "title": "StatefulSets: beginner’s guide",
+      "date": "September 18, 2026",
+      "excerpt": "Understand stable identities and per-replica storage, then test persistence across Pod replacement without confusing it with backups or replication.",
+      "author": "KubeDaily",
+      "file": "/blog/statefulsets-guide.md",
+      "category": "Kubernetes",
+      "tags": ["kubernetes", "statefulsets", "storage", "persistence"]
+    },
+    {
+      "id": "networkpolicy-security-guide",
+      "title": "NetworkPolicy: security guide",
+      "date": "September 18, 2026",
+      "excerpt": "Test baseline connectivity, deny ingress and allow a labeled client while distinguishing policy admission from actual network enforcement.",
+      "author": "KubeDaily",
+      "file": "/blog/networkpolicy-security-guide.md",
+      "category": "Security",
+      "tags": ["kubernetes", "networkpolicy", "networking", "security"]
+    },
+    {
+      "id": "helm-production-checklist",
+      "title": "Helm: production checklist",
+      "date": "September 18, 2026",
+      "excerpt": "Review chart inputs and rendered resources, validate a release in isolation, and plan upgrades without mistaking rollback for data recovery.",
+      "author": "KubeDaily",
+      "file": "/blog/helm-production-checklist.md",
+      "category": "CI/CD",
+      "tags": ["helm", "kubernetes", "releases", "checklist"]
+    },
+    {
+      "id": "image-signing-security-guide",
+      "title": "Image signing: security guide",
+      "date": "September 18, 2026",
+      "excerpt": "Define digest, signer identity and issuer policy for cosign verification, and understand what signatures do not prove about image safety.",
+      "author": "KubeDaily",
+      "file": "/blog/image-signing-security-guide.md",
+      "category": "Security",
+      "tags": ["cosign", "sigstore", "supply chain", "signatures"]
+    },
+    {
       "id": "pods-deployments-checklist",
       "title": "Pods and Deployments: A Production Checklist",
       "date": "September 18, 2026",
