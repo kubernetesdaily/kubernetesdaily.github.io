@@ -203,7 +203,18 @@ defmodule SchoolHouse.KubeDaily do
     |> add_heading_ids()
   end
 
-  def post_html(%{"file" => path, "excerpt" => excerpt}), do: markdown_html(path, excerpt)
+  def post_html(post), do: post_content(post).html
+
+  def post_content(%{"file" => path, "excerpt" => excerpt}) do
+    path |> markdown_html(excerpt) |> add_heading_ids()
+  end
+
+  def edit_url(%{"file" => path}), do: source_edit_url(path)
+  def edit_url(%{"path" => path}), do: source_edit_url(path)
+
+  defp source_edit_url(path) do
+    "https://github.com/kubernetesdaily/kubernetesdaily.github.io/edit/main/priv/static/kubedaily" <> path
+  end
 
   def docker_image_catalog do
     images = docker_image_rows()
@@ -255,13 +266,20 @@ defmodule SchoolHouse.KubeDaily do
     Enum.take(titles, count)
   end
 
-  defp markdown_html("/" <> path, fallback) do
+  defp markdown_html("/" <> path, _fallback) do
     path = Path.join(root(), path)
 
     case File.read(path) do
-      {:ok, markdown} -> Earmark.as_html!(markdown)
-      {:error, :enoent} -> Earmark.as_html!(fallback)
-      {:error, reason} -> raise File.Error, reason: reason, action: "read file", path: path
+      {:ok, markdown} ->
+        # The page template owns the H1. Preserve a document title in source,
+        # but avoid rendering it a second time in the article body.
+        markdown |> String.replace(~r/\A\s*# [^\n]+\n/, "") |> Earmark.as_html!()
+
+      {:error, :enoent} ->
+        raise File.Error, reason: :enoent, action: "read content", path: path
+
+      {:error, reason} ->
+        raise File.Error, reason: reason, action: "read file", path: path
     end
   end
 

@@ -85,10 +85,13 @@ defmodule SchoolHouseWeb.KubeDailyController do
         send_resp(conn, 404, "Post not found")
 
       post ->
+        content = KubeDaily.post_content(post)
+
         render(conn, "post.html",
           page_title: post["title"],
           post: post,
-          content: KubeDaily.post_html(post),
+          content: content.html,
+          outline: content.outline,
           seo: %{
             description: post["excerpt"],
             schema_type: "Article",

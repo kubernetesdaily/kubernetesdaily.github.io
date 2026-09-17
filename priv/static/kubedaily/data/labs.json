@@ -19,7 +19,7 @@
       "contributors": ["Sangam Biradar"],
       "tags": ["Docker", "Containers", "Images", "runc"],
       "image": "/images/kubedaily_logo.webp"
-    }, 
+    },
     {
       "id": "Learn-k8s",
       "title": "Learn Kubernetes",
@@ -29,7 +29,7 @@
       "contributors": ["Sangam Biradar"],
       "tags": ["Kubernetes", "Workloads", "Networking", "Containers"],
       "image": "/images/kubedaily_logo.webp"
-    }, 
+    },
     {
       "id": "Learn-Helm",
       "title": "Learn Helm",
@@ -38,6 +38,16 @@
       "path": "/labs/Learn-Helm.md",
       "contributors": ["Sangam Biradar"],
       "tags": ["Helm", "Kubernetes", "Charts", "Deployments"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-kubectl",
+      "title": "kubectl essentials for daily operations",
+      "description": "Practice the kubectl commands that matter most for reading cluster state, debugging workloads, and recovering from common failures.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-kubectl.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["kubectl", "Debugging", "CLI", "Kubernetes"],
       "image": "/images/kubedaily_logo.webp"
     }
   ]

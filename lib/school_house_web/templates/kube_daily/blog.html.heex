@@ -1,32 +1,36 @@
-<section class="kube-blog-hero">
-  <div class="mx-auto max-w-screen-2xl px-4 py-14 sm:px-6 lg:px-10 lg:py-16">
-    <div class="kube-blog-hero-copy">
-      <p class="kube-label">The KubeDaily journal</p>
-      <h1>Practical notes for building <span>cloud-native systems.</span></h1>
-      <p>Focused guides for the tools, patterns, and operational decisions that matter when you work with containers and Kubernetes.</p>
-      <div class="kube-blog-topics" aria-label="Blog topics"><span>Kubernetes</span><span>Platform engineering</span><span>Security</span><span>Developer tools</span></div>
+<header class="kube-library-header">
+  <div class="kube-library-container">
+    <p class="kube-label">The KubeDaily journal</p>
+    <h1>Understand more.<br /><span>Build with confidence.</span></h1>
+    <p class="kube-library-intro">Practical explanations of containers, Kubernetes, and the decisions behind reliable systems. Pick a topic, take your time, and keep a useful guide close.</p>
+    <div class="kube-library-links"><a href="#guide-library">Browse <%= length(@posts) %> guides ↓</a><a href="/labs/">Prefer hands-on practice? Explore labs →</a></div>
+  </div>
+</header>
+
+<section id="guide-library" class="kube-library-container kube-library-section" data-content-library>
+  <div class="kube-library-toolbar">
+    <div><p class="kube-label">Read & understand</p><h2>The guide library</h2></div>
+    <div class="kube-library-search" hidden data-library-controls>
+      <label for="guide-search">Find a guide</label>
+      <input id="guide-search" type="search" placeholder="Search titles, topics, or keywords…" data-library-search />
     </div>
   </div>
-</section>
-
-<section class="kube-contribute">
-  <div class="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-10 lg:py-14">
-    <div class="kube-contribute-copy"><p class="kube-label">Contribute a guide</p><h2>Share the field notes that save someone else time.</h2><p>Submit a practical container, Kubernetes, delivery, or platform engineering topic with commands, context, and sources the community can verify.</p></div>
-    <div class="kube-contribute-actions"><a class="kube-contribute-primary" href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer">How to contribute ↗</a><a href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/issues/new/choose" target="_blank" rel="noreferrer">Pitch an article ↗</a></div>
-  </div>
-</section>
-
-<section class="mx-auto max-w-screen-2xl px-4 py-14 sm:px-6 lg:px-10 lg:py-16">
-  <div class="kube-blog-section-heading"><div><p class="kube-label">Browse the library</p><h2>Guides for the work in front of you</h2></div><p><%= length(@posts) %> practical articles spanning the cloud-native stack.</p></div>
+  <p class="kube-library-count" role="status" data-library-count><%= length(@posts) %> guides to explore</p>
   <div class="kube-blog-grid">
     <%= for post <- @posts do %>
-      <article class="kube-blog-card">
+      <article class="kube-blog-card" data-library-card>
         <div class="kube-blog-card-top"><p class="kube-label"><%= post["category"] %></p><time><%= post["date"] %></time></div>
-        <h2><a href={"/blog/#{post["id"]}"}><%= post["title"] %></a></h2>
+        <h3><a href={"/blog/#{post["id"]}/"}><%= post["title"] %></a></h3>
         <p><%= post["excerpt"] %></p>
         <div class="kube-blog-card-tags"><%= for tag <- Enum.take(post["tags"], 3) do %><span><%= tag %></span><% end %></div>
-        <a class="kube-blog-card-link" href={"/blog/#{post["id"]}"}>Read article <span aria-hidden="true">→</span></a>
+        <a class="kube-blog-card-link" href={"/blog/#{post["id"]}/"}>Read guide <span aria-hidden="true">→</span></a>
       </article>
     <% end %>
   </div>
+  <p class="kube-library-empty" hidden data-library-empty>No guides match that search. Try “Docker” or “Kubernetes”, or clear the search to see everything.</p>
+</section>
+
+<section class="kube-library-container kube-library-footer">
+  <div><p class="kube-label">Better together</p><h2>Have a clearer explanation?</h2><p>Fix a confusing paragraph, share a field note, or help a reader take the next step.</p></div>
+  <a href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/CONTRIBUTING.md">Contribute a guide →</a>
 </section>

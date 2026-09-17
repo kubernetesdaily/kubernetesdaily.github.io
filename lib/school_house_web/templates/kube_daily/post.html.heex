@@ -1,6 +1,6 @@
-<section class="kube-article-hero">
-  <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
-    <a class="kube-article-back" href="/blog"><span aria-hidden="true">←</span> Back to the blog</a>
+<section class="kube-article-hero" id="reader-top">
+  <div class="mx-auto max-w-screen-xl px-4 py-9 sm:px-6 lg:px-10 lg:py-16">
+    <a class="kube-article-back" href="/blog/"><span aria-hidden="true">←</span> Back to the blog</a>
     <p class="kube-label"><%= @post["category"] %> · <%= @post["date"] %></p>
     <h1><%= @post["title"] %></h1>
     <p class="kube-dek"><%= @post["excerpt"] %></p>
@@ -13,6 +13,20 @@
     <p class="kube-label">Article details</p>
     <dl><div><dt>Topic</dt><dd><%= @post["category"] %></dd></div><div><dt>Published</dt><dd><%= @post["date"] %></dd></div></dl>
     <div class="kube-article-tags"><%= for tag <- @post["tags"] do %><span><%= tag %></span><% end %></div>
+    <details class="kube-reader-contents" open>
+      <summary>On this page <span><%= length(@outline) %> sections</span></summary>
+      <nav aria-label="On this page">
+        <%= for item <- @outline do %>
+          <a class={if item.level == 3, do: "kube-reader-nested"} href={"##{item.id}"}><%= item.title %></a>
+        <% end %>
+      </nav>
+    </details>
+    <button type="button" class="kube-reading-toggle" data-reading-toggle hidden aria-pressed="false">Reading width: <span>standard</span></button>
+    <a class="kube-contribute-link" href={SchoolHouse.KubeDaily.edit_url(@post)}>Edit this guide on GitHub →</a>
+    <a class="kube-contribute-link" href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/CONTRIBUTING.md">Contribution guide</a>
   </aside>
-  <article class="kube-reading"><div class="kube-markdown"><%= raw(@content) %></div></article>
+  <article class="kube-reading">
+    <div class="kube-markdown"><%= raw(@content) %></div>
+    <footer class="kube-reader-end"><p>Put the ideas into practice.</p><a href="/labs/">Explore hands-on labs →</a><a href="#reader-top">Back to top ↑</a></footer>
+  </article>
 </div>

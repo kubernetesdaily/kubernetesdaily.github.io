@@ -1,5 +1,5 @@
-<header class="kube-lab-reader-header">
-  <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:py-14">
+<header class="kube-lab-reader-header" id="reader-top">
+  <div class="mx-auto max-w-4xl px-4 py-7 sm:px-6 lg:py-12">
     <nav class="kube-lab-breadcrumb" aria-label="Breadcrumb"><a href="/labs/">Labs</a><span aria-hidden="true">/</span><span><%= @lab["category"] %></span></nav>
     <p class="kube-label">Self-paced lab</p>
     <h1><%= @lab["title"] %></h1>
@@ -20,17 +20,23 @@
 
 <article class="kube-lab-reader-shell">
   <aside class="kube-lab-outline" aria-label="Lesson contents">
-    <p class="kube-label">On this page</p>
-    <nav>
-      <%= for item <- Enum.take(@outline, 14) do %>
-        <a class={if item.level == 3, do: "kube-lab-outline-nested"} href={"##{item.id}"}><%= item.title %></a>
-      <% end %>
-    </nav>
+    <details class="kube-reader-contents" open>
+      <summary>On this page <span><%= length(@outline) %> sections</span></summary>
+      <nav aria-label="On this page">
+        <%= for item <- @outline do %>
+          <a class={if item.level == 3, do: "kube-reader-nested"} href={"##{item.id}"}><%= item.title %></a>
+        <% end %>
+      </nav>
+    </details>
+    <button type="button" class="kube-reading-toggle" data-reading-toggle hidden aria-pressed="false">Reading width: <span>standard</span></button>
     <a class="kube-lab-outline-all" href="/labs/">← All labs</a>
+    <a class="kube-contribute-link" href={SchoolHouse.KubeDaily.edit_url(@lab)}>Edit this lab on GitHub →</a>
+    <a class="kube-contribute-link" href="https://github.com/kubernetesdaily/kubernetesdaily.github.io/blob/main/CONTRIBUTING.md">Contribution guide</a>
   </aside>
 
   <div class="kube-lab-reading">
     <div class="kube-lab-reading-note"><strong>Before you start:</strong> Read commands before running them, and avoid using a production cluster for experimentation.</div>
     <div class="kube-markdown"><%= raw(@content) %></div>
+    <footer class="kube-reader-end"><p>Ready for another topic?</p><a href="/labs/">Browse all labs →</a><a href="#reader-top">Back to top ↑</a></footer>
   </div>
 </article>

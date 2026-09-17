@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Kubedaily.Export do
 
   use Mix.Task
 
-  alias SchoolHouse.KubeDaily
+  alias SchoolHouse.PublicPages
   alias SchoolHouseWeb.Endpoint
 
   @shortdoc "Exports KubeDaily as a static site"
@@ -23,6 +23,14 @@ defmodule Mix.Tasks.Kubedaily.Export do
     File.cp_r!(Application.app_dir(:school_house, "priv/static"), output)
     File.cp!(Path.join([output, "kubedaily", "404.html"]), Path.join(output, "404.html"))
 
+    File.rm(Path.join([output, "kubedaily", "rss.xml"]))
+
+    Enum.filter(Path.wildcard(Path.join([output, "kubedaily", "rss-*.xml"])), &File.regular?/1)
+    |> Enum.each(&File.rm!/1)
+
+    Mix.Tasks.Kubedaily.GenRss.write!(Path.join(output, "rss.xml"))
+    File.cp!(Path.join(output, "rss.xml"), Path.join(output, "kubedaily/rss.xml"))
+
     Enum.each(routes(), &write_page(output, &1))
 
     File.write!(Path.join(output, "robots.txt"), robots_txt())
@@ -31,9 +39,7 @@ defmodule Mix.Tasks.Kubedaily.Export do
   end
 
   defp routes do
-    ["/", "/tools", "/docker-images", "/labs", "/roadmap", "/blog", "/about", "/sitemap.xml"] ++
-      Enum.map(KubeDaily.labs(), &"/labs/#{&1["id"]}") ++
-      Enum.map(KubeDaily.posts(), &"/blog/#{&1["id"]}")
+    PublicPages.paths() ++ ["/sitemap.xml"]
   end
 
   defp write_page(output, path) do
