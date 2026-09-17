@@ -25,7 +25,11 @@ defmodule Mix.Tasks.Kubedaily.Export do
 
     File.rm(Path.join([output, "kubedaily", "rss.xml"]))
 
-    Enum.filter(Path.wildcard(Path.join([output, "kubedaily", "rss-*.xml"])), &File.regular?/1)
+    output
+    |> Path.join("kubedaily")
+    |> Path.join("rss-*.xml")
+    |> Path.wildcard()
+    |> Enum.filter(&File.regular?/1)
     |> Enum.each(&File.rm!/1)
 
     Mix.Tasks.Kubedaily.GenRss.write!(Path.join(output, "rss.xml"))

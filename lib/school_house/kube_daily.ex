@@ -287,7 +287,11 @@ defmodule SchoolHouse.KubeDaily do
     {html, _used, outline} =
       Regex.scan(~r/<h([2-3])>(.*?)<\/h\1>/s, html)
       |> Enum.reduce({html, MapSet.new(), []}, fn [full, level, heading_html], {content, used, outline} ->
-        title = heading_html |> String.replace(~r/<[^>]+>/, "") |> String.trim()
+        title =
+          heading_html
+          |> String.replace(~r/<[^>]+>/, "")
+          |> String.trim()
+
         id = unique_heading_id(slugify(title), used)
         replacement = "<h#{level} id=\"#{id}\">#{heading_html}</h#{level}>"
 
