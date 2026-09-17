@@ -65,3 +65,11 @@ Review `git diff`, commit source changes, and open a pull request. Do not commit
 Inherited Hex and npm advisories and the retired Earmark renderer remain a separate tested maintenance task. Do not expose a development server publicly or accept unreviewed Markdown: the current renderer publishes repository-authored HTML, not sanitized arbitrary user input.
 
 The repository already tracks some generated digest/gzip assets. Future source/generated separation will make reviews smaller. Always build/export before serving, rather than serving stale precompressed files from a source checkout.
+
+## Publishing state
+
+Pushed to `origin/improve-discovery-and-learning` as commit `297c386` (working tree clean except `_site`/test artifacts, which are ignored). Open the pull request at:
+
+https://github.com/kubernetesdaily/kubernetesdaily.github.io/pull/new/improve-discovery-and-learning
+
+The tracked `priv/static/kubedaily/.DS_Store` was removed from the index and `.DS_Store` is now ignored. The `gh` CLI is not installed locally, so the pull request itself is one click away at the link above.
