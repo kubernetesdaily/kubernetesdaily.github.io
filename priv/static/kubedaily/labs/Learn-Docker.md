@@ -3436,7 +3436,7 @@ example-voting-app-result-1   example-voting-app-result   "nodemon server.js"   
 example-voting-app-worker-1   example-voting-app-worker   "dotnet Worker.dll"      worker              About an hour ago   Up About an hour             
 ➜  example-voting-app git:(main) 
 
-````
+```
 
 
 #### Pull service images

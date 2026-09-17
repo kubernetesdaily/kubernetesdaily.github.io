@@ -273,7 +273,7 @@ defmodule SchoolHouse.KubeDaily do
       {:ok, markdown} ->
         # The page template owns the H1. Preserve a document title in source,
         # but avoid rendering it a second time in the article body.
-        markdown |> String.replace(~r/\A\s*# [^\n]+\n/, "") |> Earmark.as_html!()
+        markdown |> String.replace(~r/\A\s*# [^\n]+\n/, "") |> SchoolHouse.Markdown.to_html()
 
       {:error, :enoent} ->
         raise File.Error, reason: :enoent, action: "read content", path: path
@@ -285,7 +285,8 @@ defmodule SchoolHouse.KubeDaily do
 
   defp add_heading_ids(html) do
     {html, _used, outline} =
-      Regex.scan(~r/<h([2-3])>(.*?)<\/h\1>/s, html)
+      ~r/<h([2-3])>(.*?)<\/h\1>/s
+      |> Regex.scan(html)
       |> Enum.reduce({html, MapSet.new(), []}, fn [full, level, heading_html], {content, used, outline} ->
         title =
           heading_html

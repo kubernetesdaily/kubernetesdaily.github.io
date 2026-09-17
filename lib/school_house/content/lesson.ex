@@ -117,7 +117,9 @@ defmodule SchoolHouse.Content.Lesson do
   end
 
   defp convert_meta(metadata, class) do
-    Earmark.as_html!("#{metadata} {: .#{class} }")
+    metadata
+    |> SchoolHouse.Markdown.to_html()
+    |> String.replace("<p>", "<p class=\"#{class}\">", global: false)
   end
 
   # Replaces regex matches by calling replacement with the match and current match count

@@ -404,9 +404,7 @@ https://nginx-service-sangam14.cloud.okteto.net/index1.html
 ![](./index1.png)
 
 Github Source code for above demo :
-{{< rawhtml >}}
-<center> <a href="https://github.com/sangam14/Getting-Started-with-Okteto"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/sangam14/Getting-Started-with-Okteto.png" width="460px"></a> </center>
-{{< /rawhtml >}}
+[Example source: Getting Started with Okteto](https://github.com/sangam14/Getting-Started-with-Okteto)
 
 Join [CloudNativeFolks Community](https://discord.gg/rEvr7vq) or Reach out to me on twitter [@sangamtwts](https://twitter.com/sangamtwts)
 

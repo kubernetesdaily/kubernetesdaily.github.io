@@ -359,9 +359,6 @@ service/echo-service created
 
 ## source code 
 
-{{< rawhtml >}}
-<center>
-<a href="https://github.com/sangam14/minikube-certmanager"><img src="https://github-link-card.s3.ap-northeast-1.amazonaws.com/sangam14/minikube-certmanager.png" width="460px"></a> </center>
-{{< /rawhtml >}}
+[Example source: minikube-certmanager](https://github.com/sangam14/minikube-certmanager)
 
 Join [CloudNativeFolks Community](https://discord.gg/rEvr7vq) or Reach out to me on twitter [@sangamtwts](https://twitter.com/sangamtwts)

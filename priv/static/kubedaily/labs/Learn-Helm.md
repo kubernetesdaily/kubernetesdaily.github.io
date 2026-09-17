@@ -82,8 +82,11 @@ NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
+```
 
-### view the chart 
+### view the chart
+
+```text
 (base) ➜  application-1 git:(main) ✗ kubectl get deploy,svc
 NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/my-deployememt   0/1     1            0           49s
@@ -247,8 +250,9 @@ Create the name of the service account to use
 ### chart.yaml
 
 
-its container helm chart versioning 
+This file contains the Helm chart metadata and version.
 
+```yaml
 apiVersion: v2
 name: new-chart
 description: A Helm chart for Kubernetes

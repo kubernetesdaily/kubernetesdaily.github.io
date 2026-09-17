@@ -51,6 +51,21 @@ defmodule SchoolHouse.KubeDailyContentTest do
     end
   end
 
+  test "archive Markdown has balanced code fences" do
+    for {entries, field} <- [{KubeDaily.posts(), "file"}, {KubeDaily.labs(), "path"}] do
+      for entry <- entries do
+        markdown = File.read!(Path.join(catalog_root(), String.trim_leading(entry[field], "/")))
+
+        # Splitting on fence lines yields chunks = fences + 1; an even chunk count
+        # means an unclosed block that would swallow the rest of the document.
+        chunk_count = markdown |> String.split(~r/^\s*`{3,}/m) |> length()
+        assert rem(chunk_count, 2) == 1, "#{entry[field]} has an unbalanced number of code fences"
+      end
+    end
+  end
+
+  defp catalog_root, do: Application.app_dir(:school_house, "priv/static/kubedaily")
+
   test "feed generation is repeatable and uses current catalog URLs" do
     path = Path.join(System.tmp_dir!(), "kubedaily-rss-#{System.unique_integer([:positive])}.xml")
     on_exit(fn -> File.rm(path) end)
