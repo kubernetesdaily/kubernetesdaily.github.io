@@ -5,7 +5,8 @@ defmodule SchoolHouse.PostsTest do
 
   describe "get/1" do
     test "returns a specific post by slug" do
-      assert {:ok, %Post{title: "<p>\nTitle for a post</p>\n"}} = Posts.get("test_blog_post")
+      assert {:ok, %Post{title: title, title_text: "Title for a post"}} = Posts.get("test_blog_post")
+      assert [{"p", _, ["Title for a post"]}] = Floki.parse_fragment!(title)
     end
 
     test "returns error if post not found" do

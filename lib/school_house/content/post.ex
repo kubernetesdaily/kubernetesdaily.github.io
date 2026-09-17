@@ -39,8 +39,8 @@ defmodule SchoolHouse.Content.Post do
     attrs =
       attrs
       |> Map.put(:title_text, title_text)
-      |> Map.put(:title, Earmark.as_html!(title_text))
-      |> Map.put(:excerpt, Earmark.as_html!(excerpt))
+      |> Map.put(:title, SchoolHouse.Markdown.to_html(title_text))
+      |> Map.put(:excerpt, SchoolHouse.Markdown.to_html(excerpt))
 
     struct!(__MODULE__, [body: body, slug: slug] ++ Map.to_list(attrs))
   end
