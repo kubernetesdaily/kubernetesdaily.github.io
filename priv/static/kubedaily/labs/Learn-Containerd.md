@@ -13,7 +13,78 @@ Donation to CNCF (2017): In March 2017, Docker donated containerd to the Cloud N
 
 **Adoption and Usage:** Over the years, containerd has seen significant adoption in the industry. It is used by Kubernetes, as well as cloud providers and Linux distributions for their container operations. This wide adoption is due to its simplicity, robustness, and the strong community support it has garnered.
 
+## Containerd & Kubernetes CRI Architecture Flow
 
+The following diagram illustrates how the Kubernetes `kubelet` talks to `containerd` via the Container Runtime Interface (CRI) over gRPC, and how `containerd` delegates execution to `containerd-shim` and `runc`:
+
+```mermaid
+flowchart TD
+    subgraph KubeletLayer ["☸️ Kubernetes Node Agent"]
+        Kubelet["kubelet (Node Lifecycle Manager)"]
+    end
+
+    subgraph CRILayer ["Container Runtime Interface (CRI)"]
+        GRPC["gRPC Socket: /run/containerd/containerd.sock"]
+        CRI_Plugin["🔌 containerd CRI Plugin"]
+        Kubelet -->|"RuntimeService & ImageService"| GRPC
+        GRPC --> CRI_Plugin
+    end
+
+    subgraph ContainerdCore ["📦 containerd Daemon Core"]
+        CRI_Plugin --> Services
+        
+        subgraph Services ["Core Services"]
+            ImageSvc["🖼️ Images & Content Store<br/>(OCI Blobs, Tarballs)"]
+            SnapSvc["📂 Snapshotter<br/>(overlayfs / devmapper)"]
+            TaskSvc["⚙️ Tasks Service<br/>(Process supervisor)"]
+            MetaSvc["📋 Metadata Store<br/>(BoltDB)"]
+        end
+    end
+
+    subgraph ExecutionLayer ["🏃 Container Execution Boundary"]
+        TaskSvc -->|"spawns"| Shim1["⚡ containerd-shim-runc-v2 (Pod A)"]
+        TaskSvc -->|"spawns"| Shim2["⚡ containerd-shim-runc-v2 (Pod B)"]
+        
+        Shim1 --> Runc1["runc (OCI Runtime)"]
+        Shim2 --> Runc2["runc (OCI Runtime)"]
+        
+        Runc1 -->|"creates & exits"| C1["Container 1<br/>(Namespaces + Cgroups)"]
+        Runc2 -->|"creates & exits"| C2["Container 2<br/>(Namespaces + Cgroups)"]
+        
+        Shim1 -.->|"stays alive, reaps exit codes"| C1
+        Shim2 -.->|"stays alive, reaps exit codes"| C2
+    end
+```
+
+## Tooling Matrix: `crictl` vs `nerdctl` vs `ctr`
+
+```mermaid
+flowchart LR
+    User["👨‍💻 DevOps / Cluster Engineer"]
+
+    subgraph CLIs ["Command Line Interfaces"]
+        CRICTL["🔧 crictl<br/>(Kubernetes CRI Debugger)"]
+        NERDCTL["🚀 nerdctl<br/>(Docker-compatible CLI)"]
+        CTR["⚙️ ctr<br/>(Low-level Developer Tool)"]
+    end
+
+    subgraph ContainerdNS ["containerd Namespaces"]
+        K8sNS["Namespace: k8s.io<br/>(Kubernetes Pods & Images)"]
+        MobyNS["Namespace: moby<br/>(Docker Engine Containers)"]
+        DefaultNS["Namespace: default<br/>(Standard testing)"]
+    end
+
+    User --> CRICTL
+    User --> NERDCTL
+    User --> CTR
+
+    CRICTL -->|"Works only via CRI gRPC"| K8sNS
+    NERDCTL -->|"Full support for Compose, Build"| K8sNS
+    NERDCTL -->|"Can target any namespace"| DefaultNS
+    CTR -->|"Direct containerd API access"| K8sNS
+    CTR --> DefaultNS
+    CTR --> MobyNS
+```
 
 ![](https://containerd.io/img/architecture.png)
 

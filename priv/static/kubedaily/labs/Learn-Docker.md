@@ -27,6 +27,95 @@ That's it! You now have a Docker Hub account and you can start using it to store
 
 # Hello World in Docker
 
+## Docker Architecture Overview
+
+The following diagram illustrates how the Docker Client communicates with the Docker Daemon (`dockerd`), which coordinates image pulling, storage drivers, and runtime execution via `containerd` and `runc`:
+
+```mermaid
+flowchart TD
+    subgraph Client ["💻 Docker Client"]
+        CLI["docker CLI<br/>(run, build, push, pull)"]
+    end
+
+    subgraph Host ["🐧 Docker Host / Daemon"]
+        Daemon["⚙️ Docker Daemon (dockerd)<br/>(Listens on /var/run/docker.sock)"]
+        
+        subgraph CoreSubsystems ["Core Subsystems"]
+            ImageStore["📦 Image Graph Driver<br/>(overlay2)"]
+            NetDriver["🌐 Network Driver<br/>(bridge, host, overlay)"]
+            VolDriver["💾 Volume Driver<br/>(local, nfs)"]
+        end
+
+        subgraph Runtime ["Container Execution Layer"]
+            Containerd["📦 containerd"]
+            Shim["⚡ containerd-shim"]
+            Runc["🏃 runc (OCI Runtime)"]
+        end
+
+        Daemon --> ImageStore
+        Daemon --> NetDriver
+        Daemon --> VolDriver
+        Daemon --> Containerd
+        Containerd --> Shim
+        Shim --> Runc
+    end
+
+    subgraph Containers ["Active Linux Containers"]
+        Runc --> C1["Container: Web<br/>(PID, Mount, Net Namespaces)"]
+        Runc --> C2["Container: DB<br/>(cgroups: CPU/Memory limits)"]
+    end
+
+    subgraph Registry ["☁️ Docker Registry"]
+        Hub["Docker Hub / Quay / ECR"]
+    end
+
+    CLI -->|"REST API"| Daemon
+    Daemon <-->|"Pulls / Pushes"| Hub
+```
+
+## Docker Container Lifecycle State Machine
+
+```mermaid
+stateDiagram-v2
+    [*] --> Created: docker create
+    Created --> Running: docker start
+    [*] --> Running: docker run (create + start)
+
+    Running --> Paused: docker pause (SIGSTOP)
+    Paused --> Running: docker unpause (SIGCONT)
+
+    Running --> Stopped: docker stop (SIGTERM -> SIGKILL)
+    Running --> Stopped: Process Exit 0 / Crash
+
+    Stopped --> Running: docker restart
+    Stopped --> [*]: docker rm
+```
+
+## Image Layering & Copy-on-Write (CoW) Architecture
+
+```mermaid
+flowchart BT
+    subgraph ImageLayers ["Read-Only Image Layers (Shared Across Containers)"]
+        L1["Layer 1: Base Alpine Linux (sha256:1a2b...) - 5MB"]:::layer
+        L2["Layer 2: RUN apk add --no-cache nginx - 15MB"]:::layer
+        L3["Layer 3: COPY index.html /usr/share/nginx/html - 2KB"]:::layer
+    end
+
+    subgraph ContainerA ["Container A (Active)"]
+        RW_A["Top Layer: Read-Write Container Layer<br/>(Modified /var/log/nginx.pid)"]:::rw
+    end
+
+    subgraph ContainerB ["Container B (Active)"]
+        RW_B["Top Layer: Read-Write Container Layer<br/>(Independent modifications)"]:::rw
+    end
+
+    L1 --> L2 --> L3
+    L3 --> RW_A
+    L3 --> RW_B
+
+    classDef layer fill:#0284c7,stroke:#38bdf8,stroke-width:2px,color:#ffffff;
+    classDef rw fill:#10b981,stroke:#34d399,stroke-width:2px,color:#ffffff;
+```
 
 #### run your first hello world example
 
@@ -2158,6 +2247,39 @@ docker-compose stop
 ➜  5-DC-Host-Vol-mount git:(main) ✗ 
 
 ```
+## Docker Storage Architecture: Volumes vs Bind Mounts vs tmpfs
+
+```mermaid
+flowchart TD
+    subgraph ContainerFS ["📦 Running Container Virtual Filesystem"]
+        App["Container Application"]
+        PathA["/var/lib/mysql (Volume)"]
+        PathB["/app/code (Bind Mount)"]
+        PathC["/tmp/cache (tmpfs Mount)"]
+        App --> PathA
+        App --> PathB
+        App --> PathC
+    end
+
+    subgraph HostFS ["🐧 Linux Host Machine"]
+        subgraph DockerManaged ["Docker Managed Area (/var/lib/docker/)"]
+            NamedVol["💾 Named Volume<br/>(/var/lib/docker/volumes/my_data/_data)"]
+        end
+        
+        subgraph HostDir ["User Filesystem"]
+            HostPath["📁 Host Directory<br/>(/home/user/project/data)"]
+        end
+        
+        subgraph HostMemory ["System RAM"]
+            TmpfsMem["⚡ Memory Space (tmpfs)<br/>(Non-persistent, ultra-fast)"]
+        end
+    end
+
+    PathA <-->|"Persistent & Isolated"| NamedVol
+    PathB <-->|"Direct Host Access"| HostPath
+    PathC <-->|"In-Memory Only"| TmpfsMem
+```
+
 ### lets make data persistent even we remove container ? with volumesa nd a host mounded data directory 
 ```sh
 mkdir data 
@@ -3549,7 +3671,35 @@ Connecting to redis
 
 #  Local Network Setup
 
+## Docker Networking Architecture Modes
 
+The following diagram illustrates the four core Docker network drivers:
+
+```mermaid
+flowchart TD
+    subgraph Modes ["🌐 Docker Network Drivers"]
+        subgraph BridgeMode ["1. Bridge Network (Default)"]
+            Bridge["Virtual Bridge: docker0 (172.17.0.1)"]
+            C1["Container 1 (172.17.0.2)<br/>veth1a"] --- Bridge
+            C2["Container 2 (172.17.0.3)<br/>veth2a"] --- Bridge
+            Bridge -->|"iptables MASQUERADE"| ExtNet["Host eth0 / Internet"]
+        end
+
+        subgraph HostMode ["2. Host Network (--network=host)"]
+            CHost["Container shares Host Network Namespace<br/>Listens directly on Host IP (no port forwarding)"] --- ExtNet
+        end
+
+        subgraph NoneMode ["3. None Network (--network=none)"]
+            CNone["Isolated Loopback Only (127.0.0.1)<br/>No external connectivity"]
+        end
+
+        subgraph OverlayMode ["4. Overlay Network (Swarm / Multi-Host)"]
+            VXLAN["Encapsulated VXLAN Tunnel (UDP 4789)"]
+            C_Node1["Container on Host A"] --- VXLAN
+            C_Node2["Container on Host B"] --- VXLAN
+        end
+    end
+```
 
 #### Docker network create command syntax
 

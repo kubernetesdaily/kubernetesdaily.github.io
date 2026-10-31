@@ -10,6 +10,9 @@
 /deps
 /doc
 /.fetch
+/.hex/
+/.mix/
+/.npm-cache/
 erl_crash.dump
 *.ez
 *.beam

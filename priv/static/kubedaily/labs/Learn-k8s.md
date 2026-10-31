@@ -4220,3 +4220,473 @@ ingress.networking.k8s.io/example-ingress configured
 http://hello-world.info/
 http://hello-world.info/v2
 ```
+
+---
+
+# Complete Kubernetes Certification Masterclass: CKA, CKAD & CKS Blueprints
+
+The following comprehensive visual architectures, workflows, and diagrams cover the essential concepts and troubleshooting procedures for the **CKA (Certified Kubernetes Administrator)**, **CKAD (Certified Kubernetes Application Developer)**, and **CKS (Certified Kubernetes Security Specialist)** exams.
+
+All diagrams below are rendered into interactive, theme-aware SVGs with source code toggling via **Pele**.
+
+---
+
+## 1. CKA (Certified Kubernetes Administrator) Core Architectures
+
+### 1.1 Control Plane Internals & Component Interconnects
+
+The Kubernetes control plane coordinates state and reconciles workloads across worker nodes:
+
+```mermaid
+flowchart TD
+    subgraph ControlPlane ["☸️ Kubernetes Control Plane (Master Node)"]
+        APIServer["⚡ kube-apiserver<br/>(HTTPS 6443, REST API)"]
+        ETCD["💾 etcd datastore<br/>(Ports 2379/2380, Raft consensus)"]
+        Sched["📅 kube-scheduler<br/>(Node placement filter & score)"]
+        CM["🔄 kube-controller-manager<br/>(Node, Deploy, EndpointSlice loops)"]
+        CCM["☁️ cloud-controller-manager<br/>(Cloud route, loadbalancer)"]
+
+        APIServer <-->|"Read / Write State"| ETCD
+        Sched <-->|"Watches unscheduled pods"| APIServer
+        CM <-->|"Reconciles actual vs desired"| APIServer
+        CCM <-->|"Syncs cloud provider"| APIServer
+    end
+
+    subgraph Worker1 ["🐧 Worker Node 1"]
+        Kubelet1["⚙️ kubelet<br/>(CRI, Pod lifecycle, probes)"]
+        Proxy1["🌐 kube-proxy<br/>(iptables / ipvs rules)"]
+        Runtime1["📦 containerd / runc"]
+        PodA["Pod: Web Frontend<br/>(IP: 10.244.1.10)"]
+
+        Kubelet1 --> Runtime1 --> PodA
+        Proxy1 -.->|"Routes traffic"| PodA
+    end
+
+    subgraph Worker2 ["🐧 Worker Node 2"]
+        Kubelet2["⚙️ kubelet"]
+        Proxy2["🌐 kube-proxy"]
+        Runtime2["📦 containerd / runc"]
+        PodB["Pod: API Backend<br/>(IP: 10.244.2.15)"]
+
+        Kubelet2 --> Runtime2 --> PodB
+        Proxy2 -.->|"Routes traffic"| PodB
+    end
+
+    APIServer <-->|"Kubelet API (10250)"| Kubelet1
+    APIServer <-->|"Kubelet API (10250)"| Kubelet2
+    Proxy1 <-->|"Watches Services & Endpoints"| APIServer
+    Proxy2 <-->|"Watches Services & Endpoints"| APIServer
+```
+
+### 1.2 etcd Backup & Disaster Recovery Workflow
+
+In the CKA exam, taking an etcd snapshot and restoring it with a modified data directory is a guaranteed required skill:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Admin as 👨‍💻 Cluster Administrator
+    participant APIServer as kube-apiserver
+    participant ETCD as etcd cluster
+    participant FS as Local Filesystem
+
+    Admin->>ETCD: 1. etcdctl snapshot save /opt/snapshot-pre-boot.db
+    ETCD-->>FS: Snapshot saved with TLS certs (ca, cert, key)
+    Note over Admin,FS: 2. Disaster strikes! (Accidental deletion of namespace)
+    Admin->>APIServer: Stop kube-apiserver (move manifest out of /etc/kubernetes/manifests)
+    Admin->>ETCD: 3. etcdctl snapshot restore /opt/snapshot-pre-boot.db --data-dir=/var/lib/etcd-restored
+    ETCD-->>FS: Writes database files to new directory
+    Admin->>FS: 4. Update etcd.yaml volume hostPath to /var/lib/etcd-restored
+    Admin->>APIServer: 5. Move kube-apiserver.yaml back to /etc/kubernetes/manifests
+    APIServer->>ETCD: Connects to restored data-dir
+    Admin->>APIServer: kubectl get all (Cluster restored!)
+```
+
+### 1.3 Kubeadm Cluster Upgrade & Node Drain Procedure
+
+Safely upgrading a Kubernetes cluster one node at a time without dropping production workloads:
+
+```mermaid
+flowchart TD
+    Start(["Start Cluster Upgrade (e.g. v1.29 -> v1.30)"]):::start
+    
+    subgraph CP_Upgrade ["Step 1: Control Plane Upgrade"]
+        A1["apt update && apt-cache madison kubeadm"]
+        A2["apt-mark unhold kubeadm && apt install -y kubeadm=1.30.0-1.1 && apt-mark hold kubeadm"]
+        A3["sudo kubeadm upgrade plan"]
+        A4["sudo kubeadm upgrade apply v1.30.0"]
+        A5["kubectl drain controlplane --ignore-daemonsets"]
+        A6["apt-mark unhold kubelet kubectl && apt install -y kubelet=1.30.0-1.1 kubectl=1.30.0-1.1"]
+        A7["sudo systemctl daemon-reload && sudo systemctl restart kubelet"]
+        A8["kubectl uncordon controlplane"]
+        A1 --> A2 --> A3 --> A4 --> A5 --> A6 --> A7 --> A8
+    end
+
+    subgraph Worker_Upgrade ["Step 2: Worker Node Upgrades (Repeat per Node)"]
+        W1["kubectl drain worker-01 --ignore-daemonsets --delete-emptydir-data"]
+        W2["ssh worker-01"]
+        W3["apt-mark unhold kubeadm && apt install -y kubeadm=1.30.0-1.1 && apt-mark hold kubeadm"]
+        W4["sudo kubeadm upgrade node"]
+        W5["apt-mark unhold kubelet kubectl && apt install -y kubelet=1.30.0-1.1 kubectl=1.30.0-1.1"]
+        W6["sudo systemctl daemon-reload && sudo systemctl restart kubelet"]
+        W7["exit (back to control plane)"]
+        W8["kubectl uncordon worker-01"]
+        W1 --> W2 --> W3 --> W4 --> W5 --> W6 --> W7 --> W8
+    end
+
+    Start --> CP_Upgrade --> Worker_Upgrade --> Done(["Cluster Upgrade Complete"]):::done
+
+    classDef start fill:#0284c7,stroke:#38bdf8,stroke-width:2px,color:#ffffff;
+    classDef done fill:#10b981,stroke:#34d399,stroke-width:2px,color:#ffffff;
+```
+
+### 1.4 Persistent Storage Binding Lifecycle (SC -> PV -> PVC -> Pod)
+
+How dynamic volume provisioning binds infrastructure disks to container mount paths:
+
+```mermaid
+flowchart LR
+    subgraph StorageInfra ["Storage Infrastructure"]
+        SC["🏭 StorageClass<br/>(ebs.csi.aws.com / standard)"]
+        PV["💾 PersistentVolume<br/>(10Gi, ReadWriteOnce, Retain)"]
+        SC -->|"Dynamic Provisioner creates"| PV
+    end
+
+    subgraph UserSpace ["Developer Namespace"]
+        PVC["🎫 PersistentVolumeClaim<br/>(Requests 10Gi, RWO)"]
+        Pod["📦 Pod: database-pod<br/>(volumeMounts: /var/lib/mysql)"]
+        PVC -->|"Bound 1:1"| PV
+        Pod -->|"spec.volumes.pvc"| PVC
+    end
+```
+
+### 1.5 CKA Troubleshooting Diagnostic Flowchart
+
+A systematic troubleshooting tree for diagnosing cluster failures:
+
+```mermaid
+flowchart TD
+    Issue(["Pod or Service Not Working"]):::start --> CheckPod["kubectl get pods -n <ns> -o wide"]
+    
+    CheckPod -->|Status: Pending| PendingFlow{"Check Events & Scheduler"}
+    PendingFlow -->|"Insufficient CPU/Memory"| FixResources["Adjust Pod requests or scale node pool"]
+    PendingFlow -->|"Node Taints / Tolerations"| FixTaints["Add toleration to Pod or untaint node"]
+    PendingFlow -->|"PVC Unbound"| FixStorage["Check StorageClass, PV capacity, accessModes"]
+
+    CheckPod -->|Status: CrashLoopBackOff| CrashFlow{"Inspect Logs"}
+    CrashFlow -->|"Check recent stdout"| RunLogs["kubectl logs <pod> --previous"]
+    CrashFlow -->|"Check exit code & OOM"| RunDescribe["kubectl describe pod <pod> (Look for Exit Code 137 = OOMKilled)"]
+
+    CheckPod -->|Status: ImagePullBackOff| ImageFlow{"Image Resolution"}
+    ImageFlow -->|"Check spelling & tag"| FixImage["Verify image name in registry"]
+    ImageFlow -->|"Private Registry 401 Unauthorized"| FixSecret["Add imagePullSecrets to Pod or ServiceAccount"]
+
+    CheckPod -->|Status: Running but no traffic| NetFlow{"Networking Check"}
+    NetFlow -->|"Check Service Selector"| FixSelector["Verify service selector matches pod labels"]
+    NetFlow -->|"Check Endpoints"| FixEndpoints["kubectl get endpoints <svc> (Must not be <none>)"]
+    NetFlow -->|"Check NetworkPolicy"| FixNetPol["Verify NetworkPolicy allows ingress from source"]
+
+    classDef start fill:#f59e0b,stroke:#fbbf24,stroke-width:2px,color:#ffffff;
+```
+
+---
+
+## 2. CKAD (Certified Kubernetes Application Developer) Core Blueprints
+
+### 2.1 Multi-Container Pod Design Patterns
+
+The three canonical multi-container patterns tested in CKAD:
+
+```mermaid
+flowchart TD
+    subgraph Pattern1 ["1. Sidecar Pattern (Enhance / Log Shippers)"]
+        Main1["App Container: Web Server"] -->|"Writes logs"| EmptyDir1[("emptyDir Volume: /logs")]
+        Sidecar1["Sidecar Container: FluentBit"] -->|"Ships logs to Elasticsearch"| EmptyDir1
+    end
+
+    subgraph Pattern2 ["2. Ambassador Pattern (Network Proxy)"]
+        Main2["App Container: Backend Service"] -->|"Talks to localhost:6379"| Ambassador["Ambassador: Redis Sentinel Proxy"]
+        Ambassador -->|"Routes to live master node"| RedisMaster["Remote Redis Master Node"]
+    end
+
+    subgraph Pattern3 ["3. Adapter Pattern (Standardize Output)"]
+        Main3["App Container: Legacy App (Custom metrics format)"] -->|"Writes custom format"| Adapter["Adapter Container: Prometheus Exporter"]
+        Adapter -->|"Exposes standard /metrics"| Prometheus["Prometheus Scraper"]
+    end
+```
+
+### 2.2 Pod Lifecycle & Probes Decision Matrix
+
+Understanding how Startup, Readiness, and Liveness probes protect container lifecycles:
+
+```mermaid
+stateDiagram-v2
+    [*] --> ContainerCreated: Kubelet pulls image & creates container
+
+    state StartupPhase {
+        ContainerCreated --> StartupProbeCheck: Exec / HTTP / TCP probe
+        StartupProbeCheck --> StartupFailed: Exceeds failureThreshold
+        StartupFailed --> ContainerKilled: Restarts container
+        StartupProbeCheck --> StartupSuccess: Returns exit 0 / HTTP 200
+    }
+
+    state OperationalPhase {
+        StartupSuccess --> LivenessCheck: Evaluates periodic livenessProbe
+        LivenessCheck --> LivenessFailed: Unresponsive (e.g. deadlock)
+        LivenessFailed --> ContainerKilled: Restarts container
+
+        StartupSuccess --> ReadinessCheck: Evaluates periodic readinessProbe
+        ReadinessCheck --> NotReady: Heavy load / warmup in progress
+        NotReady --> RemovedFromEndpoints: Pod IP removed from Service Endpoints
+        ReadinessCheck --> Ready: Ready to accept customer traffic
+        Ready --> AddedToEndpoints: Pod IP active in Service Endpoints
+    }
+```
+
+### 2.3 Deployment Rollout & Canary Release Strategies
+
+Visualizing how `RollingUpdate` parameters (`maxSurge` and `maxUnavailable`) protect availability:
+
+```mermaid
+flowchart TD
+    subgraph RollingUpdateStrategy ["Rolling Update (Default)"]
+        OldRS["Old ReplicaSet: v1<br/>Replicas: 3 -> 2 -> 1 -> 0"]
+        NewRS["New ReplicaSet: v2<br/>Replicas: 0 -> 1 -> 2 -> 3"]
+        OldRS -.->|"Gradual transition (Zero Downtime)"| NewRS
+    end
+
+    subgraph RecreateStrategy ["Recreate Strategy"]
+        DropAll["All v1 Pods terminated simultaneously<br/>(Downtime incurred)"] --> SpawnNew["All v2 Pods booted together"]
+    end
+
+    subgraph CanaryStrategy ["Canary Deployment"]
+        ProdService["Service: app-service (Selector: app=checkout)"]
+        StablePods["Stable Deployment (v1.0)<br/>Replicas: 9 (90% of traffic)"]
+        CanaryPods["Canary Deployment (v2.0)<br/>Replicas: 1 (10% of traffic)"]
+        ProdService --> StablePods
+        ProdService --> CanaryPods
+    end
+```
+
+### 2.4 Configuration Management: ConfigMap & Secret Injection
+
+```mermaid
+flowchart LR
+    subgraph ConfigSources ["Configuration Sources"]
+        CM["📋 ConfigMap: app-env<br/>(APP_COLOR: blue, DB_PORT: 5432)"]
+        SEC["🔒 Secret: app-auth<br/>(API_KEY: base64, TLS_CERT)"]
+    end
+
+    subgraph InjectionModes ["Pod Injection Modes"]
+        EnvVar["1. Individual Env Var<br/>valueFrom.configMapKeyRef"]
+        EnvFrom["2. All Keys as Env<br/>envFrom.secretRef"]
+        VolMount["3. Volume Mount Files<br/>mountPath: /etc/secrets (Read-Only)"]
+    end
+
+    subgraph TargetContainer ["Running Container"]
+        Process["Application Process"]
+    end
+
+    CM --> EnvVar --> Process
+    SEC --> EnvFrom --> Process
+    SEC --> VolMount --> Process
+```
+
+### 2.5 Resource Management: Requests vs Limits & QoS Classes
+
+How Kubernetes evaluates Quality of Service (QoS) and manages CPU throttling vs Memory eviction:
+
+```mermaid
+flowchart TD
+    subgraph RequestsVsLimits ["CPU & Memory Allocation"]
+        Req["Resource REQUESTS<br/>(Guaranteed minimum for scheduling)"]
+        Lim["Resource LIMITS<br/>(Maximum ceiling before throttling/kill)"]
+    end
+
+    subgraph Enforcement ["Linux Kernel Enforcement"]
+        CPU_Lim["CPU Exceeded > Limit"] -->|"CPU CFS Throttling<br/>(Slows down execution, does NOT kill)"| Throttled["Process Throttled"]
+        Mem_Lim["Memory Exceeded > Limit"] -->|"Kernel OOM Killer<br/>(Immediate SIGKILL Exit 137)"| OOMKilled["Container OOMKilled"]
+    end
+
+    subgraph QoS_Hierarchy ["Quality of Service (QoS) Hierarchy"]
+        Guaranteed["1. Guaranteed QoS<br/>requests == limits (both CPU & Mem)"]
+        Burstable["2. Burstable QoS<br/>requests < limits"]
+        BestEffort["3. BestEffort QoS<br/>No requests or limits specified (First to be evicted)"]
+    end
+```
+
+---
+
+## 3. CKS (Certified Kubernetes Security Specialist) Deep Dive
+
+### 3.1 Defense-in-Depth Cluster Hardening Pipeline
+
+A complete end-to-end security pipeline for securing the Kubernetes API, workloads, and runtime:
+
+```mermaid
+flowchart TD
+    Request["Incoming API Request"] --> TLS["1. TLS 1.3 Encryption<br/>(Client & Server Certs)"]
+    TLS --> AuthN["2. Authentication (AuthN)<br/>(x509, Webhook, OIDC, ServiceAccount Token)"]
+    AuthN --> AuthZ["3. Authorization (AuthZ)<br/>(RBAC, NodeRestriction, Webhook)"]
+    AuthZ --> Admission["4. Admission Controllers<br/>(Mutating -> Validating -> ImagePolicyWebhook)"]
+    Admission --> Audit["5. Audit Log Processing<br/>(Metadata, Request, Response logged to file)"]
+    Audit --> ETCD["6. etcd Datastore<br/>(Encrypted at Rest with EncryptionConfiguration)"]
+```
+
+### 3.2 RBAC (Role-Based Access Control) Matrix
+
+How Subjects bind to Roles within Namespaces or across the entire Cluster:
+
+```mermaid
+flowchart LR
+    subgraph Subjects ["Subjects (Who)"]
+        User["👤 Human User / Group"]
+        SA["🤖 ServiceAccount: deployer-sa"]
+    end
+
+    subgraph Bindings ["Bindings (Connectors)"]
+        RB["🔗 RoleBinding (Namespaced)"]
+        CRB["🌐 ClusterRoleBinding (Cluster-wide)"]
+    end
+
+    subgraph Permissions ["Rules & Verbs (What)"]
+        Role["📜 Role (Namespace: production)<br/>resources: pods, deployments<br/>verbs: get, list, create"]
+        CRole["🌍 ClusterRole (Cluster-wide)<br/>resources: nodes, pv, namespaces<br/>verbs: get, list, watch"]
+    end
+
+    User --> CRB --> CRole
+    SA --> RB --> Role
+    SA --> CRB --> CRole
+```
+
+### 3.3 NetworkPolicy Microsegmentation & Packet Inspection
+
+Enforcing least-privilege network isolation between tiers:
+
+```mermaid
+flowchart TD
+    subgraph Policy ["NetworkPolicy: db-microsegmentation"]
+        Selector["podSelector: role=database"]
+    end
+
+    subgraph AllowedIngress ["Authorized Ingress Sources"]
+        Frontend["Frontend Pods<br/>(matches podSelector: role=frontend)"]
+        Backup["Backup Pods<br/>(namespaceSelector: name=ops)"]
+    end
+
+    subgraph BlockedTraffic ["Unauthorized Ingress"]
+        Attacker["Compromised Pod<br/>(role: external)"]
+    end
+
+    subgraph Target ["Protected Database Tier"]
+        DB["Database Pod (Port 5432)"]
+    end
+
+    Frontend -->|"ALLOW TCP:5432"| DB
+    Backup -->|"ALLOW TCP:5432"| DB
+    Attacker -.->|"BLOCKED & DROPPED by iptables"| DB
+    Policy -.->|"Guards"| DB
+```
+
+### 3.4 Pod Security Standards (PSS) & SecurityContext Guardrails
+
+Hardening workloads against container escapes and kernel privileges:
+
+```mermaid
+flowchart TD
+    subgraph Levels ["Pod Security Standards (PSS) Enforcement"]
+        Priv["1. Privileged<br/>Unrestricted, host access permitted"]
+        Base["2. Baseline<br/>Minimally restrictive, prevents known privilege escalations"]
+        Restr["3. Restricted<br/>Hardened, enforces securityContext best practices"]
+    end
+
+    subgraph SecurityContextFields ["Essential Restricted securityContext Fields"]
+        F1["runAsNonRoot: true<br/>(Must not run as UID 0)"]
+        F2["readOnlyRootFilesystem: true<br/>(Root filesystem is read-only)"]
+        F3["allowPrivilegeEscalation: false<br/>(Prevents setuid binaries)"]
+        F4["capabilities: drop: ['ALL']<br/>(Drops all Linux capabilities)"]
+        F5["seccompProfile: type: RuntimeDefault<br/>(Filters restricted system calls)"]
+    end
+
+    Restr --> F1
+    Restr --> F2
+    Restr --> F3
+    Restr --> F4
+    Restr --> F5
+```
+
+### 3.5 Runtime Threat Detection: Falco & Kernel System Call Auditing
+
+How runtime security tools monitor Linux kernel calls (`sys_enter` / `sys_exit`) inside containers:
+
+```mermaid
+flowchart TD
+    subgraph UserSpaceProcess ["Containerized Workload"]
+        App["Web Application"]
+        Shell["Malicious Spawn: /bin/bash"]
+        ReadShadow["Read /etc/shadow"]
+    end
+
+    subgraph LinuxKernel ["🐧 Linux Kernel"]
+        SyscallHook["eBPF / Kernel Module Probe<br/>(Intercepts clone, execve, open)"]
+    end
+
+    subgraph FalcoEngine ["🦅 Falco Security Engine"]
+        Rules["Falco Rules Engine<br/>- Rule: Terminal shell in container<br/>- Rule: Read sensitive file"]
+        Alert["Alert Output<br/>(Slack, SIEM, Syslog, Webhook)"]
+    end
+
+    App --> LinuxKernel
+    Shell -->|"execve system call"| SyscallHook
+    ReadShadow -->|"open system call"| SyscallHook
+    SyscallHook -->|"Kernel ring buffer"| Rules
+    Rules -->|"Matches threat signature"| Alert
+```
+
+---
+
+## 4. Master Certification Cheat Sheet & Essential Commands
+
+```bash
+# ==========================================
+# CKA: Cluster Maintenance & Backup
+# ==========================================
+# etcd snapshot save & restore
+ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt   --cert=/etc/kubernetes/pki/etcd/server.crt   --key=/etc/kubernetes/pki/etcd/server.key   snapshot save /opt/etcd-backup.db
+
+ETCDCTL_API=3 etcdctl snapshot restore /opt/etcd-backup.db   --data-dir=/var/lib/etcd-restored
+
+# Safe node maintenance
+kubectl cordon <node-name>
+kubectl drain <node-name> --ignore-daemonsets --delete-emptydir-data
+kubectl uncordon <node-name>
+
+# ==========================================
+# CKAD: Fast Resource Generation
+# ==========================================
+# Generate Pod manifest template
+kubectl run nginx-pod --image=nginx:alpine --dry-run=client -o yaml > pod.yaml
+
+# Generate Deployment template
+kubectl create deployment web-deploy --image=nginx:alpine --replicas=3 --dry-run=client -o yaml > deploy.yaml
+
+# Expose Deployment via ClusterIP service
+kubectl expose deployment web-deploy --port=80 --target-port=8080 --dry-run=client -o yaml > svc.yaml
+
+# Perform rolling restart
+kubectl rollout restart deployment/web-deploy
+kubectl rollout status deployment/web-deploy
+kubectl rollout undo deployment/web-deploy
+
+# ==========================================
+# CKS: Security Auditing & RBAC Check
+# ==========================================
+# Dry-run authorization test
+kubectl auth can-i create deployments --as=system:serviceaccount:default:app-sa -n default
+
+# Scan container image for CVEs
+trivy image --severity HIGH,CRITICAL nginx:alpine
+
+# Verify kube-bench CIS benchmark compliance
+kube-bench run --targets master,node
+```

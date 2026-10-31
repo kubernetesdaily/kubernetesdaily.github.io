@@ -2,23 +2,33 @@
   "blogs": [
     {
       "id": "kubernetes-architecture-guide",
-      "title": "Kubernetes architecture: beginner’s guide",
+      "title": "Kubernetes architecture: beginner\u2019s guide",
       "date": "September 18, 2026",
       "excerpt": "Trace a Deployment from the API server to a running container, and diagnose failures by the component responsible for each stage.",
       "author": "KubeDaily",
       "file": "/blog/kubernetes-architecture-guide.md",
       "category": "Kubernetes",
-      "tags": ["kubernetes", "architecture", "controllers", "scheduling"]
+      "tags": [
+        "kubernetes",
+        "architecture",
+        "controllers",
+        "scheduling"
+      ]
     },
     {
       "id": "statefulsets-guide",
-      "title": "StatefulSets: beginner’s guide",
+      "title": "StatefulSets: beginner\u2019s guide",
       "date": "September 18, 2026",
       "excerpt": "Understand stable identities and per-replica storage, then test persistence across Pod replacement without confusing it with backups or replication.",
       "author": "KubeDaily",
       "file": "/blog/statefulsets-guide.md",
       "category": "Kubernetes",
-      "tags": ["kubernetes", "statefulsets", "storage", "persistence"]
+      "tags": [
+        "kubernetes",
+        "statefulsets",
+        "storage",
+        "persistence"
+      ]
     },
     {
       "id": "networkpolicy-security-guide",
@@ -28,7 +38,12 @@
       "author": "KubeDaily",
       "file": "/blog/networkpolicy-security-guide.md",
       "category": "Security",
-      "tags": ["kubernetes", "networkpolicy", "networking", "security"]
+      "tags": [
+        "kubernetes",
+        "networkpolicy",
+        "networking",
+        "security"
+      ]
     },
     {
       "id": "helm-production-checklist",
@@ -38,7 +53,12 @@
       "author": "KubeDaily",
       "file": "/blog/helm-production-checklist.md",
       "category": "CI/CD",
-      "tags": ["helm", "kubernetes", "releases", "checklist"]
+      "tags": [
+        "helm",
+        "kubernetes",
+        "releases",
+        "checklist"
+      ]
     },
     {
       "id": "image-signing-security-guide",
@@ -48,7 +68,12 @@
       "author": "KubeDaily",
       "file": "/blog/image-signing-security-guide.md",
       "category": "Security",
-      "tags": ["cosign", "sigstore", "supply chain", "signatures"]
+      "tags": [
+        "cosign",
+        "sigstore",
+        "supply chain",
+        "signatures"
+      ]
     },
     {
       "id": "pods-deployments-checklist",
@@ -58,7 +83,12 @@
       "author": "KubeDaily",
       "file": "/blog/pods-deployments-checklist.md",
       "category": "Kubernetes",
-      "tags": ["kubernetes", "deployments", "reliability", "checklist"]
+      "tags": [
+        "kubernetes",
+        "deployments",
+        "reliability",
+        "checklist"
+      ]
     },
     {
       "id": "image-scanning-security-guide",
@@ -68,7 +98,12 @@
       "author": "KubeDaily",
       "file": "/blog/image-scanning-security-guide.md",
       "category": "Security",
-      "tags": ["security", "trivy", "supply chain", "vulnerabilities"]
+      "tags": [
+        "security",
+        "trivy",
+        "supply chain",
+        "vulnerabilities"
+      ]
     },
     {
       "id": "github-actions-containers-guide",
@@ -78,7 +113,12 @@
       "author": "KubeDaily",
       "file": "/blog/github-actions-containers-guide.md",
       "category": "CI/CD",
-      "tags": ["github actions", "ci/cd", "containers", "automation"]
+      "tags": [
+        "github actions",
+        "ci/cd",
+        "containers",
+        "automation"
+      ]
     },
     {
       "id": "docker-image-build-guide",
@@ -88,7 +128,12 @@
       "author": "KubeDaily",
       "file": "/blog/docker-image-build-guide.md",
       "category": "Containers",
-      "tags": ["docker", "images", "multi-stage builds", "containers"]
+      "tags": [
+        "docker",
+        "images",
+        "multi-stage builds",
+        "containers"
+      ]
     },
     {
       "id": "kubernetes-requests-limits",
@@ -98,17 +143,29 @@
       "author": "Sangam Biradar",
       "file": "/blog/kubernetes-requests-limits.md",
       "category": "Kubernetes",
-      "tags": ["kubernetes", "resource management", "scheduling", "OOMKilled", "capacity planning"]
+      "tags": [
+        "kubernetes",
+        "resource management",
+        "scheduling",
+        "OOMKilled",
+        "capacity planning"
+      ]
     },
     {
       "id": "kubernetes-probes-guide",
       "title": "Kubernetes Health Checks: Liveness, Readiness, and Startup Probes",
       "date": "September 17, 2026",
-      "excerpt": "Design liveness, readiness, and startup probes that route traffic correctly and restart only what is stuck — with a review checklist for avoiding restart storms.",
+      "excerpt": "Design liveness, readiness, and startup probes that route traffic correctly and restart only what is stuck \u2014 with a review checklist for avoiding restart storms.",
       "author": "Sangam Biradar",
       "file": "/blog/kubernetes-probes-guide.md",
       "category": "Kubernetes",
-      "tags": ["kubernetes", "health checks", "liveness", "readiness", "reliability"]
+      "tags": [
+        "kubernetes",
+        "health checks",
+        "liveness",
+        "readiness",
+        "reliability"
+      ]
     },
     {
       "id": "werf",
@@ -118,7 +175,13 @@
       "author": "Sangam Biradar",
       "file": "/blog/werf.md",
       "category": "CI/CD",
-      "tags": ["kubernetes", "gitops", "CI/CD", "DevOps", "containers"]
+      "tags": [
+        "kubernetes",
+        "gitops",
+        "CI/CD",
+        "DevOps",
+        "containers"
+      ]
     },
     {
       "id": "Okteto",
@@ -128,7 +191,13 @@
       "author": "Sangam Biradar",
       "file": "/blog/Okteto.md",
       "category": "Kubernetes",
-      "tags": ["kubernetes", "development", "cloud native", "containers", "docker-compose"]
+      "tags": [
+        "kubernetes",
+        "development",
+        "cloud native",
+        "containers",
+        "docker-compose"
+      ]
     },
     {
       "id": "k8sgpt",
@@ -138,7 +207,13 @@
       "author": "Sangam Biradar",
       "file": "/blog/k8sgpt.md",
       "category": "Kubernetes",
-      "tags": ["kubernetes", "ChatGPT", "AI", "SRE", "troubleshooting"]
+      "tags": [
+        "kubernetes",
+        "ChatGPT",
+        "AI",
+        "SRE",
+        "troubleshooting"
+      ]
     },
     {
       "id": "kubernetes-tools-guide",
@@ -148,7 +223,12 @@
       "author": "Sangam Biradar",
       "file": "/blog/kubernetes-tools-guide.md",
       "category": "Tools",
-      "tags": ["kubernetes", "devops", "tools", "cloud native"]
+      "tags": [
+        "kubernetes",
+        "devops",
+        "tools",
+        "cloud native"
+      ]
     },
     {
       "id": "cloud-native-learning-path",
@@ -158,7 +238,13 @@
       "author": "Sangam Biradar",
       "file": "/blog/cloud-native-learning-path.md",
       "category": "Kubernetes",
-      "tags": ["cloud-native", "kubernetes", "learning", "beginners", "CNCF"]
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "learning",
+        "beginners",
+        "CNCF"
+      ]
     },
     {
       "id": "kubectl-productivity-tips",
@@ -168,7 +254,12 @@
       "author": "Sangam Biradar",
       "file": "/blog/kubectl-productivity-tips.md",
       "category": "Tips",
-      "tags": ["kubernetes", "kubectl", "productivity", "tips"]
+      "tags": [
+        "kubernetes",
+        "kubectl",
+        "productivity",
+        "tips"
+      ]
     },
     {
       "id": "Flannel",
@@ -178,7 +269,13 @@
       "author": "Sangam Biradar",
       "file": "/blog/Flannel.md",
       "category": "Networking",
-      "tags": ["kubernetes", "networking", "containers", "CNI", "overlay network"]
+      "tags": [
+        "kubernetes",
+        "networking",
+        "containers",
+        "CNI",
+        "overlay network"
+      ]
     },
     {
       "id": "cloudflared-tunnel",
@@ -188,7 +285,13 @@
       "author": "Sangam Biradar",
       "file": "/blog/cloudflared-tunnel.md",
       "category": "Networking",
-      "tags": ["kubernetes", "cloudflare", "tunnels", "security", "networking"]
+      "tags": [
+        "kubernetes",
+        "cloudflare",
+        "tunnels",
+        "security",
+        "networking"
+      ]
     },
     {
       "id": "CertManager",
@@ -198,7 +301,13 @@
       "author": "Sangam Biradar",
       "file": "/blog/CertManager.md",
       "category": "Security",
-      "tags": ["kubernetes", "certificates", "TLS", "security", "automation"]
+      "tags": [
+        "kubernetes",
+        "certificates",
+        "TLS",
+        "security",
+        "automation"
+      ]
     },
     {
       "id": "arkade",
@@ -208,7 +317,574 @@
       "author": "Sangam Biradar",
       "file": "/blog/arkade.md",
       "category": "Tools",
-      "tags": ["kubernetes", "tools", "marketplace", "cli", "installation"]
+      "tags": [
+        "kubernetes",
+        "tools",
+        "marketplace",
+        "cli",
+        "installation"
+      ]
+    },
+    {
+      "id": "trivy-security-guide",
+      "title": "Trivy: Comprehensive Vulnerability, Secret & SBOM Security Scanner",
+      "date": "October 31, 2026",
+      "excerpt": "Scan container images, file systems, Git repos, and live Kubernetes clusters for vulnerabilities, hardcoded secrets, misconfigurations, and generate CycloneDX/SPDX SBOMs.",
+      "author": "Sangam Biradar",
+      "file": "/blog/trivy-security-guide.md",
+      "category": "Security Tools",
+      "tags": [
+        "Trivy",
+        "Security",
+        "Vulnerabilities",
+        "SBOM",
+        "Containers",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "kyverno-policy-engine",
+      "title": "Kyverno: Kubernetes Native Policy Engine & Admission Controller",
+      "date": "October 31, 2026",
+      "excerpt": "Enforce security guardrails using pure Kubernetes YAML: validate container settings, mutate resource requests, generate default network policies, and verify image signatures.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kyverno-policy-engine.md",
+      "category": "Security Tools",
+      "tags": [
+        "Kyverno",
+        "Policy",
+        "AdmissionControl",
+        "Security",
+        "Governance",
+        "YAML"
+      ]
+    },
+    {
+      "id": "falco-runtime-security",
+      "title": "Falco: Cloud-Native eBPF Runtime Security & Threat Detection",
+      "date": "October 31, 2026",
+      "excerpt": "Detect suspicious behaviors and anomalous system calls at the Linux kernel boundary in real time: terminal shells, privilege escalation, and unauthorized host file reads.",
+      "author": "Sangam Biradar",
+      "file": "/blog/falco-runtime-security.md",
+      "category": "Security Tools",
+      "tags": [
+        "Falco",
+        "eBPF",
+        "RuntimeSecurity",
+        "ThreatDetection",
+        "Kernel",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "kube-bench-cis-security",
+      "title": "kube-bench: Automated CIS Kubernetes Benchmark Auditing",
+      "date": "October 31, 2026",
+      "excerpt": "Audit Kubernetes control planes, etcd, and worker nodes against official CIS Security Benchmarks with automated checks and actionable remediation guidance.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kube-bench-cis-security.md",
+      "category": "Security Tools",
+      "tags": [
+        "kube-bench",
+        "CIS",
+        "Hardening",
+        "Security",
+        "Compliance",
+        "Audit"
+      ]
+    },
+    {
+      "id": "kubescape-compliance-guide",
+      "title": "Kubescape: NSA-CISA Compliance & Kubernetes Risk Analysis",
+      "date": "October 31, 2026",
+      "excerpt": "Evaluate cluster posture against NSA-CISA, MITRE ATT&CK, and CIS frameworks, visualize complex RBAC attack paths, and filter reachable CVEs using VEX.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kubescape-compliance-guide.md",
+      "category": "Security Tools",
+      "tags": [
+        "Kubescape",
+        "NSA-CISA",
+        "Compliance",
+        "RBAC",
+        "Security",
+        "VEX"
+      ]
+    },
+    {
+      "id": "vllm-kubernetes-serving",
+      "title": "vLLM: High-Throughput LLM Inference on Kubernetes with PagedAttention",
+      "date": "October 31, 2026",
+      "excerpt": "Serve large language models in production with near-zero memory waste using PagedAttention, continuous batching, and multi-GPU tensor parallelism.",
+      "author": "Sangam Biradar",
+      "file": "/blog/vllm-kubernetes-serving.md",
+      "category": "Artificial Intelligence",
+      "tags": [
+        "vLLM",
+        "AI",
+        "LLM",
+        "GPU",
+        "PagedAttention",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "ollama-kubernetes-deployment",
+      "title": "Ollama: Running Open-Source LLMs on Kubernetes with GPU Passthrough",
+      "date": "October 31, 2026",
+      "excerpt": "Run local, private open-source language models like Llama 3 and Mistral in Kubernetes with GPU acceleration and an OpenAI-compatible REST API.",
+      "author": "Sangam Biradar",
+      "file": "/blog/ollama-kubernetes-deployment.md",
+      "category": "Artificial Intelligence",
+      "tags": [
+        "Ollama",
+        "AI",
+        "LLM",
+        "LocalAI",
+        "GPU",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "kubectl-ai-assistant",
+      "title": "kubectl-ai: AI-Powered Kubernetes Administration CLI Plugin",
+      "date": "October 31, 2026",
+      "excerpt": "Translate natural language requests into valid kubectl commands, generate complex manifests on the fly, and safely preview diffs with interactive approval.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kubectl-ai-assistant.md",
+      "category": "Artificial Intelligence",
+      "tags": [
+        "kubectl-ai",
+        "AI",
+        "CLI",
+        "Productivity",
+        "DevOps",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "holmesgpt-alert-investigation",
+      "title": "HolmesGPT: Autonomous SRE Alert Investigator for Prometheus",
+      "date": "October 31, 2026",
+      "excerpt": "Automate 3 AM incident triage: HolmesGPT autonomously correlates Prometheus alerts, cluster logs, and pod events to deliver instant root-cause summaries to Slack.",
+      "author": "Sangam Biradar",
+      "file": "/blog/holmesgpt-alert-investigation.md",
+      "category": "Artificial Intelligence",
+      "tags": [
+        "HolmesGPT",
+        "AI",
+        "SRE",
+        "Prometheus",
+        "Alertmanager",
+        "Automation"
+      ]
+    },
+    {
+      "id": "argocd-gitops-guide",
+      "title": "Argo CD: Declarative GitOps Continuous Delivery & Sync Wave Automation",
+      "date": "October 31, 2026",
+      "excerpt": "Master GitOps continuous delivery: manage applications, automate out-of-band drift self-healing, sequence complex rollouts with sync waves, and scale across clusters.",
+      "author": "Sangam Biradar",
+      "file": "/blog/argocd-gitops-guide.md",
+      "category": "CI/CD Tools",
+      "tags": [
+        "ArgoCD",
+        "GitOps",
+        "CICD",
+        "ApplicationSet",
+        "Automation",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "fluxcd-gitops-engine",
+      "title": "Flux CD: Modular GitOps Toolkit, Helm Releases & Image Automation",
+      "date": "October 31, 2026",
+      "excerpt": "Build composable GitOps pipelines with the GitOps Toolkit: reconcile Kustomize overlays, manage declarative HelmReleases, decrypt SOPS secrets, and auto-commit image tags.",
+      "author": "Sangam Biradar",
+      "file": "/blog/fluxcd-gitops-engine.md",
+      "category": "CI/CD Tools",
+      "tags": [
+        "FluxCD",
+        "GitOps",
+        "HelmRelease",
+        "SOPS",
+        "CICD",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "tekton-pipelines-guide",
+      "title": "Tekton: Cloud-Native Serverless CI/CD Pipelines for Kubernetes",
+      "date": "October 31, 2026",
+      "excerpt": "Build and test containers natively inside Kubernetes: define reusable Tasks and Pipelines, build rootless images with Kaniko, and auto-scale build runners to zero.",
+      "author": "Sangam Biradar",
+      "file": "/blog/tekton-pipelines-guide.md",
+      "category": "CI/CD Tools",
+      "tags": [
+        "Tekton",
+        "CICD",
+        "Pipelines",
+        "Serverless",
+        "Kaniko",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "prometheus-operator-guide",
+      "title": "Prometheus Operator: Cloud-Native Monitoring, ServiceMonitors & Alertmanager",
+      "date": "October 31, 2026",
+      "excerpt": "Automate cluster monitoring using Kubernetes Custom Resources: dynamically configure scrape targets with ServiceMonitors, write PromQL rules, and manage Alertmanager.",
+      "author": "Sangam Biradar",
+      "file": "/blog/prometheus-operator-guide.md",
+      "category": "Monitoring & Observability",
+      "tags": [
+        "Prometheus",
+        "Monitoring",
+        "ServiceMonitor",
+        "Alertmanager",
+        "PromQL",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "opentelemetry-kubernetes",
+      "title": "OpenTelemetry on Kubernetes: Distributed Traces, Metrics & Auto-Instrumentation",
+      "date": "October 31, 2026",
+      "excerpt": "Unify observability with vendor-neutral OpenTelemetry: deploy the OTel Collector DaemonSet, enrich spans with pod metadata, and inject auto-instrumentation agents.",
+      "author": "Sangam Biradar",
+      "file": "/blog/opentelemetry-kubernetes.md",
+      "category": "Monitoring & Observability",
+      "tags": [
+        "OpenTelemetry",
+        "OTel",
+        "Tracing",
+        "Metrics",
+        "Collector",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "pixie-ebpf-observability",
+      "title": "Pixie: Zero-Instrumentation eBPF Application Observability & Live SQL Tracing",
+      "date": "October 31, 2026",
+      "excerpt": "Gain instant application observability without touching code: intercept HTTP/gRPC/SQL payloads, trace CPU flamegraphs, and query live cluster performance via PxL.",
+      "author": "Sangam Biradar",
+      "file": "/blog/pixie-ebpf-observability.md",
+      "category": "Monitoring & Observability",
+      "tags": [
+        "Pixie",
+        "eBPF",
+        "Observability",
+        "Tracing",
+        "Flamegraphs",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "grafana-kubernetes-dashboards",
+      "title": "Grafana for Kubernetes: Dashboards-as-Code & Golden Signals",
+      "date": "October 31, 2026",
+      "excerpt": "Visualize cluster health through Google Golden Signals: load Dashboards-as-Code from ConfigMaps, monitor memory saturation and CPU throttling, and correlate logs with traces.",
+      "author": "Sangam Biradar",
+      "file": "/blog/grafana-kubernetes-dashboards.md",
+      "category": "Monitoring & Observability",
+      "tags": [
+        "Grafana",
+        "Dashboards",
+        "PromQL",
+        "Observability",
+        "Loki",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "cilium-ebpf-networking",
+      "title": "Cilium: Next-Gen eBPF CNI, Kube-Proxy Replacement & Hubble",
+      "date": "October 31, 2026",
+      "excerpt": "Replace iptables with high-performance eBPF: achieve O(1) packet routing, enforce granular L7 HTTP/DNS policies, enable WireGuard encryption, and observe traffic with Hubble.",
+      "author": "Sangam Biradar",
+      "file": "/blog/cilium-ebpf-networking.md",
+      "category": "Network & Service Mesh",
+      "tags": [
+        "Cilium",
+        "eBPF",
+        "CNI",
+        "Hubble",
+        "Networking",
+        "Security"
+      ]
+    },
+    {
+      "id": "istio-service-mesh-deep-dive",
+      "title": "Istio Service Mesh: Strict mTLS, Traffic Shifting & Circuit Breaking",
+      "date": "October 31, 2026",
+      "excerpt": "Connect, secure, and observe microservices with Istio: enforce strict zero-trust mutual TLS, implement weighted Canary traffic splitting, and protect systems with circuit breaking.",
+      "author": "Sangam Biradar",
+      "file": "/blog/istio-service-mesh-deep-dive.md",
+      "category": "Network & Service Mesh",
+      "tags": [
+        "Istio",
+        "ServiceMesh",
+        "mTLS",
+        "Envoy",
+        "TrafficManagement",
+        "Security"
+      ]
+    },
+    {
+      "id": "coredns-kubernetes-deep-dive",
+      "title": "CoreDNS: Architecture, Plugin Pipelines & ndots Optimization",
+      "date": "October 31, 2026",
+      "excerpt": "Master Kubernetes service discovery: customize the Corefile plugin pipeline, eliminate ndots:5 latency overhead, deploy NodeLocal DNSCache, and tune caching for high throughput.",
+      "author": "Sangam Biradar",
+      "file": "/blog/coredns-kubernetes-deep-dive.md",
+      "category": "Networking",
+      "tags": [
+        "CoreDNS",
+        "DNS",
+        "ServiceDiscovery",
+        "Networking",
+        "Performance",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "traefik-kubernetes-ingress",
+      "title": "Traefik: Cloud-Native Ingress Controller, Middlewares & Gateway API",
+      "date": "October 31, 2026",
+      "excerpt": "Route external traffic with zero-reload dynamic configuration: compose modular auth and rate limiting middlewares, auto-provision TLS certificates, and leverage the Gateway API.",
+      "author": "Sangam Biradar",
+      "file": "/blog/traefik-kubernetes-ingress.md",
+      "category": "Networking",
+      "tags": [
+        "Traefik",
+        "Ingress",
+        "GatewayAPI",
+        "LoadBalancing",
+        "ReverseProxy",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "karpenter-node-autoscaling",
+      "title": "Karpenter: High-Speed Just-in-Time Node Autoscaling on Kubernetes",
+      "date": "October 31, 2026",
+      "excerpt": "Ditch rigid Auto Scaling Groups: Karpenter evaluates un-schedulable pods directly, launches right-sized cloud instances in under 45 seconds, and consolidates waste automatically.",
+      "author": "Sangam Biradar",
+      "file": "/blog/karpenter-node-autoscaling.md",
+      "category": "Auto Scaling",
+      "tags": [
+        "Karpenter",
+        "Autoscaling",
+        "FinOps",
+        "AWS",
+        "EC2",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "keda-event-driven-autoscaling",
+      "title": "KEDA: Event-Driven Autoscaling & Scale-to-Zero for Kubernetes",
+      "date": "October 31, 2026",
+      "excerpt": "Scale workloads beyond CPU metrics: trigger auto-scaling from Kafka lag, RabbitMQ, SQS, and PostgreSQL queries, and eliminate idle compute costs with true scale-to-zero.",
+      "author": "Sangam Biradar",
+      "file": "/blog/keda-event-driven-autoscaling.md",
+      "category": "Auto Scaling",
+      "tags": [
+        "KEDA",
+        "Autoscaling",
+        "EventDriven",
+        "Kafka",
+        "Serverless",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "opencost-kubernetes-costs",
+      "title": "OpenCost: Real-Time Kubernetes Cost Allocation & FinOps Monitoring",
+      "date": "October 31, 2026",
+      "excerpt": "Pinpoint cloud spend down to the pod and namespace: allocate CPU, RAM, and GPU costs in real time, identify idle capacity waste, and automate FinOps showback reporting.",
+      "author": "Sangam Biradar",
+      "file": "/blog/opencost-kubernetes-costs.md",
+      "category": "Cost Optimization",
+      "tags": [
+        "OpenCost",
+        "Kubecost",
+        "FinOps",
+        "CostOptimization",
+        "CloudSpend",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "longhorn-distributed-storage",
+      "title": "Longhorn: Cloud-Native Distributed Block Storage for Kubernetes",
+      "date": "October 31, 2026",
+      "excerpt": "Turn local node NVMe/SSDs into resilient, replicated block storage: configure synchronous cross-node replication, execute live volume expansion, and schedule incremental S3 backups.",
+      "author": "Sangam Biradar",
+      "file": "/blog/longhorn-distributed-storage.md",
+      "category": "Storage",
+      "tags": [
+        "Longhorn",
+        "Storage",
+        "CSI",
+        "PersistentVolumes",
+        "DisasterRecovery",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "rook-ceph-kubernetes",
+      "title": "Rook-Ceph: Enterprise Block, File & Object Storage Orchestration",
+      "date": "October 31, 2026",
+      "excerpt": "Orchestrate enterprise Ceph storage natively in Kubernetes: provision high-IOPS Block storage (RBD), shared multi-attach filesystems (CephFS), and S3 object stores (RGW).",
+      "author": "Sangam Biradar",
+      "file": "/blog/rook-ceph-kubernetes.md",
+      "category": "Storage",
+      "tags": [
+        "Rook",
+        "Ceph",
+        "Storage",
+        "CephFS",
+        "BlockStorage",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "velero-backup-dr-guide",
+      "title": "Velero: Enterprise Kubernetes Backup, CSI Snapshots & Disaster Recovery",
+      "date": "October 31, 2026",
+      "excerpt": "Master cluster disaster recovery: back up Kubernetes manifests, capture point-in-time CSI volume snapshots to S3, and restore full namespaces seamlessly across clusters.",
+      "author": "Sangam Biradar",
+      "file": "/blog/velero-backup-dr-guide.md",
+      "category": "Backup Tools",
+      "tags": [
+        "Velero",
+        "Backup",
+        "DisasterRecovery",
+        "CSI",
+        "Storage",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "k9s-cli-terminal-ui",
+      "title": "K9s: Terminal UI for Navigating and Operating Kubernetes Clusters",
+      "date": "October 31, 2026",
+      "excerpt": "Supercharge your daily Kubernetes workflow: navigate resources with keyboard shortcuts, view decoded secrets instantly, stream logs, and customize workflows with plugins.",
+      "author": "Sangam Biradar",
+      "file": "/blog/k9s-cli-terminal-ui.md",
+      "category": "Cluster Management",
+      "tags": [
+        "K9s",
+        "CLI",
+        "TerminalUI",
+        "Productivity",
+        "DevOps",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "kind-local-kubernetes-clusters",
+      "title": "Kind: Running Multi-Node Kubernetes Clusters Locally in Docker",
+      "date": "October 31, 2026",
+      "excerpt": "Spin up lightweight multi-node and HA control plane clusters on your laptop in seconds: sideload local images, map ingress host ports, and automate CI test pipelines.",
+      "author": "Sangam Biradar",
+      "file": "/blog/kind-local-kubernetes-clusters.md",
+      "category": "Cluster Management",
+      "tags": [
+        "Kind",
+        "Docker",
+        "LocalK8s",
+        "Testing",
+        "CI",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "stern-multi-pod-log-tailing",
+      "title": "Stern: Multi-Pod and Multi-Container Log Streaming with Regex",
+      "date": "October 31, 2026",
+      "excerpt": "Triage distributed issues effortlessly: tail multiple pods simultaneously using regular expressions, stream logs from newly scaled replicas, and filter out sidecar noise.",
+      "author": "Sangam Biradar",
+      "file": "/blog/stern-multi-pod-log-tailing.md",
+      "category": "Debugging & Troubleshooting",
+      "tags": [
+        "Stern",
+        "Logs",
+        "Debugging",
+        "CLI",
+        "Troubleshooting",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "inspektor-gadget-ebpf-debug",
+      "title": "Inspektor Gadget: eBPF Debugging & Kernel Tracing Toolkit for Kubernetes",
+      "date": "October 31, 2026",
+      "excerpt": "Debug elusive production failures from the Kubernetes API: trace executed processes, pinpoint TCP drops, monitor filesystem access, and auto-generate NetworkPolicies using eBPF.",
+      "author": "Sangam Biradar",
+      "file": "/blog/inspektor-gadget-ebpf-debug.md",
+      "category": "Debugging & Troubleshooting",
+      "tags": [
+        "InspektorGadget",
+        "eBPF",
+        "Debugging",
+        "Kernel",
+        "Networking",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "skaffold-kubernetes-development",
+      "title": "Skaffold: Fast Inner-Loop Kubernetes Development & Hot File Sync",
+      "date": "October 31, 2026",
+      "excerpt": "Accelerate your inner-loop development: automatically sync code edits directly into running containers in under 2 seconds, automate port-forwarding, and stream logs.",
+      "author": "Sangam Biradar",
+      "file": "/blog/skaffold-kubernetes-development.md",
+      "category": "Development Tools",
+      "tags": [
+        "Skaffold",
+        "Development",
+        "InnerLoop",
+        "Kustomize",
+        "Docker",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "tilt-dev-environment-as-code",
+      "title": "Tilt: Multi-Service Kubernetes Development Environments as Code",
+      "date": "October 31, 2026",
+      "excerpt": "Tame multi-service microservice development: define live-updating build pipelines in Python Tiltfiles, monitor health via an interactive web dashboard, and hot-reload containers.",
+      "author": "Sangam Biradar",
+      "file": "/blog/tilt-dev-environment-as-code.md",
+      "category": "Development Tools",
+      "tags": [
+        "Tilt",
+        "Development",
+        "Microservices",
+        "LiveUpdate",
+        "Python",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "crossplane-platform-engineering",
+      "title": "Crossplane: Building Internal Developer Cloud Platforms on Kubernetes",
+      "date": "October 31, 2026",
+      "excerpt": "Replace external Terraform ticket queues: compose custom infrastructure APIs using CompositeResourceDefinitions, provision cloud databases in YAML, and self-heal drift 24/7.",
+      "author": "Sangam Biradar",
+      "file": "/blog/crossplane-platform-engineering.md",
+      "category": "Platform Engineering",
+      "tags": [
+        "Crossplane",
+        "PlatformEngineering",
+        "ControlPlanes",
+        "GitOps",
+        "AWS",
+        "Kubernetes"
+      ]
     }
   ]
 }

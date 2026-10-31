@@ -21,6 +21,26 @@
       "image": "/images/kubedaily_logo.webp"
     },
     {
+      "id": "Learn-Linux-Containers",
+      "title": "Linux Containers from Scratch: Namespaces, Cgroups v2 & Rootless",
+      "description": "Build containers using pure Linux kernel primitives: PID, Mount, Net, User namespaces via unshare, cgroups v2 resource limits, and rootless sandboxing.",
+      "category": "Containers",
+      "path": "/labs/Learn-Linux-Containers.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Linux", "Containers", "Namespaces", "Cgroups", "Rootless", "runc"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-Supply-Chain-Security",
+      "title": "Software Supply Chain Security: Distroless, SBOMs & Cosign Signing",
+      "description": "Secure the software supply chain: BuildKit secret mounts, distroless minimal base images, generating SBOMs with Syft, and image signing with Cosign.",
+      "category": "Containers",
+      "path": "/labs/Learn-Supply-Chain-Security.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["SupplyChain", "Cosign", "Sigstore", "SBOM", "Distroless", "Security"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
       "id": "Learn-k8s",
       "title": "Learn Kubernetes",
       "description": "Explore Kubernetes architecture and the concepts you need to deploy and operate containerized applications.",
@@ -41,13 +61,183 @@
       "image": "/images/kubedaily_logo.webp"
     },
     {
+      "id": "Learn-Kustomize",
+      "title": "Kustomize Master Lab: Bases, Overlays & GitOps Patching",
+      "description": "Master template-free configuration management with Kustomize: base manifests, environment overlays (dev, prod), patches, and ConfigMap hash rollouts.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-Kustomize.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Kustomize", "GitOps", "Overlays", "Deployments", "Kubernetes"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
       "id": "Learn-kubectl",
-      "title": "kubectl essentials for daily operations",
-      "description": "Practice the kubectl commands that matter most for reading cluster state, debugging workloads, and recovering from common failures.",
+      "title": "kubectl Essentials & Production Operations",
+      "description": "Master high-pressure incident response, advanced JSONPath queries, ephemeral container debugging, and cluster recovery.",
       "category": "Kubernetes",
       "path": "/labs/Learn-kubectl.md",
       "contributors": ["Sangam Biradar"],
-      "tags": ["kubectl", "Debugging", "CLI", "Kubernetes"],
+      "tags": ["kubectl", "Debugging", "CLI", "Kubernetes", "Troubleshooting"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-CKA-Hands-On",
+      "title": "CKA Master Lab: Cluster Administration, Upgrades & Troubleshooting",
+      "description": "Master practical CKA skills: kubeadm upgrades, etcd disaster recovery, TLS bootstrapping, Gateway API, and secure RBAC onboarding.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-CKA-Hands-On.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["CKA", "Kubernetes", "kubeadm", "etcd", "Troubleshooting", "Cluster-Ops"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-CKAD-Workloads",
+      "title": "CKAD Master Lab: Advanced Workloads, Traffic & Observability",
+      "description": "Practical CKAD hands-on lab covering multi-container design patterns (sidecar, init, adapter), advanced probes, traffic splitting, CronJobs, ConfigMaps, and resource quotas.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-CKAD-Workloads.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["CKAD", "Kubernetes", "Deployments", "Probes", "Multi-Container", "Jobs"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-CKS-Security",
+      "title": "CKS Master Lab: Cluster Hardening & Runtime Security",
+      "description": "Implement production-grade security: API audit logging, kubelet hardening, Pod Security Standards, AppArmor, gVisor, secret encryption at rest, and Falco runtime detection.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-CKS-Security.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["CKS", "Security", "NetworkPolicy", "Falco", "Trivy", "Hardening"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-Policy-As-Code",
+      "title": "Policy as Code Master Lab: Kyverno & OPA Gatekeeper",
+      "description": "Implement declarative Kubernetes admission governance: validate, mutate, and generate policies with Kyverno, and author Rego constraints with OPA Gatekeeper.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-Policy-As-Code.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Kyverno", "OPA", "Gatekeeper", "PolicyAsCode", "Security", "Compliance"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-K8s-Networking",
+      "title": "Kubernetes Networking Deep Dive: Services, Ingress & DNS",
+      "description": "Demystify Kubernetes networking: Pod-to-Pod CNI routing, ClusterIP iptables/IPVS translation, NodePort, Ingress TLS termination, and CoreDNS resolution.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-K8s-Networking.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Networking", "Services", "Ingress", "CoreDNS", "CNI", "Kubernetes"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-Service-Mesh-Istio",
+      "title": "Service Mesh Master Lab: Istio Traffic Management & mTLS Security",
+      "description": "Master microservice networking with Istio: control plane architecture (istiod), Envoy sidecar injection, strict mutual TLS (PeerAuthentication), advanced traffic routing with VirtualService and DestinationRule, fault injection, and circuit breaking.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-Service-Mesh-Istio.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Istio", "ServiceMesh", "Envoy", "mTLS", "Networking", "Security"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-K8s-Storage",
+      "title": "Kubernetes Storage Deep Dive: PV, PVC, CSI & StatefulSets",
+      "description": "Master persistent storage: Container Storage Interface (CSI), dynamic volume provisioning, StorageClasses, PVC binding lifecycles, and StatefulSets.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-K8s-Storage.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Storage", "PersistentVolumes", "CSI", "StatefulSets", "StorageClass"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-K8s-Observability",
+      "title": "Kubernetes Observability Deep Dive: Prometheus, Grafana, OpenTelemetry & Logging",
+      "description": "Implement end-to-end cloud-native observability: Prometheus Operator, ServiceMonitors, PromQL mastery, OpenTelemetry traces, and structured Loki logging.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-K8s-Observability.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Observability", "Prometheus", "Grafana", "OpenTelemetry", "Logging", "Loki"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-GitOps-ArgoCD",
+      "title": "GitOps Master Lab: Continuous Delivery with Argo CD & Helm",
+      "description": "Implement declarative, zero-drift GitOps: Argo CD architecture, Application and ApplicationSet CRDs, automated sync policies, self-healing, and progressive canary rollouts with Argo Rollouts.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-GitOps-ArgoCD.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["GitOps", "ArgoCD", "Kubernetes", "Helm", "CI-CD", "ArgoRollouts"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-CICD-Pipelines",
+      "title": "Cloud-Native CI/CD Pipelines: GitHub Actions, OIDC & Automated Delivery",
+      "description": "Build production-grade container CI/CD pipelines with GitHub Actions: OIDC keyless cloud authentication, BuildKit multi-arch builds, Trivy CVE security gating, and GitOps triggers.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-CICD-Pipelines.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["CICD", "GitHubActions", "GitOps", "BuildKit", "OIDC", "Security"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-K8s-Autoscaling",
+      "title": "Kubernetes Autoscaling Master Lab: HPA, VPA, KEDA & Karpenter",
+      "description": "Implement end-to-end multi-dimensional autoscaling: Horizontal Pod Autoscaler (HPA v2) with custom metrics, Vertical Pod Autoscaler (VPA), event-driven autoscaling with KEDA, and sub-minute node provisioning with Karpenter.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-K8s-Autoscaling.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Autoscaling", "HPA", "VPA", "KEDA", "Karpenter", "CostOptimization"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-K8s-Troubleshooting",
+      "title": "Kubernetes Production Incident Response & Troubleshooting Playbook",
+      "description": "Real-world war-room triage: diagnosing validating webhook deadlocks, CoreDNS query blackouts, etcd split-brain latency, node eviction cascades, and zombie container recovery.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-K8s-Troubleshooting.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Troubleshooting", "IncidentResponse", "Debugging", "CoreDNS", "etcd", "Webhooks"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-Operator-Pattern",
+      "title": "Kubernetes Operator Pattern & Custom Resource Definitions (CRDs)",
+      "description": "Build cloud-native automation with the Operator pattern: Custom Resource Definitions (CRDs), controller reconciliation loops, controller-runtime, and automating Day-2 database operations.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-Operator-Pattern.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Operators", "CRD", "ControllerRuntime", "Go", "Automation", "Kubebuilder"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-Kube-rs-CRD",
+      "title": "Building Kubernetes Operators in Rust: kube-rs & Custom Resources",
+      "description": "Master building memory-safe, high-performance Kubernetes operators and CRDs using Rust and kube-rs: CustomResource derive macros, async reconciliation loops, finalizers, and event watchers.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-Kube-rs-CRD.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Rust", "kube-rs", "Operators", "CRD", "Controllers", "Kubernetes"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-Local-Kubernetes",
+      "title": "Local Kubernetes Clusters: Multi-Node Kind, K3s & Fast Dev Loops",
+      "description": "Run multi-node Kubernetes clusters locally: configuring Kind with multi-node control planes, port forward mappings, lightweight K3s, and rapid development loops with Skaffold.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-Local-Kubernetes.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["LocalK8s", "Kind", "K3s", "Development", "Skaffold", "Docker"],
+      "image": "/images/kubedaily_logo.webp"
+    },
+    {
+      "id": "Learn-K8s-Velero",
+      "title": "Kubernetes Disaster Recovery & Backup with Velero",
+      "description": "Implement enterprise disaster recovery and migration with Velero: backing up Kubernetes resources, capturing CSI persistent volume snapshots, scheduling automated backups, and restoring namespaces.",
+      "category": "Kubernetes",
+      "path": "/labs/Learn-K8s-Velero.md",
+      "contributors": ["Sangam Biradar"],
+      "tags": ["Velero", "Backup", "DisasterRecovery", "CSI", "Storage", "Migration"],
       "image": "/images/kubedaily_logo.webp"
     }
   ]

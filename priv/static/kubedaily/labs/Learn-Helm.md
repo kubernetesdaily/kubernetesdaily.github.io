@@ -2,9 +2,47 @@
 
 # Basics of Helm
 
+## Helm 3 Architecture & Workflow
 
-git clone 
+The following diagram illustrates Helm 3's client-only architecture, showing how Helm renders templates locally and communicates directly with the Kubernetes API Server without requiring an in-cluster agent (no Tiller):
 
+```mermaid
+flowchart TD
+    subgraph LocalMachine ["💻 Developer Workstation / CI/CD"]
+        CLI["⚓ Helm 3 CLI"]
+        ChartPkg["📦 Chart (Templates + Helpers)"]
+        Values["📋 Values (values.yaml / --set)"]
+        Engine["⚙️ Go Template Engine"]
+        CLI --> ChartPkg
+        CLI --> Values
+        ChartPkg --> Engine
+        Values --> Engine
+    end
+
+    subgraph K8sCluster ["☸️ Kubernetes Cluster"]
+        APIServer["⚡ kube-apiserver"]
+        
+        subgraph Storage ["Release State Storage"]
+            Secret["🔒 Secret: sh.helm.release.v1.my-app.v1"]
+        end
+
+        subgraph DeployedWorkloads ["Deployed Resources"]
+            Deploy["🚀 Deployment"]
+            Svc["⚖️ Service"]
+            Ing["🔀 Ingress"]
+            HPA["📈 HPA"]
+        end
+
+        APIServer --> Secret
+        APIServer --> Deploy
+        APIServer --> Svc
+        APIServer --> Ing
+        APIServer --> HPA
+    end
+
+    Engine -->|"1. Rendered YAML Manifests"| APIServer
+    CLI -->|"2. Stores release metadata"| Secret
+```
 
 ### Install Helm 3
 
@@ -29,6 +67,45 @@ Creating application-1
 ```
 
 ### Structure of the chart 
+
+The diagram below details the structure of a Helm chart and how data flows through the rendering pipeline:
+
+```mermaid
+flowchart TD
+    subgraph ChartPackage ["📦 Helm Chart Directory"]
+        ChartMeta["📄 Chart.yaml<br/>(Name, Version, AppVersion)"]
+        Values["📋 values.yaml<br/>(Default configurations)"]
+        
+        subgraph TemplatesDir ["📁 templates/"]
+            Helpers["📄 _helpers.tpl<br/>(Reusable template definitions)"]
+            DeployTpl["📄 deployment.yaml"]
+            SvcTpl["📄 service.yaml"]
+            NotesTpl["📄 NOTES.txt"]
+        end
+        
+        Subcharts["📁 charts/<br/>(Subchart dependencies)"]
+    end
+
+    subgraph Pipeline ["⚙️ Template Rendering Pipeline"]
+        Engine["Go Template Engine"]
+        UserValues["Override Values (--values / --set)"]
+    end
+
+    subgraph Manifests ["🚀 Rendered Kubernetes Manifests"]
+        DeployYaml["Deployment YAML"]
+        SvcYaml["Service YAML"]
+    end
+
+    ChartMeta --> Engine
+    Values --> Engine
+    UserValues --> Engine
+    Helpers --> Engine
+    DeployTpl --> Engine
+    SvcTpl --> Engine
+
+    Engine --> DeployYaml
+    Engine --> SvcYaml
+```
 
 ```
 (base) ➜  application-1 git:(main) ✗ tree
@@ -72,6 +149,26 @@ create ngnix deployment with 3 replicas and use nodeport to expose ports
 
 
 ### how to deploy the chart 
+
+The following state machine diagram illustrates the lifecycle of a Helm release, including installs, upgrades, rollbacks, and revisions:
+
+```mermaid
+stateDiagram-v2
+    [*] --> PendingInstall: helm install
+    PendingInstall --> Deployed_v1: Templates verified & resources created
+    PendingInstall --> Failed: Validation / timeout error
+
+    Deployed_v1 --> PendingUpgrade: helm upgrade (Revision 2)
+    PendingUpgrade --> Deployed_v2: New resources rolled out
+    PendingUpgrade --> Failed: Upgrade failed
+
+    Failed --> Deployed_v1: helm rollback 1
+    Deployed_v2 --> Deployed_v1: helm rollback 1 (Reverts to rev 1 config)
+
+    Deployed_v1 --> Uninstalled: helm uninstall
+    Deployed_v2 --> Uninstalled: helm uninstall
+    Uninstalled --> [*]
+```
 
 ```
 (base) ➜  application-1 git:(main) ✗ helm install chart-1 .

@@ -713,7 +713,7 @@ html { scroll-padding-top: 160px; }
 .kube-home-copy > p { @apply mt-6 max-w-2xl text-lg leading-relaxed text-brand-gray-300 sm:text-xl; }
 .kube-home-copy .kube-kicker { @apply text-brand-purple-100; }
 .kube-home-copy .kube-button-outline { @apply border-brand-gray-500 bg-transparent text-white hover:bg-white hover:text-heavy; }
-.kube-home-proof { @apply mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-brand-gray-700 pt-5; }
+.kube-home-proof { @apply mt-10 grid max-w-2xl grid-cols-2 gap-4 border-t border-brand-gray-700 pt-5 sm:grid-cols-4; }
 .kube-home-proof div { @apply flex flex-col; }
 .kube-home-proof strong { @apply text-2xl font-extrabold text-white; }
 .kube-home-proof span { @apply mt-1 text-xs leading-relaxed text-brand-gray-400; }
@@ -749,6 +749,20 @@ html { scroll-padding-top: 160px; }
 .kube-home-path-featured > p:not(.kube-label) { @apply text-brand-gray-300; }
 .kube-home-path-featured .kube-label { @apply text-brand-purple-100; }
 .kube-home-path-featured a { @apply text-brand-purple-100; }
+.kube-pillar-grid { @apply mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4; }
+.kube-pillar-card { @apply flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-purple-300 hover:shadow-lg dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-pillar-icon { @apply mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-purple-100 text-2xl text-purple dark:bg-brand-gray-700; }
+.kube-pillar-card h3 { @apply mt-2 text-xl font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-pillar-card p { @apply mt-2 text-sm leading-relaxed text-light dark:text-light-dark; }
+.kube-pillar-card .kube-learning-action { @apply mt-auto pt-4 inline-flex font-bold text-purple dark:text-brand-purple-100; }
+.kube-tracks-grid { @apply mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4; }
+.kube-track-card { @apply flex flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-brand-purple-300 hover:shadow-md dark:border-brand-gray-700 dark:bg-brand-gray-800; }
+.kube-track-header { @apply flex items-center justify-between; }
+.kube-track-badge { @apply rounded-full bg-brand-purple-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-purple dark:bg-brand-gray-700 dark:text-brand-purple-100; }
+.kube-track-icon { @apply text-2xl; }
+.kube-track-card h3 { @apply mt-3 text-lg font-extrabold text-heavy dark:text-heavy-dark; }
+.kube-track-card p { @apply mt-2 text-sm leading-relaxed text-light dark:text-light-dark; }
+.kube-track-card .kube-learning-action { @apply mt-auto pt-4 inline-flex text-xs font-bold text-purple dark:text-brand-purple-100; }
 .kube-events { @apply bg-brand-gray-100 dark:bg-brand-gray-900; }
 .kube-events-heading { @apply flex flex-col justify-between gap-5 md:flex-row md:items-end; }
 .kube-events-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-white; }
@@ -1022,3 +1036,134 @@ body.kube-wide-reading .kube-lab-reading .kube-markdown { max-width: 88ch; }
 .kube-footer nav a { @apply text-brand-gray-400 transition hover:text-white; }
 .kube-footer-heading { @apply mb-1 text-xs font-extrabold uppercase tracking-widest text-white; }
 .kube-footer-bottom { @apply mx-auto flex max-w-screen-2xl flex-col gap-2 border-t border-brand-gray-700 px-4 py-6 text-xs text-brand-gray-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-10; }
+
+/* Pele Mermaid Diagram Integration */
+.kube-diagram-card {
+  margin: 1.75rem 0;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+html.dark .kube-diagram-card, .dark .kube-diagram-card {
+  border-color: rgba(71, 85, 105, 0.7);
+  background-color: #1e293b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+.kube-diagram-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #f1f5f9;
+  color: #64748b;
+}
+html.dark .kube-diagram-header, .dark .kube-diagram-header {
+  background-color: rgba(15, 23, 42, 0.6);
+  border-bottom-color: #334155;
+  color: #94a3b8;
+}
+.kube-diagram-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 600;
+  color: #475569;
+}
+html.dark .kube-diagram-title, .dark .kube-diagram-title {
+  color: #cbd5e1;
+}
+.kube-diagram-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.kube-diagram-toggle-btn, .kube-diagram-copy-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+html.dark .kube-diagram-toggle-btn, html.dark .kube-diagram-copy-btn,
+.dark .kube-diagram-toggle-btn, .dark .kube-diagram-copy-btn {
+  border-color: #475569;
+  background-color: #0f172a;
+  color: #cbd5e1;
+}
+.kube-diagram-toggle-btn:hover, .kube-diagram-copy-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+  color: #1e293b;
+}
+html.dark .kube-diagram-toggle-btn:hover, html.dark .kube-diagram-copy-btn:hover,
+.dark .kube-diagram-toggle-btn:hover, .dark .kube-diagram-copy-btn:hover {
+  background-color: #334155;
+  border-color: #64748b;
+  color: #ffffff;
+}
+.kube-diagram-body {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  min-height: 120px;
+}
+.kube-diagram-body svg {
+  max-width: 100%;
+  height: auto;
+}
+.kube-diagram-source {
+  padding: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-top: 1px solid #334155;
+  overflow-x: auto;
+  white-space: pre;
+}
+.kube-diagram-error {
+  padding: 1rem;
+  color: #ef4444;
+  font-size: 0.8125rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  background-color: rgba(239, 68, 68, 0.08);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+/* Pele CSS Variables & Theme Integration */
+.pele {
+  --pele-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --pele-radius: 6px;
+  --pele-bg: transparent;
+  --pele-fg: #0f172a;
+  --pele-muted: #64748b;
+  --pele-line: #334155;
+  --pele-surface: #ffffff;
+  --pele-surface-alt: #f8fafc;
+  --pele-border: #cbd5e1;
+  --pele-accent: #326ce5;
+}
+html.dark .pele, .dark .pele {
+  --pele-bg: transparent;
+  --pele-fg: #f8fafc;
+  --pele-muted: #94a3b8;
+  --pele-line: #94a3b8;
+  --pele-surface: #1e293b;
+  --pele-surface-alt: #0f172a;
+  --pele-border: #475569;
+  --pele-accent: #60a5fa;
+}
