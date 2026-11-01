@@ -52,19 +52,19 @@
         <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;" role="tablist">
           <button id="btn-sheet-cluster" class="kube-button" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('cluster')">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; margin-right: 6px;"></span>
-            01 · Cluster Threat Model
+            01 · Master Threat Register
           </button>
           <button id="btn-sheet-attack-chains" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('attack-chains')">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; margin-right: 6px;"></span>
-            02 · Attack Chains &amp; Mitigations
+            02 · Attack Chains &amp; Narratives
           </button>
           <button id="btn-sheet-security-architecture" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('security-architecture')">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; margin-right: 6px;"></span>
-            03 · Layered Security Architecture
+            03 · Layered Reference Architecture
           </button>
           <button id="btn-sheet-flow-analysis" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('flow-analysis')">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #a855f7; margin-right: 6px;"></span>
-            04 · Flow &amp; Packet Analysis
+            04 · Packet &amp; Flow Analysis
           </button>
         </div>
 
@@ -205,7 +205,7 @@
     <!-- Floating Helper Pill -->
     <div style="position: absolute; top: 12px; left: 16px; z-index: 20; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #f8fafc; font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 9999px; pointer-events: none; display: flex; align-items: center; gap: 6px;">
       <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #38bdf8;"></span>
-      <span id="sheet-title-badge">Sheet 1: 01 · Cluster Threat Model</span>
+      <span id="sheet-title-badge">Sheet 1: 01 · Master Threat Register &amp; Cluster Overview</span>
       <span style="opacity: 0.4;">|</span>
       <span id="level-title-badge" style="color: #38bdf8; font-weight: 600;">L0: Boundary</span>
       <span style="opacity: 0.6; margin-left: 4px;">• Click any component to inspect • Drag to pan</span>
@@ -772,12 +772,12 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
 
   const sheetUrls = {
     'cluster': {
-      title: 'Sheet 1: 01 · Cluster Threat Model',
+      title: 'Sheet 1: 01 · Master Threat Register & Cluster Overview',
       svg: '/kubedaily/images/k8s-threat-model-cluster.svg',
       png: '/kubedaily/images/k8s-threat-model-cluster.png'
     },
     'attack-chains': {
-      title: 'Sheet 2: 02 · Attack Chains & Mitigations',
+      title: 'Sheet 2: 02 · Attack Chains & Mitigation Narratives',
       svg: '/kubedaily/images/k8s-threat-model-attack-chains.svg',
       png: '/kubedaily/images/k8s-threat-model-attack-chains.png'
     },
