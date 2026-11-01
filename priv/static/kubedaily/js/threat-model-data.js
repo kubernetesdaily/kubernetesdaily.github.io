@@ -4606,3 +4606,622 @@ ETCDCTL_API=3 etcdctl get /registry/secrets/production/db-credential --endpoints
     }
   }
 ];
+
+
+// ============================================================================
+// KubeDaily 1-Click Production Security Bundles Data (Option 5)
+// Ready-to-Deploy Production Archives (Kyverno, CEL, NetworkPolicies, Falco, CIS)
+// ============================================================================
+
+window.KUBEDAILY_SECURITY_BUNDLES = [
+  {
+    id: "BUNDLE-KYVERNO",
+    title: "Kyverno Zero-Trust Policy Suite",
+    category: "Policy-as-Code (Kyverno v1.11+)",
+    badge: "8 ClusterPolicies · Enforce",
+    badgeBg: "rgba(37, 99, 235, 0.15)",
+    badgeFg: "#38bdf8",
+    filename: "kyverno-zero-trust-bundle.yaml",
+    desc: "Complete production-ready Kyverno suite enforcing Pod Security Standards Restricted, dropping all POSIX capabilities, forbidding host namespaces, generating default-deny NetworkPolicies, and blocking cloud IMDS link-local addresses.",
+    components: ["p1", "p2", "p3", "p4", "p5", "c02", "c04", "c09", "c11"],
+    manifest: `# ==============================================================================
+# KubeDaily Production Kyverno Zero-Trust Policy Bundle
+# Manifest: kyverno-zero-trust-bundle.yaml
+# Engine: Kyverno v1.10+ / v1.11+ (validationFailureAction: Enforce)
+# ==============================================================================
+
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+  annotations:
+    policies.kyverno.io/title: Disallow Privileged Containers & Host Namespaces
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-privileged
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Privileged containers and host namespaces (hostPID, hostIPC, hostNetwork) are strictly forbidden!"
+        pattern:
+          spec:
+            =(hostPID): false
+            =(hostIPC): false
+            =(hostNetwork): false
+            containers:
+              - securityContext:
+                  =(privileged): false
+                  =(allowPrivilegeEscalation): false
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-ro-rootfs
+  annotations:
+    policies.kyverno.io/title: Require Read-Only Root Filesystem
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-ro-rootfs
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Root filesystem must be read-only to prevent malware drops and reverse shells."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: drop-all-capabilities
+  annotations:
+    policies.kyverno.io/title: Drop ALL Linux Capabilities
+    policies.kyverno.io/category: Linux Kernel Isolation
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: drop-caps
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "All POSIX capabilities must be dropped (drop: ['ALL'])."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  capabilities:
+                    drop:
+                      - ALL
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-non-root-user
+  annotations:
+    policies.kyverno.io/title: Require Non-Root Execution
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-user
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Containers must run as a non-root user (runAsNonRoot: true)."
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+            containers:
+              - securityContext:
+                  runAsNonRoot: true
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-sa-token-automount
+  annotations:
+    policies.kyverno.io/title: Restrict ServiceAccount Token Automounting
+    policies.kyverno.io/category: Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-sa-token-automount
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Automounting ServiceAccount tokens is forbidden. Set automountServiceAccountToken: false."
+        pattern:
+          spec:
+            automountServiceAccountToken: false
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-cloud-metadata-imds
+  annotations:
+    policies.kyverno.io/title: Block Access to Cloud Instance Metadata Service
+    policies.kyverno.io/category: Multi-Cloud Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: generate-imds-network-policy
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: block-imds-egress
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes: ["Egress"]
+            egress:
+              - to:
+                  - ipBlock:
+                      cidr: 0.0.0.0/0
+                      except:
+                        - 169.254.169.254/32
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-default-deny-netpol
+  annotations:
+    policies.kyverno.io/title: Auto-Generate Default-Deny NetworkPolicy
+    policies.kyverno.io/category: Multi-Tenancy & Zero Trust
+    policies.kyverno.io/severity: high
+spec:
+  rules:
+    - name: generate-deny-all
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: default-deny-all
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes:
+              - Ingress
+              - Egress`
+  },
+  {
+    id: "BUNDLE-CEL",
+    title: "In-Tree CEL ValidatingAdmissionPolicy Suite",
+    category: "In-Tree Kubernetes 1.30+ GA",
+    badge: "7 In-Tree Policies · Zero Latency",
+    badgeBg: "rgba(234, 179, 8, 0.15)",
+    badgeFg: "#facc15",
+    filename: "cel-admission-bundle.yaml",
+    desc: "Ultra-fast in-apiserver ValidatingAdmissionPolicy suite evaluating Common Expression Language (CEL) rules without webhook network hops or external controller dependencies.",
+    components: ["p1", "p2", "p4", "p5", "c02", "c04", "c09"],
+    manifest: `# ==============================================================================
+# KubeDaily In-Tree CEL ValidatingAdmissionPolicy Suite (Kubernetes 1.30+ GA)
+# Manifest: cel-admission-bundle.yaml
+# Evaluation: Direct kube-apiserver in-process execution (Zero Webhook Latency)
+# ==============================================================================
+
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: cel-disallow-privileged
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "!has(object.spec.hostPID) || object.spec.hostPID == false"
+      message: "hostPID namespace sharing is strictly forbidden (CIS 5.2.2)"
+    - expression: "!has(object.spec.hostIPC) || object.spec.hostIPC == false"
+      message: "hostIPC namespace sharing is strictly forbidden (CIS 5.2.3)"
+    - expression: "!has(object.spec.hostNetwork) || object.spec.hostNetwork == false"
+      message: "hostNetwork sharing is strictly forbidden (CIS 5.2.4)"
+    - expression: "object.spec.containers.all(c, !has(c.securityContext) || !has(c.securityContext.privileged) || c.securityContext.privileged == false)"
+      message: "Privileged containers are strictly forbidden (CIS 5.2.1)"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: cel-disallow-privileged-binding
+spec:
+  policyName: cel-disallow-privileged
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: NotIn
+          values: ["kube-system"]
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: cel-require-ro-rootfs
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.readOnlyRootFilesystem) && c.securityContext.readOnlyRootFilesystem == true)"
+      message: "All containers must enforce readOnlyRootFilesystem: true (CIS 5.2.6)"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: cel-require-ro-rootfs-binding
+spec:
+  policyName: cel-require-ro-rootfs
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: NotIn
+          values: ["kube-system"]
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: cel-drop-all-capabilities
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.capabilities) && has(c.securityContext.capabilities.drop) && c.securityContext.capabilities.drop.exists(cap, cap == 'ALL'))"
+      message: "Containers must drop ALL POSIX capabilities (CIS 5.2.8)"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: cel-drop-all-capabilities-binding
+spec:
+  policyName: cel-drop-all-capabilities
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: NotIn
+          values: ["kube-system"]
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: cel-restrict-sa-token
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "!has(object.spec.automountServiceAccountToken) || object.spec.automountServiceAccountToken == false"
+      message: "automountServiceAccountToken must be set to false (CIS 5.1.5)"
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: cel-restrict-sa-token-binding
+spec:
+  policyName: cel-restrict-sa-token
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: NotIn
+          values: ["kube-system"]`
+  },
+  {
+    id: "BUNDLE-NETPOL",
+    title: "Zero-Trust CNI NetworkPolicy Architecture",
+    category: "Network Multi-Tenancy & Microsegmentation",
+    badge: "5 Tier Architecture · Calico/Cilium",
+    badgeBg: "rgba(16, 185, 129, 0.15)",
+    badgeFg: "#6ee7b7",
+    filename: "zero-trust-networkpolicies.yaml",
+    desc: "Complete layered zero-trust network segmentation suite locking down flat CNI pod-to-pod networks, permitting CoreDNS queries, denying link-local IMDS access, and isolating ingress/egress boundaries.",
+    components: ["c01", "p1", "p5", "c11"],
+    manifest: `# ==============================================================================
+# KubeDaily Zero-Trust CNI NetworkPolicy Architecture
+# Manifest: zero-trust-networkpolicies.yaml
+# Compatibility: Calico, Cilium, AWS VPC CNI, Azure NPM, kube-router
+# ==============================================================================
+
+# 1. Default-Deny ALL Ingress & Egress in namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: production
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+# 2. Allow Essential Cluster DNS Resolution (UDP/TCP Port 53)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-coredns-egress
+  namespace: production
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+---
+# 3. Explicit Denial to Cloud Metadata IMDS (169.254.169.254/32)
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: block-imds-egress
+  namespace: production
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 169.254.169.254/32
+---
+# 4. Allow Ingress Traffic Strictly from Designated Ingress Gateway
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-gateway
+  namespace: production
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/tier: frontend
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 8080
+---
+# 5. Allow Prometheus Scraping from Monitoring Namespace
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-prometheus-scrape
+  namespace: production
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: monitoring
+      ports:
+        - protocol: TCP
+          port: 9090`
+  },
+  {
+    id: "BUNDLE-FALCO",
+    title: "Real-Time eBPF & Falco Threat Detection Rules",
+    category: "Runtime Threat Intelligence",
+    badge: "6 Detection Rules · Falco 0.37+",
+    badgeBg: "rgba(239, 68, 68, 0.15)",
+    badgeFg: "#f87171",
+    filename: "falco-container-threat-rules.yaml",
+    desc: "Custom production Falco and eBPF detection signatures for shell executions, writes into /bin or /etc, container breakouts, cloud IMDS enumeration, and crypto mining pool network queries.",
+    components: ["c05", "p1", "p4", "p5", "p6"],
+    manifest: `# ==============================================================================
+# KubeDaily Real-Time eBPF & Falco Threat Detection Rules
+# Manifest: falco-container-threat-rules.yaml
+# Compatibility: Falco v0.36+ / v0.37+ (Modern eBPF Driver)
+# ==============================================================================
+
+- custom_rule: Interactive Shell Spawned in Workload Container
+  desc: Detects an interactive shell (/bin/sh, /bin/bash, /bin/zsh) being spawned inside a production container
+  condition: >
+    container.id != host and
+    evt.type = execve and
+    proc.name in (bash, sh, zsh, ksh, dash) and
+    not user.name in (root, system)
+  output: >
+    CRITICAL: Shell spawned in container (user=%user.name container_id=%container.id
+    image=%container.image.repository pod=%k8s.pod.name cmdline=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, mitre_execution, T1059.004]
+
+- custom_rule: File Written Below System Binary or Configuration Directory
+  desc: Detects unauthorized writes to /bin, /sbin, /usr/bin, or /etc inside a running container
+  condition: >
+    container.id != host and
+    evt.type in (open, openat, openat2) and
+    evt.is_open_write = true and
+    (fd.name startswith /bin/ or fd.name startswith /sbin/ or fd.name startswith /usr/bin/ or fd.name startswith /etc/)
+  output: >
+    HIGH: Suspicious write below binary directory (file=%fd.name pod=%k8s.pod.name
+    image=%container.image.repository proc=%proc.name cmdline=%proc.cmdline)
+  priority: HIGH
+  tags: [container, mitre_persistence, T1190]
+
+- custom_rule: Container Breakout via Nsenter or Host Path Traversal
+  desc: Detects attempts to enter host namespace or execute nsenter from container
+  condition: >
+    container.id != host and
+    evt.type = execve and
+    (proc.name = nsenter or proc.args contains "/proc/1/ns/")
+  output: >
+    EMERGENCY: Container escape breakout command detected (pod=%k8s.pod.name
+    proc=%proc.name cmdline=%proc.cmdline user=%user.name)
+  priority: EMERGENCY
+  tags: [container, mitre_privilege_escalation, T1611]
+
+- custom_rule: Outbound Query to Cloud Instance Metadata (IMDS)
+  desc: Detects network connection attempts directed to link-local IP 169.254.169.254
+  condition: >
+    container.id != host and
+    evt.type = connect and
+    fd.sip != "169.254.169.254" and
+    fd.rip = "169.254.169.254"
+  output: >
+    CRITICAL: Outbound attempt to Cloud IMDS link-local endpoint (pod=%k8s.pod.name
+    dest=%fd.rip port=%fd.rport proc=%proc.name)
+  priority: CRITICAL
+  tags: [container, mitre_credential_access, T1552.005]
+
+- custom_rule: Known Cryptocurrency Mining Pool DNS Query
+  desc: Detects DNS requests to known Stratum / Monero / XMRig mining pools
+  condition: >
+    evt.type = sendto and
+    (fd.rip in (mining_pool_ips) or fd.name contains "monero" or fd.name contains "stratum" or fd.name contains "nanopool" or fd.name contains "supportxmr")
+  output: >
+    CRITICAL: Cryptomining network traffic detected (pod=%k8s.pod.name pool=%fd.name)
+  priority: CRITICAL
+  tags: [container, mitre_impact, T1496]`
+  },
+  {
+    id: "BUNDLE-CIS",
+    title: "Complete CIS Benchmark Hardening Suite",
+    category: "Regulatory Compliance & Audit",
+    badge: "CIS v1.8 Benchmark · Full Cluster Profile",
+    badgeBg: "rgba(168, 85, 247, 0.15)",
+    badgeFg: "#c084fc",
+    filename: "k8s-cis-hardening-suite.yaml",
+    desc: "Complete CIS Benchmark profile covering Pod Security Standards Restricted labels, Kubernetes API Server advanced audit policy, and RuntimeDefault Seccomp profile configurations.",
+    components: ["c02", "c03", "c08", "c16", "c17"],
+    manifest: `# ==============================================================================
+# KubeDaily Complete CIS Kubernetes Benchmark v1.8 Hardening Suite
+# Manifest: k8s-cis-hardening-suite.yaml
+# Sections: CIS § 1.2 (Control Plane), § 5.1 (RBAC), § 5.2 (Pod Security), § 5.7 (Runtime)
+# ==============================================================================
+
+# 1. PSS Restricted Production Namespace (CIS § 5.2.1 - 5.2.8)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production-restricted
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
+---
+# 2. Advanced Kubernetes API Server AuditPolicy (CIS § 3.2.1)
+apiVersion: audit.k8s.io/v1
+kind: AuditPolicy
+metadata:
+  name: cis-k8s-audit-policy
+rules:
+  # The following requests are high volume and low risk: omit logging
+  - level: None
+    users: ["system:kube-proxy"]
+    verbs: ["watch"]
+    resources:
+      - group: ""
+        resources: ["endpoints", "services"]
+
+  - level: None
+    users: ["system:unsecured"]
+    namespaces: ["kube-system"]
+    verbs: ["get"]
+    resources:
+      - group: ""
+        resources: ["configmaps"]
+
+  # Log Secret and ConfigMap modifications at RequestResponse level
+  - level: RequestResponse
+    resources:
+      - group: ""
+        resources: ["secrets", "configmaps"]
+
+  # Log RBAC authorization changes at RequestResponse level
+  - level: RequestResponse
+    resources:
+      - group: "rbac.authorization.k8s.io"
+        resources: ["roles", "rolebindings", "clusterroles", "clusterrolebindings"]
+
+  # Log Pod creation and exec subresources
+  - level: Request
+    resources:
+      - group: ""
+        resources: ["pods"]
+      - group: ""
+        resources: ["pods/exec", "pods/portforward"]
+
+  # Default fallback for everything else
+  - level: Metadata
+    omitStages:
+      - "RequestReceived"`
+  }
+];

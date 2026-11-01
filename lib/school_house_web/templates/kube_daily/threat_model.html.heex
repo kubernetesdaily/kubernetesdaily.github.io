@@ -1853,6 +1853,183 @@
 
       </div>
     </div>
+
+    <!-- 1-Click Production Security Bundles (Option 5) -->
+    <div id="security-bundles-section" style="margin-top: 4rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <div class="kube-section-pill" style="background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd;">
+            Production Ready Artifacts · 1-Click Deployment Bundles
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0.4rem 0 0.25rem 0;">
+            1-Click Production Security Bundles
+          </h3>
+          <p style="color: var(--pele-muted, #64748b); max-width: 860px; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+            Deploy enterprise Kubernetes defense guardrails in seconds. Each bundle compiles battle-tested YAML configurations, NetworkPolicies, and eBPF detection rules into unified downloadable manifests ready to pipe directly into <code class="kube-code">kubectl apply -f</code>.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="downloadAllSecurityBundles()" class="kube-button" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem; background: #0284c7; border-color: #0284c7;">
+            📦 Download All 5 Bundles (.zip / tar)
+          </button>
+        </div>
+      </div>
+
+      <!-- Bundles Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem;">
+
+        <!-- Bundle 1: Kyverno -->
+        <div class="kube-card" style="padding: 1.35rem; border-radius: 0.75rem; border-top: 4px solid #3b82f6; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: rgba(37,99,235,0.12); color: #2563eb; font-weight: 700;">Policy-as-Code</span>
+              <span class="kube-badge" style="background: #eff6ff; color: #1e40af; font-size: 0.7rem; font-weight: 600;">8 ClusterPolicies</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Kyverno Zero-Trust Suite</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Enforce PSS Restricted, drop all Linux capabilities, require non-root execution, disallow automounting SA tokens, and auto-generate default-deny NetworkPolicies across all tenant namespaces.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">P1</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">P2</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">P4</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">C02</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">C09</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0.4rem; margin-top: 1rem;">
+            <button onclick="downloadSecurityBundle('BUNDLE-KYVERNO')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem; background: #2563eb; border-color: #2563eb;">
+              ⬇ Download YAML
+            </button>
+            <button onclick="copySecurityBundle('BUNDLE-KYVERNO')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Copy YAML to clipboard">
+              📋
+            </button>
+            <button onclick="inspectBundleComponents('BUNDLE-KYVERNO')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Inspect in Drawer">
+              ⚡
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 2: CEL -->
+        <div class="kube-card" style="padding: 1.35rem; border-radius: 0.75rem; border-top: 4px solid #eab308; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: rgba(234,179,8,0.12); color: #b45309; font-weight: 700;">In-Tree CEL</span>
+              <span class="kube-badge" style="background: #fefce8; color: #854d0e; font-size: 0.7rem; font-weight: 600;">K8s 1.30+ GA</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">In-Tree CEL Admission Suite</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Zero-latency in-apiserver ValidatingAdmissionPolicy bindings evaluating Common Expression Language rules without admission webhook latency or external controller dependencies.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.2.1</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">Zero Webhook</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CEL GA</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0.4rem; margin-top: 1rem;">
+            <button onclick="downloadSecurityBundle('BUNDLE-CEL')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem; background: #b45309; border-color: #b45309;">
+              ⬇ Download YAML
+            </button>
+            <button onclick="copySecurityBundle('BUNDLE-CEL')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Copy YAML to clipboard">
+              📋
+            </button>
+            <button onclick="inspectBundleComponents('BUNDLE-CEL')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Inspect in Drawer">
+              ⚡
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 3: NetworkPolicies -->
+        <div class="kube-card" style="padding: 1.35rem; border-radius: 0.75rem; border-top: 4px solid #10b981; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: rgba(16,185,129,0.12); color: #047857; font-weight: 700;">Network Security</span>
+              <span class="kube-badge" style="background: #f0fdf4; color: #065f46; font-size: 0.7rem; font-weight: 600;">Zero-Trust CNI</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Zero-Trust NetworkPolicy Suite</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Tiered CNI architecture locking down pod-to-pod network scanning: default-deny all, CoreDNS allowlist, explicit Cloud IMDS 169.254.169.254 denial, and ingress gateway routing.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">Calico</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">Cilium</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">AWS VPC CNI</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0.4rem; margin-top: 1rem;">
+            <button onclick="downloadSecurityBundle('BUNDLE-NETPOL')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem; background: #059669; border-color: #059669;">
+              ⬇ Download YAML
+            </button>
+            <button onclick="copySecurityBundle('BUNDLE-NETPOL')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Copy YAML to clipboard">
+              📋
+            </button>
+            <button onclick="inspectBundleComponents('BUNDLE-NETPOL')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Inspect in Drawer">
+              ⚡
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 4: Falco eBPF -->
+        <div class="kube-card" style="padding: 1.35rem; border-radius: 0.75rem; border-top: 4px solid #ef4444; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: rgba(239,68,68,0.12); color: #b91c1c; font-weight: 700;">Runtime Defense</span>
+              <span class="kube-badge" style="background: #fef2f2; color: #991b1b; font-size: 0.7rem; font-weight: 600;">Falco 0.37+</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Falco eBPF Threat Detection</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Real-time kernel syscall tracing rules for interactive shell spawns, rootfs tampering in /bin, nsenter breakout pivots, cloud IMDS reconnaissance, and cryptomining pool traffic.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">eBPF Probes</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">Syscall Auditing</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0.4rem; margin-top: 1rem;">
+            <button onclick="downloadSecurityBundle('BUNDLE-FALCO')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem; background: #dc2626; border-color: #dc2626;">
+              ⬇ Download YAML
+            </button>
+            <button onclick="copySecurityBundle('BUNDLE-FALCO')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Copy YAML to clipboard">
+              📋
+            </button>
+            <button onclick="inspectBundleComponents('BUNDLE-FALCO')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Inspect in Drawer">
+              ⚡
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 5: CIS Benchmark -->
+        <div class="kube-card" style="padding: 1.35rem; border-radius: 0.75rem; border-top: 4px solid #a855f7; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: rgba(168,85,247,0.12); color: #7e22ce; font-weight: 700;">CIS Compliance</span>
+              <span class="kube-badge" style="background: #faf5ff; color: #6b21a8; font-size: 0.7rem; font-weight: 600;">CIS v1.8 Benchmark</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">CIS Benchmark Hardening Suite</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Production Pod Security Standards (PSS) Restricted labels, Kubernetes API Server advanced audit policy manifest, and Seccomp RuntimeDefault profile configuration.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">AuditPolicy</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">PSS Restricted</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 0.4rem; margin-top: 1rem;">
+            <button onclick="downloadSecurityBundle('BUNDLE-CIS')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem; background: #7e22ce; border-color: #7e22ce;">
+              ⬇ Download YAML
+            </button>
+            <button onclick="copySecurityBundle('BUNDLE-CIS')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Copy YAML to clipboard">
+              📋
+            </button>
+            <button onclick="inspectBundleComponents('BUNDLE-CIS')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.55rem;" title="Inspect in Drawer">
+              ⚡
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <div class="kube-card" style="margin-top: 3rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <span style="font-size: 0.8125rem; font-weight: 700; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em;">Developer &amp; Platform Tooling</span>
@@ -5117,6 +5294,73 @@ This audit report evaluates the cluster against 20 critical security controls ac
     const a = document.createElement('a');
     a.href = url;
     a.download = `${pb.id.toLowerCase()}-${currentPlaybookMode}team.sh`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // ============================================================================
+  // 1-Click Production Security Bundles Controller (Option 5)
+  // ============================================================================
+  function downloadSecurityBundle(bundleId) {
+    if (!window.KUBEDAILY_SECURITY_BUNDLES) return;
+    const bundle = window.KUBEDAILY_SECURITY_BUNDLES.find(b => b.id === bundleId);
+    if (!bundle) return;
+
+    const blob = new Blob([bundle.manifest], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = bundle.filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function copySecurityBundle(bundleId) {
+    if (!window.KUBEDAILY_SECURITY_BUNDLES) return;
+    const bundle = window.KUBEDAILY_SECURITY_BUNDLES.find(b => b.id === bundleId);
+    if (!bundle) return;
+
+    navigator.clipboard.writeText(bundle.manifest).then(() => {
+      const orig = event.target.textContent;
+      event.target.textContent = '✅';
+      setTimeout(() => { event.target.textContent = orig; }, 1800);
+    });
+  }
+
+  function inspectBundleComponents(bundleId) {
+    if (!window.KUBEDAILY_SECURITY_BUNDLES) return;
+    const bundle = window.KUBEDAILY_SECURITY_BUNDLES.find(b => b.id === bundleId);
+    if (!bundle || !bundle.components || bundle.components.length === 0) return;
+    const compKey = bundle.components[0];
+    locateAndInspect(compKey, compKey.toUpperCase());
+  }
+
+  function downloadAllSecurityBundles() {
+    if (!window.KUBEDAILY_SECURITY_BUNDLES) return;
+    let fullArchive = `# ==============================================================================
+# KubeDaily Complete Enterprise Security Bundle Suite
+# Generated: ${new Date().toISOString()}
+# Contains all 5 Production Bundles: Kyverno, In-Tree CEL, NetworkPolicies, Falco, CIS
+# ==============================================================================
+`;
+
+    window.KUBEDAILY_SECURITY_BUNDLES.forEach(bundle => {
+      fullArchive += `\n# ##############################################################################
+# BUNDLE: ${bundle.title} (${bundle.filename})
+# Category: ${bundle.category}
+# ##############################################################################\n\n`;
+      fullArchive += bundle.manifest + "\n---\n";
+    });
+
+    const blob = new Blob([fullArchive], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `kubedaily-complete-production-security-suite.yaml`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
