@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="KubeDaily enterprise layered architecture">
+  <diagram id="securityarchitecture" name="03 · Layered security reference architecture">
+    <mxGraphModel dx="1472" dy="995" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3500" pageHeight="2220" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="securityarchitecture_v1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#FFFFFF;fontSize=33;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="LAYERED SECURITY REFERENCE ARCHITECTURE" vertex="1">
+          <mxGeometry height="50" width="3428" x="36" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v3" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#264765;strokeColor=#365D7D;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="48" width="546" x="2915" y="27" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D7E8FA;fontSize=13;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="EDITABLE DRAW.IO  •  REFERENCE ARCHITECTURE" vertex="1">
+          <mxGeometry height="48" width="530" x="2923" y="27" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v5" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CFDBE8;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="74" width="3452" x="24" y="133" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v6" parent="1" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#387CC5;strokeColor=#387CC5;strokeWidth=0.1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="33" width="17" x="45" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="IDENTITY &amp; API" vertex="1">
+          <mxGeometry height="35" width="590" x="73" y="151" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v8" parent="1" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#22806E;strokeColor=#22806E;strokeWidth=0.1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="33" width="17" x="731" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="TRUST &amp; WORKLOADS" vertex="1">
+          <mxGeometry height="35" width="590" x="759" y="151" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v10" parent="1" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#D34E5B;strokeColor=#D34E5B;strokeWidth=0.1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="33" width="17" x="1417" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="ATTACK ENTRY" vertex="1">
+          <mxGeometry height="35" width="590" x="1445" y="151" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v12" parent="1" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#B37B27;strokeColor=#B37B27;strokeWidth=0.1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="33" width="17" x="2103" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="ARTIFACT &amp; SUPPLY CHAIN" vertex="1">
+          <mxGeometry height="35" width="590" x="2131" y="151" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v14" parent="1" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fillColor=#7D63B0;strokeColor=#7D63B0;strokeWidth=0.1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="33" width="17" x="2789" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="DETECTION / RESPONSE" vertex="1">
+          <mxGeometry height="35" width="590" x="2817" y="151" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v16" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FAFCFE;strokeColor=#B9C9D7;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="1660" width="573" x="24" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v17" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FAFCFE;strokeColor=#B9C9D7;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="330" x="40" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#55718B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="EXTERNAL SYSTEMS / ATTACK SURFACES" vertex="1">
+          <mxGeometry height="35" width="314" x="48" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=13;fontFamily=Arial;fontStyle=0;align=right;verticalAlign=middle;spacing=0;" value="Outside cluster trust boundary" vertex="1">
+          <mxGeometry height="25" width="475" x="102" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v20" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFBFB;strokeColor=#E7A6AD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="1660" width="2195" x="630" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v21" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFFBFB;strokeColor=#E7A6AD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="200" x="646" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="KUBERNETES CLUSTER" vertex="1">
+          <mxGeometry height="35" width="184" x="654" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=13;fontFamily=Arial;fontStyle=0;align=right;verticalAlign=middle;spacing=0;" value="Cluster security boundary" vertex="1">
+          <mxGeometry height="25" width="475" x="2330" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v24" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="617" width="2120" x="666" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v25" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="294" x="682" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CONTROL PLANE / API TRUST ZONE" vertex="1">
+          <mxGeometry height="35" width="278" x="690" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=13;fontFamily=Arial;fontStyle=0;align=right;verticalAlign=middle;spacing=0;" value="Protect cluster administrative operations" vertex="1">
+          <mxGeometry height="25" width="475" x="2291" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v28" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="872" width="2120" x="666" y="982" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v29" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="200" x="682" y="965" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v30" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="WORKER / DATA PLANE" vertex="1">
+          <mxGeometry height="35" width="184" x="690" y="965" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=13;fontFamily=Arial;fontStyle=0;align=right;verticalAlign=middle;spacing=0;" value="Namespaces are organizational, not strong isolation" vertex="1">
+          <mxGeometry height="25" width="475" x="2291" y="995" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v32" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E6EEF7;strokeColor=#C6D5E5;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="43" width="531" x="44" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="01  IDENTITY + ADMIN ACCESS" vertex="1">
+          <mxGeometry height="43" width="503" x="58" y="290" as="geometry" />
+        </mxCell>
+        <object label="" tags="Access.Operator Access.Cli" help="Administrator identity; restrict permissions and protect kubeconfig" slug="Operator" id="securityarchitecture_v34">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="245" x="58" y="359" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Platform operator" vertex="1">
+          <mxGeometry height="38" width="215" x="73" y="366" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="kubectl  •  short-lived cert / OIDC" vertex="1">
+          <mxGeometry height="56" width="227" x="67" y="403" as="geometry" />
+        </mxCell>
+        <object label="" tags="Api.Authn Api.Authn.Identity" help="OIDC issuer validates identity, Kubernetes API checks presented token" slug="IdentityProvider" id="securityarchitecture_v37">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="243" x="319" y="359" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v38" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Identity provider (IdP)" vertex="1">
+          <mxGeometry height="38" width="213" x="334" y="366" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="OIDC / signed JWT / MFA" vertex="1">
+          <mxGeometry height="56" width="225" x="328" y="403" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v40" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="102" width="245" x="58" y="488" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="GitOps / CI identity" vertex="1">
+          <mxGeometry height="38" width="215" x="73" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Service user  •  scoped token" vertex="1">
+          <mxGeometry height="52" width="227" x="67" y="532" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v43" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="102" width="243" x="319" y="488" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v44" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="External adversary" vertex="1">
+          <mxGeometry height="38" width="213" x="334" y="495" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v45" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="TA01 / TA06 · stolen token" vertex="1">
+          <mxGeometry height="52" width="225" x="328" y="532" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v46" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E6EEF7;strokeColor=#C6D5E5;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="43" width="531" x="44" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v47" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=17;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="02  SOFTWARE SUPPLY CHAIN" vertex="1">
+          <mxGeometry height="43" width="503" x="58" y="645" as="geometry" />
+        </mxCell>
+        <object label="" tags="SupplyChain SupplyChain.Git" slug="SourceControl" help="Protected branches, reviews, secret scanning and pinned dependencies." id="securityarchitecture_v48">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="98" width="234" x="56" y="716" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v49" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Source repository" vertex="1">
+          <mxGeometry height="38" width="204" x="71" y="723" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v50" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Branch approvals / signed commits" vertex="1">
+          <mxGeometry height="48" width="216" x="65" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v51" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="243" x="317" y="716" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v52" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CI image builder" vertex="1">
+          <mxGeometry height="38" width="213" x="332" y="723" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v53" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Isolated build + dependency lockfile" vertex="1">
+          <mxGeometry height="48" width="225" x="326" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v54" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="234" x="56" y="852" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v55" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Provenance + SBOM" vertex="1">
+          <mxGeometry height="38" width="204" x="71" y="859" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v56" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="SLSA-style attestations / scan" vertex="1">
+          <mxGeometry height="48" width="216" x="65" y="896" as="geometry" />
+        </mxCell>
+        <object label="" tags="SupplyChain SupplyChain.Registry" slug="Registry" help="Image must be pinned by digest; verify signatures at admission." id="securityarchitecture_v57">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="98" width="243" x="317" y="852" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v58" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Container registry" vertex="1">
+          <mxGeometry height="38" width="213" x="332" y="859" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v59" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Immutable digest / signed image" vertex="1">
+          <mxGeometry height="48" width="225" x="326" y="896" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v60" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="762" as="sourcePoint" />
+            <mxPoint x="317" y="762" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v61" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="438" y="836" />
+              <mxPoint x="172" y="836" />
+            </Array>
+            <mxPoint x="438" y="814" as="sourcePoint" />
+            <mxPoint x="172" y="852" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v62" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="900" as="sourcePoint" />
+            <mxPoint x="317" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v63" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="139" width="500" x="58" y="983" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Threats from this zone" vertex="1">
+          <mxGeometry height="25" width="474" x="71" y="993" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v65" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  AV04: malicious image / package" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1026" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v66" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  AV28: compromised CI / GitOps" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1051" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  AV17: forged artifact metadata" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1076" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v68" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#E6EEF7;strokeColor=#C6D5E5;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="43" width="531" x="44" y="1155" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v69" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="03  CLIENT &amp; NETWORK ENTRY" vertex="1">
+          <mxGeometry height="43" width="503" x="58" y="1155" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v70" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="234" x="58" y="1228" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v71" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Internet client" vertex="1">
+          <mxGeometry height="38" width="204" x="73" y="1235" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v72" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Untrusted request  •  TA01" vertex="1">
+          <mxGeometry height="48" width="216" x="67" y="1272" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v73" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="243" x="317" y="1228" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v74" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="DNS / External LB" vertex="1">
+          <mxGeometry height="38" width="213" x="332" y="1235" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v75" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="TLS 443 / TCP load-balancing" vertex="1">
+          <mxGeometry height="48" width="225" x="326" y="1272" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v76" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292" y="1278" as="sourcePoint" />
+            <mxPoint x="317" y="1278" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v77" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F2EEFA;strokeColor=#B3A3D1;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="96" width="234" x="58" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v78" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#7D63B0;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Cloud IAM / KMS" vertex="1">
+          <mxGeometry height="38" width="204" x="73" y="1377" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v79" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Storage keys  •  workload identities" vertex="1">
+          <mxGeometry height="46" width="216" x="67" y="1414" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v80" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F2EEFA;strokeColor=#B3A3D1;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="96" width="243" x="317" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v81" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#7D63B0;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Secrets manager" vertex="1">
+          <mxGeometry height="38" width="213" x="332" y="1377" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v82" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="External secrets / CSI provider" vertex="1">
+          <mxGeometry height="46" width="225" x="326" y="1414" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v83" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="137" width="500" x="58" y="1507" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v84" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Key trust boundary rules" vertex="1">
+          <mxGeometry height="25" width="474" x="71" y="1517" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v85" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  TLS and client/server identity on control traffic" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1550" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v86" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Minimize credentials and secret projection" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1575" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v87" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Cloud permissions need separate scoping" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v88" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="142" width="500" x="58" y="1671" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v89" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="External attack vectors" vertex="1">
+          <mxGeometry height="25" width="474" x="71" y="1681" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v90" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  AV01: public workload exploit" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1714" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v91" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  AV02: leaked kubeconfig / token" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1739" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v92" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  AV22: DNS / service discovery poisoning" vertex="1">
+          <mxGeometry height="22" width="470" x="73" y="1764" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v93" parent="1" style="rounded=1;arcSize=13;whiteSpace=wrap;html=1;fillColor=#F7FBFF;strokeColor=#9BBBDD;strokeWidth=2;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="300" width="1503" x="696" y="381" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v94" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="48" width="580" x="726" y="394" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v95" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=21;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="kube-apiserver  •  HTTPS TCP/6443" vertex="1">
+          <mxGeometry height="48" width="564" x="734" y="394" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v96" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=15;fontFamily=Arial;fontStyle=1;align=right;verticalAlign=middle;spacing=0;" value="REQUEST HANDLING  •  SIMPLIFIED ORDER" vertex="1">
+          <mxGeometry height="29" width="790" x="1370" y="406" as="geometry" />
+        </mxCell>
+        <object label="" tags="Api" help="Entry / TLS — API HTTPS endpoint" slug="ApiStep1" id="securityarchitecture_v97">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="116" width="262" x="725" y="469" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v98" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Entry / TLS" vertex="1">
+          <mxGeometry height="38" width="232" x="740" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v99" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="API HTTPS endpoint" vertex="1">
+          <mxGeometry height="66" width="244" x="734" y="513" as="geometry" />
+        </mxCell>
+        <object label="" tags="Api Api.Authn" help="AuthN — OIDC / cert / token" slug="ApiStep2" id="securityarchitecture_v100">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="116" width="262" x="1014" y="469" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v101" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="AuthN" vertex="1">
+          <mxGeometry height="38" width="232" x="1029" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v102" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="OIDC / cert / token" vertex="1">
+          <mxGeometry height="66" width="244" x="1023" y="513" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v103" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="988" y="527" as="sourcePoint" />
+            <mxPoint x="1014" y="527" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" tags="Api Api.Authz Api.Rbac" help="AuthZ — RBAC / webhook" slug="ApiStep3" id="securityarchitecture_v104">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="116" width="262" x="1303" y="469" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v105" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="AuthZ" vertex="1">
+          <mxGeometry height="38" width="232" x="1318" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v106" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="RBAC / webhook" vertex="1">
+          <mxGeometry height="66" width="244" x="1312" y="513" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v107" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1277" y="527" as="sourcePoint" />
+            <mxPoint x="1303" y="527" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" tags="Api Api.Admission" help="Admission (writes) — PSA + policies" slug="ApiStep4" id="securityarchitecture_v108">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="116" width="262" x="1592" y="469" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v109" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Admission (writes)" vertex="1">
+          <mxGeometry height="38" width="232" x="1607" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v110" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="PSA + policies" vertex="1">
+          <mxGeometry height="66" width="244" x="1601" y="513" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v111" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1566" y="527" as="sourcePoint" />
+            <mxPoint x="1592" y="527" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" tags="Api" help="Object storage — etcd persistence" slug="ApiStep5" id="securityarchitecture_v112">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="116" width="262" x="1881" y="469" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v113" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Object storage" vertex="1">
+          <mxGeometry height="38" width="232" x="1896" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v114" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="etcd persistence" vertex="1">
+          <mxGeometry height="66" width="244" x="1890" y="513" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v115" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1855" y="527" as="sourcePoint" />
+            <mxPoint x="1881" y="527" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v116" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="74" width="1403" x="732" y="594" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v117" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Enforcement points" vertex="1">
+          <mxGeometry height="25" width="1377" x="745" y="604" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v118" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="API Priority &amp; Fairness / rate protections  •  Authentication, authorization and admission  •  Audit record for eligible API requests" vertex="1">
+          <mxGeometry height="30" width="1373" x="747" y="635" as="geometry" />
+        </mxCell>
+        <object label="" tags="ControlPlane.Etcd" help="Kubernetes API persists cluster state in etcd; encryption at rest is not automatic for all installations." slug="Etcd" id="securityarchitecture_v119">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F2EEFA;strokeColor=#B3A3D1;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="167" width="529" x="2230" y="390" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v120" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#7D63B0;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="etcd datastore" vertex="1">
+          <mxGeometry height="38" width="499" x="2245" y="397" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v121" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="TLS/2379 • peer TLS/2380&#xa;Secrets need encryption-at-rest configuration" vertex="1">
+          <mxGeometry height="117" width="511" x="2239" y="434" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v122" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="95" width="529" x="2230" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v123" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="API audit stream" vertex="1">
+          <mxGeometry height="38" width="499" x="2245" y="592" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v124" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Request / actor / verb / object" vertex="1">
+          <mxGeometry height="45" width="511" x="2239" y="629" as="geometry" />
+        </mxCell>
+        <object label="" tags="ControlPlane Api.Controllers" help="kube-controller-manager interacts with the Kubernetes API with distinct identity and RBAC." slug="Controller0" id="securityarchitecture_v125">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="144" width="390" x="705" y="727" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v126" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="kube-controller-manager" vertex="1">
+          <mxGeometry height="38" width="360" x="720" y="734" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v127" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Control loops · secure metrics 10257" vertex="1">
+          <mxGeometry height="94" width="372" x="714" y="771" as="geometry" />
+        </mxCell>
+        <object label="" tags="ControlPlane Api.Controllers" help="kube-scheduler interacts with the Kubernetes API with distinct identity and RBAC." slug="Controller1" id="securityarchitecture_v128">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="144" width="390" x="1117" y="727" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v129" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="kube-scheduler" vertex="1">
+          <mxGeometry height="38" width="360" x="1132" y="734" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v130" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Scheduling · secure metrics 10259" vertex="1">
+          <mxGeometry height="94" width="372" x="1126" y="771" as="geometry" />
+        </mxCell>
+        <object label="" tags="ControlPlane Api.Controllers" help="cloud-controller-manager interacts with the Kubernetes API with distinct identity and RBAC." slug="Controller2" id="securityarchitecture_v131">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="144" width="390" x="1529" y="727" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v132" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="cloud-controller-manager" vertex="1">
+          <mxGeometry height="38" width="360" x="1544" y="734" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v133" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Provider-specific control loop" vertex="1">
+          <mxGeometry height="94" width="372" x="1538" y="771" as="geometry" />
+        </mxCell>
+        <object label="" tags="ControlPlane Api.Controllers" help="Custom operator / CRDs interacts with the Kubernetes API with distinct identity and RBAC." slug="Controller3" id="securityarchitecture_v134">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="144" width="390" x="1941" y="727" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v135" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Custom operator / CRDs" vertex="1">
+          <mxGeometry height="38" width="360" x="1956" y="734" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v136" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Crossplane / resource reconciliation" vertex="1">
+          <mxGeometry height="94" width="372" x="1950" y="771" as="geometry" />
+        </mxCell>
+        <object label="" tags="ControlPlane Api.Controllers" help="cert-manager interacts with the Kubernetes API with distinct identity and RBAC." slug="Controller4" id="securityarchitecture_v137">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="144" width="390" x="2353" y="727" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v138" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="cert-manager" vertex="1">
+          <mxGeometry height="38" width="360" x="2368" y="734" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v139" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Certificate issuance and renewals" vertex="1">
+          <mxGeometry height="94" width="372" x="2362" y="771" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v140" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="408" />
+              <mxPoint x="630" y="506" />
+            </Array>
+            <mxPoint x="303" y="408" as="sourcePoint" />
+            <mxPoint x="725" y="506" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v141" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DEE7;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="28" width="139.5" x="470" y="447" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v142" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=12;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="kubectl / HTTPS" vertex="1">
+          <mxGeometry height="28" width="123.5" x="478" y="447" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v143" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="441" y="480" />
+              <mxPoint x="630" y="480" />
+              <mxPoint x="630" y="475" />
+            </Array>
+            <mxPoint x="441" y="465" as="sourcePoint" />
+            <mxPoint x="1014" y="475" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v144" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="615" y="540" />
+              <mxPoint x="615" y="561" />
+            </Array>
+            <mxPoint x="303" y="540" as="sourcePoint" />
+            <mxPoint x="725" y="561" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v145" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2215" y="513" />
+              <mxPoint x="2215" y="476" />
+            </Array>
+            <mxPoint x="2133" y="513" as="sourcePoint" />
+            <mxPoint x="2230" y="476" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v146" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7D63B0;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2390" y="557" as="sourcePoint" />
+            <mxPoint x="2390" y="585" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v147" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=1.6;startArrow=none;endArrow=none;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="697" />
+              <mxPoint x="1410" y="697" />
+            </Array>
+            <mxPoint x="900" y="727" as="sourcePoint" />
+            <mxPoint x="1410" y="681" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v148" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=1.6;startArrow=none;endArrow=none;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1312" y="697" />
+              <mxPoint x="1410" y="697" />
+            </Array>
+            <mxPoint x="1312" y="727" as="sourcePoint" />
+            <mxPoint x="1410" y="681" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v149" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=1.6;startArrow=none;endArrow=none;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1724" y="697" />
+              <mxPoint x="1410" y="697" />
+            </Array>
+            <mxPoint x="1724" y="727" as="sourcePoint" />
+            <mxPoint x="1410" y="681" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v150" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=1.6;startArrow=none;endArrow=none;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2136" y="697" />
+              <mxPoint x="1410" y="697" />
+            </Array>
+            <mxPoint x="2136" y="727" as="sourcePoint" />
+            <mxPoint x="1410" y="681" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v151" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=1.6;startArrow=none;endArrow=none;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2548" y="697" />
+              <mxPoint x="1410" y="697" />
+            </Array>
+            <mxPoint x="2548" y="727" as="sourcePoint" />
+            <mxPoint x="1410" y="681" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v152" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="665" width="1002" x="700" y="1058" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v153" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="267" x="716" y="1041" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v154" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="WORKER NODE A / application" vertex="1">
+          <mxGeometry height="35" width="251" x="724" y="1041" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v155" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=13;fontFamily=Arial;fontStyle=0;align=right;verticalAlign=middle;spacing=0;" value="Shared kernel + CNI" vertex="1">
+          <mxGeometry height="25" width="475" x="1207" y="1071" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v156" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="665" width="1023" x="1722" y="1058" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v157" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="321" x="1738" y="1041" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v158" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="WORKER NODE B / internal services" vertex="1">
+          <mxGeometry height="35" width="305" x="1746" y="1041" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v159" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=13;fontFamily=Arial;fontStyle=0;align=right;verticalAlign=middle;spacing=0;" value="Shared kernel + CNI" vertex="1">
+          <mxGeometry height="25" width="475" x="2250" y="1071" as="geometry" />
+        </mxCell>
+        <object label="" tags="ControlPlane.Kubelet" help="Kubelet is node agent; privileged API access and 10250 need scoping." slug="Kubelet0" id="securityarchitecture_v160">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="100" width="294.3333333333333" x="727" y="1110" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v161" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="kubelet" vertex="1">
+          <mxGeometry height="38" width="264.3333333333333" x="742" y="1117" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v162" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="API stream + CRI / kubelet HTTPS 10250" vertex="1">
+          <mxGeometry height="50" width="276.3333333333333" x="736" y="1154" as="geometry" />
+        </mxCell>
+        <object label="" tags="Node.RuntimeSecurity" slug="Runtime0" id="securityarchitecture_v163">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="100" width="294.3333333333333" x="1054.3333333333333" y="1110" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v164" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Container runtime" vertex="1">
+          <mxGeometry height="38" width="264.3333333333333" x="1069.3333333333333" y="1117" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v165" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="containerd / CRI-O · CRI socket" vertex="1">
+          <mxGeometry height="50" width="276.3333333333333" x="1063.3333333333333" y="1154" as="geometry" />
+        </mxCell>
+        <object label="" tags="Network.Cni Network.Policy" slug="Cni0" id="securityarchitecture_v166">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="100" width="294.3333333333333" x="1381.6666666666665" y="1110" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v167" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CNI data path" vertex="1">
+          <mxGeometry height="38" width="264.3333333333333" x="1396.6666666666665" y="1117" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v168" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Network policy / conntrack" vertex="1">
+          <mxGeometry height="50" width="276.3333333333333" x="1390.6666666666665" y="1154" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v169" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="874.1666666666666" y="1210" as="sourcePoint" />
+            <mxPoint x="874.1666666666666" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v170" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526C84;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1201.5" y="1210" as="sourcePoint" />
+            <mxPoint x="1201.5" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v171" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1528.8333333333333" y="1210" as="sourcePoint" />
+            <mxPoint x="1528.8333333333333" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" tags="ControlPlane.Kubelet" help="Kubelet is node agent; privileged API access and 10250 need scoping." slug="Kubelet1" id="securityarchitecture_v172">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="100" width="301.6666666666667" x="1748" y="1110" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v173" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="kubelet" vertex="1">
+          <mxGeometry height="38" width="271.6666666666667" x="1763" y="1117" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v174" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="API stream + CRI / kubelet HTTPS 10250" vertex="1">
+          <mxGeometry height="50" width="283.6666666666667" x="1757" y="1154" as="geometry" />
+        </mxCell>
+        <object label="" tags="Node.RuntimeSecurity" slug="Runtime1" id="securityarchitecture_v175">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="100" width="301.6666666666667" x="2082.6666666666665" y="1110" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v176" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Container runtime" vertex="1">
+          <mxGeometry height="38" width="271.6666666666667" x="2097.6666666666665" y="1117" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v177" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="containerd / CRI-O · CRI socket" vertex="1">
+          <mxGeometry height="50" width="283.6666666666667" x="2091.6666666666665" y="1154" as="geometry" />
+        </mxCell>
+        <object label="" tags="Network.Cni Network.Policy" slug="Cni1" id="securityarchitecture_v178">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="100" width="301.6666666666667" x="2417.3333333333335" y="1110" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v179" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CNI data path" vertex="1">
+          <mxGeometry height="38" width="271.6666666666667" x="2432.3333333333335" y="1117" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v180" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Network policy / conntrack" vertex="1">
+          <mxGeometry height="50" width="283.6666666666667" x="2426.3333333333335" y="1154" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v181" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1898.8333333333333" y="1210" as="sourcePoint" />
+            <mxPoint x="1898.8333333333333" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v182" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526C84;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2233.5" y="1210" as="sourcePoint" />
+            <mxPoint x="2233.5" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v183" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2568.166666666667" y="1210" as="sourcePoint" />
+            <mxPoint x="2568.166666666667" y="1240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v184" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="310" width="926" x="740" y="1262" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v185" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="200" x="756" y="1245" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v186" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="NAMESPACE: app-prod" vertex="1">
+          <mxGeometry height="35" width="184" x="764" y="1245" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v187" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=13;fontFamily=Arial;fontStyle=0;align=right;verticalAlign=middle;spacing=0;" value="RBAC scoped; policy via CNI" vertex="1">
+          <mxGeometry height="25" width="475" x="1171" y="1275" as="geometry" />
+        </mxCell>
+        <object label="" tags="Network.Service Network.Service.EndpointSlice" slug="ServiceEndpoints" id="securityarchitecture_v188">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="110" width="275" x="763" y="1312" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v189" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Service / EndpointSlice" vertex="1">
+          <mxGeometry height="38" width="245" x="778" y="1319" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v190" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="ClusterIP:443 -&gt; PodIP:8080" vertex="1">
+          <mxGeometry height="60" width="257" x="772" y="1356" as="geometry" />
+        </mxCell>
+        <object label="" tags="Workload Namespace.Resources" slug="FrontendPod" id="securityarchitecture_v191">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="110" width="282" x="1061" y="1312" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v192" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod: frontend" vertex="1">
+          <mxGeometry height="38" width="252" x="1076" y="1319" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v193" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="App + projected ServiceAccount token" vertex="1">
+          <mxGeometry height="60" width="264" x="1070" y="1356" as="geometry" />
+        </mxCell>
+        <object label="" tags="ProcessSecurity ProcessSecurity.Seccomp" slug="ApiPod" id="securityarchitecture_v194">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="110" width="272" x="1367" y="1312" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v195" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod: API" vertex="1">
+          <mxGeometry height="38" width="242" x="1382" y="1319" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v196" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="seccomp / non-root / read-only FS" vertex="1">
+          <mxGeometry height="60" width="254" x="1376" y="1356" as="geometry" />
+        </mxCell>
+        <object label="" tags="Network.Policy" slug="NetworkPolicy" id="securityarchitecture_v197">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="275" x="763" y="1441" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v198" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="NetworkPolicy" vertex="1">
+          <mxGeometry height="38" width="245" x="778" y="1448" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v199" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Default deny; explicit L3 / L4 allow" vertex="1">
+          <mxGeometry height="56" width="257" x="772" y="1485" as="geometry" />
+        </mxCell>
+        <object label="" tags="Workload.Volume" slug="SecretSources" id="securityarchitecture_v200">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F2EEFA;strokeColor=#B3A3D1;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="282" x="1061" y="1441" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v201" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#7D63B0;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Secret / ConfigMap" vertex="1">
+          <mxGeometry height="38" width="252" x="1076" y="1448" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v202" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Volume / env / projected files" vertex="1">
+          <mxGeometry height="56" width="264" x="1070" y="1485" as="geometry" />
+        </mxCell>
+        <object label="" tags="Namespace.Psa" slug="PodSecurityAdmission" id="securityarchitecture_v203">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="272" x="1367" y="1441" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v204" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod Security Admission" vertex="1">
+          <mxGeometry height="38" width="242" x="1382" y="1448" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v205" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Restricted profile where feasible" vertex="1">
+          <mxGeometry height="56" width="254" x="1376" y="1485" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v206" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1038" y="1363" as="sourcePoint" />
+            <mxPoint x="1061" y="1363" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v207" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1343" y="1363" as="sourcePoint" />
+            <mxPoint x="1367" y="1363" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v208" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7D63B0;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1202" y="1441" as="sourcePoint" />
+            <mxPoint x="1202" y="1422" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="" tags="Workload" slug="NodeBComp0" id="securityarchitecture_v209">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="110" width="299" x="1764" y="1312" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v210" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod: internal API" vertex="1">
+          <mxGeometry height="38" width="269" x="1779" y="1319" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v211" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Identity-checked service / mTLS optional" vertex="1">
+          <mxGeometry height="60" width="281" x="1773" y="1356" as="geometry" />
+        </mxCell>
+        <object label="" tags="Workload" slug="NodeBComp1" id="securityarchitecture_v212">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F2EEFA;strokeColor=#B3A3D1;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="110" width="299" x="2088" y="1312" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v213" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#7D63B0;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod: database" vertex="1">
+          <mxGeometry height="38" width="269" x="2103" y="1319" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v214" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="PVC / CSI / scoped Secret" vertex="1">
+          <mxGeometry height="60" width="281" x="2097" y="1356" as="geometry" />
+        </mxCell>
+        <object label="" tags="Network.ServiceMesh" slug="NodeBComp2" id="securityarchitecture_v215">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="110" width="299" x="2412" y="1312" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v216" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Service mesh proxy" vertex="1">
+          <mxGeometry height="38" width="269" x="2427" y="1319" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v217" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Optional east-west mTLS, authz" vertex="1">
+          <mxGeometry height="60" width="281" x="2421" y="1356" as="geometry" />
+        </mxCell>
+        <object label="" tags="Node.RuntimeSecurity Node.Observability" slug="RuntimeSensors" id="securityarchitecture_v218">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="299" x="1764" y="1441" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v219" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="eBPF observability" vertex="1">
+          <mxGeometry height="38" width="269" x="1779" y="1448" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v220" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Falco / Tetragon / Hubble (optional)" vertex="1">
+          <mxGeometry height="56" width="281" x="1773" y="1485" as="geometry" />
+        </mxCell>
+        <object label="" tags="Workload.Volume" slug="StorageCsi" id="securityarchitecture_v221">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F2EEFA;strokeColor=#B3A3D1;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="299" x="2088" y="1441" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v222" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#7D63B0;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Storage / CSI" vertex="1">
+          <mxGeometry height="38" width="269" x="2103" y="1448" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v223" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="PVC -&gt; volume plugin / provider" vertex="1">
+          <mxGeometry height="56" width="281" x="2097" y="1485" as="geometry" />
+        </mxCell>
+        <object label="" tags="Network.Egress Network.Egress.Gateway" slug="EgressGateway" id="securityarchitecture_v224">
+          <mxCell parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" vertex="1">
+            <mxGeometry height="106" width="299" x="2412" y="1441" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="securityarchitecture_v225" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=18;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Egress gateway / NAT" vertex="1">
+          <mxGeometry height="38" width="269" x="2427" y="1448" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v226" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Policy -&gt; SNAT -&gt; external service" vertex="1">
+          <mxGeometry height="56" width="281" x="2421" y="1485" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v227" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1743" y="1367" />
+              <mxPoint x="1743" y="1380" />
+            </Array>
+            <mxPoint x="1639" y="1367" as="sourcePoint" />
+            <mxPoint x="1764" y="1380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v228" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DEE7;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="28" width="178" x="1570" y="1268" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v229" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=12;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="East-west: allowlist" vertex="1">
+          <mxGeometry height="28" width="162" x="1578" y="1268" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v230" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7D63B0;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2200" y="1422" as="sourcePoint" />
+            <mxPoint x="2200" y="1441" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v231" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2570" y="1422" as="sourcePoint" />
+            <mxPoint x="2570" y="1441" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v232" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#C4D3E2;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="103" width="934" x="735" y="1591" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v233" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="NODE A KERNEL / CONTAINER SECURITY" vertex="1">
+          <mxGeometry height="27" width="900" x="750" y="1596" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v234" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=14;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="Linux namespaces • cgroups • capabilities • SELinux/AppArmor • seccomp • user namespaces" vertex="1">
+          <mxGeometry height="25" width="895" x="752" y="1634" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v235" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#C4D3E2;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="103" width="975" x="1750" y="1591" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v236" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="NODE B KERNEL / CONTAINER SECURITY" vertex="1">
+          <mxGeometry height="27" width="925" x="1765" y="1596" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v237" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=14;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="Runtime socket protections • hostPath restrictions • hardening • node isolation" vertex="1">
+          <mxGeometry height="26" width="925" x="1765" y="1634" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v238" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="88" width="1985" x="731" y="1749" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v239" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Important boundary caveat" vertex="1">
+          <mxGeometry height="25" width="1959" x="744" y="1759" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v240" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Namespaces are NOT a hard multi-tenant security boundary." vertex="1">
+          <mxGeometry height="22" width="1955" x="746" y="1792" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v241" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  A privileged Pod or host socket can undermine isolation." vertex="1">
+          <mxGeometry height="22" width="1955" x="746" y="1817" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v242" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="1275" />
+              <mxPoint x="610" y="1844" />
+              <mxPoint x="800" y="1844" />
+            </Array>
+            <mxPoint x="560" y="1275" as="sourcePoint" />
+            <mxPoint x="800" y="1312" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v243" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DEE7;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="28" width="147.2" x="680" y="1814" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v244" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=12;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Ingress: TLS 443" vertex="1">
+          <mxGeometry height="28" width="131.2" x="688" y="1814" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v245" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="616" y="900" />
+              <mxPoint x="616" y="1040" />
+              <mxPoint x="1157" y="1040" />
+            </Array>
+            <mxPoint x="560" y="900" as="sourcePoint" />
+            <mxPoint x="1157" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v246" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DEE7;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="28" width="101" x="782" y="1008" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v247" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=12;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Image pull" vertex="1">
+          <mxGeometry height="28" width="85" x="790" y="1008" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v248" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1225" y="1749" as="sourcePoint" />
+            <mxPoint x="1225" y="1723" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v249" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2.5;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2462" y="1020" />
+              <mxPoint x="2160" y="1020" />
+            </Array>
+            <mxPoint x="2462" y="1070" as="sourcePoint" />
+            <mxPoint x="2160" y="955" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v250" parent="1" style="rounded=1;arcSize=7;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D5DEE7;strokeWidth=1;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="28" width="178" x="2140" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v251" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=12;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="kubelet API / status" vertex="1">
+          <mxGeometry height="28" width="162" x="2148" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v252" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="565" width="610" x="2861" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v253" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="258" x="2877" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v254" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="SECURITY POLICY &amp; CONTROLS" vertex="1">
+          <mxGeometry height="35" width="242" x="2885" y="238" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v255" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="68" width="560" x="2885" y="301" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v256" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="IDENTITY  ·  C02 / C03" vertex="1">
+          <mxGeometry height="30.6" width="530" x="2900" y="308" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v257" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="MFA, short-lived credentials, least privilege" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="345" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v258" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="68" width="560" x="2885" y="378" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v259" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="API POLICY  ·  C08 / C12" vertex="1">
+          <mxGeometry height="30.6" width="530" x="2900" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v260" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="PSA + validating / mutating webhooks" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="422" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v261" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="68" width="560" x="2885" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v262" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="NETWORK  ·  C09 / C22" vertex="1">
+          <mxGeometry height="30.6" width="530" x="2900" y="462" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v263" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Default-deny policy, egress controls, mTLS" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="499" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v264" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="68" width="560" x="2885" y="532" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v265" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="RUNTIME  ·  C11 / C16 / C17" vertex="1">
+          <mxGeometry height="30.6" width="530" x="2900" y="539" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v266" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="seccomp, MAC, no dangerous host access" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="576" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v267" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="68" width="560" x="2885" y="609" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v268" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="SUPPLY  ·  C13 / C14" vertex="1">
+          <mxGeometry height="30.6" width="530" x="2900" y="616" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v269" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Artifact signing, digest pinning, SBOM" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="653" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v270" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="68" width="560" x="2885" y="686" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v271" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="DATA  ·  C06 / C23" vertex="1">
+          <mxGeometry height="30.6" width="530" x="2900" y="693" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v272" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="KMS etcd encryption, Secret access controls" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v273" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="485" width="610" x="2861" y="865" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v274" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="240" x="2877" y="848" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v275" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="OBSERVABILITY / EVIDENCE" vertex="1">
+          <mxGeometry height="35" width="224" x="2885" y="848" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v276" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="72" width="560" x="2885" y="911" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v277" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="API audit events" vertex="1">
+          <mxGeometry height="32.4" width="530" x="2900" y="918" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v278" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Who / verb / object / response" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="955" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v279" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="72" width="560" x="2885" y="994" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v280" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CNI flow telemetry" vertex="1">
+          <mxGeometry height="32.4" width="530" x="2900" y="1001" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v281" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Source/destination + deny" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1038" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v282" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="72" width="560" x="2885" y="1077" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v283" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Runtime detection" vertex="1">
+          <mxGeometry height="32.4" width="530" x="2900" y="1084" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v284" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Process, file, syscall, capabilities" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1121" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v285" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="72" width="560" x="2885" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v286" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Image / admission logs" vertex="1">
+          <mxGeometry height="32.4" width="530" x="2900" y="1167" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v287" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Signature, policy decisions" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1204" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v288" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="72" width="560" x="2885" y="1243" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v289" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Central SIEM / triage" vertex="1">
+          <mxGeometry height="32.4" width="530" x="2900" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v290" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Correlate by workload and identity" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1287" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v291" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFBFB;strokeColor=#E7A6AD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="430" width="610" x="2861" y="1395" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v292" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFFBFB;strokeColor=#E7A6AD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="231" x="2877" y="1378" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v293" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="ATTACK-PATH ANNOTATIONS" vertex="1">
+          <mxGeometry height="35" width="215" x="2885" y="1378" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v294" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="64" width="560" x="2885" y="1443" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v295" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="P1 · AV02 / AV28" vertex="1">
+          <mxGeometry height="28.8" width="530" x="2900" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v296" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Stolen kubeconfig -&gt; API privilege" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1487" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v297" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="64" width="560" x="2885" y="1515" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v298" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="P2 · AV01 / AV03" vertex="1">
+          <mxGeometry height="28.8" width="530" x="2900" y="1522" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v299" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Public app -&gt; token abuse" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1559" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v300" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="64" width="560" x="2885" y="1587" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v301" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="P3 · AV04 / AV28" vertex="1">
+          <mxGeometry height="28.8" width="530" x="2900" y="1594" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v302" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Supply-chain tampering -&gt; Pod" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1631" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v303" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="64" width="560" x="2885" y="1659" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v304" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="P4 · AV18" vertex="1">
+          <mxGeometry height="28.8" width="530" x="2900" y="1666" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v305" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Allowed east-west route -&gt; pivot" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1703" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v306" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="64" width="560" x="2885" y="1731" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v307" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=15;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="P5 · AV14 / AV15" vertex="1">
+          <mxGeometry height="28.8" width="530" x="2900" y="1738" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v308" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Pod privilege -&gt; node compromise" vertex="1">
+          <mxGeometry height="26" width="542" x="2894" y="1775" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v309" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="176" width="595" x="2868" y="1866" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v310" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Diagram conventions" vertex="1">
+          <mxGeometry height="25" width="569" x="2881" y="1876" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v311" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Blue = authorized / expected data flow" vertex="1">
+          <mxGeometry height="22" width="565" x="2883" y="1909" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v312" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Red = threat or candidate exploit path" vertex="1">
+          <mxGeometry height="22" width="565" x="2883" y="1934" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v313" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Dashed boundary = distinct trust context" vertex="1">
+          <mxGeometry height="22" width="565" x="2883" y="1959" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v314" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  KubeDaily-authored, independently editable" vertex="1">
+          <mxGeometry height="22" width="565" x="2883" y="1984" as="geometry" />
+        </mxCell>
+        <mxCell id="securityarchitecture_v315" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="531" />
+              <mxPoint x="630" y="610" />
+            </Array>
+            <mxPoint x="562" y="531" as="sourcePoint" />
+            <mxPoint x="711" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v316" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1555" y="1276" />
+              <mxPoint x="1775" y="1276" />
+            </Array>
+            <mxPoint x="1555" y="1422" as="sourcePoint" />
+            <mxPoint x="1775" y="1312" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v317" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=2;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2740" y="1550" />
+              <mxPoint x="2740" y="1740" />
+            </Array>
+            <mxPoint x="2660" y="1550" as="sourcePoint" />
+            <mxPoint x="2861" y="1740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="securityarchitecture_v318" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=14;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="MODEL NOTES: External/cloud services are illustrative. Ports, components and enforcement depend on distribution, CNI and deployment; validate before use in production." vertex="1">
+          <mxGeometry height="26" width="3300" x="35" y="2120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

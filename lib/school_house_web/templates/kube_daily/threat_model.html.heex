@@ -8,7 +8,7 @@
 
     <div class="kube-stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); margin-top: 1.5rem; gap: 0.75rem;">
       <div class="kube-stat-card" style="padding: 0.75rem 1rem;">
-        <div class="kube-stat-value" style="font-size: 1.5rem;">2</div>
+        <div class="kube-stat-value" style="font-size: 1.5rem;">3</div>
         <div class="kube-stat-label">Diagram Sheets</div>
       </div>
       <div class="kube-stat-card" style="padding: 0.75rem 1rem;">
@@ -48,7 +48,7 @@
       <!-- Top Row: Sheets, Search & View Controls -->
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center;">
         
-        <!-- Sheet Switcher Tabs -->
+        <!-- Sheet Switcher Tabs (3 Sheets) -->
         <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;" role="tablist">
           <button id="btn-sheet-cluster" class="kube-button" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('cluster')">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; margin-right: 6px;"></span>
@@ -57,6 +57,10 @@
           <button id="btn-sheet-attack-chains" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('attack-chains')">
             <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; margin-right: 6px;"></span>
             02 · Attack Chains &amp; Mitigations
+          </button>
+          <button id="btn-sheet-security-architecture" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('security-architecture')">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #3b82f6; margin-right: 6px;"></span>
+            03 · Layered Security Architecture
           </button>
         </div>
 
@@ -88,17 +92,23 @@
             <button onclick="toggleDownloadMenu()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;">
               ⬇ Export ▾
             </button>
-            <div id="download-dropdown-menu" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 4px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); min-width: 180px; z-index: 50;">
-              <a href="/kubedaily/diagrams/kubernetes-threat-model.drawio" download="kubernetes-threat-model.drawio" style="display: block; padding: 0.5rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
-                📄 Draw.io Source (.drawio)
+            <div id="download-dropdown-menu" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 4px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); min-width: 220px; z-index: 50;">
+              <div style="padding: 0.35rem 0.85rem; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Draw.io XML Sources</div>
+              <a href="/kubedaily/diagrams/kubernetes-threat-model.drawio" download="kubernetes-threat-model.drawio" style="display: block; padding: 0.4rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
+                📄 Complete 3-Sheet (.drawio)
               </a>
-              <a id="btn-download-svg" href="/kubedaily/images/k8s-threat-model-cluster.svg" download="cluster.svg" style="display: block; padding: 0.5rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
-                🎨 High-Res Vector (.svg)
+              <a href="/kubedaily/diagrams/kubernetes-security-architecture.drawio" download="kubernetes-security-architecture.drawio" style="display: block; padding: 0.4rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
+                📄 Sheet 03 Standalone (.drawio)
               </a>
-              <a id="btn-download-png" href="/kubedaily/images/k8s-threat-model-cluster.png" download="cluster.png" style="display: block; padding: 0.5rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
-                🖼️ Retina Raster (.png)
+              <div style="padding: 0.35rem 0.85rem; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-top: 0.25rem;">Active Sheet Render</div>
+              <a id="btn-download-svg" href="/kubedaily/images/k8s-threat-model-cluster.svg" download="cluster.svg" style="display: block; padding: 0.4rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
+                🎨 Active Sheet Vector (.svg)
               </a>
-              <button onclick="exportCatalogJson()" style="width: 100%; text-align: left; background: none; border: none; padding: 0.5rem 0.85rem; font-size: 0.775rem; color: #1e293b; cursor: pointer;">
+              <a id="btn-download-png" href="/kubedaily/images/k8s-threat-model-cluster.png" download="cluster.png" style="display: block; padding: 0.4rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
+                🖼️ Active Sheet Retina (.png)
+              </a>
+              <div style="padding: 0.35rem 0.85rem; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-top: 0.25rem;">Threat Catalog Data</div>
+              <button onclick="exportCatalogJson()" style="width: 100%; text-align: left; background: none; border: none; padding: 0.4rem 0.85rem; font-size: 0.775rem; color: #1e293b; cursor: pointer;">
                 📦 JSON Threat Catalog
               </button>
             </div>
@@ -154,10 +164,14 @@
 
       </div>
 
-      <!-- Third Row: Quick Scenario Preset Views -->
+      <!-- Third Row: Quick Scenario Preset Views (spanning Sheets 1, 2, and 3) -->
       <div style="display: flex; align-items: center; gap: 0.4rem; overflow-x: auto; padding: 0.25rem 0; border-top: 1px solid #f1f5f9;">
         <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; margin-right: 4px;">Preset Views:</span>
-        <button class="view-pill-btn active" onclick="applyPresetView('overview')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer;">Overview</button>
+        <button class="view-pill-btn active" onclick="applyPresetView('overview')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer;">Cluster Overview</button>
+        <button class="view-pill-btn" onclick="applyPresetView('layered-architecture')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; cursor: pointer;">Layered Architecture</button>
+        <button class="view-pill-btn" onclick="applyPresetView('identity-access')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; cursor: pointer;">Identity &amp; Admin</button>
+        <button class="view-pill-btn" onclick="applyPresetView('supply-chain-zone')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; cursor: pointer;">Supply Chain Zone</button>
+        <button class="view-pill-btn" onclick="applyPresetView('worker-isolation')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; cursor: pointer;">Worker Isolation</button>
         <button class="view-pill-btn" onclick="applyPresetView('control-plane')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer;">Control Plane</button>
         <button class="view-pill-btn" onclick="applyPresetView('datastore-etcd')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer;">Datastore &amp; KMS</button>
         <button class="view-pill-btn" onclick="applyPresetView('data-plane')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer;">Worker Nodes</button>
@@ -367,8 +381,8 @@
           <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">/</span>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
-          <span>Switch Sheet 1 / 2</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">1 / 2</span>
+          <span>Switch Sheet 1 / 2 / 3</span>
+          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">1 / 2 / 3</span>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
           <span>Cycle Depth Level</span>
@@ -755,6 +769,11 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
       title: 'Sheet 2: 02 · Attack Chains & Mitigations',
       svg: '/kubedaily/images/k8s-threat-model-attack-chains.svg',
       png: '/kubedaily/images/k8s-threat-model-attack-chains.png'
+    },
+    'security-architecture': {
+      title: 'Sheet 3: 03 · Layered Security Reference Architecture',
+      svg: '/kubedaily/images/k8s-threat-model-security-architecture.svg',
+      png: '/kubedaily/images/k8s-threat-model-security-architecture.png'
     }
   };
 
@@ -822,7 +841,7 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     // If on attack chain and component is on cluster (or vice versa), switch sheet
     if (slug.startsWith('p') && slug.length === 2 && currentSheet !== 'attack-chains') {
       switchSheet('attack-chains');
-    } else if (!slug.startsWith('p') && currentSheet !== 'cluster') {
+    } else if (!slug.startsWith('p') && currentSheet === 'attack-chains') {
       switchSheet('cluster');
     }
 
@@ -1224,7 +1243,7 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     }, 2400);
   }
 
-  // Switch between Sheet 1 and Sheet 2
+  // Switch between Sheet 1, Sheet 2, and Sheet 3
   function switchSheet(sheetKey) {
     if (!sheetUrls[sheetKey]) return;
     currentSheet = sheetKey;
@@ -1235,14 +1254,11 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
 
     const btnCluster = document.getElementById('btn-sheet-cluster');
     const btnAttacks = document.getElementById('btn-sheet-attack-chains');
+    const btnSecArch = document.getElementById('btn-sheet-security-architecture');
 
-    if (sheetKey === 'cluster') {
-      btnCluster.className = 'kube-button';
-      btnAttacks.className = 'kube-button kube-button-secondary';
-    } else {
-      btnCluster.className = 'kube-button kube-button-secondary';
-      btnAttacks.className = 'kube-button';
-    }
+    if (btnCluster) btnCluster.className = sheetKey === 'cluster' ? 'kube-button' : 'kube-button kube-button-secondary';
+    if (btnAttacks) btnAttacks.className = sheetKey === 'attack-chains' ? 'kube-button' : 'kube-button kube-button-secondary';
+    if (btnSecArch) btnSecArch.className = sheetKey === 'security-architecture' ? 'kube-button' : 'kube-button kube-button-secondary';
 
     const svgLink = document.getElementById('btn-download-svg');
     const pngLink = document.getElementById('btn-download-png');
@@ -1502,6 +1518,9 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     } else if (e.key === '2') {
       e.preventDefault();
       switchSheet('attack-chains');
+    } else if (e.key === '3') {
+      e.preventDefault();
+      switchSheet('security-architecture');
     } else if (e.key === 'l' || e.key === 'L') {
       e.preventDefault();
       setLevel((currentLevel + 1) % 4);

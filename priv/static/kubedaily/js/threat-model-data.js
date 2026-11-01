@@ -99,6 +99,37 @@ window.KUBEDAILY_THREAT_MODEL_DATA = {
       description: "Extracting plaintext credentials from unencrypted etcd datastore, exposed backups, or through unauthorized Secret object listing.",
       camera: { zoom: 1.4, x: -1050, y: -950 },
       highlight: ["P6"]
+    },
+    "layered-architecture": {
+      title: "Layered Reference Architecture",
+      sheet: "security-architecture",
+      level: 1,
+      description: "End-to-end layered defense-in-depth model mapping external attack surfaces, identity provider, CI/CD supply chain, control plane, worker nodes, and eBPF detection.",
+      camera: { zoom: 1.0, x: 0, y: 0 }
+    },
+    "identity-access": {
+      title: "01 · Identity & Admin Access",
+      sheet: "security-architecture",
+      level: 2,
+      description: "Platform operator, OIDC / IdP authentication, short-lived tokens, kubectl access, and GitOps / CI scoped credentials.",
+      camera: { zoom: 1.5, x: -50, y: -200 },
+      highlight: ["Identity", "OIDC", "Platform operator", "GitOps"]
+    },
+    "supply-chain-zone": {
+      title: "02 · Software Supply Chain",
+      sheet: "security-architecture",
+      level: 2,
+      description: "Source repository approvals, isolated CI image builder, SLSA-style provenance, SBOM, and immutable signed container registry.",
+      camera: { zoom: 1.5, x: -50, y: -700 },
+      highlight: ["Supply", "SBOM", "Cosign", "Registry"]
+    },
+    "worker-isolation": {
+      title: "03 · Worker Node Isolation & CNI",
+      sheet: "security-architecture",
+      level: 2,
+      description: "Worker Node A and B runtime security, containerd/CRI-O unix sockets, CNI datapath, Default-Deny NetworkPolicy, and Linux kernel namespaces/cgroups.",
+      camera: { zoom: 1.4, x: -1800, y: -600 },
+      highlight: ["Worker", "CNI", "containerd", "NetworkPolicy"]
     }
   },
 

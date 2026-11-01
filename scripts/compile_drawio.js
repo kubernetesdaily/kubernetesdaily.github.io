@@ -122,7 +122,8 @@ async function compile() {
 
     const customNameMap = {
         'overview': 'cluster',
-        'attackpaths': 'attack-chains'
+        'attackpaths': 'attack-chains',
+        'securityarchitecture': 'security-architecture'
     };
 
     const browser = await chromium.launch({
