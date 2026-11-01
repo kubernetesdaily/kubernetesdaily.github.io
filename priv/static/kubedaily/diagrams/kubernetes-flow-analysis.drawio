@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="KubeDaily Enterprise Security Architect">
+  <diagram id="flowsanalysis" name="04 · Packet and identity flow analysis">
+    <mxGraphModel dx="588" dy="397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2080" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="flowsanalysis_v1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#FFFFFF;fontSize=33;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="PACKET AND IDENTITY FLOW ANALYSIS" vertex="1">
+          <mxGeometry height="50" width="3228" x="36" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#AFC4D8;fontSize=16;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="Security checkpoints, conditional attack paths and observability: request processing, ingress, east-west, egress, supply chain, runtime" vertex="1">
+          <mxGeometry height="22" width="3226" x="37" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v3" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#264765;strokeColor=#365D7D;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="48" width="546" x="2715" y="27" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D7E8FA;fontSize=13;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="EDITABLE DRAW.IO  •  REFERENCE ARCHITECTURE" vertex="1">
+          <mxGeometry height="48" width="530" x="2723" y="27" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v5" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C8D6E4;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="60" width="3250" x="25" y="131" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="HOW TO READ" vertex="1">
+          <mxGeometry height="31" width="150" x="47" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v7" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#387CC5;strokeColor=#387CC5;strokeWidth=0;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="11" width="34" x="222" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Legitimate / authenticated" vertex="1">
+          <mxGeometry height="36" width="640" x="268" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v9" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#D34E5B;strokeColor=#D34E5B;strokeWidth=0;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="11" width="34" x="948" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Attack / bypass attempt" vertex="1">
+          <mxGeometry height="36" width="640" x="994" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v11" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#22806E;strokeColor=#22806E;strokeWidth=0;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="11" width="34" x="1674" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Policy checkpoint" vertex="1">
+          <mxGeometry height="36" width="640" x="1720" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v13" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#B37B27;strokeColor=#B37B27;strokeWidth=0;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="11" width="34" x="2400" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=15;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Artifact + evidence" vertex="1">
+          <mxGeometry height="36" width="640" x="2446" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v15" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="330" width="2260" x="33" y="247" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v16" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="672" x="49" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CONTROL-PLANE API REQUEST  ·  AuthN -&gt; AuthZ -&gt; admission -&gt; persistence" vertex="1">
+          <mxGeometry height="35" width="656" x="57" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v18" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="107" width="337" x="68" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="01 Client identity" vertex="1">
+          <mxGeometry height="38" width="307" x="83" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="OIDC / cert / SA token" vertex="1">
+          <mxGeometry height="57" width="319" x="77" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v21" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="107" width="337" x="435" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="02 API TLS" vertex="1">
+          <mxGeometry height="38" width="307" x="450" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="6443 / apiserver" vertex="1">
+          <mxGeometry height="57" width="319" x="444" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v24" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="383" as="sourcePoint" />
+            <mxPoint x="435" y="383" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v25" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="107" width="337" x="802" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="03 AuthN" vertex="1">
+          <mxGeometry height="38" width="307" x="817" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Token / certificate" vertex="1">
+          <mxGeometry height="57" width="319" x="811" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v28" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="773" y="383" as="sourcePoint" />
+            <mxPoint x="802" y="383" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v29" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="107" width="337" x="1169" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v30" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="04 AuthZ" vertex="1">
+          <mxGeometry height="38" width="307" x="1184" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="RBAC / webhook" vertex="1">
+          <mxGeometry height="57" width="319" x="1178" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v32" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="383" as="sourcePoint" />
+            <mxPoint x="1169" y="383" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v33" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="107" width="337" x="1536" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="05 Admission" vertex="1">
+          <mxGeometry height="38" width="307" x="1551" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="PSA / policies" vertex="1">
+          <mxGeometry height="57" width="319" x="1545" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v36" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1507" y="383" as="sourcePoint" />
+            <mxPoint x="1536" y="383" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v37" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F2EEFA;strokeColor=#B3A3D1;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="107" width="337" x="1903" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v38" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#7D63B0;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="06 Storage" vertex="1">
+          <mxGeometry height="38" width="307" x="1918" y="337" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v39" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="etcd / API objects" vertex="1">
+          <mxGeometry height="57" width="319" x="1912" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v40" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1874" y="383" as="sourcePoint" />
+            <mxPoint x="1903" y="383" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v41" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="96" width="2166" x="72" y="458" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v42" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Threats" vertex="1">
+          <mxGeometry height="25" width="2140" x="85" y="468" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v43" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="AV02: credential theft  •  AV09: over-broad RBAC  •  AV20: admission webhook abuse" vertex="1">
+          <mxGeometry height="52" width="2136" x="87" y="499" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v44" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="292" width="2260" x="33" y="627" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v45" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="582" x="49" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v46" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="INGRESS PATH  ·  Internet -&gt; Gateway/Ingress -&gt; Service -&gt; Pod" vertex="1">
+          <mxGeometry height="35" width="566" x="57" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v47" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="68" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v48" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Internet / DNS" vertex="1">
+          <mxGeometry height="38" width="307" x="83" y="711" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v49" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="HTTPS / external name" vertex="1">
+          <mxGeometry height="58" width="319" x="77" y="748" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v50" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="435" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v51" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Edge LB" vertex="1">
+          <mxGeometry height="38" width="307" x="450" y="711" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v52" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="TCP load balancer" vertex="1">
+          <mxGeometry height="58" width="319" x="444" y="748" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v53" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="758" as="sourcePoint" />
+            <mxPoint x="435" y="758" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v54" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="802" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v55" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Gateway / Ingress" vertex="1">
+          <mxGeometry height="38" width="307" x="817" y="711" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v56" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Host/path/TLS routing" vertex="1">
+          <mxGeometry height="58" width="319" x="811" y="748" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v57" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="773" y="758" as="sourcePoint" />
+            <mxPoint x="802" y="758" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v58" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="1169" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v59" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Service + EndpointSlice" vertex="1">
+          <mxGeometry height="38" width="307" x="1184" y="711" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v60" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="ClusterIP -&gt; healthy backend" vertex="1">
+          <mxGeometry height="58" width="319" x="1178" y="748" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v61" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="758" as="sourcePoint" />
+            <mxPoint x="1169" y="758" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v62" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="1536" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CNI policy" vertex="1">
+          <mxGeometry height="38" width="307" x="1551" y="711" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Ingress allowlist" vertex="1">
+          <mxGeometry height="58" width="319" x="1545" y="748" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v65" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1507" y="758" as="sourcePoint" />
+            <mxPoint x="1536" y="758" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v66" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="1903" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod workload" vertex="1">
+          <mxGeometry height="38" width="307" x="1918" y="711" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v68" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="App listener + identity" vertex="1">
+          <mxGeometry height="58" width="319" x="1912" y="748" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v69" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#387CC5;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1874" y="758" as="sourcePoint" />
+            <mxPoint x="1903" y="758" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v70" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=15;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="CHECK: L7 route ≠ L3/L4 isolation. Kubernetes NetworkPolicy enforcement requires compatible CNI implementation." vertex="1">
+          <mxGeometry height="34" width="2160" x="70" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v71" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="294" width="2260" x="33" y="969" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v72" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F5FBF8;strokeColor=#7DBCA9;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="618" x="49" y="952" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v73" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="EAST-WEST AND EGRESS  ·  NetworkPolicy / DNS / SNAT / external API" vertex="1">
+          <mxGeometry height="35" width="602" x="57" y="952" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v74" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="109" width="337" x="68" y="1043" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v75" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod A" vertex="1">
+          <mxGeometry height="38" width="307" x="83" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v76" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Service identity / request" vertex="1">
+          <mxGeometry height="59" width="319" x="77" y="1087" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v77" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="109" width="337" x="435" y="1043" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v78" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Egress policy" vertex="1">
+          <mxGeometry height="38" width="307" x="450" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v79" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Allowed CIDR / port; DNS exceptions" vertex="1">
+          <mxGeometry height="59" width="319" x="444" y="1087" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v80" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="1098" as="sourcePoint" />
+            <mxPoint x="435" y="1098" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v81" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="109" width="337" x="802" y="1043" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v82" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="CNI datapath" vertex="1">
+          <mxGeometry height="38" width="307" x="817" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v83" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Pod IP + routing + overlay" vertex="1">
+          <mxGeometry height="59" width="319" x="811" y="1087" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v84" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="773" y="1098" as="sourcePoint" />
+            <mxPoint x="802" y="1098" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v85" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="109" width="337" x="1169" y="1043" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v86" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Gateway / NAT" vertex="1">
+          <mxGeometry height="38" width="307" x="1184" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v87" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="SNAT / approved egress" vertex="1">
+          <mxGeometry height="59" width="319" x="1178" y="1087" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v88" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="1098" as="sourcePoint" />
+            <mxPoint x="1169" y="1098" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v89" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F0F5FA;strokeColor=#B7C7D9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="109" width="337" x="1536" y="1043" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v90" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526C84;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="External endpoint" vertex="1">
+          <mxGeometry height="38" width="307" x="1551" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v91" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Internet / SaaS / cloud API" vertex="1">
+          <mxGeometry height="59" width="319" x="1545" y="1087" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v92" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1507" y="1098" as="sourcePoint" />
+            <mxPoint x="1536" y="1098" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v93" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="109" width="337" x="1903" y="1043" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v94" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Flow telemetry" vertex="1">
+          <mxGeometry height="38" width="307" x="1918" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v95" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Observe + correlate denies" vertex="1">
+          <mxGeometry height="59" width="319" x="1912" y="1087" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v96" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#22806E;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1874" y="1098" as="sourcePoint" />
+            <mxPoint x="1903" y="1098" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v97" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=14;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="EAST-WEST: Pod -&gt; egress policy -&gt; service/IP -&gt; destination ingress policy; optional mesh can add authentication and authorization." vertex="1">
+          <mxGeometry height="33" width="2145" x="70" y="1181" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v98" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFDF9;strokeColor=#E1BB70;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="308" width="2260" x="33" y="1313" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v99" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFFDF9;strokeColor=#E1BB70;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="438" x="49" y="1296" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v100" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="SUPPLY CHAIN -&gt; ADMISSION -&gt; RUNTIME EXECUTION" vertex="1">
+          <mxGeometry height="35" width="422" x="57" y="1296" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v101" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="68" y="1391" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v102" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Git / packages" vertex="1">
+          <mxGeometry height="38" width="307" x="83" y="1398" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v103" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="PR reviews / lockfiles" vertex="1">
+          <mxGeometry height="58" width="319" x="77" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v104" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="435" y="1391" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v105" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Build + SBOM" vertex="1">
+          <mxGeometry height="38" width="307" x="450" y="1398" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v106" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Build provenance" vertex="1">
+          <mxGeometry height="58" width="319" x="444" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v107" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="406" y="1445" as="sourcePoint" />
+            <mxPoint x="435" y="1445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v108" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="802" y="1391" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v109" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Scan + sign" vertex="1">
+          <mxGeometry height="38" width="307" x="817" y="1398" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v110" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Vulnerabilities / signature" vertex="1">
+          <mxGeometry height="58" width="319" x="811" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v111" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="773" y="1445" as="sourcePoint" />
+            <mxPoint x="802" y="1445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v112" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="1169" y="1391" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v113" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Registry" vertex="1">
+          <mxGeometry height="38" width="307" x="1184" y="1398" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v114" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Immutable image digest" vertex="1">
+          <mxGeometry height="58" width="319" x="1178" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v115" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1140" y="1445" as="sourcePoint" />
+            <mxPoint x="1169" y="1445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v116" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="1536" y="1391" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v117" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Admission" vertex="1">
+          <mxGeometry height="38" width="307" x="1551" y="1398" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v118" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Verify signature / policy" vertex="1">
+          <mxGeometry height="58" width="319" x="1545" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v119" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1507" y="1445" as="sourcePoint" />
+            <mxPoint x="1536" y="1445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v120" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF8F4;strokeColor=#7DBCA9;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="108" width="337" x="1903" y="1391" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v121" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#22806E;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod / runtime" vertex="1">
+          <mxGeometry height="38" width="307" x="1918" y="1398" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v122" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="CRI pull + process exec" vertex="1">
+          <mxGeometry height="58" width="319" x="1912" y="1435" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v123" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B37B27;strokeWidth=3;startArrow=none;endArrow=block;endFill=1;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1874" y="1445" as="sourcePoint" />
+            <mxPoint x="1903" y="1445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v124" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#647A91;fontSize=14;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="RISK: A signed image does not establish safety by itself; provenance, vulnerability assessment, least privilege and runtime monitoring are complementary." vertex="1">
+          <mxGeometry height="50" width="2150" x="70" y="1530" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v125" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#FFFBFB;strokeColor=#E7A6AD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="260" width="2260" x="33" y="1670" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v126" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FFFBFB;strokeColor=#E7A6AD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="690" x="49" y="1653" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v127" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="RUNTIME + NODE ESCAPE BOUNDARY  ·  Compromised process, privileges, kernel" vertex="1">
+          <mxGeometry height="35" width="674" x="57" y="1653" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v128" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="99" width="402" x="68" y="1744" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v129" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Compromised process" vertex="1">
+          <mxGeometry height="38" width="372" x="83" y="1751" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v130" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="AV01 / AV05 initial foothold" vertex="1">
+          <mxGeometry height="49" width="384" x="77" y="1788" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v131" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="99" width="402" x="509" y="1744" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v132" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Pod security context" vertex="1">
+          <mxGeometry height="38" width="372" x="524" y="1751" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v133" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="capabilities, host mounts, root" vertex="1">
+          <mxGeometry height="49" width="384" x="518" y="1788" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v134" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="471" y="1792" as="sourcePoint" />
+            <mxPoint x="509" y="1792" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v135" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="99" width="402" x="950" y="1744" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v136" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Host / CRI exposure" vertex="1">
+          <mxGeometry height="38" width="372" x="965" y="1751" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v137" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="AV14 / AV15 if exposed" vertex="1">
+          <mxGeometry height="49" width="384" x="959" y="1788" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v138" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="912" y="1792" as="sourcePoint" />
+            <mxPoint x="950" y="1792" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v139" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="99" width="402" x="1391" y="1744" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v140" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Node privilege" vertex="1">
+          <mxGeometry height="38" width="372" x="1406" y="1751" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v141" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Kernel / kubelet / socket" vertex="1">
+          <mxGeometry height="49" width="384" x="1400" y="1788" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v142" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1353" y="1792" as="sourcePoint" />
+            <mxPoint x="1391" y="1792" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v143" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#FDEEF0;strokeColor=#E7A6AD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="99" width="402" x="1832" y="1744" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v144" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Blast radius" vertex="1">
+          <mxGeometry height="38" width="372" x="1847" y="1751" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v145" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=12;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Other Pods / API identity" vertex="1">
+          <mxGeometry height="49" width="384" x="1841" y="1788" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v146" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D34E5B;strokeWidth=2.8;startArrow=none;endArrow=block;endFill=1;dashed=1;dashPattern=8 5;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1794" y="1792" as="sourcePoint" />
+            <mxPoint x="1832" y="1792" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flowsanalysis_v147" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#D34E5B;fontSize=14;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="CONDITIONAL PATH: Pod compromise alone is NOT a host escape. The elevated access step requires an additional vulnerability or unsafe configuration." vertex="1">
+          <mxGeometry height="36" width="2152" x="65" y="1868" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v148" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="782" width="914" x="2344" y="247" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v149" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="276" x="2360" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v150" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="DEFENSE-IN-DEPTH CHECKPOINTS" vertex="1">
+          <mxGeometry height="35" width="260" x="2368" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v151" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="91" width="863" x="2370" y="291" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v152" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="C02  Identity and MFA" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="298" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v153" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Authenticate platform operators; avoid standing admin tokens." vertex="1">
+          <mxGeometry height="41" width="845" x="2379" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v154" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="91" width="863" x="2370" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v155" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="C03  RBAC / authorization" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="402" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v156" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Review RoleBinding and ClusterRoleBinding grants." vertex="1">
+          <mxGeometry height="41" width="845" x="2379" y="439" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v157" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="91" width="863" x="2370" y="499" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v158" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="C08  Pod Security Admission" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="506" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v159" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Reject privileged and risky Pod configuration." vertex="1">
+          <mxGeometry height="41" width="845" x="2379" y="543" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v160" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="91" width="863" x="2370" y="603" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v161" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="C09  NetworkPolicy" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v162" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Default-deny ingress &amp; egress; validate actual CNI." vertex="1">
+          <mxGeometry height="41" width="845" x="2379" y="647" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v163" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="91" width="863" x="2370" y="707" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v164" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="C14  Image policy" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="714" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v165" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Pin digest; verify provenance and signatures." vertex="1">
+          <mxGeometry height="41" width="845" x="2379" y="751" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v166" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="91" width="863" x="2370" y="811" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v167" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="C16 / C17  Runtime confinement" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="818" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v168" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="seccomp, non-root, MAC profiles, no host socket." vertex="1">
+          <mxGeometry height="41" width="845" x="2379" y="855" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v169" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EEF9F0;strokeColor=#85C293;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="91" width="863" x="2370" y="915" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v170" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#257850;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="C07 / C11  Audit / detection" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="922" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v171" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Centralize audit, CNI flows and node runtime events." vertex="1">
+          <mxGeometry height="41" width="845" x="2379" y="959" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v172" parent="1" style="rounded=1;arcSize=15;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=2.6;dashed=1;dashPattern=7 5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="535" width="914" x="2344" y="1086" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v173" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#F6FAFF;strokeColor=#83ADDD;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="35" width="294" x="2360" y="1069" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v174" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=16;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="MONITORING  ·  WHAT TO OBSERVE" vertex="1">
+          <mxGeometry height="35" width="278" x="2368" y="1069" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v175" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="863" x="2370" y="1136" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v176" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="API + auth events" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="1143" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v177" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="User, groups, verb, resource, object, code" vertex="1">
+          <mxGeometry height="48" width="845" x="2379" y="1180" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v178" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="863" x="2370" y="1249" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v179" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Network / DNS" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="1256" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v180" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Flow, source Pod, destination, port, denial" vertex="1">
+          <mxGeometry height="48" width="845" x="2379" y="1293" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v181" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="863" x="2370" y="1362" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v182" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Runtime / container" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="1369" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v183" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Exec, privilege change, sensitive file access" vertex="1">
+          <mxGeometry height="48" width="845" x="2379" y="1406" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v184" parent="1" style="rounded=1;arcSize=11;whiteSpace=wrap;html=1;fillColor=#EAF3FF;strokeColor=#83ADDD;strokeWidth=1.8;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="98" width="863" x="2370" y="1475" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v185" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#387CC5;fontSize=17;fontFamily=Arial;fontStyle=1;align=center;verticalAlign=middle;spacing=0;" value="Image / CI pipeline" vertex="1">
+          <mxGeometry height="38" width="833" x="2385" y="1482" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v186" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=center;verticalAlign=middle;spacing=0;" value="Digest, signer, SBOM, attestations, approval" vertex="1">
+          <mxGeometry height="48" width="845" x="2379" y="1519" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v187" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFF5E4;strokeColor=#E1BB70;strokeWidth=1.5;fontColor=#14243A;" value="" vertex="1">
+          <mxGeometry height="182" width="888" x="2361" y="1680" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v188" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B37B27;fontSize=16;fontFamily=Arial;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" value="Deployment caveats" vertex="1">
+          <mxGeometry height="25" width="862" x="2374" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v189" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Port allocations can be customized by distribution." vertex="1">
+          <mxGeometry height="22" width="858" x="2376" y="1723" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v190" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Service mesh and observability are optional." vertex="1">
+          <mxGeometry height="22" width="858" x="2376" y="1748" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v191" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Policies are ineffective unless enforced by the implementation." vertex="1">
+          <mxGeometry height="22" width="858" x="2376" y="1773" as="geometry" />
+        </mxCell>
+        <mxCell id="flowsanalysis_v192" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#263F59;fontSize=13;fontFamily=Arial;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" value="•  Assessed risk depends on real configuration and privileges." vertex="1">
+          <mxGeometry height="22" width="858" x="2376" y="1798" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -130,6 +130,38 @@ window.KUBEDAILY_THREAT_MODEL_DATA = {
       description: "Worker Node A and B runtime security, containerd/CRI-O unix sockets, CNI datapath, Default-Deny NetworkPolicy, and Linux kernel namespaces/cgroups.",
       camera: { zoom: 1.4, x: -1800, y: -600 },
       highlight: ["Worker", "CNI", "containerd", "NetworkPolicy"]
+    },
+    "api-request-flow": {
+      title: "04 · API Request & Admission Flow",
+      sheet: "flow-analysis",
+      level: 1,
+      description: "Step-by-step request flow: Client Identity (OIDC/SA) -> API TLS (6443) -> AuthN (tokens/certs) -> AuthZ (RBAC/webhooks) -> Admission (PSA/policies) -> Storage (etcd).",
+      camera: { zoom: 1.2, x: -30, y: -200 },
+      highlight: ["Client identity", "API TLS", "AuthN", "AuthZ", "Admission", "Storage"]
+    },
+    "ingress-egress-flow": {
+      title: "04 · Ingress & Egress Data Paths",
+      sheet: "flow-analysis",
+      level: 2,
+      description: "Network data path traversing Edge LB, Ingress Controller / Gateway API, Service, Pod mTLS, and Egress filtering with DNS inspection.",
+      camera: { zoom: 1.2, x: -30, y: -700 },
+      highlight: ["Edge LB", "Ingress", "Gateway", "Egress", "DNS"]
+    },
+    "supply-chain-flow": {
+      title: "04 · CI/CD Supply Chain Flow",
+      sheet: "flow-analysis",
+      level: 2,
+      description: "Supply chain pipeline checkpoints: Developer commit -> CI build -> Vulnerability scanning -> Cosign signature -> Admission webhook verification.",
+      camera: { zoom: 1.2, x: -30, y: -1150 },
+      highlight: ["Developer", "CI build", "Image scan", "Cosign", "Admission"]
+    },
+    "escape-containment-flow": {
+      title: "04 · Pod Escape & Observability",
+      sheet: "flow-analysis",
+      level: 3,
+      description: "Conditional attack path from pod exploit to host breakout, alongside runtime defense-in-depth checkpoints (C08, C09, C14, C16/C17) and telemetry signals.",
+      camera: { zoom: 1.2, x: -1600, y: -1150 },
+      highlight: ["Pod compromise", "Node privilege", "Defense-in-depth", "Observability"]
     }
   },
 
@@ -1988,6 +2020,92 @@ rules:
       shell: `tail -n 20 /var/log/kubernetes/audit.log`,
       detection: `SIEM / Elastic / Splunk alert on 403 Forbidden bursts`,
       compliance: { cis: "CIS § 3.2.1", nist: "NIST § 4.3.2", mitre: "T1005" }
+    },
+
+    "c14": {
+      id: "C14",
+      name: "Image Signing & Verification Policy (Cosign / Notary)",
+      category: "Supply Chain Control",
+      priority: "pri-2",
+      level: 2,
+      stride: "Tampering, Spoofing",
+      overview: "Enforces that only cryptographically signed container images matching approved KMS/OIDC identities can be pulled and run inside the cluster.",
+      attackVectors: ["AV14", "AV20"],
+      yaml: `# Kyverno ClusterPolicy for Image Verification
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-image-signatures
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: verify-signature
+      match:
+        any:
+        - resources:
+            kinds: ['Pod']
+      verifyImages:
+      - imageReferences: ['ghcr.io/myorg/*']
+        attestors:
+        - entries:
+          - keys:
+              publicKeys: |-
+                -----BEGIN PUBLIC KEY-----
+                MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
+                -----END PUBLIC KEY-----`,
+      shell: `cosign verify --key cosign.pub ghcr.io/myorg/payment-service:v1.4.0`,
+      detection: `admission webhook failure: signature verification failed for image`,
+      compliance: { cis: "CIS § 5.4.1", nist: "NIST SP 800-190 § 3.1", mitre: "T1195.002" }
+    },
+
+    "c16": {
+      id: "C16",
+      name: "Seccomp Runtime Syscall Confinement",
+      category: "Runtime Defense",
+      priority: "pri-1",
+      level: 3,
+      stride: "Elevation of Privilege",
+      overview: "Restricts container processes from invoking dangerous Linux system calls (e.g., ptrace, bpf, reboot, mount) using RuntimeDefault or custom seccomp profiles.",
+      attackVectors: ["AV01", "AV04", "AV05"],
+      yaml: `apiVersion: v1
+kind: Pod
+metadata:
+  name: hardened-app
+spec:
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - name: app
+      image: app:v1`,
+      shell: `grep Seccomp /proc/$(pgrep containerd-shim)/status`,
+      detection: `auditd / Falco alert on forbidden syscall execution`,
+      compliance: { cis: "CIS § 5.7.2", nist: "NIST SP 800-190 § 3.4", mitre: "T1611" }
+    },
+
+    "c17": {
+      id: "C17",
+      name: "AppArmor / SELinux Mandatory Access Control (MAC)",
+      category: "Runtime Defense",
+      priority: "pri-1",
+      level: 3,
+      stride: "Elevation of Privilege, Tampering",
+      overview: "Enforces kernel-level Mandatory Access Control to prevent container breakouts, restricting file access, capability acquisition, and socket creation.",
+      attackVectors: ["AV01", "AV05"],
+      yaml: `apiVersion: v1
+kind: Pod
+metadata:
+  name: apparmor-pod
+spec:
+  securityContext:
+    appArmorProfile:
+      type: RuntimeDefault
+  containers:
+    - name: app
+      image: app:v1`,
+      shell: `aa-status --profile`,
+      detection: `dmesg | grep -i apparmor="DENIED"`,
+      compliance: { cis: "CIS § 5.7.3", nist: "NIST SP 800-190 § 3.4", mitre: "T1611" }
     }
   }
 };
@@ -1999,3 +2117,7 @@ comps["c02-psa"] = comps["c02"];
 comps["c03-kms-v2"] = comps["c03"];
 comps["c04-kyverno"] = comps["c04"];
 comps["c05-falco-tetragon"] = comps["c05"];
+comps["c14-image-policy"] = comps["c14"];
+comps["c16-seccomp"] = comps["c16"];
+comps["c17-apparmor"] = comps["c17"];
+comps["c16 / c17"] = comps["c16"];
