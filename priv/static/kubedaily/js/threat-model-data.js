@@ -1,9 +1,9 @@
 // Kubernetes Threat Model & Architecture Catalog Data
-// Structured reference mapping for Threat Actors (TA), Objects (TO), Vectors (AV), Controls (C), and Attack Paths (P1-P6)
-// Inspired by kubesec-diagram (Lars Solberg / diagram-webkit) with KubeDaily production hardening policies
+// Native KubeDaily Enterprise Defense Engine
+// Authoritative mapping for Threat Actors (TA), Objects (TO), Vectors (AV), Controls (C), and Attack Chains (P1-P6)
 
 window.KUBEDAILY_THREAT_MODEL_DATA = {
-  // Pre-packaged presentation views (equivalent to kubesec-diagram views.js)
+  // Architectural presentation views
   views: {
     "overview": {
       title: "Cluster Overview",
@@ -50,7 +50,7 @@ window.KUBEDAILY_THREAT_MODEL_DATA = {
       level: 3,
       description: "Hardcore system-level view: Linux kernel namespaces, cgroups v2, seccomp-bpf, CRI unix sockets, and eBPF instrumentation hooks.",
       camera: { zoom: 1.6, x: -1400, y: -800 },
-      highlight: ["containerd", "cni-plugins", "kubelet", "c05-falco-tetragon"]
+      highlight: ["containerd", "cni-plugins", "kubelet", "c05"]
     },
     "p1-ingress": {
       title: "P1 · Ingress to Pod Takeover",
@@ -102,7 +102,41 @@ window.KUBEDAILY_THREAT_MODEL_DATA = {
     }
   },
 
-  // Abstraction Depth Levels (matching kubesec-diagram levels)
+  // STRIDE Threat Modeling Taxonomy
+  stride: {
+    "S": {
+      name: "Spoofing",
+      fullName: "Identity & Authenticator Spoofing",
+      desc: "Impersonating legitimate users, pods, nodes, or ServiceAccounts (e.g., anonymous access, ARP poisoning, client CA compromise, missing NodeRestriction)."
+    },
+    "T": {
+      name: "Tampering",
+      fullName: "State & Data Tampering",
+      desc: "Unauthorized modification of cluster state, etcd records, container filesystems, runtime memory, or mutating webhook injection."
+    },
+    "R": {
+      name: "Repudiation",
+      fullName: "Audit Failure & Repudiation",
+      desc: "Executing administrative or cluster actions without non-repudiable audit logs, tamper-evident trails, or eBPF forensic telemetry."
+    },
+    "I": {
+      name: "Information Disclosure",
+      fullName: "Confidentiality & Information Disclosure",
+      desc: "Exposing cluster secrets, API bearer tokens, cloud metadata (IMDS), environment variables, or unencrypted pod traffic in transit."
+    },
+    "D": {
+      name: "Denial of Service",
+      fullName: "Resource Starvation & Denial of Service",
+      desc: "Exhausting API rate limits, etcd IOPS/disk space, worker node CPU/memory quotas, or iptables connection tracking tables."
+    },
+    "E": {
+      name: "Elevation of Privilege",
+      fullName: "Authorization Bypass & Privilege Escalation",
+      desc: "Escalating from unprivileged container process to host root OS, or from developer namespace Role to cluster-admin."
+    }
+  },
+
+  // Abstraction Depth Levels
   levels: {
     0: {
       name: "Level 0: Architecture & Boundaries",
@@ -198,7 +232,7 @@ window.KUBEDAILY_THREAT_MODEL_DATA = {
 
   // Interactive component details catalog
   components: {
-    // ---------------- THREAT ACTORS ----------------
+    // ---------------- THREAT ACTORS (TA01 - TA07) ----------------
     "ta01": {
       id: "TA01",
       name: "External Attacker",
@@ -646,7 +680,7 @@ Apr 12 04:12:05 bmc-node01 ipmi_session: Remote KVM session initiated from 192.1
       }
     },
 
-    // ---------------- CONTROL PLANE & WORKER COMPONENTS ----------------
+    // ---------------- CONTROL PLANE & WORKER ARCHITECTURE ----------------
     "kube-apiserver": {
       id: "TO01",
       name: "kube-apiserver",
@@ -1534,17 +1568,143 @@ ETCDCTL_API=3 etcdctl \
       }
     },
 
-    // ---------------- HARDENING CONTROLS (C01-C05) ----------------
-    "c01-networkpolicy": {
+    // ---------------- ATTACK VECTORS (AV01 - AV15) ----------------
+    "av01": {
+      id: "AV01",
+      name: "Public Ingress Application Vulnerability (RCE/SSRF)",
+      category: "Attack Vector",
+      priority: "pri-1",
+      level: 2,
+      stride: "Tampering, Elevation of Privilege",
+      overview: "Exploitation of remote code execution (RCE) flaws, SQL injection, or Server-Side Request Forgery (SSRF) in exposed web microservices.",
+      attackVectors: ["Log4Shell (CVE-2021-44228)", "Spring4Shell (CVE-2022-22965)", "Unauthenticated file uploads"],
+      yaml: `# Web Application Firewall & NetworkPolicy Ingress restriction
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: restrict-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: web
+  ingress:
+    - ports:
+        - port: 8080`,
+      shell: `kubectl describe netpol -n production`,
+      detection: `falco -c /etc/falco/falco.yaml`,
+      compliance: { cis: "CIS § 5.3.2", nist: "NIST § 4.1", mitre: "T1190" }
+    },
+
+    "av02": {
+      id: "AV02",
+      name: "Exposed API Server with Weak/Anonymous Auth",
+      category: "Attack Vector",
+      priority: "pri-1",
+      level: 1,
+      stride: "Spoofing, Elevation of Privilege",
+      overview: "Internet-facing kube-apiserver with --anonymous-auth=true enabled or exposed on 0.0.0.0 without client certificate authentication.",
+      attackVectors: ["Port 6443 internet scanning", "Unauthenticated namespace listing", "Anonymous pod deployment"],
+      yaml: `# Disable anonymous auth in kube-apiserver manifest
+--anonymous-auth=false`,
+      shell: `curl -k -s https://<api-endpoint>:6443/api`,
+      detection: `audit-log: responseStatus.code == 401`,
+      compliance: { cis: "CIS § 1.2.1", nist: "NIST § 4.3", mitre: "T1133" }
+    },
+
+    "av03": {
+      id: "AV03",
+      name: "Over-Permissive RBAC & cluster-admin Wildcards",
+      category: "Attack Vector",
+      priority: "pri-1",
+      level: 2,
+      stride: "Elevation of Privilege",
+      overview: "Binding standard service accounts or untrusted human users to cluster-admin or wildcard verbs (verbs: ['*'], resources: ['*']).",
+      attackVectors: ["Escalation via create pods/exec", "Reading secrets across namespaces", "Token impersonation"],
+      yaml: `# Avoid wildcard verbs in ClusterRoles!
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]`,
+      shell: `kubectl get clusterrolebindings -o json | jq '.items[] | select(.roleRef.name=="cluster-admin")'`,
+      detection: `audit-log: verb=create resource=clusterrolebindings`,
+      compliance: { cis: "CIS § 5.1.1", nist: "NIST § 4.3.1", mitre: "T1078.004" }
+    },
+
+    "av04": {
+      id: "AV04",
+      name: "Privileged Container Escape (hostPID / SYS_ADMIN / runc)",
+      category: "Attack Vector",
+      priority: "pri-1",
+      level: 3,
+      stride: "Elevation of Privilege, Tampering",
+      overview: "Breaking out of container cgroups and namespaces onto node host filesystem via privileged: true, hostPID: true, or runc CVE-2024-21626.",
+      attackVectors: ["runc file descriptor leak", "cgroup release_agent breakout", "hostPath / volume mount abuse"],
+      yaml: `# Disallow privileged containers
+securityContext:
+  privileged: false
+  allowPrivilegeEscalation: false`,
+      shell: `kubectl get pods -A -o json | jq '.items[] | select(.spec.containers[].securityContext.privileged==true)'`,
+      detection: `falco rule: Container Breakout via nsenter`,
+      compliance: { cis: "CIS § 5.2.1", nist: "NIST § 4.2", mitre: "T1611" }
+    },
+
+    "av06": {
+      id: "AV06",
+      name: "Unauthenticated etcd Port 2379 Exposure",
+      category: "Attack Vector",
+      priority: "pri-1",
+      level: 1,
+      stride: "Information Disclosure, Tampering",
+      overview: "Direct network reachability to etcd peer or client ports without mutual TLS client certificate verification.",
+      attackVectors: ["Dumping raw bbolt database", "Directly injecting malicious cluster admin users into etcd"],
+      yaml: `# Enforce mTLS on etcd static pod
+--client-cert-auth=true
+--trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt`,
+      shell: `ETCDCTL_API=3 etcdctl get "" --prefix --keys-only`,
+      detection: `falco rule: Unauthorized Access to etcd Data Directory`,
+      compliance: { cis: "CIS § 2.1", nist: "NIST § 4.5", mitre: "T1552" }
+    },
+
+    "av09": {
+      id: "AV09",
+      name: "ServiceAccount Token Theft & Harvest",
+      category: "Attack Vector",
+      priority: "pri-2",
+      level: 2,
+      stride: "Elevation of Privilege, Information Disclosure",
+      overview: "Extracting the mounted bearer token from /var/run/secrets/kubernetes.io/serviceaccount/token to authenticate against the API server.",
+      attackVectors: ["Mounted token theft", "Token lifetime beyond pod duration"],
+      yaml: `# Turn off token automount
+automountServiceAccountToken: false`,
+      shell: `cat /var/run/secrets/kubernetes.io/serviceaccount/token`,
+      detection: `falco rule: Read ServiceAccount Token by Untrusted Binary`,
+      compliance: { cis: "CIS § 5.1.5", nist: "NIST § 4.3", mitre: "T1552.007" }
+    },
+
+    "av10": {
+      id: "AV10",
+      name: "Cloud IMDS SSRF (169.254.169.254)",
+      category: "Attack Vector",
+      priority: "pri-2",
+      level: 2,
+      stride: "Information Disclosure, Elevation of Privilege",
+      overview: "Querying cloud metadata endpoint from inside pod to extract temporary IAM role credentials (AWS STS, GCP access token).",
+      attackVectors: ["IMDSv1 without session tokens", "Hop limit > 1 allowing pod network traversal"],
+      yaml: `# Cilium egress deny to 169.254.169.254`,
+      shell: `curl -s http://169.254.169.254/latest/meta-data/`,
+      detection: `falco rule: Contact Cloud Instance Metadata Service`,
+      compliance: { cis: "CIS § 5.2.2", nist: "NIST § 4.4.1", mitre: "T1552.005" }
+    },
+
+    // ---------------- DEFENSE CONTROLS (C01 - C12) ----------------
+    "c01": {
       id: "C01",
       name: "Default Deny NetworkPolicies",
       category: "Defense Control",
       priority: "pri-1",
       level: 2,
-      origin: "CNI Network Policy Enforcement",
-      motive: "Prevent unauthorized cross-namespace lateral movement and unsolicited ingress",
       stride: "Information Disclosure, Denial of Service",
-      overview: "Kubernetes default networking is flat and open; any pod can talk to any other pod across namespaces. Enforcing default-deny ingress and egress NetworkPolicies isolates workloads by default, requiring explicit whitelist rules for allowed communication.",
+      overview: "Enforcing default-deny ingress and egress NetworkPolicies isolates workloads by default, requiring explicit whitelist rules for allowed communication.",
       attackVectors: ["AV01", "AV09", "AV11", "AV13"],
       yaml: `# Production Default Deny Ingress & Egress NetworkPolicy
 apiVersion: networking.k8s.io/v1
@@ -1557,30 +1717,19 @@ spec:
   policyTypes:
     - Ingress
     - Egress`,
-      shell: `# Audit: Verify all namespaces enforce default-deny policies
-for ns in $(kubectl get ns -o jsonpath='{.items[*].metadata.name}'); do
-  has_deny=$(kubectl get netpol -n $ns -o json | jq '[.items[].spec.podSelector | select(. == {})] | length')
-  echo "Namespace $ns default-deny netpols: $has_deny"
-done`,
-      detection: `# Hubble Observe: Count dropped unauthorized egress flows
-hubble observe --verdict DROPPED --namespace production`,
-      compliance: {
-        cis: "CIS Kubernetes Benchmark v1.8.0 § 5.3.2",
-        nist: "NIST SP 800-190 § 4.4.1",
-        mitre: "T1040 (Network Sniffing), T1021 (Remote Services)"
-      }
+      shell: `kubectl get netpol -A`,
+      detection: `hubble observe --verdict DROPPED`,
+      compliance: { cis: "CIS § 5.3.2", nist: "NIST § 4.4.1", mitre: "T1040" }
     },
 
-    "c02-psa": {
+    "c02": {
       id: "C02",
-      name: "Pod Security Admission (Restricted)",
+      name: "Pod Security Standards (Restricted)",
       category: "Defense Control",
       priority: "pri-1",
       level: 2,
-      origin: "Built-in Kubernetes Pod Security Standards",
-      motive: "Prevent host breakouts, root execution, and capability abuse",
       stride: "Elevation of Privilege",
-      overview: "Pod Security Admission (PSA) replaces legacy PodSecurityPolicies. Labels on namespaces configure three levels (privileged, baseline, restricted) with modes enforce, audit, and warn.",
+      overview: "Enforces non-root execution, drops all Linux capabilities, and requires read-only root filesystems and RuntimeDefault seccomp profiles.",
       attackVectors: ["AV04", "AV26", "AV28"],
       yaml: `# Enforce Restricted Pod Security Standard on Namespace
 apiVersion: v1
@@ -1589,116 +1738,75 @@ metadata:
   name: production
   labels:
     pod-security.kubernetes.io/enforce: restricted
-    pod-security.kubernetes.io/enforce-version: latest
-    pod-security.kubernetes.io/warn: restricted
-    pod-security.kubernetes.io/audit: restricted`,
-      shell: `# Audit: Check PSA configuration labels across all namespaces
-kubectl get ns --show-labels | grep pod-security`,
-      detection: `# Audit Log: Detect rejected pod deployments violating PSA restricted standard
-{
-  "verb": "create",
-  "resource": "pods",
-  "responseStatus": { "code": 403, "message": "violates PodSecurity restricted" }
-}`,
-      compliance: {
-        cis: "CIS Kubernetes Benchmark v1.8.0 § 5.2.1 through § 5.2.9",
-        nist: "NIST SP 800-190 § 4.2.1",
-        mitre: "T1611 (Escape to Host)"
-      }
+    pod-security.kubernetes.io/enforce-version: latest`,
+      shell: `kubectl get ns --show-labels | grep pod-security`,
+      detection: `audit-log: responseStatus.message == "violates PodSecurity restricted"`,
+      compliance: { cis: "CIS § 5.2.1", nist: "NIST § 4.2.1", mitre: "T1611" }
     },
 
-    "c03-kms-v2": {
+    "c03": {
       id: "C03",
       name: "etcd KMS v2 Envelope Encryption",
       category: "Defense Control",
       priority: "pri-1",
       level: 2,
-      origin: "KMS Envelope Encryption Plugin",
-      motive: "Ensure cluster secrets are unreadable without hardware KMS authorization",
       stride: "Information Disclosure",
-      overview: "Uses a Key Management Service (AWS KMS, GCP Cloud KMS, HashiCorp Vault) to encrypt Kubernetes data encryption keys (DEK) with a key encryption key (KEK). Encrypts Secrets and ConfigMaps before writing to etcd.",
+      overview: "Uses a Key Management Service (AWS KMS, GCP Cloud KMS, HashiCorp Vault) to encrypt Kubernetes data encryption keys (DEK) with a key encryption key (KEK).",
       attackVectors: ["AV06", "AV24", "AV25"],
       yaml: `# KMS v2 EncryptionConfiguration for kube-apiserver
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources:
-  - resources:
-      - secrets
-      - configmaps
+  - resources: ["secrets", "configmaps"]
     providers:
       - kms:
           apiVersion: v2
           name: aws-kms
-          endpoint: unix:///run/kmsplugin/socket.sock
-          timeout: 3s
-      - identity: {}`,
-      shell: `# Audit: Confirm encryption in etcd by checking header bytes
-ETCDCTL_API=3 etcdctl get /registry/secrets/default/my-secret | head -n 2`,
-      detection: `# CloudTrail / KMS Log: Detect unauthorized calls to KMS Decrypt API
-{
-  "eventSource": "kms.amazonaws.com",
-  "eventName": "Decrypt",
-  "errorCode": "AccessDenied"
-}`,
-      compliance: {
-        cis: "CIS Kubernetes Benchmark v1.8.0 § 1.2.32",
-        nist: "NIST SP 800-190 § 4.5.2",
-        mitre: "T1552 (Unsecured Credentials)"
-      }
+          endpoint: unix:///run/kmsplugin/socket.sock`,
+      shell: `ETCDCTL_API=3 etcdctl get /registry/secrets/default/my-secret | head -n 2`,
+      detection: `kms cloudtrail: eventName=Decrypt`,
+      compliance: { cis: "CIS § 1.2.32", nist: "NIST § 4.5.2", mitre: "T1552" }
     },
 
-    "c04-kyverno": {
+    "c04": {
       id: "C04",
       name: "Kyverno Policy-as-Code Engine",
       category: "Defense Control",
       priority: "pri-2",
       level: 2,
-      origin: "Cloud Native Admission Controller",
-      motive: "Automate security invariants, supply chain verification, and mutate default configs",
       stride: "Tampering, Elevation of Privilege",
-      overview: "A policy engine designed for Kubernetes. Policies are managed as Kubernetes resources and do not require writing code in a new language. Validates, mutates, and generates resources while verifying container signatures.",
+      overview: "Validates, mutates, and generates resources while verifying container signatures and enforcing security invariants.",
       attackVectors: ["AV03", "AV15", "AV17"],
-      yaml: `# Kyverno Policy: Disallow containers running as root or without resource limits
+      yaml: `# Kyverno Policy: Disallow containers running as root
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: enforce-pod-hygiene
+  name: require-non-root
 spec:
   validationFailureAction: Enforce
   rules:
-    - name: require-non-root
+    - name: check-user
       match:
         any:
-          - resources:
-              kinds: ["Pod"]
+          - resources: { kinds: ["Pod"] }
       validate:
-        message: "Running as root is forbidden!"
         pattern:
           spec:
             containers:
-              - securityContext:
-                  runAsNonRoot: true`,
-      shell: `# Audit: Check Kyverno policy compliance report
-kubectl get policyreports -A`,
-      detection: `# Kyverno Event: Policy violation event logged
-kubectl get events -n production --field-selector reason=PolicyViolation`,
-      compliance: {
-        cis: "CIS Kubernetes Benchmark v1.8.0 § 5.2.1",
-        nist: "NIST SP 800-190 § 4.3",
-        mitre: "T1548 (Abuse Elevation Control)"
-      }
+              - securityContext: { runAsNonRoot: true }`,
+      shell: `kubectl get policyreports -A`,
+      detection: `kubectl get events --field-selector reason=PolicyViolation`,
+      compliance: { cis: "CIS § 5.2.1", nist: "NIST § 4.3", mitre: "T1548" }
     },
 
-    "c05-falco-tetragon": {
+    "c05": {
       id: "C05",
       name: "Falco & Tetragon eBPF Runtime Detection",
       category: "Defense Control",
       priority: "pri-1",
       level: 3,
-      origin: "Linux Kernel eBPF Probes & Syscall Instrumentation",
-      motive: "Real-time behavioral threat detection and autonomous container killing",
       stride: "Repudiation, Elevation of Privilege, Tampering",
-      overview: "Hooks directly into the Linux kernel via eBPF (extended Berkeley Packet Filter) to monitor syscalls, process executions, network connections, and namespace transitions with near-zero overhead. Enables autonomous reaction and forensic logging.",
+      overview: "Hooks directly into the Linux kernel via eBPF (extended Berkeley Packet Filter) to monitor syscalls, process executions, network connections, and namespace transitions with near-zero overhead.",
       attackVectors: ["AV04", "AV09", "AV10", "AV26"],
       yaml: `# Tetragon TracingPolicy: Detect and block unauthorized namespace escapes
 apiVersion: cilium.io/v1alpha1
@@ -1709,33 +1817,154 @@ spec:
   kprobes:
     - call: "sys_setns"
       syscall: true
-      args:
-        - index: 0
-          type: "int"
-        - index: 1
-          type: "int"
       selectors:
-        - matchArgs:
-            - index: 1
-              operator: "Equal"
-              values: [0x40000000] # CLONE_NEWPID
-          matchActions:
-            - action: Sigkill`,
-      shell: `# Audit: Check Falco runtime event stream
-falcoctl status
-tail -f /var/log/falco/events.json`,
-      detection: `# Sample Falco JSON Output:
-{
-  "output": "14:22:01.123456789: Critical Terminal shell in container (user=root pod=prod-web cmd=bash)",
-  "priority": "Critical",
-  "rule": "Terminal shell in container",
-  "time": "2026-11-01T14:22:01Z"
-}`,
-      compliance: {
-        cis: "CIS Kubernetes Benchmark v1.8.0 § 4.2.1",
-        nist: "NIST SP 800-190 § 4.2.2 (Runtime Behavioral Monitoring)",
-        mitre: "T1059 (Command and Scripting Interpreter), T1611 (Escape to Host)"
-      }
+        - matchActions: [{ action: Sigkill }]`,
+      shell: `falcoctl status && tail -f /var/log/falco/events.json`,
+      detection: `falco rule: Terminal shell in container`,
+      compliance: { cis: "CIS § 4.2.1", nist: "NIST § 4.2.2", mitre: "T1059" }
+    },
+
+    "c06": {
+      id: "C06",
+      name: "NodeRestriction Admission Plugin",
+      category: "Defense Control",
+      priority: "pri-1",
+      level: 1,
+      stride: "Elevation of Privilege, Tampering",
+      overview: "Limits the Node and Pod objects that a kubelet can modify, preventing a compromised worker node from tampering with pods scheduled on other nodes.",
+      attackVectors: ["AV28"],
+      yaml: `# Enable NodeRestriction in kube-apiserver
+--enable-admission-plugins=NodeRestriction,PodSecurity`,
+      shell: `ps -ef | grep kube-apiserver | grep NodeRestriction`,
+      detection: `audit-log: verb=patch resource=pods status=403`,
+      compliance: { cis: "CIS § 1.2.17", nist: "NIST § 4.3", mitre: "T1611" }
+    },
+
+    "c07": {
+      id: "C07",
+      name: "API Priority and Fairness (APF)",
+      category: "Defense Control",
+      priority: "pri-3",
+      level: 1,
+      stride: "Denial of Service",
+      overview: "Categorizes incoming API server requests into queues and assigns concurrency limits to prevent noisy or malicious clients from starving critical control plane operations.",
+      attackVectors: ["AV08"],
+      yaml: `# FlowSchema ensuring health checks and node leases always succeed
+apiVersion: flowcontrol.apiserver.k8s.io/v1
+kind: FlowSchema
+metadata:
+  name: system-nodes
+spec:
+  priorityLevelConfiguration:
+    name: system
+  matchingPrecedence: 500`,
+      shell: `kubectl get flowschemas,prioritylevelconfigurations`,
+      detection: `metrics: apiserver_flowcontrol_rejected_requests_total`,
+      compliance: { cis: "CIS § 1.2.22", nist: "NIST § 4.3", mitre: "T1499" }
+    },
+
+    "c08": {
+      id: "C08",
+      name: "Seccomp RuntimeDefault Profile",
+      category: "Defense Control",
+      priority: "pri-2",
+      level: 3,
+      stride: "Elevation of Privilege",
+      overview: "Blocks dangerous or obsolete Linux system calls (e.g., clone without flags, reboot, kexec_load, ptrace) directly at the kernel boundary.",
+      attackVectors: ["AV04", "AV26"],
+      yaml: `# Set RuntimeDefault Seccomp profile
+securityContext:
+  seccompProfile:
+    type: RuntimeDefault`,
+      shell: `kubectl get pods -A -o json | jq '.items[].spec.securityContext.seccompProfile'`,
+      detection: `dmesg | grep -i seccomp`,
+      compliance: { cis: "CIS § 5.2.7", nist: "NIST § 4.2.1", mitre: "T1611" }
+    },
+
+    "c09": {
+      id: "C09",
+      name: "ReadOnlyRootFilesystem & Drop ALL Caps",
+      category: "Defense Control",
+      priority: "pri-2",
+      level: 2,
+      stride: "Tampering, Elevation of Privilege",
+      overview: "Prevents attackers from downloading or compiling malware binaries in the container and strips all POSIX capabilities.",
+      attackVectors: ["AV01", "AV04"],
+      yaml: `securityContext:
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop: ["ALL"]`,
+      shell: `kubectl exec <pod> -- touch /etc/test`,
+      detection: `falco rule: Write below etc or binary directory`,
+      compliance: { cis: "CIS § 5.2.6", nist: "NIST § 4.1.2", mitre: "T1059" }
+    },
+
+    "c10": {
+      id: "C10",
+      name: "Cryptographic Image Signatures (Cosign & SLSA)",
+      category: "Defense Control",
+      priority: "pri-1",
+      level: 2,
+      stride: "Tampering, Elevation of Privilege",
+      overview: "Verifies OCI container image signatures and SLSA build provenance before permitting deployment onto cluster nodes.",
+      attackVectors: ["AV15", "AV16", "AV17"],
+      yaml: `# Kyverno verifyImages rule with Cosign public key
+verifyImages:
+  - imageReferences: ["ghcr.io/myorg/*"]
+    attestors:
+      - entries: [{ keys: { publicKeys: "..." } }]`,
+      shell: `cosign verify --key cosign.pub ghcr.io/myorg/app:latest`,
+      detection: `admission event: image verification failed`,
+      compliance: { cis: "CIS § 5.4.1", nist: "NIST § 4.1.1", mitre: "T1195" }
+    },
+
+    "c11": {
+      id: "C11",
+      name: "IMDSv2 Enforce Hop Limit = 1",
+      category: "Defense Control",
+      priority: "pri-2",
+      level: 2,
+      stride: "Information Disclosure, Elevation of Privilege",
+      overview: "Enforces AWS IMDSv2 session tokens and restricts the network hop limit to 1 so packets cannot traverse container network bridges.",
+      attackVectors: ["AV10"],
+      yaml: `# CloudFormation / Terraform EC2 metadata options
+http_tokens = "required"
+http_put_response_hop_limit = 1`,
+      shell: `aws ec2 describe-instances --query 'Reservations[*].Instances[*].MetadataOptions'`,
+      detection: `cloudtrail: GetCallerIdentity from untrusted instance role`,
+      compliance: { cis: "CIS § 5.2.2", nist: "NIST § 4.4.1", mitre: "T1552.005" }
+    },
+
+    "c12": {
+      id: "C12",
+      name: "Kubernetes Audit Policy (RequestResponse)",
+      category: "Defense Control",
+      priority: "pri-2",
+      level: 2,
+      stride: "Repudiation",
+      overview: "Logs all security-relevant API interactions (RBAC modifications, Secret access, pod execs) to tamper-proof external storage.",
+      attackVectors: ["AV02", "AV03", "AV07"],
+      yaml: `# /etc/kubernetes/audit-policy.yaml
+apiVersion: audit.k8s.io/v1
+kind: Policy
+rules:
+  - level: RequestResponse
+    resources:
+      - group: ""
+        resources: ["secrets", "configmaps"]
+      - group: "rbac.authorization.k8s.io"
+        resources: ["*"]`,
+      shell: `tail -n 20 /var/log/kubernetes/audit.log`,
+      detection: `SIEM / Elastic / Splunk alert on 403 Forbidden bursts`,
+      compliance: { cis: "CIS § 3.2.1", nist: "NIST § 4.3.2", mitre: "T1005" }
     }
   }
 };
+
+// Aliases for convenient lookups
+const comps = window.KUBEDAILY_THREAT_MODEL_DATA.components;
+comps["c01-networkpolicy"] = comps["c01"];
+comps["c02-psa"] = comps["c02"];
+comps["c03-kms-v2"] = comps["c03"];
+comps["c04-kyverno"] = comps["c04"];
+comps["c05-falco-tetragon"] = comps["c05"];

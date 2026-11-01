@@ -3,7 +3,7 @@
     <div class="kube-section-pill">Interactive Visual Architecture</div>
     <h1 class="kube-page-title">Kubernetes Threat Model &amp; Attack Chains</h1>
     <p class="kube-page-subtitle">
-      A comprehensive, interactive reference architecture inspired by <a href="https://github.com/kubesec-diagram/kubesec-diagram.github.io" target="_blank" rel="noreferrer" style="color: #38bdf8; text-decoration: underline;">kubesec-diagram</a>. Inspect trust boundaries, threat actors, threat objects, and production hardening policies with real-time deep-linking, abstraction levels, and multi-tab YAML, Shell, Falco eBPF, and CIS compliance inspectors.
+      An authoritative, interactive reference architecture and threat modeling engine for enterprise Kubernetes. Inspect trust boundaries, threat actors, threat objects, attack vectors, and production hardening policies with real-time deep-linking, multi-layer abstraction depth, traffic flow overlays, and production-tested YAML, Shell, Falco eBPF, and CIS compliance inspectors.
     </p>
 
     <div class="kube-stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); margin-top: 1.5rem; gap: 0.75rem;">
@@ -60,15 +60,18 @@
           </button>
         </div>
 
-        <!-- Live Search Box -->
+        <!-- Live Search Box with Autocomplete Dropdown -->
         <div style="display: flex; align-items: center; gap: 0.4rem; position: relative;">
           <div style="position: relative; display: flex; align-items: center;">
-            <input id="diagram-search-input" type="text" placeholder="Search (e.g. etcd, TA01, runc, P1)..." 
-                   style="font-size: 0.8125rem; padding: 0.4rem 2rem 0.4rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--pele-border, #cbd5e1); width: 250px; background: #f8fafc;"
-                   oninput="handleSearch(this.value)" />
+            <input id="diagram-search-input" type="text" placeholder="Search (e.g. etcd, TA01, runc, P1, C01)..." 
+                   style="font-size: 0.8125rem; padding: 0.4rem 2rem 0.4rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--pele-border, #cbd5e1); width: 260px; background: #f8fafc;"
+                   oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)" />
             <button id="search-clear-btn" onclick="clearSearch()" style="position: absolute; right: 8px; border: none; background: transparent; cursor: pointer; color: #94a3b8; font-size: 0.8125rem; display: none;">✕</button>
           </div>
           <span id="search-results-badge" style="font-size: 0.75rem; color: #64748b; font-weight: 600; display: none;">0 matches</span>
+
+          <!-- Autocomplete Dropdown Menu -->
+          <div id="search-autocomplete-dropdown" style="display: none; position: absolute; left: 0; top: 100%; margin-top: 4px; width: 340px; max-height: 320px; overflow-y: auto; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 60;"></div>
         </div>
 
         <!-- Zoom & Viewport Controls -->
@@ -104,7 +107,7 @@
 
       </div>
 
-      <!-- Second Row: Abstraction Level & Priority Filters & Traffic Flow -->
+      <!-- Second Row: Depth Levels, Priority Filters & Traffic Flow -->
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 0.65rem;">
         
         <!-- Depth / Abstraction Levels -->
@@ -128,6 +131,18 @@
           <button id="pri-btn-info" onclick="setPriorityFilter('info')" class="pri-pill-btn" style="font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 0.375rem; border: 1px solid #a5f3fc; background: #ecfeff; color: #155e75; cursor: pointer;" title="Architecture insight">🔵 Info</button>
         </div>
 
+        <!-- STRIDE Taxonomy Filter -->
+        <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+          <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px;">STRIDE:</span>
+          <button id="stride-btn-all" onclick="setStrideFilter('all')" class="stride-pill-btn active" style="font-size: 0.75rem; padding: 0.2rem 0.45rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer;">All</button>
+          <button id="stride-btn-S" onclick="setStrideFilter('S')" class="stride-pill-btn" style="font-size: 0.75rem; padding: 0.2rem 0.45rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer;" title="Spoofing">S</button>
+          <button id="stride-btn-T" onclick="setStrideFilter('T')" class="stride-pill-btn" style="font-size: 0.75rem; padding: 0.2rem 0.45rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer;" title="Tampering">T</button>
+          <button id="stride-btn-R" onclick="setStrideFilter('R')" class="stride-pill-btn" style="font-size: 0.75rem; padding: 0.2rem 0.45rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer;" title="Repudiation">R</button>
+          <button id="stride-btn-I" onclick="setStrideFilter('I')" class="stride-pill-btn" style="font-size: 0.75rem; padding: 0.2rem 0.45rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer;" title="Information Disclosure">I</button>
+          <button id="stride-btn-D" onclick="setStrideFilter('D')" class="stride-pill-btn" style="font-size: 0.75rem; padding: 0.2rem 0.45rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer;" title="Denial of Service">D</button>
+          <button id="stride-btn-E" onclick="setStrideFilter('E')" class="stride-pill-btn" style="font-size: 0.75rem; padding: 0.2rem 0.45rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #f8fafc; cursor: pointer;" title="Elevation of Privilege">E</button>
+        </div>
+
         <!-- Traffic Flow Overlay Selector -->
         <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
           <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px;">Flow:</span>
@@ -139,7 +154,7 @@
 
       </div>
 
-      <!-- Third Row: Quick Scenario Preset Views (views.js equivalent) -->
+      <!-- Third Row: Quick Scenario Preset Views -->
       <div style="display: flex; align-items: center; gap: 0.4rem; overflow-x: auto; padding: 0.25rem 0; border-top: 1px solid #f1f5f9;">
         <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; margin-right: 4px;">Preset Views:</span>
         <button class="view-pill-btn active" onclick="applyPresetView('overview')" style="white-space: nowrap; font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 9999px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer;">Overview</button>
@@ -191,8 +206,8 @@
       </div>
     </div>
 
-    <!-- Kubesec-Style 5-Tab Inspector Drawer (Slide-Over Panel) -->
-    <div id="inspector-drawer" style="width: 460px; height: 100%; background: #ffffff; border-left: 1px solid var(--pele-border, #cbd5e1); box-shadow: -4px 0 15px rgba(0, 0, 0, 0.08); position: absolute; right: 0; top: 0; z-index: 30; transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;">
+    <!-- Native 5-Tab Inspector Drawer (Slide-Over Panel) -->
+    <div id="inspector-drawer" style="width: 470px; height: 100%; background: #ffffff; border-left: 1px solid var(--pele-border, #cbd5e1); box-shadow: -4px 0 15px rgba(0, 0, 0, 0.08); position: absolute; right: 0; top: 0; z-index: 30; transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;">
       
       <!-- Drawer Header -->
       <div style="padding: 1rem 1.25rem; border-bottom: 1px solid #e2e8f0; background: #f8fafc; display: flex; justify-content: space-between; align-items: flex-start;">
@@ -248,7 +263,7 @@
             <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem; font-size: 0.8125rem;">
               <div><strong>Origin:</strong> <span id="drawer-origin-text" style="color: #475569;"></span></div>
               <div><strong>Motive:</strong> <span id="drawer-motive-text" style="color: #475569;"></span></div>
-              <div><strong>STRIDE:</strong> <span id="drawer-stride-text" style="color: #0284c7; font-weight: 600;"></span></div>
+              <div><strong>STRIDE Category:</strong> <span id="drawer-stride-text" style="color: #0284c7; font-weight: 600;"></span></div>
             </div>
           </div>
 
@@ -260,27 +275,36 @@
 
         <!-- Tab 2: Hardening YAML -->
         <div id="drawer-content-yaml" style="display: none;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
             <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Production Hardening Policy</span>
-            <button onclick="copyCode('drawer-yaml-code')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">Copy YAML</button>
+            <div style="display: flex; gap: 0.35rem;">
+              <button onclick="downloadCode('drawer-yaml-code', 'hardening-policy.yaml')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">⬇ Download</button>
+              <button onclick="copyCode('drawer-yaml-code')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">📋 Copy YAML</button>
+            </div>
           </div>
           <pre style="margin: 0; padding: 0.85rem; background: #0f172a; color: #f8fafc; border-radius: 0.5rem; font-size: 0.775rem; line-height: 1.5; overflow-x: auto;"><code id="drawer-yaml-code"></code></pre>
         </div>
 
         <!-- Tab 3: Audit Shell -->
         <div id="drawer-content-shell" style="display: none;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
             <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Validation &amp; Verification CLI</span>
-            <button onclick="copyCode('drawer-shell-code')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">Copy Shell</button>
+            <div style="display: flex; gap: 0.35rem;">
+              <button onclick="downloadCode('drawer-shell-code', 'audit-script.sh')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">⬇ Download</button>
+              <button onclick="copyCode('drawer-shell-code')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">📋 Copy Shell</button>
+            </div>
           </div>
           <pre style="margin: 0; padding: 0.85rem; background: #0f172a; color: #38bdf8; border-radius: 0.5rem; font-size: 0.775rem; line-height: 1.5; overflow-x: auto;"><code id="drawer-shell-code"></code></pre>
         </div>
 
         <!-- Tab 4: Detection (Falco / eBPF / Audit Log) -->
         <div id="drawer-content-detection" style="display: none;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
             <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">eBPF / Falco / Audit Signature</span>
-            <button onclick="copyCode('drawer-detection-code')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">Copy Rule</button>
+            <div style="display: flex; gap: 0.35rem;">
+              <button onclick="downloadCode('drawer-detection-code', 'detection-rule.yaml')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">⬇ Download</button>
+              <button onclick="copyCode('drawer-detection-code')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">📋 Copy Rule</button>
+            </div>
           </div>
           <pre style="margin: 0; padding: 0.85rem; background: #0f172a; color: #a7f3d0; border-radius: 0.5rem; font-size: 0.775rem; line-height: 1.5; overflow-x: auto;"><code id="drawer-detection-code"></code></pre>
         </div>
@@ -364,6 +388,11 @@
         <button onclick="toggleShortcutsModal()" class="kube-button" style="font-size: 0.8125rem; padding: 0.4rem 0.85rem;">Got it</button>
       </div>
     </div>
+  </div>
+
+  <!-- Subtle Toast Notification -->
+  <div id="kube-toast" style="display: none; position: fixed; bottom: 24px; right: 24px; background: #0f172a; color: #f8fafc; padding: 0.6rem 1.1rem; border-radius: 0.5rem; font-size: 0.8125rem; font-weight: 600; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); z-index: 1000; border: 1px solid #334155;">
+    Copied to clipboard!
   </div>
 
   <!-- Threat Model Reference Matrix & Deep Technical Guides -->
@@ -537,7 +566,7 @@
               Enforces zero-trust isolation on the flat CNI network. Microservices communicate strictly over whitelisted ports and explicit label selectors.
             </p>
           </div>
-          <button onclick="locateAndInspect('c01-networkpolicy', 'C01')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+          <button onclick="locateAndInspect('c01', 'C01')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
             🛡️ Inspect Policy YAML &amp; Shell
           </button>
         </div>
@@ -553,7 +582,7 @@
               Enforces non-root execution, drops all Linux capabilities, and requires read-only root filesystems and RuntimeDefault seccomp profiles.
             </p>
           </div>
-          <button onclick="locateAndInspect('c02-psa', 'C02')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+          <button onclick="locateAndInspect('c02', 'C02')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
             🛡️ Inspect Policy YAML &amp; Shell
           </button>
         </div>
@@ -569,7 +598,7 @@
               Encrypts all Secret and ConfigMap resources at rest in etcd using external cloud KMS plugins (AWS KMS, Cloud KMS, Vault) with DEK caching.
             </p>
           </div>
-          <button onclick="locateAndInspect('c03-kms-v2', 'C03')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+          <button onclick="locateAndInspect('c03', 'C03')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
             🛡️ Inspect Policy YAML &amp; Shell
           </button>
         </div>
@@ -585,7 +614,7 @@
               Real-time kernel syscall tracing detecting reverse shells, namespace escapes (<code class="kube-code">sys_setns</code>), and IMDS credential access with automated Sigkill.
             </p>
           </div>
-          <button onclick="locateAndInspect('c05-falco-tetragon', 'C05')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+          <button onclick="locateAndInspect('c05', 'C05')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
             🛡️ Inspect Falco &amp; Tetragon Rules
           </button>
         </div>
@@ -666,6 +695,17 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     box-shadow: 0 0 0 2px #3b82f6;
   }
 
+  /* Autocomplete search item */
+  .search-autocomplete-item {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.12s ease;
+  }
+  .search-autocomplete-item:hover {
+    background: #f8fafc;
+  }
+
   /* Pulse animation on highlighted SVG elements */
   @keyframes svg-pulse {
     0% { filter: drop-shadow(0 0 0px #38bdf8); }
@@ -697,6 +737,7 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
   let currentZoom = 1.0;
   let currentLevel = 0;
   let currentPriority = 'all';
+  let currentStride = 'all';
   let currentFlow = 'off';
   let isDragging = false;
   let startX = 0, startY = 0;
@@ -792,7 +833,7 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     }
 
     // Highlight node in SVG
-    handleSearch(idText);
+    handleSearch(idText, false);
 
     // Open inspector
     openInspector(data, idText);
@@ -801,8 +842,12 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
   // Find matching metadata in threat model catalog
   function findMetadata(text) {
     const catalog = window.KUBEDAILY_THREAT_MODEL_DATA ? window.KUBEDAILY_THREAT_MODEL_DATA.components : {};
-    const lower = text.toLowerCase();
+    const lower = text.toLowerCase().trim();
 
+    // Direct key match
+    if (catalog[lower]) return catalog[lower];
+
+    // Substring or ID match
     for (const key in catalog) {
       const item = catalog[key];
       if (lower.includes(item.id.toLowerCase()) || lower.includes(item.name.toLowerCase()) || key === lower) {
@@ -996,13 +1041,10 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     const svg = document.querySelector('#diagram-svg-target svg');
     if (!svg) return;
 
-    // Subtle opacity adjustment for non-focus items
     if (lvl === 0) {
-      // High level: emphasize trust boundaries
-      handleSearch('Cluster');
+      handleSearch('Cluster', false);
     } else if (lvl === 3) {
-      // Deep kernel level: highlight runtimes and kernel hooks
-      handleSearch('containerd');
+      handleSearch('containerd', false);
     } else {
       clearSearch();
     }
@@ -1024,16 +1066,38 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     if (pri === 'all') {
       clearSearch();
     } else {
-      // Find all IDs with this priority
       const matchingIds = Object.values(catalog)
         .filter(c => c.priority === pri)
         .map(c => c.id);
       
       if (matchingIds.length > 0) {
-        handleSearch(matchingIds[0]);
+        handleSearch(matchingIds[0], false);
       }
     }
     updateUrlParams();
+  }
+
+  // STRIDE Taxonomy Filter
+  function setStrideFilter(letter) {
+    currentStride = letter;
+    const letters = ['all', 'S', 'T', 'R', 'I', 'D', 'E'];
+    letters.forEach(l => {
+      const btn = document.getElementById(`stride-btn-${l}`);
+      if (btn) {
+        if (l === letter) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+    });
+
+    const catalog = window.KUBEDAILY_THREAT_MODEL_DATA ? window.KUBEDAILY_THREAT_MODEL_DATA.components : {};
+    if (letter === 'all') {
+      clearSearch();
+    } else {
+      const match = Object.values(catalog).find(c => c.stride && c.stride.includes(letter));
+      if (match) {
+        handleSearch(match.id, false);
+      }
+    }
   }
 
   // Traffic Flow Overlay Controller
@@ -1072,13 +1136,12 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
       });
     }
 
-    // Animate search highlight along the flow
     if (flowKey === 'ingress') {
-      handleSearch('ingress');
+      handleSearch('ingress', false);
     } else if (flowKey === 'egress') {
-      handleSearch('coredns');
+      handleSearch('coredns', false);
     } else if (flowKey === 'attack-path') {
-      handleSearch('P1');
+      handleSearch('P1', false);
     }
   }
 
@@ -1101,6 +1164,10 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
       const menu = document.getElementById('download-dropdown-menu');
       if (menu) menu.style.display = 'none';
     }
+    if (!e.target.closest('#diagram-search-input') && !e.target.closest('#search-autocomplete-dropdown')) {
+      const dropdown = document.getElementById('search-autocomplete-dropdown');
+      if (dropdown) dropdown.style.display = 'none';
+    }
   });
 
   // Export JSON Catalog
@@ -1114,21 +1181,47 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     document.body.appendChild(a);
     a.click();
     a.remove();
+    showToast('Catalog JSON downloaded!');
   }
 
-  // Copy helpers
+  // Copy helpers with Toast Notification
   function copyCode(elementId) {
     const code = document.getElementById(elementId);
     if (!code) return;
     navigator.clipboard.writeText(code.textContent).then(() => {
-      alert('Copied to clipboard!');
+      showToast('Copied to clipboard!');
     });
+  }
+
+  function downloadCode(elementId, filename) {
+    const code = document.getElementById(elementId);
+    if (!code) return;
+    const blob = new Blob([code.textContent], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    showToast(`Downloaded ${filename}!`);
   }
 
   function copyDeepLink() {
     navigator.clipboard.writeText(window.location.href).then(() => {
-      alert('Deep link copied to clipboard!');
+      showToast('Deep link copied to clipboard!');
     });
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('kube-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2400);
   }
 
   // Switch between Sheet 1 and Sheet 2
@@ -1167,13 +1260,12 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     resetZoom();
   }
 
-  // Apply Pre-packaged View Scenarios (Identical to kubesec-diagram's views.js!)
+  // Apply Pre-packaged View Scenarios
   function applyPresetView(viewKey) {
     const views = window.KUBEDAILY_THREAT_MODEL_DATA ? window.KUBEDAILY_THREAT_MODEL_DATA.views : {};
     const view = views[viewKey];
     if (!view) return;
 
-    // Highlight view pill
     document.querySelectorAll('.view-pill-btn').forEach(btn => btn.classList.remove('active'));
     if (event && event.target) event.target.classList.add('active');
 
@@ -1195,16 +1287,18 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     }
 
     if (view.highlight && view.highlight.length > 0) {
-      handleSearch(view.highlight[0]);
+      handleSearch(view.highlight[0], false);
     }
 
     updateUrlParams(viewKey);
   }
 
-  // Live Search & Highlighting across SVG elements
-  function handleSearch(query) {
+  // Live Search & Autocomplete across SVG elements and Catalog
+  function handleSearch(query, showDropdown = true) {
     const clearBtn = document.getElementById('search-clear-btn');
     const badge = document.getElementById('search-results-badge');
+    const dropdown = document.getElementById('search-autocomplete-dropdown');
+
     if (!query || !query.trim()) {
       clearSearch();
       return;
@@ -1213,21 +1307,23 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     if (clearBtn) clearBtn.style.display = 'block';
     const q = query.toLowerCase().trim();
     const svg = document.querySelector('#diagram-svg-target svg');
-    if (!svg) return;
+    const catalog = window.KUBEDAILY_THREAT_MODEL_DATA ? window.KUBEDAILY_THREAT_MODEL_DATA.components : {};
 
     let matches = 0;
     let firstMatch = null;
 
-    svg.querySelectorAll('g').forEach(g => {
-      const text = g.textContent.toLowerCase();
-      if (text.includes(q)) {
-        g.classList.add('highlight-pulse');
-        matches++;
-        if (!firstMatch) firstMatch = g;
-      } else {
-        g.classList.remove('highlight-pulse');
-      }
-    });
+    if (svg) {
+      svg.querySelectorAll('g').forEach(g => {
+        const text = g.textContent.toLowerCase();
+        if (text.includes(q)) {
+          g.classList.add('highlight-pulse');
+          matches++;
+          if (!firstMatch) firstMatch = g;
+        } else {
+          g.classList.remove('highlight-pulse');
+        }
+      });
+    }
 
     if (badge) {
       badge.style.display = 'inline';
@@ -1237,15 +1333,50 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     if (firstMatch) {
       firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
     }
+
+    // Render autocomplete dropdown
+    if (dropdown && showDropdown) {
+      const results = Object.values(catalog).filter(c => 
+        c.id.toLowerCase().includes(q) || 
+        c.name.toLowerCase().includes(q) || 
+        c.category.toLowerCase().includes(q)
+      ).slice(0, 8);
+
+      if (results.length > 0) {
+        dropdown.innerHTML = '';
+        results.forEach(res => {
+          const item = document.createElement('div');
+          item.className = 'search-autocomplete-item';
+          item.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+              <span class="kube-badge" style="font-size:0.7rem; font-weight:700;">${res.id}</span>
+              <span style="font-size:0.7rem; color:#64748b;">${res.category}</span>
+            </div>
+            <div style="font-size:0.8rem; font-weight:600; color:#0f172a;">${res.name}</div>
+          `;
+          item.onclick = () => {
+            dropdown.style.display = 'none';
+            locateAndInspect(res.id.toLowerCase(), res.id);
+          };
+          dropdown.appendChild(item);
+        });
+        dropdown.style.display = 'block';
+      } else {
+        dropdown.style.display = 'none';
+      }
+    }
   }
 
   function clearSearch() {
     const input = document.getElementById('diagram-search-input');
     const clearBtn = document.getElementById('search-clear-btn');
     const badge = document.getElementById('search-results-badge');
+    const dropdown = document.getElementById('search-autocomplete-dropdown');
+
     if (input) input.value = '';
     if (clearBtn) clearBtn.style.display = 'none';
     if (badge) badge.style.display = 'none';
+    if (dropdown) dropdown.style.display = 'none';
 
     const svg = document.querySelector('#diagram-svg-target svg');
     if (svg) {
@@ -1338,7 +1469,6 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
 
   // Keyboard Hotkeys Navigation
   document.addEventListener('keydown', (e) => {
-    // If typing in search box or any input, do not capture single keys
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
       if (e.key === 'Escape') {
         clearSearch();
