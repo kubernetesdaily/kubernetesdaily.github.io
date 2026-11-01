@@ -42,6 +42,16 @@ defmodule SchoolHouseWeb.KubeDailyController do
     )
   end
 
+  def threat_model(conn, _params) do
+    render(conn, "threat_model.html",
+      page_title: "Kubernetes Threat Model & Attack Chains Reference Architecture",
+      seo: %{
+        description:
+          "Interactive component-level Kubernetes threat model, trust boundaries, STRIDE classification, attack vectors (AV01-AV32), controls (C01-C30), and end-to-end attack chains."
+      }
+    )
+  end
+
   def blog(conn, _params),
     do:
       render(conn, "blog.html",

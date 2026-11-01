@@ -29,11 +29,35 @@ defmodule SchoolHouse.KubeDailyContentTest do
   test "shared route inventory contains new content but no removed collection" do
     paths = PublicPages.paths()
     assert length(paths) == length(Enum.uniq(paths))
+    assert "/threat-model" in paths
     assert "/blog/docker-image-build-guide" in paths
     assert "/blog/kubernetes-requests-limits" in paths
     assert "/blog/kubernetes-probes-guide" in paths
     assert "/labs/Learn-kubectl" in paths
     refute Enum.any?(paths, &String.starts_with?(&1, "/elixir"))
+  end
+
+  test "threat model diagrams and assets are compiled and available" do
+    root = Application.app_dir(:school_house, "priv/static/kubedaily")
+
+    drawio_path = Path.join(root, "diagrams/kubernetes-threat-model.drawio")
+    assert File.exists?(drawio_path)
+    assert byte_size(File.read!(drawio_path)) > 10_000
+
+    cluster_svg = Path.join(root, "images/k8s-threat-model-cluster.svg")
+    assert File.exists?(cluster_svg)
+    cluster_content = File.read!(cluster_svg)
+    assert cluster_content =~ "xmlns=\"http://www.w3.org/2000/svg\""
+    assert cluster_content =~ "ClusterControlPlane"
+
+    attacks_svg = Path.join(root, "images/k8s-threat-model-attack-chains.svg")
+    assert File.exists?(attacks_svg)
+    attacks_content = File.read!(attacks_svg)
+    assert attacks_content =~ "xmlns=\"http://www.w3.org/2000/svg\""
+    assert attacks_content =~ "ATTACK CHAINS"
+
+    assert File.exists?(Path.join(root, "images/k8s-threat-model-cluster.png"))
+    assert File.exists?(Path.join(root, "images/k8s-threat-model-attack-chains.png"))
   end
 
   test "article outlines point to rendered headings and omit duplicate document H1" do

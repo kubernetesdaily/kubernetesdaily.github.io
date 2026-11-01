@@ -4,7 +4,7 @@ defmodule SchoolHouse.PublicPages do
 
   def paths,
     do:
-      ["/", "/tools", "/docker-images", "/labs", "/roadmap", "/blog", "/about"] ++
+      ["/", "/tools", "/docker-images", "/labs", "/roadmap", "/threat-model", "/blog", "/about"] ++
         Enum.map(KubeDaily.labs(), &"/labs/#{&1["id"]}") ++
         Enum.map(KubeDaily.posts(), &"/blog/#{&1["id"]}")
 end

@@ -2,6 +2,11 @@
 
 Master end-to-end Kubernetes security engineering aligned with the **Certified Kubernetes Security Specialist (CKS)** curriculum and real-world threat models. This hands-on lab covers API server audit logging, kubelet hardening, etcd secret encryption, Pod Security Admission (PSA), zero-trust NetworkPolicies, AppArmor profiles, gVisor sandboxed runtimes (`runsc`), `ImagePolicyWebhook` admission control, CIS benchmarking with `kube-bench`, and runtime threat detection with **Falco** and **Sysdig**.
 
+> [!IMPORTANT]
+> **Component-Level Visual Threat Model:** Explore the complete interactive [Kubernetes Threat Model & Attack Chains Architecture](/threat-model) covering trust boundaries, 7 threat actors (TA01–TA07), 32 threat objects, 32 attack vectors, and 6 end-to-end attack chains. Standalone vector SVGs and `.drawio` source files are also compiled automatically via `mix kubedaily.drawio`.
+
+[![Kubernetes Component-Level Threat Model](/kubedaily/images/k8s-threat-model-cluster.svg)](/threat-model)
+
 ```mermaid
 flowchart TD
     subgraph Cloud["1. Cloud & Infrastructure"]

@@ -27,6 +27,9 @@ erl_crash.dump
 !/priv/static/kubedaily/blog/
 !/priv/static/kubedaily/labs/
 !/priv/static/kubedaily/data/
+!/priv/static/kubedaily/diagrams/
+!/priv/static/kubedaily/images/
+!/priv/static/kubedaily/js/
 # Keep new Markdown/catalog sources visible without adding Phoenix digests.
 /priv/static/kubedaily/**/*-????????????????????????????????.*
 /priv/static/kubedaily/**/*.gz
