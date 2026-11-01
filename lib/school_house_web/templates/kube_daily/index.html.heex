@@ -6,14 +6,15 @@
       <p>From your first container to production-grade Kubernetes operators in Rust. 24 hands-on master labs, 54 architectural tool deep-dives, and 340+ curated open-source tools with interactive visual diagrams. Zero paywalls, built by practitioners.</p>
       <div class="mt-8 flex flex-wrap gap-4">
         <a class="kube-button" href="/labs">Explore 24 Master Labs <span aria-hidden="true">→</span></a>
+        <a class="kube-button kube-button-outline" href="/threat-model">🛡️ Interactive Threat Model</a>
         <a class="kube-button kube-button-outline" href="/tools">Browse 340+ Tool Stack</a>
         <a class="kube-button kube-button-outline" href="/roadmap">1,000-Item Roadmap</a>
       </div>
       <div class="kube-home-proof" aria-label="KubeDaily community impact summary">
         <div><strong>24</strong><span>Master Labs (CKA/CKS/Rust)</span></div>
+        <div><strong>4 Sheets</strong><span>Interactive Threat Model</span></div>
         <div><strong>54</strong><span>Architectural Deep-Dives</span></div>
         <div><strong>340+</strong><span>Curated Cloud Tools</span></div>
-        <div><strong>100%</strong><span>Free Forever &amp; Open</span></div>
       </div>
     </div>
 
@@ -77,6 +78,99 @@
         <p>Comprehensive, deep-dive technical articles breaking down real-world gotchas, production YAML manifests, benchmark comparisons, and disaster recovery procedures tested against real clusters.</p>
         <a class="kube-learning-action" href="/blog">Read field guides →</a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="kube-threat-spotlight px-4 py-14 sm:px-6 lg:px-10 bg-brand-gray-900 text-white relative overflow-hidden border-t border-b border-brand-gray-800" aria-labelledby="threat-model-feature-title">
+  <div class="absolute -right-32 -bottom-32 w-96 h-96 rounded-full bg-brand-purple-900 opacity-40 blur-3xl pointer-events-none"></div>
+  <div class="kube-section-container relative z-10">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-8 border-b border-brand-gray-800">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-purple-900/80 text-brand-purple-100 border border-brand-purple-500/40 mb-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Interactive Security Hub · 100% Free &amp; Open Source
+        </div>
+        <h2 id="threat-model-feature-title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Kubernetes Threat Model &amp; Security Architecture
+        </h2>
+        <p class="mt-3 text-base sm:text-lg text-brand-gray-300 max-w-2xl leading-relaxed">
+          Explore cluster attack vectors, multi-engine admission policies, CIS/NIST hardening scores, MITRE ATT&amp;CK container matrices, and incident containment runbooks in one unified studio.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <a class="kube-button" href="/threat-model" style="background: #a855f7; color: #fff;">
+          Launch Threat Model Studio <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-xl border border-brand-gray-750 bg-brand-gray-850 p-6 flex flex-col justify-between transition hover:-translate-y-1 hover:border-brand-purple-400">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-purple-900/60 text-brand-purple-100 flex items-center justify-center text-xl mb-4">🔍</div>
+          <h3 class="text-lg font-bold text-white">4-Sheet Draw.io Visualizer</h3>
+          <p class="mt-2 text-sm text-brand-gray-300 leading-relaxed">
+            Multi-sheet interactive architecture with pan, zoom, layer inspection, and instant deep-linking to defense controls.
+          </p>
+        </div>
+        <a href="/threat-model" class="mt-4 text-xs font-bold uppercase tracking-wider text-brand-purple-100 hover:text-white">View SVG Diagram →</a>
+      </div>
+
+      <div class="rounded-xl border border-brand-gray-750 bg-brand-gray-850 p-6 flex flex-col justify-between transition hover:-translate-y-1 hover:border-brand-purple-400">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-purple-900/60 text-brand-purple-100 flex items-center justify-center text-xl mb-4">⚡</div>
+          <h3 class="text-lg font-bold text-white">3-Engine Policy-as-Code</h3>
+          <p class="mt-2 text-sm text-brand-gray-300 leading-relaxed">
+            Switch instantaneously between Kyverno v1, In-Tree CEL (<code class="text-xs text-brand-purple-200">ValidatingAdmissionPolicy</code>), and OPA Gatekeeper Rego.
+          </p>
+        </div>
+        <a href="/threat-model#policies" class="mt-4 text-xs font-bold uppercase tracking-wider text-brand-purple-100 hover:text-white">Compare Policies →</a>
+      </div>
+
+      <div class="rounded-xl border border-brand-gray-750 bg-brand-gray-850 p-6 flex flex-col justify-between transition hover:-translate-y-1 hover:border-brand-purple-400">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-purple-900/60 text-brand-purple-100 flex items-center justify-center text-xl mb-4">📊</div>
+          <h3 class="text-lg font-bold text-white">CIS / NIST Hardening Scorecard</h3>
+          <p class="mt-2 text-sm text-brand-gray-300 leading-relaxed">
+            20 real-world checks across 5 domains. Benchmark your cluster posture and export missing policies in 1-click.
+          </p>
+        </div>
+        <a href="/threat-model#scorecard" class="mt-4 text-xs font-bold uppercase tracking-wider text-brand-purple-100 hover:text-white">Audit Cluster →</a>
+      </div>
+
+      <div class="rounded-xl border border-brand-gray-750 bg-brand-gray-850 p-6 flex flex-col justify-between transition hover:-translate-y-1 hover:border-brand-purple-400">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-purple-900/60 text-brand-purple-100 flex items-center justify-center text-xl mb-4">🎯</div>
+          <h3 class="text-lg font-bold text-white">MITRE ATT&amp;CK for Containers</h3>
+          <p class="mt-2 text-sm text-brand-gray-300 leading-relaxed">
+            10 tactics &amp; 28 container-specific techniques mapped to threat vectors with export to MITRE ATT&amp;CK Navigator.
+          </p>
+        </div>
+        <a href="/threat-model#mitre" class="mt-4 text-xs font-bold uppercase tracking-wider text-brand-purple-100 hover:text-white">Explore Matrix →</a>
+      </div>
+
+      <div class="rounded-xl border border-brand-gray-750 bg-brand-gray-850 p-6 flex flex-col justify-between transition hover:-translate-y-1 hover:border-brand-purple-400">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-purple-900/60 text-brand-purple-100 flex items-center justify-center text-xl mb-4">⚔️</div>
+          <h3 class="text-lg font-bold text-white">Red &amp; Blue Lab Playbooks</h3>
+          <p class="mt-2 text-sm text-brand-gray-300 leading-relaxed">
+            Executable shell scripts for KinD/Minikube with dual-mode exploit simulation and defensive policy validation.
+          </p>
+        </div>
+        <a href="/threat-model#playbooks" class="mt-4 text-xs font-bold uppercase tracking-wider text-brand-purple-100 hover:text-white">Run KinD Labs →</a>
+      </div>
+
+      <div class="rounded-xl border border-brand-gray-750 bg-brand-gray-850 p-6 flex flex-col justify-between transition hover:-translate-y-1 hover:border-brand-purple-400">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-brand-purple-900/60 text-brand-purple-100 flex items-center justify-center text-xl mb-4">🚨</div>
+          <h3 class="text-lg font-bold text-white">Incident Response Runbooks</h3>
+          <p class="mt-2 text-sm text-brand-gray-300 leading-relaxed">
+            Emergency operational runbooks for pod quarantine, token revocation, node evacuation, memory checkpointing, and IMDS blocking.
+          </p>
+        </div>
+        <a href="/threat-model#runbooks" class="mt-4 text-xs font-bold uppercase tracking-wider text-brand-purple-100 hover:text-white">View Runbooks →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -241,13 +335,20 @@
     </article>
     <article class="kube-home-path">
       <span class="kube-home-path-number">02</span>
+      <p class="kube-label">Visual Security Studio</p>
+      <h3>Threat Model &amp; Runbooks</h3>
+      <p>Interactive 4-sheet architecture, Kyverno/CEL/Gatekeeper policies, CIS scorecard, and emergency IR runbooks.</p>
+      <a href="/threat-model">Open security studio <span aria-hidden="true">→</span></a>
+    </article>
+    <article class="kube-home-path">
+      <span class="kube-home-path-number">03</span>
       <p class="kube-label">Architectural Field Notes</p>
       <h3>54 Deep-Dive Articles</h3>
       <p>Production manifests, failure post-mortems, and architectural comparisons for the top cloud-native tools.</p>
       <a href="/blog">Read technical guides <span aria-hidden="true">→</span></a>
     </article>
     <article class="kube-home-path">
-      <span class="kube-home-path-number">03</span>
+      <span class="kube-home-path-number">04</span>
       <p class="kube-label">Curated Directory</p>
       <h3>340+ Open Tools</h3>
       <p>Explore, filter, and discover the best open-source tools powering modern container platforms.</p>

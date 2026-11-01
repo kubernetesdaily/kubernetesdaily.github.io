@@ -737,7 +737,7 @@ html { scroll-padding-top: 160px; }
 .kube-home-section-heading { @apply flex flex-col justify-between gap-5 md:flex-row md:items-end; }
 .kube-home-section-heading h2 { @apply mt-2 text-3xl font-extrabold text-heavy dark:text-heavy-dark; }
 .kube-home-section-heading > p { @apply max-w-xl leading-relaxed text-light dark:text-light-dark; }
-.kube-home-paths { @apply mt-8 grid gap-4 lg:grid-cols-3; }
+.kube-home-paths { @apply mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4; }
 .kube-home-path { @apply relative overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-brand-gray-700 dark:bg-brand-gray-800; }
 .kube-home-path-featured { @apply border-brand-purple-300 bg-brand-gray-900; }
 .kube-home-path-number { @apply absolute right-6 top-5 text-5xl font-extrabold text-brand-gray-200 dark:text-brand-gray-700; }
