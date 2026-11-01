@@ -4034,3 +4034,333 @@ window.KUBEDAILY_SCORECARD_DATA = [
     defaultRestricted: true
   }
 ];
+
+
+// ============================================================================
+// KubeDaily MITRE ATT&CK for Containers Matrix Heatmap Data (Option 3)
+// 10 Tactical Domains · 28 Container Techniques Mapped to Threat Model Components
+// ============================================================================
+
+window.KUBEDAILY_MITRE_MATRIX = [
+  {
+    tacticId: "TA0001",
+    tacticName: "Initial Access",
+    techniques: [
+      {
+        id: "T1190",
+        name: "Exploit Public-Facing Application",
+        severity: "critical",
+        componentKey: "p1",
+        sheet: "attack-chains",
+        desc: "Ingress RCE, SSRF, or SQL injection targeting externally exposed workload pods.",
+        mitigation: "Require Read-Only RootFS (C09), Drop Capabilities (C09), WAF perimeter."
+      },
+      {
+        id: "T1195.002",
+        name: "Compromise Supply Chain (Registry)",
+        severity: "critical",
+        componentKey: "p3",
+        sheet: "security-architecture",
+        desc: "Adversary injects malicious backdoored image or typosquatted package into container registry.",
+        mitigation: "Sigstore Cosign image signing (C14), SLSA attestation, Trivy CVE scan."
+      },
+      {
+        id: "T1078.004",
+        name: "Valid Accounts: Cloud Accounts & IAM",
+        severity: "high",
+        componentKey: "p5",
+        sheet: "flow-analysis",
+        desc: "Compromised cloud IAM credentials allowing unauthorized control plane API access.",
+        mitigation: "Cloud IAM least privilege, short-lived OIDC tokens, IAM role session locking."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0002",
+    tacticName: "Execution",
+    techniques: [
+      {
+        id: "T1610",
+        name: "Deploy Container / Malicious Job",
+        severity: "critical",
+        componentKey: "c04",
+        sheet: "cluster",
+        desc: "Adversary abuses authorized or compromised credentials to schedule unauthorized pods.",
+        mitigation: "Kyverno / CEL admission controller (C04), namespace quotas, PSS Restricted."
+      },
+      {
+        id: "T1059.004",
+        name: "Command and Scripting Interpreter: Unix Shell",
+        severity: "critical",
+        componentKey: "c05",
+        sheet: "security-architecture",
+        desc: "Execution of /bin/sh, /bin/bash, or python reverse shell scripts inside running containers.",
+        mitigation: "Falco eBPF runtime detection (C05), distroless images without shell binaries."
+      },
+      {
+        id: "T1609",
+        name: "Container Administration Command (Exec)",
+        severity: "high",
+        componentKey: "p2",
+        sheet: "attack-chains",
+        desc: "Abuse of kubectl exec / pods/exec subresource to execute interactive commands in workloads.",
+        mitigation: "RBAC restriction on pods/exec subresource, audit logging on subresource calls."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0003",
+    tacticName: "Persistence",
+    techniques: [
+      {
+        id: "T1610.001",
+        name: "Writable HostPath Mount Persistence",
+        severity: "critical",
+        componentKey: "p4",
+        sheet: "cluster",
+        desc: "Mounting node host paths (/etc/cron*, /root/.ssh) to persist root access across reboots.",
+        mitigation: "Disallow hostPath volume mounts via Kyverno / CEL ValidatingAdmissionPolicy."
+      },
+      {
+        id: "T1525",
+        name: "Implant Internal Image Backdoor",
+        severity: "high",
+        componentKey: "p3",
+        sheet: "security-architecture",
+        desc: "Modifying base image layers in private registry to ensure persistent backdoor persistence.",
+        mitigation: "Immutable image digests (@sha256), Cosign cryptographic signatures (C14)."
+      },
+      {
+        id: "T1053.007",
+        name: "Scheduled Task: Kubernetes CronJob",
+        severity: "medium",
+        componentKey: "c02",
+        sheet: "attack-chains",
+        desc: "Creating hidden CronJobs in obscure namespaces to run periodic reverse shells.",
+        mitigation: "Admission control auditing on CronJob objects, automated object inventory diff."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0004",
+    tacticName: "Privilege Escalation",
+    techniques: [
+      {
+        id: "T1611",
+        name: "Escape to Host (Privileged / CVE-2024-21626)",
+        severity: "critical",
+        componentKey: "p4",
+        sheet: "cluster",
+        desc: "Abuse of privileged: true, runc Leaky Vessels (CVE-2024-21626), or CAP_SYS_ADMIN to escape container.",
+        mitigation: "PSS Restricted enforcement (C02), drop ALL capabilities (C09), runAsNonRoot (C04)."
+      },
+      {
+        id: "T1548",
+        name: "Abuse Elevation Control Mechanism: SUID",
+        severity: "high",
+        componentKey: "c09",
+        sheet: "security-architecture",
+        desc: "Exploiting setuid/setgid binaries inside the container to escalate from non-root to root.",
+        mitigation: "allowPrivilegeEscalation: false, no_new_privs prctl bit enabled."
+      },
+      {
+        id: "T1611.002",
+        name: "Host Namespace Impersonation (HostPID/HostIPC)",
+        severity: "critical",
+        componentKey: "p4",
+        sheet: "attack-chains",
+        desc: "Accessing host processes or shared memory segments to kill or inject code into node processes.",
+        mitigation: "Disallow hostPID and hostIPC in pod specifications via admission policy."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0005",
+    tacticName: "Defense Evasion",
+    techniques: [
+      {
+        id: "T1562.001",
+        name: "Impair Defenses: Disable Security Agent / Logging",
+        severity: "critical",
+        componentKey: "c05",
+        sheet: "security-architecture",
+        desc: "Attacker terminates Falco or audit logging DaemonSets after gaining node root access.",
+        mitigation: "eBPF kernel module protection, immutable node OS (Flatcar/Talos), DaemonSet RBAC denial."
+      },
+      {
+        id: "T1070.004",
+        name: "Indicator Removal on Host: File Deletion",
+        severity: "high",
+        componentKey: "p1",
+        sheet: "cluster",
+        desc: "Deleting /var/log/pods, shell history, and malware drops to impede digital forensics.",
+        mitigation: "Read-only rootfs (C09), out-of-band centralized streaming to immutable SIEM."
+      },
+      {
+        id: "T1612",
+        name: "Build Image on Host / Container Escape",
+        severity: "medium",
+        componentKey: "c02",
+        sheet: "attack-chains",
+        desc: "Running docker-in-docker or podman on worker nodes to bypass container admission controllers.",
+        mitigation: "Disallow docker.sock / containerd.sock hostPath volume mounts."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0006",
+    tacticName: "Credential Access",
+    techniques: [
+      {
+        id: "T1552.007",
+        name: "Container and Resource Discovery: SA Tokens",
+        severity: "critical",
+        componentKey: "p2",
+        sheet: "cluster",
+        desc: "Exfiltrating auto-mounted ServiceAccount JWT tokens from /var/run/secrets/kubernetes.io/.",
+        mitigation: "automountServiceAccountToken: false (P2), short-lived BoundServiceAccountTokens."
+      },
+      {
+        id: "T1552.005",
+        name: "Cloud Instance Metadata Service (IMDS)",
+        severity: "critical",
+        componentKey: "p5",
+        sheet: "flow-analysis",
+        desc: "Querying http://169.254.169.254/ to steal AWS IAM node instance role credentials.",
+        mitigation: "NetworkPolicy denying 169.254.169.254/32 (C11), IMDSv2 hop limit = 1."
+      },
+      {
+        id: "T1552.001",
+        name: "Plaintext Environment Variables Harvest",
+        severity: "high",
+        componentKey: "p6",
+        sheet: "cluster",
+        desc: "Dumping /proc/1/environ or inspecting pod specs to recover database passwords and API keys.",
+        mitigation: "Disallow secretKeyRef in env (C03); mount secrets via HashiCorp Vault CSI Driver."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0007",
+    tacticName: "Discovery",
+    techniques: [
+      {
+        id: "T1613",
+        name: "Container and Cluster Service Discovery",
+        severity: "high",
+        componentKey: "p2",
+        sheet: "attack-chains",
+        desc: "Enumerating Kubernetes API endpoints, namespaces, pods, and custom resource definitions.",
+        mitigation: "RBAC least privilege, block unauthorized pod-to-apiserver egress network traffic."
+      },
+      {
+        id: "T1046",
+        name: "Network Service Scanning (CNI Reconnaissance)",
+        severity: "medium",
+        componentKey: "c01",
+        sheet: "flow-analysis",
+        desc: "Running nmap / masscan across the flat 10.244.0.0/16 pod subnet to find unauthenticated services.",
+        mitigation: "Default-Deny Ingress/Egress NetworkPolicies (C01), Cilium eBPF network visibility."
+      },
+      {
+        id: "T1580",
+        name: "Cloud Infrastructure Discovery",
+        severity: "medium",
+        componentKey: "p5",
+        sheet: "flow-analysis",
+        desc: "Discovering VPC CIDRs, S3 buckets, and RDS instances reachable from the node network.",
+        mitigation: "Egress NetworkPolicies, security groups limiting node subnet routing."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0008",
+    tacticName: "Lateral Movement",
+    techniques: [
+      {
+        id: "T1021",
+        name: "Pod-to-Pod Lateral Movement over CNI",
+        severity: "critical",
+        componentKey: "p1",
+        sheet: "flow-analysis",
+        desc: "Pivoting from a compromised DMZ ingress container to backend internal microservices.",
+        mitigation: "Default-Deny Ingress & Egress NetworkPolicies (C01), mutual TLS peer authorization."
+      },
+      {
+        id: "T1570",
+        name: "Lateral Tool Transfer over In-Cluster Network",
+        severity: "high",
+        componentKey: "p1",
+        sheet: "attack-chains",
+        desc: "Downloading exploit binaries, port scanners, and rootkits from internal staging pods.",
+        mitigation: "Strict egress firewalling, Read-Only root filesystem (C09), Falco network alerts."
+      },
+      {
+        id: "T1611.003",
+        name: "Node-to-Node Control Plane Pivot",
+        severity: "critical",
+        componentKey: "p4",
+        sheet: "cluster",
+        desc: "Using compromised worker node kubelet credentials to impersonate other nodes or access etcd.",
+        mitigation: "NodeRestriction admission plugin, separate CA certificates, etcd mTLS isolation."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0009",
+    tacticName: "Collection",
+    techniques: [
+      {
+        id: "T1005",
+        name: "Data from Local System: etcd Exfiltration",
+        severity: "critical",
+        componentKey: "p6",
+        sheet: "cluster",
+        desc: "Dumping etcd database files or backup snapshots to extract all cluster secrets in plaintext.",
+        mitigation: "KMS v2 envelope encryption at rest (C03), mTLS client certificate verification."
+      },
+      {
+        id: "T1005.002",
+        name: "Persistent Volume Claim (PVC) Data Theft",
+        severity: "high",
+        componentKey: "c02",
+        sheet: "security-architecture",
+        desc: "Mounting persistent storage volumes belonging to sensitive databases into attacker pods.",
+        mitigation: "Namespace isolation, storage class RBAC, CSI volume encryption at rest."
+      }
+    ]
+  },
+  {
+    tacticId: "TA0010",
+    tacticName: "Impact",
+    techniques: [
+      {
+        id: "T1496",
+        name: "Resource Hijacking: Cryptocurrency Mining",
+        severity: "high",
+        componentKey: "c04",
+        sheet: "attack-chains",
+        desc: "Deploying unauthorized XMRig or GPU miners exhausting cluster CPU/memory resources.",
+        mitigation: "Strict LimitRanges, ResourceQuotas, Falco mining pool DNS detection."
+      },
+      {
+        id: "T1498",
+        name: "Network Denial of Service (Pod Flooding)",
+        severity: "high",
+        componentKey: "c01",
+        sheet: "flow-analysis",
+        desc: "Overwhelming CoreDNS or ingress load balancers with SYN floods or high-volume traffic.",
+        mitigation: "Calico / Cilium rate limiting, CoreDNS autoscale, egress bandwidth enforcement."
+      },
+      {
+        id: "T1485",
+        name: "Data Destruction / Persistent Volume Deletion",
+        severity: "critical",
+        componentKey: "p6",
+        sheet: "cluster",
+        desc: "Ransomware encryption or deletion of PVCs, etcd states, and configmaps.",
+        mitigation: "Velero off-site immutable backups, AWS S3 Object Lock, RBAC delete denial."
+      }
+    ]
+  }
+];

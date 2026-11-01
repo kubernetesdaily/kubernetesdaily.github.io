@@ -1677,6 +1677,78 @@
         <!-- Rendered via JS -->
       </div>
     </div>
+
+    <!-- MITRE ATT&CK for Containers Matrix Heatmap (Option 3) -->
+    <div id="mitre-matrix-section" style="margin-top: 4rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <div class="kube-section-pill" style="background: #fdf2f8; color: #db2777; border: 1px solid #fbcfe8;">
+            Adversary Tactics &amp; Techniques · MITRE ATT&CK® for Containers
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0.4rem 0 0.25rem 0;">
+            MITRE ATT&CK® for Containers Matrix Heatmap
+          </h3>
+          <p style="color: var(--pele-muted, #64748b); max-width: 860px; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+            Explore the 10 tactical container phases from Initial Access to Impact. Each adversary technique is linked to real Kubernetes attack scenarios, defense controls, detection signatures, and interactive nodes in the architecture diagram. Filter by tactical phase, search by technique name or ID, and export an official MITRE ATT&CK Navigator Layer JSON.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="exportMitreNavigatorLayer()" class="kube-button" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem; background: #db2777; border-color: #db2777;">
+            ⬇ Export MITRE Navigator JSON
+          </button>
+          <a href="https://attack.mitre.org/matrices/enterprise/cloud/container/" target="_blank" rel="noopener" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+            🌐 MITRE Containers Matrix ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Controls & Search Bar -->
+      <div class="kube-card" style="padding: 1rem 1.25rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155; margin-bottom: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+
+          <!-- Search input -->
+          <div style="position: relative; flex: 1; min-width: 260px; max-width: 420px;">
+            <input id="mitre-search-input" oninput="searchMitreMatrix()" type="text" placeholder="Search techniques (e.g. runc, token, IMDS, T1611)..." style="width: 100%; padding: 0.5rem 0.75rem 0.5rem 2rem; border-radius: 0.375rem; border: 1px solid #334155; background: #1e293b; color: #ffffff; font-size: 0.8125rem; outline: none;" />
+            <span style="position: absolute; left: 0.65rem; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 0.85rem;">🔍</span>
+          </div>
+
+          <!-- Heatmap Legend -->
+          <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+            <span style="font-size: 0.72rem; color: #94a3b8; font-weight: 600; text-transform: uppercase;">Heatmap Risk:</span>
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: #f87171;">
+              <span style="width: 10px; height: 10px; border-radius: 2px; background: #ef4444; display: inline-block;"></span> Critical (Host Escape)
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: #fb923c;">
+              <span style="width: 10px; height: 10px; border-radius: 2px; background: #f97316; display: inline-block;"></span> High (Cred Theft)
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: #facc15;">
+              <span style="width: 10px; height: 10px; border-radius: 2px; background: #eab308; display: inline-block;"></span> Medium (Recon)
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Tactic Filter Pills -->
+        <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08);">
+          <button id="mitre-pill-all" onclick="filterMitreTactic('all')" class="mitre-tactic-pill active">All 10 Tactics</button>
+          <button id="mitre-pill-TA0001" onclick="filterMitreTactic('TA0001')" class="mitre-tactic-pill">Initial Access</button>
+          <button id="mitre-pill-TA0002" onclick="filterMitreTactic('TA0002')" class="mitre-tactic-pill">Execution</button>
+          <button id="mitre-pill-TA0003" onclick="filterMitreTactic('TA0003')" class="mitre-tactic-pill">Persistence</button>
+          <button id="mitre-pill-TA0004" onclick="filterMitreTactic('TA0004')" class="mitre-tactic-pill">Privilege Escalation</button>
+          <button id="mitre-pill-TA0005" onclick="filterMitreTactic('TA0005')" class="mitre-tactic-pill">Defense Evasion</button>
+          <button id="mitre-pill-TA0006" onclick="filterMitreTactic('TA0006')" class="mitre-tactic-pill">Credential Access</button>
+          <button id="mitre-pill-TA0007" onclick="filterMitreTactic('TA0007')" class="mitre-tactic-pill">Discovery</button>
+          <button id="mitre-pill-TA0008" onclick="filterMitreTactic('TA0008')" class="mitre-tactic-pill">Lateral Movement</button>
+          <button id="mitre-pill-TA0009" onclick="filterMitreTactic('TA0009')" class="mitre-tactic-pill">Collection</button>
+          <button id="mitre-pill-TA0010" onclick="filterMitreTactic('TA0010')" class="mitre-tactic-pill">Impact</button>
+        </div>
+      </div>
+
+      <!-- Matrix Horizontal Columns Container -->
+      <div id="mitre-matrix-container" style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1.5rem;">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
     <div class="kube-card" style="margin-top: 3rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <span style="font-size: 0.8125rem; font-weight: 700; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em;">Developer &amp; Platform Tooling</span>
@@ -1874,6 +1946,50 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     background: #10b981;
     border-color: #10b981;
     color: #ffffff;
+  }
+
+  /* MITRE ATT&CK Matrix Grid & Card Styling */
+  .mitre-tactic-col {
+    background: #0f172a;
+    border-radius: 0.65rem;
+    padding: 0.85rem;
+    border: 1px solid #1e293b;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    min-width: 260px;
+    flex: 0 0 260px;
+  }
+  .mitre-tech-card {
+    background: #1e293b;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid #334155;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .mitre-tech-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-color: #38bdf8;
+  }
+  .mitre-tactic-pill {
+    border: none;
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .mitre-tactic-pill:hover {
+    color: #f8fafc;
+    background: #334155;
+  }
+  .mitre-tactic-pill.active {
+    background: #db2777 !important;
+    color: #ffffff !important;
   }
 </style>
 
@@ -4548,9 +4664,184 @@ This audit report evaluates the cluster against 20 critical security controls ac
     URL.revokeObjectURL(url);
   }
 
+  // ============================================================================
+  // MITRE ATT&CK for Containers Matrix Controller (Option 3)
+  // ============================================================================
+  let currentMitreTactic = 'all';
+
+  function initMitreMatrix() {
+    renderMitreMatrix();
+  }
+
+  function renderMitreMatrix() {
+    const container = document.getElementById('mitre-matrix-container');
+    if (!container || !window.KUBEDAILY_MITRE_MATRIX) return;
+
+    container.innerHTML = '';
+    const tactics = window.KUBEDAILY_MITRE_MATRIX;
+    const query = (document.getElementById('mitre-search-input')?.value || '').trim().toLowerCase();
+
+    tactics.forEach(tac => {
+      const matchingTechs = tac.techniques.filter(tech => {
+        if (!query) return true;
+        return tech.id.toLowerCase().includes(query) ||
+               tech.name.toLowerCase().includes(query) ||
+               tech.desc.toLowerCase().includes(query) ||
+               tech.mitigation.toLowerCase().includes(query);
+      });
+
+      const isTacticVisible = (currentMitreTactic === 'all' || currentMitreTactic === tac.tacticId) && matchingTechs.length > 0;
+
+      const colEl = document.createElement('div');
+      colEl.id = `mitre-col-${tac.tacticId}`;
+      colEl.className = 'mitre-tactic-col';
+      colEl.style.display = isTacticVisible ? 'flex' : 'none';
+
+      let cardsHtml = '';
+      matchingTechs.forEach(tech => {
+        const borderTopColor = tech.severity === 'critical' ? '#ef4444' : (tech.severity === 'high' ? '#f97316' : '#eab308');
+        const badgeBg = tech.severity === 'critical' ? 'rgba(239, 68, 68, 0.2)' : (tech.severity === 'high' ? 'rgba(249, 115, 22, 0.2)' : 'rgba(234, 179, 8, 0.2)');
+        const badgeFg = tech.severity === 'critical' ? '#f87171' : (tech.severity === 'high' ? '#fb923c' : '#facc15');
+
+        cardsHtml += `
+          <div class="mitre-tech-card" style="border-top: 3px solid ${borderTopColor};">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <span style="font-size: 0.72rem; font-weight: 800; color: #38bdf8; font-family: monospace;">${tech.id}</span>
+              <span class="kube-badge" style="background: ${badgeBg}; color: ${badgeFg}; font-size: 0.65rem; font-weight: 700;">${tech.severity.toUpperCase()}</span>
+            </div>
+            <div style="font-size: 0.825rem; font-weight: 700; color: #ffffff; line-height: 1.35; margin-bottom: 0.35rem;">
+              ${tech.name}
+            </div>
+            <p style="font-size: 0.725rem; color: #94a3b8; line-height: 1.45; margin: 0 0 0.5rem 0;">
+              ${tech.desc}
+            </p>
+            <div style="font-size: 0.6875rem; color: #64748b; margin-bottom: 0.6rem; line-height: 1.35;">
+              <strong style="color: #cbd5e1;">Mitigation:</strong> ${tech.mitigation}
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem;">
+              <button onclick="locateAndInspect('${tech.componentKey}', '${tech.componentKey.toUpperCase()}', '${tech.sheet}')" class="kube-button" style="font-size: 0.6875rem; padding: 0.2rem 0.35rem; background: #2563eb; border-color: #2563eb;">
+                🎯 Diagram
+              </button>
+              <button onclick="locateAndInspect('${tech.componentKey}', '${tech.componentKey.toUpperCase()}')" class="kube-button kube-button-secondary" style="font-size: 0.6875rem; padding: 0.2rem 0.35rem; background: #334155; color: #f8fafc; border-color: #475569;">
+                ⚡ Inspect
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      colEl.innerHTML = `
+        <div style="padding-bottom: 0.5rem; border-bottom: 1px solid #1e293b;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.7rem; font-weight: 800; color: #db2777; text-transform: uppercase; letter-spacing: 0.05em;">${tac.tacticId}</span>
+            <span style="font-size: 0.6875rem; color: #64748b; font-weight: 600;">${matchingTechs.length} tech</span>
+          </div>
+          <div style="font-size: 0.875rem; font-weight: 700; color: #ffffff; margin-top: 0.15rem;">
+            ${tac.tacticName}
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.65rem; overflow-y: auto; max-height: 600px; padding-right: 2px;">
+          ${cardsHtml}
+        </div>
+      `;
+
+      container.appendChild(colEl);
+    });
+  }
+
+  function filterMitreTactic(tacticId) {
+    currentMitreTactic = tacticId;
+    const allPillIds = ['all', 'TA0001', 'TA0002', 'TA0003', 'TA0004', 'TA0005', 'TA0006', 'TA0007', 'TA0008', 'TA0009', 'TA0010'];
+    allPillIds.forEach(id => {
+      const btn = document.getElementById(`mitre-pill-${id}`);
+      if (btn) {
+        if (id === tacticId) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+    });
+    renderMitreMatrix();
+  }
+
+  function searchMitreMatrix() {
+    renderMitreMatrix();
+  }
+
+  function exportMitreNavigatorLayer() {
+    if (!window.KUBEDAILY_MITRE_MATRIX) return;
+    const tactics = window.KUBEDAILY_MITRE_MATRIX;
+    const techniquesList = [];
+
+    tactics.forEach(tac => {
+      tac.techniques.forEach(tech => {
+        let score = 5;
+        let color = '#ef4444';
+        if (tech.severity === 'high') {
+          score = 3;
+          color = '#f97316';
+        } else if (tech.severity === 'medium') {
+          score = 1;
+          color = '#eab308';
+        }
+
+        techniquesList.push({
+          techniqueID: tech.id.split('.')[0],
+          tactic: tac.tacticName.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+          score: score,
+          color: color,
+          comment: `[${tech.name}] Mitigated by KubeDaily Component: ${tech.componentKey.toUpperCase()} - ${tech.mitigation}`,
+          enabled: true
+        });
+      });
+    });
+
+    const navigatorLayer = {
+      name: "KubeDaily Kubernetes Container Threat Matrix",
+      versions: {
+        attack: "14",
+        navigator: "4.8.1",
+        layer: "4.5"
+      },
+      domain: "enterprise-attack",
+      description: "Official KubeDaily Kubernetes Threat Model & Security Architecture MITRE ATT&CK for Containers Coverage Layer",
+      filters: {
+        platforms: ["Containers", "Linux"]
+      },
+      sorting: 3,
+      layout: {
+        layout: "side",
+        aggregateFunction: "average",
+        showID: true,
+        showName: true,
+        showTacticRowBackground: true
+      },
+      gradient: {
+        colors: ["#ffffff", "#eab308", "#f97316", "#ef4444"],
+        minValue: 0,
+        maxValue: 5
+      },
+      legendItems: [
+        { label: "Critical Severity (Host Escape)", color: "#ef4444" },
+        { label: "High Severity (Credential Theft)", color: "#f97316" },
+        { label: "Medium Severity (Discovery / Recon)", color: "#eab308" }
+      ],
+      techniques: techniquesList
+    };
+
+    const blob = new Blob([JSON.stringify(navigatorLayer, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `kubedaily-mitre-containers-navigator-layer.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   // Initialize on page load
   document.addEventListener('DOMContentLoaded', () => {
     loadSvg('cluster');
     initScorecard();
+    initMitreMatrix();
   });
 </script>
