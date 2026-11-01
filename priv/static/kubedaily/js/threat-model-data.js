@@ -419,8 +419,8 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io`,
       shell: `# Audit 1: Identify all subjects bound to cluster-admin or wildcard verbs
 kubectl get clusterrolebindings -o json | jq -r '
-  .items[] | 
-  select(.roleRef.name == "cluster-admin") | 
+  .items[] |
+  select(.roleRef.name == "cluster-admin") |
   "Binding: " + .metadata.name + " -> Subjects: " + (.subjects // [] | map(.name) | join(", "))
 '
 
@@ -506,8 +506,8 @@ spec:
               drop: ["ALL"]`,
       shell: `# Audit 1: Find all pods with automountServiceAccountToken enabled and running as root
 kubectl get pods -A -o json | jq -r '
-  .items[] | 
-  select(.spec.automountServiceAccountToken != false and .spec.securityContext.runAsNonRoot != true) | 
+  .items[] |
+  select(.spec.automountServiceAccountToken != false and .spec.securityContext.runAsNonRoot != true) |
   .metadata.namespace + "/" + .metadata.name
 '
 
@@ -687,7 +687,7 @@ reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer`,
       shell: `# Audit 1: Verify all StorageClasses enforce customer-managed KMS encryption
 kubectl get storageclass -o json | jq -r '
-  .items[] | 
+  .items[] |
   "StorageClass: " + .metadata.name + " -> Encrypted: " + (.parameters.encrypted // "false") + " Key: " + (.parameters.kmsKeyId // "None")
 '`,
       detection: `# AWS CloudTrail / Audit Alert: Detect unauthorized EBS snapshot volume creation
@@ -1213,10 +1213,10 @@ webhooks:
     failurePolicy: Fail # CRITICAL: Reject request if webhook fails!`,
       shell: `# Audit: Find all webhooks configured with failurePolicy: Ignore
 kubectl get validatingwebhookconfigurations,mutatingwebhookconfigurations -o json | jq -r '
-  .items[] | 
-  .metadata.name as $name | 
-  .webhooks[] | 
-  select(.failurePolicy == "Ignore") | 
+  .items[] |
+  .metadata.name as $name |
+  .webhooks[] |
+  select(.failurePolicy == "Ignore") |
   "WARNING: " + $name + " has failurePolicy: Ignore!"
 '`,
       detection: `# Audit Log: Detect failed admission webhook invocations
@@ -1371,7 +1371,32 @@ kubectl exec -it <pod-name> -n production -- touch /test_write 2>&1 | grep -q "R
         cis: "CIS Kubernetes Benchmark v1.8.0 § 5.2.6 (Read-Only Root Filesystem)",
         nist: "NIST SP 800-190 § 4.1.2 (Container Isolation Defenses)",
         mitre: "T1190 (Exploit Public-Facing Application), T1059.004 (Unix Shell)"
-      }
+      },
+      kyverno: `# Kyverno ClusterPolicy: Require Read-Only Root Filesystem (Defends against P1 / AV01)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-ro-rootfs
+  annotations:
+    policies.kyverno.io/title: Require Read-Only Root Filesystem
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-ro-rootfs
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Root filesystem must be read-only to prevent malware drops and reverse shells."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true`
     },
 
     "p2": {
@@ -1403,8 +1428,8 @@ spec:
           image: myorg/app:latest`,
       shell: `# Audit: Search for pods mounting tokens with broad RBAC rights
 kubectl get pods -A -o json | jq -r '
-  .items[] | 
-  select(.spec.automountServiceAccountToken != false) | 
+  .items[] |
+  select(.spec.automountServiceAccountToken != false) |
   .metadata.namespace + " " + .metadata.name + " (SA: " + .spec.serviceAccountName + ")"
 '`,
       detection: `# Falco Rule: Unauthorized read of ServiceAccount token file
@@ -1417,7 +1442,30 @@ kubectl get pods -A -o json | jq -r '
         cis: "CIS Kubernetes Benchmark v1.8.0 § 5.1.5",
         nist: "NIST SP 800-190 § 4.3",
         mitre: "T1552.007 (Container and Resource Credentials)"
-      }
+      },
+      kyverno: `# Kyverno ClusterPolicy: Restrict ServiceAccount Token Automounting (Defends against P2)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-sa-token-automount
+  annotations:
+    policies.kyverno.io/title: Restrict ServiceAccount Token Automounting
+    policies.kyverno.io/category: Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-sa-token-automount
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Automounting ServiceAccount tokens is forbidden. Set automountServiceAccountToken: false to prevent API pivot."
+        pattern:
+          spec:
+            automountServiceAccountToken: false`
     },
 
     "p3": {
@@ -1464,7 +1512,34 @@ cosign verify --key cosign.pub ghcr.io/myorg/production-app:v1.0.0`,
         cis: "CIS Kubernetes Benchmark v1.8.0 § 5.4.1",
         nist: "NIST SP 800-190 § 4.1.1",
         mitre: "T1195.002 (Compromise Software Supply Chain)"
-      }
+      },
+      kyverno: `# Kyverno ClusterPolicy: Verify Cosign Signatures & Attestations (Defends against P3)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-image-signatures
+  annotations:
+    policies.kyverno.io/title: Verify Cosign Signatures and SLSA Provenance
+    policies.kyverno.io/category: Supply Chain Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  webhookTimeoutSeconds: 30
+  rules:
+    - name: verify-signature-rule
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      verifyImages:
+        - imageReferences: ["ghcr.io/myorg/*"]
+          attestors:
+            - entries:
+                - keys:
+                    publicKeys: |-
+                      -----BEGIN PUBLIC KEY-----
+                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
+                      -----END PUBLIC KEY-----`
     },
 
     "p4": {
@@ -1517,8 +1592,8 @@ spec:
                   =(privileged): false`,
       shell: `# Audit: Identify any running pods with privileged: true or hostPID: true
 kubectl get pods -A -o json | jq -r '
-  .items[] | 
-  select(.spec.hostPID == true or .spec.containers[].securityContext.privileged == true) | 
+  .items[] |
+  select(.spec.hostPID == true or .spec.containers[].securityContext.privileged == true) |
   .metadata.namespace + "/" + .metadata.name + " is PRIVILEGED or hostPID!"
 '`,
       detection: `# Falco Rule: Detect container breakout attempt via sensitive /proc or nsenter
@@ -1532,7 +1607,36 @@ kubectl get pods -A -o json | jq -r '
         cis: "CIS Kubernetes Benchmark v1.8.0 § 5.2.1 through § 5.2.9",
         nist: "NIST SP 800-190 § 4.2",
         mitre: "T1611 (Escape to Host), T1068 (Exploitation for Privilege Escalation)"
-      }
+      },
+      kyverno: `# Kyverno ClusterPolicy: Disallow Privileged Containers & Host Namespaces (Defends against P4)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+  annotations:
+    policies.kyverno.io/title: Disallow Privileged Containers
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-privileged
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Privileged containers and host namespaces (hostPID, hostIPC, hostNetwork) are strictly forbidden!"
+        pattern:
+          spec:
+            =(hostPID): false
+            =(hostIPC): false
+            =(hostNetwork): false
+            containers:
+              - securityContext:
+                  =(privileged): false
+                  =(allowPrivilegeEscalation): false`
     },
 
     "p5": {
@@ -1580,7 +1684,40 @@ aws ec2 modify-instance-metadata-options \
         cis: "CIS Kubernetes Benchmark v1.8.0 § 5.2.2",
         nist: "NIST SP 800-190 § 4.4.1",
         mitre: "T1552.005 (Cloud Instance Metadata API)"
-      }
+      },
+      kyverno: `# Kyverno ClusterPolicy: Block Cloud Instance Metadata (IMDS) (Defends against P5)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-cloud-metadata-imds
+  annotations:
+    policies.kyverno.io/title: Block Access to Cloud Instance Metadata Service
+    policies.kyverno.io/category: Multi-Cloud Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: generate-imds-network-policy
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: block-imds-egress
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes: ["Egress"]
+            egress:
+              - to:
+                  - ipBlock:
+                      cidr: 0.0.0.0/0
+                      except:
+                        - 169.254.169.254/32`
     },
 
     "p6": {
@@ -1628,7 +1765,32 @@ ETCDCTL_API=3 etcdctl \
         cis: "CIS Kubernetes Benchmark v1.8.0 § 1.2.32, § 2.1",
         nist: "NIST SP 800-190 § 4.5.2",
         mitre: "T1005 (Data from Local System), T1552 (Unsecured Credentials)"
-      }
+      },
+      kyverno: `# Kyverno ClusterPolicy: Restrict Secret Mounting & Require External Secret Store (Defends against P6)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-secret-access
+  annotations:
+    policies.kyverno.io/title: Restrict Secret Mounting & Access
+    policies.kyverno.io/category: Secret Management
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: block-env-secrets
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Secrets should be mounted via CSI Secret Store volumes, not exposed as static environment variables."
+        pattern:
+          spec:
+            containers:
+              - =(env):
+                  - =(valueFrom):
+                      X(secretKeyRef): null`
     },
 
     // ---------------- ATTACK VECTORS (AV01 - AV15) ----------------
@@ -1782,7 +1944,35 @@ spec:
     - Egress`,
       shell: `kubectl get netpol -A`,
       detection: `hubble observe --verdict DROPPED`,
-      compliance: { cis: "CIS § 5.3.2", nist: "NIST § 4.4.1", mitre: "T1040" }
+      compliance: { cis: "CIS § 5.3.2", nist: "NIST § 4.4.1", mitre: "T1040" },
+      kyverno: `# Kyverno ClusterPolicy: Auto-Generate Default-Deny NetworkPolicy on Namespace Creation
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-default-deny-netpol
+  annotations:
+    policies.kyverno.io/title: Auto-Generate Default-Deny NetworkPolicy
+    policies.kyverno.io/category: Multi-Tenancy & Zero Trust
+    policies.kyverno.io/severity: high
+spec:
+  rules:
+    - name: generate-deny-all
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: default-deny-all
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes:
+              - Ingress
+              - Egress`
     },
 
     "c02": {
@@ -1804,7 +1994,38 @@ metadata:
     pod-security.kubernetes.io/enforce-version: latest`,
       shell: `kubectl get ns --show-labels | grep pod-security`,
       detection: `audit-log: responseStatus.message == "violates PodSecurity restricted"`,
-      compliance: { cis: "CIS § 5.2.1", nist: "NIST § 4.2.1", mitre: "T1611" }
+      compliance: { cis: "CIS § 5.2.1", nist: "NIST § 4.2.1", mitre: "T1611" },
+      kyverno: `# Kyverno ClusterPolicy: Enforce Pod Security Standards (Restricted)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: pss-restricted
+  annotations:
+    policies.kyverno.io/title: Enforce Pod Security Standards (Restricted)
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: require-non-root-and-ro-rootfs
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Containers must run as non-root with read-only root filesystems and dropped capabilities."
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                      - ALL`
     },
 
     "c03": {
@@ -1828,7 +2049,33 @@ resources:
           endpoint: unix:///run/kmsplugin/socket.sock`,
       shell: `ETCDCTL_API=3 etcdctl get /registry/secrets/default/my-secret | head -n 2`,
       detection: `kms cloudtrail: eventName=Decrypt`,
-      compliance: { cis: "CIS § 1.2.32", nist: "NIST § 4.5.2", mitre: "T1552" }
+      compliance: { cis: "CIS § 1.2.32", nist: "NIST § 4.5.2", mitre: "T1552" },
+      kyverno: `# Kyverno ClusterPolicy: Restrict Raw Secrets Exposure in Pod Specs
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-raw-secrets
+  annotations:
+    policies.kyverno.io/title: Restrict Secret Mounting as Plaintext Environment Variables
+    policies.kyverno.io/category: Secret Management
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: disallow-secret-env-vars
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Direct injection of Secrets via environment variables is forbidden. Mount secrets via CSI driver instead."
+        pattern:
+          spec:
+            containers:
+              - =(env):
+                  - =(valueFrom):
+                      X(secretKeyRef): null`
     },
 
     "c04": {
@@ -1859,7 +2106,34 @@ spec:
               - securityContext: { runAsNonRoot: true }`,
       shell: `kubectl get policyreports -A`,
       detection: `kubectl get events --field-selector reason=PolicyViolation`,
-      compliance: { cis: "CIS § 5.2.1", nist: "NIST § 4.3", mitre: "T1548" }
+      compliance: { cis: "CIS § 5.2.1", nist: "NIST § 4.3", mitre: "T1548" },
+      kyverno: `# Kyverno ClusterPolicy: Require Non-Root User Execution
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-non-root
+  annotations:
+    policies.kyverno.io/title: Disallow Root User Execution
+    policies.kyverno.io/category: Pod Security Standards
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-user
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Containers must run as a non-root user (runAsNonRoot: true)."
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+            containers:
+              - securityContext:
+                  runAsNonRoot: true`
     },
 
     "c05": {
@@ -1884,7 +2158,34 @@ spec:
         - matchActions: [{ action: Sigkill }]`,
       shell: `falcoctl status && tail -f /var/log/falco/events.json`,
       detection: `falco rule: Terminal shell in container`,
-      compliance: { cis: "CIS § 4.2.1", nist: "NIST § 4.2.2", mitre: "T1059" }
+      compliance: { cis: "CIS § 4.2.1", nist: "NIST § 4.2.2", mitre: "T1059" },
+      kyverno: `# Kyverno ClusterPolicy: Protect eBPF Runtime Security Sensors
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: protect-ebpf-sensors
+  annotations:
+    policies.kyverno.io/title: Protect eBPF Runtime Security Sensors
+    policies.kyverno.io/category: Defense-in-Depth
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: block-ebpf-deletion
+      match:
+        any:
+          - resources:
+              kinds: ["DaemonSet"]
+              namespaces: ["kube-system", "falco", "tetragon"]
+              names: ["falco*", "tetragon*"]
+      validate:
+        message: "Deleting or scaling down eBPF security monitoring daemonsets is strictly forbidden."
+        deny:
+          conditions:
+            any:
+              - key: "{{request.operation}}"
+                operator: In
+                value: ["DELETE"]`
     },
 
     "c06": {
@@ -1900,7 +2201,30 @@ spec:
 --enable-admission-plugins=NodeRestriction,PodSecurity`,
       shell: `ps -ef | grep kube-apiserver | grep NodeRestriction`,
       detection: `audit-log: verb=patch resource=pods status=403`,
-      compliance: { cis: "CIS § 1.2.17", nist: "NIST § 4.3", mitre: "T1611" }
+      compliance: { cis: "CIS § 1.2.17", nist: "NIST § 4.3", mitre: "T1611" },
+      kyverno: `# Kyverno ClusterPolicy: Restrict Node Labels and Taints Modifications
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-node-modifications
+  annotations:
+    policies.kyverno.io/title: Restrict Node Modification to Authorized Identities
+    policies.kyverno.io/category: Node Security
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: check-node-labels
+      match:
+        any:
+          - resources:
+              kinds: ["Node"]
+      validate:
+        message: "Only system:node identities may modify standard node-restriction labels."
+        pattern:
+          metadata:
+            labels:
+              =(node-restriction.kubernetes.io/*): "*"`
     },
 
     "c07": {
@@ -1923,7 +2247,36 @@ spec:
   matchingPrecedence: 500`,
       shell: `kubectl get flowschemas,prioritylevelconfigurations`,
       detection: `metrics: apiserver_flowcontrol_rejected_requests_total`,
-      compliance: { cis: "CIS § 1.2.22", nist: "NIST § 4.3", mitre: "T1499" }
+      compliance: { cis: "CIS § 1.2.22", nist: "NIST § 4.3", mitre: "T1499" },
+      kyverno: `# Kyverno ClusterPolicy: Require Pod Resource Requests and Limits (DoS Mitigation)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-pod-resources
+  annotations:
+    policies.kyverno.io/title: Require CPU/Memory Limits and Requests
+    policies.kyverno.io/category: Resource Management & DoS Mitigation
+    policies.kyverno.io/severity: medium
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-cpu-memory-limits
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "CPU and memory resource requests and limits must be specified to prevent noisy-neighbor starvation."
+        pattern:
+          spec:
+            containers:
+              - resources:
+                  requests:
+                    cpu: "?*"
+                    memory: "?*"
+                  limits:
+                    memory: "?*"`
     },
 
     "c08": {
@@ -1941,7 +2294,32 @@ securityContext:
     type: RuntimeDefault`,
       shell: `kubectl get pods -A -o json | jq '.items[].spec.securityContext.seccompProfile'`,
       detection: `dmesg | grep -i seccomp`,
-      compliance: { cis: "CIS § 5.2.7", nist: "NIST § 4.2.1", mitre: "T1611" }
+      compliance: { cis: "CIS § 5.2.7", nist: "NIST § 4.2.1", mitre: "T1611" },
+      kyverno: `# Kyverno ClusterPolicy: Require RuntimeDefault Seccomp Profile
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-runtime-default-seccomp
+  annotations:
+    policies.kyverno.io/title: Require RuntimeDefault Seccomp Profile
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-seccomp
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Pod securityContext must set seccompProfile type to RuntimeDefault or Localhost."
+        pattern:
+          spec:
+            securityContext:
+              seccompProfile:
+                type: "RuntimeDefault | Localhost"`
     },
 
     "c09": {
@@ -1959,7 +2337,35 @@ securityContext:
     drop: ["ALL"]`,
       shell: `kubectl exec <pod> -- touch /etc/test`,
       detection: `falco rule: Write below etc or binary directory`,
-      compliance: { cis: "CIS § 5.2.6", nist: "NIST § 4.1.2", mitre: "T1059" }
+      compliance: { cis: "CIS § 5.2.6", nist: "NIST § 4.1.2", mitre: "T1059" },
+      kyverno: `# Kyverno ClusterPolicy: Read-Only Root Filesystem & Drop ALL Capabilities
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: ro-rootfs-drop-all-caps
+  annotations:
+    policies.kyverno.io/title: Read-Only Root Filesystem & Drop ALL Capabilities
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-caps-and-ro
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "All Linux capabilities must be dropped and root filesystem must be read-only."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true
+                  capabilities:
+                    drop:
+                      - ALL`
     },
 
     "c10": {
@@ -1978,7 +2384,34 @@ verifyImages:
       - entries: [{ keys: { publicKeys: "..." } }]`,
       shell: `cosign verify --key cosign.pub ghcr.io/myorg/app:latest`,
       detection: `admission event: image verification failed`,
-      compliance: { cis: "CIS § 5.4.1", nist: "NIST § 4.1.1", mitre: "T1195" }
+      compliance: { cis: "CIS § 5.4.1", nist: "NIST § 4.1.1", mitre: "T1195" },
+      kyverno: `# Kyverno ClusterPolicy: Verify Cosign Signatures & Attestations
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-image-signatures
+  annotations:
+    policies.kyverno.io/title: Verify Cosign Signatures and SLSA Provenance
+    policies.kyverno.io/category: Supply Chain Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  webhookTimeoutSeconds: 30
+  rules:
+    - name: verify-signature-rule
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      verifyImages:
+        - imageReferences: ["ghcr.io/myorg/*", "registry.k8s.io/*"]
+          attestors:
+            - entries:
+                - keys:
+                    publicKeys: |-
+                      -----BEGIN PUBLIC KEY-----
+                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
+                      -----END PUBLIC KEY-----`
     },
 
     "c11": {
@@ -1995,7 +2428,40 @@ http_tokens = "required"
 http_put_response_hop_limit = 1`,
       shell: `aws ec2 describe-instances --query 'Reservations[*].Instances[*].MetadataOptions'`,
       detection: `cloudtrail: GetCallerIdentity from untrusted instance role`,
-      compliance: { cis: "CIS § 5.2.2", nist: "NIST § 4.4.1", mitre: "T1552.005" }
+      compliance: { cis: "CIS § 5.2.2", nist: "NIST § 4.4.1", mitre: "T1552.005" },
+      kyverno: `# Kyverno ClusterPolicy: Block Cloud Instance Metadata (IMDS 169.254.169.254)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-cloud-metadata-imds
+  annotations:
+    policies.kyverno.io/title: Block Access to Cloud Instance Metadata Service
+    policies.kyverno.io/category: Multi-Cloud Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: generate-imds-network-policy
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: block-imds-egress
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes: ["Egress"]
+            egress:
+              - to:
+                  - ipBlock:
+                      cidr: 0.0.0.0/0
+                      except:
+                        - 169.254.169.254/32`
     },
 
     "c12": {
@@ -2019,7 +2485,31 @@ rules:
         resources: ["*"]`,
       shell: `tail -n 20 /var/log/kubernetes/audit.log`,
       detection: `SIEM / Elastic / Splunk alert on 403 Forbidden bursts`,
-      compliance: { cis: "CIS § 3.2.1", nist: "NIST § 4.3.2", mitre: "T1005" }
+      compliance: { cis: "CIS § 3.2.1", nist: "NIST § 4.3.2", mitre: "T1005" },
+      kyverno: `# Kyverno ClusterPolicy: Validate Audit & Compliance Annotations
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-audit-annotations
+  annotations:
+    policies.kyverno.io/title: Require Audit and Compliance Annotations
+    policies.kyverno.io/category: Governance & Audit
+    policies.kyverno.io/severity: medium
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: check-audit-labels
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      validate:
+        message: "Every namespace must specify owner and data-sensitivity classification for audit tracking."
+        pattern:
+          metadata:
+            labels:
+              owner: "?*"
+              data-classification: "?*"`
     },
 
     "c14": {
@@ -2055,7 +2545,33 @@ spec:
                 -----END PUBLIC KEY-----`,
       shell: `cosign verify --key cosign.pub ghcr.io/myorg/payment-service:v1.4.0`,
       detection: `admission webhook failure: signature verification failed for image`,
-      compliance: { cis: "CIS § 5.4.1", nist: "NIST SP 800-190 § 3.1", mitre: "T1195.002" }
+      compliance: { cis: "CIS § 5.4.1", nist: "NIST SP 800-190 § 3.1", mitre: "T1195.002" },
+      kyverno: `# Kyverno ClusterPolicy: Cryptographic Image Verification
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-image-signatures
+  annotations:
+    policies.kyverno.io/title: Cryptographic Image Verification (Cosign)
+    policies.kyverno.io/category: Supply Chain Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: verify-signature
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      verifyImages:
+        - imageReferences: ["ghcr.io/myorg/*"]
+          attestors:
+            - entries:
+                - keys:
+                    publicKeys: |-
+                      -----BEGIN PUBLIC KEY-----
+                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
+                      -----END PUBLIC KEY-----`
     },
 
     "c16": {
@@ -2080,7 +2596,32 @@ spec:
       image: app:v1`,
       shell: `grep Seccomp /proc/$(pgrep containerd-shim)/status`,
       detection: `auditd / Falco alert on forbidden syscall execution`,
-      compliance: { cis: "CIS § 5.7.2", nist: "NIST SP 800-190 § 3.4", mitre: "T1611" }
+      compliance: { cis: "CIS § 5.7.2", nist: "NIST SP 800-190 § 3.4", mitre: "T1611" },
+      kyverno: `# Kyverno ClusterPolicy: Enforce Seccomp Syscall Filtering
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: enforce-seccomp-syscalls
+  annotations:
+    policies.kyverno.io/title: Enforce Seccomp Syscall Filtering
+    policies.kyverno.io/category: Runtime Defense
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-seccomp
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Seccomp profile type RuntimeDefault is required to restrict dangerous Linux syscalls."
+        pattern:
+          spec:
+            securityContext:
+              seccompProfile:
+                type: "RuntimeDefault"`
     },
 
     "c17": {
@@ -2105,7 +2646,32 @@ spec:
       image: app:v1`,
       shell: `aa-status --profile`,
       detection: `dmesg | grep -i apparmor="DENIED"`,
-      compliance: { cis: "CIS § 5.7.3", nist: "NIST SP 800-190 § 3.4", mitre: "T1611" }
+      compliance: { cis: "CIS § 5.7.3", nist: "NIST SP 800-190 § 3.4", mitre: "T1611" },
+      kyverno: `# Kyverno ClusterPolicy: Require AppArmor / SELinux MAC Profile
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-apparmor-profile
+  annotations:
+    policies.kyverno.io/title: Require AppArmor / SELinux MAC Profile
+    policies.kyverno.io/category: Runtime Defense
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-apparmor
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Pod must specify appArmorProfile type RuntimeDefault or custom profile."
+        pattern:
+          spec:
+            securityContext:
+              appArmorProfile:
+                type: "RuntimeDefault | Localhost"`
     }
   }
 };

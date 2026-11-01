@@ -40,14 +40,14 @@
 </section>
 
 <div class="kube-shell" style="max-width: 1440px; margin: 0 auto; padding: 1.25rem 1rem;">
-  
+
   <!-- Interactive Viewport Toolbar -->
   <div class="kube-card" style="margin-bottom: 1rem; padding: 0.85rem 1rem; border-radius: 0.75rem; background: var(--pele-surface, #ffffff); border: 1px solid var(--pele-border, #e2e8f0); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
     <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-      
+
       <!-- Top Row: Sheets, Search & View Controls -->
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center;">
-        
+
         <!-- Sheet Switcher Tabs (4 Sheets) -->
         <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;" role="tablist">
           <button id="btn-sheet-cluster" class="kube-button" style="font-size: 0.8125rem; padding: 0.45rem 0.9rem; border-radius: 0.5rem; cursor: pointer;" onclick="switchSheet('cluster')">
@@ -71,7 +71,7 @@
         <!-- Live Search Box with Autocomplete Dropdown -->
         <div style="display: flex; align-items: center; gap: 0.4rem; position: relative;">
           <div style="position: relative; display: flex; align-items: center;">
-            <input id="diagram-search-input" type="text" placeholder="Search (e.g. etcd, TA01, runc, P1, C01)..." 
+            <input id="diagram-search-input" type="text" placeholder="Search (e.g. etcd, TA01, runc, P1, C01)..."
                    style="font-size: 0.8125rem; padding: 0.4rem 2rem 0.4rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--pele-border, #cbd5e1); width: 260px; background: #f8fafc;"
                    oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)" />
             <button id="search-clear-btn" onclick="clearSearch()" style="position: absolute; right: 8px; border: none; background: transparent; cursor: pointer; color: #94a3b8; font-size: 0.8125rem; display: none;">✕</button>
@@ -90,7 +90,7 @@
           <button onclick="resetZoom()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;" title="Reset View (0)">Reset</button>
           <button onclick="toggleFullscreen()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;" title="Toggle Fullscreen (f)">⛶</button>
           <button onclick="toggleShortcutsModal()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;" title="Keyboard Shortcuts (?)">⌨ ?</button>
-          
+
           <!-- Download Dropdown -->
           <div style="position: relative; display: inline-block;">
             <button onclick="toggleDownloadMenu()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;">
@@ -126,7 +126,7 @@
 
       <!-- Second Row: Depth Levels, Priority Filters & Traffic Flow -->
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 0.65rem;">
-        
+
         <!-- Depth / Abstraction Levels -->
         <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
           <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px;">Depth:</span>
@@ -201,7 +201,7 @@
 
   <!-- Interactive Stage & Inspector Layout -->
   <div id="diagram-viewport-container" class="kube-card" style="padding: 0; border-radius: 0.75rem; overflow: hidden; background: #ffffff; border: 1px solid var(--pele-border, #e2e8f0); position: relative; height: 75vh; min-height: 680px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); display: flex;">
-    
+
     <!-- Floating Helper Pill -->
     <div style="position: absolute; top: 12px; left: 16px; z-index: 20; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #f8fafc; font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 9999px; pointer-events: none; display: flex; align-items: center; gap: 6px;">
       <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #38bdf8;"></span>
@@ -233,7 +233,7 @@
 
     <!-- Native 5-Tab Inspector Drawer (Slide-Over Panel) -->
     <div id="inspector-drawer" style="width: 470px; height: 100%; background: #ffffff; border-left: 1px solid var(--pele-border, #cbd5e1); box-shadow: -4px 0 15px rgba(0, 0, 0, 0.08); position: absolute; right: 0; top: 0; z-index: 30; transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;">
-      
+
       <!-- Drawer Header -->
       <div style="padding: 1rem 1.25rem; border-bottom: 1px solid #e2e8f0; background: #f8fafc; display: flex; justify-content: space-between; align-items: flex-start;">
         <div>
@@ -255,13 +255,16 @@
         </div>
       </div>
 
-      <!-- Drawer Tabs (5 Specialized Technical Tabs) -->
+      <!-- Drawer Tabs (6 Specialized Technical Tabs) -->
       <div style="display: flex; border-bottom: 1px solid #e2e8f0; background: #ffffff; padding: 0 0.5rem; overflow-x: auto;" role="tablist">
         <button id="tab-btn-overview" class="drawer-tab-btn active" onclick="switchDrawerTab('overview')">
           📘 Overview
         </button>
         <button id="tab-btn-yaml" class="drawer-tab-btn" onclick="switchDrawerTab('yaml')">
           🛡️ Hardening (YAML)
+        </button>
+        <button id="tab-btn-kyverno" class="drawer-tab-btn" onclick="switchDrawerTab('kyverno')">
+          ⚡ Kyverno Policy
         </button>
         <button id="tab-btn-shell" class="drawer-tab-btn" onclick="switchDrawerTab('shell')">
           🔍 Audit (Shell)
@@ -276,7 +279,7 @@
 
       <!-- Drawer Content Scroll Area -->
       <div style="flex: 1; overflow-y: auto; padding: 1.25rem;">
-        
+
         <!-- Tab 1: Overview -->
         <div id="drawer-content-overview">
           <div style="margin-bottom: 1rem;">
@@ -310,7 +313,22 @@
           <pre style="margin: 0; padding: 0.85rem; background: #0f172a; color: #f8fafc; border-radius: 0.5rem; font-size: 0.775rem; line-height: 1.5; overflow-x: auto;"><code id="drawer-yaml-code"></code></pre>
         </div>
 
-        <!-- Tab 3: Audit Shell -->
+        <!-- Tab 3: Kyverno Policy Guardrail -->
+        <div id="drawer-content-kyverno" style="display: none;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Kyverno Policy Guardrail</span>
+              <a href="https://kyverno.io" target="_blank" rel="noopener" style="font-size: 0.6875rem; background: #dbeafe; color: #1d4ed8; padding: 0.1rem 0.45rem; border-radius: 0.25rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.2rem;">kyverno.io ↗</a>
+            </div>
+            <div style="display: flex; gap: 0.35rem;">
+              <button onclick="downloadCode('drawer-kyverno-code', 'kyverno-policy.yaml')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">⬇ Download</button>
+              <button onclick="copyCode('drawer-kyverno-code')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">📋 Copy Policy</button>
+            </div>
+          </div>
+          <pre style="margin: 0; padding: 0.85rem; background: #0b132b; color: #38bdf8; border-radius: 0.5rem; font-size: 0.775rem; line-height: 1.5; overflow-x: auto; border: 1px solid #1e293b;"><code id="drawer-kyverno-code"></code></pre>
+        </div>
+
+        <!-- Tab 4: Audit Shell -->
         <div id="drawer-content-shell" style="display: none;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
             <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Validation &amp; Verification CLI</span>
@@ -337,7 +355,7 @@
         <!-- Tab 5: Compliance Matrix -->
         <div id="drawer-content-compliance" style="display: none;">
           <h4 style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.75rem;">Regulatory &amp; Benchmark Alignment</h4>
-          
+
           <div style="margin-bottom: 0.75rem; padding: 0.75rem; background: #eff6ff; border-radius: 0.5rem; border: 1px solid #bfdbfe;">
             <div style="font-size: 0.75rem; font-weight: 700; color: #1e40af; text-transform: uppercase; margin-bottom: 0.25rem;">CIS Kubernetes Benchmark v1.8.0</div>
             <p id="drawer-compliance-cis" style="font-size: 0.8125rem; color: #1e3a8a; margin: 0; font-weight: 500;"></p>
@@ -436,7 +454,7 @@
         4 Diagram Sheets Architecture Guide
       </h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-        
+
         <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #22c55e; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
@@ -521,7 +539,7 @@
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
-        
+
         <!-- P1 -->
         <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #ef4444;">
           <div>
@@ -732,9 +750,9 @@
       <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin-bottom: 1rem;">
         Threat Actors Catalog (TA01–TA07)
       </h3>
-      
+
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
-        
+
         <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
@@ -867,7 +885,7 @@
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
-        
+
         <div class="kube-card" style="padding: 1rem; border-radius: 0.5rem; border-top: 3px solid #3b82f6;">
           <div style="font-size: 0.7rem; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Stage 01</div>
           <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.25rem 0;">Client Identity</h4>
@@ -929,7 +947,7 @@
       </p>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-        
+
         <div class="kube-card" style="padding: 1.15rem; border-radius: 0.5rem;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
             <span class="kube-badge" style="background: #e2e8f0; color: #0f172a; font-weight: 700;">S · Spoofing</span>
@@ -1012,7 +1030,7 @@
       </h3>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
-        
+
         <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
@@ -1176,6 +1194,198 @@
       </div>
     </div>
 
+    <!-- Production Kyverno Policy Library (kyverno.io) -->
+    <div style="margin-top: 3.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+        <div>
+          <div class="kube-section-pill" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe;">Policy-as-Code Engine · kyverno.io</div>
+          <h3 style="font-size: 1.45rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0.4rem 0 0.25rem 0;">
+            Production Kyverno Policy Library
+          </h3>
+          <p style="color: var(--pele-muted, #64748b); max-width: 820px; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+            Native Kubernetes policy engine (<a href="https://kyverno.io" target="_blank" rel="noopener" style="color: #2563eb; font-weight: 600; text-decoration: underline;">kyverno.io</a>) validating, mutating, generating resources, and cryptographically verifying container images using Sigstore Cosign without writing code or learning complex DSLs. Click any policy below to inspect the full YAML specification, test verification shell commands, and explore detection rules in the slide-over inspector.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <a href="https://kyverno.io/policies/" target="_blank" rel="noopener" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+            🌐 Official Kyverno Policy Catalog ↗
+          </a>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+
+        <!-- Kyverno Policy 1 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #ef4444; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 700;">Validation · Enforce</span>
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 600; font-size: 0.7rem;">CRITICAL</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Disallow Privileged Containers</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Blocks workloads declaring <code class="kube-code">privileged: true</code>, forbidding host namespace sharing (<code class="kube-code">hostPID</code>, <code class="kube-code">hostIPC</code>, <code class="kube-code">hostNetwork</code>) to neutralize container-to-host breakouts (P4 / CVE-2024-21626).
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.2.1</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1611</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('disallow-privileged-containers')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+        <!-- Kyverno Policy 2 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #f97316; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #ffedd5; color: #9a3412; font-weight: 700;">Validation · Enforce</span>
+              <span class="kube-badge" style="background: #ffedd5; color: #9a3412; font-weight: 600; font-size: 0.7rem;">HIGH</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Require Read-Only Root Filesystem</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Enforces <code class="kube-code">readOnlyRootFilesystem: true</code> across all containers. Attackers exploiting RCE vulnerabilities cannot download malware, compile rootkits, or alter binary packages (P1 / AV01).
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.2.6</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1190</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('require-ro-rootfs')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+        <!-- Kyverno Policy 3 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #3b82f6; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dbeafe; color: #1e40af; font-weight: 700;">verifyImages · Cosign</span>
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 600; font-size: 0.7rem;">CRITICAL</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Verify Cryptographic Signatures</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Intercepts image pulls at the admission webhook, cryptographically verifying Sigstore Cosign signatures and SLSA build attestations before workloads deploy to cluster nodes (P3 / AV15).
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.4.1</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1195.002</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('verify-image-signatures')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+        <!-- Kyverno Policy 4 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #8b5cf6; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #ede9fe; color: #5b21b6; font-weight: 700;">Validation · Enforce</span>
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 600; font-size: 0.7rem;">CRITICAL</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Restrict ServiceAccount Automount</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Enforces <code class="kube-code">automountServiceAccountToken: false</code> on pods. Prevents adversaries from exfiltrating projected JWT bearer tokens to execute control plane API discovery (P2 / AV02).
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.1.5</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1552.007</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('restrict-sa-token-automount')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+        <!-- Kyverno Policy 5 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #06b6d4; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #cffafe; color: #155e75; font-weight: 700;">Generate · NetworkPolicy</span>
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 600; font-size: 0.7rem;">CRITICAL</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Block Cloud Metadata (IMDS)</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Automatically generates an egress NetworkPolicy denying link-local address <code class="kube-code">169.254.169.254/32</code> upon Namespace creation, blocking AWS/GCP/Azure instance role theft (P5 / AV10).
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.2.2</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1552.005</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('block-cloud-metadata-imds')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+        <!-- Kyverno Policy 6 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #10b981; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #d1fae5; color: #065f46; font-weight: 700;">Validation · Enforce</span>
+              <span class="kube-badge" style="background: #ffedd5; color: #9a3412; font-weight: 600; font-size: 0.7rem;">HIGH</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Require Non-Root Execution</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Rejects any pod configuration running as root (UID 0) by validating <code class="kube-code">runAsNonRoot: true</code>, ensuring containers run under unprivileged Unix UIDs.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.2.4</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1548</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('require-non-root-user')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+        <!-- Kyverno Policy 7 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #ec4899; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fce7f3; color: #9d174d; font-weight: 700;">Validation · Enforce</span>
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 600; font-size: 0.7rem;">CRITICAL</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Drop ALL POSIX Capabilities</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Strips all POSIX capabilities (<code class="kube-code">capabilities.drop: ["ALL"]</code>) to eliminate dangerous kernel privileges (<code class="kube-code">CAP_SYS_ADMIN</code>, <code class="kube-code">CAP_NET_RAW</code>, <code class="kube-code">CAP_DAC_OVERRIDE</code>).
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.2.8</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1611</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('drop-all-capabilities')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+        <!-- Kyverno Policy 8 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #14b8a6; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #ccfbf1; color: #115e59; font-weight: 700;">Generate · NetworkPolicy</span>
+              <span class="kube-badge" style="background: #ffedd5; color: #9a3412; font-weight: 600; font-size: 0.7rem;">HIGH</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Auto-Generate Default-Deny NetPol</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Watches for new <code class="kube-code">Namespace</code> objects and automatically generates synchronized default-deny ingress and egress NetworkPolicies to lock down the flat CNI network.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; gap: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">CIS § 5.3.2</span>
+              <span style="font-size: 0.7rem; background: #f1f5f9; color: #475569; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-weight: 600;">MITRE T1040</span>
+            </div>
+          </div>
+          <button onclick="inspectKyvernoPolicy('generate-default-deny-netpol')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 1rem; width: 100%;">
+            ⚡ Inspect Kyverno ClusterPolicy
+          </button>
+        </div>
+
+      </div>
+    </div>
+
     <!-- Developer Mix Task Documentation -->
     <div class="kube-card" style="margin-top: 3rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
@@ -1186,7 +1396,7 @@
       <p style="font-size: 0.875rem; color: #94a3b8; line-height: 1.6; margin-top: 0.5rem;">
         KubeDaily features a built-in Mix task that watches and compiles <code style="background: rgba(255,255,255,0.1); color: #38bdf8; padding: 0.15rem 0.35rem; border-radius: 0.25rem;">.drawio</code> XML diagram files into web-optimized, high-resolution vector SVGs and Retina-ready PNG assets using local Playwright and the official diagrams.net GraphViewer rendering engine.
       </p>
-      
+
       <pre style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.4); border-radius: 0.5rem; border: 1px solid #334155; font-size: 0.8125rem; overflow-x: auto; color: #38bdf8;"><code># Compile all 4 threat model diagram sheets
 mix kubedaily.drawio
 
@@ -1332,7 +1542,7 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const svgText = await res.text();
       target.innerHTML = svgText;
-      
+
       const svgEl = target.querySelector('svg');
       if (svgEl) {
         svgEl.style.display = 'block';
@@ -1454,11 +1664,690 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
         cis: "CIS Kubernetes Benchmark v1.8.0 § 1.1",
         nist: "NIST SP 800-190 § 4.1",
         mitre: "T1613 (Container and Resource Discovery)"
-      }
+      },
+      kyverno: `# Kyverno ClusterPolicy: Enterprise Baseline Guardrail
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: component-baseline-guardrail
+  annotations:
+    policies.kyverno.io/title: Baseline Workload Security Guardrail
+    policies.kyverno.io/category: Best Practices
+    policies.kyverno.io/severity: medium
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: check-security-context
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Workloads must drop ALL capabilities and disable privilege escalation."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                      - ALL`
     };
   }
 
-  // Open Slide-over Inspector Drawer with all 5 Tabs
+  // Generate contextual Kyverno ClusterPolicy manifest if not explicitly defined
+  function generateKyvernoPolicy(data) {
+    if (data.kyverno) return data.kyverno;
+
+    const id = (data.id || '').toLowerCase();
+    const name = (data.name || '').toLowerCase();
+
+    if (id.includes('p1') || name.includes('ingress') || name.includes('rce')) {
+      return `# Kyverno ClusterPolicy: Require Read-Only Root Filesystem (Defends against P1 / AV01)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-ro-rootfs
+  annotations:
+    policies.kyverno.io/title: Require Read-Only Root Filesystem
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-ro-rootfs
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Root filesystem must be read-only to prevent malware drops and reverse shells."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true`;
+    }
+
+    if (id.includes('p2') || name.includes('serviceaccount') || name.includes('rbac') || name.includes('token')) {
+      return `# Kyverno ClusterPolicy: Restrict ServiceAccount Token Automounting (Defends against P2)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-sa-token-automount
+  annotations:
+    policies.kyverno.io/title: Restrict ServiceAccount Token Automounting
+    policies.kyverno.io/category: Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-sa-token-automount
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Automounting ServiceAccount tokens is forbidden. Set automountServiceAccountToken: false to prevent API pivot."
+        pattern:
+          spec:
+            automountServiceAccountToken: false`;
+    }
+
+    if (id.includes('p3') || name.includes('supply') || name.includes('image') || name.includes('registry')) {
+      return `# Kyverno ClusterPolicy: Verify Cosign Signatures & Attestations (Defends against P3)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-image-signatures
+  annotations:
+    policies.kyverno.io/title: Verify Cosign Signatures and SLSA Provenance
+    policies.kyverno.io/category: Supply Chain Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  webhookTimeoutSeconds: 30
+  rules:
+    - name: verify-signature-rule
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      verifyImages:
+        - imageReferences: ["ghcr.io/myorg/*", "registry.k8s.io/*"]
+          attestors:
+            - entries:
+                - keys:
+                    publicKeys: |-
+                      -----BEGIN PUBLIC KEY-----
+                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
+                      -----END PUBLIC KEY-----`;
+    }
+
+    if (id.includes('p4') || name.includes('breakout') || name.includes('escape') || name.includes('privileged') || name.includes('node')) {
+      return `# Kyverno ClusterPolicy: Disallow Privileged Containers & Host Namespaces (Defends against P4)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+  annotations:
+    policies.kyverno.io/title: Disallow Privileged Containers
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-privileged
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Privileged containers and host namespaces (hostPID, hostIPC, hostNetwork) are strictly forbidden!"
+        pattern:
+          spec:
+            =(hostPID): false
+            =(hostIPC): false
+            =(hostNetwork): false
+            containers:
+              - securityContext:
+                  =(privileged): false
+                  =(allowPrivilegeEscalation): false`;
+    }
+
+    if (id.includes('p5') || name.includes('imds') || name.includes('metadata') || name.includes('cloud')) {
+      return `# Kyverno ClusterPolicy: Block Cloud Instance Metadata (IMDS) (Defends against P5)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-cloud-metadata-imds
+  annotations:
+    policies.kyverno.io/title: Block Access to Cloud Instance Metadata Service
+    policies.kyverno.io/category: Multi-Cloud Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: generate-imds-network-policy
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: block-imds-egress
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes: ["Egress"]
+            egress:
+              - to:
+                  - ipBlock:
+                      cidr: 0.0.0.0/0
+                      except:
+                        - 169.254.169.254/32`;
+    }
+
+    if (id.includes('p6') || name.includes('etcd') || name.includes('secret') || name.includes('kms')) {
+      return `# Kyverno ClusterPolicy: Restrict Secret Mounting & Access (Defends against P6)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-raw-secrets
+  annotations:
+    policies.kyverno.io/title: Restrict Secret Mounting as Plaintext Environment Variables
+    policies.kyverno.io/category: Secret Management
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: disallow-secret-env-vars
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Direct injection of Secrets via environment variables is forbidden. Mount secrets via CSI driver instead."
+        pattern:
+          spec:
+            containers:
+              - =(env):
+                  - =(valueFrom):
+                      X(secretKeyRef): null`;
+    }
+
+    if (name.includes('network') || name.includes('cni') || name.includes('proxy') || name.includes('cilium')) {
+      return `# Kyverno ClusterPolicy: Auto-Generate Default-Deny NetworkPolicy
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-default-deny-netpol
+  annotations:
+    policies.kyverno.io/title: Auto-Generate Default-Deny NetworkPolicy
+    policies.kyverno.io/category: Multi-Tenancy & Zero Trust
+    policies.kyverno.io/severity: high
+spec:
+  rules:
+    - name: generate-deny-all
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: default-deny-all
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes:
+              - Ingress
+              - Egress`;
+    }
+
+    return `# Kyverno ClusterPolicy: Hardening Guardrail for ${data.name || 'Component'}
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: guardrail-${(data.id || 'k8s').toLowerCase().replace(/[^a-z0-9]/g, '-')}
+  annotations:
+    policies.kyverno.io/title: Workload Security Guardrail
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: enforce-least-privilege
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Containers must run as non-root, drop ALL capabilities, and disable privilege escalation."
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+            containers:
+              - securityContext:
+                  allowPrivilegeEscalation: false
+                  capabilities:
+                    drop:
+                      - ALL`;
+  }
+
+  // Open inspector focusing specifically on a Kyverno policy card
+  function inspectKyvernoPolicy(policyKey) {
+    let comp = window.KUBEDAILY_THREAT_MODEL_DATA ? window.KUBEDAILY_THREAT_MODEL_DATA.components[policyKey] : null;
+    if (!comp) {
+      const libraryPolicies = {
+        'disallow-privileged-containers': {
+          id: 'KYV-01',
+          name: 'Disallow Privileged Containers',
+          category: 'Pod Security Standards (Restricted)',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Kubernetes Workload Admission Controller',
+          motive: 'Block container breakouts and raw host OS hardware access',
+          stride: 'Elevation of Privilege',
+          overview: 'Privileged containers possess all root capabilities on the host and disable cgroup isolation. This Kyverno policy rejects any Pod declaring privileged: true, hostPID: true, hostIPC: true, or hostNetwork: true at admission time.',
+          attackVectors: ['AV04: Privileged container escape', 'AV26: Container runtime breakout'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.2.1', nist: 'NIST SP 800-190 § 4.2', mitre: 'T1611 (Escape to Host)' },
+          yaml: `# Standalone PodSecurity Configuration
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: production
+  labels:
+    pod-security.kubernetes.io/enforce: restricted`,
+          shell: `kubectl get pods -A -o json | jq '.items[] | select(.spec.containers[].securityContext.privileged == true)'`,
+          detection: `falco rule: Privileged Container Started`,
+          kyverno: `# Kyverno ClusterPolicy: Disallow Privileged Containers & Host Namespaces
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+  annotations:
+    policies.kyverno.io/title: Disallow Privileged Containers
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-privileged
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Privileged containers and host namespaces (hostPID, hostIPC, hostNetwork) are strictly forbidden!"
+        pattern:
+          spec:
+            =(hostPID): false
+            =(hostIPC): false
+            =(hostNetwork): false
+            containers:
+              - securityContext:
+                  =(privileged): false
+                  =(allowPrivilegeEscalation): false`
+        },
+        'require-ro-rootfs': {
+          id: 'KYV-02',
+          name: 'Require Read-Only Root Filesystem',
+          category: 'Pod Security Standards (Restricted)',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Kubernetes Workload Admission Controller',
+          motive: 'Prevent attackers from dropping shell payloads, backdoor binaries, or modifying runtime files',
+          stride: 'Tampering',
+          overview: 'Enforcing readOnlyRootFilesystem: true immobilizes the container root directory. Attackers cannot download curl/wget payloads or compile exploit C source code into /bin or /tmp without mounted emptyDir volumes.',
+          attackVectors: ['AV01: Ingress RCE exploit', 'AV11: In-cluster lateral malware drop'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.2.6', nist: 'NIST SP 800-190 § 4.1.2', mitre: 'T1190, T1059.004' },
+          yaml: `securityContext:
+  readOnlyRootFilesystem: true`,
+          shell: `kubectl exec -it <pod> -- touch /test_write`,
+          detection: `falco rule: Write below etc or binary directory`,
+          kyverno: `# Kyverno ClusterPolicy: Require Read-Only Root Filesystem
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-ro-rootfs
+  annotations:
+    policies.kyverno.io/title: Require Read-Only Root Filesystem
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-ro-rootfs
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Root filesystem must be read-only to prevent malware drops and reverse shells."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true`
+        },
+        'verify-image-signatures': {
+          id: 'KYV-03',
+          name: 'Verify Cryptographic Signatures (Cosign)',
+          category: 'Supply Chain Security',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Container Image Registry / CI/CD Pipeline',
+          motive: 'Block untrusted, unverified, or tampered container images from deploying to production',
+          stride: 'Tampering, Spoofing',
+          overview: 'Kyverno intercepts Pod creation, calls container registries to fetch OCI signature blobs created with Sigstore Cosign, and verifies cryptographic public keys or Keyless OIDC identities before admission.',
+          attackVectors: ['AV15: Compromised container registry', 'AV16: Dependency confusion'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.4.1', nist: 'NIST SP 800-190 § 3.1', mitre: 'T1195.002' },
+          yaml: `# Cosign verification manifest
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-image-signatures`,
+          shell: `cosign verify --key cosign.pub ghcr.io/myorg/payment-service:v1.4.0`,
+          detection: `admission webhook failure: signature verification failed for image`,
+          kyverno: `# Kyverno ClusterPolicy: Verify Cosign Signatures & Attestations
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-image-signatures
+  annotations:
+    policies.kyverno.io/title: Verify Cosign Signatures and SLSA Provenance
+    policies.kyverno.io/category: Supply Chain Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  webhookTimeoutSeconds: 30
+  rules:
+    - name: verify-signature-rule
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      verifyImages:
+        - imageReferences: ["ghcr.io/myorg/*", "registry.k8s.io/*"]
+          attestors:
+            - entries:
+                - keys:
+                    publicKeys: |-
+                      -----BEGIN PUBLIC KEY-----
+                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
+                      -----END PUBLIC KEY-----`
+        },
+        'restrict-sa-token-automount': {
+          id: 'KYV-04',
+          name: 'Restrict ServiceAccount Token Automounting',
+          category: 'Identity & Access Control',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Kubernetes API Server / Pod Spec',
+          motive: 'Prevent compromised workloads from exfiltrating projected API bearer tokens',
+          stride: 'Information Disclosure, Elevation of Privilege',
+          overview: 'By default, Kubernetes mounts a JWT token at /var/run/secrets/kubernetes.io/serviceaccount/token in every pod. If the pod is compromised, an attacker can use this token to query the Kubernetes API. This policy enforces automountServiceAccountToken: false.',
+          attackVectors: ['AV02: Stolen ServiceAccount bearer token', 'AV07: In-cluster API enumeration'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.1.5', nist: 'NIST SP 800-190 § 4.3', mitre: 'T1552.007' },
+          yaml: `apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod
+spec:
+  automountServiceAccountToken: false`,
+          shell: `kubectl get pods -A -o json | jq '.items[] | select(.spec.automountServiceAccountToken != false)'`,
+          detection: `audit-log: verb=get user.username=system:serviceaccount:*`,
+          kyverno: `# Kyverno ClusterPolicy: Restrict ServiceAccount Token Automounting
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-sa-token-automount
+  annotations:
+    policies.kyverno.io/title: Restrict ServiceAccount Token Automounting
+    policies.kyverno.io/category: Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: validate-sa-token-automount
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Automounting ServiceAccount tokens is forbidden. Set automountServiceAccountToken: false."
+        pattern:
+          spec:
+            automountServiceAccountToken: false`
+        },
+        'block-cloud-metadata-imds': {
+          id: 'KYV-05',
+          name: 'Block Cloud Instance Metadata (IMDS)',
+          category: 'Multi-Cloud Security',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Cloud Provider Link-Local Address (169.254.169.254)',
+          motive: 'Prevent stolen AWS IAM instance roles / GCP service account tokens from container pivots',
+          stride: 'Information Disclosure, Elevation of Privilege',
+          overview: 'This Kyverno generation policy automatically provisions an egress NetworkPolicy denying 169.254.169.254/32 whenever a new Namespace is created, neutralizing cloud metadata credential theft across all tenant namespaces.',
+          attackVectors: ['AV10: Link-local metadata query', 'AV20: Node IAM role escalation'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.2.2', nist: 'NIST SP 800-190 § 4.4.1', mitre: 'T1552.005' },
+          yaml: `apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: block-imds
+spec:
+  podSelector: {}
+  policyTypes: ["Egress"]
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except: [169.254.169.254/32]`,
+          shell: `curl -s --connect-timeout 2 http://169.254.169.254/latest/meta-data/`,
+          detection: `falco rule: Outbound HTTP to 169.254.169.254`,
+          kyverno: `# Kyverno ClusterPolicy: Block Cloud Instance Metadata (IMDS)
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-cloud-metadata-imds
+  annotations:
+    policies.kyverno.io/title: Block Access to Cloud Instance Metadata Service
+    policies.kyverno.io/category: Multi-Cloud Security
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: generate-imds-network-policy
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: block-imds-egress
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes: ["Egress"]
+            egress:
+              - to:
+                  - ipBlock:
+                      cidr: 0.0.0.0/0
+                      except:
+                        - 169.254.169.254/32`
+        },
+        'require-non-root-user': {
+          id: 'KYV-06',
+          name: 'Require Non-Root Execution',
+          category: 'Pod Security Standards (Restricted)',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Linux Container Runtime Namespace',
+          motive: 'Prevent UID 0 execution inside containers to reduce kernel privilege escalation surface',
+          stride: 'Elevation of Privilege',
+          overview: 'Enforces runAsNonRoot: true at the pod and container securityContext. If a container image defaults to root (UID 0), the admission controller rejects scheduling.',
+          attackVectors: ['AV04: Root container breakout', 'AV26: runc privilege escalation'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.2.4', nist: 'NIST SP 800-190 § 4.2', mitre: 'T1548' },
+          yaml: `securityContext:
+  runAsNonRoot: true
+  runAsUser: 10001`,
+          shell: `kubectl get pods -A -o json | jq '.items[] | select(.spec.securityContext.runAsNonRoot != true)'`,
+          detection: `audit-log: pod created with runAsNonRoot=false`,
+          kyverno: `# Kyverno ClusterPolicy: Require Non-Root Execution
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-non-root-user
+  annotations:
+    policies.kyverno.io/title: Require Non-Root Execution
+    policies.kyverno.io/category: Pod Security Standards (Restricted)
+    policies.kyverno.io/severity: high
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-user
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "Containers must run as a non-root user (runAsNonRoot: true)."
+        pattern:
+          spec:
+            securityContext:
+              runAsNonRoot: true
+            containers:
+              - securityContext:
+                  runAsNonRoot: true`
+        },
+        'drop-all-capabilities': {
+          id: 'KYV-07',
+          name: 'Drop ALL Linux Capabilities',
+          category: 'Linux Kernel Isolation',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Linux Kernel POSIX Capabilities',
+          motive: 'Strip sensitive capabilities (CAP_SYS_ADMIN, CAP_NET_ADMIN, CAP_NET_RAW) from container processes',
+          stride: 'Elevation of Privilege',
+          overview: 'Even non-root processes can perform dangerous actions if given POSIX capabilities. This policy enforces capabilities.drop: ["ALL"], only permitting strictly necessary additions like NET_BIND_SERVICE.',
+          attackVectors: ['AV04: CAP_SYS_ADMIN breakout', 'AV09: CAP_NET_RAW ARP spoofing'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.2.8', nist: 'NIST SP 800-190 § 4.2.1', mitre: 'T1611' },
+          yaml: `securityContext:
+  capabilities:
+    drop: ["ALL"]
+    add: ["NET_BIND_SERVICE"]`,
+          shell: `grep Cap /proc/$(pgrep myapp)/status`,
+          detection: `falco rule: Capability Added to Container`,
+          kyverno: `# Kyverno ClusterPolicy: Drop ALL Capabilities
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: drop-all-capabilities
+  annotations:
+    policies.kyverno.io/title: Drop ALL Linux Capabilities
+    policies.kyverno.io/category: Linux Kernel Isolation
+    policies.kyverno.io/severity: critical
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: drop-caps
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "All POSIX capabilities must be dropped (drop: ['ALL'])."
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  capabilities:
+                    drop:
+                      - ALL`
+        },
+        'generate-default-deny-netpol': {
+          id: 'KYV-08',
+          name: 'Auto-Generate Default-Deny NetworkPolicy',
+          category: 'Zero Trust Networking',
+          priority: 'pri-1',
+          level: 2,
+          origin: 'Kubernetes CNI / Multi-Tenancy Architecture',
+          motive: 'Enforce zero-trust default-deny on the flat pod network immediately upon namespace creation',
+          stride: 'Information Disclosure, Denial of Service',
+          overview: 'Without a NetworkPolicy, all pods can talk to all other pods across all namespaces. This policy generates a default-deny ingress and egress NetworkPolicy automatically on every newly created namespace.',
+          attackVectors: ['AV09: Pod-to-pod network scanning', 'AV11: In-cluster lateral movement'],
+          compliance: { cis: 'CIS Kubernetes Benchmark § 5.3.2', nist: 'NIST SP 800-190 § 4.4.1', mitre: 'T1040' },
+          yaml: `apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress", "Egress"]`,
+          shell: `kubectl get netpol -A`,
+          detection: `hubble observe --verdict DROPPED`,
+          kyverno: `# Kyverno ClusterPolicy: Auto-Generate Default-Deny NetworkPolicy
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-default-deny-netpol
+  annotations:
+    policies.kyverno.io/title: Auto-Generate Default-Deny NetworkPolicy
+    policies.kyverno.io/category: Multi-Tenancy & Zero Trust
+    policies.kyverno.io/severity: high
+spec:
+  rules:
+    - name: generate-deny-all
+      match:
+        any:
+          - resources:
+              kinds: ["Namespace"]
+      generate:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        name: default-deny-all
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          spec:
+            podSelector: {}
+            policyTypes:
+              - Ingress
+              - Egress`
+        }
+      };
+      comp = libraryPolicies[policyKey];
+    }
+
+    if (comp) {
+      openInspector(comp, policyKey);
+      switchDrawerTab('kyverno');
+    }
+  }
+
+  // Open Slide-over Inspector Drawer with all 6 Tabs
   function openInspector(data, slugOrText) {
     const drawer = document.getElementById('inspector-drawer');
     if (!drawer) return;
@@ -1469,7 +2358,7 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     document.getElementById('drawer-title').textContent = data.name;
     document.getElementById('drawer-id-badge').textContent = data.id || 'TO';
     document.getElementById('drawer-category-badge').textContent = data.category || 'Architecture';
-    
+
     // Priority badge styling
     const priBadge = document.getElementById('drawer-priority-badge');
     if (priBadge) {
@@ -1519,13 +2408,20 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     // Populate Tab 2: YAML
     document.getElementById('drawer-yaml-code').textContent = data.yaml || '# No manifest required for this component';
 
-    // Populate Tab 3: Shell
+    // Populate Tab 3: Kyverno Policy
+    const kyvernoPolicyText = data.kyverno || generateKyvernoPolicy(data);
+    const kyvernoEl = document.getElementById('drawer-kyverno-code');
+    if (kyvernoEl) {
+      kyvernoEl.textContent = kyvernoPolicyText;
+    }
+
+    // Populate Tab 4: Shell
     document.getElementById('drawer-shell-code').textContent = data.shell || '# No CLI verification command specified';
 
-    // Populate Tab 4: Detection
+    // Populate Tab 5: Detection
     document.getElementById('drawer-detection-code').textContent = data.detection || '# No detection signature specified';
 
-    // Populate Tab 5: Compliance
+    // Populate Tab 6: Compliance
     const cisEl = document.getElementById('drawer-compliance-cis');
     const nistEl = document.getElementById('drawer-compliance-nist');
     const mitreEl = document.getElementById('drawer-compliance-mitre');
@@ -1559,9 +2455,9 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
     updateUrlParams();
   }
 
-  // Switch between Inspector Tabs (5 Tabs)
+  // Switch between Inspector Tabs (6 Tabs)
   function switchDrawerTab(tabName) {
-    const tabs = ['overview', 'yaml', 'shell', 'detection', 'compliance'];
+    const tabs = ['overview', 'yaml', 'kyverno', 'shell', 'detection', 'compliance'];
     tabs.forEach(t => {
       const btn = document.getElementById(`tab-btn-${t}`);
       const content = document.getElementById(`drawer-content-${t}`);
@@ -1634,7 +2530,7 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
       const matchingIds = Object.values(catalog)
         .filter(c => c.priority === pri)
         .map(c => c.id);
-      
+
       if (matchingIds.length > 0) {
         handleSearch(matchingIds[0], false);
       }
@@ -1900,9 +2796,9 @@ kubectl get events --sort-by='.metadata.creationTimestamp'`,
 
     // Render autocomplete dropdown
     if (dropdown && showDropdown) {
-      const results = Object.values(catalog).filter(c => 
-        c.id.toLowerCase().includes(q) || 
-        c.name.toLowerCase().includes(q) || 
+      const results = Object.values(catalog).filter(c =>
+        c.id.toLowerCase().includes(q) ||
+        c.name.toLowerCase().includes(q) ||
         c.category.toLowerCase().includes(q)
       ).slice(0, 8);
 
