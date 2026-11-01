@@ -1396,7 +1396,63 @@ spec:
           spec:
             containers:
               - securityContext:
-                  readOnlyRootFilesystem: true`
+                  readOnlyRootFilesystem: true`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Require Read-Only Root Filesystem (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: require-ro-rootfs
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.readOnlyRootFilesystem) && c.securityContext.readOnlyRootFilesystem == true)"
+      message: "All containers must configure readOnlyRootFilesystem: true to prevent write payloads."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: require-ro-rootfs-binding
+spec:
+  policyName: require-ro-rootfs
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Require Read-Only Root Filesystem
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sreadonlyrootfilesystem
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sReadOnlyRootFilesystem
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sreadonlyrootfilesystem
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.readOnlyRootFilesystem == true
+          msg := sprintf("Container '%v' root filesystem must be read-only", [container.name])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sReadOnlyRootFilesystem
+metadata:
+  name: require-ro-rootfs
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "p2": {
@@ -1465,7 +1521,62 @@ spec:
         message: "Automounting ServiceAccount tokens is forbidden. Set automountServiceAccountToken: false to prevent API pivot."
         pattern:
           spec:
-            automountServiceAccountToken: false`
+            automountServiceAccountToken: false`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Restrict ServiceAccount Token Automount (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: restrict-sa-automount
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "has(object.spec.automountServiceAccountToken) && object.spec.automountServiceAccountToken == false"
+      message: "Automounting ServiceAccount tokens is forbidden. Explicitly set automountServiceAccountToken: false."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: restrict-sa-automount-binding
+spec:
+  policyName: restrict-sa-automount
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Restrict ServiceAccount Token Automount
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8srestrictsaautomount
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRestrictSAAutomount
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8srestrictsaautomount
+        violation[{"msg": msg}] {
+          not input.review.object.spec.automountServiceAccountToken == false
+          msg := "Pods must set automountServiceAccountToken: false to prevent API token theft"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRestrictSAAutomount
+metadata:
+  name: restrict-sa-automount
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "p3": {
@@ -1539,7 +1650,64 @@ spec:
                     publicKeys: |-
                       -----BEGIN PUBLIC KEY-----
                       MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
-                      -----END PUBLIC KEY-----`
+                      -----END PUBLIC KEY-----`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Restrict to Signed Enterprise Registries (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: enforce-trusted-signed-registries
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, c.image.startsWith('ghcr.io/myorg/') || c.image.startsWith('registry.k8s.io/'))"
+      message: "Container image must originate from approved enterprise registry with verified Cosign signatures."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: enforce-trusted-signed-registries-binding
+spec:
+  policyName: enforce-trusted-signed-registries
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Require Allowed Signed Container Registries
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sallowedrepos
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sAllowedRepos
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sallowedrepos
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not startswith(container.image, "ghcr.io/myorg/")
+          not startswith(container.image, "registry.k8s.io/")
+          msg := sprintf("Container '%v' image '%v' is not from a signed trusted registry", [container.name, container.image])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: enforce-signed-registries
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "p4": {
@@ -1636,7 +1804,73 @@ spec:
             containers:
               - securityContext:
                   =(privileged): false
-                  =(allowPrivilegeEscalation): false`
+                  =(allowPrivilegeEscalation): false`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Disallow Privileged Containers (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: disallow-privileged-containers
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "(!has(object.spec.hostPID) || object.spec.hostPID == false) && (!has(object.spec.hostIPC) || object.spec.hostIPC == false) && (!has(object.spec.hostNetwork) || object.spec.hostNetwork == false)"
+      message: "Host namespaces (hostPID, hostIPC, hostNetwork) are forbidden."
+    - expression: "object.spec.containers.all(c, !has(c.securityContext) || ((!has(c.securityContext.privileged) || c.securityContext.privileged == false) && (!has(c.securityContext.allowPrivilegeEscalation) || c.securityContext.allowPrivilegeEscalation == false)))"
+      message: "Privileged containers and privilege escalation are strictly forbidden."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: disallow-privileged-containers-binding
+spec:
+  policyName: disallow-privileged-containers
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Disallow Privileged Containers
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sdisallowprivileged
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sDisallowPrivileged
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sdisallowprivileged
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          container.securityContext.privileged == true
+          msg := sprintf("Privileged container '%v' is forbidden", [container.name])
+        }
+        violation[{"msg": msg}] {
+          input.review.object.spec.hostPID == true
+          msg := "hostPID is forbidden"
+        }
+        violation[{"msg": msg}] {
+          input.review.object.spec.hostNetwork == true
+          msg := "hostNetwork is forbidden"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sDisallowPrivileged
+metadata:
+  name: disallow-privileged-containers
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "p5": {
@@ -1717,7 +1951,62 @@ spec:
                   - ipBlock:
                       cidr: 0.0.0.0/0
                       except:
-                        - 169.254.169.254/32`
+                        - 169.254.169.254/32`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Block HostNetwork Bypass to Cloud IMDS (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: block-imds-hostnetwork
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "!has(object.spec.hostNetwork) || object.spec.hostNetwork == false"
+      message: "hostNetwork pods bypass CNI egress firewalls to query link-local cloud IMDS (169.254.169.254)."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: block-imds-hostnetwork-binding
+spec:
+  policyName: block-imds-hostnetwork
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Block HostNetwork Access to IMDS
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sblockimdshostnetwork
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sBlockIMDSHostNetwork
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sblockimdshostnetwork
+        violation[{"msg": msg}] {
+          input.review.object.spec.hostNetwork == true
+          msg := "hostNetwork is forbidden: pods can bypass egress network policies to reach cloud IMDS 169.254.169.254"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sBlockIMDSHostNetwork
+metadata:
+  name: block-imds-hostnetwork
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "p6": {
@@ -1790,7 +2079,64 @@ spec:
             containers:
               - =(env):
                   - =(valueFrom):
-                      X(secretKeyRef): null`
+                      X(secretKeyRef): null`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Restrict Plaintext Secret Env Vars (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: disallow-secret-env-vars
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, !has(c.env) || c.env.all(e, !has(e.valueFrom) || !has(e.valueFrom.secretKeyRef)))"
+      message: "Direct injection of Secrets via environment variables is forbidden. Use CSI Secret Store driver."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: disallow-secret-env-vars-binding
+spec:
+  policyName: disallow-secret-env-vars
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Restrict Secret Env Vars
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sdisallowsecretenv
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sDisallowSecretEnv
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sdisallowsecretenv
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          env := container.env[_]
+          env.valueFrom.secretKeyRef
+          msg := sprintf("Container '%v' exposes secret '%v' as env variable", [container.name, env.name])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sDisallowSecretEnv
+metadata:
+  name: disallow-secret-env-vars
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     // ---------------- ATTACK VECTORS (AV01 - AV15) ----------------
@@ -1972,7 +2318,62 @@ spec:
             podSelector: {}
             policyTypes:
               - Ingress
-              - Egress`
+              - Egress`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Enforce Zero-Trust Network Isolation (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: require-network-isolation-label
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["namespaces"]
+  validations:
+    - expression: "has(object.metadata.labels) && has(object.metadata.labels['network-policy']) && object.metadata.labels['network-policy'] == 'enforce-default-deny'"
+      message: "Namespaces must declare label 'network-policy: enforce-default-deny' to trigger automated zero-trust NetworkPolicy generation."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: require-network-isolation-label-binding
+spec:
+  policyName: require-network-isolation-label
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Enforce Namespace Network Isolation Label
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequirenetpollabel
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequireNetpolLabel
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8srequirenetpollabel
+        violation[{"msg": msg}] {
+          not input.review.object.metadata.labels["network-policy"] == "enforce-default-deny"
+          msg := "Namespaces must have label 'network-policy: enforce-default-deny'"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireNetpolLabel
+metadata:
+  name: require-network-isolation-label
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Namespace"]`
     },
 
     "c02": {
@@ -2025,7 +2426,73 @@ spec:
                   allowPrivilegeEscalation: false
                   capabilities:
                     drop:
-                      - ALL`
+                      - ALL`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Pod Security Standards Restricted (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: pss-restricted
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "(has(object.spec.securityContext) && has(object.spec.securityContext.runAsNonRoot) && object.spec.securityContext.runAsNonRoot == true) || object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.runAsNonRoot) && c.securityContext.runAsNonRoot == true)"
+      message: "Pods must run as non-root (runAsNonRoot: true)."
+    - expression: "object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.readOnlyRootFilesystem) && c.securityContext.readOnlyRootFilesystem == true)"
+      message: "Containers must set readOnlyRootFilesystem: true."
+    - expression: "object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.capabilities) && has(c.securityContext.capabilities.drop) && c.securityContext.capabilities.drop.exists(cap, cap == 'ALL'))"
+      message: "Containers must drop ALL capabilities."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: pss-restricted-binding
+spec:
+  policyName: pss-restricted
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Pod Security Standards Restricted
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8spssrestricted
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sPSSRestricted
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8spssrestricted
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.readOnlyRootFilesystem == true
+          msg := sprintf("Container '%v' must have readOnlyRootFilesystem: true", [container.name])
+        }
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.runAsNonRoot == true
+          not input.review.object.spec.securityContext.runAsNonRoot == true
+          msg := sprintf("Container '%v' must set runAsNonRoot: true", [container.name])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSSRestricted
+metadata:
+  name: pss-restricted
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c03": {
@@ -2075,7 +2542,64 @@ spec:
             containers:
               - =(env):
                   - =(valueFrom):
-                      X(secretKeyRef): null`
+                      X(secretKeyRef): null`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Disallow Secret Environment Variables (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: disallow-secret-env-vars
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, !has(c.env) || c.env.all(e, !has(e.valueFrom) || !has(e.valueFrom.secretKeyRef)))"
+      message: "Injecting Secrets as plaintext environment variables is forbidden. Use CSI Secret Store."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: disallow-secret-env-vars-binding
+spec:
+  policyName: disallow-secret-env-vars
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Disallow Plaintext Secret Env Vars
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sdisallowsecretenv
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sDisallowSecretEnv
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sdisallowsecretenv
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          env := container.env[_]
+          env.valueFrom.secretKeyRef
+          msg := sprintf("Container '%v' exposes secret key '%v' via env variable", [container.name, env.name])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sDisallowSecretEnv
+metadata:
+  name: disallow-secret-env-vars
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c04": {
@@ -2133,7 +2657,64 @@ spec:
               runAsNonRoot: true
             containers:
               - securityContext:
-                  runAsNonRoot: true`
+                  runAsNonRoot: true`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Require Non-Root Execution (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: require-non-root
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "(has(object.spec.securityContext) && has(object.spec.securityContext.runAsNonRoot) && object.spec.securityContext.runAsNonRoot == true) || object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.runAsNonRoot) && c.securityContext.runAsNonRoot == true)"
+      message: "Containers must run as non-root (runAsNonRoot: true)."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: require-non-root-binding
+spec:
+  policyName: require-non-root
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Require Non-Root Execution
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequirenonroot
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequireNonRoot
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8srequirenonroot
+        violation[{"msg": msg}] {
+          not input.review.object.spec.securityContext.runAsNonRoot == true
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.runAsNonRoot == true
+          msg := sprintf("Container '%v' must set runAsNonRoot: true", [container.name])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireNonRoot
+metadata:
+  name: require-non-root
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c05": {
@@ -2319,7 +2900,68 @@ spec:
           spec:
             securityContext:
               seccompProfile:
-                type: "RuntimeDefault | Localhost"`
+                type: "RuntimeDefault | Localhost"`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Require RuntimeDefault Seccomp Profile (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: require-runtime-default-seccomp
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "(has(object.spec.securityContext) && has(object.spec.securityContext.seccompProfile) && object.spec.securityContext.seccompProfile.type in ['RuntimeDefault', 'Localhost']) || object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.seccompProfile) && c.securityContext.seccompProfile.type in ['RuntimeDefault', 'Localhost'])"
+      message: "Seccomp profile type RuntimeDefault or Localhost is required to restrict dangerous Linux syscalls."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: require-runtime-default-seccomp-binding
+spec:
+  policyName: require-runtime-default-seccomp
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Require RuntimeDefault Seccomp
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequireseccomp
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequireSeccomp
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8srequireseccomp
+        violation[{"msg": msg}] {
+          not valid_seccomp(input.review.object.spec)
+          msg := "Pod securityContext must specify seccompProfile.type as RuntimeDefault or Localhost"
+        }
+        valid_seccomp(spec) {
+          spec.securityContext.seccompProfile.type == "RuntimeDefault"
+        }
+        valid_seccomp(spec) {
+          spec.securityContext.seccompProfile.type == "Localhost"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireSeccomp
+metadata:
+  name: require-seccomp-runtime-default
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c09": {
@@ -2365,7 +3007,70 @@ spec:
                   readOnlyRootFilesystem: true
                   capabilities:
                     drop:
-                      - ALL`
+                      - ALL`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Drop ALL Capabilities and RO Rootfs (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: drop-all-caps-ro-rootfs
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.capabilities) && has(c.securityContext.capabilities.drop) && c.securityContext.capabilities.drop.exists(cap, cap == 'ALL'))"
+      message: "Containers must drop ALL capabilities (capabilities.drop: ['ALL'])."
+    - expression: "object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.readOnlyRootFilesystem) && c.securityContext.readOnlyRootFilesystem == true)"
+      message: "Containers must enable readOnlyRootFilesystem: true."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: drop-all-caps-ro-rootfs-binding
+spec:
+  policyName: drop-all-caps-ro-rootfs
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Drop ALL Capabilities & RO Rootfs
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sdropcapsrorootfs
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sDropCapsRORootfs
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sdropcapsrorootfs
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.readOnlyRootFilesystem == true
+          msg := sprintf("Container '%v' must have readOnlyRootFilesystem: true", [container.name])
+        }
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not container.securityContext.capabilities.drop[_] == "ALL"
+          msg := sprintf("Container '%v' must drop ALL capabilities", [container.name])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sDropCapsRORootfs
+metadata:
+  name: drop-all-caps-ro-rootfs
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c10": {
@@ -2411,7 +3116,64 @@ spec:
                     publicKeys: |-
                       -----BEGIN PUBLIC KEY-----
                       MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
-                      -----END PUBLIC KEY-----`
+                      -----END PUBLIC KEY-----`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Enforce Trusted Signed Image Registries (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: enforce-signed-image-registries
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, c.image.startsWith('ghcr.io/myorg/') || c.image.startsWith('registry.k8s.io/'))"
+      message: "Images must originate from authorized registries verifying Cosign signatures."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: enforce-signed-image-registries-binding
+spec:
+  policyName: enforce-signed-image-registries
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Restrict Container Repositories
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sallowedrepos
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sAllowedRepos
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sallowedrepos
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not startswith(container.image, "ghcr.io/myorg/")
+          not startswith(container.image, "registry.k8s.io/")
+          msg := sprintf("Container '%v' image '%v' is not from a signed repository", [container.name, container.image])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: enforce-signed-image-registries
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c11": {
@@ -2461,7 +3223,62 @@ spec:
                   - ipBlock:
                       cidr: 0.0.0.0/0
                       except:
-                        - 169.254.169.254/32`
+                        - 169.254.169.254/32`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Disallow HostNetwork (Prevents IMDS Bypass) (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: block-hostnetwork-imds
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "!has(object.spec.hostNetwork) || object.spec.hostNetwork == false"
+      message: "hostNetwork pods bypass network isolation to reach link-local metadata 169.254.169.254."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: block-hostnetwork-imds-binding
+spec:
+  policyName: block-hostnetwork-imds
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Block HostNetwork Access to IMDS
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sblockhostnetwork
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sBlockHostNetwork
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sblockhostnetwork
+        violation[{"msg": msg}] {
+          input.review.object.spec.hostNetwork == true
+          msg := "hostNetwork is forbidden: pods can reach node link-local metadata 169.254.169.254"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sBlockHostNetwork
+metadata:
+  name: block-hostnetwork-imds
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c12": {
@@ -2571,7 +3388,63 @@ spec:
                     publicKeys: |-
                       -----BEGIN PUBLIC KEY-----
                       MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE...
-                      -----END PUBLIC KEY-----`
+                      -----END PUBLIC KEY-----`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Enforce Trusted Image Registries (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: enforce-trusted-signed-registries
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "object.spec.containers.all(c, c.image.startsWith('ghcr.io/myorg/'))"
+      message: "Container image must originate from approved registry verifying Cosign signatures."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: enforce-trusted-signed-registries-binding
+spec:
+  policyName: enforce-trusted-signed-registries
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Restrict Container Repositories
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sallowedrepos
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sAllowedRepos
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8sallowedrepos
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          not startswith(container.image, "ghcr.io/myorg/")
+          msg := sprintf("Container '%v' image is not from an approved signed registry", [container.name])
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAllowedRepos
+metadata:
+  name: enforce-signed-registries
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c16": {
@@ -2621,7 +3494,65 @@ spec:
           spec:
             securityContext:
               seccompProfile:
-                type: "RuntimeDefault"`
+                type: "RuntimeDefault"`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Require RuntimeDefault Seccomp Profile (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: enforce-seccomp-syscalls
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "(has(object.spec.securityContext) && has(object.spec.securityContext.seccompProfile) && object.spec.securityContext.seccompProfile.type in ['RuntimeDefault', 'Localhost']) || object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.seccompProfile) && c.securityContext.seccompProfile.type in ['RuntimeDefault', 'Localhost'])"
+      message: "Seccomp profile type RuntimeDefault is required to filter dangerous Linux syscalls."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: enforce-seccomp-syscalls-binding
+spec:
+  policyName: enforce-seccomp-syscalls
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Require RuntimeDefault Seccomp
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8senforceseccomp
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sEnforceSeccomp
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8senforceseccomp
+        violation[{"msg": msg}] {
+          not has_seccomp(input.review.object.spec)
+          msg := "Pod must specify seccompProfile type RuntimeDefault or Localhost"
+        }
+        has_seccomp(spec) {
+          spec.securityContext.seccompProfile.type == "RuntimeDefault"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sEnforceSeccomp
+metadata:
+  name: enforce-seccomp-syscalls
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     },
 
     "c17": {
@@ -2671,7 +3602,65 @@ spec:
           spec:
             securityContext:
               appArmorProfile:
-                type: "RuntimeDefault | Localhost"`
+                type: "RuntimeDefault | Localhost"`,
+      cel: `# In-Tree ValidatingAdmissionPolicy: Require AppArmor Profile (Kubernetes 1.30+ GA)
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: require-apparmor-profile
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["pods"]
+  validations:
+    - expression: "(has(object.spec.securityContext) && has(object.spec.securityContext.appArmorProfile) && object.spec.securityContext.appArmorProfile.type in ['RuntimeDefault', 'Localhost']) || object.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.appArmorProfile) && c.securityContext.appArmorProfile.type in ['RuntimeDefault', 'Localhost'])"
+      message: "Pod securityContext must set appArmorProfile type to RuntimeDefault or Localhost."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: require-apparmor-profile-binding
+spec:
+  policyName: require-apparmor-profile
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector: {}`,
+      gatekeeper: `# OPA Gatekeeper ConstraintTemplate & Constraint: Require AppArmor Profile
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8srequireapparmor
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sRequireAppArmor
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |-
+        package k8srequireapparmor
+        violation[{"msg": msg}] {
+          not has_apparmor(input.review.object.spec)
+          msg := "Pod must specify appArmorProfile type RuntimeDefault or Localhost"
+        }
+        has_apparmor(spec) {
+          spec.securityContext.appArmorProfile.type == "RuntimeDefault"
+        }
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequireAppArmor
+metadata:
+  name: require-apparmor-profile
+spec:
+  enforcementAction: deny
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]`
     }
   }
 };
