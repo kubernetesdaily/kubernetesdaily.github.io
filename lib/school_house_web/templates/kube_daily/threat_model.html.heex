@@ -424,49 +424,311 @@
   <div style="margin-top: 3.5rem;">
     <div class="kube-section-pill">Threat Model Reference Catalog</div>
     <h2 style="font-size: 1.75rem; font-weight: 700; margin-top: 0.5rem; color: var(--pele-fg, #0f172a);">
-      Trust Boundaries, Threat Actors &amp; Hardening Matrix
+      Enterprise Architecture &amp; Attack Vector Catalog
     </h2>
     <p style="color: var(--pele-muted, #64748b); max-width: 900px; margin-top: 0.5rem; line-height: 1.6;">
-      This model applies STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) and the MITRE ATT&amp;CK for Containers matrix across Kubernetes components. Click any card below to automatically zoom into the diagram and open its 5-tab production policy inspector.
+      This model applies STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) and the MITRE ATT&amp;CK for Containers matrix across Kubernetes components. Click any card below to automatically switch sheets, focus the diagram viewport, and inspect production YAML policies, shell audit commands, Falco eBPF detection rules, and CIS compliance benchmarks.
     </p>
 
-    <!-- Trust Boundaries Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
-      <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6;">
-        <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #3b82f6;">Trust Boundary 01</div>
-        <h3 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">ClusterControlPlane (CP)</h3>
-        <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
-          High-trust isolation envelope hosting <code class="kube-code">kube-apiserver</code>, <code class="kube-code">kube-scheduler</code>, <code class="kube-code">kube-controller-manager</code>, and <code class="kube-code">cloud-controller-manager</code>. Protected by mTLS, dedicated CAs, and fine-grained RBAC.
-        </p>
-      </div>
+    <!-- 4 Diagram Sheets Architecture Navigator -->
+    <div style="margin-top: 2rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin-bottom: 1rem;">
+        4 Diagram Sheets Architecture Guide
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #22c55e; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">Sheet 01</span>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">Core Topology</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.4rem 0;">Master Threat Register &amp; Cluster Overview</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              High-trust Control Plane envelope (<code class="kube-code">kube-apiserver</code>, <code class="kube-code">etcd</code>), Data Plane worker nodes (<code class="kube-code">kubelet</code>, containerd), 7 threat actors (TA01–07), and 32 threat objects (TO01–32).
+            </p>
+          </div>
+          <button onclick="switchSheet('cluster')" class="kube-button" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; margin-top: 1rem; width: 100%;">
+            🖥️ Open Sheet 01 (Hotkey 1)
+          </button>
+        </div>
 
-      <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #8b5cf6;">
-        <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #8b5cf6;">Trust Boundary 02</div>
-        <h3 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">ClusterControlPlaneData (CPD)</h3>
-        <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
-          The datastore boundary protecting <code class="kube-code">etcd</code> and KMS envelope keys. Direct network access must be strictly forbidden except from authorized <code class="kube-code">kube-apiserver</code> endpoints using dedicated client certificates.
-        </p>
-      </div>
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #ef4444; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 700;">Sheet 02</span>
+              <span style="font-size: 0.75rem; color: #dc2626; font-weight: 600;">Attack Scenarios</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.4rem 0;">Attack Chains &amp; Mitigation Narratives</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Step-by-step kill chains spanning P1 (Ingress RCE), P2 (ServiceAccount Token Abuse), P3 (Supply Chain Injection), P4 (Host Breakout), P5 (Cloud IMDS Pivot), and P6 (Secrets Compromise).
+            </p>
+          </div>
+          <button onclick="switchSheet('attack-chains')" class="kube-button" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; margin-top: 1rem; width: 100%;">
+            ⚡ Open Sheet 02 (Hotkey 2)
+          </button>
+        </div>
 
-      <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #10b981;">
-        <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #10b981;">Trust Boundary 03</div>
-        <h3 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">ClusterDataPlane (DP)</h3>
-        <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
-          Worker nodes hosting <code class="kube-code">kubelet</code>, <code class="kube-code">kube-proxy</code>, container runtime engines (containerd/CRI-O), and untrusted customer pods. Pods must be constrained with Seccomp, AppArmor/SELinux, and non-root SecurityContexts.
-        </p>
-      </div>
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #3b82f6; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #eff6ff; color: #1e40af; font-weight: 700;">Sheet 03</span>
+              <span style="font-size: 0.75rem; color: #2563eb; font-weight: 600;">Defense in Depth</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.4rem 0;">Layered Security Reference Architecture</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Defense-in-depth concentric zones: Cloud IAM &amp; OIDC boundary, isolated SLSA CI/CD builder &amp; Cosign signing, worker node isolation with Default-Deny NetworkPolicy, and Linux kernel MAC confinement.
+            </p>
+          </div>
+          <button onclick="switchSheet('security-architecture')" class="kube-button" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; margin-top: 1rem; width: 100%;">
+            🛡️ Open Sheet 03 (Hotkey 3)
+          </button>
+        </div>
 
-      <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #f59e0b;">
-        <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #f59e0b;">Trust Boundary 04</div>
-        <h3 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">External &amp; Supply Chain</h3>
-        <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
-          OCI registries, CI/CD runners, cloud provider APIs (IAM, VPC, metadata service), and public internet actors. Enforce cryptographic image signing (Cosign), SLSA provenance, and IMDSv2 metadata protection.
-        </p>
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-top: 4px solid #a855f7; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #faf5ff; color: #6b21a8; font-weight: 700;">Sheet 04</span>
+              <span style="font-size: 0.75rem; color: #9333ea; font-weight: 600;">Packet &amp; Identity</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.4rem 0;">Packet and Identity Flow Analysis</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Detailed request flow pipeline: TLS 6443 &rarr; AuthN &rarr; AuthZ &rarr; Admission &rarr; Storage, ingress/egress data paths, east-west mTLS, and conditional breakout observation points.
+            </p>
+          </div>
+          <button onclick="switchSheet('flow-analysis')" class="kube-button" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; margin-top: 1rem; width: 100%;">
+            🌊 Open Sheet 04 (Hotkey 4)
+          </button>
+        </div>
+
       </div>
     </div>
 
-    <!-- Threat Actors Catalog Grid (TA01 - TA07) -->
-    <div style="margin-top: 2.5rem;">
+    <!-- Interactive Attack Chains & Exploit Scenarios (P1–P6) -->
+    <div style="margin-top: 3rem;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+        <div>
+          <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0;">
+            Attack Chains &amp; Exploit Narratives (P1–P6)
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin: 0.25rem 0 0 0;">
+            Real-world adversary trajectories from perimeter breach to host escape. Click any scenario to zoom directly to Sheet 2 and open production remediation policies.
+          </p>
+        </div>
+        <button onclick="switchSheet('attack-chains')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+          View Full Attack Matrix
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
+        
+        <!-- P1 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #ef4444;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 700;">P1 · Ingress Exploit</span>
+              <span style="font-size: 0.75rem; color: #ef4444; font-weight: 700;">🔴 Priority 1</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Ingress to Pod Takeover</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Attacker targets a public ingress service exploiting RCE/SSRF (e.g. Log4j CVE-2021-44228) to drop a reverse shell into an interactive container pod.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Actor: TA01</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Vectors: AV01, AV05</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">MITRE: T1190</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem;">
+            <button onclick="locateAndInspect('p1', 'P1', 'attack-chains')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🎯 Trace in Sheet 2
+            </button>
+            <button onclick="locateAndInspect('p1', 'P1')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🛡️ Hardening YAML
+            </button>
+          </div>
+        </div>
+
+        <!-- P2 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #ef4444;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 700;">P2 · Token Abuse</span>
+              <span style="font-size: 0.75rem; color: #ef4444; font-weight: 700;">🔴 Priority 1</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Token Abuse &amp; API Pivot</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Attacker harvests mounted ServiceAccount tokens from <code class="kube-code">/var/run/secrets</code> to query the Kubernetes API server and escalate to cluster-admin.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Actor: TA02, TA03</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Vectors: AV03, AV09</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">MITRE: T1552.007</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem;">
+            <button onclick="locateAndInspect('p2', 'P2', 'attack-chains')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🎯 Trace in Sheet 2
+            </button>
+            <button onclick="locateAndInspect('p2', 'P2')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🛡️ Hardening YAML
+            </button>
+          </div>
+        </div>
+
+        <!-- P3 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #ef4444;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 700;">P3 · Supply Chain</span>
+              <span style="font-size: 0.75rem; color: #ef4444; font-weight: 700;">🔴 Priority 1</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Supply Chain Poisoning</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Adversary compromises upstream CI/CD runners or registry credentials to inject a backdoored container image, deployed past runtime perimeters.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Actor: TA05</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Vectors: AV15, AV16</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">MITRE: T1195.002</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem;">
+            <button onclick="locateAndInspect('p3', 'P3', 'attack-chains')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🎯 Trace in Sheet 2
+            </button>
+            <button onclick="locateAndInspect('p3', 'P3')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🛡️ Hardening YAML
+            </button>
+          </div>
+        </div>
+
+        <!-- P4 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #ef4444;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 700;">P4 · Host Breakout</span>
+              <span style="font-size: 0.75rem; color: #ef4444; font-weight: 700;">🔴 Priority 1</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Pod Breakout to Node Root</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Overprivileged flags (<code class="kube-code">privileged: true</code>, <code class="kube-code">hostPID</code>, <code class="kube-code">SYS_ADMIN</code>) or kernel CVEs (Dirty Pipe) break the container sandbox onto the host OS.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Actor: TA03</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Vectors: AV04, AV26</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">MITRE: T1611</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem;">
+            <button onclick="locateAndInspect('p4', 'P4', 'attack-chains')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🎯 Trace in Sheet 2
+            </button>
+            <button onclick="locateAndInspect('p4', 'P4')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🛡️ Hardening YAML
+            </button>
+          </div>
+        </div>
+
+        <!-- P5 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #f59e0b;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fef3c7; color: #92400e; font-weight: 700;">P5 · IMDS Pivot</span>
+              <span style="font-size: 0.75rem; color: #d97706; font-weight: 700;">🟠 Priority 2</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Cloud Metadata IAM Pivot</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Attacker probes the link-local metadata address (<code class="kube-code">169.254.169.254</code>) from a container pod, exfiltrating temporary node IAM role security credentials.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Actor: TA03</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Vectors: AV10, AV20</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">MITRE: T1552.005</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem;">
+            <button onclick="locateAndInspect('p5', 'P5', 'attack-chains')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🎯 Trace in Sheet 2
+            </button>
+            <button onclick="locateAndInspect('p5', 'P5')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🛡️ Hardening YAML
+            </button>
+          </div>
+        </div>
+
+        <!-- P6 -->
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #ef4444;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #fee2e2; color: #991b1b; font-weight: 700;">P6 · Secrets Compromise</span>
+              <span style="font-size: 0.75rem; color: #ef4444; font-weight: 700;">🔴 Priority 1</span>
+            </div>
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 0.35rem 0;">Datastore &amp; Secrets Harvest</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Attacker accesses unencrypted etcd datastores or backup snapshots without KMS v2 encryption at rest, recovering cluster-wide secrets in plaintext.
+            </p>
+            <div style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Actor: TA02, TA06</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">Vectors: AV06, AV24, AV25</span>
+              <span class="kube-badge" style="background: #f1f5f9; color: #475569; font-size: 0.7rem;">MITRE: T1005</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem;">
+            <button onclick="locateAndInspect('p6', 'P6', 'attack-chains')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🎯 Trace in Sheet 2
+            </button>
+            <button onclick="locateAndInspect('p6', 'P6')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.5rem;">
+              🛡️ Hardening YAML
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Trust Boundaries Grid -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin-bottom: 1rem;">
+        Cluster Trust Boundaries (4 Envelopes)
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6;">
+          <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #3b82f6;">Trust Boundary 01</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">ClusterControlPlane (CP)</h4>
+          <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
+            High-trust isolation envelope hosting <code class="kube-code">kube-apiserver</code>, <code class="kube-code">kube-scheduler</code>, <code class="kube-code">kube-controller-manager</code>, and <code class="kube-code">cloud-controller-manager</code>. Protected by mTLS, dedicated CAs, and fine-grained RBAC.
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #8b5cf6;">
+          <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #8b5cf6;">Trust Boundary 02</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">ClusterControlPlaneData (CPD)</h4>
+          <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
+            The datastore boundary protecting <code class="kube-code">etcd</code> and KMS envelope keys. Direct network access must be strictly forbidden except from authorized <code class="kube-code">kube-apiserver</code> endpoints using dedicated client certificates.
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #10b981;">
+          <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #10b981;">Trust Boundary 03</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">ClusterDataPlane (DP)</h4>
+          <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
+            Worker nodes hosting <code class="kube-code">kubelet</code>, <code class="kube-code">kube-proxy</code>, container runtime engines (containerd/CRI-O), and untrusted customer pods. Pods must be constrained with Seccomp, AppArmor/SELinux, and non-root SecurityContexts.
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; border-left: 4px solid #f59e0b;">
+          <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #f59e0b;">Trust Boundary 04</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">External &amp; Supply Chain</h4>
+          <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-top: 0.4rem; line-height: 1.5;">
+            OCI registries, CI/CD runners, cloud provider APIs (IAM, VPC, metadata service), and public internet actors. Enforce cryptographic image signing (Cosign), SLSA provenance, and IMDSv2 metadata protection.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Threat Actors Catalog Grid (TA01 - TA07 Complete) -->
+    <div style="margin-top: 3rem;">
       <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin-bottom: 1rem;">
         Threat Actors Catalog (TA01–TA07)
       </h3>
@@ -484,8 +746,8 @@
               Unauthenticated internet adversary probing public Ingress endpoints, exposed API servers, and unpatched web application vulnerabilities.
             </p>
           </div>
-          <button onclick="locateAndInspect('ta01', 'TA01')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
-            🔍 Inspect in Diagram
+          <button onclick="locateAndInspect('ta01', 'TA01', 'cluster')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🔍 Inspect in Sheet 1
           </button>
         </div>
 
@@ -500,8 +762,8 @@
               Authenticated employee, developer, or compromised credential holder attempting privilege escalation to cluster-admin or reading secrets across namespaces.
             </p>
           </div>
-          <button onclick="locateAndInspect('ta02', 'TA02')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
-            🔍 Inspect in Diagram
+          <button onclick="locateAndInspect('ta02', 'TA02', 'cluster')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🔍 Inspect in Sheet 1
           </button>
         </div>
 
@@ -516,8 +778,8 @@
               An adversary with an active shell inside a container pod. Steals mounted ServiceAccount tokens and probes the flat CNI network or Cloud IMDS (169.254.169.254).
             </p>
           </div>
-          <button onclick="locateAndInspect('ta03', 'TA03')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
-            🔍 Inspect in Diagram
+          <button onclick="locateAndInspect('ta03', 'TA03', 'cluster')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🔍 Inspect in Sheet 1
           </button>
         </div>
 
@@ -532,8 +794,8 @@
               A valid tenant in a shared multi-tenant cluster attempting cross-namespace network sniffing, resource starvation (noisy neighbor), or cluster-wide CRD tampering.
             </p>
           </div>
-          <button onclick="locateAndInspect('ta04', 'TA04')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
-            🔍 Inspect in Diagram
+          <button onclick="locateAndInspect('ta04', 'TA04', 'cluster')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🔍 Inspect in Sheet 1
           </button>
         </div>
 
@@ -548,8 +810,8 @@
               Injects backdoor malware into upstream container registries, base images, or CI/CD pipelines, evading boundary firewalls by piggybacking on valid image pulls.
             </p>
           </div>
-          <button onclick="locateAndInspect('ta05', 'TA05')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
-            🔍 Inspect in Diagram
+          <button onclick="locateAndInspect('ta05', 'TA05', 'cluster')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🔍 Inspect in Sheet 1
           </button>
         </div>
 
@@ -564,16 +826,187 @@
               Infrastructure personnel or processes with hypervisor console access, unencrypted storage volume snapshots (EBS), or cloud VPC routing table authority.
             </p>
           </div>
-          <button onclick="locateAndInspect('ta06', 'TA06')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
-            🔍 Inspect in Diagram
+          <button onclick="locateAndInspect('ta06', 'TA06', 'cluster')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🔍 Inspect in Sheet 1
+          </button>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #e0e7ff; color: #3730a3; font-weight: 700;">TA07</span>
+              <span style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Physical / Hardware Origin</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Hardware &amp; Physical Adversary</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Adversary with physical access to server racks, bare-metal nodes, BMC/IPMI interfaces, or stolen unencrypted NVMe storage volumes executing cold-boot attacks.
+            </p>
+          </div>
+          <button onclick="locateAndInspect('ta07', 'TA07', 'cluster')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🔍 Inspect in Sheet 1
           </button>
         </div>
 
       </div>
     </div>
 
-    <!-- Hardening Controls & Architecture Matrix -->
-    <div style="margin-top: 2.5rem;">
+    <!-- Packet & Identity Flow Checkpoints (6 Stages) -->
+    <div style="margin-top: 3rem;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+        <div>
+          <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0;">
+            API Request &amp; Packet Flow Checkpoints (6 Stages)
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin: 0.25rem 0 0 0;">
+            Deterministic execution path of every incoming request to the Kubernetes control plane before state persistence.
+          </p>
+        </div>
+        <button onclick="applyPresetView('api-request-flow')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.75rem;">
+          🌊 View Pipeline in Sheet 04
+        </button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+        
+        <div class="kube-card" style="padding: 1rem; border-radius: 0.5rem; border-top: 3px solid #3b82f6;">
+          <div style="font-size: 0.7rem; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Stage 01</div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.25rem 0;">Client Identity</h4>
+          <p style="font-size: 0.775rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            OIDC tokens, X.509 client certificates, or projected ServiceAccount tokens.
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1rem; border-radius: 0.5rem; border-top: 3px solid #3b82f6;">
+          <div style="font-size: 0.7rem; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Stage 02</div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.25rem 0;">API TLS (6443)</h4>
+          <p style="font-size: 0.775rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            mTLS termination with strict cipher suites, IP whitelisting, and load balancing.
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1rem; border-radius: 0.5rem; border-top: 3px solid #3b82f6;">
+          <div style="font-size: 0.7rem; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Stage 03</div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.25rem 0;">Authentication (AuthN)</h4>
+          <p style="font-size: 0.775rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            TokenReview, Webhook authenticator, or CA verification validating user/group claims.
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1rem; border-radius: 0.5rem; border-top: 3px solid #3b82f6;">
+          <div style="font-size: 0.7rem; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Stage 04</div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.25rem 0;">Authorization (AuthZ)</h4>
+          <p style="font-size: 0.775rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            RBAC ClusterRoleBindings, NodeRestriction, and SubjectAccessReview webhooks.
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1rem; border-radius: 0.5rem; border-top: 3px solid #3b82f6;">
+          <div style="font-size: 0.7rem; font-weight: 700; color: #3b82f6; text-transform: uppercase;">Stage 05</div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.25rem 0;">Admission Control</h4>
+          <p style="font-size: 0.775rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            Mutating webhooks &rarr; Validating webhooks &rarr; Pod Security Admission (PSA).
+          </p>
+        </div>
+
+        <div class="kube-card" style="padding: 1rem; border-radius: 0.5rem; border-top: 3px solid #8b5cf6;">
+          <div style="font-size: 0.7rem; font-weight: 700; color: #8b5cf6; text-transform: uppercase;">Stage 06</div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0.25rem 0;">Storage &amp; Encryption</h4>
+          <p style="font-size: 0.775rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            etcd v3 key-value persistence with KMS v2 envelope encryption of Secrets at rest.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STRIDE Threat Modeling Taxonomy in Kubernetes -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin-bottom: 0.5rem;">
+        STRIDE Threat Modeling Taxonomy for Kubernetes
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--pele-muted, #64748b); margin-bottom: 1rem;">
+        Every component in KubeDaily's architecture is categorized by its primary STRIDE threat vulnerability and mitigation envelope. Click any letter pill to filter the interactive canvas.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        
+        <div class="kube-card" style="padding: 1.15rem; border-radius: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span class="kube-badge" style="background: #e2e8f0; color: #0f172a; font-weight: 700;">S · Spoofing</span>
+            <button onclick="setStrideFilter('S')" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">Filter Canvas</button>
+          </div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0 0 0.25rem 0;">Identity &amp; Authenticator Spoofing</h4>
+          <p style="font-size: 0.8rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            Impersonating users, pods, nodes, or ServiceAccounts (anonymous access, ARP spoofing, client CA compromise).
+          </p>
+          <div style="font-size: 0.725rem; color: #16a34a; font-weight: 600; margin-top: 0.5rem;">Defense: OIDC, mTLS, NodeRestriction</div>
+        </div>
+
+        <div class="kube-card" style="padding: 1.15rem; border-radius: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span class="kube-badge" style="background: #e2e8f0; color: #0f172a; font-weight: 700;">T · Tampering</span>
+            <button onclick="setStrideFilter('T')" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">Filter Canvas</button>
+          </div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0 0 0.25rem 0;">State &amp; Data Tampering</h4>
+          <p style="font-size: 0.8rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            Unauthorized mutation of cluster state, etcd records, container filesystems, or mutating webhook injection.
+          </p>
+          <div style="font-size: 0.725rem; color: #16a34a; font-weight: 600; margin-top: 0.5rem;">Defense: Read-only rootfs, Cosign image signing</div>
+        </div>
+
+        <div class="kube-card" style="padding: 1.15rem; border-radius: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span class="kube-badge" style="background: #e2e8f0; color: #0f172a; font-weight: 700;">R · Repudiation</span>
+            <button onclick="setStrideFilter('R')" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">Filter Canvas</button>
+          </div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0 0 0.25rem 0;">Audit Failure &amp; Repudiation</h4>
+          <p style="font-size: 0.8rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            Executing administrative or cluster actions without non-repudiable audit logs, tamper-evident trails, or eBPF signals.
+          </p>
+          <div style="font-size: 0.725rem; color: #16a34a; font-weight: 600; margin-top: 0.5rem;">Defense: RequestResponse AuditPolicy, Falco</div>
+        </div>
+
+        <div class="kube-card" style="padding: 1.15rem; border-radius: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span class="kube-badge" style="background: #e2e8f0; color: #0f172a; font-weight: 700;">I · Disclosure</span>
+            <button onclick="setStrideFilter('I')" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">Filter Canvas</button>
+          </div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0 0 0.25rem 0;">Confidentiality &amp; Disclosure</h4>
+          <p style="font-size: 0.8rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            Exposing secrets, API bearer tokens, cloud metadata (169.254.169.254), or unencrypted pod traffic in transit.
+          </p>
+          <div style="font-size: 0.725rem; color: #16a34a; font-weight: 600; margin-top: 0.5rem;">Defense: KMS v2 encryption, IMDSv2 hop=1</div>
+        </div>
+
+        <div class="kube-card" style="padding: 1.15rem; border-radius: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span class="kube-badge" style="background: #e2e8f0; color: #0f172a; font-weight: 700;">D · DoS</span>
+            <button onclick="setStrideFilter('D')" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">Filter Canvas</button>
+          </div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0 0 0.25rem 0;">Resource Starvation &amp; DoS</h4>
+          <p style="font-size: 0.8rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            Exhausting API rate limits, etcd IOPS/disk space, worker node CPU/memory quotas, or iptables connection tables.
+          </p>
+          <div style="font-size: 0.725rem; color: #16a34a; font-weight: 600; margin-top: 0.5rem;">Defense: PriorityClass, Quotas, API Fairness</div>
+        </div>
+
+        <div class="kube-card" style="padding: 1.15rem; border-radius: 0.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span class="kube-badge" style="background: #e2e8f0; color: #0f172a; font-weight: 700;">E · Escalation</span>
+            <button onclick="setStrideFilter('E')" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">Filter Canvas</button>
+          </div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin: 0 0 0.25rem 0;">Privilege Escalation</h4>
+          <p style="font-size: 0.8rem; color: var(--pele-muted, #64748b); line-height: 1.4; margin: 0;">
+            Escalating from unprivileged container process to host root OS, or from developer namespace Role to cluster-admin.
+          </p>
+          <div style="font-size: 0.725rem; color: #16a34a; font-weight: 600; margin-top: 0.5rem;">Defense: PSA Restricted, Seccomp, AppArmor</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Production Hardening Controls & Detection Probes Matrix (C01–C17) -->
+    <div style="margin-top: 3rem;">
       <h3 style="font-size: 1.35rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin-bottom: 1rem;">
         Production Hardening Controls &amp; Detection Probes
       </h3>
@@ -631,6 +1064,22 @@
         <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">C04</span>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">Admission Guardrails</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Kyverno &amp; Admission Policies</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Enforces declarative governance policies across all namespaces, rejecting privileged containers and validating resource quotas in real time.
+            </p>
+          </div>
+          <button onclick="locateAndInspect('c04', 'C04')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🛡️ Inspect Kyverno YAML
+          </button>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
               <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">C05</span>
               <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">eBPF Detection</span>
             </div>
@@ -644,11 +1093,91 @@
           </button>
         </div>
 
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">C10</span>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">Supply Chain</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Cosign Cryptographic Signing</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Validates digital signatures and SLSA provenance attestations during image pull, preventing backdoored container images from ever running.
+            </p>
+          </div>
+          <button onclick="locateAndInspect('c10', 'C10')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🛡️ Inspect Cosign CLI &amp; Policy
+          </button>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">C11</span>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">Cloud Metadata</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">IMDSv2 Hop Limit = 1</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Enforces session token authorization and limits IP TTL hop count so link-local metadata requests cannot traverse container bridge interfaces.
+            </p>
+          </div>
+          <button onclick="locateAndInspect('c11', 'C11')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🛡️ Inspect Cloud Config
+          </button>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">C12</span>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">Audit Policy</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">RequestResponse Audit Logging</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Captures all administrative mutations, secret reads, and exec requests in tamper-evident audit logs streamed to external SIEM storage.
+            </p>
+          </div>
+          <button onclick="locateAndInspect('c12', 'C12')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🛡️ Inspect Audit Policy YAML
+          </button>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">C16</span>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">Kernel Syscalls</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">Seccomp RuntimeDefault</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Blocks over 60 high-risk Linux system calls (<code class="kube-code">ptrace</code>, <code class="kube-code">bpf</code>, <code class="kube-code">mount</code>, <code class="kube-code">reboot</code>) inside all workload containers.
+            </p>
+          </div>
+          <button onclick="locateAndInspect('c16', 'C16')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🛡️ Inspect Seccomp Spec
+          </button>
+        </div>
+
+        <div class="kube-card" style="padding: 1.25rem; border-radius: 0.75rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="kube-badge" style="background: #dcfce7; color: #166534; font-weight: 700;">C17</span>
+              <span style="font-size: 0.75rem; color: #16a34a; font-weight: 600;">MAC Confinement</span>
+            </div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem 0;">AppArmor &amp; SELinux Mandatory Access</h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              Enforces kernel Mandatory Access Control profiles that prevent container breakouts, socket hijacking, and unauthorized sensitive directory access.
+            </p>
+          </div>
+          <button onclick="locateAndInspect('c17', 'C17')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; margin-top: 0.85rem; width: 100%;">
+            🛡️ Inspect AppArmor Spec
+          </button>
+        </div>
+
       </div>
     </div>
 
     <!-- Developer Mix Task Documentation -->
-    <div class="kube-card" style="margin-top: 2.5rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
+    <div class="kube-card" style="margin-top: 3rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <span style="font-size: 0.8125rem; font-weight: 700; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em;">Developer &amp; Platform Tooling</span>
         <span class="kube-badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">mix kubedaily.drawio</span>
@@ -658,7 +1187,7 @@
         KubeDaily features a built-in Mix task that watches and compiles <code style="background: rgba(255,255,255,0.1); color: #38bdf8; padding: 0.15rem 0.35rem; border-radius: 0.25rem;">.drawio</code> XML diagram files into web-optimized, high-resolution vector SVGs and Retina-ready PNG assets using local Playwright and the official diagrams.net GraphViewer rendering engine.
       </p>
       
-      <pre style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.4); border-radius: 0.5rem; border: 1px solid #334155; font-size: 0.8125rem; overflow-x: auto; color: #38bdf8;"><code># Compile default threat model diagram
+      <pre style="margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.4); border-radius: 0.5rem; border: 1px solid #334155; font-size: 0.8125rem; overflow-x: auto; color: #38bdf8;"><code># Compile all 4 threat model diagram sheets
 mix kubedaily.drawio
 
 # Compile a custom diagram with 2x Retina PNG export
@@ -850,12 +1379,13 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
   }
 
   // Locate node in SVG and open inspector from external button
-  function locateAndInspect(slug, idText) {
+  function locateAndInspect(slug, idText, targetSheet) {
     const catalog = window.KUBEDAILY_THREAT_MODEL_DATA ? window.KUBEDAILY_THREAT_MODEL_DATA.components : {};
     const data = catalog[slug.toLowerCase()] || findMetadata(idText);
 
-    // If on attack chain and component is on cluster (or vice versa), switch sheet
-    if (slug.startsWith('p') && slug.length === 2 && currentSheet !== 'attack-chains') {
+    if (targetSheet && sheetUrls[targetSheet]) {
+      if (currentSheet !== targetSheet) switchSheet(targetSheet);
+    } else if (slug.startsWith('p') && slug.length === 2 && currentSheet !== 'attack-chains') {
       switchSheet('attack-chains');
     } else if (!slug.startsWith('p') && currentSheet === 'attack-chains') {
       switchSheet('cluster');
