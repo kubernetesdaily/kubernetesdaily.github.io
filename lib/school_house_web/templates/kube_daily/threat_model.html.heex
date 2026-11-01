@@ -1565,7 +1565,118 @@
       </div>
     </div>
 
-    <!-- Developer Mix Task Documentation -->
+    <!-- Interactive Cluster Hardening Scorecard & Posture Auditor (Option 2) -->
+    <div id="hardening-scorecard-section" style="margin-top: 4rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <div class="kube-section-pill" style="background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0;">
+            Interactive Audit · Client-Side Zero-Trust Evaluation
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0.4rem 0 0.25rem 0;">
+            Cluster Hardening Scorecard &amp; Posture Auditor
+          </h3>
+          <p style="color: var(--pele-muted, #64748b); max-width: 860px; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+            Audit your Kubernetes cluster security against 20 enterprise controls across 5 core security domains. Toggle controls to compute your live Posture Rating, test CLI verification commands, and dynamically export unified remediation policy bundles (<strong style="color: #2563eb;">Kyverno</strong>, <strong style="color: #b45309;">In-Tree CEL</strong>, or <strong style="color: #7c3aed;">OPA Gatekeeper</strong>) or download a formal compliance audit report.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="exportMissingPolicyBundle()" class="kube-button" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem; background: #059669; border-color: #059669;">
+            ⬇ Export Remediation Bundle
+          </button>
+          <button onclick="exportAuditReportMarkdown()" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+            📄 Export Audit Report (MD)
+          </button>
+        </div>
+      </div>
+
+      <!-- Scorecard Posture Hero Banner -->
+      <div class="kube-card" style="padding: 1.5rem; border-radius: 0.75rem; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border: 1px solid #334155; margin-bottom: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; align-items: center;">
+
+          <!-- Gauge & Posture Status -->
+          <div style="display: flex; align-items: center; gap: 1.25rem;">
+            <div style="position: relative; width: 88px; height: 88px; flex-shrink: 0;">
+              <svg width="88" height="88" viewBox="0 0 88 88" style="transform: rotate(-90deg);">
+                <circle cx="44" cy="44" r="36" fill="transparent" stroke="#334155" stroke-width="8" />
+                <circle id="scorecard-ring" cx="44" cy="44" r="36" fill="transparent" stroke="#ef4444" stroke-width="8" stroke-dasharray="226.2" stroke-dashoffset="226.2" stroke-linecap="round" style="transition: stroke-dashoffset 0.4s ease, stroke 0.4s ease;" />
+              </svg>
+              <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span id="scorecard-score-percent" style="font-size: 1.35rem; font-weight: 800; color: #ffffff;">0%</span>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; font-weight: 700;">Posture Rating</div>
+              <div id="scorecard-rating-label" style="font-size: 1.15rem; font-weight: 800; color: #ef4444; margin-top: 0.15rem;">CRITICAL RISK</div>
+              <div id="scorecard-rating-summary" style="font-size: 0.75rem; color: #cbd5e1; margin-top: 0.2rem;">Severe attack vectors exposed</div>
+            </div>
+          </div>
+
+          <!-- Stats 1: Passing / Total -->
+          <div style="padding: 0.75rem 1rem; background: rgba(0,0,0,0.25); border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.08);">
+            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; font-weight: 600;">Implemented Controls</div>
+            <div style="display: flex; align-items: baseline; gap: 0.35rem; margin-top: 0.2rem;">
+              <span id="scorecard-passed-count" style="font-size: 1.4rem; font-weight: 800; color: #38bdf8;">0</span>
+              <span style="font-size: 0.85rem; color: #64748b;">/ 20</span>
+            </div>
+            <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 0.15rem;"><span id="scorecard-missing-count">20</span> gaps to remediate</div>
+          </div>
+
+          <!-- Stats 2: Critical Gaps -->
+          <div style="padding: 0.75rem 1rem; background: rgba(0,0,0,0.25); border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.08);">
+            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; font-weight: 600;">Critical Gaps Remaining</div>
+            <div style="display: flex; align-items: baseline; gap: 0.35rem; margin-top: 0.2rem;">
+              <span id="scorecard-critical-gaps" style="font-size: 1.4rem; font-weight: 800; color: #f87171;">13</span>
+              <span style="font-size: 0.75rem; color: #ef4444; font-weight: 700;">PRI-1</span>
+            </div>
+            <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 0.15rem;">Immediate container breakout risk</div>
+          </div>
+
+          <!-- Stats 3: Remediation Engine Target -->
+          <div style="padding: 0.75rem 1rem; background: rgba(0,0,0,0.25); border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.08);">
+            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; font-weight: 600;">Active Remediation Engine</div>
+            <div style="margin-top: 0.35rem; display: flex; gap: 0.3rem;">
+              <button id="scorecard-engine-kyverno" onclick="setScorecardRemediationEngine('kyverno')" class="card-engine-btn active" style="flex: 1; padding: 0.2rem 0.4rem; font-size: 0.7rem; color: #ffffff; background: #2563eb;">⚡ Kyverno</button>
+              <button id="scorecard-engine-cel" onclick="setScorecardRemediationEngine('cel')" class="card-engine-btn" style="flex: 1; padding: 0.2rem 0.4rem; font-size: 0.7rem; color: #94a3b8; background: transparent;">⚙️ CEL</button>
+              <button id="scorecard-engine-gatekeeper" onclick="setScorecardRemediationEngine('gatekeeper')" class="card-engine-btn" style="flex: 1; padding: 0.2rem 0.4rem; font-size: 0.7rem; color: #94a3b8; background: transparent;">🛡️ Rego</button>
+            </div>
+            <div style="font-size: 0.7rem; color: #94a3b8; margin-top: 0.35rem;">Used for all 1-click bundle downloads</div>
+          </div>
+
+        </div>
+
+        <!-- Presets and Domain Filters Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <!-- Preset buttons -->
+          <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+            <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 600; margin-right: 0.25rem;">Profiles:</span>
+            <button onclick="applyScorecardPreset('baseline')" class="kube-button kube-button-secondary" style="font-size: 0.72rem; padding: 0.25rem 0.6rem; background: rgba(255,255,255,0.08); color: #f8fafc; border-color: rgba(255,255,255,0.15);">
+              🛡️ Standard Baseline (PSS Baseline)
+            </button>
+            <button onclick="applyScorecardPreset('restricted')" class="kube-button kube-button-secondary" style="font-size: 0.72rem; padding: 0.25rem 0.6rem; background: rgba(255,255,255,0.08); color: #f8fafc; border-color: rgba(255,255,255,0.15);">
+              🔒 Zero-Trust Restricted (100%)
+            </button>
+            <button onclick="applyScorecardPreset('clear')" class="kube-button kube-button-secondary" style="font-size: 0.72rem; padding: 0.25rem 0.6rem; background: rgba(255,255,255,0.08); color: #f8fafc; border-color: rgba(255,255,255,0.15);">
+              🔄 Reset All
+            </button>
+          </div>
+
+          <!-- Domain Filter Tabs -->
+          <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
+            <button id="scorecard-filter-all" onclick="filterScorecardDomain('all')" class="scorecard-filter-btn active">All (20)</button>
+            <button id="scorecard-filter-workload" onclick="filterScorecardDomain('workload')" class="scorecard-filter-btn">Workload (5)</button>
+            <button id="scorecard-filter-rbac" onclick="filterScorecardDomain('rbac')" class="scorecard-filter-btn">RBAC &amp; Secrets (4)</button>
+            <button id="scorecard-filter-network" onclick="filterScorecardDomain('network')" class="scorecard-filter-btn">Network (4)</button>
+            <button id="scorecard-filter-runtime" onclick="filterScorecardDomain('runtime')" class="scorecard-filter-btn">Runtime (4)</button>
+            <button id="scorecard-filter-supply-chain" onclick="filterScorecardDomain('supply-chain')" class="scorecard-filter-btn">Supply Chain (3)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist Items Container (Dynamically Rendered from window.KUBEDAILY_SCORECARD_DATA) -->
+      <div id="scorecard-items-container" style="display: flex; flex-direction: column; gap: 0.85rem;">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
     <div class="kube-card" style="margin-top: 3rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <span style="font-size: 0.8125rem; font-weight: 700; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em;">Developer &amp; Platform Tooling</span>
@@ -1706,6 +1817,63 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     background: #ffffff;
     color: #1e40af;
     box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+
+  /* Scorecard Filter Buttons */
+  .scorecard-filter-btn {
+    border: none;
+    background: rgba(255,255,255,0.08);
+    color: #94a3b8;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .scorecard-filter-btn:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,0.15);
+  }
+  .scorecard-filter-btn.active {
+    background: #3b82f6 !important;
+    color: #ffffff !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  /* Scorecard Check Item */
+  .scorecard-item {
+    transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .scorecard-item:hover {
+    border-color: #cbd5e1 !important;
+  }
+  .scorecard-item.is-checked {
+    background: #f8fafc !important;
+    border-left-color: #10b981 !important;
+  }
+
+  /* Custom Checkbox Toggle */
+  .scorecard-checkbox {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+    background: #ffffff;
+  }
+  .scorecard-checkbox:hover {
+    border-color: #3b82f6;
+  }
+  .scorecard-checkbox.checked {
+    background: #10b981;
+    border-color: #10b981;
+    color: #ffffff;
   }
 </style>
 
@@ -3961,8 +4129,428 @@ spec:
     }, { passive: false });
   }
 
+  // ============================================================================
+  // Scorecard Controller (Option 2)
+  // ============================================================================
+  let scorecardCheckedState = {};
+  let scorecardFilter = 'all';
+  let scorecardRemediationEngine = 'kyverno';
+
+  function initScorecard() {
+    const rawSaved = localStorage.getItem('kubedaily_scorecard_checks');
+    if (rawSaved) {
+      try {
+        scorecardCheckedState = JSON.parse(rawSaved) || {};
+      } catch (e) {
+        scorecardCheckedState = {};
+      }
+    } else {
+      scorecardCheckedState = {};
+      if (window.KUBEDAILY_SCORECARD_DATA) {
+        window.KUBEDAILY_SCORECARD_DATA.forEach(chk => {
+          if (chk.defaultBaseline) {
+            scorecardCheckedState[chk.id] = true;
+          }
+        });
+      }
+    }
+
+    renderScorecardItems();
+    updateScorecardStats();
+  }
+
+  function renderScorecardItems() {
+    const container = document.getElementById('scorecard-items-container');
+    if (!container || !window.KUBEDAILY_SCORECARD_DATA) return;
+
+    container.innerHTML = '';
+    const checks = window.KUBEDAILY_SCORECARD_DATA;
+
+    checks.forEach(chk => {
+      const isChecked = !!scorecardCheckedState[chk.id];
+      const isVisible = scorecardFilter === 'all' || chk.domain === scorecardFilter;
+
+      const itemEl = document.createElement('div');
+      itemEl.id = `scorecard-row-${chk.id}`;
+      itemEl.className = `kube-card scorecard-item ${isChecked ? 'is-checked' : ''}`;
+      itemEl.style.display = isVisible ? 'block' : 'none';
+      itemEl.style.padding = '1.1rem 1.25rem';
+      itemEl.style.borderRadius = '0.65rem';
+      itemEl.style.borderLeft = isChecked ? '4px solid #10b981' : (chk.severity === 'critical' ? '4px solid #ef4444' : '4px solid #f59e0b');
+      itemEl.style.background = isChecked ? '#f8fafc' : '#ffffff';
+
+      const sevBg = chk.severity === 'critical' ? '#fee2e2' : (chk.severity === 'high' ? '#ffedd5' : '#fef9c3');
+      const sevFg = chk.severity === 'critical' ? '#991b1b' : (chk.severity === 'high' ? '#9a3412' : '#854d0e');
+
+      itemEl.innerHTML = `
+        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+          <div onclick="toggleScorecardCheck('${chk.id}')" class="scorecard-checkbox ${isChecked ? 'checked' : ''}" id="scorecard-box-${chk.id}" title="${isChecked ? 'Mark as Not Implemented' : 'Mark as Implemented'}">
+            ${isChecked ? '✓' : ''}
+          </div>
+
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.35rem;">
+              <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+                <span style="font-size: 0.75rem; font-weight: 800; color: #475569; background: #e2e8f0; padding: 0.15rem 0.45rem; border-radius: 0.25rem;">${chk.id}</span>
+                <span class="kube-badge" style="background: ${sevBg}; color: ${sevFg}; font-weight: 700; font-size: 0.6875rem;">${chk.severity.toUpperCase()}</span>
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">${chk.domainName}</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+                <span style="font-size: 0.6875rem; background: #f1f5f9; color: #475569; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-weight: 600;">${chk.cis}</span>
+                <span style="font-size: 0.6875rem; background: #f1f5f9; color: #475569; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-weight: 600;">MITRE ${chk.mitre}</span>
+              </div>
+            </div>
+
+            <h4 style="font-size: 1rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0 0 0.25rem 0; cursor: pointer;" onclick="toggleScorecardCheck('${chk.id}')">
+              ${chk.title}
+            </h4>
+            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+              ${chk.desc}
+            </p>
+
+            <div id="scorecard-tray-${chk.id}" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px dashed #e2e8f0;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: #334155; margin-bottom: 0.3rem;">CLI Verification Command:</div>
+              <pre style="margin: 0 0 0.65rem 0; padding: 0.5rem 0.75rem; background: #0f172a; color: #38bdf8; border-radius: 0.375rem; font-size: 0.75rem; overflow-x: auto;"><code>${chk.cliVerify}</code></pre>
+              <div style="font-size: 0.75rem; font-weight: 700; color: #334155; margin-bottom: 0.3rem;">Remediation Policy Target:</div>
+              <div style="font-size: 0.75rem; color: #64748b;">
+                Enforce policy via <strong>${scorecardRemediationEngine.toUpperCase()}</strong>:
+                <code class="kube-code">${chk.policyKey}</code>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+              <button onclick="toggleCheckRemediation('${chk.id}')" class="kube-button kube-button-secondary" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;">
+                🔍 Verify CLI
+              </button>
+              <button onclick="inspectScorecardCheck('${chk.componentKey}', '${chk.policyKey}')" class="kube-button kube-button-secondary" style="font-size: 0.72rem; padding: 0.2rem 0.55rem;">
+                ⚡ Inspect Hardening Policy
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      container.appendChild(itemEl);
+    });
+  }
+
+  function toggleScorecardCheck(id) {
+    scorecardCheckedState[id] = !scorecardCheckedState[id];
+    localStorage.setItem('kubedaily_scorecard_checks', JSON.stringify(scorecardCheckedState));
+
+    const row = document.getElementById(`scorecard-row-${id}`);
+    const box = document.getElementById(`scorecard-box-${id}`);
+    const isChecked = !!scorecardCheckedState[id];
+
+    if (box) {
+      if (isChecked) {
+        box.classList.add('checked');
+        box.textContent = '✓';
+      } else {
+        box.classList.remove('checked');
+        box.textContent = '';
+      }
+    }
+
+    if (row) {
+      if (isChecked) {
+        row.classList.add('is-checked');
+        row.style.background = '#f8fafc';
+        row.style.borderLeft = '4px solid #10b981';
+      } else {
+        row.classList.remove('is-checked');
+        row.style.background = '#ffffff';
+        const chk = window.KUBEDAILY_SCORECARD_DATA.find(c => c.id === id);
+        row.style.borderLeft = chk && chk.severity === 'critical' ? '4px solid #ef4444' : '4px solid #f59e0b';
+      }
+    }
+
+    updateScorecardStats();
+  }
+
+  function toggleCheckRemediation(id) {
+    const tray = document.getElementById(`scorecard-tray-${id}`);
+    if (tray) {
+      tray.style.display = tray.style.display === 'none' ? 'block' : 'none';
+    }
+  }
+
+  function inspectScorecardCheck(componentKey, policyKey) {
+    if (policyKey && libraryPolicies[policyKey]) {
+      inspectCardPolicy(1, policyKey);
+    } else if (componentKey && window.KUBEDAILY_THREAT_MODEL_DATA && window.KUBEDAILY_THREAT_MODEL_DATA.components[componentKey]) {
+      openInspector(window.KUBEDAILY_THREAT_MODEL_DATA.components[componentKey], componentKey);
+    } else {
+      locateAndInspect('p1', 'P1');
+    }
+  }
+
+  function updateScorecardStats() {
+    if (!window.KUBEDAILY_SCORECARD_DATA) return;
+    const checks = window.KUBEDAILY_SCORECARD_DATA;
+    let totalWeight = 0;
+    let earnedWeight = 0;
+    let passedCount = 0;
+    let criticalGaps = 0;
+
+    checks.forEach(chk => {
+      totalWeight += chk.weight;
+      if (scorecardCheckedState[chk.id]) {
+        earnedWeight += chk.weight;
+        passedCount++;
+      } else {
+        if (chk.severity === 'critical') {
+          criticalGaps++;
+        }
+      }
+    });
+
+    const percent = Math.round((earnedWeight / totalWeight) * 100);
+    const scoreEl = document.getElementById('scorecard-score-percent');
+    if (scoreEl) scoreEl.textContent = `${percent}%`;
+
+    const ring = document.getElementById('scorecard-ring');
+    const circumference = 226.2;
+    const offset = circumference - (percent / 100) * circumference;
+
+    let color = '#ef4444';
+    let label = 'CRITICAL RISK';
+    let summary = 'Severe attack vectors exposed';
+
+    if (percent >= 100) {
+      color = '#3b82f6';
+      label = 'ZERO TRUST COMPLIANT';
+      summary = 'All 20 enterprise controls verified & enforced';
+    } else if (percent >= 85) {
+      color = '#10b981';
+      label = 'PRODUCTION READY';
+      summary = 'Near comprehensive workload & network defense';
+    } else if (percent >= 65) {
+      color = '#eab308';
+      label = 'HARDENED CLUSTER';
+      summary = 'Strong admission guardrails, minor gaps remain';
+    } else if (percent >= 35) {
+      color = '#f97316';
+      label = 'BASIC POSTURE';
+      summary = 'Baseline controls active, missing critical defense';
+    }
+
+    if (ring) {
+      ring.style.strokeDashoffset = offset;
+      ring.style.stroke = color;
+    }
+
+    const labelEl = document.getElementById('scorecard-rating-label');
+    if (labelEl) {
+      labelEl.textContent = label;
+      labelEl.style.color = color;
+    }
+
+    const summaryEl = document.getElementById('scorecard-rating-summary');
+    if (summaryEl) summaryEl.textContent = summary;
+
+    const passedEl = document.getElementById('scorecard-passed-count');
+    if (passedEl) passedEl.textContent = passedCount;
+
+    const missingEl = document.getElementById('scorecard-missing-count');
+    if (missingEl) missingEl.textContent = checks.length - passedCount;
+
+    const gapsEl = document.getElementById('scorecard-critical-gaps');
+    if (gapsEl) gapsEl.textContent = criticalGaps;
+  }
+
+  function applyScorecardPreset(preset) {
+    if (!window.KUBEDAILY_SCORECARD_DATA) return;
+    scorecardCheckedState = {};
+
+    window.KUBEDAILY_SCORECARD_DATA.forEach(chk => {
+      if (preset === 'restricted') {
+        scorecardCheckedState[chk.id] = true;
+      } else if (preset === 'baseline') {
+        scorecardCheckedState[chk.id] = !!chk.defaultBaseline;
+      } else if (preset === 'clear') {
+        scorecardCheckedState[chk.id] = false;
+      }
+    });
+
+    localStorage.setItem('kubedaily_scorecard_checks', JSON.stringify(scorecardCheckedState));
+    renderScorecardItems();
+    updateScorecardStats();
+  }
+
+  function filterScorecardDomain(domain) {
+    scorecardFilter = domain;
+    ['all', 'workload', 'rbac', 'network', 'runtime', 'supply-chain'].forEach(d => {
+      const btn = document.getElementById(`scorecard-filter-${d}`);
+      if (btn) {
+        if (d === domain) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+    });
+
+    if (window.KUBEDAILY_SCORECARD_DATA) {
+      window.KUBEDAILY_SCORECARD_DATA.forEach(chk => {
+        const row = document.getElementById(`scorecard-row-${chk.id}`);
+        if (row) {
+          row.style.display = (domain === 'all' || chk.domain === domain) ? 'block' : 'none';
+        }
+      });
+    }
+  }
+
+  function setScorecardRemediationEngine(engine) {
+    scorecardRemediationEngine = engine;
+    ['kyverno', 'cel', 'gatekeeper'].forEach(eng => {
+      const btn = document.getElementById(`scorecard-engine-${eng}`);
+      if (btn) {
+        if (eng === engine) {
+          btn.classList.add('active');
+          btn.style.background = '#2563eb';
+          btn.style.color = '#ffffff';
+        } else {
+          btn.classList.remove('active');
+          btn.style.background = 'transparent';
+          btn.style.color = '#94a3b8';
+        }
+      }
+    });
+  }
+
+  function exportMissingPolicyBundle() {
+    if (!window.KUBEDAILY_SCORECARD_DATA) return;
+    const checks = window.KUBEDAILY_SCORECARD_DATA;
+    const missingChecks = checks.filter(c => !scorecardCheckedState[c.id]);
+
+    if (missingChecks.length === 0) {
+      alert('Congratulations! All 20 hardening controls are already implemented (100% Zero-Trust Posture). No missing remediation policies required!');
+      return;
+    }
+
+    const engine = scorecardRemediationEngine || 'kyverno';
+    let output = `# ==============================================================================
+# KubeDaily Automated Remediation Policy Bundle
+# Generated on: ${new Date().toISOString()}
+# Target Engine: ${engine.toUpperCase()}
+# Remediating: ${missingChecks.length} Missing Security Gaps
+# ==============================================================================
+`;
+
+    missingChecks.forEach(chk => {
+      output += `\n# --- [${chk.id}] ${chk.title} (${chk.severity.toUpperCase()}) ---
+# Domain: ${chk.domainName} | CIS: ${chk.cis} | MITRE: ${chk.mitre}
+`;
+      const pol = libraryPolicies[chk.policyKey];
+      if (pol && pol[engine]) {
+        output += pol[engine] + "\n---\n";
+      } else {
+        const comp = window.KUBEDAILY_THREAT_MODEL_DATA ? window.KUBEDAILY_THREAT_MODEL_DATA.components[chk.componentKey] : null;
+        if (comp && comp[engine]) {
+          output += comp[engine] + "\n---\n";
+        } else {
+          output += `# Standalone policy manifest for ${chk.title}\n` + (engine === 'cel' ? generateCelPolicy(chk) : generateKyvernoPolicy(chk)) + "\n---\n";
+        }
+      }
+    });
+
+    const blob = new Blob([output], { type: 'text/yaml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `kubedaily-remediation-bundle-${engine}.yaml`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function exportAuditReportMarkdown() {
+    if (!window.KUBEDAILY_SCORECARD_DATA) return;
+    const checks = window.KUBEDAILY_SCORECARD_DATA;
+    let earnedWeight = 0;
+    let totalWeight = 0;
+    let passedCount = 0;
+
+    checks.forEach(chk => {
+      totalWeight += chk.weight;
+      if (scorecardCheckedState[chk.id]) {
+        earnedWeight += chk.weight;
+        passedCount++;
+      }
+    });
+
+    const percent = Math.round((earnedWeight / totalWeight) * 100);
+    const ratingLabel = document.getElementById('scorecard-rating-label')?.textContent || 'AUDIT';
+
+    let md = `# Kubernetes Cluster Hardening & Posture Audit Report
+**Organization / Cluster:** Production Kubernetes Infrastructure
+**Generated Date:** ${new Date().toUTCString()}
+**KubeDaily Posture Score:** **${percent}%** (${ratingLabel})
+**Implemented Controls:** ${passedCount} / ${checks.length}
+**Remediation Policy Standard:** ${scorecardRemediationEngine.toUpperCase()}
+
+---
+
+## Executive Summary
+This audit report evaluates the cluster against 20 critical security controls across Workload Isolation, Identity & RBAC, Network Multi-Tenancy, Linux Kernel Runtime Defense, and Supply Chain Integrity.
+
+- **Current Score:** ${percent} / 100
+- **Total Passing Controls:** ${passedCount}
+- **Total Identified Gaps:** ${checks.length - passedCount}
+- **Regulatory Framework Alignment:** CIS Kubernetes Benchmark v1.8, NIST SP 800-190, MITRE ATT&CK for Containers
+
+---
+
+## Detailed Control Verification Matrix
+
+| ID | Status | Severity | Control Title | Domain | Benchmark | MITRE |
+|:---|:------:|:--------:|:--------------|:-------|:----------|:------|
+`;
+
+    checks.forEach(chk => {
+      const isPassed = !!scorecardCheckedState[chk.id];
+      const statusIcon = isPassed ? "PASSED" : "FAILED";
+      md += `| ${chk.id} | ${statusIcon} | ${chk.severity.toUpperCase()} | ${chk.title} | ${chk.domainName} | ${chk.cis} | ${chk.mitre} |\n`;
+    });
+
+    md += `\n---
+
+## Immediate Remediation Recommendations
+`;
+
+    const failing = checks.filter(c => !scorecardCheckedState[c.id]);
+    if (failing.length === 0) {
+      md += `No gaps identified. All 20 controls meet the Zero-Trust Restricted Standard.\n`;
+    } else {
+      failing.forEach((chk, idx) => {
+        md += `\n### ${idx + 1}. [${chk.id}] ${chk.title} (${chk.severity.toUpperCase()})
+- **Domain:** ${chk.domainName}
+- **Impact:** ${chk.desc}
+- **Verification Command:**
+  \`\`\`bash
+  ${chk.cliVerify}
+  \`\`\`
+- **Remediation Action:** Apply policy \`${chk.policyKey}\` using KubeDaily Remediation Bundle.
+`;
+      });
+    }
+
+    md += `\n---
+*Generated by KubeDaily Threat Model & Security Architecture Engine (https://kubernetesdaily.com/threat-model)*
+`;
+
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `kubernetes-hardening-audit-report.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   // Initialize on page load
   document.addEventListener('DOMContentLoaded', () => {
     loadSvg('cluster');
+    initScorecard();
   });
 </script>
