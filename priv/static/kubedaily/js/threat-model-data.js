@@ -5225,3 +5225,194 @@ rules:
       - "RequestReceived"`
   }
 ];
+
+
+// ============================================================================
+// KubeDaily Incident Response & Containment Runbooks Data (Option 6)
+// Step-by-Step SecOps Emergency Procedures for Active Cluster Breaches
+// ============================================================================
+
+window.KUBEDAILY_INCIDENT_RUNBOOKS = [
+  {
+    id: "IR-01",
+    title: "Compromised Pod Quarantine & Network Isolation",
+    phase: "Phase 1: Containment",
+    phaseBadge: "#ef4444",
+    severity: "Critical",
+    threatScenario: "P1 / P2 · Active Ingress RCE or Token Exfiltration",
+    componentKey: "p1",
+    sheet: "flow-analysis",
+    objective: "Instantly cut all inbound and outbound network connectivity to a compromised pod while keeping the container process alive for forensic memory analysis.",
+    steps: [
+      {
+        title: "Step 1: Apply Emergency Quarantine Label to Pod",
+        cmd: "kubectl label pod <COMPROMISED_POD> -n <NAMESPACE> security.kubedaily.io/quarantine=true --overwrite"
+      },
+      {
+        title: "Step 2: Deploy Cluster-Wide Zero-Trust Quarantine Policy",
+        cmd: `cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: emergency-pod-quarantine
+  namespace: <NAMESPACE>
+spec:
+  podSelector:
+    matchLabels:
+      security.kubedaily.io/quarantine: "true"
+  policyTypes:
+    - Ingress
+    - Egress
+EOF`
+      },
+      {
+        title: "Step 3: Verify Packet Drops via CNI Telemetry",
+        cmd: "kubectl get netpol -n <NAMESPACE> emergency-pod-quarantine && cilium monitor --type drop"
+      }
+    ]
+  },
+  {
+    id: "IR-02",
+    title: "Compromised ServiceAccount Token Revocation & Secret Rotation",
+    phase: "Phase 2: Eradication",
+    phaseBadge: "#f97316",
+    severity: "Critical",
+    threatScenario: "P2 / P6 · Stolen JWT Bearer Token or etcd Secret Leak",
+    componentKey: "p2",
+    sheet: "cluster",
+    objective: "Invalidate compromised API bearer tokens, delete active service account tokens, and force rotation of cluster secrets.",
+    steps: [
+      {
+        title: "Step 1: Delete or Rotate Compromised ServiceAccount Tokens",
+        cmd: "kubectl delete secret -n <NAMESPACE> $(kubectl get secrets -n <NAMESPACE> -o json | jq -r '.items[] | select(.type==\"kubernetes.io/service-account-token\") | .metadata.name')"
+      },
+      {
+        title: "Step 2: Invalidate RBAC RoleBindings Immediately",
+        cmd: "kubectl delete rolebinding,clusterrolebinding -l security.kubedaily.io/revoked=true"
+      },
+      {
+        title: "Step 3: Restart Workloads to Force Projected Token Refresh",
+        cmd: "kubectl rollout restart deployment -n <NAMESPACE>"
+      }
+    ]
+  },
+  {
+    id: "IR-03",
+    title: "Node Kernel Escape Containment & Node Isolation",
+    phase: "Phase 1: Containment",
+    phaseBadge: "#ef4444",
+    severity: "Emergency",
+    threatScenario: "P4 · Privileged Container Escape / CVE-2024-21626",
+    componentKey: "p4",
+    sheet: "cluster",
+    objective: "Quarantine a worker node following a suspected container-to-host breakout, stop scheduling, and isolate from cloud VPC.",
+    steps: [
+      {
+        title: "Step 1: Cordon Node Immediately (Stop New Scheduling)",
+        cmd: "kubectl cordon <COMPROMISED_NODE>"
+      },
+      {
+        title: "Step 2: Safely Drain Non-Compromised Workloads",
+        cmd: "kubectl drain <COMPROMISED_NODE> --ignore-daemonsets --delete-emptydir-data --force"
+      },
+      {
+        title: "Step 3: Cloud Security Group / VPC Subnet Isolation",
+        cmd: "aws ec2 modify-instance-attribute --instance-id <INSTANCE_ID> --groups <ISOLATION_SECURITY_GROUP_ID>"
+      }
+    ]
+  },
+  {
+    id: "IR-04",
+    title: "Container Live Forensic Memory & Disk Checkpoint Capture",
+    phase: "Phase 3: Digital Forensics",
+    phaseBadge: "#3b82f6",
+    severity: "High",
+    threatScenario: "P1 / P4 · Rootkit or In-Memory Exploit Analysis",
+    componentKey: "p1",
+    sheet: "security-architecture",
+    objective: "Capture an immutable forensic checkpoint of container memory and filesystem state using Kubernetes checkpoint API without terminating the workload.",
+    steps: [
+      {
+        title: "Step 1: Trigger Container Live Checkpoint via Kubelet API",
+        cmd: "curl -sk -X POST 'https://127.0.0.1:10250/checkpoint/<NAMESPACE>/<POD>/<CONTAINER>' --cert /etc/kubernetes/pki/kubelet-client.crt --key /etc/kubernetes/pki/kubelet-client.key"
+      },
+      {
+        title: "Step 2: Locate Frozen Forensic Artifact on Node",
+        cmd: "ls -lh /var/lib/kubelet/checkpoints/checkpoint-<POD>_<NAMESPACE>-<CONTAINER>*.tar"
+      },
+      {
+        title: "Step 3: Compute Cryptographic Hash and Transfer to Evidence S3 Bucket",
+        cmd: "sha256sum /var/lib/kubelet/checkpoints/*.tar && aws s3 cp /var/lib/kubelet/checkpoints/*.tar s3://forensic-evidence-vault/"
+      }
+    ]
+  },
+  {
+    id: "IR-05",
+    title: "Emergency Cloud IMDS SSRF Severing",
+    phase: "Phase 1: Containment",
+    phaseBadge: "#ef4444",
+    severity: "Critical",
+    threatScenario: "P5 · Stolen AWS IAM Instance Role Credentials",
+    componentKey: "p5",
+    sheet: "flow-analysis",
+    objective: "Sever link-local access to cloud metadata across all worker nodes and revoke stolen AWS/GCP instance profile session tokens.",
+    steps: [
+      {
+        title: "Step 1: Enforce IMDSv2 Hop Limit = 1 on All EC2 Nodes",
+        cmd: "aws ec2 modify-instance-metadata-options --instance-id <INSTANCE_ID> --http-endpoint enabled --http-tokens required --http-put-response-hop-limit 1"
+      },
+      {
+        title: "Step 2: Deploy IPTables / eBPF Egress Drop on Node",
+        cmd: "iptables -I OUTPUT -d 169.254.169.254 -j DROP"
+      },
+      {
+        title: "Step 3: Revoke Compromised IAM Role Temporary Sessions",
+        cmd: `aws iam put-role-policy --role-name <ROLE_NAME> --policy-name RevokeOldSessions --policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Deny","Action":"*","Resource":"*","Condition":{"DateLessThan":{"aws:CurrentTime":"2026-11-01T00:00:00Z"}}}]}'`
+      }
+    ]
+  },
+  {
+    id: "IR-06",
+    title: "Supply Chain Compromise & Registry Quarantine",
+    phase: "Phase 2: Eradication",
+    phaseBadge: "#f97316",
+    severity: "High",
+    threatScenario: "P3 · Backdoored Container Image in Production",
+    componentKey: "p3",
+    sheet: "security-architecture",
+    objective: "Halt all deployments of a compromised image tag, purge local containerd image caches across worker nodes, and revoke compromised Cosign public keys.",
+    steps: [
+      {
+        title: "Step 1: Apply Kyverno Emergency Admission Denial on Compromised Image",
+        cmd: `cat <<EOF | kubectl apply -f -
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: emergency-block-compromised-image
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: block-malicious-image
+      match:
+        any:
+          - resources:
+              kinds: ["Pod"]
+      validate:
+        message: "EMERGENCY: Image <COMPROMISED_IMAGE> is flagged as malware and quarantined!"
+        pattern:
+          spec:
+            containers:
+              - =(image): "!<COMPROMISED_IMAGE>*"
+EOF`
+      },
+      {
+        title: "Step 2: Purge Node containerd Image Caches Across Cluster",
+        cmd: "crictl rmi <COMPROMISED_IMAGE>"
+      },
+      {
+        title: "Step 3: Rollback Deployment to Verified Cryptographic Digest",
+        cmd: "kubectl set image deployment/<DEPLOYMENT> <CONTAINER>=ghcr.io/myorg/app@sha256:<VERIFIED_IMMUTABLE_DIGEST> -n <NAMESPACE>"
+      }
+    ]
+  }
+];

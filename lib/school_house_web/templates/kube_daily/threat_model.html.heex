@@ -2030,6 +2030,48 @@
 
       </div>
     </div>
+
+    <!-- Incident Response & Containment Runbooks (Option 6) -->
+    <div id="incident-response-section" style="margin-top: 4rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <div class="kube-section-pill" style="background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;">
+            Emergency SecOps Procedures · Active Incident Containment
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0.4rem 0 0.25rem 0;">
+            Incident Response &amp; Containment Runbooks
+          </h3>
+          <p style="color: var(--pele-muted, #64748b); max-width: 860px; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+            Emergency step-by-step containment procedures for SecOps, Platform, and SRE on-call engineers. Rapidly quarantine compromised pods, sever cloud IMDS exfiltration routes, capture live forensic memory checkpoints, and cordon compromised nodes during an active breach.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="downloadRunbookScript()" class="kube-button" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem; background: #dc2626; border-color: #dc2626;">
+            ⬇ Download Runbook (.sh)
+          </button>
+          <button onclick="copyAllRunbookSteps()" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+            📋 Copy All Steps
+          </button>
+        </div>
+      </div>
+
+      <!-- Runbook Selector Tabs -->
+      <div style="display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
+        <button id="runbook-tab-0" onclick="switchRunbook(0)" class="runbook-tab-btn active">🚨 IR-01: Pod Quarantine</button>
+        <button id="runbook-tab-1" onclick="switchRunbook(1)" class="runbook-tab-btn">🔑 IR-02: Token Revoke</button>
+        <button id="runbook-tab-2" onclick="switchRunbook(2)" class="runbook-tab-btn">⚡ IR-03: Node Isolation</button>
+        <button id="runbook-tab-3" onclick="switchRunbook(3)" class="runbook-tab-btn">💾 IR-04: Forensic Memory</button>
+        <button id="runbook-tab-4" onclick="switchRunbook(4)" class="runbook-tab-btn">☁️ IR-05: Sever IMDS</button>
+        <button id="runbook-tab-5" onclick="switchRunbook(5)" class="runbook-tab-btn">📦 IR-06: Supply Chain Rollback</button>
+      </div>
+
+      <!-- Active Runbook Interactive Card Container -->
+      <div id="runbook-card-container">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- Developer Mix Task Documentation -->
     <div class="kube-card" style="margin-top: 3rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <span style="font-size: 0.8125rem; font-weight: 700; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em;">Developer &amp; Platform Tooling</span>
@@ -2319,6 +2361,30 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
   .team-mode-btn.blue.active {
     background: #2563eb !important;
     color: #ffffff !important;
+  }
+
+  /* Incident Response Runbook Tab Buttons */
+  .runbook-tab-btn {
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.775rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .runbook-tab-btn:hover {
+    color: #ffffff;
+    background: #334155;
+  }
+  .runbook-tab-btn.active {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
   }
 </style>
 
@@ -5367,11 +5433,163 @@ This audit report evaluates the cluster against 20 critical security controls ac
     URL.revokeObjectURL(url);
   }
 
+  // ============================================================================
+  // Incident Response & Containment Runbooks Controller (Option 6)
+  // ============================================================================
+  let currentRunbookIdx = 0;
+
+  function initIncidentRunbooks() {
+    renderActiveRunbook();
+  }
+
+  function switchRunbook(idx) {
+    currentRunbookIdx = idx;
+    for (let i = 0; i < 6; i++) {
+      const btn = document.getElementById(`runbook-tab-${i}`);
+      if (btn) {
+        if (i === idx) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+    }
+    renderActiveRunbook();
+  }
+
+  function renderActiveRunbook() {
+    const container = document.getElementById('runbook-card-container');
+    if (!container || !window.KUBEDAILY_INCIDENT_RUNBOOKS) return;
+
+    const rb = window.KUBEDAILY_INCIDENT_RUNBOOKS[currentRunbookIdx];
+    if (!rb) return;
+
+    let stepsHtml = '';
+    rb.steps.forEach((st, idx) => {
+      stepsHtml += `
+        <div style="margin-bottom: 1rem; background: #0b132b; border: 1px solid #1e293b; border-radius: 0.5rem; overflow: hidden;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0.85rem; background: rgba(255,255,255,0.03); border-bottom: 1px solid #1e293b;">
+            <span style="font-size: 0.775rem; font-weight: 700; color: #38bdf8;">${st.title}</span>
+            <button onclick="copyRunbookStepText(${idx})" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.5rem; background: #1e293b; color: #94a3b8; border-color: #334155;">
+              📋 Copy Command
+            </button>
+          </div>
+          <pre style="margin: 0; padding: 0.85rem 1rem; color: #f8fafc; font-size: 0.775rem; line-height: 1.5; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;"><code id="runbook-step-code-${idx}">${st.cmd}</code></pre>
+        </div>
+      `;
+    });
+
+    container.innerHTML = `
+      <div class="kube-card" style="padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid #1e293b;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+              <span style="font-size: 0.75rem; font-weight: 800; color: #ef4444; background: rgba(239,68,68,0.15); padding: 0.15rem 0.45rem; border-radius: 0.25rem;">${rb.id}</span>
+              <span class="kube-badge" style="background: rgba(239,68,68,0.2); color: #f87171; font-size: 0.7rem; font-weight: 700;">${rb.phase.toUpperCase()}</span>
+              <span class="kube-badge" style="background: rgba(249,115,22,0.2); color: #fb923c; font-size: 0.7rem; font-weight: 700;">${rb.severity.toUpperCase()}</span>
+              <span style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">Scenario: ${rb.threatScenario}</span>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0;">
+              ${rb.title}
+            </h3>
+          </div>
+
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+            <button onclick="locateAndInspect('${rb.componentKey}', '${rb.componentKey.toUpperCase()}', '${rb.sheet}')" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; background: #2563eb; border-color: #2563eb;">
+              🎯 Trace Blast Radius in Diagram
+            </button>
+            <button onclick="locateAndInspect('${rb.componentKey}', '${rb.componentKey.toUpperCase()}')" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; background: #334155; color: #f8fafc; border-color: #475569;">
+              ⚡ Hardening Specs
+            </button>
+          </div>
+        </div>
+
+        <div style="padding: 0.85rem 1rem; border-radius: 0.5rem; background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #f87171; font-weight: 700;">Emergency Objective:</div>
+          <div style="font-size: 0.825rem; color: #fecaca; margin-top: 0.2rem; line-height: 1.5;">
+            ${rb.objective}
+          </div>
+        </div>
+
+        <div>
+          ${stepsHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  function copyRunbookStepText(stepIdx) {
+    const codeEl = document.getElementById(`runbook-step-code-${stepIdx}`);
+    if (codeEl) {
+      navigator.clipboard.writeText(codeEl.textContent).then(() => {
+        const orig = event.target.textContent;
+        event.target.textContent = '✅ Copied!';
+        setTimeout(() => { event.target.textContent = orig; }, 1800);
+      });
+    }
+  }
+
+  function copyAllRunbookSteps() {
+    if (!window.KUBEDAILY_INCIDENT_RUNBOOKS) return;
+    const rb = window.KUBEDAILY_INCIDENT_RUNBOOKS[currentRunbookIdx];
+    if (!rb) return;
+
+    let fullScript = `#!/usr/bin/env bash
+# ==============================================================================
+# KubeDaily Emergency Incident Runbook: [${rb.id}] ${rb.title}
+# Threat Scenario: ${rb.threatScenario}
+# Generated: ${new Date().toISOString()}
+# ==============================================================================
+# Objective: ${rb.objective}
+
+set -euo pipefail
+
+`;
+    rb.steps.forEach((st, idx) => {
+      fullScript += `# --- ${st.title} ---\n${st.cmd}\n\n`;
+    });
+
+    navigator.clipboard.writeText(fullScript).then(() => {
+      const orig = event.target.textContent;
+      event.target.textContent = '✅ All Steps Copied!';
+      setTimeout(() => { event.target.textContent = orig; }, 1800);
+    });
+  }
+
+  function downloadRunbookScript() {
+    if (!window.KUBEDAILY_INCIDENT_RUNBOOKS) return;
+    const rb = window.KUBEDAILY_INCIDENT_RUNBOOKS[currentRunbookIdx];
+    if (!rb) return;
+
+    let fullScript = `#!/usr/bin/env bash
+# ==============================================================================
+# KubeDaily Emergency Incident Runbook: [${rb.id}] ${rb.title}
+# Threat Scenario: ${rb.threatScenario}
+# Generated: ${new Date().toISOString()}
+# ==============================================================================
+# Objective: ${rb.objective}
+
+set -euo pipefail
+
+`;
+    rb.steps.forEach((st, idx) => {
+      fullScript += `# --- ${st.title} ---\n${st.cmd}\n\n`;
+    });
+
+    const blob = new Blob([fullScript], { type: 'text/x-sh' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${rb.id.toLowerCase()}-containment-runbook.sh`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   // Initialize on page load
   document.addEventListener('DOMContentLoaded', () => {
     loadSvg('cluster');
     initScorecard();
     initMitreMatrix();
     initPlaybooks();
+    initIncidentRunbooks();
   });
 </script>
