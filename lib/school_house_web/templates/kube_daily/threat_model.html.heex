@@ -1749,6 +1749,110 @@
         <!-- Rendered via JS -->
       </div>
     </div>
+
+    <!-- Red/Blue Team Attack Simulation Playbooks (Option 4) -->
+    <div id="attack-playbooks-section" style="margin-top: 4rem;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <div class="kube-section-pill" style="background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;">
+            Hands-on Security Engineering · KinD / Minikube Lab Runbooks
+          </div>
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0.4rem 0 0.25rem 0;">
+            Red/Blue Team Attack Simulation Playbooks
+          </h3>
+          <p style="color: var(--pele-muted, #64748b); max-width: 860px; font-size: 0.875rem; line-height: 1.6; margin: 0;">
+            Validate your cluster's defense posture using real, executable attack scripts and counter-measure verifications across all 6 threat model attack scenarios (P1 to P6). Switch between Red Team (offensive simulation) and Blue Team (defensive validation) modes, copy terminal commands with 1 click, or download complete runnable Bash scripts.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button onclick="downloadPlaybookScript()" class="kube-button" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem; background: #dc2626; border-color: #dc2626;">
+            ⬇ Download Lab Script (.sh)
+          </button>
+          <button onclick="copyPlaybookScript()" class="kube-button kube-button-secondary" style="font-size: 0.8125rem; display: inline-flex; align-items: center; gap: 0.35rem;">
+            📋 Copy Lab Shell
+          </button>
+        </div>
+      </div>
+
+      <!-- Playbook Scenario Selector Tabs -->
+      <div style="display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
+        <button id="playbook-tab-0" onclick="switchPlaybook(0)" class="playbook-tab-btn active">🔥 P1: Ingress RCE</button>
+        <button id="playbook-tab-1" onclick="switchPlaybook(1)" class="playbook-tab-btn">🔑 P2: Token Exfil</button>
+        <button id="playbook-tab-2" onclick="switchPlaybook(2)" class="playbook-tab-btn">📦 P3: Supply Chain</button>
+        <button id="playbook-tab-3" onclick="switchPlaybook(3)" class="playbook-tab-btn">⚡ P4: Host Breakout</button>
+        <button id="playbook-tab-4" onclick="switchPlaybook(4)" class="playbook-tab-btn">☁️ P5: IMDS Theft</button>
+        <button id="playbook-tab-5" onclick="switchPlaybook(5)" class="playbook-tab-btn">🔐 P6: etcd Secrets</button>
+      </div>
+
+      <!-- Active Playbook Interactive Card -->
+      <div class="kube-card" style="padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
+
+        <!-- Playbook Header -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid #1e293b;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; flex-wrap: wrap;">
+              <span id="playbook-id-badge" style="font-size: 0.75rem; font-weight: 800; color: #f87171; background: rgba(239,68,68,0.15); padding: 0.15rem 0.45rem; border-radius: 0.25rem;">LAB-P1</span>
+              <span id="playbook-difficulty-badge" class="kube-badge" style="background: rgba(249,115,22,0.2); color: #fb923c; font-size: 0.7rem; font-weight: 700;">INTERMEDIATE</span>
+              <span id="playbook-vector-badge" style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">AV01, AV11 · MITRE T1190</span>
+            </div>
+            <h3 id="playbook-title" style="font-size: 1.25rem; font-weight: 700; color: #ffffff; margin: 0;">
+              Playbook 1: Ingress RCE &amp; Malware Drop Containment
+            </h3>
+          </div>
+
+          <!-- Quick Navigation Actions -->
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+            <button id="playbook-diagram-btn" onclick="traceActivePlaybook()" class="kube-button" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; background: #2563eb; border-color: #2563eb;">
+              🎯 Trace in Diagram
+            </button>
+            <button id="playbook-inspect-btn" onclick="inspectActivePlaybook()" class="kube-button kube-button-secondary" style="font-size: 0.75rem; padding: 0.35rem 0.65rem; background: #334155; color: #f8fafc; border-color: #475569;">
+              🛡️ Hardening Policy
+            </button>
+          </div>
+        </div>
+
+        <!-- Red Team vs Blue Team Mode Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+          <div style="display: flex; gap: 0.35rem; background: #1e293b; padding: 0.25rem; border-radius: 0.5rem; border: 1px solid #334155;">
+            <button id="playbook-mode-red" onclick="switchPlaybookMode('red')" class="team-mode-btn red active">
+              🔴 Red Team (Exploit Simulation)
+            </button>
+            <button id="playbook-mode-blue" onclick="switchPlaybookMode('blue')" class="team-mode-btn blue">
+              🔵 Blue Team (Defensive Validation)
+            </button>
+          </div>
+
+          <div id="playbook-mode-tag" style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">
+            Simulating adversary attack steps against running cluster
+          </div>
+        </div>
+
+        <!-- Objective Callout Box -->
+        <div id="playbook-objective-box" style="padding: 0.85rem 1rem; border-radius: 0.5rem; background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; margin-bottom: 1rem;">
+          <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #f87171; font-weight: 700;">Tactical Objective:</div>
+          <div id="playbook-objective-text" style="font-size: 0.825rem; color: #fecaca; margin-top: 0.2rem; line-height: 1.5;">
+            Simulate remote code execution vulnerability on public ingress pod and write backdoor binary to root filesystem.
+          </div>
+        </div>
+
+        <!-- Terminal / Shell Script Viewer -->
+        <div style="position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: center; background: #0b132b; padding: 0.5rem 0.85rem; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; border: 1px solid #1e293b; border-bottom: none;">
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: #eab308; display: inline-block;"></span>
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
+              <span id="playbook-terminal-title" style="font-size: 0.72rem; color: #64748b; font-family: monospace; margin-left: 0.35rem;">lab-p1-redteam.sh</span>
+            </div>
+            <button onclick="copyPlaybookScript()" class="kube-button kube-button-secondary" style="font-size: 0.7rem; padding: 0.15rem 0.5rem; background: #1e293b; color: #94a3b8; border-color: #334155;">
+              📋 Copy Shell
+            </button>
+          </div>
+          <pre style="margin: 0; padding: 1rem; background: #0b132b; color: #38bdf8; border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem; border: 1px solid #1e293b; font-size: 0.775rem; line-height: 1.5; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;"><code id="playbook-script-code"></code></pre>
+        </div>
+
+      </div>
+    </div>
     <div class="kube-card" style="margin-top: 3rem; padding: 1.5rem; border-radius: 0.75rem; background: #0f172a; color: #f8fafc; border: 1px solid #334155;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
         <span style="font-size: 0.8125rem; font-weight: 700; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em;">Developer &amp; Platform Tooling</span>
@@ -1989,6 +2093,54 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
   }
   .mitre-tactic-pill.active {
     background: #db2777 !important;
+    color: #ffffff !important;
+  }
+
+  /* Playbook Tab Buttons */
+  .playbook-tab-btn {
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.775rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .playbook-tab-btn:hover {
+    color: #ffffff;
+    background: #334155;
+  }
+  .playbook-tab-btn.active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  /* Red/Blue Team Mode Toggle */
+  .team-mode-btn {
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.775rem;
+    font-weight: 700;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .team-mode-btn:hover {
+    color: #ffffff;
+  }
+  .team-mode-btn.red.active {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+  }
+  .team-mode-btn.blue.active {
+    background: #2563eb !important;
     color: #ffffff !important;
   }
 </style>
@@ -4838,10 +4990,144 @@ This audit report evaluates the cluster against 20 critical security controls ac
     URL.revokeObjectURL(url);
   }
 
+  // ============================================================================
+  // Red/Blue Team Attack Playbooks Controller (Option 4)
+  // ============================================================================
+  let currentPlaybookIdx = 0;
+  let currentPlaybookMode = 'red';
+
+  function initPlaybooks() {
+    renderActivePlaybook();
+  }
+
+  function switchPlaybook(idx) {
+    currentPlaybookIdx = idx;
+    for (let i = 0; i < 6; i++) {
+      const btn = document.getElementById(`playbook-tab-${i}`);
+      if (btn) {
+        if (i === idx) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+    }
+    renderActivePlaybook();
+  }
+
+  function switchPlaybookMode(mode) {
+    currentPlaybookMode = mode;
+    const redBtn = document.getElementById('playbook-mode-red');
+    const blueBtn = document.getElementById('playbook-mode-blue');
+    if (redBtn && blueBtn) {
+      if (mode === 'red') {
+        redBtn.classList.add('active');
+        blueBtn.classList.remove('active');
+      } else {
+        blueBtn.classList.add('active');
+        redBtn.classList.remove('active');
+      }
+    }
+
+    const modeTag = document.getElementById('playbook-mode-tag');
+    if (modeTag) {
+      modeTag.textContent = mode === 'red'
+        ? 'Simulating adversary attack steps against running cluster'
+        : 'Verifying admission guardrails, runtime telemetry & audit logs';
+    }
+
+    renderActivePlaybook();
+  }
+
+  function renderActivePlaybook() {
+    if (!window.KUBEDAILY_ATTACK_PLAYBOOKS) return;
+    const pb = window.KUBEDAILY_ATTACK_PLAYBOOKS[currentPlaybookIdx];
+    if (!pb) return;
+
+    const idBadge = document.getElementById('playbook-id-badge');
+    if (idBadge) idBadge.textContent = pb.id;
+
+    const diffBadge = document.getElementById('playbook-difficulty-badge');
+    if (diffBadge) diffBadge.textContent = pb.difficulty.toUpperCase();
+
+    const vectorBadge = document.getElementById('playbook-vector-badge');
+    if (vectorBadge) vectorBadge.textContent = pb.attackVector;
+
+    const titleEl = document.getElementById('playbook-title');
+    if (titleEl) titleEl.textContent = pb.title;
+
+    const content = currentPlaybookMode === 'red' ? pb.redTeam : pb.blueTeam;
+
+    const objBox = document.getElementById('playbook-objective-box');
+    const objText = document.getElementById('playbook-objective-text');
+    if (objBox && objText) {
+      if (currentPlaybookMode === 'red') {
+        objBox.style.background = 'rgba(239, 68, 68, 0.1)';
+        objBox.style.borderLeftColor = '#ef4444';
+        objText.style.color = '#fecaca';
+      } else {
+        objBox.style.background = 'rgba(37, 99, 235, 0.1)';
+        objBox.style.borderLeftColor = '#2563eb';
+        objText.style.color = '#bfdbfe';
+      }
+      objText.textContent = content.objective;
+    }
+
+    const terminalTitle = document.getElementById('playbook-terminal-title');
+    if (terminalTitle) {
+      terminalTitle.textContent = `${pb.id.toLowerCase()}-${currentPlaybookMode}team.sh`;
+    }
+
+    const scriptCode = document.getElementById('playbook-script-code');
+    if (scriptCode) {
+      scriptCode.textContent = content.script;
+    }
+  }
+
+  function traceActivePlaybook() {
+    if (!window.KUBEDAILY_ATTACK_PLAYBOOKS) return;
+    const pb = window.KUBEDAILY_ATTACK_PLAYBOOKS[currentPlaybookIdx];
+    if (!pb) return;
+    locateAndInspect(pb.scenarioKey, pb.scenarioKey.toUpperCase(), pb.sheet);
+  }
+
+  function inspectActivePlaybook() {
+    if (!window.KUBEDAILY_ATTACK_PLAYBOOKS) return;
+    const pb = window.KUBEDAILY_ATTACK_PLAYBOOKS[currentPlaybookIdx];
+    if (!pb) return;
+    locateAndInspect(pb.scenarioKey, pb.scenarioKey.toUpperCase());
+  }
+
+  function copyPlaybookScript() {
+    const codeEl = document.getElementById('playbook-script-code');
+    if (codeEl) {
+      navigator.clipboard.writeText(codeEl.textContent).then(() => {
+        const orig = event.target.textContent;
+        event.target.textContent = '✅ Copied!';
+        setTimeout(() => { event.target.textContent = orig; }, 1800);
+      });
+    }
+  }
+
+  function downloadPlaybookScript() {
+    if (!window.KUBEDAILY_ATTACK_PLAYBOOKS) return;
+    const pb = window.KUBEDAILY_ATTACK_PLAYBOOKS[currentPlaybookIdx];
+    if (!pb) return;
+    const content = currentPlaybookMode === 'red' ? pb.redTeam : pb.blueTeam;
+
+    const blob = new Blob([content.script], { type: 'text/x-sh' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${pb.id.toLowerCase()}-${currentPlaybookMode}team.sh`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   // Initialize on page load
   document.addEventListener('DOMContentLoaded', () => {
     loadSvg('cluster');
     initScorecard();
     initMitreMatrix();
+    initPlaybooks();
   });
 </script>
