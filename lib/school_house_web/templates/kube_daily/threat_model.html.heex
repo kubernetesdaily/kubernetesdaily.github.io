@@ -39,10 +39,10 @@
   </div>
 </section>
 
-<div class="kube-shell" style="max-width: 1440px; margin: 0 auto; padding: 1.25rem 1rem;">
+<div class="kube-shell threat-model-page" style="max-width: 1440px; margin: 0 auto; padding: 1.25rem 1rem;">
 
   <!-- Interactive Viewport Toolbar -->
-  <div class="kube-card" style="margin-bottom: 1rem; padding: 0.85rem 1rem; border-radius: 0.75rem; background: var(--pele-surface, #ffffff); border: 1px solid var(--pele-border, #e2e8f0); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+  <div class="kube-card threat-model-toolbar" style="margin-bottom: 1rem; padding: 0.85rem 1rem; border-radius: 0.75rem; background: var(--tm-bg-card); border: 1px solid var(--tm-border); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
     <div style="display: flex; flex-direction: column; gap: 0.75rem;">
 
       <!-- Top Row: Sheets, Search & View Controls -->
@@ -72,20 +72,20 @@
         <div style="display: flex; align-items: center; gap: 0.4rem; position: relative;">
           <div style="position: relative; display: flex; align-items: center;">
             <input id="diagram-search-input" type="text" placeholder="Search (e.g. etcd, TA01, runc, P1, C01)..."
-                   style="font-size: 0.8125rem; padding: 0.4rem 2rem 0.4rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--pele-border, #cbd5e1); width: 260px; background: #f8fafc;"
+                   style="font-size: 0.8125rem; padding: 0.4rem 2rem 0.4rem 0.75rem; border-radius: 0.5rem; border: 1px solid var(--tm-border-strong); width: 260px; background: var(--tm-bg-input); color: var(--tm-text-head);"
                    oninput="handleSearch(this.value)" onfocus="handleSearch(this.value)" />
             <button id="search-clear-btn" onclick="clearSearch()" style="position: absolute; right: 8px; border: none; background: transparent; cursor: pointer; color: #94a3b8; font-size: 0.8125rem; display: none;">✕</button>
           </div>
-          <span id="search-results-badge" style="font-size: 0.75rem; color: #64748b; font-weight: 600; display: none;">0 matches</span>
+          <span id="search-results-badge" style="font-size: 0.75rem; color: var(--tm-text-muted); font-weight: 600; display: none;">0 matches</span>
 
           <!-- Autocomplete Dropdown Menu -->
-          <div id="search-autocomplete-dropdown" style="display: none; position: absolute; left: 0; top: 100%; margin-top: 4px; width: 340px; max-height: 320px; overflow-y: auto; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 60;"></div>
+          <div id="search-autocomplete-dropdown" style="display: none; position: absolute; left: 0; top: 100%; margin-top: 4px; width: 340px; max-height: 320px; overflow-y: auto; background: var(--tm-dropdown-bg); border: 1px solid var(--tm-border-strong); border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.25); z-index: 60;"></div>
         </div>
 
         <!-- Zoom & Viewport Controls -->
         <div style="display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap;">
           <button onclick="adjustZoom(-0.15)" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;" title="Zoom Out (-)">−</button>
-          <span id="zoom-indicator" style="font-size: 0.75rem; font-weight: 600; color: #64748b; min-width: 44px; text-align: center;">100%</span>
+          <span id="zoom-indicator" style="font-size: 0.75rem; font-weight: 600; color: var(--tm-text-muted); min-width: 44px; text-align: center;">100%</span>
           <button onclick="adjustZoom(0.15)" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;" title="Zoom In (+)">+</button>
           <button onclick="resetZoom()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;" title="Reset View (0)">Reset</button>
           <button onclick="toggleFullscreen()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;" title="Toggle Fullscreen (f)">⛶</button>
@@ -96,7 +96,7 @@
             <button onclick="toggleDownloadMenu()" class="kube-button kube-button-secondary" style="padding: 0.35rem 0.65rem; font-size: 0.8125rem;">
               ⬇ Export ▾
             </button>
-            <div id="download-dropdown-menu" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 4px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); min-width: 220px; z-index: 50;">
+            <div id="download-dropdown-menu" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 4px; background: var(--tm-dropdown-bg); border: 1px solid var(--tm-border-strong); border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.25); min-width: 220px; z-index: 50;">
               <div style="padding: 0.35rem 0.85rem; font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Draw.io XML Sources</div>
               <a href="/kubedaily/diagrams/kubernetes-threat-model.drawio" download="kubernetes-threat-model.drawio" style="display: block; padding: 0.4rem 0.85rem; font-size: 0.775rem; color: #1e293b; text-decoration: none; border-bottom: 1px solid #f1f5f9;">
                 📄 Complete 4-Sheet (.drawio)
@@ -200,7 +200,7 @@
   </div>
 
   <!-- Interactive Stage & Inspector Layout -->
-  <div id="diagram-viewport-container" class="kube-card" style="padding: 0; border-radius: 0.75rem; overflow: hidden; background: #ffffff; border: 1px solid var(--pele-border, #e2e8f0); position: relative; height: 75vh; min-height: 680px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); display: flex;">
+  <div id="diagram-viewport-container" class="kube-card" style="padding: 0; border-radius: 0.75rem; overflow: hidden; background: var(--tm-viewport-bg); border: 1px solid var(--tm-border); position: relative; height: 75vh; min-height: 680px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08); display: flex;">
 
     <!-- Floating Helper Pill -->
     <div style="position: absolute; top: 12px; left: 16px; z-index: 20; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); color: #f8fafc; font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 9999px; pointer-events: none; display: flex; align-items: center; gap: 6px;">
@@ -222,7 +222,7 @@
     </div>
 
     <!-- Scalable Canvas Viewport -->
-    <div id="diagram-scroll-pane" style="flex: 1; height: 100%; overflow: auto; cursor: grab; background: #ffffff; position: relative; padding: 1.5rem;">
+    <div id="diagram-scroll-pane" style="flex: 1; height: 100%; overflow: auto; cursor: grab; background: var(--tm-canvas-bg); position: relative; padding: 1.5rem;">
       <div id="diagram-scalable-wrapper" style="transform-origin: 0 0; transition: transform 0.15s ease-out; display: inline-block;">
         <div id="diagram-svg-target" style="display: inline-block;">
           <!-- SVG is dynamically inlined here for 100% interactivity -->
@@ -232,10 +232,10 @@
     </div>
 
     <!-- Native 5-Tab Inspector Drawer (Slide-Over Panel) -->
-    <div id="inspector-drawer" style="width: 470px; height: 100%; background: #ffffff; border-left: 1px solid var(--pele-border, #cbd5e1); box-shadow: -4px 0 15px rgba(0, 0, 0, 0.08); position: absolute; right: 0; top: 0; z-index: 30; transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;">
+    <div id="inspector-drawer" style="width: 470px; height: 100%; background: var(--tm-drawer-bg); border-left: 1px solid var(--tm-border); box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); position: absolute; right: 0; top: 0; z-index: 30; transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;">
 
       <!-- Drawer Header -->
-      <div style="padding: 1rem 1.25rem; border-bottom: 1px solid #e2e8f0; background: #f8fafc; display: flex; justify-content: space-between; align-items: flex-start;">
+      <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--tm-border); background: var(--tm-drawer-header); display: flex; justify-content: space-between; align-items: flex-start;">
         <div>
           <div style="display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.25rem; flex-wrap: wrap;">
             <span id="drawer-id-badge" class="kube-badge" style="background:#fee2e2;color:#991b1b;font-weight:700;">ID</span>
@@ -243,20 +243,20 @@
             <span id="drawer-priority-badge" class="kube-badge" style="background:#fef3c7;color:#92400e;">Priority</span>
             <span id="drawer-level-badge" class="kube-badge" style="background:#f1f5f9;color:#475569;">Level</span>
           </div>
-          <h3 id="drawer-title" style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0;">Component Name</h3>
+          <h3 id="drawer-title" style="font-size: 1.15rem; font-weight: 700; color: var(--tm-text-head); margin: 0;">Component Name</h3>
         </div>
         <div style="display: flex; gap: 0.35rem; align-items: center;">
-          <button id="drawer-copy-link-btn" onclick="copyDeepLink()" title="Copy Link to this Component" style="padding: 0.35rem 0.5rem; border-radius: 0.375rem; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer; font-size: 0.75rem;">
+          <button id="drawer-copy-link-btn" onclick="copyDeepLink()" title="Copy Link to this Component" style="padding: 0.35rem 0.5rem; border-radius: 0.375rem; border: 1px solid var(--tm-border-strong); background: var(--tm-bg-card); color: var(--tm-text-head); cursor: pointer; font-size: 0.75rem;">
             🔗 Link
           </button>
-          <button onclick="closeInspector()" title="Close Drawer (Esc)" style="padding: 0.35rem 0.6rem; border-radius: 0.375rem; border: none; background: transparent; cursor: pointer; font-size: 1.1rem; color: #64748b;">
+          <button onclick="closeInspector()" title="Close Drawer (Esc)" style="padding: 0.35rem 0.6rem; border-radius: 0.375rem; border: none; background: transparent; cursor: pointer; font-size: 1.1rem; color: var(--tm-text-muted);">
             ✕
           </button>
         </div>
       </div>
 
       <!-- Drawer Tabs (6 Specialized Technical Tabs) -->
-      <div style="display: flex; border-bottom: 1px solid #e2e8f0; background: #ffffff; padding: 0 0.5rem; overflow-x: auto;" role="tablist">
+      <div style="display: flex; border-bottom: 1px solid var(--tm-border); background: var(--tm-drawer-bg); padding: 0 0.5rem; overflow-x: auto;" role="tablist">
         <button id="tab-btn-overview" class="drawer-tab-btn active" onclick="switchDrawerTab('overview')">
           📘 Overview
         </button>
@@ -399,44 +399,44 @@
 
   <!-- Keyboard Shortcuts Modal Sheet -->
   <div id="shortcuts-modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center;" onclick="if(event.target===this) toggleShortcutsModal()">
-    <div style="background: #ffffff; border-radius: 0.75rem; width: 90%; max-width: 500px; padding: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); border: 1px solid #cbd5e1;">
+    <div style="background: var(--tm-modal-bg); border-radius: 0.75rem; width: 90%; max-width: 500px; padding: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); border: 1px solid var(--tm-border); color: var(--tm-text-body);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: #0f172a;">⌨️ Diagram Keyboard Shortcuts</h3>
-        <button onclick="toggleShortcutsModal()" style="border: none; background: transparent; font-size: 1.2rem; cursor: pointer; color: #64748b;">✕</button>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--tm-text-head);">⌨️ Diagram Keyboard Shortcuts</h3>
+        <button onclick="toggleShortcutsModal()" style="border: none; background: transparent; font-size: 1.2rem; cursor: pointer; color: var(--tm-text-muted);">✕</button>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.8125rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Zoom In / Out</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">+ / −</span>
+          <span class="shortcut-key">+ / −</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Reset View</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">0</span>
+          <span class="shortcut-key">0</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Toggle Fullscreen</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">f</span>
+          <span class="shortcut-key">f</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Search Components</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">/</span>
+          <span class="shortcut-key">/</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Switch Sheets</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">1 / 2 / 3 / 4</span>
+          <span class="shortcut-key">1 / 2 / 3 / 4</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Cycle Depth Level</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">l</span>
+          <span class="shortcut-key">l</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Cycle Priority</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">p</span>
+          <span class="shortcut-key">p</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: #f8fafc; border-radius: 0.375rem;">
+        <div class="shortcut-row">
           <span>Close Drawer / Modal</span>
-          <span style="font-family: monospace; font-weight: 700; background: #e2e8f0; padding: 2px 6px; border-radius: 4px;">Esc</span>
+          <span class="shortcut-key">Esc</span>
         </div>
       </div>
 
@@ -2093,12 +2093,278 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
 </div>
 
 <style>
-  /* Drawer Tab Button Styling */
+  /* ==========================================================================
+     Threat Model Theme Engine: Dual-Mode AAA Contrast (Light & Dark)
+     ========================================================================== */
+
+  :root {
+    --tm-bg-card: #ffffff;
+    --tm-bg-card-subtle: #f8fafc;
+    --tm-bg-input: #ffffff;
+    --tm-bg-control: #f1f5f9;
+    --tm-bg-pill: #ffffff;
+    --tm-bg-pill-hover: #f1f5f9;
+    --tm-border: #e2e8f0;
+    --tm-border-strong: #cbd5e1;
+    --tm-text-head: #0f172a;
+    --tm-text-body: #334155;
+    --tm-text-muted: #64748b;
+    --tm-text-badge: #475569;
+    --tm-badge-bg: #f1f5f9;
+    --tm-drawer-bg: #ffffff;
+    --tm-drawer-header: #f8fafc;
+    --tm-dropdown-bg: #ffffff;
+    --tm-dropdown-hover: #f1f5f9;
+    --tm-viewport-bg: #ffffff;
+    --tm-canvas-bg: #f8fafc;
+    --tm-modal-bg: #ffffff;
+    --tm-code-bg: #0b132b;
+    --tm-code-fg: #38bdf8;
+    --pele-fg: #0f172a;
+    --pele-muted: #64748b;
+    --pele-surface: #ffffff;
+    --pele-border: #e2e8f0;
+  }
+
+  html.dark, .dark {
+    --tm-bg-card: #1c1829;
+    --tm-bg-card-subtle: #141120;
+    --tm-bg-input: #252037;
+    --tm-bg-control: #252037;
+    --tm-bg-pill: #252037;
+    --tm-bg-pill-hover: #322b49;
+    --tm-border: #352d4c;
+    --tm-border-strong: #4a3e68;
+    --tm-text-head: #ffffff;
+    --tm-text-body: #e2e8f0;
+    --tm-text-muted: #94a3b8;
+    --tm-text-badge: #cbd5e1;
+    --tm-badge-bg: #29233f;
+    --tm-drawer-bg: #181426;
+    --tm-drawer-header: #120f1e;
+    --tm-dropdown-bg: #1c1829;
+    --tm-dropdown-hover: #29233f;
+    --tm-viewport-bg: #120f1e;
+    --tm-canvas-bg: #161224;
+    --tm-modal-bg: #1c1829;
+    --tm-code-bg: #0a0e1a;
+    --tm-code-fg: #38bdf8;
+    --pele-fg: #ffffff;
+    --pele-muted: #94a3b8;
+    --pele-surface: #1c1829;
+    --pele-border: #352d4c;
+  }
+
+  /* Page Header & Stats */
+  .kube-page-header {
+    border-bottom: 1px solid var(--tm-border);
+    padding: 2.5rem 1rem 2rem;
+  }
+  .kube-page-title {
+    margin-top: 0.75rem;
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--tm-text-head);
+    line-height: 1.15;
+  }
+  .kube-page-subtitle {
+    margin-top: 0.75rem;
+    max-width: 960px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--tm-text-muted);
+  }
+  .kube-stats-grid {
+    display: grid;
+  }
+  .kube-stat-card {
+    border-radius: 0.5rem;
+    background: var(--tm-bg-card-subtle);
+    border: 1px solid var(--tm-border);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .kube-stat-card:hover {
+    transform: translateY(-2px);
+    border-color: #3b82f6;
+  }
+  .kube-stat-value {
+    font-weight: 800;
+    color: #3b82f6;
+  }
+  html.dark .kube-stat-value, .dark .kube-stat-value {
+    color: #60a5fa;
+  }
+  .kube-stat-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--tm-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
+
+  /* Threat Model Global Container Overrides */
+  .threat-model-page .kube-card,
+  .kube-shell .kube-card {
+    background: var(--tm-bg-card) !important;
+    border-color: var(--tm-border) !important;
+    color: var(--tm-text-body) !important;
+  }
+
+  .threat-model-page h1,
+  .threat-model-page h2,
+  .threat-model-page h3,
+  .threat-model-page h4,
+  .kube-shell h1,
+  .kube-shell h2,
+  .kube-shell h3,
+  .kube-shell h4 {
+    color: var(--tm-text-head) !important;
+  }
+
+  .threat-model-page p,
+  .kube-shell p {
+    color: var(--tm-text-muted);
+  }
+
+  /* Contrast guarantee for inline dark colors on dark mode */
+  html.dark .threat-model-page [style*="color: var(--pele-fg"],
+  .dark .threat-model-page [style*="color: var(--pele-fg"],
+  html.dark .threat-model-page [style*="color: #0f172a"],
+  .dark .threat-model-page [style*="color: #0f172a"],
+  html.dark .threat-model-page [style*="color: #1e293b"],
+  .dark .threat-model-page [style*="color: #1e293b"] {
+    color: #f8fafc !important;
+  }
+
+  html.dark .threat-model-page [style*="color: var(--pele-muted"],
+  .dark .threat-model-page [style*="color: var(--pele-muted"],
+  html.dark .threat-model-page [style*="color: #64748b"],
+  .dark .threat-model-page [style*="color: #64748b"],
+  html.dark .threat-model-page [style*="color: #475569"],
+  .dark .threat-model-page [style*="color: #475569"],
+  html.dark .threat-model-page [style*="color: #334155"],
+  .dark .threat-model-page [style*="color: #334155"] {
+    color: #cbd5e1 !important;
+  }
+
+  /* Viewport & Canvas in Light and Dark */
+  #diagram-viewport-container {
+    background: var(--tm-viewport-bg) !important;
+    border-color: var(--tm-border) !important;
+  }
+
+  #diagram-scroll-pane {
+    background: var(--tm-canvas-bg) !important;
+  }
+
+  html.dark #diagram-scroll-pane svg,
+  .dark #diagram-scroll-pane svg {
+    background-color: #161224 !important;
+    color-scheme: dark;
+  }
+
+  /* Search Input & Dropdowns */
+  #diagram-search-input {
+    background: var(--tm-bg-input) !important;
+    color: var(--tm-text-head) !important;
+    border-color: var(--tm-border-strong) !important;
+  }
+
+  #search-autocomplete-dropdown,
+  #download-dropdown-menu {
+    background: var(--tm-dropdown-bg) !important;
+    border-color: var(--tm-border-strong) !important;
+    color: var(--tm-text-head) !important;
+  }
+
+  #search-autocomplete-dropdown .search-autocomplete-item:hover,
+  #download-dropdown-menu a:hover,
+  #download-dropdown-menu button:hover {
+    background: var(--tm-dropdown-hover) !important;
+  }
+
+  #download-dropdown-menu a,
+  #download-dropdown-menu button {
+    color: var(--tm-text-head) !important;
+    border-bottom: 1px solid var(--tm-border) !important;
+  }
+
+  /* Toolbar Pill Buttons */
+  .pri-pill-btn, .stride-pill-btn, .flow-pill-btn, .view-pill-btn {
+    background: var(--tm-bg-pill) !important;
+    color: var(--tm-text-body) !important;
+    border: 1px solid var(--tm-border-strong) !important;
+  }
+  .pri-pill-btn:hover, .stride-pill-btn:hover, .flow-pill-btn:hover, .view-pill-btn:hover {
+    background: var(--tm-bg-pill-hover) !important;
+    color: var(--tm-text-head) !important;
+  }
+  .pri-pill-btn.active, .stride-pill-btn.active, .flow-pill-btn.active, .view-pill-btn.active {
+    background: #3b82f6 !important;
+    color: #ffffff !important;
+    border-color: #3b82f6 !important;
+  }
+
+  /* Priority Button Color Presets */
+  #pri-btn-pri-1 { background: rgba(239, 68, 68, 0.15) !important; color: #f87171 !important; border-color: rgba(239, 68, 68, 0.4) !important; }
+  #pri-btn-pri-2 { background: rgba(249, 115, 22, 0.15) !important; color: #fb923c !important; border-color: rgba(249, 115, 22, 0.4) !important; }
+  #pri-btn-pri-3 { background: rgba(234, 179, 8, 0.15) !important; color: #facc15 !important; border-color: rgba(234, 179, 8, 0.4) !important; }
+  #pri-btn-info { background: rgba(6, 182, 212, 0.15) !important; color: #22d3ee !important; border-color: rgba(6, 182, 212, 0.4) !important; }
+  #pri-btn-pri-1.active { background: #ef4444 !important; color: #ffffff !important; border-color: #ef4444 !important; }
+  #pri-btn-pri-2.active { background: #f97316 !important; color: #ffffff !important; border-color: #f97316 !important; }
+  #pri-btn-pri-3.active { background: #eab308 !important; color: #ffffff !important; border-color: #eab308 !important; }
+  #pri-btn-info.active { background: #06b6d4 !important; color: #ffffff !important; border-color: #06b6d4 !important; }
+
+  /* Flow Button Color Presets */
+  #flow-btn-ingress { background: rgba(239, 68, 68, 0.15) !important; color: #f87171 !important; border-color: rgba(239, 68, 68, 0.4) !important; }
+  #flow-btn-egress { background: rgba(59, 130, 246, 0.15) !important; color: #60a5fa !important; border-color: rgba(59, 130, 246, 0.4) !important; }
+  #flow-btn-ingress.active { background: #ef4444 !important; color: #ffffff !important; border-color: #ef4444 !important; }
+  #flow-btn-egress.active { background: #2563eb !important; color: #ffffff !important; border-color: #2563eb !important; }
+
+  /* Segmented Level Control */
+  .level-segment-btn {
+    border: none;
+    background: transparent;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--tm-text-muted);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .level-segment-btn:hover {
+    color: var(--tm-text-head);
+  }
+  .level-segment-btn.active {
+    background: var(--tm-bg-card) !important;
+    color: var(--tm-text-head) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+
+  /* Inspector Drawer */
+  #inspector-drawer {
+    background: var(--tm-drawer-bg) !important;
+    border-left: 1px solid var(--tm-border) !important;
+    color: var(--tm-text-body) !important;
+  }
+  #inspector-drawer div[style*="background: #f8fafc"],
+  #inspector-drawer div[style*="background:#f8fafc"] {
+    background: var(--tm-drawer-header) !important;
+    border-color: var(--tm-border) !important;
+  }
+  #inspector-drawer div[style*="background: #ffffff"],
+  #inspector-drawer div[style*="background:#ffffff"] {
+    background: var(--tm-drawer-bg) !important;
+    border-color: var(--tm-border) !important;
+  }
+
   .drawer-tab-btn {
     padding: 0.6rem 0.85rem;
     font-size: 0.8125rem;
     font-weight: 600;
-    color: #64748b;
+    color: var(--tm-text-muted);
     border: none;
     background: transparent;
     cursor: pointer;
@@ -2107,76 +2373,14 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     transition: all 0.15s ease;
   }
   .drawer-tab-btn:hover {
-    color: #0f172a;
+    color: var(--tm-text-head);
   }
   .drawer-tab-btn.active {
-    color: #3b82f6;
-    border-bottom: 2px solid #3b82f6;
+    color: #38bdf8 !important;
+    border-bottom: 2px solid #38bdf8 !important;
   }
 
-  /* Segmented level control button */
-  .level-segment-btn {
-    border: none;
-    background: transparent;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #64748b;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .level-segment-btn.active {
-    background: #ffffff;
-    color: #0f172a;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-
-  /* View pill button styling */
-  .view-pill-btn {
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-  }
-  .view-pill-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-  }
-  .view-pill-btn.active {
-    box-shadow: 0 0 0 2px #3b82f6;
-  }
-
-  /* Autocomplete search item */
-  .search-autocomplete-item {
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-    border-bottom: 1px solid #f1f5f9;
-    transition: background 0.12s ease;
-  }
-  .search-autocomplete-item:hover {
-    background: #f8fafc;
-  }
-
-  /* Pulse animation on highlighted SVG elements */
-  @keyframes svg-pulse {
-    0% { filter: drop-shadow(0 0 0px #38bdf8); }
-    50% { filter: drop-shadow(0 0 14px #38bdf8); }
-    100% { filter: drop-shadow(0 0 0px #38bdf8); }
-  }
-  .highlight-pulse {
-    animation: svg-pulse 1.5s infinite;
-  }
-
-  /* Flow animation on SVG paths */
-  @keyframes dash-flow {
-    to {
-      stroke-dashoffset: -40;
-    }
-  }
-  .animated-flow-path {
-    stroke-dasharray: 8, 4;
-    animation: dash-flow 1s linear infinite;
-  }
-
-  /* Policy Engine Sub-pill Switcher in Inspector Drawer */
+  /* Policy Engine Pill in Drawer */
   .policy-engine-pill {
     background: transparent;
     color: #94a3b8;
@@ -2199,19 +2403,19 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     padding: 0.25rem 0.5rem;
     font-size: 0.72rem;
     font-weight: 600;
-    color: #64748b;
+    color: var(--tm-text-muted);
     border-radius: 0.25rem;
     cursor: pointer;
     transition: all 0.15s ease;
   }
   .card-engine-btn:hover {
-    color: #0f172a;
-    background: rgba(0,0,0,0.04);
+    color: var(--tm-text-head);
+    background: rgba(125, 125, 125, 0.1);
   }
   .card-engine-btn.active {
-    background: #ffffff;
-    color: #1e40af;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    background: var(--tm-bg-card) !important;
+    color: #3b82f6 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15) !important;
   }
 
   /* Scorecard Filter Buttons */
@@ -2236,39 +2440,140 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
 
-  /* Scorecard Check Item */
+  /* Scorecard Checklist Item */
   .scorecard-item {
+    background: var(--tm-bg-card) !important;
+    border: 1px solid var(--tm-border) !important;
+    color: var(--tm-text-body) !important;
     transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
   }
   .scorecard-item:hover {
-    border-color: #cbd5e1 !important;
+    border-color: var(--tm-border-strong) !important;
   }
   .scorecard-item.is-checked {
-    background: #f8fafc !important;
+    background: var(--tm-bg-card-subtle) !important;
     border-left-color: #10b981 !important;
   }
 
-  /* Custom Checkbox Toggle */
   .scorecard-checkbox {
     width: 22px;
     height: 22px;
     border-radius: 6px;
-    border: 2px solid #cbd5e1;
+    border: 2px solid var(--tm-border-strong);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.15s ease;
     flex-shrink: 0;
-    background: #ffffff;
+    background: var(--tm-bg-input);
   }
   .scorecard-checkbox:hover {
     border-color: #3b82f6;
   }
   .scorecard-checkbox.checked {
-    background: #10b981;
-    border-color: #10b981;
-    color: #ffffff;
+    background: #10b981 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+  }
+
+  .scorecard-id-pill {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--tm-text-head);
+    background: var(--tm-bg-control);
+    padding: 0.15rem 0.45rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--tm-border);
+  }
+  .scorecard-tag-pill {
+    font-size: 0.6875rem;
+    background: var(--tm-badge-bg);
+    color: var(--tm-text-badge);
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    border: 1px solid var(--tm-border);
+  }
+
+  /* Shortcut Modal Rows */
+  .shortcut-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.6rem;
+    background: var(--tm-bg-card-subtle);
+    border-radius: 0.375rem;
+    color: var(--tm-text-body);
+  }
+  .shortcut-key {
+    font-family: monospace;
+    font-weight: 700;
+    background: var(--tm-bg-control);
+    color: var(--tm-text-head);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--tm-border);
+  }
+
+  /* Translucent High-Contrast Badges in Dark Mode */
+  html.dark .threat-model-page span[style*="background: #f1f5f9"],
+  .dark .threat-model-page span[style*="background: #f1f5f9"],
+  html.dark .threat-model-page span[style*="background:#f1f5f9"],
+  .dark .threat-model-page span[style*="background:#f1f5f9"] {
+    background: var(--tm-badge-bg) !important;
+    color: var(--tm-text-badge) !important;
+  }
+
+  html.dark .threat-model-page span[style*="background: #fee2e2"],
+  .dark .threat-model-page span[style*="background: #fee2e2"],
+  html.dark .threat-model-page span[style*="background: #fef2f2"],
+  .dark .threat-model-page span[style*="background: #fef2f2"] {
+    background: rgba(239, 68, 68, 0.22) !important;
+    color: #fca5a5 !important;
+  }
+
+  html.dark .threat-model-page span[style*="background: #dcfce7"],
+  .dark .threat-model-page span[style*="background: #dcfce7"],
+  html.dark .threat-model-page span[style*="background: #f0fdf4"],
+  .dark .threat-model-page span[style*="background: #f0fdf4"] {
+    background: rgba(34, 197, 94, 0.22) !important;
+    color: #86efac !important;
+  }
+
+  html.dark .threat-model-page span[style*="background: #eff6ff"],
+  .dark .threat-model-page span[style*="background: #eff6ff"],
+  html.dark .threat-model-page span[style*="background: #dbeafe"],
+  .dark .threat-model-page span[style*="background: #dbeafe"],
+  html.dark .threat-model-page span[style*="background: #e0f2fe"],
+  .dark .threat-model-page span[style*="background: #e0f2fe"] {
+    background: rgba(59, 130, 246, 0.22) !important;
+    color: #93c5fd !important;
+  }
+
+  html.dark .threat-model-page span[style*="background: #fef3c7"],
+  .dark .threat-model-page span[style*="background: #fef3c7"],
+  html.dark .threat-model-page span[style*="background: #ffedd5"],
+  .dark .threat-model-page span[style*="background: #ffedd5"],
+  html.dark .threat-model-page span[style*="background: #fefce8"],
+  .dark .threat-model-page span[style*="background: #fefce8"] {
+    background: rgba(245, 158, 11, 0.22) !important;
+    color: #fde68a !important;
+  }
+
+  html.dark .threat-model-page span[style*="background: #faf5ff"],
+  .dark .threat-model-page span[style*="background: #faf5ff"],
+  html.dark .threat-model-page span[style*="background: #f3e8ff"],
+  .dark .threat-model-page span[style*="background: #f3e8ff"] {
+    background: rgba(168, 85, 247, 0.22) !important;
+    color: #d8b4fe !important;
+  }
+
+  html.dark .threat-model-page .kube-section-pill,
+  .dark .threat-model-page .kube-section-pill {
+    background: rgba(168, 85, 247, 0.18) !important;
+    color: #d8b4fe !important;
+    border-color: rgba(168, 85, 247, 0.35) !important;
   }
 
   /* MITRE ATT&CK Matrix Grid & Card Styling */
@@ -2317,9 +2622,9 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
 
   /* Playbook Tab Buttons */
   .playbook-tab-btn {
-    border: 1px solid #334155;
-    background: #1e293b;
-    color: #94a3b8;
+    border: 1px solid var(--tm-border);
+    background: var(--tm-bg-pill);
+    color: var(--tm-text-muted);
     padding: 0.45rem 0.85rem;
     font-size: 0.775rem;
     font-weight: 600;
@@ -2329,8 +2634,8 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     white-space: nowrap;
   }
   .playbook-tab-btn:hover {
-    color: #ffffff;
-    background: #334155;
+    color: var(--tm-text-head);
+    background: var(--tm-bg-pill-hover);
   }
   .playbook-tab-btn.active {
     background: #2563eb !important;
@@ -2365,9 +2670,9 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
 
   /* Incident Response Runbook Tab Buttons */
   .runbook-tab-btn {
-    border: 1px solid #334155;
-    background: #1e293b;
-    color: #94a3b8;
+    border: 1px solid var(--tm-border);
+    background: var(--tm-bg-pill);
+    color: var(--tm-text-muted);
     padding: 0.45rem 0.85rem;
     font-size: 0.775rem;
     font-weight: 600;
@@ -2377,14 +2682,35 @@ mix kubedaily.drawio path/to/architecture.drawio --scale 2 --out-dir priv/static
     white-space: nowrap;
   }
   .runbook-tab-btn:hover {
-    color: #ffffff;
-    background: #334155;
+    color: var(--tm-text-head);
+    background: var(--tm-bg-pill-hover);
   }
   .runbook-tab-btn.active {
     background: #ef4444 !important;
     color: #ffffff !important;
     border-color: #ef4444 !important;
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  /* Pulse animation on highlighted SVG elements */
+  @keyframes svg-pulse {
+    0% { filter: drop-shadow(0 0 0px #38bdf8); }
+    50% { filter: drop-shadow(0 0 14px #38bdf8); }
+    100% { filter: drop-shadow(0 0 0px #38bdf8); }
+  }
+  .highlight-pulse {
+    animation: svg-pulse 1.5s infinite;
+  }
+
+  /* Flow animation on SVG paths */
+  @keyframes dash-flow {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+  .animated-flow-path {
+    stroke-dasharray: 8, 4;
+    animation: dash-flow 1s linear infinite;
   }
 </style>
 
@@ -4688,7 +5014,6 @@ spec:
       itemEl.style.padding = '1.1rem 1.25rem';
       itemEl.style.borderRadius = '0.65rem';
       itemEl.style.borderLeft = isChecked ? '4px solid #10b981' : (chk.severity === 'critical' ? '4px solid #ef4444' : '4px solid #f59e0b');
-      itemEl.style.background = isChecked ? '#f8fafc' : '#ffffff';
 
       const sevBg = chk.severity === 'critical' ? '#fee2e2' : (chk.severity === 'high' ? '#ffedd5' : '#fef9c3');
       const sevFg = chk.severity === 'critical' ? '#991b1b' : (chk.severity === 'high' ? '#9a3412' : '#854d0e');
@@ -4702,28 +5027,28 @@ spec:
           <div style="flex: 1; min-width: 0;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.35rem;">
               <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
-                <span style="font-size: 0.75rem; font-weight: 800; color: #475569; background: #e2e8f0; padding: 0.15rem 0.45rem; border-radius: 0.25rem;">${chk.id}</span>
+                <span class="scorecard-id-pill">${chk.id}</span>
                 <span class="kube-badge" style="background: ${sevBg}; color: ${sevFg}; font-weight: 700; font-size: 0.6875rem;">${chk.severity.toUpperCase()}</span>
-                <span style="font-size: 0.72rem; color: #64748b; font-weight: 600;">${chk.domainName}</span>
+                <span style="font-size: 0.72rem; color: var(--tm-text-muted); font-weight: 600;">${chk.domainName}</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
-                <span style="font-size: 0.6875rem; background: #f1f5f9; color: #475569; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-weight: 600;">${chk.cis}</span>
-                <span style="font-size: 0.6875rem; background: #f1f5f9; color: #475569; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-weight: 600;">MITRE ${chk.mitre}</span>
+                <span class="scorecard-tag-pill">${chk.cis}</span>
+                <span class="scorecard-tag-pill">MITRE ${chk.mitre}</span>
               </div>
             </div>
 
-            <h4 style="font-size: 1rem; font-weight: 700; color: var(--pele-fg, #0f172a); margin: 0 0 0.25rem 0; cursor: pointer;" onclick="toggleScorecardCheck('${chk.id}')">
+            <h4 style="font-size: 1rem; font-weight: 700; color: var(--tm-text-head); margin: 0 0 0.25rem 0; cursor: pointer;" onclick="toggleScorecardCheck('${chk.id}')">
               ${chk.title}
             </h4>
-            <p style="font-size: 0.8125rem; color: var(--pele-muted, #64748b); line-height: 1.5; margin: 0;">
+            <p style="font-size: 0.8125rem; color: var(--tm-text-muted); line-height: 1.5; margin: 0;">
               ${chk.desc}
             </p>
 
-            <div id="scorecard-tray-${chk.id}" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px dashed #e2e8f0;">
-              <div style="font-size: 0.75rem; font-weight: 700; color: #334155; margin-bottom: 0.3rem;">CLI Verification Command:</div>
+            <div id="scorecard-tray-${chk.id}" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px dashed var(--tm-border);">
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--tm-text-head); margin-bottom: 0.3rem;">CLI Verification Command:</div>
               <pre style="margin: 0 0 0.65rem 0; padding: 0.5rem 0.75rem; background: #0f172a; color: #38bdf8; border-radius: 0.375rem; font-size: 0.75rem; overflow-x: auto;"><code>${chk.cliVerify}</code></pre>
-              <div style="font-size: 0.75rem; font-weight: 700; color: #334155; margin-bottom: 0.3rem;">Remediation Policy Target:</div>
-              <div style="font-size: 0.75rem; color: #64748b;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--tm-text-head); margin-bottom: 0.3rem;">Remediation Policy Target:</div>
+              <div style="font-size: 0.75rem; color: var(--tm-text-muted);">
                 Enforce policy via <strong>${scorecardRemediationEngine.toUpperCase()}</strong>:
                 <code class="kube-code">${chk.policyKey}</code>
               </div>
@@ -4765,11 +5090,9 @@ spec:
     if (row) {
       if (isChecked) {
         row.classList.add('is-checked');
-        row.style.background = '#f8fafc';
         row.style.borderLeft = '4px solid #10b981';
       } else {
         row.classList.remove('is-checked');
-        row.style.background = '#ffffff';
         const chk = window.KUBEDAILY_SCORECARD_DATA.find(c => c.id === id);
         row.style.borderLeft = chk && chk.severity === 'critical' ? '4px solid #ef4444' : '4px solid #f59e0b';
       }
